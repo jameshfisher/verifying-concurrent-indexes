@@ -1,0 +1,129 @@
+\subsubsection{Formalizing behavior: a Set \ADT}
+
+A correct index implementation will satisfy the behavior described above.
+To \emph{prove} that one does so, however,
+  we shall have to describe the behavior more precisely.
+
+The basic tool we use to do this is the concept of of \emph{pre- and post-conditions}.\footnotemark
+In the context of writing a specification,
+  these let us specify the possible valid states of the program before executing a command,
+  and what the state of the program will be after execution of it.
+For example, we might state that if $x=2$ prior to executing \IC{x=square(x)},
+  then $x=4$ afterwards.
+This would be written as the \enquote{Hoare triple}
+  \Triple{x=2}{x=square(x)}{x=4}.\footnotemark
+More complex \enquote{commands},
+  such as the operations on an index,
+  can be specified in the same way:
+  \Triple{\ldots}{i->insert(k, v)}{\ldots}.
+For an operation like this,
+  the precondition must capture
+  the valid states of the variables \IC{i}, \IC{k} and \IC{v}.
+
+\footnotetext{
+This is a central concept of Hoare logic.\cite{hoare}
+There is a lot more to basic Hoare logic,
+  but here I am only specifying behaviour,
+  not proving that anything satisfies it.
+}
+
+\footnotetext{
+Actually, the triple makes no assertions as to whether the command terminates,
+  so the assertion made is strictly that
+  the postcondition will hold \emph{if and when} the command terminates.
+A second syntax is used for assertions that the command terminates:
+  \TermTriple{x=2}{x=square(x)}{x=4}.
+I do not concern myself with this here or in the specification.
+}
+
+However, \IC{i}, a pointer to a valid index in memory,
+can be a problematic thing to capture.
+First, we don't actually \emph{know} what a valid index looks like,
+  because, as in the above descriptions,
+  we do not want to concern ourselves with these low-level details
+  when describing behavior.
+Second, even if we did want to describe memory layout,
+  the details of this would be too complex to be practicable in a specification.
+
+The solution is simply to skip over this problem at this stage,
+  and instead use an \NewTerm{abstract predicate}
+  to describe what \IC{i} represents to the programmer using it,
+  namely, \enquote{a pointer to something representing an index containing…}.
+This predicate over \IC{i} is written as $\Pred{index}{\IC{i}, I}$.
+
+A bit more notation is necessary to describe the mappings in an index.
+However, at this point and with familiar set notation,
+  we can specify a similar abstract data type: the \emph{set}.
+This will be useful, because a data structure representing an index
+  can be constructed by minimal modification of a set data structure.
+For example,
+  an index $\fpfun{I}{K}{V}$ can be represented by
+  a set of tuples $(k, v)$ (where $k \in K$ and $v \in V$),
+  with the restriction that no two elements have the same $k$ value.
+
+The following functions and their specification should be intuitive.
+We can \IC{search} for, \IC{insert}, and \IC{remove} elements from the set,
+  just as we can remove mappings from an index.
+The pre- and postconditions simply describe
+  how the functions mutate the set (if at all),
+  and how information is extracted from the structure.
+
+\VEm
+\noindent
+\begin{tabular*}{\textwidth}{l l l}
+
+% search where key is in the set
+\Cond{\Pred{set}{\IC{s}, S} \Fand \IC{el} \in S}  &
+\IC{exists = s->search(el);}  &
+\Cond{\Pred{set}{\IC{s}, S} \Fand \IC{el} \in S \Fand \IC{exists} = \truth}
+\\[0.5em]
+
+% search where key is not in the set
+\Cond{\Pred{set}{\IC{s}, S} \Fand \IC{el} \notin S}  &
+\IC{exists = s->search(el);}  &
+\Cond{\Pred{set}{\IC{s}, S} \Fand \IC{el} \notin S \Fand \IC{exists} = \falsity}
+\\[0.5em]
+
+% insert
+\Cond{\Pred{set}{\IC{s}, S}}  &
+\IC{s->insert(el);}  &
+\Cond{\Pred{set}{\IC{s}, S \union \Set{\IC{el}}}}
+\\[0.5em]
+
+% remove
+\Cond{\Pred{set}{\IC{s}, S}}  &
+\IC{s->remove(el);}  &
+\Cond{\Pred{set}{\IC{s}, S \setminus \Set{\IC{el}}}}
+\\
+
+\end{tabular*}
+\VEm
+
+
+As $I$ is now purely logical,
+  we can describe it mathematically without concern for memory layout or local variables.
+$I$ is a mapping from a set of keys
+  (which is a subset of the universe of keys)
+  to a universe of values.
+It is, in other words, a \NewTerm{finite partial function},
+  written as
+  $I : \mathsf{Keys} \fpfun \mathsf{Values}$.
+
+As $\mathsf{Keys}$ is just a set,
+  we can express whether or not a key is in the index
+  using ordinary set notation:
+  $x \in \KeysOf{I}$ states that
+  there is a mapping in the index from $x$ to some value.
+As $I$ is a function,
+  we can express a specific mapping
+  using ordinary function notation:
+  $I(x) = y$ states that
+  there is a mapping in the index from $x$ to $y$.
+
+With just a couple more shorthand notations,
+  we can then express the desired behavior of the index.
+First, the \NewTerm{function update} notation,
+  $\fupd{I}{k}{v}$,
+  denotes the finite partial function $I$ with the modification that $I(k) = v$.
+Second, the \NewTerm{set difference} notation $I \setminus \Set{k}$
+  is a shorthand for $I$ with the removal of the key $k$ from $\KeysOf{I}$.

@@ -1,0 +1,182 @@
+\subsection{Overview of sequential verification}
+
+The correctness of an implementation of these algorithms is not easy to see.
+The reasons for this are
+
+\begin{itemize}
+
+\item the algorithm is complex
+
+\item
+things underlying an implementation
+  are themselves not rigorously specified.
+This includes the semantics of the language, the behaviour of a architecture, etc.
+
+\end{itemize}
+
+\subsection{Memory models}
+
+One rigorous specification for C++ concurrency on the x86
+  has been given by Sewell, et al.
+This provides a basis for
+  proving the correctness of algorithms implemented on this stack.
+
+\subsection{Reasoning}
+
+\subsubsection{Hoare logic}
+
+How do we reason about programs?
+Everyone's starting point is Hoare logic,\cite{hoare}
+  the basic approach of which is to
+  define \enquote{axioms and rules of inference} for flow control primitives
+  so that, for a block of code,
+  a chosen precondition can be shown to entail a chosen postcondition.
+
+Pre- and postconditions of a command are
+  written in braces before and after the command, like so:
+  \{A\}\{B\}\{C\}.
+This states that
+    if $x=2$ prior to executing $x++$,
+    $x=3$ afterwards.
+More generally,
+  if, after executing command $C$ when $P$ is true, $Q$ will be true,
+  we write this as the \enquote{Hoare triple} $\{P\} C \{Q\}$.\footnotemark
+
+\footnotetext{
+Actually, C may not terminate,
+  so the assertion made is strictly that
+  \enquote{$P$ is true when executing $C$, then if $C$ terminates, $Q$ will hold}.
+A second syntax is used for assertions that C terminates: $[P] C [Q]$.
+}
+
+
+These triples can be composed.
+For example,
+  if we have the triple $\{ x = 2 \} x++ \{ x = 3 \}$
+  and the triple $\{ x = 3 \} x++ \{ x = 4 \}$
+  then we may deduce $\{ x = 2 \} x++; x++ \{ x = 4 \}$.
+Here we are applying
+  the \enquote{rule of composition},
+  $\{P\} C \{Q\}, \{Q\} D \{R\} \vdash \{P\} C; D \{R\}$.
+
+ multiple commands?  Take this:
+
+  r=1;
+  while(n>0) {
+    r *= n;
+    n--;
+  }
+
+What can we say about r and n
+  and the relationship between them
+  after executing this code?
+Informally,
+  we see that the while body will run n times (assuming unsigned integers).
+We understand that n=0 after the while loop has finished.
+We understand that “r *=n” will run n times,
+  such that r2 (value after the body completes) will be equal to
+
+  r2 = r1 * n * n-1 * n-2 * n-3 * … 1
+
+Seeing that r=1, we then identify this as the factorial, so the above can be written:
+
+  r2 = n!
+
+But how do we formalize this?
+Hoare logic lets us mark this up:
+
+\begin{lstlisting}
+  { n >= 0 && t = n }
+  r=1;
+  { n >= 0 && t = n && r == 1 }
+  while(n>0)
+  { r == t!/ n! && t >= n > 0 }
+  {
+    r *= n;
+    { r == t! / (n-1)! && t >= n >= 0 }
+    n--;
+  }
+  { r == t! }
+\end{lstlisting}
+
+But to be useful,
+we need relationships between the assertions.
+We can separate the above into Hoare triples:
+
+\begin{lstlisting}
+{ n >= 0 && t = n } r=1; { n >= 0 && t = n && r == 1 }
+{ r == t!/ n! && t >= n > 0 } r *= n; { r == t! / (n-1)! && t >= n >= 0 }
+{ r == t! / (n-1)! && t >= n >= 0 } n--; { r == t!/ n! && t >= n > 0 }
+\end{lstlisting}
+
+What’s t?  It’s not in the code — rather, the logic lets us use logical variables.  In the above, this lets us refer to the initial value of n in the lines following, where the variable n has mutated.
+
+
+\subsubsection{Separation logic}
+
+The above example only shows local, non-pointer variables.
+However, real-world programs use pointers and heap-allocated memory.
+How do we reason about these?
+Example:
+
+\begin{lstlisting}
+  bool foo(int * x, int * y) {
+    *x = 1;
+    *y = 2;
+    return *x == *y;
+  }
+\end{lstlisting}
+
+With no prior assumptions,
+  can we show that foo() always returns false?
+Answer: no, because x and y may point to the same location,
+in which case *x == * y == 2!
+So let's add an assertion:
+
+\begin{lstlisting}
+bool foo(int * x, int * y) {
+    assert(x != y);  // { x != y }
+    *x = 1;  // { x != y.  *x = 1 }
+    *y = 2;  // { x != y. *x = 1.
+    return *x == *y;
+  }
+\end{lstlisting}
+
+In this case, we can now guarantee that foo returns false, or the assertion fails (in which case foo does not terminate).
+
+Question: does this also hold for pathological cases where the variable doesn't point to the heap, e.g.:
+* \lstinline|x == &x|
+* \lstinline|x == &y|
+
+What we’re doing is modeling the heap as an array.  This ‘trick’ is acceptable and correct (the heap really is an array...).
+
+But there’s an important problem: to reason about local operations on the heap, we need global knowledge of the state of the heap.  Why?  Because as well as characterizing the part of the heap which the code is concerned with, we need a whole bunch of assertions that this part of the heap does not overlap other parts (the simplest assertion of which is that x != y, above).
+
+Consider a command C that works on the heap:
+  {P} C {Q}.
+The operation of C depends solely on P (a description of a part of the heap).  There may be many other parts of the heap we can describe:
+  {A, B …, P} C {Q}.
+A, B, … are all irrelevant to the command C.  Therefore we should be able to conclude
+  {P} C {Q} |= {A, B, … P} C {Q}.
+But we can’t, because P possibly overlaps A, or B, or … .  Therefore we require assertions for every other precondition that the state does not overlap the state described in P:
+  {P} C {Q} |= {A, B, … P, target of A does not overlap target of P, target of B does not overlap target of P, … } C {Q}.
+This proliferation of preconditions may be the most important barrier to using Hoare logic practically to verify real-world applications.
+This problem of overlapping sections of the heap is addressed by separation logic.  The principal innovation here is a simple operator:
+  {P} C {Q} |= {A ∗ B ∗ … ∗ P} C {Q}.
+The ∗ separates assertions about separate sections of the heap.  Note that the concept of the heap is now built into the language of the logic, rather than being modeled as an array.  We refer to these two separate states as S and H.
+The most important new rule is the frame rule, and we’ve already applied it:
+
+{P }C{Q} 
+{R ∗ P }C{Q ∗ R} 
+
+There are a few more connectives.
+
+  E |--> E′ <=> dom(H) = { [E]s } ∧ H([E ]s) = [E ′]s
+means E points to E′. (“The heap contains one cell, at address E with contents E′.”)
+
+e  c→  e′ <=>  “e points to e′.”  Note different to |-->; difference defined as
+  e  c→  e′  <=>  e |-> ∗ true
+
+P −∗ Q <=> “If the heap is extended with a disjoint part in which P holds, then Q holds for the extended heap. ”
+
+  e |→ −  <=> “e points to allocated memory in the heap.”

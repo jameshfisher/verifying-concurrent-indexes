@@ -1,0 +1,20 @@
+% Constants
+% =========
+\RequirePackage{amssymb}
+
+% typeface for constants -- JF
+\newcommand{\constant}[1]{\mathbf{#1}}
+
+% null value
+\newcommand{\nullref}{\textbf{\textit{nil}}}
+
+% Empty tree
+\newcommand{\empt}{\varnothing}
+% Context hole
+  \newcommand{\holeHELPER}[2]{\raisebox{-.3ex}{$#1#2$}}
+\newcommand{\hole}{\protect{\mathpalette{\protect\holeHELPER}{-}}}
+
+
+% Truth
+\newcommand{\truth}{\mathbf{T}}
+\newcommand{\falsity}{\mathbf{F}}

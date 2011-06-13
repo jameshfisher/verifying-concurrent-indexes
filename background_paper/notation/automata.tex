@@ -1,0 +1,74 @@
+% Automata stuff
+% --------------
+
+
+% Language
+\newcommand{\Lang}{\mathcal{L}}
+\newcommand{\Langi}[1]{\Lang_{#1}}
+
+
+
+% Epsilon
+\newcommand{\nil}{\varepsilon}
+% Label
+\newcommand{\lbl}{a}
+\newcommand{\lbm}{b}
+
+
+% Automaton
+\newcommand{\aut}{\mathcal{A}}
+% State set
+\newcommand{\States}{Q}
+% Accepting states
+\newcommand{\Accs}{A}
+% State
+\newcommand{\st}{q}
+% Initial state
+\newcommand{\inist}{e}
+% Transition relation
+\newcommand{\tra}[1]{f^{#1}}
+% $\varepsilon$-closure
+\newcommand{\nilclose}{\nil\hbox{-}\mathsf{closure}}
+
+%%% Parameterised
+% Automaton
+\newcommand{\auti}[1]{\aut_{#1}}
+% State set
+\newcommand{\Statesi}[1]{\States_{#1}}
+% Accepting states
+\newcommand{\Accsi}[1]{\Accs_{#1}}
+% State
+\newcommand{\sti}[1]{\st_{#1}}
+% Initial state
+\newcommand{\inisti}[1]{\inist_{#1}}
+% Transition relation
+\newcommand{\trai}[2]{\tra{#1}_{#2}}
+% $\varepsilon$-closure
+\newcommand{\nilclosei}[1]{\nilclose_{#1}}
+
+% Partial automata
+\newcommand{\hataut}{\hat{\aut}}
+\newcommand{\hatauti}[1]{\hataut_{#1}}
+
+% Induced mappings
+\newcommand{\aint}[1]{\llbracket #1 \rrbracket_{\aut}}
+\newcommand{\aintw}[2]{\llbracket #1 \rrbracket_{#2}}
+\newcommand{\afint}[1]{\llparenthesis #1 \rrparenthesis_{\aut}}
+\newcommand{\afintw}[2]{\llparenthesis #1 \rrparenthesis_{#2}}
+
+% Complementation
+\newcommand{\acompl}[1]{\overline{#1}}
+% Non-deterministic linear substitution
+\newcommand{\nlsub}{\varobslash}
+\newcommand{\nllef}{\mathbin{\hbox{$\nlsub$}\mkern-3.1mu \hbox{$-$}\mkern0.3mu}^\exists}
+\newcommand{\nlrig}{\mathbin{\hbox{$-$}\mkern-3.1mu \hbox{$\nlsub$}\mkern0.3mu}^\exists}
+% Uniform substitution
+\newcommand{\usub}{\odot}
+\newcommand{\ulef}{\mathbin{\hbox{$\odot$}\mkern-3.1mu \hbox{$-$}\mkern0.3mu}^\exists}
+\newcommand{\urig}{\mathbin{\hbox{$-$}\mkern-3.1mu \hbox{$\odot$}\mkern0.3mu}^\exists}
+
+\newcommand{\nusub}{\circledcirc}
+\newcommand{\nurig}{\mathbin{\hbox{$-$}\mkern-3.1mu \hbox{$\circledcirc$}\mkern0.3mu}^\exists}
+
+% Reachability
+\newcommand{\reach}{\mathsf{reachable}}

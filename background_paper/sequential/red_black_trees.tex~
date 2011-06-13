@@ -1,0 +1,30 @@
+\subsection{Red-Black trees}
+
+\subsubsection{Variations on Red-Black trees}
+
+
+But there are variations
+  on even the standard sequential Red-Black tree:
+
+\begin{description}
+
+\item[AA tree]
+A simplification of the Red-Black tree.
+It has the additional requirement that
+  red nodes must be right children.
+In the B-tree analogy, they are 2-3 trees.
+Reduces seven cases to two.
+
+\item[Left-Leaning Red-Black tree]  
+Introduced by Sedgewick.
+In a similar spirit to AA,
+  this reduces the number of cases,
+  by enforcing that
+  no node may have a black left child and a red right child.
+This means that, in the B-tree analogy,
+  a 3-node only has a single representation in the RB tree.
+Unlike the AA, this is still analogous to a 2-3-4 tree.
+Main advantage is code simplicity:
+  \IC{insert()} takes 33 lines vs 150 lines.
+
+\end{description}

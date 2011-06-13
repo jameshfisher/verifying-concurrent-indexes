@@ -1,0 +1,5 @@
+
+data Color = Red | Black
+
+data Tree a = Empty
+            | Tree Color (Tree a) a (Tree a)

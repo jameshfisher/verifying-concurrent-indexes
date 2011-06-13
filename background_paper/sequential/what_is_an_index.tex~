@@ -1,0 +1,21 @@
+\subsection{What is an index?}
+
+An index\footnote{The same data type also goes by the names \emph{map}, \emph{dictionary}, \emph{associative array}, \emph{table}, and \emph{hash}.} stores values,
+  where each value has a distinct name.
+Many data sets fit this description.
+For example,
+  your mobile's contact list stores \emph{phone numbers},
+  and each number is accessed with a person's \emph{name}.
+At a larger scale,
+  the Web can be seen as a store of \emph{pages},
+  where each page has a \emph{URL}.
+Even a language can be seen as an index:
+  a store of \emph{concepts},
+  where each concept can be accessed by a \emph{word}.
+More fundamentally,
+  any function stores elements from a \emph{range},
+  where each element is accessed by a unique number from a \emph{domain}.
+
+\input{indexes/what_is_an_index/the_index_api}
+\input{indexes/what_is_an_index/formalizing_behavior_a_set_adt}
+\input{indexes/what_is_an_index/formalizing_index_behavior}

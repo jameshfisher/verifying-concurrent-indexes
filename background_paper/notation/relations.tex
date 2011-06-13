@@ -1,0 +1,26 @@
+% Relations
+% =========
+
+\RequirePackage{amssymb}
+\RequirePackage{eufrak}
+
+% Models
+\newcommand{\mods}{\mathrel{\models}}
+% Doesn't model
+\newcommand{\nmods}{\mathrel{\rlap{$\mkern1.5mu/$}\hbox{$\models$}}}
+
+% Entailment?
+\newcommand{\entails}{\subseteq}
+% Equivalence
+\newcommand{\lequiv}{\equiv}
+\RequirePackage{centernot}
+\newcommand{\nlequiv}{\centernot\lequiv}
+
+% Rank well-founded relation
+\newcommand{\rankwfr}{\mathrel{\lhd}}
+% Rank constructor relation
+\newcommand{\rankd}[1]{\mathrel{\mathfrak{R}_{#1}}}
+% Game move relation
+\newcommand{\move}[1]{\mathrel{\mathfrak{M}_{#1}}}
+% Simulation preorder
+\newcommand{\spo}{\leq}

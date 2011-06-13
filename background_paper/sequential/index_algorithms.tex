@@ -1,0 +1,442 @@
+\subsection{Index and set algorithms}
+
+In the previous section,
+  the function calls, and their specifications,
+  did not reveal anything about
+  what \IC{i} looks like \enquote{inside}:
+    we don't know how memory is laid out,
+    or even what \emph{parts} of memory are allocated for this.
+Nor did we specify what a call to \IC{search} (for example) actually \emph{does},
+and nor did we specify how long it might take
+  (nor even if it halts at all!).
+
+This was necessary and desirable.
+It was desirable because it enables the programmer to
+  reason about the index as a mathematical construct.\footnotemark
+It was necessary in order to separate specification from implementation.
+This is particularly important in the case of indexes and sets,
+  where a large number of data structures exist that satisfy our \API.
+The following is a very partial list:
+
+\footnotetext{
+In various terminologies,
+  our \IC{Index} API uses \enquote{information hiding},
+  also called \enquote{encapsulation}.
+}
+
+\VEm
+\noindent
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}cccc}
+Array           & Association list & Radix tree     & van Emde Boas tree \\
+Skip list       & Hash table       & Binary tree    & Splay tree         \\
+AVL tree        & Bloomier filter  & Red-Black Tree & AA-tree            \\
+LLRB-tree       & B-tree           & \BPlusT        & \BStarT            \\
+%\ldots             \\
+\end{tabular*}
+\VEm
+
+After examining of a few of these,
+  it will become quickly evident that
+  most \emph{index} data structures are simply \emph{set} structures
+  with values \enquote{plugged in} next to the key.
+An index $\fpfun{I}{K}{V}$ can be represented by
+  a set of tuples $(k, v)$ (where $k \in K$ and $v \in V$),
+  with the restriction that no two elements have the same $k$ value.
+Where the algorithms take this approach,
+  for simplicity I instead describe them as implementing a set.
+
+Each approach has its own performance and memory characteristics.
+Some have certain restrictions and changes in semantics:
+  that the universe of keys must be finite, for instance;
+  or that multiple values of the same key can exist.
+A good implementation of a \emph{generic} index---one
+  that implements the API we described,
+    for any universe of keys with an ordering---requires $O(n)$ memory
+  and guarantees $O(log(n))$ time, or better, for each operation
+  (where $n$ is the number of keys in the index).
+
+Let's now run through the features of a few index data structures.
+We will then look at specifying a few more formally.
+
+
+\subsubsection{Array}
+
+The array is undoubtedly the simplest index algorithm:
+  we allocate memory for all members of the universe of keys,
+  and initialize all associated values to \IC{null}.
+It has $O(1)$ complexity for all operations
+  as the location of the key in memory is a simple offset operation.
+This is (heavily) paid for in terms of memory,
+  the use of which is $O(u)$, where $u$ is the size of the universe of keys.
+The array is most commonly used where the key type is \IC{int},
+  but can be used with other types if each key maps to a unique integer.
+Additionally, the array is only possible where the universe of keys is finite--strings,
+  for example, are off-limits.
+An array is sensible where
+  there is a small allowed key range
+  and most or all keys are expected to have a value,
+  \eg a map \IC{char}$\pfun$\IC{char} for use in a function \IC{string toUpper(string)}.
+Otherwise, an algorithm with a memory complexity of $O(n)$ is better.
+
+
+\subsubsection{Hash table}
+
+The hash table attempts to solve the array's $O(u)$ memory use
+  by choosing an array size
+  and storing more than one key at each location.
+The key's location in the array (its \NewTerm{bucket})
+  is decided by a hash function $h$.
+Keys in the same bucket are typically chained in a linked list.
+The function $h$ varies from extremely simple
+  (\eg $h(k) = k \mod(n)$)
+  to complex (\eg cryptographic functions).
+The hash table has $O(n)$ worst-case behavior
+  in the case that all keys map to the same bucket.
+By design, it has poor locality of reference---a good hash function
+  spreads similar keys evenly over buckets.
+There is no obvious ordered iteration algorithm.
+
+
+\subsubsection{Association list}
+
+The association list is a linked list of values of type \IC{(K, V)}.
+It removes the two disadvantages of the array:
+  its size is $O(n)$,
+  and the key universe does not have to be finite.
+It pays for this with $O(n)$ time complexity
+  (except for \IC{insert}, where the new element may be appended to the head of the list).
+The association list might be desirable for its simplicity,
+  and where the number of elements is expected to be short;
+  it is ofted used, for example, in more complex structures including hash tables.
+
+There are many modifications to the basic linked list,
+  and these apply to the association list too.
+The \enquote{linking} can be done in both directions
+  to allow bidirectional traversal.
+
+
+\subsubsection{Binary search tree}
+
+The Binary Search Tree (\BST) can be seen as an improvement of the linked list,
+  arising from the observation that the nodes of an linked list
+  can be generalized to contain any number of links.
+Following a link in a linked list
+  only reduces the set being searched by one element;
+  following one link out of a possible two, however,
+    potentially halves the number of elements in the candidate set.
+
+The division made at each node is into
+  elements smaller than the element being looked at
+  and elements larger than it.
+Therefore, the key type of a \BST
+  must have an \emph{ordering};
+  in practise this does not pose a real problem
+    as arbitrary data can always be lexicographically ordered.
+
+The division that takes place at every step
+  gives the \BST a best-case complexity
+  of $Ω(log(n))$ for all operations.\footnotemark  
+However, the worst-case scenario,
+  in which one of the two sets at every node is the empty set,
+  is equivalent to a linked list,
+  and thus the \BST still has $O(n)$ complexity.
+
+\footnotetext{
+The skip list is another,
+  which does this by \enquote{skipping over} more than one node at a time.
+\enquote{Balancing} is done by randomizing the height of nodes.
+I ignore it because it uses randomization, which is ugly.
+}
+
+
+\subsubsection{Splay tree}
+
+One way to tackle the worst-case of the \BST
+  is simply to reduce its relevance
+  by ensuring it is a practical corner-case.
+This is by no means the case with the standard \BST:
+  data is often inserted in an \enquote{almost-sorted} order;
+  In a worst-case \BST with the smallest value at the root,
+    accessing the largest value still exhibits $O(n)$ time complexity.
+
+The Splay tree tries to make the worst-case less relevant
+  by ensuring it does not happen repeatedly.
+It does this by, on every operation,
+  restructuring the tree to move the latest-accessed element to the root.
+This does not change the complexity of the BST operations,\footnotemark
+  and instead makes use of the same principle as caching: locality of reference.
+The worst-case is still exhibited in other situations:
+  after \IC{search}ing for all elements in order,
+  the tree will be perfectly unbalanced.
+
+\footnotetext{
+Unlike the \BST, it does perform all operations in \emph{amortized} $O(log(n))$;
+but its worst-cases are still $O(log(n))$.
+}
+
+The Splay tree has the advantage that it is (relatively) simple:
+  the data structure is the same as the \BST,
+  and the algorithms are the same except for the addition of the \IC{splay} method.
+Its disadvantages are significant though:
+  it does not provide any worst-case improvement,
+  and, unlike other index data structures here,
+    its \IC{search} algorithm mutates the tree.
+
+
+\subsubsection{AVL tree}
+
+The AVL tree improves on the \BST,
+  finally reducing all operations to $Θ(log(n))$.
+It does this by ensuring that the height of the two subtrees of any node
+  differ by at most one.\footnote{\cite{cormen}, p.\ 296.}
+We first define the \emph{height} of a node $n$ as
+
+\begin{equation*}
+height(n) =
+\begin{cases}
+0                                        & \text{if $n$ is null,} \\
+max(height(n.left), height(n.right)) + 1 & \text{otherwise.}
+\end{cases}
+\end{equation*}
+
+We then define \emph{balance factor} of a node $n$ as
+
+\begin{equation*}
+bf(n) = \begin{cases}
+0                                & \text{if $n$ is null,} \\
+height(n.left) - height(n.right) & \text{otherwise.}
+\end{cases}
+\end{equation*}
+
+We can then define an AVL tree recursively as
+  \[AVLTree(n) = -1 ≤ bf(n) ≤ 1 ∧ AVLTree(n.left) ∧ AVLTree(n.right).\]
+It is the node's balance factor,
+  rather than the height,
+  that is stored in the node.\footnotemark
+(As, by the definition of the AVL tree,
+  the balance factor only ever has one of three possible values,
+  this can take up only two bits.)
+
+
+\footnotetext{\cite{haskell_avl}, the most-documented and -commented AVL tree source I know of.}
+
+
+\subsubsection{B-tree}
+
+The B-tree is primarily motivated by a different problem with the \BST:
+  the number of storage reads is $Ω(log_2(n))$.
+For media with slow seek times and low granularity
+  (such as your hard disk),
+  this is too high, and wasteful.
+The B-tree's improvement starts by generalizing the binary tree to a $k$-ary tree,
+  reducing the number of reads to $Ω(log_k(n))$ (where $k > 2$).
+The full solution, however, naturally leads to
+  another method to bound the height of the tree in the order of $log(n)$.
+
+A $k$-ary search tree holds $k-1$ elements at each node.
+But it is infeasible to demand that each node holds this maximum amount---for
+  one thing, we could only store multiples of $k-1$ elements!
+This must be relaxed so a node can be less than \enquote{full}.
+However, this must not be relaxed so far that
+  a node can hold just one (or zero!) elements,
+  because the $Ω(log_2(n))$ storage reads then reappears.
+The B-tree approach demands that each node\footnotemark is between half-full\footnotemark and full.
+More precisely, we can define a B-tree in terms of an integer $t$,
+  such that for each node in that tree,
+  its number of elements $e$ is such that
+  $t-1 ≤ e ≤ 2t-1$.\cite{cormen}
+
+\footnotetext{The root node is an exception, and can be anywhere between empty and full.}
+\footnotetext{The \BStarT demands that nodes are at least two-thirds full.}
+
+To illustrate why balance naturally falls out of this,
+  consider inserting a value.
+Once we have searched for its position,
+  we cannot simply create a new node there,
+  as this would not satisfy the restriction on the number of elements.
+Instead the value must be inserted into an existing leaf node.
+If space does not exist at the leaf,
+  we create space by splitting the node into two at the same level,
+  and inserting the previous median value in the parent using the same technique.
+If the splitting does not reach the root, the depth of the tree is unchanged.
+Otherwise, the root splits, and the depth increases by one for all leaf nodes.
+We can therefore add the additional constraint to the B-tree definition
+  that all leaves have the same depth,
+  from which we can show that
+  the height of a B-tree is $Θ(log(n))$.
+
+Rather than bubble-up the node-splitting,
+  most B-tree algorithms actually do this on the downwards traversal
+  to the node at which the element will be inserted.
+The procedure is simple: every full node visited is split before moving down one level,
+  and the median element inserted into the parent.
+(We can guarantee that the parent is non-full
+  precisely due to the top-down order of the procedure.)
+The effect is not equivalent,
+  as the top-down procedure splits all full nodes,
+  where the bubble-up procedure only splits as many as necessary.
+However, balance is still maintained:
+  as before, the only time that new levels are created is when the root is split.
+
+
+\subsubsection{\RBt}
+
+The \RBt inherits ideas from the AVL tree and the B-tree.
+It has the same goals and performance guarantees as the AVL tree,
+  and uses the same tree mutation to achieve them: rotations.
+However, it can also be seen as 
+  a mapping of a B-tree of degree $t = 2$ onto a \BST.\footnotemark
+This has the advantage over the B-tree that
+  adjusting a node does not require copying,
+  and less-than-full nodes do not hold unused allocated memory.
+
+\footnotetext{
+  \ie, a B-tree where the number of elements $e$ is $1 ≤ e ≤ 3$
+    (and therefore the number of links $l$ is $2 ≤ l ≤ 4$).
+}
+
+In such a B-tree,
+  a 3-node\footnotemark is structured as three element-sized spaces adjacent in memory.
+The \RBt instead uses between one and three 1-nodes.
+The first 1-node, which I shall call the \enquote{representative-node},
+  is representative of the analogous B-tree 3-node.
+It is the target of links from parents.
+It is accompanied by zero, one or two more 1-nodes, which I shall call \enquote{side-nodes},
+  and which contain the other elements in the 3-node.
+
+\footnotetext{I use the term $n$-node to describe a node that can contain up to $n$ elements.}
+
+The representative-node's \IC{left} and \IC{right} pointers have two roles.
+Where side-nodes exist,
+  the pointers point to these.
+(Note this implies that, if the analogous 3-node is full,
+  the representative-node will hold the middle element.)
+Where a side-node is absent,
+  the corresponding pointer instead points directly to the appropriate child representative-node.\footnotemark
+A side-node's pointers must point to a child representative-node.
+(All pointers may instead be to \enquote{nil} nodes, at which the tree terminates.)
+
+\footnotetext{
+Herein lies the space-saving and copy-reducing aspects of the \RBt,
+  analogous to the benefits of the \BST over an array.
+}
+
+How are we to know whether a pointer leads us to a side-node or a child representative-node?
+The approach of Guibas and Sedgewick was to give the pointer a \NewTerm{color}:
+  pointers to representative-nodes are black,
+  and pointers to side-nodes are red.
+In the literature, this has been transformed into the equivalent rule that
+  representative-nodes are colored black,
+  and side-nodes are colored red.
+This has been shortened to simply \enquote{red nodes} and \enquote{black nodes}.
+
+We can now state the properties of the \RBt,
+  and relate them to the B-tree:
+
+\begin{enumerate}
+
+\item
+\strong{A node is either red or black.}
+(A 1-node is either a representative-node or a side-node.)
+
+\item
+\strong{The root is black,}
+as it is representative of the root 3-node.
+
+\item
+\strong{Leaf nodes are black.}
+This includes \enquote{nil} nodes
+  (which in practise are represented by a single sentinel nil node).
+
+\item
+\strong{Red nodes cannot have red children (the \enquote{red rule}).}
+This is because they must point to child representative-nodes
+  (pointing to another side-node would
+  extend the number of elements in a node to more than three).
+
+\item
+\strong{For any node,
+  all simple paths to a descendant leaf have the same number of black nodes
+  (the \enquote{black rule}).}
+This number is the node's \NewTerm{black-height}.
+This is equivalent to the B-tree rule that all leaves have the same depth.
+
+\end{enumerate}
+
+From the B-tree analogy,
+  it should already be evident that the \RBt enforces balance.
+However, we can also see this from the last two \RBt properties.
+Precisely, we can show that,
+  for any node, the longest path to a descendant leaf
+  is no more than double the length of the shortest path to a descendant leaf.
+If the node has black-height $N$,
+  then both the shortest and longest path consist of $N$ black nodes (by property 5), interspersed with red nodes.
+The shortest path will contain no red nodes
+  (because excising one maintains the \RBt properties and makes the path shorter),
+  and therefore has length $N$.
+The longest path will contain one red node between each pair of black nodes
+  (because introducing another violates property 4),
+  and therefore has length $2N-1$.
+
+\RBt operations feel like B-tree operations.
+When inserting a new node, we color it red,
+  and insert it as we would in a \BST.
+Then, if its parent is black, we're done
+  (analogous to there being space in a leaf 3-node).
+Otherwise, the parent is red, and we have violated the red rule.
+We know the grandparent is black.
+We check the color of the uncle.
+If the uncle is red, we do a color swap on the parent, grandparent, and uncle,
+  and move up the tree to look for a possible red violation.
+This is analogous to a 3-node being full, splitting it, and moving the median up.
+However, if the uncle is black,
+  we do a single rotation on the grandparent and some recoloring, and stop.
+This is analogous to there being free space \enquote{on the other side} of the 3-node.
+
+
+
+\subsubsection{Simplifications of the \RBt}
+
+The standard \RBt is sometimes seen as overly complex.
+More precisely,
+  the number of violating cases that the algorithms have to rectify
+  is seen as too large.
+In response, there are simplifications of the standard \RBt.
+One is the AA-tree,
+  which has the additional requirement that
+  red nodes must be right children.
+In the B-tree analogy, they are 2-3 trees.
+This reduces seven cases to two.
+
+Another is the Left-Leaning Red-Black tree,
+  introduced by Sedgewick.
+In a similar spirit,
+  it reduces the number of cases,
+  enforcing that
+  no node may have a black left child and a red right child.
+This means that, in the B-tree analogy,
+  a 3-node only has a single representation in the RB tree.
+Unlike the AA-tree, this is still analogous to a 2-3-4 tree.
+The main advantage is code simplicity:
+  \IC{insert()} takes 33 lines vs 150 lines.
+
+I find these simplifications unsatisfying.
+The gain in code simplicity is results in a loss of conceptual clarity.
+More importantly, the \RBt algorithms can be drastically shortened
+  by tackling the symmetric cases using the same code,
+  while remaining semantically equivalent.
+A simple technique,
+  that of Julienne Walker \cite{jsw},
+  uses a two-element array of child pointers
+  instead of a \IC{left} and a \IC{right} pointer, like so:
+
+\begin{minted}[]{c++}
+struct node {
+  int red, data;
+  struct node *link[2];
+};
+\end{minted}
+
+This allows the direction (left or right) to be parameterized,
+  encoded as either a \IC{0} or \IC{1}.
+The direction can thus be reversed with with the C \IC{!} operator.

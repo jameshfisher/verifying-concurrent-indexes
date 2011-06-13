@@ -1,0 +1,30 @@
+\subsection{What is a concurrent index?}
+
+The previous algorithms and data structures
+  are designed for sequential access.
+Performing concurrent operations on them results in undefined behavior.
+
+One naive implementation of a concurrent index
+  might simply enforce that, at any one time,
+  at most one operation from $\Set{\IC{search}, \IC{insert}, \IC{remove}}$ is running.
+A slightly better implementation
+  might restrict to either any number of \IC{read}s,
+  or one of $\Set{\IC{insert}, \IC{remove}}$.
+
+This is too restrictive.
+Looking at the various indexing algorithms,
+  many of them would permit
+  multiple concurrent \IC{insert} operations---the \BST, for example.
+With no knowledge of implementation,
+  what restrictions should we expect from an index?
+We might make the observation that, conceptually,
+  the keys in an index are independent.
+The fact that key \IC{k} is in the index or not,
+  or that it has some value in the index,
+  provides no information about key \IC{l}
+  (where $\IC{k} ≠ \IC{l}$).
+Therefore, we might expect restrictions to be placed only individual keys,
+  rather than on the entire index.
+For example, we might have the only restriction that,
+  for any key \IC{k},
+  at most one operation from $\Set{\IC{search(k)}, \IC{insert(k, \_)}, \IC{remove(k)}}$ is running.

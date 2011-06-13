@@ -1,0 +1,56 @@
+\RequirePackage{amsmath}
+
+% BNF notation
+\newcommand{\Gdef}{\mathrel{\mathop{::}}=}
+\newcommand{\Gbar}{\mathbin{\ \big|\ }}
+
+% `is defined to be'
+\newcommand{\eqdef}{\stackrel{\mathrm{def}}{=}}
+
+\newcommand{\vect}[1]{\overrightarrow{#1}}
+
+% Semantics
+\newcommand{\sem}[1]{\left\llbracket #1 \right\rrbracket}
+
+%%%% Meta syntax
+% If and only if
+\newcommand{\IFF}{\iff}
+% Implies
+\newcommand{\IMPLIES}{\implies}
+% Or
+\newcommand{\OR}{\text{ or }}
+% And
+\newcommand{\AND}{\text{ and }}
+% Not
+\newcommand{\NOT}{\text{not }}
+% There exists
+\newcommand{\EXISTS}[1]{\text{there exists } #1 \text{ s.t.~}}
+% There exist
+\newcommand{\EXIST}[1]{\text{there exist } #1 \text{ s.t.~}}
+% For all
+\newcommand{\FORALL}[1]{\text{for all } #1 \text{, }}
+
+% Undefined
+% \undef ALREADY EXISTS
+\newcommand{\newundef}{\mathit{undefined}}
+
+% Blank
+\newcommand{\blank}{{(\cdot)}}
+
+%%%% Logic notations
+\newcommand{\CL}{\ensuremath{\mathit{CL}}}
+\newcommand{\CLs}{\ensuremath{\CL^\mathit{s}}}
+\newcommand{\CLc}{\ensuremath{\CL^\mathit{c}}}
+\newcommand{\CLm}{\ensuremath{\CL^\mathit{m}}}
+
+%%%% Games stuff
+\newcommand{\Spoiler}{\textsf{Spoiler}}
+\newcommand{\Duplicator}{\textsf{Duplicator}}
+
+%%%% Sorts
+\newcommand{\mksort}[1]{\mathtt{#1}}
+\newcommand{\Sdata}{\mksort{d}}
+\newcommand{\Scont}{\mksort{c}}
+
+
+

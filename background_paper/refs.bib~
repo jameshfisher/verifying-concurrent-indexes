@@ -1,0 +1,116 @@
+@BOOK{cormen,
+author = "T.H. Cormen and C.E. Leiserson and R.L. Rivest and C. Stein",
+title = "Introduction to Algorithms",
+publisher = "The MIT Press",
+year = 2001
+}
+
+@ARTICLE{hoare,
+author = "C. A. R. Hoare",
+title = "An Axiomatic Basis for Computer Programming",
+publisher = "Communications of the ACM",
+year = 1969,
+month = "October",
+volume = 12,
+pages = "576--583",
+}
+
+@ARTICLE{ellis,
+author    = "C.S. Ellis",
+title     = "Concurrent search in AVL-trees",
+publisher = "IEEE Trans. on Computers, C29(29):811–817",
+year      = 1980
+}
+
+@ARTICLE{larsen,
+author = "K. Larsen",
+title = "Amortized constant relaxed rebalancing using standard rotations",
+publisher = "Acta Informatica, 35(10):859–874",
+year = 1998
+}
+
+@ARTICLE{hiding,
+author = "Pedro da Rocha Pinto and Thomas Dinsdale-Young and Mike Dodds and Philippa Gardner and Mark Wheelhouse",
+title = "Hiding the Complexity of Concurrent Indexes",
+year = 2010
+}
+
+@ARTICLE{sagiv,
+author = "Sagiv, Y.",
+title = "Concurrent operations on B*-trees with overtaking",
+publisher = "Journal of Computer and System Sciences",
+volume = 33,
+year = 1986,
+month = "October",
+pages = "275–296"
+}
+
+@MISC{wp_mapping,
+author = "Wikipedia",
+title = "Comparison of programming languages (mapping)",
+howpublished={\url{http://en.wikipedia.org/wiki/Comparison_of_programming_languages_(mapping)}},
+year = 2011,
+month = apr
+}
+
+@MISC{ecmascript,
+author = "ECMA International",
+title = "ECMAScript Language Specification",
+howpublished={\url{"http://www.ecma-international.org/publications/standards/Ecma-262.htm"}},
+year = 2009,
+month = dec
+}
+
+@MISC{RBTree_cs,
+author = "Raja R Harinath and The Mono Project authors",
+title = "RBTree.cs",
+howpublished={\url{https://github.com/mono/mono/blob/master/mcs/class/System/System.Collections.Generic/RBTree.cs}}
+}
+
+@MISC{TreeMap_java,
+author = "Free Software Foundation, Inc.",
+title = "TreeMap.java",
+howpublished={\url{http://cvs.savannah.gnu.org/viewvc/classpath/java/util/TreeMap.java?root=classpath&view=markup}}
+}
+
+@MISC{linux_kernel_lib,
+author = "Andrea Arcangeli and David Woodhouse and The Linux Kernel authors",
+title = "lib/rbtree.c",
+howpublished={\url{http://git.kernel.org/?p=linux/kernel/git/next/linux-next.git;a=blob_plain;f=lib/rbtree.c;hb=refs/heads/master}},
+year = 2002
+}
+
+@MISC{libstdcpp_stl_tree_h,
+author = "Free Software Foundation, Inc.",
+title = "stl\_tree.h",
+howpublished={\url{http://gcc.gnu.org/onlinedocs/libstdc++/latest-doxygen/a01066_source.html}},
+year = 2010
+}
+
+@MISC{python_dictobject_c,
+author = "The CPython authors",
+title = "dictobject.c",
+howpublished = {\url{http://hg.python.org/cpython/file/fafc84b45a9e/Objects/dictobject.c}}
+}
+
+@MISC{haskell_avl,
+author = "Adrian Hey",
+title = "Haskell Data.Tree.AVL package",
+howpublished = {\url{http://hackage.haskell.org/packages/archive/AvlTree/4.2/doc/html/Data-Tree-AVL.html}},
+year = 2005
+}
+
+@ARTICLE{guibas_sedgewick,
+  author = {Leonidas J. Guibas and Robert Sedgewick},
+  journal = {Foundations of Computer Science},
+  pages = {8-21},
+  publisher = {IEEE},
+  title = {A Dichromatic Framework for Balanced Trees},
+  year = 1978
+}
+
+@MISC{jsw,
+author = "Julienne S. Walker",
+title = "Red Black Trees (tutorial)",
+howpublished = {\url{http://eternallyconfuzzled.com/tuts/datastructures/jsw_tut_rbtree.aspx}}
+}

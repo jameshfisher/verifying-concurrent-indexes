@@ -1,0 +1,113 @@
+% Concurrent Abstract Predicates
+% ==============================
+
+% Well-formedness
+\newcommand{\wf}{\mathit{wf}}
+
+% Stability
+\newcommand{\stable}[1]{\mathit{stable}\left({#1}\right)}
+
+% Local portion
+\newcommand{\locp}[1]{{#1}_\mathrm{L}}
+% Shared portion
+\newcommand{\shap}[1]{{#1}_\mathrm{S}}
+% Heap portion
+\newcommand{\hpp}[1]{{#1}_\mathrm{H}}
+% Permission portion
+\newcommand{\pmp}[1]{{#1}_\mathrm{P}}
+% State portion
+\newcommand{\stap}[1]{{#1}_\mathrm{R}}
+% Action portion
+\newcommand{\actp}[1]{{#1}_\mathrm{A}}
+
+% Action model combination
+\newcommand{\amplus}{\sqcup}
+
+% Permission combination
+\newcommand{\psep}{\mathbin{\oplus}}
+% Zero permission
+\newcommand{\zperm}{\mathbf{0}_\TPerm}
+% Logical state combination
+\newcommand{\lssep}{\mathbin{\odot}}
+% World combination
+\newcommand{\wsep}{\mathbin{\bullet}}
+% Zero world
+\newcommand{\zworld}{\mathbf{0}_\Tworld}
+
+% Action name
+\newcommand{\act}[1]{\textsc{#1}}
+% Abstract predicate
+\newcommand{\abp}[1]{\mathsf{#1}}
+
+% LState collapse
+\newcommand{\lcol}[1]{\lfloor #1 \rfloor}
+% Heap collapse
+\newcommand{\hcol}[1]{\hpp{\lcol{#1}}}
+
+% Guarantee relation
+\newcommand{\Guar}{\mathrel{\mathrm{G}}}
+% Construction operation
+\newcommand{\Guarc}{\Guar_c}
+% Repartitioning guarantee
+\newcommand{\Guarr}{\mathrel{\overline{\Guar}}}
+% Step-close guarantee
+\newcommand{\Guars}{\mathrel{\widehat{\Guar}}}
+
+% Rely relation
+\newcommand{\Rely}{\mathrel{\mathrm{R}}}
+% Construction
+\newcommand{\Relyc}{\Rely_c}
+
+% Predicates
+\newcommand{\PRED}{P}
+\newcommand{\PREDq}{Q}
+\newcommand{\PREDr}{R}
+\newcommand{\pred}{p}
+\newcommand{\predq}{q}
+
+\newcommand{\spredq}{\mathcal{Q}}
+
+% Abstract predicate axioims
+\newcommand{\pde}{\Delta}
+
+% Vector length
+\DeclareMathOperator{\len}{len}
+
+% Fixed-point Existence
+\newcommand{\fpex}[4]{{#1}\Uparrow{#2},{#3},{#4}}
+
+%%%% Programming language
+\newcommand{\atomic}[1]{\left< #1 \right>}
+\newcommand{\ppar}{\mathbin{\|}}
+\newcommand{\letin}[2]{\psyntax{let } #1 \psyntax{ in } #2}
+\newcommand{\pstmts}{c}
+
+\newcommand{\optrans}[1][\eta]{\stackrel{#1}{\rightarrow}}
+\newcommand{\noptrans}[1][\eta]{\stackrel{#1}{\centernot{\rightarrow}}}
+\newcommand{\safe}[2]{\mathit{safe}_{#1}\left(#2\right)}
+
+%%%% Proof rules
+% Atomic
+\newcommand{\ratomic}{\mkrule{Atomic}}
+% Primitive
+\newcommand{\rprim}{\mkrule{Prim}}
+% Parallel
+\newcommand{\rpar}{\mkrule{Par}}
+% Guarantee left
+\newcommand{\rguarl}{\mkrule{Guar-L}}
+% Guarantee right
+\newcommand{\rguarr}{\mkrule{Guar-R}}
+% Predicate introduction
+\newcommand{\rpredi}{\mkrule{Pred-I}}
+% Predicate elimination
+\newcommand{\rprede}{\mkrule{Pred-E}}
+% Let
+\newcommand{\rlet}{\mkrule{Let}}
+% Call
+\newcommand{\rcall}{\mkrule{Call}}
+% Loop
+\newcommand{\rloop}{\mkrule{Loop}}
+% Choice
+\newcommand{\rchoice}{\mkrule{Choice}}
+% Existential
+\newcommand{\rexist}{\mkrule{Exist}}

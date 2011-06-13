@@ -1,0 +1,22 @@
+\section{Roadmap for individual project}
+
+\begin{description}
+
+\item[Apply separation logic to simple algorithms]
+
+\item[Implement sequential \RBt]
+and variations on
+
+\item[Apply \CAP to simple concurrent algorithms]
+Other locks?
+
+\item[Implement concurrent \RBt algorithms]
+chromatic tree, others?
+
+\item[Apply \CAP to simple tree algorithm]
+
+\item[Apply separation logic to a sequential \RBt]
+
+\item[Apply CAP to concurrent RBt]
+
+\end{description}

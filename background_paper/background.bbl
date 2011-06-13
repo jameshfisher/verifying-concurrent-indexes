@@ -1,0 +1,103 @@
+\begin{thebibliography}{10}
+
+\bibitem{linux_kernel_lib}
+Andrea Arcangeli, David Woodhouse, and The Linux~Kernel authors.
+\newblock lib/rbtree.c.
+\newblock
+  \url{http://git.kernel.org/?p=linux/kernel/git/next/linux-next.git;a=blob_plain;f=lib/rbtree.c;hb=refs/heads/master},
+  2002.
+
+\bibitem{python_dictobject_c}
+The~CPython authors.
+\newblock dictobject.c.
+\newblock
+  \url{http://hg.python.org/cpython/file/fafc84b45a9e/Objects/dictobject.c}.
+
+\bibitem{cormen}
+T.H. Cormen, C.E. Leiserson, R.L. Rivest, and C.~Stein.
+\newblock {\em Introduction to Algorithms}.
+\newblock The MIT Press, 2001.
+
+\bibitem{hiding}
+Pedro da~Rocha~Pinto, Thomas Dinsdale-Young, Mike Dodds, Philippa Gardner, and
+  Mark Wheelhouse.
+\newblock Hiding the complexity of concurrent indexes.
+\newblock 2010.
+
+\bibitem{cap}
+Thomas Dinsdale-Young.
+\newblock {\em Abstract Data and Local Reasoning}.
+\newblock PhD thesis, Imperial College London, 2010.
+
+\bibitem{ellis}
+C.S. Ellis.
+\newblock Concurrent search in avl-trees.
+\newblock 1980.
+
+\bibitem{TreeMap_java}
+Inc. Free Software~Foundation.
+\newblock Treemap.java.
+\newblock
+  \url{http://cvs.savannah.gnu.org/viewvc/classpath/java/util/TreeMap.java?root=classpath&view=markup}.
+
+\bibitem{libstdcpp_stl_tree_h}
+Inc. Free Software~Foundation.
+\newblock stl\_tree.h.
+\newblock
+  \url{http://gcc.gnu.org/onlinedocs/libstdc++/latest-doxygen/a01066_source.html},
+  2010.
+
+\bibitem{RBTree_cs}
+Raja~R Harinath and The Mono~Project authors.
+\newblock Rbtree.cs.
+\newblock
+  \url{https://github.com/mono/mono/blob/master/mcs/class/System/System.Collections.Generic/RBTree.cs}.
+
+\bibitem{haskell_avl}
+Adrian Hey.
+\newblock Haskell data.tree.avl package.
+\newblock
+  \url{http://hackage.haskell.org/packages/archive/AvlTree/4.2/doc/html/Data-Tree-AVL.html},
+  2005.
+
+\bibitem{hoare}
+C.~A.~R. Hoare.
+\newblock An axiomatic basis for computer programming.
+\newblock 12:576--583, October 1969.
+
+\bibitem{ecmascript}
+ECMA International.
+\newblock Ecmascript language specification.
+\newblock
+  \url{"http://www.ecma-international.org/publications/standards/Ecma-262.htm"},
+  December 2009.
+
+\bibitem{larsen}
+K.~Larsen.
+\newblock Amortized constant relaxed rebalancing using standard rotations.
+\newblock 1998.
+
+\bibitem{Reynolds}
+John~C. Reynolds.
+\newblock {\em An Introduction to Separation Logic (Preliminary draft)}.
+\newblock Carnegie Mellon University, October 2008.
+
+\bibitem{sagiv}
+Y.~Sagiv.
+\newblock Concurrent operations on b*-trees with overtaking.
+\newblock 33:275–296, October 1986.
+
+\bibitem{jsw}
+Julienne~S. Walker.
+\newblock Red black trees (tutorial).
+\newblock
+  \url{http://eternallyconfuzzled.com/tuts/datastructures/jsw_tut_rbtree.aspx}.
+
+\bibitem{wp_mapping}
+Wikipedia.
+\newblock Comparison of programming languages (mapping).
+\newblock
+  \url{http://en.wikipedia.org/wiki/Comparison_of_programming_languages_(mapping)},
+  April 2011.
+
+\end{thebibliography}

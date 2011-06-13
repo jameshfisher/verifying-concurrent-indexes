@@ -1,0 +1,137 @@
+\subsection{Some predicate definitions}
+
+Earlier, in our index API specification,
+  we introduced the predicate $\Pred{index}{\IC{i}, I}$.
+This simply says that \enquote{\IC{i} represents the index $I$}.
+This was deliberately \emph{abstract},
+  so that individual index implementations could define it themselves.
+Now we've looked at a few index data structures,
+  how can we formally describe them?
+
+Our main tool here is \NewTerm{separation logic},
+  an extension of Hoare logic with practical operators to describe the state of the heap.
+Here, I only specify the set versions of the data structures.
+
+
+\subsubsection{Linked list}
+
+I have chosen to start with the linked list,
+  as it is the simplest non-trivial data structure
+  and is easy to specify.
+The linked list is a recursive data structure---the structure contains itself.
+We might  define it in C as:
+
+\begin{minted}[]{c++}
+struct list {
+  int value;
+  struct list * tail;
+};
+\end{minted}
+
+An instance of \IC{list} is interpreted as representing a non-empty set.
+The \IC{value} field is one of the members of that set,
+  and all other members are held in the list pointed at by the \IC{tail} field.
+An empty set is represented by the \IC{null} pointer.
+We use a pointer to represent an arbitrary set, empty or not.
+Therefore, for any pointer \IC{s},
+  we should be able to define a predicate $\Pred{set}{\IC{s}, S}$.
+
+Translating these statements to separation logic is fairly straightforward.
+Either \IC{s} is \IC{null}, or it is not.
+If it is \IC{null}, then
+  $S = \scemp$ (the empty set),
+  and the heap pertinent to the linked list is empty (represented by $\hemp$).
+If \IC{s} is not \IC{null},
+  then it points to a valid \IC{list} node:
+  $\Fcell{s}{\IC{tail}, value}$.
+As \IC{tail} is a list pointer,
+  we can recursively apply the predicate to it:
+  $\Pred{set}{\IC{tail}, R}$.
+The node description and the \IC{tail} description
+  are joined with the separating conjunction,
+  because the tail does not contain the node pointed at by \IC{s}
+  (if it did, we would be in trouble!).
+Finally, \IC{value} and the set $R$
+  together make up the set $S$:
+  $R \union \Set{\IC{value}} = S$.
+Here's the formal definition:
+
+\begin{align*}
+\Pred{set}{\IC{s}, S} \eqdef & (\IC{s} = \nullref \Fand S = \scemp \Fand \hemp) \\
+                             & \For (\exists \IC{tail}, \IC{value}.$ & $\Fcell{s}{\IC{tail}, \IC{value}} \Fsep \Pred{set}{\IC{tail}, S \setminus \Set{value}} ) \\
+\end{align*}
+
+
+
+\subsubsection{\BST}
+
+Here's an unordered binary tree representing a set:
+
+Here's the ordered \BST:
+
+\begin{align*}
+\Pred{set}{s, S} \eqdef & (s = \nullref \Fand S = \scemp \Fand \hemp) \\
+                        & \For (\Exists{l, r, v} \Fcell{s}{l, r, v} \Fsep \Pred{set}{l, \Setb{v\prime}{v\prime \in S \Fand v\prime < v}} \Fsep \Pred{set}{r, \Setb{v\prime}{v\prime \in S \Fand v\prime > v}} \Fand v \in S ) \\
+\end{align*}
+
+
+\subsubsection{\RBt}
+
+The defining feature of the \RBt is
+  the restriction that it places on the colors and black-heights of nodes.
+Before we even look at the tree structure,
+  we can actually encode these restrictions on four variables:
+  the color and black-height of a node,
+  and the color and black-height of its parent.
+Let's start by defining a predicate on these
+  (as well as making the description more intelligible,
+  this also makes the full description shorter,
+  and makes proofs shorter where they are unconcerned with the \RBt conditions).
+
+\VEm
+\begin{tabular}{ r l }
+$\mathsf{rbCond} (color, pColor, height, pHeight) \eqdef$ & $((color = \constant{red} \Fand height = pHeight)$ \\
+                                                          & $\For (color = \constant{black} \Fand height = pHeight-1))$ \\
+                                                  $\Fand$ & $color = \constant{red} \IMPLIES pColor = \constant{black}$ \\
+                                                  $\Fand$ & $height > 0$ \\
+\end{tabular}
+\VEm
+
+This says that:
+
+\begin{itemize}
+\item the color is either $constant{red}$ or $\constant{black}$
+\item if the node is $\constant{red}$, its parent has the same black-height
+\item if the node is $\constant{black}$, its parent has a greater black-height by 1
+\item if the node is $\constant{red}$, its parent is $\constant{black}$
+\item a negative black-height is disallowed
+\end{itemize}
+
+We now want to define the \RBt recursively.
+We can then describe a node pointer.
+$\mathsf{tree}(n, S, pHeight, pColor)$ means
+  the pointer $n$ describes the set $S$,
+  and its parent node has the height $pHeight$ and is $\constant{black}$.
+I choose to not use set-builder notation
+  as it makes the proofs easier.
+
+\VEm
+\begin{tabular}{ r r l }
+\multicolumn{3}{l}{ $\mathsf{tree}(n, S, pHeight, pColor) \eqdef$ } \\
+       & \multicolumn{2}{l}{ $(n = \nullref \Fand S = \scemp \Fand pHeight = 1 \Fand \hemp)$ } \\
+$\For$ & $(\exists left, right, value, color, height.$ & $\Fcell{n}{left, right, value, color}$ \\
+       &                                       $\Fsep$ & $\mathsf{tree}(left, \Setb{v\prime}{v\prime \in S \Fand v\prime < value}, height, color)$ \\
+       &                                       $\Fsep$ & $\mathsf{tree}(right, \Setb{v\prime}{v\prime \in S \Fand v\prime > value}, height, color)$ \\
+       &                                       $\Fand$ & $value \in S$ \\
+       &                                       $\Fand$ & $\mathsf{rbCond}(color, pColor, height, pHeight)$ \\
+       &                                               & $)$
+\end{tabular}
+\VEm
+
+Finally, we can define the predicate $\Pred{set}{\IC{s}, S}$.
+An entire \RBt is defined as
+
+\VEm
+$\mathsf{set}(s, S) \eqdef \exists h. \mathsf{tree}(s, S, h, \constant{black})$
+\VEm
+

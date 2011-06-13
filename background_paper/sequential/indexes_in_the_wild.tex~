@@ -1,0 +1,34 @@
+\subsection{Indexes in the wild}
+
+Performance of the many index algorithms is well-covered.
+However, not all are commonly in use.
+A survey of what's-used-where
+  should shed light on
+  what characteristics are considered most important.
+
+\begin{description}
+
+\item[C++ Standard Template Library]
+This (at least in the GNU implementation)
+  uses Red-Black trees for \IC{std::set} and \IC{std::map}.
+
+\item[Java standard library]
+\IC{TreeMap} uses a Red-Black tree.
+
+\item[.NET standard library]
+This uses a Red-Black tree for its \IC{SortedDictionary} class.
+
+\item[Linux kernel]
+This uses Red-Black trees for I/O scheduling and for virtual memory.
+It uses a pseudo-templating style in C, so there's only one implementation: \IC{lib/rbtree.c}.
+
+\item[ext3 filesystem]
+This uses a Red-Black tree for directory entries.
+
+\item[Ruby 1.9]
+This uses a simple hashing algorithm for its index.
+Apparently it is going to use an RB tree \ldots ?
+
+\item[mobile telephones ...]
+
+\end{description}
