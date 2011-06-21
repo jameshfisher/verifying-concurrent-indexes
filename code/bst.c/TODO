@@ -1,0 +1,16 @@
+Understand inference rules for recursion.
+Is it as simply induction?
+The Reynolds chapter is incomprehensible.
+
+Demonstrate termination for recursion.
+Does this just require the same logic as for iteration?
+With a demonstration that all values < some constant do not recurse or do not exist.
+
+What is the rule that allows
+true ↔ true
+false ↔ false
+introduction?
+
+Make LESS_THAN_ONLY_IN_LEFT and GREATER_THAN_ONLY_IN_RIGHT elegant
+
+What is the name for eliminating vacuous bound variables that are not in the statement?
