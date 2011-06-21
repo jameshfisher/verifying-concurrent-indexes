@@ -1,13 +1,13 @@
 #ifndef LLRB_H_
 #define LLRB_H_
 
-struct Node;
-typedef struct Node Node;
-typedef Node * pNode;
+struct LLRBNode;
+typedef struct LLRBNode LLRBNode;
+typedef LLRBNode * pLLRBNode;
 
-struct Node {
+struct LLRBNode {
   int value;
-  pNode left, right;
+  pLLRBNode left, right;
   int color;
 };
 

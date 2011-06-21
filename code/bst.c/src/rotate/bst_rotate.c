@@ -15,7 +15,7 @@ LL  LR                    LR  R
 */
 
 
-pNode rotateRight(pNode node) {
+pLLRBNode llrb_rotate_right(pLLRBNode node) {
   /*
     ∃ value, left, right, L, R, lv, ll, lr, LL, LR.
           ( node↦value,left,right
@@ -28,9 +28,9 @@ pNode rotateRight(pNode node) {
        && (∀ v∈LR. v > lv && v < value)
        && (∀ v∈R. v > value) )
   */
-  pNode left = node->left;
+  pLLRBNode left = node->left;
   // left out of ∃
-  pNode lr = left->right;
+  pLLRBNode lr = left->right;
   // ... && lr out of ∃
   left->right = node;
   /*

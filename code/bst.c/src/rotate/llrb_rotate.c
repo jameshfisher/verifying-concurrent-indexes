@@ -3,8 +3,8 @@
 
 #include "../llrb.h"
 
-pNode rotateRight(pNode node) {
-  pNode left = node->left;
+pLLRBNode llrb_rotate_right(pLLRBNode node) {
+  pLLRBNode left = node->left;
   node->left = left->right;
   left->right = node;
 
@@ -14,8 +14,8 @@ pNode rotateRight(pNode node) {
   return left;
 }
 
-pNode rotateLeft(pNode node) {
-  pNode right = node->right;
+pLLRBNode llrb_rotate_left(pLLRBNode node) {
+  pLLRBNode right = node->right;
   node->right = right->left;
   right->left = node;
 

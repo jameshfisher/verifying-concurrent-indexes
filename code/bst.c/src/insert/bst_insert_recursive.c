@@ -3,15 +3,15 @@
 //                           recursive                             //
 //-----------------------------------------------------------------//
 
-pNode insert(pNode node, int value) {
+pLLRBNode insert(pLLRBNode node, int value) {
   // Tree(node, S)
 
-  pNode o;
+  pLLRBNode o;
 
   if (!node) {
     // EmptyTree(node, S) && S == {}
     
-    o = newNode(value);
+    o = llrb_new_node(value);
     // Tree(o, {value})
     // Tree(o, {} ∪ {value})
     // Tree(o, S ∪ {value})

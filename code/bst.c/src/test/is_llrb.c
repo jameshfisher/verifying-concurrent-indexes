@@ -12,7 +12,7 @@ typedef struct LLRBNodeInfo {
   int h;
 } LLRBNodeInfo;
 
-LLRBNodeInfo llrbNodeInfo(pNode node) {
+LLRBNodeInfo llrbNodeInfo(pLLRBNode node) {
   LLRBNodeInfo o;
 
   if (node == NULL) {
@@ -42,12 +42,12 @@ LLRBNodeInfo llrbNodeInfo(pNode node) {
   return o;
 }
 
-bool isLLRB(pNode node) {
+bool isLLRB(pLLRBNode node) {
   LLRBNodeInfo info = llrbNodeInfo(node);
   return info.t == BLACK_LLRB;
 }
 
-void printLLRBNodeInfo(LLRBNodeInfo info) {
+void llrb_print_node_info(LLRBNodeInfo info) {
   switch(info.t) {
     case RED_LLRB:   printf("Red-rooted; height %d", info.h); break;
     case BLACK_LLRB: printf("Black-rooted; height %d", info.h); break;

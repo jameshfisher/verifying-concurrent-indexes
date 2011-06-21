@@ -1,5 +1,7 @@
+#ifndef LLRB_SEARCH_RECURSIVE_C_
+#define LLRB_SEARCH_RECURSIVE_C_
 
-bool search(pNode node, int value) {
+bool llrb_search(pLLRBNode node, int value) {
   // Given a node in the tree representing some set S,
   // return a boolean representing whether `value` is in S.
   //
@@ -87,9 +89,9 @@ bool search(pNode node, int value) {
         //// ∗ Tree(l, L, h, c) ∗ true
         //// && (value ∈ S) ↔ (value ∈ L)
 
-        o = search(node->left, value);
+        o = llrb_search(node->left, value);
 
-        //// ∃ l, L, h, r. node↪-,l,-,-                       // Specification of search() (TODO: is it that simple?)
+        //// ∃ l, L, h, r. node↪-,l,-,-                       // Specification of llrb_search() (TODO: is it that simple?)
         //// ∗ Tree(l, L, h, c) ∗ true
         //// && (value ∈ S) ↔ (value ∈ L)
         //// && o ↔ (value ∈ L)
@@ -119,9 +121,9 @@ bool search(pNode node, int value) {
         //// ∗ Tree(r, R) ∗ true
         //// && (value ∈ S) ↔ (value ∈ R)
 
-        o = search(node->right, value);
+        o = llrb_search(node->right, value);
 
-        //// ∃ r, R. node↪-,-,r,-                             // Specification of search()
+        //// ∃ r, R. node↪-,-,r,-                             // Specification of llrb_search()
         //// ∗ Tree(r, R) ∗ true
         //// && (value ∈ S) ↔ (value ∈ R)
         //// && o ↔ (value ∈ R)
@@ -144,3 +146,5 @@ bool search(pNode node, int value) {
 
   return o;
 }
+
+#endif  // LLRB_SEARCH_RECURSIVE_C_

@@ -10,11 +10,11 @@
 #include "../llrb.c"
 
 #include "./is_llrb.c"
-#include "./bstPrint.c"
+#include "./llrb_print.c"
 
 #define INSERT_ONLY
 
-void printReference(bool * ref, int NUM_VALUES) {
+void llrb_print_reference(bool * ref, int NUM_VALUES) {
   printf("{");
   for(int i = 0; i < NUM_VALUES; i++) if (ref[i]) printf("%i,", i);
   printf("}\n");
@@ -25,7 +25,7 @@ bool test(int NUM_VALUES, int NUM_TESTS, bool DEBUG) {
 
   srand((unsigned) time(NULL)); 
 
-  pNode testing = NULL;
+  pLLRBNode testing = NULL;
 
   bool reference[NUM_VALUES];
   for(int i = 0; i < NUM_VALUES; i++) reference[i] = false;
@@ -37,18 +37,18 @@ bool test(int NUM_VALUES, int NUM_TESTS, bool DEBUG) {
 #ifdef INSERT_ONLY
     if (DEBUG) printf("Inserting %i...", value);
     reference[value] = true;
-    testing = insert(testing, value);
+    testing = llrb_insert(testing, value);
 #else
     if(rand() % 2) { // insert
       if (DEBUG) printf("Inserting %i...", value);
       reference[value] = true;
-      testing = insert(testing, value);
+      testing = llrb_insert(testing, value);
     }
     else { // delete
       if (DEBUG) printf("Deleting %i...", value);
 
       reference[value] = false;
-      testing = del(testing, value);
+      testing = llrb_del(testing, value);
     }
 #endif
 
@@ -59,8 +59,8 @@ bool test(int NUM_VALUES, int NUM_TESTS, bool DEBUG) {
     }
 
     if (DEBUG) {
-      printf("Reference: ");       printReference(reference, NUM_VALUES);
-      printf("Implementation:\n"); printNode(testing, 0);
+      printf("Reference: ");       llrb_print_reference(reference, NUM_VALUES);
+      printf("Implementation:\n"); llrb_print_node(testing, 0);
     }
 
     LLRBNodeInfo info = llrbNodeInfo(testing);
@@ -71,7 +71,7 @@ bool test(int NUM_VALUES, int NUM_TESTS, bool DEBUG) {
     }
     else {
       printf("Invalid LLRB: ");
-      printLLRBNodeInfo(info);
+      llrb_print_node_info(info);
       printf("\n");
       return false;
     }
@@ -81,7 +81,7 @@ bool test(int NUM_VALUES, int NUM_TESTS, bool DEBUG) {
     }
 
     bool inReference =      reference[value];
-    bool inImplementation = search(testing, value);
+    bool inImplementation = llrb_search(testing, value);
 
     if(inReference == inImplementation) {
       if (DEBUG) printf("OK.\n");

@@ -5,7 +5,7 @@
 //#define PRINT_BLACK_HEIGHT
 
 #include "./llrb.h"
-#include "./test/bstPrint.c"
+#include "./test/llrb_print.c"
 #include "./llrb.c"
 #include "./test/test.c"
 

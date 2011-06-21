@@ -3,11 +3,11 @@
 //                           iterative                             //
 //-----------------------------------------------------------------//
 
-pNode insert(pNode node, int value) {
+pLLRBNode insert(pLLRBNode node, int value) {
   // Tree(node, S)
 
-  pNode par = NULL;
-  pNode n = node;
+  pLLRBNode par = NULL;
+  pLLRBNode n = node;
 
   // Tree(node, S) && Tree(n, S)
 
@@ -28,7 +28,7 @@ pNode insert(pNode node, int value) {
   }
   // !n || n->value == value
 
-  pNode o;
+  pLLRBNode o;
 
   if (n) {
     // n->value == value
@@ -37,19 +37,19 @@ pNode insert(pNode node, int value) {
   else {
     if (!par) {
       // S == {}
-      o = newNode(value);
+      o = llrb_new_node(value);
       // NonEmptyTree(o, {value})
       // NonEmptyTree(o, {} ∪ {value})
       // NonEmptyTree(o, S ∪ {value})
     }
     else {
       if (value < par->value) {
-        par->left = newNode(value);
+        par->left = llrb_new_node(value);
         // NonEmptyTree(node, S ∪ {value})
       }
       else {
         if (value > par->value) {
-          par->right = newNode(value);
+          par->right = llrb_new_node(value);
           // NonEmptyTree(node, S ∪ {value})
         }
         else {

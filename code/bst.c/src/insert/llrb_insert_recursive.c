@@ -3,15 +3,15 @@
 
 #include "../llrb.h"
 
-pNode insert_subtree(pNode node, int value) {
-  pNode o;
+pLLRBNode llrb_insert_subtree(pLLRBNode node, int value) {
+  pLLRBNode o;
 
   if (node == NULL) {
-    o = newNode(value);
+    o = llrb_new_node(value);
   }
   else {
 
-    if (red(node->left) && red(node->right)) {
+    if (llrb_red(node->left) && llrb_red(node->right)) {
       node->color = !node->color;
       node->left->color = !node->left->color;
       node->right->color = !node->right->color;
@@ -25,21 +25,21 @@ pNode insert_subtree(pNode node, int value) {
     else {
       
       if (value < node->value) {
-        node->left = insert_subtree(node->left, value);
+        node->left = llrb_insert_subtree(node->left, value);
       }
       else {
-        node->right = insert_subtree(node->right, value);
+        node->right = llrb_insert_subtree(node->right, value);
       }
 
 
-      if (red(node->right) && !red(node->left)) {
-        node = rotateLeft(node);
+      if (llrb_red(node->right) && !llrb_red(node->left)) {
+        node = llrb_rotate_left(node);
       }
       else {
       }
 
-      if (red(node->left) && red(node->left->left)) {
-        node = rotateRight(node);
+      if (llrb_red(node->left) && llrb_red(node->left->left)) {
+        node = llrb_rotate_right(node);
       }
       else {
       }
@@ -52,8 +52,8 @@ pNode insert_subtree(pNode node, int value) {
   return o;
 }
 
-pNode insert(pNode node, int value) {
-  pNode o = insert_subtree(node, value);
+pLLRBNode llrb_insert(pLLRBNode node, int value) {
+  pLLRBNode o = llrb_insert_subtree(node, value);
   o->color = 1;
   return o;
 }

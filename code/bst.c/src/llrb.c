@@ -9,10 +9,10 @@
 
 
 
-pNode newNode(int value) {
+pLLRBNode llrb_new_node(int value) {
   // emp
 
-  pNode node = malloc(sizeof(Node));
+  pLLRBNode node = malloc(sizeof(*node));
 
   // TODO
   node->color = 0;
@@ -57,7 +57,7 @@ pNode newNode(int value) {
   return node;
 }
 
-bool red(pNode node) {
+bool llrb_red(pLLRBNode node) {
   bool o;
   if (node == NULL) {
     o = false;
@@ -75,7 +75,7 @@ bool red(pNode node) {
 
 #include "./rotate/llrb_rotate.c"
 
-#include "./search/bst_search.c"
+#include "./search/llrb_search.c"
 
 #include "./insert/llrb_insert.c"
 

@@ -1,5 +1,7 @@
+#ifndef LLRB_SEARCH_ITERATIVE_C_
+#define LLRB_SEARCH_ITERATIVE_C_
 
-bool search(pNode node, int value) {
+bool llrb_search(pLLRBNode node, int value) {
   // Given a node in the tree representing some set S,
   // return a boolean representing whether `value` is in S.
   //
@@ -22,7 +24,7 @@ bool search(pNode node, int value) {
   //
   //// ∃ pH, pC.  Tree(node, S, pH, pC)
 
-  pNode n = node;
+  pLLRBNode n = node;
 
   //// ∃ pH, pC.  Tree(n, S, pH, pC)         // Assignment
 
@@ -186,3 +188,5 @@ bool search(pNode node, int value) {
 
   return o;
 }
+
+#endif  // LLRB_SEARCH_ITERATIVE_C_

@@ -8,7 +8,7 @@
   Remove the maximum value from the set represented by *pnode, and return that value.
   Precondition: *pnode is non-empty -- what is the maximum member of the empty set?
  */
-int delMax(pNode * pnode) {
+int delMax(pLLRBNode * pnode) {
   // pnode↦node ∗ NonEmptyTree(node, S)
 
   /* pnode↦node ∗
@@ -68,7 +68,7 @@ int delMax(pNode * pnode) {
     */
     // ... ∀ x∈S. x <= max.
 
-    pNode node = (*pnode);
+    pLLRBNode node = (*pnode);
     (*pnode) = (*pnode)->left;
 
     //   pnode↦node
@@ -108,7 +108,7 @@ int delMax(pNode * pnode) {
   Aux.  Given pointer to non-null node,
   return pointer to tree with that node removed.
  */
-pNode delNode(pNode node) {
+pLLRBNode delNode(pLLRBNode node) {
   /*
   (∃ value, left, right, L, R. ( node↦value,left,right
                                ∗ Tree(left, L)
@@ -118,7 +118,7 @@ pNode delNode(pNode node) {
                               && (∀ v∈R. v > value) ).
   */
 
-  pNode o;
+  pLLRBNode o;
 
   if (!node->left) {
     /*
@@ -218,11 +218,11 @@ pNode delNode(pNode node) {
 /**
   Remove `value` from the set.
  */
-pNode del(pNode node, int value) {
+pLLRBNode del(pLLRBNode node, int value) {
 
   // Tree(node, S)
 
-  pNode o;
+  pLLRBNode o;
 
   if (!node) {
     // EmptyTree(node, S) && S == {}
