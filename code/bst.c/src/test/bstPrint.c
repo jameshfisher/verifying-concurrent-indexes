@@ -3,7 +3,7 @@
 
 #include <stdio.h>
 
-#include "./bst.h"
+#include "../llrb.h"
 
 void ansi(char * mode) { printf("%c[%sm", 27, mode); }
 

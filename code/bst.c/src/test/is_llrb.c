@@ -3,7 +3,7 @@
 
 #include <stdbool.h>
 
-#include "./bst.h"
+#include "../llrb.h"
 
 typedef enum LLRBNodeType { RED_LLRB, BLACK_LLRB, INVALID_LLRB } LLRBNodeType;
 

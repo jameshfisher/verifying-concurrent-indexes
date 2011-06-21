@@ -1,8 +1,7 @@
+#ifndef LLRB_ROTATE_C_
+#define LLRB_ROTATE_C_
 
-//-----------------------------------------------------------------//
-//                             rotate                              //
-//-----------------------------------------------------------------//
-
+#include "../llrb.h"
 
 pNode rotateRight(pNode node) {
   pNode left = node->left;
@@ -26,4 +25,4 @@ pNode rotateLeft(pNode node) {
   return right;
 }
 
-
+#endif  // LLRB_ROTATE_C_

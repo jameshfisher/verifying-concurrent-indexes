@@ -1,6 +1,8 @@
 #ifndef LLRB_INSERT_RECURSIVE_C_
 #define LLRB_INSERT_RECURSIVE_C_
 
+#include "../llrb.h"
+
 pNode insert_subtree(pNode node, int value) {
   pNode o;
 

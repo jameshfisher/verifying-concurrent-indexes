@@ -6,8 +6,9 @@
 #include <stdbool.h>
 #include <time.h>
 
-#include "./bst.h"
-#include "./bst.c"
+#include "../llrb.h"
+#include "../llrb.c"
+
 #include "./is_llrb.c"
 #include "./bstPrint.c"
 

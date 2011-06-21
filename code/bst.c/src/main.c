@@ -4,10 +4,10 @@
 //#define RECURSIVE
 //#define PRINT_BLACK_HEIGHT
 
-#include "./bst.h"
-#include "./bstPrint.c"
-#include "./bst.c"
-#include "./test.c"
+#include "./llrb.h"
+#include "./test/bstPrint.c"
+#include "./llrb.c"
+#include "./test/test.c"
 
 
 int main(int argc, char ** argv) {

@@ -1,5 +1,5 @@
-#ifndef BST_H_
-#define BST_H_
+#ifndef LLRB_H_
+#define LLRB_H_
 
 struct Node;
 typedef struct Node Node;
@@ -150,4 +150,4 @@ struct Node {
 // NOT_IN_SUBSET_THEN_MAYBE_IN_DIFFERENCE
 // TODO
 
-#endif  // BST_H_
+#endif  // LLRB_H_

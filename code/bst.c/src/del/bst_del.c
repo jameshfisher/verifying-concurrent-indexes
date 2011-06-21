@@ -1,8 +1,7 @@
+#ifndef BST_DEL_C_
+#define BST_DEL_C_
 
-//-----------------------------------------------------------------//
-//                              del                                //
-//-----------------------------------------------------------------//
-
+#include "../llrb.h"
 
 /**
   Aux procedure.
@@ -297,3 +296,5 @@ pNode del(pNode node, int value) {
 
   return o;
 }
+
+#endif  // BST_DEL_C_

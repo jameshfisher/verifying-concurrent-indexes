@@ -1,11 +1,11 @@
-#ifndef BST_C_
-#define BST_C_
+#ifndef LLRB_C_
+#define LLRB_C_
 
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdbool.h>
 
-#include "./bst.h"
+#include "./llrb.h"
 
 
 
@@ -73,15 +73,15 @@ bool red(pNode node) {
   return o;
 }
 
-#include "./llrb_rotate.c"
+#include "./rotate/llrb_rotate.c"
 
-#include "./bst_search.c"
+#include "./search/bst_search.c"
 
-#include "./llrb_insert.c"
+#include "./insert/llrb_insert.c"
 
-#include "./bst_del.c"
-
-
+#include "./del/bst_del.c"
 
 
-#endif  // BST_C_
+
+
+#endif  // LLRB_C_
