@@ -18,7 +18,7 @@ void llrb_print_node(pLLRBNode node, int level) {
 #endif
     while (level-- > 0) printf("  ");
 
-    llrb_ansi(node->color ? "30" : "31");
+    llrb_ansi(node->color ? "0" : "31");
     printf("%i\n", node->value);
     llrb_ansi("0");
 

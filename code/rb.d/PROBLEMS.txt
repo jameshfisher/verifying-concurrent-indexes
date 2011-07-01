@@ -1,0 +1,95 @@
+There's More Than One Way To Do It.
+
+Multiple data structures:
+  traditional Red-Black
+  Left-leaning 2-3-4-tree
+  Left-leaning 2-3-tree
+
+Many methods of walking the tree:
+  bottom-up
+    iterative
+      parent pointers
+      explicit stack
+    recursive
+  top-down
+    iterative
+    recursive
+
+Got lost in the options!
+Tried the CLR algorithms, but got frustrated, for reasons I'll explain.
+
+I thought, based on reading the LLRB papers,
+it would be substantially simpler.
+Turns out it's not, really: the tree is inherently asymmetrical,
+so the ability to use the same code on symmetrical cases is lost.
+
+So I've stuck to the traditional RBT.
+However, the way to do symmetrical cases is with a link array,
+and the predicates I was using weren't built for that.
+
+But the predicates were broken anyway:
+every line of code carried dozens of lines of conditions.
+
+The problem I think, was using a monolithic "Tree" predicate.
+With this there is no clean way to express "this is a red-black tree but it's red"
+without breaking out the predicate,
+and more complex statements like "there's a red violation here but otherwise the tree is OK"
+become horrible.
+
+Not sure why I didn't realise how broken this was.
+Anyway I've set out a new set of predicates,
+and though I haven't actually gone through the algorithms thoroughly, it should be better to use.
+The idea is pretty simple: just use more predicates!
+
+There's still a problem with them that I'm not sure how to solve.
+The specifications I'm using say "will transform into some tree representing set S",
+but they don't specify how the memory locations used by that tree relate to the tree it was transformed from.
+This means I can't do things like:
+
+  Node * oldRoot = parent.right;
+  parent.right = rotate_single_left(parent.right);
+  // what does oldRoot point to?
+
+Because rotations just fix up the pointers,
+we should be able to know that `oldRoot` points to the same valid node it did previously.
+But we don't, because the specification allows for rotation to put the new tree anywhere.
+
+We could instead do:
+
+  Node * oldRoot = parent.right;
+  parent.right = rotate_single_left(parent.right);
+  oldRoot = parent.right.left;
+
+But not only is that ugly and excessive,
+but the specification doesn't allow that either!
+
+There's a similar problem with parent pointers, and explicit stacks.
+One can specify parent pointers fairly easily in the tree predicates:
+
+  Tree(n, S, parent) =
+    n |-> v, left, right, parent *
+    Tree(left, L, n) *
+    ...
+
+But then how does one use this to know about the `parent` field given a tree?
+i.e., we want to do
+
+  { Tree(n, S, parent) }
+
+  // go up to parent
+
+  { parent |-> v, n, right, gp *
+    Tree(n, S, parent) *
+    Tree(right, R, parent) }
+
+The problem is that the parts of the heap aren't self-contained.
+Though I haven't tried it, I think the explicit stack has pretty much the same problem.
+How does one specify the stack?
+
+  s[0] |-> u, s[1], r
+  s[1] |-> v, l, s[2]
+  s[2] |-> w, ...
+
+but that's not enough.
+
+

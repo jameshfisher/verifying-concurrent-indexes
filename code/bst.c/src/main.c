@@ -11,7 +11,7 @@
 
 
 int main(int argc, char ** argv) {
-  test(100, 50, true);
+  test(15, 15, true);
 
   return 0;
 }

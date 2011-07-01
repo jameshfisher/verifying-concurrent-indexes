@@ -1,8 +1,13 @@
 
+var LEFT = true;
+var RIGHT = false;
+
 function Node(value, left, right) {
   this.value = value;
-  this.left = left || null;   // all values < value
-  this.right = right || null;   // all values < value
+  this.children = {
+    true: left || null,  // all values < value
+    false: right || null // all values < value
+  };
 }
 
 
@@ -10,7 +15,7 @@ exports.arr = arr = function(node) {
   if(node === null) {
     return [];
   } else {
-    return arr(node.left).concat([node.value]).concat(arr(node.right));
+    return arr(node.children[LEFT]).concat([node.value]).concat(arr(node.children[RIGHT]));
   }
 }
 
@@ -23,12 +28,7 @@ exports.search = function search(node, value) {
       found = true;
     }
     else {
-      if(value < node.value) {
-        node = node.left;
-      }
-      else {
-        node = node.right;
-      }
+      node = node.children[value < node.value];
     }
   }
 
@@ -56,28 +56,14 @@ exports.insert = function insert(node, value) {
         // n !== null && !found && value !== n.value
         // traverse further down, or insert
 
-        if(value < n.value) {
-          // n !== null && !found && value < n.value
-          if(n.left === null) {
-            // n !== null && !found && value < n.value && n.left === null
-            n.left = new Node(value, null, null);
-            found = true;
-          }
-          else {
-            // n !== null && !found && value < n.value && n.left !== null
-            n = n.left;
-          }
-        }
+        var dir = value < n.value;
 
+        if(n.children[dir] === null) {
+          n.children[dir] = new Node(value, null, null);
+          found = true;
+        }
         else {
-          // n !== null && !found && value > n.value
-          if(n.right === null) {
-            n.right = new Node(value, null, null);
-            found = true;
-          }
-          else {
-            n = n.right;
-          }
+          n = n.children[dir];
         }
       }
     }
@@ -89,50 +75,46 @@ exports.insert = function insert(node, value) {
 
 
 function removeMax(node) {
-  // node != null; node.right != null
+  // node != null; node.children[RIGHT] != null
 
-  // Keep going right until n.right.right === null
-  while(node.right.right !== null) {
-    // node.right.right !== null
-    node = node.right;
+  // Keep going right until n.children[RIGHT].children[RIGHT] === null
+  while(node.children[RIGHT].children[RIGHT] !== null) {
+    // node.children[RIGHT].children[RIGHT] !== null
+    node = node.children[RIGHT];
   }
-  // node.right.right === null
-  var o = node.right.value;
-  node.right = node.right.left;
+  // node.children[RIGHT].children[RIGHT] === null
+  var o = node.children[RIGHT].value;
+  node.children[RIGHT] = node.children[RIGHT].children[LEFT];
   return o;
 }
 
 
 function step(node, value) {
   if(value === node) return node;
-  else if(value < node.value) return node.left;
-  else return node.right;
+  else return node.children[value < node.value];
 }
 
 function rmv(node, parent) {
-  var dir = (parent.left === node ? "left" : "right");
+  var dir = (parent.children[LEFT] === node ? LEFT : RIGHT);
 
-  if(node.left === null && node.right === null) {
-    parent[dir] = null;
+  if(node.children[LEFT] === null && node.children[RIGHT] === null) {
+    parent.children[dir] = null;
   }
   else {
-    if(node.left === null) {
-      parent[dir] = node.right;
+    if(node.children[LEFT] === null) {
+      parent.children[dir] = node.children[RIGHT];
     }
     else {
-      if(node.right === null) {
-        parent[dir] = node.left;
+      if(node.children[RIGHT] === null) {
+        parent.children[dir] = node.children[LEFT];
       }
       else {
-        // node.left !== null && node.right !== null
-        if(node.left.right === null) {
-          // node.left !== null && node.right !== null && node.left.right === null
-          node.value = node.left.value;
-          node.left = node.left.left;
+        if(node.children[LEFT].children[RIGHT] === null) {
+          node.value = node.children[LEFT].value;
+          node.children[LEFT] = node.children[LEFT].children[LEFT];
         }
         else {
-          // node.left !== null && node.right !== null && node.left.right !== null
-          node.value = removeMax(node.left);
+          node.value = removeMax(node.children[LEFT]);
         }
       }
     }
@@ -146,34 +128,25 @@ exports.remove = function remove(node, value) {
     o = null;
   }
   else {
-    // Find node n that has value as child.
     if(value === node.value) {
-      // value === node.value
-      if(node.left == null && node.right == null) {
+      if(node.children[LEFT] == null && node.children[RIGHT] == null) {
         return null;
       }
       else {
-        // node.left !== null || node.right !== null
-        if(node.left == null) {
-          // node.right !== null
-          return node.right;
+        if(node.children[LEFT] == null) {
+          return node.children[RIGHT];
         }
         else {
-          // node.left !== null
-          if(node.right == null) {
-            // node.left !== null && node.right == null
-            return node.left;
+          if(node.children[RIGHT] == null) {
+            return node.children[LEFT];
           }
           else {
-            // node.left !== null && node.right !== null
-            if(node.left.right === null) {
-              // node.left !== null && node.right !== null && node.left.right === null
-              node.value = node.left.value;
-              node.left = node.left.left;
+            if(node.children[LEFT].children[RIGHT] === null) {
+              node.value = node.children[LEFT].value;
+              node.children[LEFT] = node.children[LEFT].children[LEFT];
             }
             else {
-              // node.left !== null && node.right !== null && node.left.right !== null
-              node.value = removeMax(node.left);
+              node.value = removeMax(node.children[LEFT]);
             }
           }
         }

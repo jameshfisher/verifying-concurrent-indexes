@@ -1,0 +1,15 @@
+syntax: glob
+
+lib
+lib-*
+.*.agda.el
+*.agdai
+*~
+html
+
+*.aux
+*.bbl
+*.blg
+*.dvi
+*.log
+*.pdf

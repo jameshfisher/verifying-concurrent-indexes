@@ -1,0 +1,12 @@
+data/.gitignore.i
+data/.hgignore.i
+data/BinarySearchTree/BinarySearchTree.agda.i
+data/BinarySearchTree/SimpleTree.agda.i
+data/RBTree/LLRBTree.agda.i
+data/RBTree/LLRBTree2.agda.i
+data/RBTree/RBTree.agda.i
+data/RBTree/llrb-delete-julien-oster.tex.i
+data/RBTree/llrb.bib.i
+data/haskell/RBTree.hs.i
+data/stuff/.gitignore.i
+data/stuff/Vector.agda.i

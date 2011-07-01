@@ -12,7 +12,7 @@
 #include "./is_llrb.c"
 #include "./llrb_print.c"
 
-#define INSERT_ONLY
+//#define INSERT_ONLY
 
 void llrb_print_reference(bool * ref, int NUM_VALUES) {
   printf("{");
@@ -64,17 +64,12 @@ bool test(int NUM_VALUES, int NUM_TESTS, bool DEBUG) {
     }
 
     LLRBNodeInfo info = llrbNodeInfo(testing);
-    if (info.t == BLACK_LLRB) {
-      if (DEBUG) {
-        printf("Valid LLRB; height %d\n", info.h);
-      }
-    }
-    else {
-      printf("Invalid LLRB: ");
+    if (DEBUG) {
       llrb_print_node_info(info);
-      printf("\n");
-      return false;
+      if (info.t != BLACK_LLRB) printf(".  Abort.\n");
+      else printf(".\n");
     }
+    if (info.t != BLACK_LLRB) exit(0);
 
     if (DEBUG) {
       printf("Searching for %i...", value);

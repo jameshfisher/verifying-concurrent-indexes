@@ -79,7 +79,7 @@ bool llrb_red(pLLRBNode node) {
 
 #include "./insert/llrb_insert.c"
 
-#include "./del/bst_del.c"
+#include "./del/llrb_del.c"
 
 
 

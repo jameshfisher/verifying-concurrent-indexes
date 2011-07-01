@@ -3,6 +3,7 @@
 
 #include "../llrb.h"
 
+
 /**
   Aux procedure.
   Remove the maximum value from the set represented by *pnode, and return that value.
