@@ -1,0 +1,4 @@
+*.deps
+*.o
+index
+dss_objs
