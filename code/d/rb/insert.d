@@ -6,6 +6,8 @@ import rb.node;
 
 import rb.rotate;
 
+import std.stdio;
+
 Node * insert_rec(Node * root, int value) {
 
   Node * o;
@@ -25,6 +27,7 @@ Node * insert_rec(Node * root, int value) {
     int dir = root.value < value;  // We need to insert in that subtree.
 
     Node ** into = &root.c[dir];
+
     *into = insert_rec(*into, value); // Do the insert.
 
     // Now, insert may have passed up a red node.
@@ -56,6 +59,8 @@ Node * insert_rec(Node * root, int value) {
           //                   /         \
           //     near child, B(TN-1)    far child, R(N-1)
 
+          assert(!red(root));   // WHY???
+
           rb.rotate.single_ptr(&root, !dir);
 
           //            --into, B(N)--
@@ -72,6 +77,9 @@ Node * insert_rec(Node * root, int value) {
           // far child is black.
           Node ** near_child = &(*into).c[!dir];
           if (red(*near_child)) {
+
+            assert(!red(root));   // WHY???
+
             // near child is red.
 
             //         root, R/B  <== was previously either BT(N) or RT(N-1)

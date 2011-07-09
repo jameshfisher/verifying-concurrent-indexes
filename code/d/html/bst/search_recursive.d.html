@@ -1,0 +1,64 @@
+<!doctype html><html><head><meta charset='utf-8' /></head><link rel='stylesheet' type='text/css' href='google-code-prettify/prettify.css' /><link rel='stylesheet' type='text/css' href='main.css' /><script type='text/javascript' src='google-code-prettify/prettify.js'></script><script type='text/javascript'>window.onload = function() { prettyPrint(); }</script><body><pre class='prettyprint'>module bst.search_recursive;
+
+import bst.node;
+import bst.descend;
+
+
+bool search(Node* root, in int value) {</pre>
+<div class='section'><pre class='indent'>&nbsp;&nbsp;</pre><div class='AssertionParagraph'><div class='expl'>Function precondition.</div>Tree(root, S)</div><div class='clear'></div></div>
+<pre class='prettyprint'>  bool o;
+  if (root) {</pre>
+<div class='section'><pre class='indent'>&nbsp;&nbsp;&nbsp;&nbsp;</pre><div class='AssertionParagraph'><div class='expl'>Assert if-test.</div>Tree(root, S) ∧ root≠null</div><div class='clear'></div></div>
+<pre class='prettyprint'></pre>
+<div class='section'><pre class='indent'>&nbsp;&nbsp;&nbsp;&nbsp;</pre><div class='AssertionParagraph'><div class='expl'>Non-null pointer is non-empty tree (lemma).</div>NonEmptyTree(root, S)</div><div class='clear'></div></div>
+<pre class='prettyprint'>
+    if (root.value == value) {</pre>
+<div class='section'><pre class='indent'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</pre><div class='AssertionParagraph'><div class='expl'>Assert if-test.  (Need lemma here.)</div>TopOfTree(root, value, S)</div><div class='clear'></div></div>
+<pre class='prettyprint'></pre>
+<div class='section'><pre class='indent'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</pre><div class='AssertionParagraph'><div class='expl'>Root value in set (lemma).</div>TopOfTree(root, value, S) ∧ value ∈ S</div><div class='clear'></div></div>
+<pre class='prettyprint'></pre>
+<div class='section'><pre class='indent'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</pre><div class='AssertionParagraph'><div class='expl'>Weaken TopOfTree.</div>Tree(root, S) ∧ value ∈ S</div><div class='clear'></div></div>
+<pre class='prettyprint'>
+      o = true;
+</pre>
+<div class='section'><pre class='indent'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</pre><div class='AssertionParagraph'><div class='expl'>Assignment.</div>Tree(root, S) ∧ value ∈ S ∧ o = true</div><div class='clear'></div></div>
+<pre class='prettyprint'></pre>
+<div class='section'><pre class='indent'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</pre><div class='AssertionParagraph'><div class='expl'>???</div>Tree(root, S) ∧ o ↔ (value ∈ S)</div><div class='clear'></div></div>
+<pre class='prettyprint'>    }
+    else {</pre>
+<div class='section'><pre class='indent'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</pre><div class='AssertionParagraph'><div class='expl'>Deny if-test.</div>TopOfTree(root, v, S) ∧ v ≠ value</div><div class='clear'></div></div>
+<pre class='prettyprint'>
+      Node* next = descend(root, value);
+</pre>
+<div class='section'><pre class='indent'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</pre><div class='AssertionParagraph'><div class='expl'>Specification of descend.</div>TopOfTree(root, v, S) ∧<br /><span class='assertionIndent'></span>∃Q. Tree(o, Q) ∧ (value∈Q ↔ value∈S)) ∧ |Q| &lt; |S|</div><div class='clear'></div></div>
+<pre class='prettyprint'></pre>
+<div class='section'><pre class='indent'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</pre><div class='CommentParagraph'>Note recursion terminates because |Q| &lt; |S| and |Q| &gt;= 0</div><div class='clear'></div></div>
+<pre class='prettyprint'>      o = search(next, value);
+</pre>
+<div class='section'><pre class='indent'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</pre><div class='AssertionParagraph'><div class='expl'>Specification of search.</div>TopOfTree(root, v, S) ∧<br /><span class='assertionIndent'></span>∃Q. Tree(o, Q) ∧ (value∈Q ↔ value∈S)) ∧ |Q| &lt; |S| ∧ o ↔ (value ∈ Q)</div><div class='clear'></div></div>
+<pre class='prettyprint'></pre>
+<div class='section'><pre class='indent'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</pre><div class='AssertionParagraph'><div class='expl'>Transitivity of ↔; escape ∃; weaken TopOfTree.</div>Tree(root, S) ∧ o ↔ (value ∈ S)</div><div class='clear'></div></div>
+<pre class='prettyprint'>    }</pre>
+<div class='section'><pre class='indent'>&nbsp;&nbsp;&nbsp;&nbsp;</pre><div class='AssertionParagraph'><div class='expl'>Transitivity of both if-branches.</div>Tree(root, S) ∧ o ↔ (value ∈ S)</div><div class='clear'></div></div>
+<pre class='prettyprint'>  }
+  else {</pre>
+<div class='section'><pre class='indent'>&nbsp;&nbsp;&nbsp;&nbsp;</pre><div class='AssertionParagraph'><div class='expl'>Deny if-test.</div>Tree(root, S) ∧ root=null</div><div class='clear'></div></div>
+<pre class='prettyprint'></pre>
+<div class='section'><pre class='indent'>&nbsp;&nbsp;&nbsp;&nbsp;</pre><div class='AssertionParagraph'><div class='expl'>Null pointer is empty tree (lemma).</div>EmptyTree(root, S)</div><div class='clear'></div></div>
+<pre class='prettyprint'></pre>
+<div class='section'><pre class='indent'>&nbsp;&nbsp;&nbsp;&nbsp;</pre><div class='AssertionParagraph'><div class='expl'>Empty tree is empty set (lemma).</div>EmptyTree(root, S) ∧ S = ∅</div><div class='clear'></div></div>
+<pre class='prettyprint'></pre>
+<div class='section'><pre class='indent'>&nbsp;&nbsp;&nbsp;&nbsp;</pre><div class='AssertionParagraph'><div class='expl'>Element not in empty set.</div>EmptyTree(root, S) ∧ value ∉ S</div><div class='clear'></div></div>
+<pre class='prettyprint'>
+    o = false;
+</pre>
+<div class='section'><pre class='indent'>&nbsp;&nbsp;&nbsp;&nbsp;</pre><div class='AssertionParagraph'><div class='expl'>Assignment.</div>EmptyTree(root, S) ∧ value ∉ S ∧ o = false</div><div class='clear'></div></div>
+<pre class='prettyprint'></pre>
+<div class='section'><pre class='indent'>&nbsp;&nbsp;&nbsp;&nbsp;</pre><div class='AssertionParagraph'><div class='expl'>???</div>EmptyTree(root, S) ∧ o ↔ (value ∈ S)</div><div class='clear'></div></div>
+<pre class='prettyprint'></pre>
+<div class='section'><pre class='indent'>&nbsp;&nbsp;&nbsp;&nbsp;</pre><div class='AssertionParagraph'><div class='expl'>Weaken EmptyTree.</div>Tree(root, S) ∧ o ↔ (value ∈ S)</div><div class='clear'></div></div>
+<pre class='prettyprint'>  }</pre>
+<div class='section'><pre class='indent'>&nbsp;&nbsp;</pre><div class='AssertionParagraph'><div class='expl'>Function postcondition.
+Postcondition of both if-branches.</div>Tree(root, S) ∧ o ↔ (value ∈ S)</div><div class='clear'></div></div>
+<pre class='prettyprint'>  return o;
+}</pre></body></html>

@@ -1,0 +1,8 @@
+<!doctype html><html><head><meta charset='utf-8' /></head><link rel='stylesheet' type='text/css' href='google-code-prettify/prettify.css' /><link rel='stylesheet' type='text/css' href='main.css' /><script type='text/javascript' src='google-code-prettify/prettify.js'></script><script type='text/javascript'>window.onload = function() { prettyPrint(); }</script><body><pre class='prettyprint'>module rb.contents;
+
+import rb.node;
+
+int[] contents(Node* node) {
+  if (!node) return [];
+  else return contents(node.c[0]) ~ [node.value] ~ contents(node.c[1]);
+}</pre></body></html>

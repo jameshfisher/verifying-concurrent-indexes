@@ -1,0 +1,62 @@
+<!doctype html><html><head><meta charset='utf-8' /></head><link rel='stylesheet' type='text/css' href='google-code-prettify/prettify.css' /><link rel='stylesheet' type='text/css' href='main.css' /><script type='text/javascript' src='google-code-prettify/prettify.js'></script><script type='text/javascript'>window.onload = function() { prettyPrint(); }</script><body><pre class='prettyprint'>static import std.stdio;
+static import std.string;
+static import std.container;
+import std.algorithm;
+import std.range;
+
+bool ws(char c) {
+  return c == ' ' || c == '\t';
+}
+</pre>
+<div class='section'><pre class='indent'></pre><div class='CommentParagraph'>here's a comment
+here's another</div><div class='clear'></div></div>
+<pre class='prettyprint'></pre>
+<div class='section'><pre class='indent'>&nbsp;&nbsp;</pre><div class='CommentParagraph'>here's an indented comment</div><div class='clear'></div></div>
+<div class='section'><pre class='indent'></pre><div class='CommentParagraph'>with some symbols</div><div class='clear'></div></div>
+<pre class='prettyprint'>
+class Line {
+
+  string indent;
+  string code;
+  string comment;
+
+  this(string line) {
+    while (line.length && ws(line[0])) {
+      indent ~= line[0];
+      line = line[1 .. line.length];
+    }
+    while (line.length && !startsWith(line, "//")) {
+      code ~= line[0];
+      line = line[1 .. line.length]; // here's a comment
+    }
+    comment = line;
+  }
+
+  string html() {
+    return code;
+  };
+
+  string toString() {
+    return indent ~ code ~ comment;
+  }
+}
+
+
+std.range.InputRange!L splitLines(L)(string code) {
+  return map!((a) { return new Line(a); })(std.string.splitlines(code));
+}
+
+
+auto splitBlocks(std.range.InputRange!Line lines) {
+  return lines;
+}
+
+
+const string code = "import std.stdio;\n  import std.string; // comment";
+
+
+void main() {
+  auto lines = splitLines!Line(code);
+  auto blocks = splitBlocks(lines);
+  std.stdio.writefln("%s", blocks);
+}</pre></body></html>

@@ -1,4 +1,4 @@
-module test;
+<!doctype html><html><head><meta charset='utf-8' /></head><link rel='stylesheet' type='text/css' href='google-code-prettify/prettify.css' /><link rel='stylesheet' type='text/css' href='main.css' /><script type='text/javascript' src='google-code-prettify/prettify.js'></script><script type='text/javascript'>window.onload = function() { prettyPrint(); }</script><body><pre class='prettyprint'>module test;
 
 import index;
 
@@ -22,10 +22,10 @@ bool testAgainstReference(ImplementationIndex)
 
     if (noisy) writeln("----");
 
-
-    // DO AN INSERT OR REMOVE
-    // ----------------------
-
+</pre>
+<div class='section'><pre class='indent'>&nbsp;&nbsp;&nbsp;&nbsp;</pre><div class='CommentParagraph'>DO AN INSERT OR REMOVE
+----------------------</div><div class='clear'></div></div>
+<pre class='prettyprint'>
     auto value = std.random.uniform(0, num_values);
 
 
@@ -49,19 +49,19 @@ bool testAgainstReference(ImplementationIndex)
       writeln("Implementation:");   print(implementation);
     }
 
-
-    // VALIDATE THE DATA STRUCTURE FOR INTERNAL CONSISTENCY
-    // ----------------------------------------------------
-
+</pre>
+<div class='section'><pre class='indent'>&nbsp;&nbsp;&nbsp;&nbsp;</pre><div class='CommentParagraph'>VALIDATE THE DATA STRUCTURE FOR INTERNAL CONSISTENCY
+----------------------------------------------------</div><div class='clear'></div></div>
+<pre class='prettyprint'>
     if (!validate(implementation)) {
       writeln("Implementation failed validation.  Stop.");
       return false;
     }
 
-
-    // SEE IF THE CONTENTS ARE THE SAME
-    // --------------------------------
-
+</pre>
+<div class='section'><pre class='indent'>&nbsp;&nbsp;&nbsp;&nbsp;</pre><div class='CommentParagraph'>SEE IF THE CONTENTS ARE THE SAME
+--------------------------------</div><div class='clear'></div></div>
+<pre class='prettyprint'>
     if (referenceContents.length != implementationContents.length) {
       writefln("Number of elements differ.  Reference: %s, implementation: %s.  Stop.", referenceContents.length, implementationContents.length);
       return false;
@@ -75,10 +75,10 @@ bool testAgainstReference(ImplementationIndex)
       }
     }
 
-
-    // TEST A SEARCH
-    // -------------
-
+</pre>
+<div class='section'><pre class='indent'>&nbsp;&nbsp;&nbsp;&nbsp;</pre><div class='CommentParagraph'>TEST A SEARCH
+-------------</div><div class='clear'></div></div>
+<pre class='prettyprint'>
     int test_search = std.random.uniform(0, num_values);
 
     if (noisy) {
@@ -101,4 +101,4 @@ bool testAgainstReference(ImplementationIndex)
 
   writeln("Tests passed.");
   return true;
-}
+}</pre></body></html>

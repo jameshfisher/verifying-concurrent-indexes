@@ -1,4 +1,4 @@
-module rb.index;
+<!doctype html><html><head><meta charset='utf-8' /></head><link rel='stylesheet' type='text/css' href='google-code-prettify/prettify.css' /><link rel='stylesheet' type='text/css' href='main.css' /><script type='text/javascript' src='google-code-prettify/prettify.js'></script><script type='text/javascript'>window.onload = function() { prettyPrint(); }</script><body><pre class='prettyprint'>module rb.index;
 
 static import index;
 
@@ -8,8 +8,6 @@ static import rb.insert;
 static import rb.remove;
 static import rb.contents;
 
-import std.stdio;
-
 class RbIndex : index.Index {
   rb.node.Node * root;
 
@@ -18,7 +16,7 @@ class RbIndex : index.Index {
   }
 
   void insert(int value) {
-    this.root = rb.insert.insert_rec(this.root, value);
+    this.root = rb.insert.insert_top_down_iter(this.root, value);
     this.root.black = true;
   }
 
@@ -29,4 +27,4 @@ class RbIndex : index.Index {
   int[] contents() {
     return rb.contents.contents(root);
   }
-}
+}</pre></body></html>

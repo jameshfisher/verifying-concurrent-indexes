@@ -1,0 +1,30 @@
+<!doctype html><html><head><meta charset='utf-8' /></head><link rel='stylesheet' type='text/css' href='google-code-prettify/prettify.css' /><link rel='stylesheet' type='text/css' href='main.css' /><script type='text/javascript' src='google-code-prettify/prettify.js'></script><script type='text/javascript'>window.onload = function() { prettyPrint(); }</script><body><pre class='prettyprint'>module bst.index;
+
+import index;
+
+static import bst.node;
+static import bst.search;
+static import bst.insert;
+static import bst.remove;
+static import bst.contents;
+
+
+class BstIndex : index.Index {
+  bst.node.Node * root;
+
+  bool search(int value) {
+    return bst.search.search(root, value);
+  }
+
+  void insert(int value) {
+    root = bst.insert.insert(root, value);
+  }
+
+  void remove(int value) {
+    root = bst.remove.remove(root, value);
+  }
+
+  int[] contents() {
+    return bst.contents.contents(root);
+  }
+}</pre></body></html>

@@ -1,0 +1,34 @@
+<!doctype html><html><head><meta charset='utf-8' /></head><link rel='stylesheet' type='text/css' href='google-code-prettify/prettify.css' /><link rel='stylesheet' type='text/css' href='main.css' /><script type='text/javascript' src='google-code-prettify/prettify.js'></script><script type='text/javascript'>window.onload = function() { prettyPrint(); }</script><body><pre class='prettyprint'>module bst.descend;
+
+import bst.node;
+
+
+Node* descend(Node* root, in int value) {</pre>
+<div class='section'><pre class='indent'>&nbsp;&nbsp;</pre><div class='AssertionParagraph'><div class='expl'>Function precondition.
+The tree is non-empty and value is not at the root
+(so if it's in the set, it's in one of the two subtrees).</div>TopOfTree(root, v, S) ∧ v≠value</div><div class='clear'></div></div>
+<pre class='prettyprint'>
+  int dir = value > root.value;
+</pre>
+<div class='section'><pre class='indent'>&nbsp;&nbsp;</pre><div class='AssertionParagraph'><div class='expl'>Either &gt; or &lt;.  C semantics render this as an integer.
+v≠value is now implied.</div>TopOfTree(root, v, S) ∧ <br /><span class='assertionIndent'>&nbsp;&nbsp;</span>(value &lt; v ∧ dir = 0) ∨<br /><span class='assertionIndent'>&nbsp;&nbsp;</span>(value &gt; v ∧ dir = 1)</div><div class='clear'></div></div>
+<pre class='prettyprint'>
+  Node* o = root.c[dir];
+</pre>
+<div class='section'><pre class='indent'>&nbsp;&nbsp;</pre><div class='AssertionParagraph'><div class='expl'>Open TopOfTree.  Do both cases of value of `dir`.</div>∃v,l,r,L,R.<br /><span class='assertionIndent'>&nbsp;&nbsp;</span>root↦v,l,r ∗ Tree(l, L) ∗ Tree(r, R)<br /><span class='assertionIndent'>&nbsp;&nbsp;</span>∧ Compose(L, v, R, S)<br /><span class='assertionIndent'>&nbsp;&nbsp;</span>∧ (value &lt; v ∧ o = l) ∨ (value &gt; v ∧ o = r)</div><div class='clear'></div></div>
+<pre class='prettyprint'></pre>
+<div class='section'><pre class='indent'>&nbsp;&nbsp;</pre><div class='AssertionParagraph'><div class='expl'>What is true of the subtree pointers is true of `o`.</div>∃v,l,r,L,R.<br /><span class='assertionIndent'>&nbsp;&nbsp;</span>root↦v,l,r ∗ Tree(l, L) ∗ Tree(r, R)<br /><span class='assertionIndent'>&nbsp;&nbsp;</span>∧ Compose(L, v, R, S)<br /><span class='assertionIndent'>&nbsp;&nbsp;</span>∧ (value &lt; v ∧ Tree(o, L)) ∨ (value &gt; v ∧ Tree(o, R))</div><div class='clear'></div></div>
+<pre class='prettyprint'></pre>
+<div class='section'><pre class='indent'>&nbsp;&nbsp;</pre><div class='AssertionParagraph'><div class='expl'>From Compose and relation of value and v.</div>∃v,l,r,L,R.<br /><span class='assertionIndent'>&nbsp;&nbsp;</span>root↦v,l,r ∗ Tree(l, L) ∗ Tree(r, R)<br /><span class='assertionIndent'>&nbsp;&nbsp;</span>∧ Compose(L, v, R, S)<br /><span class='assertionIndent'>&nbsp;&nbsp;</span>∧ (Tree(o, L) ∧ (value∈L ↔ value∈S)) ∨ (Tree(o, R) ∧ (value∈R ↔ value∈S))</div><div class='clear'></div></div>
+<pre class='prettyprint'></pre>
+<div class='section'><pre class='indent'>&nbsp;&nbsp;</pre><div class='AssertionParagraph'><div class='expl'>Introduce quantification.</div>∃v,l,r,L,R.<br /><span class='assertionIndent'>&nbsp;&nbsp;</span>root↦v,l,r ∗ Tree(l, L) ∗ Tree(r, R)<br /><span class='assertionIndent'>&nbsp;&nbsp;</span>∧ Compose(L, v, R, S)<br /><span class='assertionIndent'>&nbsp;&nbsp;</span>∧ (∃Q. Tree(o, Q) ∧ (value∈Q ↔ value∈S)) ∨ (∃Q. Tree(o, Q) ∧ (value∈Q ↔ value∈S))</div><div class='clear'></div></div>
+<pre class='prettyprint'></pre>
+<div class='section'><pre class='indent'>&nbsp;&nbsp;</pre><div class='AssertionParagraph'><div class='expl'>a ∨ a implies a.</div>∃v,l,r,L,R.<br /><span class='assertionIndent'>&nbsp;&nbsp;</span>root↦v,l,r ∗ Tree(l, L) ∗ Tree(r, R)<br /><span class='assertionIndent'>&nbsp;&nbsp;</span>∧ Compose(L, v, R, S)<br /><span class='assertionIndent'>&nbsp;&nbsp;</span>∧ ∃Q. Tree(o, Q) ∧ (value∈Q ↔ value∈S))</div><div class='clear'></div></div>
+<pre class='prettyprint'></pre>
+<div class='section'><pre class='indent'>&nbsp;&nbsp;</pre><div class='AssertionParagraph'><div class='expl'>Function postcondition.  Close TopOfTree.</div>TopOfTree(root, v, S)<br /><span class='assertionIndent'></span>∧ ∃Q. Tree(o, Q) ∧ (value∈Q ↔ value∈S))</div><div class='clear'></div></div>
+<pre class='prettyprint'></pre>
+<div class='section'><pre class='indent'>&nbsp;&nbsp;</pre><div class='CommentParagraph'>Note: we want |Q| &lt; |S|
+to show termination of other functions.</div><div class='clear'></div></div>
+<pre class='prettyprint'>
+  return o;
+}</pre></body></html>

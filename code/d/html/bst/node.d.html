@@ -1,0 +1,24 @@
+<!doctype html><html><head><meta charset='utf-8' /></head><link rel='stylesheet' type='text/css' href='google-code-prettify/prettify.css' /><link rel='stylesheet' type='text/css' href='main.css' /><script type='text/javascript' src='google-code-prettify/prettify.js'></script><script type='text/javascript'>window.onload = function() { prettyPrint(); }</script><body><pre class='prettyprint'>module bst.node;
+
+struct Node {
+  int value;
+  Node*[2] c;
+
+  this(int value) {
+    this.value = value;
+  }
+}
+</pre>
+<div class='section'><pre class='indent'></pre><div class='AssertionParagraph'><div class='expl'>A predicate on the sets of subtrees and the value at the root.</div>Compose(L, v, R, S) ≝<br /><span class='assertionIndent'>&nbsp;&nbsp;</span>L ∪ {v} ∪ R = S<br /><span class='assertionIndent'>&nbsp;&nbsp;</span>∧ ∀l∈L. l &lt; v<br /><span class='assertionIndent'>&nbsp;&nbsp;</span>∧ ∀r∈R. v &lt; r.</div><div class='clear'></div></div>
+<pre class='prettyprint'></pre>
+<div class='section'><pre class='indent'></pre><div class='AssertionParagraph'><div class='expl'>Less-than in left (lemma).</div>Compose(L, v, R, S) ∧ w&lt;v<br /><span class='assertionIndent'>&nbsp;&nbsp;</span>→ (w∈L ↔ w∈S).</div><div class='clear'></div></div>
+<pre class='prettyprint'></pre>
+<div class='section'><pre class='indent'></pre><div class='AssertionParagraph'><div class='expl'>Greater-than in right (lemma).</div>Compose(L, v, R, S) ∧ v&lt;w<br /><span class='assertionIndent'>&nbsp;&nbsp;</span>→ (w∈R ↔ w∈S).</div><div class='clear'></div></div>
+<pre class='prettyprint'></pre>
+<div class='section'><pre class='indent'></pre><div class='AssertionParagraph'><div class='expl'>An empty tree is easy:</div>EmptyTree(n, S) ≝<br /><span class='assertionIndent'>&nbsp;&nbsp;</span>emp<br /><span class='assertionIndent'>&nbsp;&nbsp;</span>∧ n = null<br /><span class='assertionIndent'>&nbsp;&nbsp;</span>∧ S = ∅.</div><div class='clear'></div></div>
+<pre class='prettyprint'></pre>
+<div class='section'><pre class='indent'></pre><div class='AssertionParagraph'><div class='expl'>It's convenient to talk about the value at the top of the tree.</div>TopOfTree(n, v, S) ≝<br /><span class='assertionIndent'>&nbsp;&nbsp;</span>∃l,r,L,R.<br /><span class='assertionIndent'>&nbsp;&nbsp;&nbsp;&nbsp;</span>n↦v,l,r<br /><span class='assertionIndent'>&nbsp;&nbsp;&nbsp;&nbsp;</span>∗ Tree(l, L)<br /><span class='assertionIndent'>&nbsp;&nbsp;&nbsp;&nbsp;</span>∗ Tree(r, R)<br /><span class='assertionIndent'>&nbsp;&nbsp;&nbsp;&nbsp;</span>∧ Compose(L, v, R, S).</div><div class='clear'></div></div>
+<pre class='prettyprint'></pre>
+<div class='section'><pre class='indent'></pre><div class='AssertionParagraph'><div class='expl'>A non-empty tree is a TopOfTree with unknown value at the root.</div>NonEmptyTree(n, S) ≝<br /><span class='assertionIndent'>&nbsp;&nbsp;</span>∃v. TopOfTree(n, v, S).</div><div class='clear'></div></div>
+<pre class='prettyprint'></pre>
+<div class='section'><pre class='indent'></pre><div class='AssertionParagraph'><div class='expl'>A tree is simply either empty or not empty.</div>Tree(n, S) ≝<br /><span class='assertionIndent'>&nbsp;&nbsp;</span>EmptyTree(n, S) ∨ <br /><span class='assertionIndent'>&nbsp;&nbsp;</span>NonEmptyTree(n, S).</div><div class='clear'></div></div></body></html>
