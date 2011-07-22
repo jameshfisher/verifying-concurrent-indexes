@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:xi="http://www.w3.org/2001/XInclude"
+      xmlns:e="http://eegg.github.com/htmlx"
+      xmlns:m="http://eegg.github.com/macro">
+
+
+  <head>
+    <meta charset="utf-8" />
+
+    <link rel="stylesheet" type="text/css" href="http://eegg.github.com/style/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+
+    <link rel="stylesheet" type="text/css" href="css/google-code-prettify/prettify.css" />
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+
+    <script type="text/javascript" src="css/google-code-prettify/prettify.js"> </script>
+    <script type="text/javascript">window.addEventListener("load", function() { prettyPrint(); });</script>
+
+    <title>Progress report: verifying concurrent indexes</title>
+  </head>
+  <body>
+    <section class="content">
+      <hgroup>
+	<h1>Progress report: verifying concurrent indexes</h1>
+	<h2>James Fisher</h2>
+	<h2>2011, July 19</h2>
+      </hgroup>
+      <xi:include href="sequential/sequential.html" />
+      <xi:include href="concurrent/concurrent.html" />
+      <xi:include href="bst/bst.html" />
+      <xi:include href="rbt/rbt.html" />
+    </section>
+  </body>
+</html>

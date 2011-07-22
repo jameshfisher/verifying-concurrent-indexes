@@ -3,8 +3,8 @@ module rb.index;
 static import index;
 
 static import rb.node;
-static import rb.search;
-static import rb.insert;
+static import rb.search.search;
+static import rb.insert.insert;
 static import rb.remove;
 static import rb.contents;
 
@@ -14,12 +14,11 @@ class RbIndex : index.Index {
   rb.node.Node * root;
 
   bool search(int value) {
-    return rb.search.search_rec(this.root, value);
+    return rb.search.search.search(this.root, value);
   }
 
   void insert(int value) {
-    this.root = rb.insert.insert_rec(this.root, value);
-    this.root.black = true;
+    this.root = rb.insert.insert.insert(this.root, value);
   }
 
   void remove(int value) {

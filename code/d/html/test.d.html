@@ -1,4 +1,4 @@
-<!doctype html><html><head><meta charset='utf-8' /></head><link rel='stylesheet' type='text/css' href='google-code-prettify/prettify.css' /><link rel='stylesheet' type='text/css' href='main.css' /><script type='text/javascript' src='google-code-prettify/prettify.js'></script><script type='text/javascript'>window.onload = function() { prettyPrint(); }</script><body><pre class='prettyprint'>module test;
+<section xmlns='http://www.w3.org/1999/xhtml' xmlns:xi='http://www.w3.org/2001/XInclude' xmlns:e='http://eegg.github.com/htmlx' xmlns:m='http://eegg.github.com/macro'><e:displaycode>module test;
 
 import index;
 
@@ -18,14 +18,14 @@ bool testAgainstReference(ImplementationIndex)
   auto reference = new array.index.ArrayIndex;
   auto implementation = new ImplementationIndex;
 
-  for(int i = 0; i < num_tests; i++) {
+  for(int i = 0; i &lt; num_tests; i++) {
 
     if (noisy) writeln("----");
 
-</pre>
-<div class='section'><pre class='indent'>&nbsp;&nbsp;&nbsp;&nbsp;</pre><div class='CommentParagraph'>DO AN INSERT OR REMOVE
-----------------------</div><div class='clear'></div></div>
-<pre class='prettyprint'>
+&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='CommentParagraph'>DO AN INSERT OR REMOVE
+----------------------</div></div>
+<e:displaycode>
     auto value = std.random.uniform(0, num_values);
 
 
@@ -49,25 +49,25 @@ bool testAgainstReference(ImplementationIndex)
       writeln("Implementation:");   print(implementation);
     }
 
-</pre>
-<div class='section'><pre class='indent'>&nbsp;&nbsp;&nbsp;&nbsp;</pre><div class='CommentParagraph'>VALIDATE THE DATA STRUCTURE FOR INTERNAL CONSISTENCY
-----------------------------------------------------</div><div class='clear'></div></div>
-<pre class='prettyprint'>
+&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='CommentParagraph'>VALIDATE THE DATA STRUCTURE FOR INTERNAL CONSISTENCY
+----------------------------------------------------</div></div>
+<e:displaycode>
     if (!validate(implementation)) {
       writeln("Implementation failed validation.  Stop.");
       return false;
     }
 
-</pre>
-<div class='section'><pre class='indent'>&nbsp;&nbsp;&nbsp;&nbsp;</pre><div class='CommentParagraph'>SEE IF THE CONTENTS ARE THE SAME
---------------------------------</div><div class='clear'></div></div>
-<pre class='prettyprint'>
+&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='CommentParagraph'>SEE IF THE CONTENTS ARE THE SAME
+--------------------------------</div></div>
+<e:displaycode>
     if (referenceContents.length != implementationContents.length) {
       writefln("Number of elements differ.  Reference: %s, implementation: %s.  Stop.", referenceContents.length, implementationContents.length);
       return false;
     }
     else {
-      for (int j = 0; j < referenceContents.length; j++) {
+      for (int j = 0; j &lt; referenceContents.length; j++) {
         if (referenceContents[j] != implementationContents[j]) {
           writefln("At index %s, reference contains %s, but implementation contains %s. Stop.", j, referenceContents[j], implementationContents[j]);
           return false;
@@ -75,10 +75,10 @@ bool testAgainstReference(ImplementationIndex)
       }
     }
 
-</pre>
-<div class='section'><pre class='indent'>&nbsp;&nbsp;&nbsp;&nbsp;</pre><div class='CommentParagraph'>TEST A SEARCH
--------------</div><div class='clear'></div></div>
-<pre class='prettyprint'>
+&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='CommentParagraph'>TEST A SEARCH
+-------------</div></div>
+<e:displaycode>
     int test_search = std.random.uniform(0, num_values);
 
     if (noisy) {
@@ -101,4 +101,4 @@ bool testAgainstReference(ImplementationIndex)
 
   writeln("Tests passed.");
   return true;
-}</pre></body></html>
+}&#160;</e:displaycode></section>

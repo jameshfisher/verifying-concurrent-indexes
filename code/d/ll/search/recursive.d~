@@ -1,0 +1,7 @@
+module ll.search.recursive;
+
+import ll.node;
+
+bool search(Node* list, int value) {
+  
+}

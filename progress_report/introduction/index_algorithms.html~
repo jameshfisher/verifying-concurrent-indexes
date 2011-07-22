@@ -1,0 +1,513 @@
+<section xmlns="http://www.w3.org/1999/xhtml"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xmlns:e="http://eegg.github.com/htmlx"
+	 xmlns:m="http://eegg.github.com/macro">
+  <h3>Index and set algorithms</h3>
+
+  <p>
+    In the previous section,
+    the function calls, and their specifications,
+    did not reveal anything about
+    what <code>i</code> looks like <q>inside</q>:
+    we don't know how memory is laid out,
+    or even what <em>parts</em> of memory are allocated for this.
+    Nor did we specify what a call to <code>search</code> (for example) actually <em>does</em>,
+    and nor did we specify how long it might take
+    (nor even if it halts at all!).
+  </p>
+
+  <p>
+    This was necessary and desirable.
+    It was desirable because it enables the programmer to
+    reason about the index as a mathematical construct.<e:note>In various terminologies, our <code>Index</code> <e:api /> uses <q>information hiding</q>, also called <q>encapsulation</q>.</e:note>
+    It was necessary in order to separate specification from implementation.
+    This is particularly important in the case of indexes and sets,
+    where a large number of data structures exist that satisfy our <e:api />.
+    The following is a very partial list:
+
+    <ul class="listTable listTable4">
+      <li>Array</li>
+      <li>Association list</li>
+      <li>Radix tree</li>
+      <li>van Emde Boas tree</li>
+      <li>Skip list</li>
+      <li>Hash table</li>
+      <li>Binary tree</li>
+      <li>Splay tree</li>
+      <li>AVL tree</li>
+      <li>Bloomier filter</li>
+      <li>Red-Black Tree</li>
+      <li>AA-tree</li>
+      <li>LLRB-tree</li>
+      <li>B-tree</li>
+      <li>B<sup>+</sup>-tree</li>
+      <li>B<sup>*</sup>-tree</li>
+    </ul>
+  </p>
+
+  <p>
+    After examining of a few of these,
+    it will become quickly evident that
+    most <em>index</em> data structures are simply <em>set</em> structures
+    with values <q>plugged in</q> next to the key.
+    An index <e:const n="I"/> : <e:fpfun><e:fst>K</e:fst><e:snd>V</e:snd></e:fpfun> can be represented by
+    a set of tuples <e:math><e:tuple>k, v</e:tuple></e:math>
+    (where <e:in><e:fst><e:var n="k"/></e:fst><e:snd><e:const n="K"/></e:snd></e:in> and <e:in><e:fst><e:var n="v"/></e:fst><e:snd><e:const n="V" /></e:snd></e:in>),
+    with the restriction that no two elements have the same <e:var n="k"/> value.
+    Where the algorithms take this approach,
+    for simplicity I instead describe them as implementing a set.
+  </p>
+
+  <p>
+    Each approach has its own performance and memory characteristics.
+    Some have certain restrictions and changes in semantics:
+    that the universe of keys must be finite, for instance;
+    or that multiple values of the same key can exist.
+    A good implementation of a <em>generic</em> index—one
+    that implements the API we described,
+    for any universe of keys with an ordering—requires <e:bigo><e:var n="n"/></e:bigo> memory
+    and guarantees <e:bigo>log(<e:var n="n"/>)</e:bigo> time, or better, for each operation
+    (where <e:var n="n"/> is the number of keys in the index).
+  </p>
+
+  <p>
+    Let's now run through the features of a few index data structures.
+    We will then look at specifying a few more formally.
+  </p>
+
+  <section>
+    <h4>Array</h4>
+
+    <p>
+      The array is undoubtedly the simplest index algorithm:
+      we allocate memory for all members of the universe of keys,
+      and initialize all associated values to <code>null</code>.
+      It has <e:bigo><e:const n="1"/></e:bigo> complexity for all operations
+      as the location of the key in memory is a simple offset operation.
+      This is (heavily) paid for in terms of memory,
+      the use of which is <e:bigo><e:var n="u"/></e:bigo>, where <e:var n="u"/> is the size of the universe of keys.
+      The array is most commonly used where the key type is <code>int</code>,
+      but can be used with other types if each key maps to a unique integer.
+      Additionally, the array is only possible where the universe of keys is finite—strings,
+      for example, are off-limits.
+      An array is sensible where
+      there is a small allowed key range
+      and most or all keys are expected to have a value,
+      <m:eg /> a map <e:fpfun><e:fst><code>char</code></e:fst><e:snd><code>char</code></e:snd></e:fpfun> for use in a function <code>string toUpper(string)</code>.
+      Otherwise, an algorithm with a memory complexity of <e:bigo><e:var n="n"/></e:bigo> is better.
+    </p>
+  </section>
+
+  <section>
+    <h4>Hash table</h4>
+
+    <p>
+      The hash table attempts to solve the array's <e:bigo><e:var n="u"/></e:bigo> memory use
+      by choosing an array size
+      and storing more than one key at each location.
+      The key's location in the array (its <q>bucket</q>)
+      is decided by a hash function <e:var n="h"/>.
+      Keys in the same bucket are typically chained in a linked list.
+      The function $h$ varies from extremely simple
+      (<m:eg />, h(k) = k % n)
+      to complex (<m:eg />, cryptographic functions).
+      The hash table has <e:bigo><e:var n="n"/></e:bigo> worst-case behavior
+      in the case that all keys map to the same bucket.
+      By design, it has poor locality of reference—a good hash function
+      spreads similar keys evenly over buckets.
+      There is no obvious ordered iteration algorithm.
+    </p>
+  </section>
+
+  <section>
+    <h4>Association list</h4>
+
+    <p>
+      The association list is a linked list of values of type <code>(K, V)</code>.
+      It removes the two disadvantages of the array:
+      its size is <e:bigo><e:var n="n"/></e:bigo>,
+      and the key universe does not have to be finite.
+      It pays for this with <e:bigo><e:var n="n"/></e:bigo> time complexity
+      (except for <code>insert</code>, where the new element may be appended to the head of the list).
+      The association list might be desirable for its simplicity,
+      and where the number of elements is expected to be short;
+      it is ofted used, for example, in more complex structures including hash tables.
+    </p>
+
+    <p>
+      There are many modifications to the basic linked list,
+      and these apply to the association list too.
+      The <q>linking</q> can be done in both directions
+      to allow bidirectional traversal.
+    </p>
+  </section>
+
+
+  <section>
+    <h4>Binary search tree</h4>
+
+    <p>
+      The <m:bst /> can be seen as an improvement of the linked list,
+      arising from the observation that the nodes of an linked list
+      can be generalized to contain any number of links.
+      Following a link in a linked list
+      only reduces the set being searched by one element;
+      following one link out of a possible two, however,
+      potentially halves the number of elements in the candidate set.
+    </p>
+
+    <p>
+      The division made at each node is into
+      elements smaller than the element being looked at
+      and elements larger than it.
+      Therefore, the key type of a <m:bst />
+      must have an <em>ordering</em>;
+      in practise this does not pose a real problem
+      as arbitrary data can always be lexicographically ordered.
+    </p>
+
+    <p>
+      The division that takes place at every step
+      gives the <m:bst /> a best-case complexity
+      of <e:bigomega>log(<e:var n="n"/>)</e:bigomega> for all operations.
+      <e:note>
+	The skip list is another, which does this by <q>skipping over</q> more than one node at a time.
+	<q>Balancing</q> is done by randomizing the height of nodes.
+	I ignore it because it uses randomization, which is ugly.
+      </e:note>
+      However, the worst-case scenario,
+      in which one of the two sets at every node is the empty set,
+      is equivalent to a linked list,
+      and thus the <m:bst /> still has <e:bigo><e:var n="n"/></e:bigo> complexity.
+    </p>
+  </section>
+
+
+  <section>
+    <h4>Splay tree</h4>
+
+    <p>
+      One way to tackle the worst-case of the <m:bst />
+      is simply to reduce its relevance
+      by ensuring it is a practical corner-case.
+      This is by no means the case with the standard <m:bst />:
+      data is often inserted in an <q>almost-sorted</q> order;
+      In a worst-case <m:bst /> with the smallest value at the root,
+      accessing the largest value still exhibits <e:bigo><e:var n="n"/></e:bigo> time complexity.
+    </p>
+
+    <p>
+      The Splay tree tries to make the worst-case less relevant
+      by ensuring it does not happen repeatedly.
+      It does this by, on every operation,
+      restructuring the tree to move the latest-accessed element to the root.
+      This does not change the complexity of the <m:bst /> operations,
+      <e:note>Unlike the <m:bst />, it does perform all operations in <em>amortized</em> <e:bigo>log(<e:var n="n"/>)</e:bigo>; but its worst-cases are still <e:bigo>log(<e:var n="n"/>)</e:bigo>.</e:note>
+      and instead makes use of the same principle as caching: locality of reference.
+      The worst-case is still exhibited in other situations:
+      after <code>search</code>ing for all elements in order,
+      the tree will be perfectly unbalanced.
+    </p>
+
+    <p>
+      The Splay tree has the advantage that it is (relatively) simple:
+      the data structure is the same as the <m:bst />,
+      and the algorithms are the same except for the addition of the <code>splay</code> method.
+      Its disadvantages are significant though:
+      it does not provide any worst-case improvement,
+      and, unlike other index data structures here,
+      its <code>search</code> algorithm mutates the tree.
+    </p>
+  </section>
+
+  <section>
+    <h4>AVL tree</h4>
+
+    <p>
+      The AVL tree improves on the <m:bst />,
+      finally reducing all operations to <e:bigtheta>log(<e:var n="n"/>)</e:bigtheta>.
+      It does this by ensuring that the height of the two subtrees of any node
+      differ by at most one.<e:cite>cormen, p. 296.</e:cite>
+      We first define the <em>height</em> of a node n as
+
+      <table class="displaymath">
+	<tbody>
+	  <tr><td>height(n) = </td>  <td>0</td>                                         <td>if <e:var n="n"/> is null,</td></tr>
+	  <tr><td></td>              <td>max(height(n.left), height(n.right)) + 1</td>  <td>otherwise.</td></tr>
+	</tbody>
+      </table>
+    </p>
+
+    <p>
+      We then define <e:jargon>balance factor</e:jargon> of a node <e:var n="n"/> as
+
+      <table class="displaymath">
+	<tbody>
+	  <tr><td>bf(n) = </td>  <td>0</td>                                 <td>if <e:var n="n"/> is null,</td></tr>
+	  <tr><td></td>          <td>height(n.left) - height(n.right)</td>  <td>otherwise.</td></tr>
+	</tbody>
+      </table>
+    </p>
+
+    <p>
+      We can then define an AVL tree recursively as
+
+      <div class="displaymath">
+	<e:pred name="AVLTree"><code>n</code></e:pred> = -1 ≤ bf(<code>n</code>) ≤ 1 ∧ <e:pred name="AVLTree"><code>n.left</code></e:pred> ∧ <e:pred name="AVLTree"><code>n.right</code></e:pred>.
+      </div>
+
+      It is the node's balance factor,
+      rather than the height,
+      that is stored in the node.<e:note>\cite{haskell_avl}, the most-documented and -commented AVL tree source I know of.</e:note>
+      (As, by the definition of the AVL tree,
+      the balance factor only ever has one of three possible values,
+      this can take up only two bits.)
+    </p>
+  </section>
+
+  <section>
+    <h4>B-tree</h4>
+
+    <p>
+      The B-tree is primarily motivated by a different problem with the <m:bst />:
+      the number of storage reads is <e:bigomega>log<sub>2</sub>(<e:var n="n"/>)</e:bigomega>.
+      For media with slow seek times and low granularity
+      (such as your hard disk),
+      this is too high, and wasteful.
+      The B-tree's improvement starts by generalizing the binary tree to a <e:var n="k"/>-ary tree,
+      reducing the number of reads to <e:bigomega>log<sub>k</sub>(<e:var n="n"/>)</e:bigomega> (where <e:var n="k"/> &gt; 2).
+      The full solution, however, naturally leads to
+      another method to bound the height of the tree in the order of log(<e:var n="n"/>).
+    </p>
+
+    <p>
+      A <e:var n="k"/>-ary search tree holds <e:var n="k"/>−1 elements at each node.
+      But it is infeasible to demand that each node holds this maximum amount—for
+      one thing, we could only store multiples of <e:var n="k"/>−1 elements!
+      This must be relaxed so a node can be less than <q>full</q>.
+      However, this must not be relaxed so far that
+      a node can hold just one (or zero!) elements,
+      because the <e:bigomega>log<sub>2</sub>(<e:var n="n"/>)</e:bigomega> storage reads then reappears.
+      The B-tree approach demands that each node<e:note>The root node is an exception, and can be anywhere between empty and full.</e:note>
+      is between half-full<e:note>The B<sup>*</sup>-tree demands that nodes are at least two-thirds full.</e:note> and full.
+      More precisely, we can define a B-tree in terms of an integer <e:var n="t"/>,
+      such that for each node in that tree,
+      its number of elements <e:var n="e"/> is such that
+      t−1 ≤ e ≤ 2t−1.<e:cite>cormen</e:cite>
+    </p>
+
+    <p>
+      To illustrate why balance naturally falls out of this,
+      consider inserting a value.
+      Once we have searched for its position,
+      we cannot simply create a new node there,
+      as this would not satisfy the restriction on the number of elements.
+      Instead the value must be inserted into an existing leaf node.
+      If space does not exist at the leaf,
+      we create space by splitting the node into two at the same level,
+      and inserting the previous median value in the parent using the same technique.
+      If the splitting does not reach the root, the depth of the tree is unchanged.
+      Otherwise, the root splits, and the depth increases by one for all leaf nodes.
+      We can therefore add the additional constraint to the B-tree definition
+      that all leaves have the same depth,
+      from which we can show that
+      the height of a B-tree is <e:bigtheta>log(<e:var n="n"/>)</e:bigtheta>.
+    </p>
+
+    <p>
+      Rather than bubble-up the node-splitting,
+      most B-tree algorithms actually do this on the downwards traversal
+      to the node at which the element will be inserted.
+      The procedure is simple: every full node visited is split before moving down one level,
+      and the median element inserted into the parent.
+      (We can guarantee that the parent is non-full
+      precisely due to the top-down order of the procedure.)
+      The effect is not equivalent,
+      as the top-down procedure splits all full nodes,
+      where the bubble-up procedure only splits as many as necessary.
+      However, balance is still maintained:
+      as before, the only time that new levels are created is when the root is split.
+    </p>
+  </section>
+
+  <section>
+    <h4>Red-Black Tree</h4>
+
+    <p>
+      The <m:rbt /> inherits ideas from the AVL tree and the B-tree.
+      It has the same goals and performance guarantees as the AVL tree,
+      and uses the same tree mutation to achieve them: rotations.
+      However, it can also be seen as 
+      a mapping of a B-tree of degree <e:var n="t"/> = 2 onto a <m:bst />.
+      <e:note>
+	<m:ie />,
+	a B-tree where the number of elements <e:var n="e"/> is 1 ≤ <e:var n="e"/> ≤ 3
+	(and therefore the number of links <e:var n="l"/> is 2 ≤ <e:var n="l"/> ≤ 4).
+      </e:note>
+      This has the advantage over the B-tree that
+      adjusting a node does not require copying,
+      and less-than-full nodes do not hold unused allocated memory.
+    </p>
+
+    <p>
+      In such a B-tree,
+      a 3-node<e:note>I use the term $n$-node to describe a node that can contain up to <e:var n="n"/> elements.</e:note>
+      is structured as three element-sized spaces adjacent in memory.
+      The <m:rbt /> instead uses between one and three 1-nodes.
+      The first 1-node, which I shall call the <e:jargon>representative-node</e:jargon>,
+      is representative of the analogous B-tree 3-node.
+      It is the target of links from parents.
+      It is accompanied by zero, one or two more 1-nodes, which I shall call <e:jargon>side-nodes</e:jargon>,
+      and which contain the other elements in the 3-node.
+    </p>
+
+    <p>
+      The representative-node's <code>left</code> and <code>right</code> pointers have two roles.
+      Where side-nodes exist,
+      the pointers point to these.
+      (Note this implies that, if the analogous 3-node is full,
+      the representative-node will hold the middle element.)
+      Where a side-node is absent,
+      the corresponding pointer instead points directly to the appropriate child representative-node.
+      <e:note>
+	Herein lies the space-saving and copy-reducing aspects of the <m:rbt />,
+	analogous to the benefits of the <m:bst /> over an array.
+      </e:note>
+      A side-node's pointers must point to a child representative-node.
+      (All pointers may instead be to <code>null</code> nodes, at which the tree terminates.)
+    </p>
+
+    <p>
+      How are we to know whether a pointer leads us to a side-node or a child representative-node?
+      The approach of Guibas and Sedgewick was to give the pointer a <e:jargon>color</e:jargon>:
+      pointers to representative-nodes are black,
+      and pointers to side-nodes are red.
+      In the literature, this has been transformed into the equivalent rule that
+      representative-nodes are colored black,
+      and side-nodes are colored red.
+      This has been shortened to simply <q>red nodes</q> and <q>black nodes</q>.
+    </p>
+
+    <p>
+      We can now state the properties of the <m:rbt />,
+      and relate them to the B-tree:
+    </p>
+
+    <ol>
+      <li>
+	<strong>A node is either red or black.</strong>
+	(A 1-node is either a representative-node or a side-node.)
+      </li>
+      <li>
+	<strong>The root is black,</strong>
+	as it is representative of the root 3-node.
+      </li>
+      <li>
+	<strong>Leaf nodes are black.</strong>
+	This includes <code>null</code> nodes
+	(which in practise can be represented by a single sentinel nil node).
+      </li>
+      <li>
+	<strong>Red nodes cannot have red children (the <q>red rule</q>).</strong>
+	This is because they must point to child representative-nodes
+	(pointing to another side-node would
+	extend the number of elements in a node to more than three).
+      </li>
+      <li>
+	<strong>For any node, all simple paths to a descendant leaf have the same number of black nodes (the <q>black rule</q>).</strong>
+	This number is the node's <e:jargon>black-height</e:jargon>.
+	This is equivalent to the B-tree rule that all leaves have the same depth.
+      </li>
+    </ol>
+
+    <p>
+      From the B-tree analogy,
+      it should already be evident that the <m:rbt /> enforces balance.
+      However, we can also see this from the last two <m:rbt /> properties.
+      Precisely, we can show that,
+      for any node, the longest path to a descendant leaf
+      is no more than double the length of the shortest path to a descendant leaf.
+      If the node has black-height <e:var n="h"/>,
+      then both the shortest and longest path consist of <e:var n="h"/> black nodes (by property 5), interspersed with red nodes.
+      The shortest path will contain no red nodes
+      (because excising one maintains the \RBt properties and makes the path shorter),
+      and therefore has length <e:var n="h"/>.
+      The longest path will contain one red node between each pair of black nodes
+      (because introducing another violates property 4),
+      and therefore has length 2<e:var n="h"/>−1.
+    </p>
+
+    <p>
+      <m:rbt /> operations feel like B-tree operations.
+      When inserting a new node, we color it red,
+      and insert it as we would in a <m:bst />.
+      Then, if its parent is black, we're done
+      (analogous to there being space in a leaf 3-node).
+      Otherwise, the parent is red, and we have violated the red rule.
+      We know the grandparent is black.
+      We check the color of the uncle.
+      If the uncle is red, we do a color swap on the parent, grandparent, and uncle,
+      and move up the tree to look for a possible red violation.
+      This is analogous to a 3-node being full, splitting it, and moving the median up.
+      However, if the uncle is black,
+      we do a single rotation on the grandparent and some recoloring, and stop.
+      This is analogous to there being free space <q>on the other side</q> of the 3-node.
+    </p>
+  </section>
+
+  <section>
+    <h4>Simplifications of the <m:rbt /></h4>
+
+    <p>
+      The standard <m:rbt /> is sometimes seen as overly complex.
+      More precisely,
+      the number of violating cases that the algorithms have to rectify
+      is seen as too large.
+      In response, there are simplifications of the standard <m:rbt />.
+      One is the AA-tree,
+      which has the additional requirement that
+      red nodes must be right children.
+      In the B-tree analogy, they are 2-3 trees.
+      This reduces seven cases to two.
+    </p>
+
+    <p>
+      Another is the Left-Leaning Red-Black tree,
+      introduced by Sedgewick.
+      In a similar spirit,
+      it reduces the number of cases,
+      enforcing that
+      no node may have a black left child and a red right child.
+      This means that, in the B-tree analogy,
+      a 3-node only has a single representation in the <m:rbt />.
+      Unlike the AA-tree, this is still analogous to a 2-3-4 tree.
+      The main advantage is code simplicity:
+      <code>insert</code> takes 33 lines <m:vs /> 150 lines.
+    </p>
+
+    <p>
+      I find these simplifications unsatisfying.
+      The gain in code simplicity is results in a loss of conceptual clarity.
+      More importantly, the <m:rbt /> algorithms can be drastically shortened
+      by tackling the symmetric cases using the same code,
+      while remaining semantically equivalent.
+      A simple technique,
+      that of Julienne Walker <e:cite>jsw</e:cite>,
+      uses a two-element array of child pointers
+      instead of a <code>left</code> and a <code>right</code> pointer, like so:
+
+      <pre>
+struct node {
+  int red, data;
+  struct node *link[2];
+};
+      </pre>
+    </p>
+
+    <p>
+      This allows the direction (left or right) to be parameterized,
+      encoded as either a <e:const n="0"/> or <e:const n="1"/>.
+      The direction can thus be reversed with with the C <code>!</code> operator.
+    </p>
+  </section>
+</section>

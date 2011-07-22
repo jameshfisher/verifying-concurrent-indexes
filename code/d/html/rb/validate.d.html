@@ -1,4 +1,4 @@
-<!doctype html><html><head><meta charset='utf-8' /></head><link rel='stylesheet' type='text/css' href='google-code-prettify/prettify.css' /><link rel='stylesheet' type='text/css' href='main.css' /><script type='text/javascript' src='google-code-prettify/prettify.js'></script><script type='text/javascript'>window.onload = function() { prettyPrint(); }</script><body><pre class='prettyprint'>module rb.validate;
+<section xmlns='http://www.w3.org/1999/xhtml' xmlns:xi='http://www.w3.org/2001/XInclude' xmlns:e='http://eegg.github.com/htmlx' xmlns:m='http://eegg.github.com/macro'><e:displaycode>module rb.validate;
 
 import rb.node;
 import rb.index;
@@ -27,11 +27,11 @@ TreeInfo treeType(Node * node, int min, int max) {
     o = TreeInfo(TreeType.Black, 0);
   }
   else {
-    if (node.value < min || node.value > max) {
+    if (node.value &lt; min || node.value &gt; max) {
       o = TreeInfo(TreeType.Invalid, 0);
     }
     else {
-      if (!node.black && (red(node.c[0]) || red(node.c[1]))) {
+      if (!node.black &amp;&amp; (red(node.c[0]) || red(node.c[1]))) {
         o = TreeInfo(TreeType.Invalid, 0);
       }
       else {
@@ -60,4 +60,4 @@ TreeInfo treeType(Node * node, int min, int max) {
 bool validate(rb.index.RbIndex i) {
   TreeInfo info = treeType(i.root, int.min, int.max);
   return info.type == TreeType.Black;
-}</pre></body></html>
+}&#160;</e:displaycode></section>

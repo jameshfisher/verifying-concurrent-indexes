@@ -1,4 +1,4 @@
-<!doctype html><html><head><meta charset='utf-8' /></head><link rel='stylesheet' type='text/css' href='google-code-prettify/prettify.css' /><link rel='stylesheet' type='text/css' href='main.css' /><script type='text/javascript' src='google-code-prettify/prettify.js'></script><script type='text/javascript'>window.onload = function() { prettyPrint(); }</script><body><pre class='prettyprint'>module rb.print;
+<section xmlns='http://www.w3.org/1999/xhtml' xmlns:xi='http://www.w3.org/2001/XInclude' xmlns:e='http://eegg.github.com/htmlx' xmlns:m='http://eegg.github.com/macro'><e:displaycode>module rb.print;
 
 import rb.node;
 import rb.index;
@@ -22,7 +22,7 @@ void printNode(Node * node, int depth = 0, string pre = "──") {
 
   if (node != null) {
     printNode(node.c[1], depth+1, "╭╴");
-    for (int i = depth; i > 0; i--) { write("  "); }
+    for (int i = depth; i &gt; 0; i--) { write("  "); }
     write(pre);
     writeColor(std.conv.text(node.value), (node.black ? "0": "31"));
     writeln();
@@ -32,4 +32,4 @@ void printNode(Node * node, int depth = 0, string pre = "──") {
 
 void print(RbIndex i) {
   printNode(i.root);
-}</pre></body></html>
+}&#160;</e:displaycode></section>

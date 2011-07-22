@@ -1,4 +1,4 @@
-<!doctype html><html><head><meta charset='utf-8' /></head><link rel='stylesheet' type='text/css' href='google-code-prettify/prettify.css' /><link rel='stylesheet' type='text/css' href='main.css' /><script type='text/javascript' src='google-code-prettify/prettify.js'></script><script type='text/javascript'>window.onload = function() { prettyPrint(); }</script><body><pre class='prettyprint'>module rb.remove;
+<section xmlns='http://www.w3.org/1999/xhtml' xmlns:xi='http://www.w3.org/2001/XInclude' xmlns:e='http://eegg.github.com/htmlx' xmlns:m='http://eegg.github.com/macro'><e:displaycode>module rb.remove;
 
 import rb.node;
 import rb.rotate;
@@ -12,43 +12,48 @@ Node * remove_push_down_iter(Node * root, int value) {
   Node * found = null;  // If we find the value on the way down, and it's not a leaf, we put the node here.
   Node * node = superroot;                      // `node` will descend the tree to a leaf.
   Node * parent = null, grandparent = null;     // The parent and grandparent of `node`.
-</pre>
-<div class='section'><pre class='indent'>&nbsp;&nbsp;</pre><div class='CommentParagraph'>We'll continue down the tree, after which `node` will be the dummy to remove the value from.
-Then if `found` is null, we can just remove `node`.  Otherwise, we move `node`'s value into `found`, then remove node.</div><div class='clear'></div></div>
-<pre class='prettyprint'></pre>
-<div class='section'><pre class='indent'>&nbsp;&nbsp;</pre><div class='CommentParagraph'>We ensure that before descending one level, we're not descending to a pseudo-node.</div><div class='clear'></div></div>
-<pre class='prettyprint'>
-  while (node.c[dir] != null) {</pre>
-<div class='section'><pre class='indent'>&nbsp;&nbsp;&nbsp;&nbsp;</pre><div class='CommentParagraph'>`dir` is the direction we need to go in next.
+&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;</pre><div class='CommentParagraph'>We'll continue down the tree, after which `node` will be the dummy to remove the value from.
+Then if `found` is null, we can just remove `node`.  Otherwise, we move `node`'s value into `found`, then remove node.</div></div>
+
+<div class='section'><pre class='indent'>&#160;&#160;</pre><div class='CommentParagraph'>We ensure that before descending one level, we're not descending to a pseudo-node.</div></div>
+<e:displaycode>
+  while (node.c[dir] != null) {&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='CommentParagraph'>`dir` is the direction we need to go in next.
 node != null.  node.c[dir] != null.  Unless on first iteration, node.c[dir] is guaranteed not an empty pseudonode.
-We're going to descend to node.c[dir], then ensure we can descend again.</div><div class='clear'></div></div>
-<pre class='prettyprint'></pre>
-<div class='section'><pre class='indent'>&nbsp;&nbsp;&nbsp;&nbsp;</pre><div class='CommentParagraph'>Start by descending one node to node.c[dir].
+We're going to descend to node.c[dir], then ensure we can descend again.</div></div>
+
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='CommentParagraph'>Start by descending one node to node.c[dir].
 The previous iteration sorted out that this is OK to do;
 unless there was no such previous iteration, in which case
 we started with `node` as the fake superroot,
-so the first real `node` we consider is the root.  Which might be an empty pseudonode.</div><div class='clear'></div></div>
-<pre class='prettyprint'></pre>
-<div class='section'><pre class='indent'>&nbsp;&nbsp;&nbsp;&nbsp;</pre><div class='CommentParagraph'>We have at least one iteration of this loop.</div><div class='clear'></div></div>
-<pre class='prettyprint'>
+so the first real `node` we consider is the root.  Which might be an empty pseudonode.</div></div>
+
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='CommentParagraph'>We have at least one iteration of this loop.</div></div>
+<e:displaycode>
     int last = dir;  // Store whether this iteration's `node` is a left or right child.
-</pre>
-<div class='section'><pre class='indent'>&nbsp;&nbsp;&nbsp;&nbsp;</pre><div class='CommentParagraph'>Descend.</div><div class='clear'></div></div>
-<pre class='prettyprint'>    grandparent = parent;
+&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='CommentParagraph'>Descend.</div></div>
+<e:displaycode>    grandparent = parent;
     parent = node;
     node = node.c[dir];
-</pre>
-<div class='section'><pre class='indent'>&nbsp;&nbsp;&nbsp;&nbsp;</pre><div class='CommentParagraph'>Now `node` is "this iteration's node".
+&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='CommentParagraph'>Now `node` is "this iteration's node".
 node != null.
 parent != null.  Might be the superroot.
-`node` is a non-empty pseudonode, or it is the root, which may be empty pnode.</div><div class='clear'></div></div>
-<pre class='prettyprint'>
-    dir = node.value < value; // Value is not in node.c[!dir].
-</pre>
-<div class='section'><pre class='indent'>&nbsp;&nbsp;&nbsp;&nbsp;</pre><div class='CommentParagraph'>save found node</div><div class='clear'></div></div>
-<pre class='prettyprint'>    if (node.value == value) {</pre>
-<div class='section'><pre class='indent'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</pre><div class='CommentParagraph'>value is here.  Its in-order predecessor, if it has one, is in node.c[0].</div><div class='clear'></div></div>
-<pre class='prettyprint'>      found = node;
+`node` is a non-empty pseudonode, or it is the root, which may be empty pnode.</div></div>
+<e:displaycode>
+    dir = node.value &lt; value; // Value is not in node.c[!dir].
+&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='CommentParagraph'>save found node</div></div>
+<e:displaycode>    if (node.value == value) {&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='CommentParagraph'>value is here.  Its in-order predecessor, if it has one, is in node.c[0].</div></div>
+<e:displaycode>      found = node;
     }
-</pre>
-<div class='section'><pr
+&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='CommentParagraph'>`found` might be null.
+If found == null, we did not set it, it is not in node, and it is not in node.c[!dir], so if it is in the tree then it is in node.c[dir].
+If found != null, either we just set it, or we set it on the path from the parent.  value is either in node, or node.c[dir] tree.</div></div>
+<e:displaycode>
+    if (!red(node) &amp;&amp; !red(node.c[dir])) {&#160;</e:displaycode>
+<div

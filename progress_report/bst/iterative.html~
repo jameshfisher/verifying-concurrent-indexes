@@ -1,0 +1,40 @@
+<section xmlns="http://www.w3.org/1999/xhtml"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xmlns:e="http://eegg.github.com/htmlx"
+	 xmlns:m="http://eegg.github.com/macro">
+  
+  <h3>Iterative <m:bst/> algorithms</h3>
+
+
+  <section>
+    <h4>Iterative <code>search</code></h4>
+
+    <xi:include href="../../code/d/html/bst/search/iterative.d.html" />
+  </section>
+
+  <section>
+    <h4>Iterative <code>insert</code></h4>
+
+    <xi:include href="../../code/d/html/bst/insert/iterative.d.html" />
+  </section>
+
+  <section>
+    <h4>Iterative <code>remove</code></h4>
+
+    <p>
+      Here's <code>removeMax</code>:
+
+      <xi:include href="../../code/d/html/bst/remove/removeMax/iterative.d.html" />
+    </p>
+
+    <p>
+      The <code>removeRoot</code> code is the same as in the recursive section.
+    </p>
+
+    <p>
+      Here's <code>remove</code>:
+
+      <xi:include href="../../code/d/html/bst/remove/iterative.d.html" />
+    </p>
+  </section>
+</section>

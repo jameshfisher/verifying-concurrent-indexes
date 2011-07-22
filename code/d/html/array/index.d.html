@@ -1,4 +1,4 @@
-<!doctype html><html><head><meta charset='utf-8' /></head><link rel='stylesheet' type='text/css' href='google-code-prettify/prettify.css' /><link rel='stylesheet' type='text/css' href='main.css' /><script type='text/javascript' src='google-code-prettify/prettify.js'></script><script type='text/javascript'>window.onload = function() { prettyPrint(); }</script><body><pre class='prettyprint'>/*
+<section xmlns='http://www.w3.org/1999/xhtml' xmlns:xi='http://www.w3.org/2001/XInclude' xmlns:e='http://eegg.github.com/htmlx' xmlns:m='http://eegg.github.com/macro'><e:displaycode>/*
   Braindead implementation of an index (in a given range)
   that's pretty much guaranteed to be correct.
   Used for testing against.
@@ -29,7 +29,7 @@ class ArrayIndex : index.Index {
 
   int[] contents() {
     auto keys = arr.keys;
-    sort!((a,b){return a < b;})(keys);
+    sort!((a,b){return a &lt; b;})(keys);
     return keys;
   }
-}</pre></body></html>
+}&#160;</e:displaycode></section>

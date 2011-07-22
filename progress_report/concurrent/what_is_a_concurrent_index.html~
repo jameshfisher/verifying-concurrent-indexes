@@ -1,0 +1,83 @@
+<section>
+  <h3>What is a concurrent index?</h3>
+
+  <p>
+    The previous algorithms and data structures
+    are designed for sequential access.
+    Performing concurrent operations on them results in undefined behavior.
+  </p>
+
+  <p>
+    One naive implementation of a concurrent index
+    might simply enforce that, at any one time,
+    at most one operation from $\Set{\IC{search}, \IC{insert}, \IC{remove}}$ is running.
+    A slightly better implementation
+    might restrict to either any number of \IC{read}s,
+    or one of $\Set{\IC{insert}, \IC{remove}}$.
+  </p>
+
+  <p>
+    This is still too restrictive:
+    looking at the various indexing algorithms,
+    many of them should, with minimal modification, permit
+    multiple concurrent \IC{insert} operations---the \BST, for example.
+    With no knowledge of implementation,
+    what restrictions should we expect from an index?
+    We might make the observation that, conceptually,
+    the keys in an index are independent.
+    The fact that key \IC{k} is in the index or not,
+    or that it has some value in the index,
+    provides no information about key \IC{l}
+    (where $\IC{k} ≠ \IC{l}$).
+    Therefore, we might expect restrictions to be placed only individual keys,
+    rather than on the entire index.
+    For example, we might have the only restriction that,
+    for any key \IC{k},
+    at most one operation from $\Set{\IC{search(k)}, \IC{insert(k, \_)}, \IC{remove(k)}}$ is running.
+  </p>
+
+  <section>
+    <h4>A concurrent index API specification</h4>
+
+    <table>
+      <tbody>
+	<tr>
+	  <!-- search where key is in the index -->
+	  <td>\Cond{\Pred{in}{\IC{i}, \IC{k}, v}}</td>
+	  <td>\IC{r = i->search(k);}</td>
+	  <td>\Cond{\Pred{in}{\IC{i}, \IC{k}, v} \Fand \IC{r} = v}</td>
+	</tr>
+	<tr>
+	  <!-- search where key is not in the index -->
+	  <td>\Cond{\Pred{out}{\IC{i}, \IC{k}}}</td>
+	  <td>\IC{r = i->search(k);}</td>
+	  <td>\Cond{\Pred{out}{\IC{i}, \IC{k}} \Fand \IC{r} = \nullref}</td>
+	</tr>
+	<tr>
+	  <!-- insert where key is in the index -->
+	  <td>\Cond{\Pred{in}{\IC{i}, \IC{k}, v\prime}}</td>
+	  <td>\IC{i->insert(k, v);}</td>
+	  <td>\Cond{\Pred{in}{\IC{i}, \IC{k}, v\prime}}</td>
+	</tr>
+	<tr>
+	  <!-- insert where key is not in the index -->
+	  <td>\Cond{\Pred{out}{\IC{i}, \IC{k}}}</td>
+	  <td>\IC{i->insert(k, v);}</td>
+	  <td>\Cond{\Pred{in}{\IC{i}, \IC{k}, \IC{v}}}</td>
+	</tr>
+	<tr>
+	  <!-- remove where key is in the index -->
+	  <td>\Cond{\Pred{in}{\IC{i}, \IC{k}, v}}</td>
+	  <td>\IC{i->remove(k);}</td>
+	  <td>\Cond{\Pred{out}{\IC{i}, \IC{k}}}</td>
+	</tr>
+	<tr>
+	  <!-- remove where key is not in the index -->
+	  <td>\Cond{\Pred{out}{\IC{i}, \IC{k}}}</td>
+	  <td>\IC{i->remove(k);}</td>
+	  <td>\Cond{\Pred{out}{\IC{i}, \IC{k}}}</td>
+	</tr>
+      </tbody>
+    </table>
+  </section>
+</section>

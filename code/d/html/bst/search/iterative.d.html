@@ -1,0 +1,63 @@
+<section xmlns='http://www.w3.org/1999/xhtml' xmlns:xi='http://www.w3.org/2001/XInclude' xmlns:e='http://eegg.github.com/htmlx' xmlns:m='http://eegg.github.com/macro'><e:displaycode>module bst.search.iterative;
+
+import bst.node;
+import bst.descend;
+
+
+bool search(Node* root, in int value) {&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Function precondition.</div>Tree(root, S)</div></div>
+<e:displaycode>
+  bool found = false;
+&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Assignment.
+We're going to return `found`.
+That is, the following loop establishes `found ↔ (value ∈ S)`.</div>Tree(root, S) ∧ ¬found</div></div>
+<e:displaycode>
+  Node* i = root;
+&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Assignment.</div>Tree(root, S) ∧ ¬found ∧<br /><span class='assertionIndent'> </span>Tree(i, S)</div></div>
+
+<div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>a ↔ a</div>Tree(root, S) ∧ ¬found ∧<br /><span class='assertionIndent'> </span>Tree(i, S) ∧ (value ∈ S) ↔ (value ∈ S)</div></div>
+
+<div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>∃I</div>Tree(root, S) ∧ ¬found ∧<br /><span class='assertionIndent'> </span>∃Q. Tree(i, Q) ∧ (value ∈ Q) ↔ (value ∈ S)</div></div>
+
+<div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>false → anything (rule?).
+This is our loop invariant.</div>Tree(root, S) ∧<br /><span class='assertionIndent'> </span>∃Q. Tree(i, Q) ∧ (value ∈ Q) ↔ (value ∈ S)<br /><span class='assertionIndent'> </span>∧ found → (value ∈ S)</div></div>
+
+<div class='section'><pre class='indent'>&#160;&#160;</pre><div class='CommentParagraph'>The size of Q strictly decreases with each iteration,
+and the size of Q &gt;= 0, as the empty set is the smallest possible set.
+This shows that the loop terminates.</div></div>
+<e:displaycode>
+  while (i &amp;&amp; !found) {&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Loop invariant, and assert while-condition.</div>Tree(root, S) ∧<br /><span class='assertionIndent'> </span>∃Q. Tree(i, Q) ∧ (value ∈ Q) ↔ (value ∈ S)<br /><span class='assertionIndent'> </span>∧ found → (value ∈ S)<br /><span class='assertionIndent'> </span>∧ root ∧ ¬found</div></div>
+
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Non-null pointer is non-empty tree (lemma)</div>Tree(root, S) ∧<br /><span class='assertionIndent'> </span>∃Q. NonEmptyTree(i, Q) ∧ (value ∈ Q) ↔ (value ∈ S)<br /><span class='assertionIndent'> </span>∧ found → (value ∈ S)<br /><span class='assertionIndent'> </span>∧ ¬found</div></div>
+
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Open NonEmptyTree</div>Tree(root, S) ∧<br /><span class='assertionIndent'> </span>∃Q, v. TopOfTree(i, v, Q) ∧ (value ∈ Q) ↔ (value ∈ S)<br /><span class='assertionIndent'> </span>∧ found → (value ∈ S)<br /><span class='assertionIndent'> </span>∧ ¬found</div></div>
+<e:displaycode>
+    if (value == i.value) {&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Assert if-condition.  Equality.</div>Tree(root, S) ∧<br /><span class='assertionIndent'> </span>∃Q. TopOfTree(i, value, Q) ∧ (value ∈ Q) ↔ (value ∈ S)<br /><span class='assertionIndent'> </span>∧ found → (value ∈ S)<br /><span class='assertionIndent'> </span>∧ ¬found</div></div>
+
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Root value in set (lemma).</div>Tree(root, S) ∧<br /><span class='assertionIndent'> </span>∃Q.<br /><span class='assertionIndent'> &#160;&#160;</span>TopOfTree(i, value, Q) ∧<br /><span class='assertionIndent'> &#160;&#160;</span>(value ∈ Q) ↔ (value ∈ S) ∧<br /><span class='assertionIndent'> &#160;&#160;</span>value ∈ Q<br /><span class='assertionIndent'> </span>∧ found → (value ∈ S)<br /><span class='assertionIndent'> </span>∧ ¬found</div></div>
+
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>→.  Weaken TopOfTree.</div>Tree(root, S) ∧<br /><span class='assertionIndent'> </span>∃Q. Tree(i, Q) ∧ (value ∈ Q) ↔ (value ∈ S)<br /><span class='assertionIndent'> </span>value ∈ S ∧ ¬found</div></div>
+<e:displaycode>
+      found = true;
+&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Assignment.</div>Tree(root, S) ∧<br /><span class='assertionIndent'> </span>∃Q. Tree(i, Q) ∧ (value ∈ Q) ↔ (value ∈ S)<br /><span class='assertionIndent'> </span>value ∈ S ∧ found</div></div>
+
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>→.  Re-establish invariant.</div>Tree(root, S) ∧<br /><span class='assertionIndent'> </span>∃Q. Tree(i, Q) ∧ (value ∈ Q) ↔ (value ∈ S)<br /><span class='assertionIndent'> </span>∧ found → (value ∈ S)</div></div>
+<e:displaycode>    }
+    else {&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Assert else-condition.  Equality.</div>Tree(root, S) ∧<br /><span class='assertionIndent'> </span>∃Q, v. TopOfTree(i, v, Q) ∧ (value ∈ Q) ↔ (value ∈ S) ∧ v ≠ value<br /><span class='assertionIndent'> </span>∧ found → (value ∈ S)<br /><span class='assertionIndent'> </span>∧ ¬found</div></div>
+<e:displaycode>
+      Node* next = descend(i, value);
+&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Assert else-condition.  Equality.</div>Tree(root, S) ∧<br /><span class='assertionIndent'> </span>∃Q, v. TopOfTree(i, v, Q) ∧ (value ∈ Q) ↔ (value ∈ S) ∧ v ≠ value<br /><span class='assertionIndent'> </span>∧ found → (value ∈ S)<br /><span class='assertionIndent'> </span>∧ ¬found</div></div>
+<e:displaycode>
+      i = next;
+    }
+  }
+  return found;
+}
+&#160;</e:displaycode></section>

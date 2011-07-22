@@ -1,0 +1,23 @@
+<section xmlns="http://www.w3.org/1999/xhtml"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xmlns:e="http://eegg.github.com/htmlx"
+	 xmlns:m="http://eegg.github.com/macro">
+
+  <h3>Some predicate definitions</h3>
+
+  <p>
+    Earlier, in our index API specification,
+    we introduced the predicate <e:pred name="Index"><code>i</code>, <e:const n="I" /></e:pred>.
+    This simply says that <q><code>i</code> represents the index <e:const n="I"/></q>.
+    This was deliberately <em>abstract</em>,
+    so that individual index implementations could define it themselves.
+    Now we've looked at a few index data structures,
+    how can we formally describe them?
+  </p>
+
+  <p>
+    Our main tool here is <e:jargon>separation logic</e:jargon>,
+    an extension of <e:jargon>Hoare logic</e:jargon> with practical operators to describe the state of the heap.
+    Here, I only specify the set versions of the data structures.
+  </p>
+</section>

@@ -1,0 +1,25 @@
+<section xmlns='http://www.w3.org/1999/xhtml' xmlns:xi='http://www.w3.org/2001/XInclude' xmlns:e='http://eegg.github.com/htmlx' xmlns:m='http://eegg.github.com/macro'><e:displaycode>module bst.remove.recursive;
+
+import bst.node;
+import bst.remove.removeRoot;
+
+
+Node* remove(Node* root, int value) {
+  Node* o;
+
+  if (!root) {
+    o = null;
+  }
+  else {
+    if (value == root.value) {
+      o = removeRoot(root);
+    }
+    else {
+      o = root;
+      int dir = value &gt; root.value;
+      o.c[dir] = remove(o.c[dir], value);
+    }
+  }
+
+  return o;
+}&#160;</e:displaycode></section>

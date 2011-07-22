@@ -1,0 +1,38 @@
+<section xmlns='http://www.w3.org/1999/xhtml' xmlns:xi='http://www.w3.org/2001/XInclude' xmlns:e='http://eegg.github.com/htmlx' xmlns:m='http://eegg.github.com/macro'><e:displaycode>module bst.remove.iterative;
+
+import bst.node;
+import bst.remove.removeRoot;
+
+
+Node * remove(Node * root, int value) {
+  Node * o;
+  if (!root) {
+    o = null;
+  }
+  else if (value == root.value) {
+    o = removeRoot(root);
+  }
+  else {
+    o = root;
+
+    Node* p = o;
+    int dir = value &gt; p.value;
+    Node* i = p.c[dir];
+&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='CommentParagraph'>iterate until i is the node to delete
+then set link in p to removeRoot(i).</div></div>
+<e:displaycode>    while (i &amp;&amp; i.value != value) {
+      p = i;
+      dir = value &gt; p.value;
+      i = i.c[dir];
+    }
+    assert(!i || i.value == value);
+    assert(dir == (value &gt; p.value));
+
+    if (i) {
+      p.c[dir] = removeRoot(i);
+    }
+  }
+
+  return o;
+}&#160;</e:displaycode></section>

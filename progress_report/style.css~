@@ -1,0 +1,6 @@
+div.note {
+    float: right;
+    width: 10em;
+    margin-right: -12em;
+    font-size: 0.8em;
+}

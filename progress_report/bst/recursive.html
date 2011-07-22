@@ -1,0 +1,50 @@
+<section xmlns="http://www.w3.org/1999/xhtml"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xmlns:e="http://eegg.github.com/htmlx"
+	 xmlns:m="http://eegg.github.com/macro">
+  
+  <h3>Recursive <m:bst/> algorithms</h3>
+
+  <section>
+    <h4><code>descend</code>: an algorithm to move down the tree</h4>
+
+    The first algorithm I describe is an auxiliary one that selects a subtree pointer
+    depending on a value we are searching for.
+
+    <xi:include href="../../code/d/html/bst/descend.d.html" />
+  </section>
+
+  <section>
+    <h4>Recursive <code>search</code></h4>
+
+    <xi:include href="../../code/d/html/bst/search/recursive.d.html" />
+  </section>
+
+  <section>
+    <h4>Recursive <code>insert</code></h4>
+
+    <xi:include href="../../code/d/html/bst/insert/recursive.d.html" />
+  </section>
+
+  <section>
+    <h4>Recursive <code>remove</code></h4>
+
+    <p>
+      Here's <code>removeMax</code>:
+
+      <xi:include href="../../code/d/html/bst/remove/removeMax/recursive.d.html" />
+    </p>
+
+    <p>
+      Here's <code>removeRoot</code>:
+
+      <xi:include href="../../code/d/html/bst/remove/removeRoot.d.html" />
+    </p>
+
+    <p>
+      Here's <code>remove</code>:
+
+      <xi:include href="../../code/d/html/bst/remove/recursive.d.html" />
+    </p>
+  </section>
+</section>

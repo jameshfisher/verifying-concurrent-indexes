@@ -1,0 +1,85 @@
+<section xmlns="http://www.w3.org/1999/xhtml"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xmlns:e="http://eegg.github.com/htmlx"
+	 xmlns:m="http://eegg.github.com/macro">
+
+  <h3>Indexes in the wild</h3>
+
+  <p>
+    Performance of the many index algorithms is well-covered.
+    However, not all are commonly in use.
+    A survey of what's-used-where
+    should shed light on
+    what characteristics are considered most important.
+  </p>
+
+  <e:descriptionlist>
+    <e:li>
+      <e:item>C++ Standard Template Library</e:item>
+      <e:description>
+	The GNU implementation
+	uses <m:rbt />s for sets and maps.<e:cite>libstdcpp_stl_tree_h. <q>The insertion and deletion algorithms are based on those in Cormen, Leiserson, and Rivest, <i>Introduction to Algorithms</i></q>.
+	  Used to implement <code>std::set</code>, <code>std::multiset</code>, <code>std::map</code>, and <code>std::multimap</code>.</e:cite>
+      </e:description>
+    </e:li>
+    <e:li>
+      <e:item>Java Class Library</e:item>
+      <e:description>
+	<code>TreeMap</code> uses a <m:rbt />.
+	<e:note>
+	  <e:cite>TreeMap_java</e:cite>: <q>This class provides a red-black tree implementation of the SortedMap interface.  <e:lacuna /> The algorithms are adopted from Corman, Leiserson, and Rivest's <i>Introduction to Algorithms</i>.</q>
+	</e:note>
+      </e:description>
+    </e:li>
+    <e:li>
+      <e:item>.NET standard library</e:item>
+      <e:description>
+	This uses a <m:rbt /> for its <code>SortedDictionary</code> and <code>SortedSet</code> classes,
+	at least in the Mono Project implementation<e:cite>RBTree_cs</e:cite>.
+      </e:description>
+    </e:li>
+    <e:li>
+      <e:item>Linux kernel</e:item>
+      <e:description>
+	This uses <m:rbt />s for I/O scheduling and for virtual memory.
+	It uses a pseudo-templating style in C, so there's only one implementation: <code>lib/rbtree.c</code>.
+	<e:note>
+	  <e:cite>linux_kernel_lib</e:cite>.
+	  In the same directory one will find
+	  <code>btree.c</code>, implementing a B+tree,
+	  and <code>radix-tree.c</code>, implementing a radix tree.
+	</e:note>
+      </e:description>
+    </e:li>
+    <e:li>
+      <e:item>ext3 filesystem</e:item>
+      <e:description>This uses a <m:rbt /> for directory entries.</e:description>
+    </e:li>
+    <e:li>
+      <e:item>Python</e:item>
+      <e:description>
+	The <q>CPython</q> implementation uses a hash.
+	<e:note>
+	  <e:cite>python_dictobject_c</e:cite>.
+	  In the same directory one will also find <code>dictnotes.txt</code>, an in-depth discussion on optimization of the Python dictionary structure.
+	</e:note>
+      </e:description>
+    </e:li>
+    <e:li>
+      <e:item>Ruby</e:item>
+      <e:description>This uses a hashing algorithm for its index.</e:description>
+    </e:li>
+    <e:li>
+      <e:item>mobile telephones ...</e:item>
+      <e:description></e:description>
+    </e:li>
+  </e:descriptionlist>
+
+  <p>
+    It seems that
+    most standard libraries
+    and low-level codebases
+    prefer the <m:rbt />
+    to the many alternatives.
+  </p>
+</section>

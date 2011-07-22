@@ -1,0 +1,17 @@
+<section xmlns='http://www.w3.org/1999/xhtml' xmlns:xi='http://www.w3.org/2001/XInclude' xmlns:e='http://eegg.github.com/htmlx' xmlns:m='http://eegg.github.com/macro'><e:displaycode>module rb.insert.insert;
+
+import rb.node;
+
+static import rb.insert.recursive;
+static import rb.insert.iterative;
+
+const bool recursive = false;
+
+Node* insert(Node* root, int value) {
+  static if (recursive) {
+    return rb.insert.recursive.insert(root, value);
+  }
+  else {
+    return rb.insert.iterative.insert(root, value);
+  }
+}&#160;</e:displaycode></section>

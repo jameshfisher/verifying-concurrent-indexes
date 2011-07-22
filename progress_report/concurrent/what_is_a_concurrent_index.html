@@ -1,0 +1,115 @@
+<section xmlns="http://www.w3.org/1999/xhtml"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xmlns:e="http://eegg.github.com/htmlx"
+	 xmlns:m="http://eegg.github.com/macro">
+
+  <h3>What is a concurrent index?</h3>
+
+  <p>
+    The previous algorithms and data structures
+    are designed for sequential access.
+    Performing concurrent operations on them results in undefined behavior.
+  </p>
+
+  <p>
+    One naive implementation of a concurrent index
+    might simply enforce that, at any one time,
+    at most one operation from <e:set><code>search</code>, <code>insert</code>, <code>remove</code></e:set> is running.
+    A slightly better implementation
+    might restrict to either any number of <code>read</code>s,
+    or one of <e:set><code>insert</code>, <code>remove</code></e:set>.
+  </p>
+
+  <p>
+    This is still too restrictive:
+    looking at the various indexing algorithms,
+    many of them should, with minimal modification, permit
+    multiple concurrent <code>insert</code> operations—the <m:bst />, for example.
+    With no knowledge of implementation,
+    what restrictions should we expect from an index?
+    We might make the observation that, conceptually,
+    the keys in an index are independent.
+    The fact that key <code>k</code> is in the index or not,
+    or that it has some value in the index,
+    provides no information about key <code>l</code>
+    (where <code>k</code> ≠  <code>l</code>).
+    Therefore, we might expect restrictions to be placed only individual keys,
+    rather than on the entire index.
+    For example, we might have the only restriction that,
+    for any key <code>k</code>,
+    at most one operation from <e:set><code>search(k)</code>, <code>insert(k, _)</code>, <code>remove(k)</code></e:set> is running.
+  </p>
+
+  <section>
+    <h4>A concurrent index API specification</h4>
+
+    <table>
+      <tbody>
+	<tr>
+	  <!-- search where key is in the index -->
+	  <td><e:cond><e:pred name="In"><code>i</code>, <code>k</code>, <e:var n="v"/></e:pred></e:cond></td>
+	  <td><code>r = i->search(k);</code></td>
+	  <td>
+	    <e:cond>
+	      <e:and>
+		<e:fst>
+		  <e:pred name="In"><code>i</code>, <code>k</code>, <e:var n="v"/></e:pred>
+		</e:fst>
+		<e:snd>
+		<e:eq>
+		  <e:fst><code>r</code></e:fst>
+		  <e:snd><e:var n="v"/></e:snd>
+		</e:eq>
+		</e:snd>
+	      </e:and>
+	    </e:cond>
+	  </td>
+	</tr>
+	<tr>
+	  <!-- search where key is not in the index -->
+	  <td><e:cond><e:pred name="Out"><code>i</code>, <code>k</code></e:pred></e:cond></td>
+	  <td><code>r = i->search(k);</code></td>
+	  <td>
+	    <e:cond>
+	      <e:and>
+		<e:fst>
+		  <e:pred name="Out"><code>i</code>, <code>k</code></e:pred>
+		</e:fst>
+		<e:snd>
+		  <e:eq>
+		    <e:fst><code>r</code></e:fst>
+		    <e:snd><code>null</code></e:snd>
+		  </e:eq>
+		</e:snd>
+	      </e:and>
+	    </e:cond>
+	  </td>
+	</tr>
+	<tr>
+	  <!-- insert where key is in the index -->
+	  <td><e:cond><e:pred name="In"><code>i</code>, <code>k</code>, <e:var n="v′"/></e:pred></e:cond></td>
+	  <td><code>i->insert(k, v);</code></td>
+	  <td><e:cond><e:pred name="In"><code>i</code>, <code>k</code>, <e:var n="v′"/></e:pred></e:cond></td>
+	</tr>
+	<tr>
+	  <!-- insert where key is not in the index -->
+	  <td><e:cond><e:pred name="Out"><code>i</code>, <code>k</code></e:pred></e:cond></td>
+	  <td><code>i->insert(k, v);</code></td>
+	  <td><e:cond><e:pred name="In"><code>i</code>, <code>k</code>, <code>v</code></e:pred></e:cond></td>
+	</tr>
+	<tr>
+	  <!-- remove where key is in the index -->
+	  <td><e:cond><e:pred name="In"><code>i</code>, <code>k</code>, <e:var n="v"/></e:pred></e:cond></td>
+	  <td><code>i->remove(k);</code></td>
+	  <td><e:cond><e:pred name="Out"><code>i</code>, <code>k</code></e:pred></e:cond></td>
+	</tr>
+	<tr>
+	  <!-- remove where key is not in the index -->
+	  <td><e:cond><e:pred name="Out"><code>i</code>, <code>k</code></e:pred></e:cond></td>
+	  <td><code>i->remove(k);</code></td>
+	  <td><e:cond><e:pred name="Out"><code>i</code>, <code>k</code></e:pred></e:cond></td>
+	</tr>
+      </tbody>
+    </table>
+  </section>
+</section>

@@ -1,0 +1,9 @@
+<section>
+  <h2>Concurrent indexes</h2>
+
+\input{concurrent/what_is_a_concurrent_index}
+\input{concurrent/concurrent_index_algorithms}
+\input{concurrent/concurrent_indexes_in_the_wild}
+\input{concurrent/some_predicate_definitions}
+
+</section>

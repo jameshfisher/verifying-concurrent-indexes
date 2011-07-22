@@ -1,0 +1,82 @@
+<section xmlns="http://www.w3.org/1999/xhtml"
+	 xmlns:xi="http://www.w3.org/2001/XInclude">
+
+  <h3>Indexes in the wild</h3>
+
+  <p>
+    Performance of the many index algorithms is well-covered.
+    However, not all are commonly in use.
+    A survey of what's-used-where
+    should shed light on
+    what characteristics are considered most important.
+  </p>
+
+  <e:descriptionlist>
+    <e:li>
+      <e:item>C++ Standard Template Library</e:item>
+      <e:description>
+	The GNU implementation
+	uses Red-Black trees for sets and maps.\footnotemark
+      </e:description>
+
+      \footnotetext{\cite{libstdcpp_stl_tree_h}.
+      \enquote{The insertion and deletion algorithms are based on those in Cormen, Leiserson, and Rivest, \textit{Introduction to Algorithms}}.
+      Used to implement \IC{std::set}, \IC{std::multiset}, \IC{std::map}, and \IC{std::multimap}.
+      }
+    </e:li>
+    <e:li>
+      <e:item>Java Class Library</e:item>
+      <e:description>\IC{TreeMap} uses a \RBt.\footnotemark</e:description>
+
+      \footnotetext{\cite{TreeMap_java}: \enquote{This class provides a red-black tree implementation of the SortedMap interface.  \lacuna The algorithms are adopted from Corman, Leiserson, and Rivest's \textit{Introduction to Algorithms}.}}
+    </e:li>
+    <e:li>
+      <e:item>.NET standard library</e:item>
+      <e:description>
+	This uses a \RBt for its \IC{SortedDictionary} and \IC{SortedSet} classes,
+	at least in the Mono Project implementation\cite{RBTree_cs}.
+      </e:description>
+    </e:li>
+    <e:li>
+      <e:item>Linux kernel</e:item>
+      <e:description>
+	This uses \RBts for I/O scheduling and for virtual memory.
+	It uses a pseudo-templating style in C, so there's only one implementation: \IC{lib/rbtree.c}.\footnotemark
+
+	\footnotetext{
+	\cite{linux_kernel_lib}.
+	In the same directory one will find
+	\texttt{btree.c}, implementing a B+tree,
+	and \texttt{radix-tree.c}, implementing a radix tree.
+	}
+      </e:description>
+    </e:li>
+    <e:li>
+      <e:item>ext3 filesystem</e:item>
+      <e:description>This uses a Red-Black tree for directory entries.</e:description>
+    </e:li>
+    <e:li>
+      <e:item>Python</e:item>
+      <e:description>The `CPython' implementation uses a hash.\footnotemark
+
+	\footnotetext{\cite{python_dictobject_c}.  In the same directory one will also find \texttt{dictnotes.txt}, an in-depth discussion on optimization of the Python dictionary structure.}
+      </e:description>
+    </e:li>
+    <e:li>
+      <e:item>Ruby</e:item>
+      <e:description>This uses a hashing algorithm for its index.</e:description>
+    </e:li>
+    <e:li>
+      <e:item>mobile telephones ...</e:item>
+      <e:description></e:description>
+    </e:li>
+  </e:descriptionlist>
+
+  <p>
+    It seems that
+    most standard libraries
+    and low-level codebases
+    prefer the \RBt
+    to the many alternatives.
+  </p>
+</section>

@@ -1,0 +1,78 @@
+<section xmlns='http://www.w3.org/1999/xhtml' xmlns:xi='http://www.w3.org/2001/XInclude' xmlns:e='http://eegg.github.com/htmlx' xmlns:m='http://eegg.github.com/macro'><e:displaycode>module bst.remove.removeMax.recursive;
+
+
+import bst.node;
+import bst.remove.removeMax.RemoveMaxRet;
+
+import std.stdio;
+
+RemoveMaxRet removeMax(Node* root) {&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>We can only remove the maximum from a non-empty tree!</div>NonEmptyTree(root, S)</div></div>
+<e:displaycode>
+  assert(root != null);
+&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Expand NonEmptyTree(root).</div>∃v. TopOfTree(root, v, S).</div></div>
+
+<div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Expand TopOfTree(root, v, S).</div>∃v,l,r,L,R.<br /><span class='assertionIndent'> &#160;&#160;</span>root↦v,l,r<br /><span class='assertionIndent'> &#160;&#160;</span>∗ Tree(l, L)<br /><span class='assertionIndent'> &#160;&#160;</span>∗ Tree(r, R)<br /><span class='assertionIndent'> &#160;&#160;</span>∧ Compose(L, v, R, S).</div></div>
+<e:displaycode>
+  auto r = root.c[1];
+&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Take `r` out of quantification.</div>∃v,l,L,R.<br /><span class='assertionIndent'> &#160;&#160;</span>root↦v,l,r<br /><span class='assertionIndent'> &#160;&#160;</span>∗ Tree(l, L)<br /><span class='assertionIndent'> &#160;&#160;</span>∗ Tree(r, R)<br /><span class='assertionIndent'> &#160;&#160;</span>∧ Compose(L, v, R, S).</div></div>
+<e:displaycode>
+
+&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;</pre><div class='CommentParagraph'>We're going to put the return values here.</div></div>
+<e:displaycode>  int max;
+  Node* newRoot;
+
+  if (!r) {&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Assert if-condition.  Discard EmptyTree.</div>∃v,l,L.<br /><span class='assertionIndent'> &#160;&#160;</span>root↦v,l,null<br /><span class='assertionIndent'> &#160;&#160;</span>∗ Tree(l, L)<br /><span class='assertionIndent'> &#160;&#160;</span>∧ Compose(L, v, ∅, S).</div></div>
+
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Found-max (lemma on Compose).  Discard Compose.</div>∃v,l,L.<br /><span class='assertionIndent'> &#160;&#160;</span>root↦v,l,null<br /><span class='assertionIndent'> &#160;&#160;</span>∗ Tree(l, L)<br /><span class='assertionIndent'> &#160;&#160;</span>∧ v∈S ∧ ∀x∈L. x &lt; v ∧ L = S - {v}.</div></div>
+<e:displaycode>
+    max = root.value;
+    newRoot = root.c[0];
+&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Assignment (twice).</div>∃L.<br /><span class='assertionIndent'> &#160;&#160;</span>root↦max,newRoot,null<br /><span class='assertionIndent'> &#160;&#160;</span>∗ Tree(newRoot, L)<br /><span class='assertionIndent'> &#160;&#160;</span>∧ max∈S ∧ ∀x∈L. x &lt; max ∧ L = S - {max}.</div></div>
+<e:displaycode>
+    delete root;
+&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>`root` is dangling.  Rename bound variable.
+This gives our function postcondition.</div>∃T.<br /><span class='assertionIndent'> &#160;&#160;</span>Tree(newRoot, T)<br /><span class='assertionIndent'> &#160;&#160;</span>∧ max∈S ∧ ∀x∈T. x &lt; max ∧ T = S - {max}.</div></div>
+<e:displaycode>  }
+  else {&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Negate if-condition.</div>∃v,l,L,R.<br /><span class='assertionIndent'> &#160;&#160;</span>root↦v,l,r<br /><span class='assertionIndent'> &#160;&#160;</span>∗ Tree(l, L)<br /><span class='assertionIndent'> &#160;&#160;</span>∗ Tree(r, R)<br /><span class='assertionIndent'> &#160;&#160;</span>∧ Compose(L, v, R, S)<br /><span class='assertionIndent'> &#160;&#160;</span>∧ r.</div></div>
+
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Non-null pointer is non-empty tree (lemma).</div>∃v,l,L,R.<br /><span class='assertionIndent'> &#160;&#160;</span>root↦v,l,r<br /><span class='assertionIndent'> &#160;&#160;</span>∗ Tree(l, L)<br /><span class='assertionIndent'> &#160;&#160;</span>∗ NonEmptyTree(r, R)<br /><span class='assertionIndent'> &#160;&#160;</span>∧ Compose(L, v, R, S).</div></div>
+<e:displaycode>
+    auto d = removeMax(r);
+    auto rightMax = d.max;
+    auto rightRoot = d.root;
+&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>removeMax consumes NonEmptyTree(r, R).  `r` is now dangling.</div>∃v,l,L,R,N.<br /><span class='assertionIndent'> &#160;&#160;</span>root↦v,l,r<br /><span class='assertionIndent'> &#160;&#160;</span>∗ Tree(l, L)<br /><span class='assertionIndent'> &#160;&#160;</span>∗ Tree(rightRoot, N)<br /><span class='assertionIndent'> &#160;&#160;</span>∧ Compose(L, v, R, S)<br /><span class='assertionIndent'> &#160;&#160;</span>∧ rightMax∈R ∧ ∀x∈N. x &lt; rightMax ∧ N = R - {rightMax}.</div></div>
+<e:displaycode>
+    root.c[1] = rightRoot;
+&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Assignment.</div>∃v,l,L,R,N.<br /><span class='assertionIndent'> &#160;&#160;</span>root↦v,l,rightRoot<br /><span class='assertionIndent'> &#160;&#160;</span>∗ Tree(l, L)<br /><span class='assertionIndent'> &#160;&#160;</span>∗ Tree(rightRoot, N)<br /><span class='assertionIndent'> &#160;&#160;</span>∧ Compose(L, v, R, S)<br /><span class='assertionIndent'> &#160;&#160;</span>∧ rightMax∈R ∧ ∀x∈N. x &lt; rightMax ∧ N = R - {rightMax}.</div></div>
+
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Close TopOfTree.</div>∃v.<br /><span class='assertionIndent'> &#160;&#160;</span>TopOfTree(root, v, S - {rightMax})<br /><span class='assertionIndent'> &#160;&#160;</span>∧ rightMax∈S ∧ ∀x∈(S-{rightMax}). x &lt; rightMax.</div></div>
+
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Introduce quantification on S - {rightMax}.</div>∃v, T.<br /><span class='assertionIndent'> &#160;&#160;</span>TopOfTree(root, v, T)<br /><span class='assertionIndent'> &#160;&#160;</span>∧ rightMax∈S ∧ ∀x∈T. x &lt; rightMax ∧ T = S - {rightMax}.</div></div>
+
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Close NonEmptyTree.</div>∃T.<br /><span class='assertionIndent'> &#160;&#160;</span>NonEmptyTree(root, T)<br /><span class='assertionIndent'> &#160;&#160;</span>∧ rightMax∈S ∧ ∀x∈T. x &lt; rightMax ∧ T = S - {rightMax}.    </div></div>
+<e:displaycode>
+    max = rightMax;
+    newRoot = root;
+&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Assignment.  Gives postcondition.</div>∃T.<br /><span class='assertionIndent'> &#160;&#160;</span>Tree(newRoot, T)<br /><span class='assertionIndent'> &#160;&#160;</span>∧ max∈S ∧ ∀x∈T. x &lt; max ∧ T = S - {max}.</div></div>
+<e:displaycode>  }
+&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Postcondition of both if branches.  
+Function postcondition.
+`max` is the maximum element in `S`,
+and `newRoot` represents `S` with `max` subtracted.</div>∃T.<br /><span class='assertionIndent'> &#160;&#160;</span>Tree(newRoot, T)<br /><span class='assertionIndent'> &#160;&#160;</span>∧ max∈S ∧ ∀x∈T. x &lt; max ∧ T = S - {max}.</div></div>
+<e:displaycode>
+
+  RemoveMaxRet o = {max: max, root: newRoot};
+  return o;
+}&#160;</e:displaycode></section>

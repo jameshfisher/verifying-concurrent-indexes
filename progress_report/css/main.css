@@ -1,0 +1,73 @@
+
+pre.prettyprint {
+  font-family: "Inconsolata";
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+div.section {
+  overflow: auto;
+}
+
+div.section pre.indent {
+  float: left;
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+div.section div.AssertionParagraph {
+  float: left;
+  font-family: "Minion Pro";
+  padding: 6px 8px 0px 8px;
+  margin: 2px;
+  background-color: #e3e3e3;
+  border-radius: 2px;
+  -webkit-box-shadow: 1px 1px 0 #ccc;
+  -moz-box-shadow: 1px 1px 0 #ccc;
+}
+
+div.section div.CommentParagraph {
+  float: left;
+  font-family: "Minion Pro";
+  padding: 6px 8px 0px 8px;
+  margin: 2px;
+  background-color: #eee;
+  border-radius: 2px;
+  -webkit-box-shadow: 1px 1px 0 #ccc;
+  -moz-box-shadow: 1px 1px 0 #ccc;
+}
+
+span.assertionIndent {
+  font-family: "Inconsolata";
+}
+
+span.pred {
+  font-family: "Open Sans";
+  font-weight: bold;
+}
+
+span.logicalvar {
+  font-style: italic;
+}
+
+span.codevar {
+  font-family: "Inconsolata";
+}
+
+span.set {
+  font-family: "Minion Pro";
+}
+
+div.clear { clear: both; }
+
+div.expl {
+  width: 100%;
+  background-color: #eee;
+  margin: -6px -8px 4px -8px;
+  padding: 8px 8px 4px 8px;
+  border-radius: 2px;
+  color: #777;
+}
+

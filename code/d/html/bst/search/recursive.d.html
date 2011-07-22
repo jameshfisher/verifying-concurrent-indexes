@@ -1,0 +1,64 @@
+<section xmlns='http://www.w3.org/1999/xhtml' xmlns:xi='http://www.w3.org/2001/XInclude' xmlns:e='http://eegg.github.com/htmlx' xmlns:m='http://eegg.github.com/macro'><e:displaycode>module bst.search.recursive;
+
+import bst.node;
+import bst.descend;
+
+
+bool search(Node* root, in int value) {&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Function precondition.</div>Tree(root, S)</div></div>
+<e:displaycode>  bool o;
+  if (root) {&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Assert if-test.</div>Tree(root, S) ∧ root≠null</div></div>
+
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Non-null pointer is non-empty tree (lemma).</div>NonEmptyTree(root, S)</div></div>
+<e:displaycode>
+    if (root.value == value) {&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Assert if-test.  (Need lemma here.)</div>TopOfTree(root, value, S)</div></div>
+
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Root value in set (lemma).</div>TopOfTree(root, value, S) ∧ value ∈ S</div></div>
+
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Weaken TopOfTree.</div>Tree(root, S) ∧ value ∈ S</div></div>
+<e:displaycode>
+      o = true;
+&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Assignment.</div>Tree(root, S) ∧ value ∈ S ∧ o = true</div></div>
+
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>???</div>Tree(root, S) ∧ o ↔ (value ∈ S)</div></div>
+<e:displaycode>    }
+    else {&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Deny if-test.</div>TopOfTree(root, v, S) ∧ v ≠ value</div></div>
+<e:displaycode>
+      Node* next = descend(root, value);
+&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Specification of descend.</div>TopOfTree(root, v, S) ∧<br /><span class='assertionIndent'> </span>∃Q. Tree(o, Q) ∧ (value∈Q ↔ value∈S)) ∧ |Q| &lt; |S|</div></div>
+
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='CommentParagraph'>Note recursion terminates because |Q| &lt; |S| and |Q| &gt;= 0</div></div>
+<e:displaycode>      o = search(next, value);
+&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Specification of search.</div>TopOfTree(root, v, S) ∧<br /><span class='assertionIndent'> </span>∃Q. Tree(o, Q) ∧ (value∈Q ↔ value∈S)) ∧ |Q| &lt; |S| ∧ o ↔ (value ∈ Q)</div></div>
+
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Transitivity of ↔; escape ∃; weaken TopOfTree.</div>Tree(root, S) ∧ o ↔ (value ∈ S)</div></div>
+<e:displaycode>    }&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Transitivity of both if-branches.</div>Tree(root, S) ∧ o ↔ (value ∈ S)</div></div>
+<e:displaycode>  }
+  else {&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Deny if-test.</div>Tree(root, S) ∧ root=null</div></div>
+
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Null pointer is empty tree (lemma).</div>EmptyTree(root, S)</div></div>
+
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Empty tree is empty set (lemma).</div>EmptyTree(root, S) ∧ S = ∅</div></div>
+
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Element not in empty set.</div>EmptyTree(root, S) ∧ value ∉ S</div></div>
+<e:displaycode>
+    o = false;
+&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Assignment.</div>EmptyTree(root, S) ∧ value ∉ S ∧ o = false</div></div>
+
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>???</div>EmptyTree(root, S) ∧ o ↔ (value ∈ S)</div></div>
+
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Weaken EmptyTree.</div>Tree(root, S) ∧ o ↔ (value ∈ S)</div></div>
+<e:displaycode>  }&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Function postcondition.
+Postcondition of both if-branches.</div>Tree(root, S) ∧ o ↔ (value ∈ S)</div></div>
+<e:displaycode>  return o;
+}&#160;</e:displaycode></section>
