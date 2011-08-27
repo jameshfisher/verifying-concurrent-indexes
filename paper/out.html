@@ -136,13 +136,17 @@ Page get(Url u) {  // return the webpage at the URL `u`.
     The linked list (<abbr title="Linked List" class="smallcaps">LL</abbr>) is the simplest set data structure
     that will submit to fairly efficient insertion, deletion and search
     of elements from a general ordered universe.
+    It is a good place to start to set out the principles of verification
+    that we can then aplly to more complex algorithms.
   </p>
 
   <p>
     A <abbr title="Linked List" class="smallcaps">LL</abbr> representing set <span class="st">S</span> consists of a set of |<span class="st">S</span>| records,
     called <em>nodes</em>, in memory.
+    There is a one-to-one correspondence between elements of <span class="st">S</span>
+    and the set of <code>Node</code>s in the <abbr title="Linked List" class="smallcaps">LL</abbr> representing <span class="st">S</span>.
     Each node contains two fields, <code>value</code> and <code>tail</code>.
-    This can be coded in a couple of lines:
+    This can be written in a few lines:
 
     <div class="display">
       <section class="generated_listing" xml:base="../../code/d/html/ll/node.d.html"><pre class="prettyprint">module ll.node;
@@ -164,45 +168,56 @@ struct Node {
   </p>
 
   <p>
-    The fields <code>value</code> and <code>tail</code> have fixed length, respectively <span class="var">v</span> and <span class="var">t</span>.
+    The fields <code>value</code> and <code>tail</code> have fixed length,
+    respectively <span class="var">v</span> and <span class="var">t</span>.
     An instance of the <code>Node</code> record thus has a fixed length in memory
     <e:fst><span class="var">l</span></e:fst> = <e:snd><e:fst><span class="var">v</span></e:fst> + <e:snd><span class="var">t</span></e:snd></e:snd>.
-    Therefore any node beginning at some address <span class="var">a</span> spans the contiguous addresses <span class="var">a</span>…<e:fst><span class="var">a</span></e:fst> + <e:snd><span class="var">l</span></e:snd>.
-    The addresses occupied by the <code>Node</code>s are disjoint;
+    Therefore any node beginning at some address <span class="var">a</span> spans the contiguous addresses
+    <span class="var">a</span>…<e:fst><span class="var">a</span></e:fst> + <e:snd><span class="var">l</span></e:snd>.
+    The addresses occupied by the <code>Node</code>s are <em>disjoint</em>;
     <i>i.e.</i>, for any <code>Node</code>, its occupied addresses
-    <span class="var">a</span>…<e:fst><span class="var">a</span></e:fst> + <e:snd><span class="var">l</span></e:snd>
     are occupied no other <code>Node</code>.
     We say that a record beginning at address <span class="var">a</span> is <q>at <span class="var">a</span></q>.
   </p>
 
   <p>
-    There is a one-to-one correspondence between elements of <span class="st">S</span> and the set of <code>Node</code>s in the <abbr title="Linked List" class="smallcaps">LL</abbr> representing <span class="st">S</span>.
-    <i>i.e.</i>, each <code>Node</code> contains as its <code>value</code> field one element of <span class="st">S</span>,
+    As there is a one-to-one correspondence between elements of <span class="st">S</span> and <code>Node</code>s,
+    each <code>Node</code> contains as its <code>value</code> field one element of <span class="st">S</span>,
     and for each element of <span class="st">S</span>, there exists a <code>Node</code> containing it.
-    The <code>tail</code> field of a record <code>r</code> representing element <span class="var">s</span> is as follows:
+    The <code>tail</code> field of a record holds the address of another record in the data structure.
+    Specifically, for a record <code>r</code> representing element <span class="var">s</span>,
     if there are elements in <span class="st">S</span> larger than <span class="var">s</span>,
-    the <code>tail</code> field of <code>r</code> is set to the address of the <code>Node</code> representing the next-largest element;
+    the <code>tail</code> field of <code>r</code> is set to
+    the address of the <code>Node</code> representing the next-largest element;
     otherwise, the <code>tail</code> field is set to <code>null</code>.
   </p>
 
   <p>
-    The final necessary piece of information is <code>head</code>, the address of the record representing the smallest element in <span class="st">S</span>.
+    The final necessary piece of information is 
+    the address of the record representing the smallest element in <span class="st">S</span>,
+    which we call <code>head</code>.
     This address and the set of memory locations occupied by the <code>Node</code>s comprise the <abbr title="Linked List" class="smallcaps">LL</abbr> data structure.
   </p>
 
   <p>
     We can visualize the address space of memory as a line of cells,
-    from addresses <span class="constant">0</span> on the left-hand-side to <span class="constant">address_max</span> on the right.
-    Here is an example.
+    from address <span class="constant">0</span> on the left-hand-side to <span class="constant">address_max</span> on the right.
+    Here is an example <abbr title="Linked List" class="smallcaps">LL</abbr> representing the set
+    <e:fst><span class="st">S</span></e:fst> = <e:snd>{ 
+	  <span class="constant">2</span>,
+	  <span class="constant">29</span>,
+	  <span class="constant">30</span>,
+	  <span class="constant">77</span>
+       }</e:snd> from the domain of natural numbers &lt; 256.
+    There are <e:pow><e:fst>2</e:fst><e:snd>16</e:snd></e:pow> memory locations,
+    spanning addresses <span class="constant">0</span> to <span class="constant">65,535</span>,
+    so a memory address is two bytes long.
     Memory locations are one byte long.
-    There are <e:pow><e:fst>2</e:fst><e:snd>16</e:snd></e:pow> memory locations, spanning addresses <span class="constant">0</span> to <span class="constant">65,535</span>.
-    Thus a memory address is two bytes long.
-    The set <e:fst><span class="st">S</span></e:fst> = <e:snd>{ <span class="constant">2</span>, <span class="constant">29</span>, <span class="constant">30</span>, <span class="constant">77</span> }</e:snd>.
-    These are taken from the set of numbers representable by one byte;
-    therefore the <code>value</code> field is one byte long.
-    The <code>tail</code> field, being an address, is two bytes long.
-    An single record is three bytes long.
-    In the following, arrows are used to highlight fields referencing other memory locations.
+    The domain of the set is representable by one byte,
+    so the <code>value</code> field is one byte long;
+    and the <code>tail</code> field, being an address, is two bytes long;
+    an single record is thus three bytes in total.
+    In the following diagram, arrows are used to highlight fields that reference other memory locations.
 
     <div class="display">
       <!-- Created with Inkscape (http://www.inkscape.org/) --><svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="788.3858" height="106.29922" id="svg2" version="1.1" inkscape:version="0.48.1 r9760" sodipodi:docname="example.svg">
@@ -410,10 +425,11 @@ struct Node {
     the structure can be seen as a connected, directed, acyclic graph,
     with a single path between the node distinguished as the first and that distinguished as the last,
     on which all nodes lie.
-    The second thing this diagram makes visually obvious is that the linked list contains smaller linked lists within it.
+    The second thing this diagram makes visually obvious is that
+    the linked list <q>contains</q> smaller linked lists within it.
     For example, the <code>tail</code> field of the <code>Node</code> representing the element <span class="constant">2</span>
     is effectively the <code>head</code> address for a linked list containing the right-most three nodes.
-    We can outline the linked lists in the above diagram:
+    We can outline all the linked lists in the above diagram:
 
     <div class="display">
       <!-- Created with Inkscape (http://www.inkscape.org/) --><svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="628.93701" height="212.59842" id="svg2" version="1.1" inkscape:version="0.48.1 r9760" sodipodi:docname="example_nested.svg">
@@ -522,8 +538,9 @@ struct Node {
   </p>
 
   <p>
-    It is now obvious that the <abbr title="Linked List" class="smallcaps">LL</abbr> is a <em>recursive data structure</em>—it contains a smaller version of itself.
-    Abstracting from our example, we can show this recursion visually.
+    It is now obvious that the <abbr title="Linked List" class="smallcaps">LL</abbr> is a <em>recursive data structure</em>:
+    it contains smaller versions of the same structure.
+    Abstracting from our example, we can show this recursion visually:
 
     <div class="display">
       <!-- Created with Inkscape (http://www.inkscape.org/) --><svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="265.74802" height="106.29921" id="svg2" version="1.1" inkscape:version="0.48.1 r9760" sodipodi:docname="recursive.svg">
@@ -593,19 +610,27 @@ struct Node {
   </p>
 
   <p>
-    Notice in our example that though <e:fst>|<span class="st">S</span>|</e:fst> = <e:snd><span class="constant">4</span></e:snd>,
+    Notice in our example that though
+    <e:fst>|<span class="st">S</span>|</e:fst> = <e:snd><span class="constant">4</span></e:snd>,
     there are actually <em>five</em> linked lists:
-    the final <code>null</code> pointer conceptually points to a linked list representing ∅, which uses no memory locations.
-    This does not fit in the scheme of the above diagram, which really only applies to non-empty sets.
-    The linked list, then, actually uses two distinct representations of sets: one for non-empty sets as above,
+    the final <code>null</code> pointer conceptually points to
+    a linked list representing ∅, which uses no memory locations.
+    This does not fit in the scheme of the above diagram,
+    which really only applies to non-empty sets.
+    The linked list, then, actually uses two distinct representations of sets:
+    one for non-empty sets as above,
     and another for the empty set, signaled by the use of a <code>null</code> pointer.
   </p>
 
   <p>
-    Let us refer to these as <span class="pred_name">NonEmptyList</span> and <span class="pred_name">EmptyList</span> respectively,
-    which are both subtypes of the general type <span class="pred_name">List</span>.
-    These are all <em>predicates</em>, with two parameters corresponding to the two necessary <q>parts</q> of a <abbr title="Linked List" class="smallcaps">LL</abbr>:
-    the <code>head</code> pointer and the memory locations.
+    Let us refer to these representations as <span class="pred_name">NonEmptyList</span>
+    and <span class="pred_name">EmptyList</span> respectively,
+    which are both subtypes of the abstract type <span class="pred_name">List</span>.
+    These are all <em>predicates</em>;
+    meaning they wrap up a description of (part of) the state of the program,
+    including the structure of memory.
+    Each of the above predicates takes two parameters corresponding to the two necessary <q>parts</q> of a <abbr title="Linked List" class="smallcaps">LL</abbr>:
+    the <code>head</code> pointer into the structure, and the set that the structure represents.
     That is, <span class="pred_name">List</span>(<code>head</code>, <span class="st">S</span>)
     describes a set of memory locations forming a linked list that represents set <span class="st">S</span>,
     with <code>head</code> being the address of the first <code>Node</code> in the list
@@ -693,7 +718,9 @@ struct Node {
     We now have a strong visual intuition for how to describe the <abbr title="Linked List" class="smallcaps">LL</abbr> formally.
     The above diagram translates cleanly into the notation of separation logic.
     Let's approach this top-down, and begin with the <span class="pred_name">List</span> predicate.
-    The <abbr title="Linked List" class="smallcaps">LL</abbr> defines two representations of sets, and a general <span class="pred_name">List</span> simply uses one of the two.
+    The <abbr title="Linked List" class="smallcaps">LL</abbr> defines two representations of sets,
+    and the general <span class="pred_name">List</span> predicate simply means that
+    one of the two representations is being used to represent the set.
     We can therefore define <span class="pred_name">List</span> just as a disjunction:
 
     <div class="displaymath">
@@ -737,19 +764,22 @@ struct Node {
     The <span class="pred_name">NonEmptyList</span> is only a little more complex.
     First, we must express the relationship between
     the set <span class="st">S</span> represented by the list pointed to by <code>head</code>,
-    the value <span class="var">v</span> in the node,
-    and the set <span class="st">T</span> represented by the <span class="var">tail</span>.
+    the <span class="var">value</span> in the <code>Node</code>,
+    and the set <span class="st">T</span> represented by the <span class="var">tail</span> pointer.
     First, <span class="st">S</span> is the element <span class="var">v</span> plus the elements in <span class="st">T</span>; we write
     <e:fst><span class="st">S</span></e:fst> = <e:snd><e:fst>{ <span class="var">value</span> }</e:fst> ∪ <e:snd><span class="st">T</span></e:snd></e:snd>.
-    Second, the elements in the <span class="st">T</span> are all greater than <span class="var">v</span>:
+    But <span class="var">value</span> is not just an arbitrarily chosen value from <span class="st">S</span>,
+    it is the smallest element.
+    Another way to say this is that all the elements in <span class="st">T</span> are all greater than <span class="var">v</span>;
+    we write
     ∀<e:fst>
-	<e:fst><span class="var">x</span></e:fst> ∈ <e:snd><span class="st">T</span></e:snd>
+	<e:fst><span class="var">t</span></e:fst> ∈ <e:snd><span class="st">T</span></e:snd>
       </e:fst>. <e:snd>
-	<e:fst><span class="var">v</span></e:fst> &lt; <e:snd><span class="var">x</span></e:snd>
+	<e:fst><span class="var">value</span></e:fst> &lt; <e:snd><span class="var">t</span></e:snd>
       </e:snd>.
 
-    We can express this relationship with helper predicate <span class="pred_name">Compose</span>,
-    to be used by our <span class="pred_name">NonEmptyList</span> predicate:
+    We can express this relationship with a helper predicate, <span class="pred_name">Compose</span>,
+    to be used by <span class="pred_name">NonEmptyList</span>.
 
     <table class="displaymath">
       <tbody>
@@ -776,56 +806,61 @@ struct Node {
   </p>
 
   <p>
-
-    A non-null pointer <code>n</code> is assumed to point to a <code>Node</code> instance,
-    which holds one element in the set in its <code>value</code> field,
-    plus a pointer in its <code>tail</code> field that points to a linked list containing the rest of the set.
-    This <code>tail</code> pointer is recursively interpreted as a list in the same way as <code>n</code>.
-    The memory allocated for the <code>tail</code> list is disjoint from the memory allocated for the head node,
-    and thus only a simple list can be represented.
-
-
-    If <code>n</code> is not <code>null</code>,
-    then it points to a valid <code>Node</code> instance:
-    <e:fst><code>n</code></e:fst> ↦ <e:snd><span class="var">v</span>, <span class="var">tail</span></e:snd>.
-    As <span class="var">tail</span> is also a pointer to a linked list,
-    we can recursively apply our <span class="pred_name">List</span> predicate to it, saying it represents some set <span class="st">T</span>:
-    <span class="pred_name">List</span>(<span class="var">tail</span>, <span class="constant">T</span>).
-    The description of the <code>n</code> node and the description of the <span class="var">tail</span> list
-    are joined with the separating conjunction (∗),
-    because the tail does not contain the node pointed at by <code>n</code>.
+    The predicate <span class="pred_name">NonEmptyList</span>(<code>head</code>, <span class="st">S</span>)
+    must first assert that <span class="st">S</span> is non-empty.
+    One way of saying this is to assert that the exists some element—let's call it <span class="var">value</span>—in the set.
+    We can then also assert that there exists some other set, <span class="st">T</span>,
+    which together with { <span class="var">value</span> } forms <span class="st">S</span>.
+    While we're at it, we can choose <span class="var">value</span> to be the minimal element,
+    as we will shortly be concerned with this value when describing the first <code>Node</code> in the list.
+    Now we can use our <span class="pred_name">Compose</span> predicate
+    to describe <span class="var">value</span> and <span class="st">T</span> in relation to <span class="st">S</span>; we write
+    ∃<e:fst><span class="var">value</span>, <span class="st">T</span></e:fst>. <e:snd><span class="pred_name">Compose</span>(<span class="var">value</span>, <span class="st">T</span>, <span class="st">S</span>)</e:snd>.
   </p>
 
+  <p>
+    We must now describe the memory layout for a non-empty list.
+    Looking at our visual definition,
+    notice that the memory locations can be divided into two disjoint sets:
+    one set for the first <code>Node</code>, consisting of contiguous memory locations beginning at <code>head</code>,
+    and another set of locations for the rest of the <code>Node</code>s,
+    which can be described by the <span class="pred_name">List</span> predicate.
+    We can decompose the memory description into
+    a description of the first <code>Node</code> and a description of the rest of the list,
+    specifying that these sets are disjoint.
+    This is exactly what the separating conjunction, ∗, does.
+  </p>
 
   <p>
-    We can then define a <span class="pred_name">NonEmptyList</span> as:
+    The first <code>Node</code> record begins at address <code>head</code>
+    and consists of two fields, the first containing <span class="var">value</span>,
+    and the second containing some (unknown) address <span class="var">tail</span>.
+    We write this as 
+    <e:fst><code>head</code></e:fst> ↦ <e:snd><span class="var">value</span>, <span class="var">tail</span></e:snd>.
+    Notice that the lengths of the fields is left unspecified and is in fact unimportant.
+  </p>
+
+  <p>
+    The rest of the list represents <span class="st">T</span> and its head is at address <span class="var">tail</span>.
+    We already have a predicate to describe this:
+    <span class="pred_name">List</span>(<span class="var">tail</span>, <span class="st">S</span>).
+    Notice that <span class="pred_name">List</span> and <span class="pred_name">NonEmptyList</span> are mutually recursive.
+    We are now in a position to define <span class="pred_name">NonEmptyList</span>:
 
     <table class="displaymath">
       <tr>
-	<td><span class="pred_name">NonEmptyList</span>(<code>n</code>, <span class="st">S</span>) ≝</td>
+	<td><span class="pred_name">NonEmptyList</span>(<code>head</code>, <span class="st">S</span>) ≝</td>
 	<td>∃<span class="var">value</span>, <span class="var">tail</span>, <span class="st">T</span>.</td>
       </tr>
       <tr>
 	<td/>
-	<td><e:fst><code>n</code></e:fst> ↦ <e:snd><span class="var">value</span>, <span class="var">tail</span></e:snd> ∗</td>
+	<td><span class="pred_name">Compose</span>(<span class="var">value</span>, <span class="st">T</span>, <span class="st">S</span>) ∧</td>
       </tr>
       <tr>
 	<td/>
-	<td><span class="pred_name">List</span>(<span class="var">tail</span>, <span class="st">T</span>) ∧</td>
-      </tr>
-      <tr>
-	<td/>
-	<td>
-	  <span class="pred_name">Compose</span>(<span class="var">value</span>, <span class="st">T</span>, <span class="st">S</span>).
-	</td>
+	<td><e:fst><e:fst><code>head</code></e:fst> ↦ <e:snd><span class="var">value</span>, <span class="var">tail</span></e:snd></e:fst> ∗ <e:snd><span class="pred_name">List</span>(<span class="var">tail</span>, <span class="st">T</span>)</e:snd>.</td>
       </tr>
     </table>
-  </p>
-
-  <p>
-    Note we use the predicate <span class="pred_name">List</span>, which is mutually recursive with <span class="pred_name">NonEmptyList</span>.
-    It is defined simply as:
-
   </p>
 </section>
   <section>

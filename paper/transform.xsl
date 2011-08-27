@@ -60,6 +60,7 @@
   <xsl:template match="e:notin"><xsl:apply-templates select="e:fst" />&#160;∉&#160;<xsl:apply-templates select="e:snd" /></xsl:template>
   <xsl:template match="e:in"><xsl:apply-templates select="e:fst" />&#160;∈&#160;<xsl:apply-templates select="e:snd" /></xsl:template>
   <xsl:template match="e:subset"><xsl:apply-templates select="e:fst" />&#160;⊆&#160;<xsl:apply-templates select="e:snd" /></xsl:template>
+  <xsl:template match="e:sep"><xsl:apply-templates select="e:fst" />&#160;∗&#160;<xsl:apply-templates select="e:snd" /></xsl:template>
   <xsl:template match="e:fcell"><xsl:apply-templates select="e:fst" />&#160;↦&#160;<xsl:apply-templates select="e:snd" /></xsl:template>
   <xsl:template match="e:union"><xsl:apply-templates select="e:fst" />&#160;∪&#160;<xsl:apply-templates select="e:snd" /></xsl:template>
 
