@@ -1,0 +1,27 @@
+<section class='generated_listing' xmlns='http://www.w3.org/1999/xhtml' xmlns:xi='http://www.w3.org/2001/XInclude' xmlns:e='http://eegg.github.com/htmlx' xmlns:m='http://eegg.github.com/macro'><e:displaycode>module ll.insert.recursive;
+
+import ll.node;
+
+Node* insert(Node* list, int value) {
+  Node* o;
+
+  if (list) {
+    if (list.value == value) {
+      o = list;
+    }
+    else {
+      if (list.value &lt; value) {
+	list.tail = insert(list.tail, value);
+	o = list;
+      }
+      else {
+	o = new Node(value, list);
+      }
+    }
+  }
+  else {
+    o = new Node(value);
+  }
+
+  return o;
+}&#160;</e:displaycode></section>

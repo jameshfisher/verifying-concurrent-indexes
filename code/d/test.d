@@ -30,12 +30,12 @@ bool testAgainstReference(ImplementationIndex)
 
 
     if(std.random.uniform(0, 2)) {
-      if (noisy) writef("Inserting %d...", value);
+      if (noisy) writefln("Inserting %d...", value);
       reference.insert(value);
       implementation.insert(value);
     }
     else {
-      if (noisy) writef("Deleting %d...", value);
+      if (noisy) writefln("Deleting %d...", value);
       reference.remove(value);
       implementation.remove(value);
     }

@@ -1,17 +1,17 @@
-<section xmlns='http://www.w3.org/1999/xhtml' xmlns:xi='http://www.w3.org/2001/XInclude' xmlns:e='http://eegg.github.com/htmlx' xmlns:m='http://eegg.github.com/macro'><e:displaycode>module bst.print;
+<section class='generated_listing' xmlns='http://www.w3.org/1999/xhtml' xmlns:xi='http://www.w3.org/2001/XInclude' xmlns:e='http://eegg.github.com/htmlx' xmlns:m='http://eegg.github.com/macro'><e:displaycode>module bst.print;
 
 static import bst.node;
 static import bst.index;
 
 import std.stdio;
 
-void printNode(bst.node.Node * node, int depth = 0, string pre = "──") {
+void printNode(bst.node.Node * node, int depth = 0, string pre = "─→") {
   if (node != null) {
-    printNode(node.c[1], depth+1, "╭╴");
+    printNode(node.c[1], depth+1, "╭→");
     for(int i = depth; i &gt; 0; i--) { write("  "); }
     write(pre);
     writeln(std.conv.text(node.value));
-    printNode(node.c[0], depth+1, "╰╴");
+    printNode(node.c[0], depth+1, "╰→");
   }
 }
 

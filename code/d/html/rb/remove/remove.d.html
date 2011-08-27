@@ -1,0 +1,17 @@
+<section class='generated_listing' xmlns='http://www.w3.org/1999/xhtml' xmlns:xi='http://www.w3.org/2001/XInclude' xmlns:e='http://eegg.github.com/htmlx' xmlns:m='http://eegg.github.com/macro'><e:displaycode>module rb.remove.remove;
+
+import rb.node;
+
+static import rb.remove.recursive;
+static import rb.remove.iterative;
+
+const bool recursive = true;
+
+Node* remove(Node* root, int value) {
+  static if (recursive) {
+    return rb.remove.recursive.remove(root, value);
+  }
+  else {
+    return rb.remove.iterative.remove(root, value);
+  }
+}&#160;</e:displaycode></section>

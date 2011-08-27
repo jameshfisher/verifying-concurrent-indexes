@@ -1,0 +1,36 @@
+<section xmlns="http://www.w3.org/1999/xhtml"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xmlns:e="http://eegg.github.com/htmlx"
+	 xmlns:m="http://eegg.github.com/macro">
+
+  <h2><m:ll/> <code>search</code> algorithms</h2>
+
+  <p>
+    Our specification for <code>search</code> is:
+    <e:triple>
+      <e:pre><e:pred name="List"><code>n</code>, <e:st n="S"/></e:pred></e:pre>
+      <e:command><code>o = search(n, v)</code></e:command>
+      <e:post>
+	<e:and>
+	  <e:fst><e:pred name="List"><code>n</code>, <e:st n="S"/></e:pred></e:fst>
+	  <e:snd><e:doubleimpl>
+	      <e:fst>o</e:fst>
+	      <e:snd><e:in><e:fst><code>v</code></e:fst><e:snd><e:st n="S"/></e:snd></e:in></e:snd>
+	  </e:doubleimpl></e:snd>
+	</e:and>
+      </e:post>
+    </e:triple>
+  </p>
+
+  <section>
+    <h3>A recursive <m:ll/> <code>search</code> algorithm</h3>
+
+    <xi:include href="../../code/d/html/ll/search/recursive.d.html"/>
+  </section>
+
+  <section>
+    <h3>An iterative <m:ll/> <code>search</code> algorithm</h3>
+
+    <xi:include href="../../code/d/html/ll/search/iterative.d.html"/>
+  </section>
+</section>

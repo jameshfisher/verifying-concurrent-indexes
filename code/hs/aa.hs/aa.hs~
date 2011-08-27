@@ -1,4 +1,0 @@
-
-data AA a = Nil | AA Int (AA a) a (AA a)
-            deriving (Show, Eq)
-

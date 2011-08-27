@@ -1,0 +1,19 @@
+<section class='generated_listing' xmlns='http://www.w3.org/1999/xhtml' xmlns:xi='http://www.w3.org/2001/XInclude' xmlns:e='http://eegg.github.com/htmlx' xmlns:m='http://eegg.github.com/macro'><e:displaycode>module ll.print;
+
+static import ll.node;
+static import ll.index;
+
+import std.stdio;
+
+void printNode(ll.node.Node* n) {
+  if (n) {
+    write("─→");
+    write(n.value);
+    printNode(n.tail);
+  }
+}
+
+void print(ll.index.LlIndex i) {
+  printNode(i.root);
+  writeln();
+}&#160;</e:displaycode></section>

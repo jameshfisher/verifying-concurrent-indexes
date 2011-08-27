@@ -1,0 +1,71 @@
+<section xmlns="http://www.w3.org/1999/xhtml"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xmlns:e="http://eegg.github.com/htmlx"
+	 xmlns:m="http://eegg.github.com/macro">
+
+  <h4>The index <m:api /></h4>
+
+  <p>
+    As a fundamental data type, almost every programming language has an index implementation.<e:cite>wp_mapping</e:cite>
+    <!--(Indeed, in some languages, such as Javascript,
+    all objects are indexes.<e:cite>ecmascript, p.\ 2.</e:cite>)-->
+    With it,
+    the programmer can memoize the results of a function,
+    model the houses on her street,
+    or describe a directed graph.
+    Here is pseudocode for a web cache:<e:note>I use a syntax similar to C++ in my examples.</e:note>
+
+    <e:displaycode><xi:include href="example.cc" parse="text" /></e:displaycode>
+  </p>
+
+  <p>
+    This small example illustrates the entire <abbr>API</abbr>.
+    Notice that the <code>Index</code> is an <q>abstract</q>, or <q>container</q> data type:
+    we must supply the types of the keys and the values
+    (in the above, the keys are <code>Url</code>s and the values are <code>Page</code>s).
+    The resulting <q>concrete</q> data type can then be instantiated.
+    The instantiated index <code>cache</code> has three operations that can be performed on it:
+    <code>search</code>, <code>insert</code> and <code>remove</code>.
+    For an index <code>i</code>
+    that maps keys of type <code>K</code> onto  values of type <code>V</code>,
+    these operations do the following:
+  </p>
+
+  <e:descriptionlist>
+    <e:li>
+      <e:item><code>value = i.search(key)</code></e:item>
+      <e:description>
+	If there is a value associated with <code>key</code> in <code>i</code>,
+	<code>value</code> will be that value.
+	Otherwise, <code>value</code> will be <code>null</code>.
+	<!--The <code>search</code> function is also called <code>find</code>, <code>fetch</code>, <code>read</code>, and <code>get</code>.-->
+      </e:description>
+    </e:li>
+    <e:li>
+      <e:item>
+	<code>i.insert(key, value)</code>
+      </e:item>
+      <e:description>
+	Subsequent calls to <code>i.search(key)</code> will return <code>value</code>,
+	until a subsequent call to <code>i.insert(k, —)</code> or <code>i.remove(k)</code>,
+	where <code>k == key</code>.
+	<!--The <code>insert</code> function is also called <code>store</code>, <code>set</code>, <code>save</code>, and <code>add</code>.-->
+      </e:description>
+    </e:li>
+    <e:li>
+      <e:item>
+	<code>i.remove(key)</code>
+      </e:item>
+      <e:description>
+	Subsequent calls to <code>i.search(key)</code> will return <code>null</code>,
+	until subsequent calls to <code>i.insert(k, —)</code> or <code>i.remove(k)</code>,
+	where <code>k == key</code>.
+	<!--The <code>remove</code> function is also called <code>delete</code>.
+	    It may also be absent,
+	    in favour of <code>insert(k, null)</code>
+	    (suggesting the <q>total function</q> interpretation).-->
+      </e:description>
+    </e:li>
+  </e:descriptionlist>
+
+</section>

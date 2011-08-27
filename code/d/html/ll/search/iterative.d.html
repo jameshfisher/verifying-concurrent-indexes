@@ -1,0 +1,21 @@
+<section class='generated_listing' xmlns='http://www.w3.org/1999/xhtml' xmlns:xi='http://www.w3.org/2001/XInclude' xmlns:e='http://eegg.github.com/htmlx' xmlns:m='http://eegg.github.com/macro'><e:displaycode>module ll.search.iterative;
+
+import ll.node;
+
+bool search(Node* list, int value) {
+
+  while (list &amp;&amp; list.value &lt; value) {
+    list = list.tail;
+  }&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;</pre><div class='CommentParagraph'>(!list || list.value &gt;= value)</div></div>
+<e:displaycode>
+  bool o;
+  if (!list) {
+    o = false;
+  }
+  else {
+    o = list.value == value;
+  }
+
+  return o;
+}&#160;</e:displaycode></section>

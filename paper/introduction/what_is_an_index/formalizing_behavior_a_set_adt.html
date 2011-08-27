@@ -1,0 +1,98 @@
+<section xmlns="http://www.w3.org/1999/xhtml"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xmlns:e="http://eegg.github.com/htmlx"
+	 xmlns:m="http://eegg.github.com/macro">
+  <h3>Formalizing behavior: a Set <m:adt /></h3>
+
+  <p>
+    A correct index implementation will satisfy the behavior described above.
+    To <em>prove</em> that one does so, however,
+    we shall have to describe the behavior more precisely.
+  </p>
+
+  <p>
+    The basic tool we use to do this is the concept of of <em>pre- and post-conditions</em>,
+    which are a central concept of Hoare logic.<e:cite>hoare</e:cite>
+    These let us specify what the state of the program will be after execution of an operation,
+    given the state of the program vefore execution.
+    For example, we might state that if <e:math>x=<e:constant>2</e:constant></e:math> prior to executing <code>x=square(x)</code>,
+    then <e:math>x=<e:constant>4</e:constant></e:math> afterwards.
+  </p>
+
+  <p>
+    This would be written as the <q>Hoare triple</q>
+    <e:triple><e:pre>x=<e:constant>2</e:constant></e:pre><e:command>x=square(x)</e:command><e:post>x=<e:constant>4</e:constant></e:post></e:triple>.
+    That triple does not actually make any assertion that the command will terminate.
+    Strictly, it says that that
+    either <code>x=square(x)</code> does not terminate, or it does terminate in which case the postcondition will hold.
+  </p>
+
+  <p>
+    More complex commands,
+    such as the operations on an index,
+    can be specified in the same way:
+    <e:triple><e:pre>…</e:pre><e:command>i.insert(k, v)</e:command><e:post>…</e:post></e:triple>.
+    For an operation like this,
+    the precondition must capture
+    the valid states of the variables <code>i</code>, <code>k</code> and <code>v</code>.
+    The variables <code>k</code> and <code>v</code> are easy enough;
+    however, <code>i</code> can be problematic to capture.
+    It is presumably a pointer to a valid index in memory,
+    but we don't actually know what this index looks like because it is intentionally abstract,
+    and even if we did want to describe memory layout,
+    it may be too complex to be practicable in a specification.
+  </p>
+
+  <p>
+    Instead, we use an <e:jargon>abstract predicate</e:jargon>
+    to describe what <code>i</code> represents to the programmer using it,
+    namely, <q>a pointer to something representing an index containing some index <e:st n="I"/></q>.
+    This predicate over <code>i</code> is written as <e:pred name="Index"><code>i</code>, <e:st n="I"/></e:pred>.
+  </p>
+
+  <p>
+    A bit more notation is necessary to describe the mappings in an index.
+    However, at this point and with familiar set notation,
+    we can already fully specify a similar abstract data type: the <em>set</em>.
+    This will be useful, because a data structure representing an index
+    can be constructed by minimal modification of a set data structure.
+  </p>
+
+  <p>
+    The following functions for a Set <m:adt />, and their specifications, should be intuitive.
+    We can <code>search</code> for, <code>insert</code>, and <code>remove</code> elements from the set,
+    just as we can do with mappings in an index.
+    The pre- and postconditions simply describe
+    how and whether the functions mutate the set,
+    and how information is extracted from the structure.
+  </p>
+
+  <table>
+    <tbody>
+      <tr>
+	<!-- search where key is in the set -->
+	<td><e:cond><e:pred name="Set"><code>s</code>, <e:const n="S"/></e:pred> ∧ <code>el</code> ∈ <e:const n="S"/></e:cond></td>
+	<td><code>exists = s->search(el);</code></td>
+	<td><e:cond><e:pred name="Set"><code>s</code>, <e:const n="S"/></e:pred> ∧ <code>el</code> ∈ <e:const n="S"/> ∧ <code>exists</code> = <e:const n="T"/></e:cond></td>
+      </tr>
+      <tr>
+	<!-- search where key is not in the set -->
+	<td><e:cond><e:pred name="Set"><code>s</code>, <e:const n="S"/></e:pred> ∧ <code>el</code> ∉ <e:const n="S"/></e:cond></td>
+	<td><code>exists = s->search(el);</code></td>
+	<td><e:cond><e:pred name="Set"><code>s</code>, <e:const n="S"/></e:pred> ∧ <code>el</code> ∉ <e:const n="S"/> ∧ <code>exists</code> = <e:const n="F"/></e:cond></td>
+      </tr>
+      <tr>
+	<!-- insert -->
+	<td><e:cond><e:pred name="Set"><code>s</code>, <e:const n="S"/></e:pred></e:cond></td>
+	<td><code>s->insert(el);</code></td>
+	<td><e:cond><e:pred name="Set"><code>s</code>, <e:const n="S"/> ∪ <e:set><code>el</code></e:set></e:pred></e:cond></td>
+      </tr>
+      <tr>
+	<!-- remove -->
+	<td><e:cond><e:pred name="Set"><code>s</code>, <e:const n="S"/></e:pred></e:cond></td>
+	<td><code>s->remove(el);</code></td>
+	<td><e:cond><e:pred name="Set"><code>s</code>, <e:const n="S"/> − <e:set><code>el</code></e:set></e:pred></e:cond></td>
+      </tr>
+    </tbody>
+  </table>
+</section>

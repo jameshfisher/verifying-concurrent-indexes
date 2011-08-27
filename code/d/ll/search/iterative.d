@@ -5,7 +5,7 @@ import ll.node;
 bool search(Node* list, int value) {
 
   while (list && list.value < value) {
-    list = list.next;
+    list = list.tail;
   }
   // (!list || list.value >= value)
 

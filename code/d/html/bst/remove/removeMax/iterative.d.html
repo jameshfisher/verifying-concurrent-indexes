@@ -1,4 +1,4 @@
-<section xmlns='http://www.w3.org/1999/xhtml' xmlns:xi='http://www.w3.org/2001/XInclude' xmlns:e='http://eegg.github.com/htmlx' xmlns:m='http://eegg.github.com/macro'><e:displaycode>module bst.remove.removeMax.iterative;
+<section class='generated_listing' xmlns='http://www.w3.org/1999/xhtml' xmlns:xi='http://www.w3.org/2001/XInclude' xmlns:e='http://eegg.github.com/htmlx' xmlns:m='http://eegg.github.com/macro'><e:displaycode>module bst.remove.removeMax.iterative;
 
 import bst.node;
 import bst.remove.removeMax.RemoveMaxRet;
@@ -37,5 +37,4 @@ RemoveMaxRet removeMax(Node* root) {&#160;</e:displaycode>
 <div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Deletion.  Rename variable.  This is our postcondition.</div>∃T.<br /><span class='assertionIndent'> &#160;&#160;</span>Tree(newRoot, T)<br /><span class='assertionIndent'> &#160;&#160;</span>∧ max∈S ∧ ∀x∈T. x &lt; max ∧ T = S - {max}.</div></div>
 <e:displaycode>  }
   else {&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='CommentParagraph'>We maintain a run of two nodes in the tree: current node i and its parent p.
-This run moves down th
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='CommentParagraph'>We maintain a run of two nodes in the tree: current node i and its parent

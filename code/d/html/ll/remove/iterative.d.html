@@ -1,0 +1,35 @@
+<section class='generated_listing' xmlns='http://www.w3.org/1999/xhtml' xmlns:xi='http://www.w3.org/2001/XInclude' xmlns:e='http://eegg.github.com/htmlx' xmlns:m='http://eegg.github.com/macro'><e:displaycode>module ll.remove.iterative;
+
+import ll.node;
+
+
+Node* remove(Node* n, int value) {
+  Node* o;
+
+  if (!n) {
+    o = null;
+  }
+  else {
+    if (n.value == value) {
+      o = n.tail;
+      delete n;
+    }
+    else {
+      Node* i = n;
+      while (i.tail &amp;&amp; i.tail.value &lt; value) {
+	i = i.tail;
+      }&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='CommentParagraph'>!i.tail || value &gt;= i.tail.value</div></div>
+<e:displaycode>
+      if (i.tail &amp;&amp; i.tail.value == value) {
+	Node* d = i.tail;
+	i.tail = i.tail.tail;
+	delete d;
+      }
+
+      o = n;
+    }
+  }
+
+  return o;
+}&#160;</e:displaycode></section>

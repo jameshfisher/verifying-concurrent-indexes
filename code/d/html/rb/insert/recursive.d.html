@@ -1,7 +1,9 @@
-<section xmlns='http://www.w3.org/1999/xhtml' xmlns:xi='http://www.w3.org/2001/XInclude' xmlns:e='http://eegg.github.com/htmlx' xmlns:m='http://eegg.github.com/macro'><e:displaycode>module rb.insert.recursive;
+<section class='generated_listing' xmlns='http://www.w3.org/1999/xhtml' xmlns:xi='http://www.w3.org/2001/XInclude' xmlns:e='http://eegg.github.com/htmlx' xmlns:m='http://eegg.github.com/macro'><e:displaycode>module rb.insert.recursive;
 
 import rb.node;
 import rb.rotate;
+
+import std.stdio;
 
 Node* insert_aux(Node* root, int value) {
 
@@ -23,7 +25,13 @@ Node* insert_aux(Node* root, int value) {
 
     Node** into = &amp;root.c[dir];
 
+    bool red_before = red(*into);
     *into = insert_aux(*into, value); // Do the insert.
+    bool red_after = red(*into);
+
+    if (red_before &amp;&amp; !red_after) {
+      writeln("Red -&gt; Black!");
+    }
 &#160;</e:displaycode>
 <div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='CommentParagraph'>Now, insert may have passed up a red node.
 If we have room, make a home for it here; otherwise pass up again.</div></div>

@@ -1,0 +1,17 @@
+<section class='generated_listing' xmlns='http://www.w3.org/1999/xhtml' xmlns:xi='http://www.w3.org/2001/XInclude' xmlns:e='http://eegg.github.com/htmlx' xmlns:m='http://eegg.github.com/macro'><e:displaycode>module ll.insert.insert;
+
+import ll.node;
+
+static import ll.insert.recursive;
+static import ll.insert.iterative;
+
+const bool recursive = false;
+
+Node* insert(Node* list, int value) {
+  static if (recursive) {
+    return ll.insert.recursive.insert(list, value);
+  }
+  else {
+    return ll.insert.iterative.insert(list, value);
+  }
+}&#160;</e:displaycode></section>

@@ -1,11 +1,11 @@
-<section xmlns='http://www.w3.org/1999/xhtml' xmlns:xi='http://www.w3.org/2001/XInclude' xmlns:e='http://eegg.github.com/htmlx' xmlns:m='http://eegg.github.com/macro'><e:displaycode>module rb.index;
+<section class='generated_listing' xmlns='http://www.w3.org/1999/xhtml' xmlns:xi='http://www.w3.org/2001/XInclude' xmlns:e='http://eegg.github.com/htmlx' xmlns:m='http://eegg.github.com/macro'><e:displaycode>module rb.index;
 
 static import index;
 
 static import rb.node;
 static import rb.search.search;
 static import rb.insert.insert;
-static import rb.remove;
+static import rb.remove.remove;
 static import rb.contents;
 
 import std.stdio;
@@ -22,7 +22,7 @@ class RbIndex : index.Index {
   }
 
   void remove(int value) {
-    this.root = rb.remove.remove_push_down_iter(this.root, value);
+    this.root = rb.remove.remove.remove(this.root, value);
   }
 
   int[] contents() {

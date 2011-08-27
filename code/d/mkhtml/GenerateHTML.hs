@@ -32,7 +32,7 @@ paragraphToHTML (CommentedAssertionParagraph (CommentParagraph i s1) (AssertionP
 
 htmlWrap s = htmlHeader ++ s ++ htmlFooter
 
-htmlHeader = "<section xmlns='http://www.w3.org/1999/xhtml' xmlns:xi='http://www.w3.org/2001/XInclude' xmlns:e='http://eegg.github.com/htmlx' xmlns:m='http://eegg.github.com/macro'>"
+htmlHeader = "<section class='generated_listing' xmlns='http://www.w3.org/1999/xhtml' xmlns:xi='http://www.w3.org/2001/XInclude' xmlns:e='http://eegg.github.com/htmlx' xmlns:m='http://eegg.github.com/macro'>"
 
 htmlFooter = "</section>"
 

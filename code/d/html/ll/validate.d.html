@@ -1,0 +1,16 @@
+<section class='generated_listing' xmlns='http://www.w3.org/1999/xhtml' xmlns:xi='http://www.w3.org/2001/XInclude' xmlns:e='http://eegg.github.com/htmlx' xmlns:m='http://eegg.github.com/macro'><e:displaycode>module ll.validate;
+
+import ll.node;
+import ll.index;
+
+
+bool validate(ll.node.Node* n, int min) {
+  if (!n) return true;
+  if (n.value &lt; min) return false;
+  return validate(n.tail, n.value+1);
+}
+
+
+bool validate(ll.index.LlIndex i) {
+  return validate(i.root, int.min);
+}&#160;</e:displaycode></section>

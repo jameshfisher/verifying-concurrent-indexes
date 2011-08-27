@@ -1,0 +1,3355 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="1052.3622"
+   height="744.09448"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.1 r9760"
+   sodipodi:docname="recursive_remove_balance_black_sibling.svg"
+   inkscape:export-filename="/home/james/inst/edu/3-msc/net-storage/terms/3/verifying-concurrent-indexes/paper/rbt/recursive_remove_balance_black_sibling.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
+  <defs
+     id="defs4">
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Mend"
+       style="overflow:visible">
+      <path
+         id="path4781"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none"
+         transform="matrix(-0.4,0,0,-0.4,-4,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow2Mstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow2Mstart"
+       style="overflow:visible">
+      <path
+         id="path4796"
+         style="font-size:12px;fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="scale(0.6,0.6)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow2Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow2Mend"
+       style="overflow:visible">
+      <path
+         id="path4799"
+         style="font-size:12px;fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="scale(-0.6,-0.6)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow2Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow2Lend"
+       style="overflow:visible">
+      <path
+         id="path4793"
+         style="font-size:12px;fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="matrix(-1.1,0,0,-1.1,-1.1,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow2Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow2Mend-7"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path4799-3"
+         style="font-size:12px;fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="scale(-0.6,-0.6)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow2Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow2Mend-7-6"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path4799-3-9"
+         style="font-size:12px;fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="scale(-0.6,-0.6)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow2Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow2Mend-9"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path4799-2"
+         style="font-size:12px;fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="scale(-0.6,-0.6)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow2Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow2Mend-9-2"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path4799-2-4"
+         style="font-size:12px;fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="scale(-0.6,-0.6)" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.7"
+     inkscape:cx="499.52771"
+     inkscape:cy="369.70372"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     inkscape:window-width="1920"
+     inkscape:window-height="1032"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     units="mm"
+     inkscape:snap-global="true"
+     showguides="true"
+     inkscape:guide-bbox="true">
+    <inkscape:grid
+       type="xygrid"
+       id="grid3012"
+       empspacing="5"
+       visible="true"
+       enabled="true"
+       snapvisiblegridlinesonly="true"
+       units="mm"
+       spacingx="5mm"
+       spacingy="5mm" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-308.2677)">
+    <g
+       id="g7054"
+       transform="translate(2.6627089e-5,104.29833)">
+      <rect
+         style="fill:#b0aee2;fill-opacity:1;stroke:none"
+         id="rect4527-36-6-5"
+         width="230.31494"
+         height="35.433033"
+         x="35.433086"
+         y="257.1181"
+         ry="0.28726187" />
+      <rect
+         ry="1.1490486"
+         y="292.55112"
+         x="35.433056"
+         height="141.73227"
+         width="230.31496"
+         id="rect4525-86-1-3"
+         style="fill:#dbdaf2;fill-opacity:1;stroke:none" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text4239-51-8-6"
+         y="272.83463"
+         x="53.149605"
+         style="font-size:40px;font-style:normal;font-weight:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           id="tspan6195-4"
+           style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+           y="272.83463"
+           x="53.149605"
+           sodipodi:role="line"><tspan
+   style="font-weight:bold"
+   id="tspan3553">Precondition:</tspan> the subtree <tspan
+   id="tspan6240"
+   style="font-style:italic">l</tspan> is black at height <tspan
+   id="tspan6242"
+   style="font-style:italic">h</tspan>,</tspan><tspan
+           id="tspan6238"
+           style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+           y="285.95963"
+           x="53.149605"
+           sodipodi:role="line">the other subtree is black-rooted at <tspan
+   id="tspan6244"
+   style="font-style:italic">h</tspan>+1.</tspan></text>
+      <g
+         transform="translate(-177.16537,196.88184)"
+         id="g3889">
+        <path
+           inkscape:connector-curvature="0"
+           id="path6429-4"
+           d="m 283.46457,131.1024 0,-35.433065"
+           style="fill:none;stroke:#000000;stroke-width:1.0629921;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+        <path
+           style="fill:none;stroke:#000000;stroke-width:1.0629921;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+           d="M 283.46457,131.10234 248.0315,184.25195"
+           id="path3834"
+           inkscape:connector-curvature="0" />
+        <path
+           style="fill:none;stroke:#000000;stroke-width:1.0629921;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+           d="m 354.33071,166.53541 -35.43307,17.71654"
+           id="path3814"
+           inkscape:connector-curvature="0" />
+        <path
+           style="fill:none;stroke:#000000;stroke-width:1.0629921;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+           d="m 354.33071,166.53541 35.43307,17.71654"
+           id="path3816"
+           inkscape:connector-curvature="0" />
+        <path
+           style="fill:none;stroke:#000000;stroke-width:1.0629921;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+           d="m 283.46457,131.10234 70.86614,35.43307"
+           id="path3016"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cc" />
+        <g
+           id="g3856">
+          <path
+             transform="matrix(0.5167323,0,0,0.5167323,129.55216,79.684877)"
+             d="m 332.14286,99.505035 c 0,18.935475 -15.35024,34.285715 -34.28571,34.285715 -18.93548,0 -34.28572,-15.35024 -34.28572,-34.285715 0,-18.935476 15.35024,-34.285713 34.28572,-34.285713 18.93547,0 34.28571,15.350237 34.28571,34.285713 z"
+             sodipodi:ry="34.285713"
+             sodipodi:rx="34.285713"
+             sodipodi:cy="99.505035"
+             sodipodi:cx="297.85715"
+             id="path3804"
+             style="fill:#ffffff;fill-opacity:1;stroke:#969696;stroke-width:6.85714245;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+             sodipodi:type="arc" />
+          <text
+             sodipodi:linespacing="125%"
+             id="text3004"
+             y="133.28091"
+             x="281.10742"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             xml:space="preserve"><tspan
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+               y="133.28091"
+               x="281.10742"
+               id="tspan3006"
+               sodipodi:role="line">v</tspan></text>
+        </g>
+        <g
+           id="g3861">
+          <path
+             style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:3.54330707;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+             d="m 248.0315,184.25195 -17.71653,35.43307 35.43307,0 z"
+             id="path3828"
+             inkscape:connector-curvature="0" />
+          <text
+             xml:space="preserve"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             x="247.56259"
+             y="209.73633"
+             id="text3830"
+             sodipodi:linespacing="125%"><tspan
+               sodipodi:role="line"
+               id="tspan3832"
+               x="247.56259"
+               y="209.73633"
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">l</tspan></text>
+          <text
+             sodipodi:linespacing="125%"
+             id="text3836"
+             y="185.96849"
+             x="269.74802"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             xml:space="preserve"><tspan
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+               y="185.96849"
+               x="269.74802"
+               id="tspan3838"
+               sodipodi:role="line">BT(h)</tspan></text>
+        </g>
+        <g
+           id="g3868">
+          <path
+             inkscape:connector-curvature="0"
+             id="path3812"
+             d="m 318.89764,184.25195 -17.71653,35.43307 35.43307,0 z"
+             style="fill:#ffffff;fill-opacity:1;stroke:#969696;stroke-width:3.54330707;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+          <text
+             sodipodi:linespacing="125%"
+             id="text3820"
+             y="209.73633"
+             x="315.4155"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             xml:space="preserve"><tspan
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+               y="209.73633"
+               x="315.4155"
+               id="tspan3822"
+               sodipodi:role="line">rl</tspan></text>
+          <text
+             xml:space="preserve"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             x="307.74802"
+             y="185.96849"
+             id="text3844"
+             sodipodi:linespacing="125%"><tspan
+               sodipodi:role="line"
+               id="tspan3846"
+               x="307.74802"
+               y="185.96849"
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">h</tspan></text>
+        </g>
+        <g
+           id="g3875">
+          <path
+             style="fill:#ffffff;fill-opacity:1;stroke:#969696;stroke-width:3.54330707;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+             d="m 389.76377,184.25195 -17.71653,35.43307 35.43307,0 z"
+             id="path3818"
+             inkscape:connector-curvature="0" />
+          <text
+             xml:space="preserve"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             x="386.37872"
+             y="209.4838"
+             id="text3824"
+             sodipodi:linespacing="125%"><tspan
+               sodipodi:role="line"
+               id="tspan3826"
+               x="386.37872"
+               y="209.4838"
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">rr</tspan></text>
+          <text
+             sodipodi:linespacing="125%"
+             id="text3848"
+             y="185.96849"
+             x="399.74802"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             xml:space="preserve"><tspan
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+               y="185.96849"
+               x="399.74802"
+               id="tspan3850"
+               sodipodi:role="line">h</tspan></text>
+        </g>
+        <g
+           id="g3882">
+          <path
+             sodipodi:type="arc"
+             style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:6.85714245;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+             id="path3806"
+             sodipodi:cx="297.85715"
+             sodipodi:cy="99.505035"
+             sodipodi:rx="34.285713"
+             sodipodi:ry="34.285713"
+             d="m 332.14286,99.505035 c 0,18.935475 -15.35024,34.285715 -34.28571,34.285715 -18.93548,0 -34.28572,-15.35024 -34.28572,-34.285715 0,-18.935476 15.35024,-34.285713 34.28572,-34.285713 18.93547,0 34.28571,15.350237 34.28571,34.285713 z"
+             transform="matrix(0.5167323,0,0,0.5167323,200.4183,115.11795)" />
+          <text
+             xml:space="preserve"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             x="350.43805"
+             y="169.27"
+             id="text3808"
+             sodipodi:linespacing="125%"><tspan
+               sodipodi:role="line"
+               id="tspan3810"
+               x="350.43805"
+               y="169.27"
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">rv</tspan></text>
+          <text
+             xml:space="preserve"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             x="395.74802"
+             y="155.96849"
+             id="text3852"
+             sodipodi:linespacing="125%"><tspan
+               sodipodi:role="line"
+               id="tspan3854"
+               x="395.74802"
+               y="155.96849"
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">BT(h+1)</tspan></text>
+        </g>
+        <text
+           xml:space="preserve"
+           style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+           x="360.88187"
+           y="120.53542"
+           id="text3852-9"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan3854-0"
+             x="360.88187"
+             y="120.53542"
+             style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">[was RT(h+1) or BT(h+2)]</tspan></text>
+      </g>
+    </g>
+    <g
+       id="g5503"
+       transform="translate(265.74806,194.88104)">
+      <rect
+         ry="0.28726187"
+         y="166.53548"
+         x="35.433086"
+         height="35.433033"
+         width="230.31494"
+         id="rect4527-36"
+         style="fill:#c8c8c8;fill-opacity:1;stroke:none" />
+      <rect
+         style="fill:#e6e6e6;fill-opacity:1;stroke:none"
+         id="rect4525-86"
+         width="230.31496"
+         height="159.44881"
+         x="35.433071"
+         y="201.96851"
+         ry="1.2926797" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1.0629921;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+         d="m 106.2992,237.40168 0,-35.43307"
+         id="path6429-6"
+         inkscape:connector-curvature="0" />
+      <text
+         xml:space="preserve"
+         style="font-size:40px;font-style:normal;font-weight:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         x="53.149624"
+         y="182.252"
+         id="text4239-51"
+         sodipodi:linespacing="125%"><tspan
+           id="tspan5497"
+           sodipodi:role="line"
+           x="53.149624"
+           y="182.252"
+           style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">The far child of the sibling is an RT. We will</tspan><tspan
+           id="tspan5501"
+           sodipodi:role="line"
+           x="53.149624"
+           y="195.377"
+           style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">blacken it and do a rotation.</tspan></text>
+      <g
+         transform="translate(-177.16536,106.29921)"
+         id="g3923">
+        <path
+           inkscape:connector-curvature="0"
+           id="path3925"
+           d="M 283.46457,131.10234 248.0315,184.25195"
+           style="fill:none;stroke:#000000;stroke-width:1.0629921;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+        <path
+           inkscape:connector-curvature="0"
+           id="path3927"
+           d="m 354.33071,166.53541 -35.43307,17.71654"
+           style="fill:none;stroke:#000000;stroke-width:1.0629921;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+        <path
+           inkscape:connector-curvature="0"
+           id="path3929"
+           d="m 354.33071,166.53541 35.43307,17.71654"
+           style="fill:none;stroke:#000000;stroke-width:1.0629921;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+        <path
+           sodipodi:nodetypes="cc"
+           inkscape:connector-curvature="0"
+           id="path3931"
+           d="m 283.46457,131.10234 70.86614,35.43307"
+           style="fill:none;stroke:#000000;stroke-width:1.0629921;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+        <g
+           id="g3933">
+          <path
+             sodipodi:type="arc"
+             style="fill:#ffffff;fill-opacity:1;stroke:#969696;stroke-width:6.85714245;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+             id="path3935"
+             sodipodi:cx="297.85715"
+             sodipodi:cy="99.505035"
+             sodipodi:rx="34.285713"
+             sodipodi:ry="34.285713"
+             d="m 332.14286,99.505035 c 0,18.935475 -15.35024,34.285715 -34.28571,34.285715 -18.93548,0 -34.28572,-15.35024 -34.28572,-34.285715 0,-18.935476 15.35024,-34.285713 34.28572,-34.285713 18.93547,0 34.28571,15.350237 34.28571,34.285713 z"
+             transform="matrix(0.5167323,0,0,0.5167323,129.55216,79.684877)" />
+          <text
+             xml:space="preserve"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             x="281.10742"
+             y="133.28091"
+             id="text3937"
+             sodipodi:linespacing="125%"><tspan
+               sodipodi:role="line"
+               id="tspan3939"
+               x="281.10742"
+               y="133.28091"
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">v</tspan></text>
+        </g>
+        <g
+           id="g3941">
+          <path
+             inkscape:connector-curvature="0"
+             id="path3943"
+             d="m 248.0315,184.25195 -17.71653,35.43307 35.43307,0 z"
+             style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:3.54330707;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+          <text
+             sodipodi:linespacing="125%"
+             id="text3945"
+             y="209.73633"
+             x="247.56259"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             xml:space="preserve"><tspan
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+               y="209.73633"
+               x="247.56259"
+               id="tspan3947"
+               sodipodi:role="line">l</tspan></text>
+          <text
+             xml:space="preserve"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             x="248.03148"
+             y="237.40157"
+             id="text3949"
+             sodipodi:linespacing="125%"><tspan
+               sodipodi:role="line"
+               id="tspan3951"
+               x="248.03148"
+               y="237.40157"
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">BT(h)</tspan></text>
+        </g>
+        <g
+           id="g3953">
+          <path
+             style="fill:#ffffff;fill-opacity:1;stroke:#969696;stroke-width:3.54330707;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+             d="m 318.89764,184.25195 -17.71653,35.43307 35.43307,0 z"
+             id="path3955"
+             inkscape:connector-curvature="0" />
+          <text
+             xml:space="preserve"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             x="315.4155"
+             y="209.73633"
+             id="text3957"
+             sodipodi:linespacing="125%"><tspan
+               sodipodi:role="line"
+               id="tspan3959"
+               x="315.4155"
+               y="209.73633"
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">rl</tspan></text>
+          <text
+             sodipodi:linespacing="125%"
+             id="text3961"
+             y="237.40157"
+             x="318.89761"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             xml:space="preserve"
+             inkscape:transform-center-x="2.32575"
+             inkscape:transform-center-y="-7.6750039"><tspan
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+               y="237.40157"
+               x="318.89761"
+               id="tspan3963"
+               sodipodi:role="line">h</tspan></text>
+        </g>
+        <g
+           id="g3965">
+          <path
+             inkscape:connector-curvature="0"
+             id="path3967"
+             d="m 389.76377,184.25195 -17.71653,35.43307 35.43307,0 z"
+             style="fill:#ffffff;fill-opacity:1;stroke:#ff0000;stroke-width:3.54330707;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+          <text
+             sodipodi:linespacing="125%"
+             id="text3969"
+             y="209.4838"
+             x="386.37872"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             xml:space="preserve"><tspan
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+               y="209.4838"
+               x="386.37872"
+               id="tspan3971"
+               sodipodi:role="line">rr</tspan></text>
+          <text
+             xml:space="preserve"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             x="389.76376"
+             y="237.40157"
+             id="text3973"
+             sodipodi:linespacing="125%"><tspan
+               sodipodi:role="line"
+               id="tspan3975"
+               x="389.76376"
+               y="237.40157"
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">RT(h)</tspan></text>
+        </g>
+        <g
+           id="g3977">
+          <path
+             transform="matrix(0.5167323,0,0,0.5167323,200.4183,115.11795)"
+             d="m 332.14286,99.505035 c 0,18.935475 -15.35024,34.285715 -34.28571,34.285715 -18.93548,0 -34.28572,-15.35024 -34.28572,-34.285715 0,-18.935476 15.35024,-34.285713 34.28572,-34.285713 18.93547,0 34.28571,15.350237 34.28571,34.285713 z"
+             sodipodi:ry="34.285713"
+             sodipodi:rx="34.285713"
+             sodipodi:cy="99.505035"
+             sodipodi:cx="297.85715"
+             id="path3979"
+             style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:6.85714245;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+             sodipodi:type="arc" />
+          <text
+             sodipodi:linespacing="125%"
+             id="text3981"
+             y="169.27"
+             x="350.43805"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             xml:space="preserve"><tspan
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+               y="169.27"
+               x="350.43805"
+               id="tspan3983"
+               sodipodi:role="line">rv</tspan></text>
+          <text
+             sodipodi:linespacing="125%"
+             id="text3985"
+             y="155.96849"
+             x="397.74802"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             xml:space="preserve"><tspan
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+               y="155.96849"
+               x="397.74802"
+               id="tspan3987"
+               sodipodi:role="line">BT(h+1)</tspan></text>
+        </g>
+        <text
+           xml:space="preserve"
+           style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+           x="360.33072"
+           y="121.3858"
+           id="text3852-9-8"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan3854-0-8"
+             x="360.33072"
+             y="121.3858"
+             style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">[was RT(h+1) or BT(h+2)]</tspan></text>
+      </g>
+    </g>
+    <g
+       id="g6264"
+       transform="translate(-248.03144,318.89684)">
+      <rect
+         style="fill:#c8c8c8;fill-opacity:1;stroke:none"
+         id="rect4527-36-6"
+         width="230.31494"
+         height="35.433033"
+         x="283.46457"
+         y="255.1181"
+         ry="0.28726187" />
+      <rect
+         ry="1.1490486"
+         y="290.55112"
+         x="283.46454"
+         height="141.73227"
+         width="230.31496"
+         id="rect4525-86-1"
+         style="fill:#e6e6e6;fill-opacity:1;stroke:none" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1.0629921;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+         d="m 354.33071,325.98423 0,-35.43307"
+         id="path6429-8"
+         inkscape:connector-curvature="0" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text4239-51-8"
+         y="270.83463"
+         x="301.18109"
+         style="font-size:40px;font-style:normal;font-weight:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+           y="270.83463"
+           x="301.18109"
+           sodipodi:role="line"
+           id="tspan5501-7">The far child of the sibling is an RT. We cannot</tspan><tspan
+           id="tspan6195"
+           style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+           y="283.95963"
+           x="301.18109"
+           sodipodi:role="line">blacken it, so we next look to blacken <tspan
+   id="tspan6197"
+   style="font-style:italic">rl</tspan>.</tspan></text>
+      <g
+         id="g3989"
+         transform="translate(70.866132,194.88182)">
+        <path
+           style="fill:none;stroke:#000000;stroke-width:1.0629921;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+           d="M 283.46457,131.10234 248.0315,184.25195"
+           id="path3991"
+           inkscape:connector-curvature="0" />
+        <path
+           style="fill:none;stroke:#000000;stroke-width:1.0629921;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+           d="m 354.33071,166.53541 -35.43307,17.71654"
+           id="path3993"
+           inkscape:connector-curvature="0" />
+        <path
+           style="fill:none;stroke:#000000;stroke-width:1.0629921;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+           d="m 354.33071,166.53541 35.43307,17.71654"
+           id="path3995"
+           inkscape:connector-curvature="0" />
+        <path
+           style="fill:none;stroke:#000000;stroke-width:1.0629921;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+           d="m 283.46457,131.10234 70.86614,35.43307"
+           id="path3997"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cc" />
+        <g
+           id="g3999">
+          <path
+             transform="matrix(0.5167323,0,0,0.5167323,129.55216,79.684877)"
+             d="m 332.14286,99.505035 c 0,18.935475 -15.35024,34.285715 -34.28571,34.285715 -18.93548,0 -34.28572,-15.35024 -34.28572,-34.285715 0,-18.935476 15.35024,-34.285713 34.28572,-34.285713 18.93547,0 34.28571,15.350237 34.28571,34.285713 z"
+             sodipodi:ry="34.285713"
+             sodipodi:rx="34.285713"
+             sodipodi:cy="99.505035"
+             sodipodi:cx="297.85715"
+             id="path4001"
+             style="fill:#ffffff;fill-opacity:1;stroke:#969696;stroke-width:6.85714245;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+             sodipodi:type="arc" />
+          <text
+             sodipodi:linespacing="125%"
+             id="text4003"
+             y="133.28091"
+             x="281.10742"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             xml:space="preserve"><tspan
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+               y="133.28091"
+               x="281.10742"
+               id="tspan4005"
+               sodipodi:role="line">v</tspan></text>
+        </g>
+        <g
+           id="g4007">
+          <path
+             style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:3.54330707;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+             d="m 248.0315,184.25195 -17.71653,35.43307 35.43307,0 z"
+             id="path4009"
+             inkscape:connector-curvature="0" />
+          <text
+             xml:space="preserve"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             x="247.56259"
+             y="209.73633"
+             id="text4011"
+             sodipodi:linespacing="125%"><tspan
+               sodipodi:role="line"
+               id="tspan4013"
+               x="247.56259"
+               y="209.73633"
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">l</tspan></text>
+          <text
+             sodipodi:linespacing="125%"
+             id="text4015"
+             y="185.96849"
+             x="271.74802"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             xml:space="preserve"><tspan
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+               y="185.96849"
+               x="271.74802"
+               id="tspan4017"
+               sodipodi:role="line">BT(h)</tspan></text>
+        </g>
+        <g
+           id="g4019">
+          <path
+             inkscape:connector-curvature="0"
+             id="path4021"
+             d="m 318.89764,184.25195 -17.71653,35.43307 35.43307,0 z"
+             style="fill:#ffffff;fill-opacity:1;stroke:#969696;stroke-width:3.54330707;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+          <text
+             sodipodi:linespacing="125%"
+             id="text4023"
+             y="209.73633"
+             x="315.4155"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             xml:space="preserve"><tspan
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+               y="209.73633"
+               x="315.4155"
+               id="tspan4025"
+               sodipodi:role="line">rl</tspan></text>
+          <text
+             xml:space="preserve"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             x="307.74802"
+             y="185.96849"
+             id="text4027"
+             sodipodi:linespacing="125%"><tspan
+               sodipodi:role="line"
+               id="tspan4029"
+               x="307.74802"
+               y="185.96849"
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">h</tspan></text>
+        </g>
+        <g
+           id="g4031">
+          <path
+             style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:3.54330707;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+             d="m 389.76377,184.25195 -17.71653,35.43307 35.43307,0 z"
+             id="path4033"
+             inkscape:connector-curvature="0" />
+          <text
+             xml:space="preserve"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             x="386.37872"
+             y="209.4838"
+             id="text4035"
+             sodipodi:linespacing="125%"><tspan
+               sodipodi:role="line"
+               id="tspan4037"
+               x="386.37872"
+               y="209.4838"
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">rr</tspan></text>
+          <text
+             sodipodi:linespacing="125%"
+             id="text4039"
+             y="185.96849"
+             x="413.74802"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             xml:space="preserve"><tspan
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+               y="185.96849"
+               x="413.74802"
+               id="tspan4041"
+               sodipodi:role="line">BT(h)</tspan></text>
+        </g>
+        <g
+           id="g4043">
+          <path
+             sodipodi:type="arc"
+             style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:6.85714245;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+             id="path4045"
+             sodipodi:cx="297.85715"
+             sodipodi:cy="99.505035"
+             sodipodi:rx="34.285713"
+             sodipodi:ry="34.285713"
+             d="m 332.14286,99.505035 c 0,18.935475 -15.35024,34.285715 -34.28571,34.285715 -18.93548,0 -34.28572,-15.35024 -34.28572,-34.285715 0,-18.935476 15.35024,-34.285713 34.28572,-34.285713 18.93547,0 34.28571,15.350237 34.28571,34.285713 z"
+             transform="matrix(0.5167323,0,0,0.5167323,200.4183,115.11795)" />
+          <text
+             xml:space="preserve"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             x="350.43805"
+             y="169.27"
+             id="text4047"
+             sodipodi:linespacing="125%"><tspan
+               sodipodi:role="line"
+               id="tspan4049"
+               x="350.43805"
+               y="169.27"
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">rv</tspan></text>
+          <text
+             xml:space="preserve"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             x="393.74802"
+             y="155.96849"
+             id="text4051"
+             sodipodi:linespacing="125%"><tspan
+               sodipodi:role="line"
+               id="tspan4053"
+               x="393.74802"
+               y="155.96849"
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">BT(h+1)</tspan></text>
+        </g>
+        <text
+           xml:space="preserve"
+           style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+           x="363.44879"
+           y="120.25195"
+           id="text3852-9-5"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan3854-0-7"
+             x="363.44879"
+             y="120.25195"
+             style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">[was RT(h+1) or BT(h+2)]</tspan></text>
+      </g>
+    </g>
+    <g
+       id="g4725"
+       transform="translate(513.77956,-230.31578)">
+      <rect
+         ry="0.28726187"
+         y="591.73224"
+         x="35.433071"
+         height="35.433033"
+         width="230.31494"
+         id="rect4527-1"
+         style="fill:#b7e2ae;fill-opacity:1;stroke:none" />
+      <rect
+         style="fill:#def2da;fill-opacity:1;stroke:none"
+         id="rect4525-3"
+         width="230.31496"
+         height="159.44882"
+         x="35.433056"
+         y="627.16528"
+         ry="1.2926798" />
+      <text
+         xml:space="preserve"
+         style="font-size:40px;font-style:normal;font-weight:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         x="53.149609"
+         y="607.44879"
+         id="text4239-0"
+         sodipodi:linespacing="125%"><tspan
+           sodipodi:role="line"
+           x="53.149609"
+           y="607.44879"
+           style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+           id="tspan4537-7">The new root is now a valid RT(h+1), as was</tspan><tspan
+           id="tspan4689"
+           sodipodi:role="line"
+           x="53.149609"
+           y="620.57379"
+           style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">the root before deletion, so we're done.</tspan></text>
+      <g
+         id="g4055"
+         transform="translate(-177.16536,531.49606)">
+        <path
+           sodipodi:nodetypes="cc"
+           style="fill:none;stroke:#000000;stroke-width:1.0629921;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+           d="M 283.46457,166.53542 248.0315,184.25195"
+           id="path4057"
+           inkscape:connector-curvature="0" />
+        <path
+           sodipodi:nodetypes="cc"
+           style="fill:none;stroke:#000000;stroke-width:1.0629921;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+           d="m 283.46457,166.53542 35.43307,17.71653"
+           id="path4059"
+           inkscape:connector-curvature="0" />
+        <path
+           sodipodi:nodetypes="cc"
+           style="fill:none;stroke:#000000;stroke-width:1.0629921;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+           d="m 354.3307,166.5355 35.43308,17.71645"
+           id="path4061"
+           inkscape:connector-curvature="0" />
+        <path
+           style="fill:none;stroke:#000000;stroke-width:1.0629921;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+           d="m 354.3307,166.5355 -70.86613,-8e-5"
+           id="path4063"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cc" />
+        <g
+           transform="translate(2.9795094e-6,35.433073)"
+           id="g4065">
+          <path
+             transform="matrix(0.5167323,0,0,0.5167323,129.55216,79.684877)"
+             d="m 332.14286,99.505035 c 0,18.935475 -15.35024,34.285715 -34.28571,34.285715 -18.93548,0 -34.28572,-15.35024 -34.28572,-34.285715 0,-18.935476 15.35024,-34.285713 34.28572,-34.285713 18.93547,0 34.28571,15.350237 34.28571,34.285713 z"
+             sodipodi:ry="34.285713"
+             sodipodi:rx="34.285713"
+             sodipodi:cy="99.505035"
+             sodipodi:cx="297.85715"
+             id="path4067"
+             style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:6.85714245;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+             sodipodi:type="arc" />
+          <text
+             sodipodi:linespacing="125%"
+             id="text4069"
+             y="133.28091"
+             x="281.10742"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             xml:space="preserve"><tspan
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+               y="133.28091"
+               x="281.10742"
+               id="tspan4071"
+               sodipodi:role="line">v</tspan></text>
+          <text
+             xml:space="preserve"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             x="242.88187"
+             y="120.53542"
+             id="text4117-1"
+             sodipodi:linespacing="125%"><tspan
+               sodipodi:role="line"
+               id="tspan4119-1"
+               x="242.88187"
+               y="120.53542"
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">BT(h+1)</tspan></text>
+        </g>
+        <g
+           id="g4073">
+          <path
+             style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:3.54330707;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+             d="m 248.0315,184.25195 -17.71653,35.43307 35.43307,0 z"
+             id="path4075"
+             inkscape:connector-curvature="0" />
+          <text
+             xml:space="preserve"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             x="247.56259"
+             y="209.73633"
+             id="text4077"
+             sodipodi:linespacing="125%"><tspan
+               sodipodi:role="line"
+               id="tspan4079"
+               x="247.56259"
+               y="209.73633"
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">l</tspan></text>
+          <text
+             sodipodi:linespacing="125%"
+             id="text4081"
+             y="237.40154"
+             x="248.03146"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             xml:space="preserve"><tspan
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+               y="237.40154"
+               x="248.03146"
+               id="tspan4083"
+               sodipodi:role="line">BT(h)</tspan></text>
+        </g>
+        <g
+           id="g4085">
+          <path
+             inkscape:connector-curvature="0"
+             id="path4087"
+             d="m 318.89764,184.25195 -17.71653,35.43307 35.43307,0 z"
+             style="fill:#ffffff;fill-opacity:1;stroke:#969696;stroke-width:3.54330707;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+          <text
+             sodipodi:linespacing="125%"
+             id="text4089"
+             y="209.73633"
+             x="315.4155"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             xml:space="preserve"><tspan
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+               y="209.73633"
+               x="315.4155"
+               id="tspan4091"
+               sodipodi:role="line">rl</tspan></text>
+          <text
+             xml:space="preserve"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             x="318.89761"
+             y="237.40154"
+             id="text4093"
+             sodipodi:linespacing="125%"
+             inkscape:transform-center-x="2.32575"
+             inkscape:transform-center-y="-9.1080488"><tspan
+               sodipodi:role="line"
+               id="tspan4095"
+               x="318.89761"
+               y="237.40154"
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">h</tspan></text>
+        </g>
+        <g
+           id="g4097">
+          <path
+             style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:3.54330707;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+             d="m 389.76377,184.25195 -17.71653,35.43307 35.43307,0 z"
+             id="path4099"
+             inkscape:connector-curvature="0" />
+          <text
+             xml:space="preserve"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             x="386.37872"
+             y="209.4838"
+             id="text4101"
+             sodipodi:linespacing="125%"><tspan
+               sodipodi:role="line"
+               id="tspan4103"
+               x="386.37872"
+               y="209.4838"
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">rr</tspan></text>
+          <text
+             sodipodi:linespacing="125%"
+             id="text4105"
+             y="237.40154"
+             x="389.76376"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             xml:space="preserve"><tspan
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+               y="237.40154"
+               x="389.76376"
+               id="tspan4107"
+               sodipodi:role="line">BT(h+1)</tspan></text>
+        </g>
+        <path
+           style="fill:none;stroke:#000000;stroke-width:1.0629921;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+           d="m 177.16535,591.73226 1e-5,-70.86614"
+           id="path6429"
+           inkscape:connector-curvature="0"
+           transform="translate(177.16534,-425.19676)"
+           sodipodi:nodetypes="cc" />
+        <g
+           transform="translate(-9.723705e-6,8.8092382e-5)"
+           id="g4109">
+          <path
+             sodipodi:type="arc"
+             style="fill:#ffffff;fill-opacity:1;stroke:#ff0000;stroke-width:6.85714245;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+             id="path4111"
+             sodipodi:cx="297.85715"
+             sodipodi:cy="99.505035"
+             sodipodi:rx="34.285713"
+             sodipodi:ry="34.285713"
+             d="m 332.14286,99.505035 c 0,18.935475 -15.35024,34.285715 -34.28571,34.285715 -18.93548,0 -34.28572,-15.35024 -34.28572,-34.285715 0,-18.935476 15.35024,-34.285713 34.28572,-34.285713 18.93547,0 34.28571,15.350237 34.28571,34.285713 z"
+             transform="matrix(0.5167323,0,0,0.5167323,200.4183,115.11795)" />
+          <text
+             xml:space="preserve"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             x="350.43805"
+             y="169.27"
+             id="text4113"
+             sodipodi:linespacing="125%"><tspan
+               sodipodi:role="line"
+               id="tspan4115"
+               x="350.43805"
+               y="169.27"
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">rv</tspan></text>
+          <text
+             xml:space="preserve"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             x="399.74802"
+             y="155.96849"
+             id="text4117"
+             sodipodi:linespacing="125%"><tspan
+               sodipodi:role="line"
+               id="tspan4119"
+               x="399.74802"
+               y="155.96849"
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">RT(h+1)</tspan></text>
+        </g>
+      </g>
+    </g>
+    <text
+       sodipodi:linespacing="125%"
+       id="text3852-9-8-5"
+       y="550.58179"
+       x="62.866173"
+       style="font-size:40px;font-style:normal;font-weight:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       xml:space="preserve"><tspan
+         style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;text-anchor:start;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+         y="550.58179"
+         x="62.866173"
+         id="tspan3854-0-8-3"
+         sodipodi:role="line">Test the color of the root of <tspan
+   style="font-style:italic;font-weight:bold"
+   id="tspan7222">rr</tspan>.</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-weight:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="-432.28259"
+       y="295.18109"
+       id="text4225"
+       sodipodi:linespacing="125%"
+       transform="matrix(0,-1,1,0,0,0)"><tspan
+         sodipodi:role="line"
+         id="tspan4227"
+         x="-432.28259"
+         y="295.18109"
+         style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"><tspan
+   style="font-style:italic;text-align:start;text-anchor:start"
+   id="tspan4235">rr</tspan> is an RT</tspan></text>
+    <g
+       id="g6829"
+       transform="translate(513.77952,-124.01643)">
+      <rect
+         style="fill:#b7e2ae;fill-opacity:1;stroke:none"
+         id="rect4527-1-2"
+         width="230.31494"
+         height="35.433033"
+         x="283.4646"
+         y="485.43289"
+         ry="0.28726187" />
+      <rect
+         ry="1.2926795"
+         y="520.86603"
+         x="283.46457"
+         height="159.44879"
+         width="230.31496"
+         id="rect4525-3-3"
+         style="fill:#def2da;fill-opacity:1;stroke:none" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text4239-0-7"
+         y="501.14944"
+         x="301.18115"
+         style="font-size:40px;font-style:normal;font-weight:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           id="tspan4537-7-5"
+           style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+           y="501.14944"
+           x="301.18115"
+           sodipodi:role="line">The new root is now a valid BT(h+2), as was</tspan><tspan
+           style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+           y="514.27441"
+           x="301.18115"
+           sodipodi:role="line"
+           id="tspan4689-5">the root before deletion, so we're done.</tspan></text>
+      <path
+         inkscape:connector-curvature="0"
+         id="path6429-5"
+         d="m 425.19684,556.29919 0,-35.43307"
+         style="fill:none;stroke:#000000;stroke-width:1.0629921;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+      <g
+         transform="translate(70.866148,425.19673)"
+         id="g4455">
+        <path
+           inkscape:connector-curvature="0"
+           id="path4457"
+           d="M 283.46457,166.53542 248.0315,184.25195"
+           style="fill:none;stroke:#000000;stroke-width:1.0629921;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+           sodipodi:nodetypes="cc" />
+        <path
+           inkscape:connector-curvature="0"
+           id="path4459"
+           d="m 283.46457,166.53542 35.43307,17.71653"
+           style="fill:none;stroke:#000000;stroke-width:1.0629921;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+           sodipodi:nodetypes="cc" />
+        <path
+           inkscape:connector-curvature="0"
+           id="path4461"
+           d="m 354.33071,131.10234 35.43307,53.14961"
+           style="fill:none;stroke:#000000;stroke-width:1.0629921;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+           sodipodi:nodetypes="cc" />
+        <path
+           sodipodi:nodetypes="cc"
+           inkscape:connector-curvature="0"
+           id="path4463"
+           d="m 354.33071,131.10234 -70.86614,35.43308"
+           style="fill:none;stroke:#000000;stroke-width:1.0629921;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+        <g
+           id="g4465"
+           transform="translate(2.9795094e-6,35.433073)">
+          <path
+             sodipodi:type="arc"
+             style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:6.85714245;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+             id="path4467"
+             sodipodi:cx="297.85715"
+             sodipodi:cy="99.505035"
+             sodipodi:rx="34.285713"
+             sodipodi:ry="34.285713"
+             d="m 332.14286,99.505035 c 0,18.935475 -15.35024,34.285715 -34.28571,34.285715 -18.93548,0 -34.28572,-15.35024 -34.28572,-34.285715 0,-18.935476 15.35024,-34.285713 34.28572,-34.285713 18.93547,0 34.28571,15.350237 34.28571,34.285713 z"
+             transform="matrix(0.5167323,0,0,0.5167323,129.55216,79.684877)" />
+          <text
+             xml:space="preserve"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             x="281.10742"
+             y="133.28091"
+             id="text4469"
+             sodipodi:linespacing="125%"><tspan
+               sodipodi:role="line"
+               id="tspan4471"
+               x="281.10742"
+               y="133.28091"
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">v</tspan></text>
+          <text
+             sodipodi:linespacing="125%"
+             id="text4473"
+             y="120.53542"
+             x="242.88187"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             xml:space="preserve"><tspan
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+               y="120.53542"
+               x="242.88187"
+               id="tspan4475"
+               sodipodi:role="line">BT(h+1)</tspan></text>
+        </g>
+        <g
+           id="g4477">
+          <path
+             inkscape:connector-curvature="0"
+             id="path4479"
+             d="m 248.0315,184.25195 -17.71653,35.43307 35.43307,0 z"
+             style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:3.54330707;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+          <text
+             sodipodi:linespacing="125%"
+             id="text4481"
+             y="209.73633"
+             x="247.56259"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             xml:space="preserve"><tspan
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+               y="209.73633"
+               x="247.56259"
+               id="tspan4483"
+               sodipodi:role="line">l</tspan></text>
+          <text
+             xml:space="preserve"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             x="248.03149"
+             y="237.40152"
+             id="text4485"
+             sodipodi:linespacing="125%"><tspan
+               sodipodi:role="line"
+               id="tspan4487"
+               x="248.03149"
+               y="237.40152"
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">BT(h)</tspan></text>
+        </g>
+        <g
+           id="g4489">
+          <path
+             style="fill:#ffffff;fill-opacity:1;stroke:#969696;stroke-width:3.54330707;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+             d="m 318.89764,184.25195 -17.71653,35.43307 35.43307,0 z"
+             id="path4491"
+             inkscape:connector-curvature="0" />
+          <text
+             xml:space="preserve"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             x="315.4155"
+             y="209.73633"
+             id="text4493"
+             sodipodi:linespacing="125%"><tspan
+               sodipodi:role="line"
+               id="tspan4495"
+               x="315.4155"
+               y="209.73633"
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">rl</tspan></text>
+          <text
+             sodipodi:linespacing="125%"
+             id="text4497"
+             y="237.40152"
+             x="318.89764"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             xml:space="preserve"><tspan
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+               y="237.40152"
+               x="318.89764"
+               id="tspan4499"
+               sodipodi:role="line">h</tspan></text>
+        </g>
+        <g
+           id="g4501">
+          <path
+             inkscape:connector-curvature="0"
+             id="path4503"
+             d="m 389.76377,184.25195 -17.71653,35.43307 35.43307,0 z"
+             style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:3.54330707;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+          <text
+             sodipodi:linespacing="125%"
+             id="text4505"
+             y="209.4838"
+             x="386.37872"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             xml:space="preserve"><tspan
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+               y="209.4838"
+               x="386.37872"
+               id="tspan4507"
+               sodipodi:role="line">rr</tspan></text>
+          <text
+             xml:space="preserve"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             x="389.76379"
+             y="237.40152"
+             id="text4509"
+             sodipodi:linespacing="125%"><tspan
+               sodipodi:role="line"
+               id="tspan4511"
+               x="389.76379"
+               y="237.40152"
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">BT(h+1)</tspan></text>
+        </g>
+        <g
+           id="g4513"
+           transform="translate(4.7117929e-6,-35.433071)">
+          <path
+             transform="matrix(0.5167323,0,0,0.5167323,200.4183,115.11795)"
+             d="m 332.14286,99.505035 c 0,18.935475 -15.35024,34.285715 -34.28571,34.285715 -18.93548,0 -34.28572,-15.35024 -34.28572,-34.285715 0,-18.935476 15.35024,-34.285713 34.28572,-34.285713 18.93547,0 34.28571,15.350237 34.28571,34.285713 z"
+             sodipodi:ry="34.285713"
+             sodipodi:rx="34.285713"
+             sodipodi:cy="99.505035"
+             sodipodi:cx="297.85715"
+             id="path4515"
+             style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:6.85714245;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+             sodipodi:type="arc" />
+          <text
+             sodipodi:linespacing="125%"
+             id="text4517"
+             y="169.27"
+             x="350.43805"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             xml:space="preserve"><tspan
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+               y="169.27"
+               x="350.43805"
+               id="tspan4519"
+               sodipodi:role="line">rv</tspan></text>
+          <text
+             sodipodi:linespacing="125%"
+             id="text4521"
+             y="155.96849"
+             x="307.74802"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             xml:space="preserve"><tspan
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+               y="155.96849"
+               x="307.74802"
+               id="tspan4523"
+               sodipodi:role="line">BT(h+2)</tspan></text>
+        </g>
+      </g>
+    </g>
+    <text
+       sodipodi:linespacing="125%"
+       id="text4239-0-5"
+       y="337.69992"
+       x="318.89764"
+       style="font-size:40px;font-style:normal;font-weight:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       xml:space="preserve"><tspan
+         style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;text-anchor:start;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+         y="337.69992"
+         x="318.89764"
+         sodipodi:role="line"
+         id="tspan5777">Single rotate left.  Blacken <tspan
+   style="font-style:italic;font-weight:bold;text-align:start;text-anchor:start"
+   id="tspan4719">rr</tspan> to be a BT(h+1).  Color the new root with the old color.</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.0629921;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow2Mend-9)"
+       d="m 566.92913,343.69993 248.03153,-10e-6 0,17.71654"
+       id="path5779"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccc" />
+    <text
+       sodipodi:linespacing="125%"
+       id="text6246"
+       y="567.28589"
+       x="62.309494"
+       style="font-size:40px;font-style:normal;font-weight:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       xml:space="preserve"><tspan
+         style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+         y="567.28589"
+         x="62.309494"
+         id="tspan6248"
+         sodipodi:role="line"><tspan
+   id="tspan6250"
+   style="font-style:italic;text-align:start;text-anchor:start">rr</tspan> is a BT</tspan></text>
+    <text
+       sodipodi:linespacing="125%"
+       id="text6252"
+       y="355.10147"
+       x="584.64581"
+       style="font-size:40px;font-style:normal;font-weight:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       xml:space="preserve"><tspan
+         style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+         y="355.10147"
+         x="584.64581"
+         id="tspan6254"
+         sodipodi:role="line">The root was red</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-weight:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="832.67719"
+       y="355.10147"
+       id="text6258"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan6260"
+         x="832.67719"
+         y="355.10147"
+         style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">The root was black</tspan></text>
+    <g
+       id="g6307"
+       transform="translate(-248.03147,549.21174)">
+      <rect
+         ry="0.28726187"
+         y="255.1181"
+         x="283.46457"
+         height="35.433033"
+         width="283.46454"
+         id="rect6309"
+         style="fill:#c8c8c8;fill-opacity:1;stroke:none" />
+      <rect
+         style="fill:#e6e6e6;fill-opacity:1;stroke:none"
+         id="rect6311"
+         width="283.46463"
+         height="159.44888"
+         x="283.46454"
+         y="290.55112"
+         ry="1.2926803" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1.0629921;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+         d="m 354.33071,325.98424 0,-35.43307"
+         id="path6429-69"
+         inkscape:connector-curvature="0" />
+      <text
+         xml:space="preserve"
+         style="font-size:40px;font-style:normal;font-weight:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         x="301.18109"
+         y="270.83463"
+         id="text6313"
+         sodipodi:linespacing="125%"><tspan
+           sodipodi:role="line"
+           x="301.18109"
+           y="270.83463"
+           style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+           id="tspan6447">The near child of the sibling is an RT.  This red will be</tspan><tspan
+           sodipodi:role="line"
+           x="301.18109"
+           y="283.95963"
+           style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+           id="tspan6451">blackened in the course of a double rotation.</tspan></text>
+      <g
+         transform="translate(70.866132,194.88182)"
+         id="g6321">
+        <path
+           inkscape:connector-curvature="0"
+           id="path6323"
+           d="M 283.46457,131.10234 248.0315,184.25195"
+           style="fill:none;stroke:#000000;stroke-width:1.0629921;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+        <path
+           inkscape:connector-curvature="0"
+           id="path6325"
+           d="m 425.19686,166.53549 -70.86614,17.71654"
+           style="fill:none;stroke:#000000;stroke-width:1.0629921;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+           sodipodi:nodetypes="cc" />
+        <path
+           inkscape:connector-curvature="0"
+           id="path6327"
+           d="m 425.19686,166.53549 35.43307,17.71654"
+           style="fill:none;stroke:#000000;stroke-width:1.0629921;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+           sodipodi:nodetypes="cc" />
+        <path
+           sodipodi:nodetypes="cc"
+           inkscape:connector-curvature="0"
+           id="path6329"
+           d="m 283.46457,131.10234 141.73229,35.43315"
+           style="fill:none;stroke:#000000;stroke-width:1.0629921;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+        <g
+           id="g6331">
+          <path
+             sodipodi:type="arc"
+             style="fill:#ffffff;fill-opacity:1;stroke:#969696;stroke-width:6.85714245;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+             id="path6333"
+             sodipodi:cx="297.85715"
+             sodipodi:cy="99.505035"
+             sodipodi:rx="34.285713"
+             sodipodi:ry="34.285713"
+             d="m 332.14286,99.505035 c 0,18.935475 -15.35024,34.285715 -34.28571,34.285715 -18.93548,0 -34.28572,-15.35024 -34.28572,-34.285715 0,-18.935476 15.35024,-34.285713 34.28572,-34.285713 18.93547,0 34.28571,15.350237 34.28571,34.285713 z"
+             transform="matrix(0.5167323,0,0,0.5167323,129.55216,79.684877)" />
+          <text
+             xml:space="preserve"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             x="281.10742"
+             y="133.28091"
+             id="text6335"
+             sodipodi:linespacing="125%"><tspan
+               sodipodi:role="line"
+               id="tspan6337"
+               x="281.10742"
+               y="133.28091"
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">v</tspan></text>
+        </g>
+        <g
+           id="g6339">
+          <path
+             inkscape:connector-curvature="0"
+             id="path6341"
+             d="m 248.0315,184.25195 -17.71653,35.43307 35.43307,0 z"
+             style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:3.54330707;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+          <text
+             sodipodi:linespacing="125%"
+             id="text6343"
+             y="209.73633"
+             x="247.56259"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             xml:space="preserve"><tspan
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+               y="209.73633"
+               x="247.56259"
+               id="tspan6345"
+               sodipodi:role="line">l</tspan></text>
+          <text
+             xml:space="preserve"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             x="248.03148"
+             y="237.40164"
+             id="text6347"
+             sodipodi:linespacing="125%"><tspan
+               sodipodi:role="line"
+               id="tspan6349"
+               x="248.03148"
+               y="237.40164"
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">BT(h)</tspan></text>
+        </g>
+        <g
+           id="g6351"
+           transform="translate(1.1464567e-5,7.9959399e-5)">
+          <path
+             style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:3.54330707;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+             d="m 318.89764,184.25195 -17.71653,35.43307 35.43307,0 z"
+             id="path6353"
+             inkscape:connector-curvature="0" />
+          <text
+             xml:space="preserve"
+             style="font-size:40px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             x="317.65021"
+             y="209.73633"
+             id="text6355"
+             sodipodi:linespacing="125%"><tspan
+               sodipodi:role="line"
+               id="tspan6357"
+               x="317.65021"
+               y="209.73633"
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">rll</tspan></text>
+          <text
+             sodipodi:linespacing="125%"
+             id="text6359"
+             y="237.40157"
+             x="318.89761"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             xml:space="preserve"><tspan
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+               y="237.40157"
+               x="318.89761"
+               id="tspan6361"
+               sodipodi:role="line">BT(h)</tspan></text>
+        </g>
+        <g
+           id="g6363"
+           transform="translate(70.866155,7.8722303e-5)">
+          <path
+             inkscape:connector-curvature="0"
+             id="path6365"
+             d="m 389.76377,184.25195 -17.71653,35.43307 35.43307,0 z"
+             style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:3.54330707;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+          <text
+             sodipodi:linespacing="125%"
+             id="text6367"
+             y="209.4838"
+             x="386.37872"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             xml:space="preserve"><tspan
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+               y="209.4838"
+               x="386.37872"
+               id="tspan6369"
+               sodipodi:role="line">rr</tspan></text>
+          <text
+             xml:space="preserve"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             x="389.76376"
+             y="237.40157"
+             id="text6371"
+             sodipodi:linespacing="125%"><tspan
+               sodipodi:role="line"
+               id="tspan6373"
+               x="389.76376"
+               y="237.40157"
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">BT(h)</tspan></text>
+        </g>
+        <g
+           id="g6375"
+           transform="translate(70.866155,7.8722303e-5)">
+          <path
+             transform="matrix(0.5167323,0,0,0.5167323,200.4183,115.11795)"
+             d="m 332.14286,99.505035 c 0,18.935475 -15.35024,34.285715 -34.28571,34.285715 -18.93548,0 -34.28572,-15.35024 -34.28572,-34.285715 0,-18.935476 15.35024,-34.285713 34.28572,-34.285713 18.93547,0 34.28571,15.350237 34.28571,34.285713 z"
+             sodipodi:ry="34.285713"
+             sodipodi:rx="34.285713"
+             sodipodi:cy="99.505035"
+             sodipodi:cx="297.85715"
+             id="path6377"
+             style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:6.85714245;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+             sodipodi:type="arc" />
+          <text
+             sodipodi:linespacing="125%"
+             id="text6379"
+             y="169.27"
+             x="350.43805"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             xml:space="preserve"><tspan
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+               y="169.27"
+               x="350.43805"
+               id="tspan6381"
+               sodipodi:role="line">rv</tspan></text>
+          <text
+             sodipodi:linespacing="125%"
+             id="text6383"
+             y="155.96849"
+             x="393.74802"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             xml:space="preserve"><tspan
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+               y="155.96849"
+               x="393.74802"
+               id="tspan6385"
+               sodipodi:role="line">BT(h+1)</tspan></text>
+        </g>
+        <text
+           sodipodi:linespacing="125%"
+           id="text6387"
+           y="120.25195"
+           x="363.44879"
+           style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+           xml:space="preserve"><tspan
+             style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+             y="120.25195"
+             x="363.44879"
+             id="tspan6389"
+             sodipodi:role="line">[was RT(h+1) or BT(h+2)]</tspan></text>
+        <path
+           style="fill:none;stroke:#000000;stroke-width:1.0629921;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+           d="m 141.73228,839.76376 70.86615,0"
+           id="path6443"
+           inkscape:connector-curvature="0"
+           transform="translate(177.16537,-655.51173)" />
+        <g
+           transform="translate(1.358167e-5,17.716614)"
+           id="g6375-4">
+          <path
+             transform="matrix(0.5167323,0,0,0.5167323,200.4183,115.11795)"
+             d="m 332.14286,99.505035 c 0,18.935475 -15.35024,34.285715 -34.28571,34.285715 -18.93548,0 -34.28572,-15.35024 -34.28572,-34.285715 0,-18.935476 15.35024,-34.285713 34.28572,-34.285713 18.93547,0 34.28571,15.350237 34.28571,34.285713 z"
+             sodipodi:ry="34.285713"
+             sodipodi:rx="34.285713"
+             sodipodi:cy="99.505035"
+             sodipodi:cx="297.85715"
+             id="path6377-4"
+             style="fill:#ffffff;fill-opacity:1;stroke:#ff0000;stroke-width:6.85714245;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+             sodipodi:type="arc" />
+          <text
+             sodipodi:linespacing="125%"
+             id="text6379-3"
+             y="169.27"
+             x="355.65048"
+             style="font-size:40px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             xml:space="preserve"><tspan
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+               y="169.27"
+               x="355.65048"
+               id="tspan6381-2"
+               sodipodi:role="line">rlv</tspan></text>
+          <text
+             sodipodi:linespacing="125%"
+             id="text6383-7"
+             y="143.96849"
+             x="353.74802"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             xml:space="preserve"><tspan
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+               y="143.96849"
+               x="353.74802"
+               id="tspan6385-9"
+               sodipodi:role="line">RT(h)</tspan></text>
+        </g>
+        <g
+           transform="translate(70.866148,8.0825541e-5)"
+           id="g6431">
+          <path
+             inkscape:connector-curvature="0"
+             id="path6433"
+             d="m 318.89764,184.25195 -17.71653,35.43307 35.43307,0 z"
+             style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:3.54330707;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+          <text
+             sodipodi:linespacing="125%"
+             id="text6435"
+             y="209.73633"
+             x="313.4155"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             xml:space="preserve"><tspan
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+               y="209.73633"
+               x="313.4155"
+               id="tspan6437"
+               sodipodi:role="line">rlr</tspan></text>
+          <text
+             xml:space="preserve"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             x="318.89761"
+             y="237.40157"
+             id="text6439"
+             sodipodi:linespacing="125%"><tspan
+               sodipodi:role="line"
+               id="tspan6441"
+               x="318.89761"
+               y="237.40157"
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">BT(h)</tspan></text>
+        </g>
+      </g>
+    </g>
+    <g
+       transform="translate(70.866182,549.21182)"
+       id="g6517">
+      <rect
+         style="fill:#b7e2ae;fill-opacity:1;stroke:none"
+         id="rect6519"
+         width="283.46454"
+         height="35.433033"
+         x="283.46457"
+         y="255.1181"
+         ry="0.28726187" />
+      <rect
+         ry="1.2926797"
+         y="290.55112"
+         x="283.46454"
+         height="159.44881"
+         width="283.46463"
+         id="rect6521"
+         style="fill:#def2da;fill-opacity:1;stroke:none" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path6523"
+         d="m 425.19684,361.41724 0,-70.86615"
+         style="fill:none;stroke:#000000;stroke-width:1.0629921;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+         sodipodi:nodetypes="cc" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text6525"
+         y="270.83463"
+         x="301.18109"
+         style="font-size:40px;font-style:normal;font-weight:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           id="tspan6529"
+           style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+           y="270.83463"
+           x="301.18109"
+           sodipodi:role="line">The root was previously RT(h+1).  It is now RT(h+1).</tspan><tspan
+           style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+           y="283.95963"
+           x="301.18109"
+           sodipodi:role="line"
+           id="tspan6635">We are done.</tspan></text>
+      <g
+         id="g6531"
+         transform="translate(70.866132,194.88182)">
+        <path
+           sodipodi:nodetypes="cc"
+           inkscape:connector-curvature="0"
+           id="path6627"
+           d="m 354.33071,166.53542 -70.86614,0"
+           style="fill:none;stroke:#000000;stroke-width:1.0629921;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+        <path
+           style="fill:none;stroke:#000000;stroke-width:1.0629921;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+           d="M 283.46457,166.53542 248.0315,184.25195"
+           id="path6533"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cc" />
+        <path
+           sodipodi:nodetypes="cc"
+           style="fill:none;stroke:#000000;stroke-width:1.0629921;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+           d="m 425.19686,166.53549 -35.43308,17.71646"
+           id="path6535"
+           inkscape:connector-curvature="0" />
+        <path
+           sodipodi:nodetypes="cc"
+           style="fill:none;stroke:#000000;stroke-width:1.0629921;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+           d="m 425.19686,166.53549 35.43307,17.71654"
+           id="path6537"
+           inkscape:connector-curvature="0" />
+        <path
+           style="fill:none;stroke:#000000;stroke-width:1.0629921;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+           d="m 354.33071,166.53542 70.86615,7e-5"
+           id="path6539"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cc" />
+        <path
+           transform="translate(177.16537,-655.51173)"
+           inkscape:connector-curvature="0"
+           id="path6601"
+           d="m 106.2992,822.04715 35.43307,17.71653"
+           style="fill:none;stroke:#000000;stroke-width:1.0629921;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+           sodipodi:nodetypes="cc" />
+        <g
+           id="g6541"
+           transform="translate(1.8456512e-6,35.433072)">
+          <path
+             transform="matrix(0.5167323,0,0,0.5167323,129.55216,79.684877)"
+             d="m 332.14286,99.505035 c 0,18.935475 -15.35024,34.285715 -34.28571,34.285715 -18.93548,0 -34.28572,-15.35024 -34.28572,-34.285715 0,-18.935476 15.35024,-34.285713 34.28572,-34.285713 18.93547,0 34.28571,15.350237 34.28571,34.285713 z"
+             sodipodi:ry="34.285713"
+             sodipodi:rx="34.285713"
+             sodipodi:cy="99.505035"
+             sodipodi:cx="297.85715"
+             id="path6543"
+             style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:6.85714245;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+             sodipodi:type="arc" />
+          <text
+             sodipodi:linespacing="125%"
+             id="text6545"
+             y="133.28091"
+             x="281.10742"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             xml:space="preserve"><tspan
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+               y="133.28091"
+               x="281.10742"
+               id="tspan6547"
+               sodipodi:role="line">v</tspan></text>
+        </g>
+        <g
+           id="g6549">
+          <path
+             style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:3.54330707;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+             d="m 248.0315,184.25195 -17.71653,35.43307 35.43307,0 z"
+             id="path6551"
+             inkscape:connector-curvature="0" />
+          <text
+             xml:space="preserve"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             x="247.56259"
+             y="209.73633"
+             id="text6553"
+             sodipodi:linespacing="125%"><tspan
+               sodipodi:role="line"
+               id="tspan6555"
+               x="247.56259"
+               y="209.73633"
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">l</tspan></text>
+          <text
+             sodipodi:linespacing="125%"
+             id="text6557"
+             y="237.40157"
+             x="248.03146"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             xml:space="preserve"><tspan
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+               y="237.40157"
+               x="248.03146"
+               id="tspan6559"
+               sodipodi:role="line">h</tspan></text>
+        </g>
+        <g
+           transform="translate(1.1464567e-5,7.9959399e-5)"
+           id="g6561">
+          <path
+             inkscape:connector-curvature="0"
+             id="path6563"
+             d="m 318.89764,184.25195 -17.71653,35.43307 35.43307,0 z"
+             style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:3.54330707;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+          <text
+             sodipodi:linespacing="125%"
+             id="text6565"
+             y="209.73633"
+             x="317.65021"
+             style="font-size:40px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             xml:space="preserve"><tspan
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+               y="209.73633"
+               x="317.65021"
+               id="tspan6567"
+               sodipodi:role="line">rll</tspan></text>
+          <text
+             xml:space="preserve"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             x="318.89758"
+             y="237.40149"
+             id="text6569"
+             sodipodi:linespacing="125%"><tspan
+               sodipodi:role="line"
+               id="tspan6571"
+               x="318.89758"
+               y="237.40149"
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">BT(h)</tspan></text>
+        </g>
+        <g
+           transform="translate(70.866155,7.8722303e-5)"
+           id="g6573">
+          <path
+             style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:3.54330707;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+             d="m 389.76377,184.25195 -17.71653,35.43307 35.43307,0 z"
+             id="path6575"
+             inkscape:connector-curvature="0" />
+          <text
+             xml:space="preserve"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             x="386.37872"
+             y="209.4838"
+             id="text6577"
+             sodipodi:linespacing="125%"><tspan
+               sodipodi:role="line"
+               id="tspan6579"
+               x="386.37872"
+               y="209.4838"
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">rr</tspan></text>
+          <text
+             sodipodi:linespacing="125%"
+             id="text6581"
+             y="237.40149"
+             x="389.76373"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             xml:space="preserve"><tspan
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+               y="237.40149"
+               x="389.76373"
+               id="tspan6583"
+               sodipodi:role="line">BT(h)</tspan></text>
+        </g>
+        <g
+           transform="translate(70.866155,7.8722303e-5)"
+           id="g6585">
+          <path
+             sodipodi:type="arc"
+             style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:6.85714245;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+             id="path6587"
+             sodipodi:cx="297.85715"
+             sodipodi:cy="99.505035"
+             sodipodi:rx="34.285713"
+             sodipodi:ry="34.285713"
+             d="m 332.14286,99.505035 c 0,18.935475 -15.35024,34.285715 -34.28571,34.285715 -18.93548,0 -34.28572,-15.35024 -34.28572,-34.285715 0,-18.935476 15.35024,-34.285713 34.28572,-34.285713 18.93547,0 34.28571,15.350237 34.28571,34.285713 z"
+             transform="matrix(0.5167323,0,0,0.5167323,200.4183,115.11795)" />
+          <text
+             xml:space="preserve"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             x="350.43805"
+             y="169.27"
+             id="text6589"
+             sodipodi:linespacing="125%"><tspan
+               sodipodi:role="line"
+               id="tspan6591"
+               x="350.43805"
+               y="169.27"
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">rv</tspan></text>
+          <text
+             xml:space="preserve"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             x="393.74802"
+             y="155.96849"
+             id="text6593"
+             sodipodi:linespacing="125%"><tspan
+               sodipodi:role="line"
+               id="tspan6595"
+               x="393.74802"
+               y="155.96849"
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">BT(h+1)</tspan></text>
+          <text
+             sodipodi:linespacing="125%"
+             id="text6629"
+             y="155.96849"
+             x="173.74802"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             xml:space="preserve"><tspan
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+               y="155.96849"
+               x="173.74802"
+               id="tspan6631"
+               sodipodi:role="line">BT(h+1)</tspan></text>
+        </g>
+        <g
+           id="g6603"
+           transform="translate(3.5779346e-6,-6.5151096e-7)">
+          <path
+             sodipodi:type="arc"
+             style="fill:#ffffff;fill-opacity:1;stroke:#ff0000;stroke-width:6.85714245;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+             id="path6605"
+             sodipodi:cx="297.85715"
+             sodipodi:cy="99.505035"
+             sodipodi:rx="34.285713"
+             sodipodi:ry="34.285713"
+             d="m 332.14286,99.505035 c 0,18.935475 -15.35024,34.285715 -34.28571,34.285715 -18.93548,0 -34.28572,-15.35024 -34.28572,-34.285715 0,-18.935476 15.35024,-34.285713 34.28572,-34.285713 18.93547,0 34.28571,15.350237 34.28571,34.285713 z"
+             transform="matrix(0.5167323,0,0,0.5167323,200.4183,115.11795)" />
+          <text
+             xml:space="preserve"
+             style="font-size:40px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             x="355.65048"
+             y="169.27"
+             id="text6607"
+             sodipodi:linespacing="125%"><tspan
+               sodipodi:role="line"
+               id="tspan6609"
+               x="355.65048"
+               y="169.27"
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">rlv</tspan></text>
+          <text
+             xml:space="preserve"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             x="377.74802"
+             y="141.96849"
+             id="text6611"
+             sodipodi:linespacing="125%"><tspan
+               sodipodi:role="line"
+               id="tspan6613"
+               x="377.74802"
+               y="141.96849"
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">RT(h+1)</tspan></text>
+        </g>
+        <g
+           id="g6615"
+           transform="translate(70.866148,8.0825541e-5)">
+          <path
+             style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:3.54330707;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+             d="m 318.89764,184.25195 -17.71653,35.43307 35.43307,0 z"
+             id="path6617"
+             inkscape:connector-curvature="0" />
+          <text
+             xml:space="preserve"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             x="313.4155"
+             y="209.73633"
+             id="text6619"
+             sodipodi:linespacing="125%"><tspan
+               sodipodi:role="line"
+               id="tspan6621"
+               x="313.4155"
+               y="209.73633"
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">rlr</tspan></text>
+          <text
+             sodipodi:linespacing="125%"
+             id="text6623"
+             y="237.40149"
+             x="318.89761"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             xml:space="preserve"><tspan
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+               y="237.40149"
+               x="318.89761"
+               id="tspan6625"
+               sodipodi:role="line">BT(h)</tspan></text>
+        </g>
+      </g>
+    </g>
+    <g
+       id="g6637"
+       transform="translate(372.04727,549.21177)">
+      <rect
+         ry="0.28726187"
+         y="255.1181"
+         x="283.46457"
+         height="35.433033"
+         width="283.46454"
+         id="rect6639"
+         style="fill:#b7e2ae;fill-opacity:1;stroke:none" />
+      <rect
+         style="fill:#def2da;fill-opacity:1;stroke:none"
+         id="rect6641"
+         width="283.46463"
+         height="159.44885"
+         x="283.46454"
+         y="290.55112"
+         ry="1.29268" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1.0629921;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+         d="m 425.19684,325.98416 0,-35.43307"
+         id="path6643"
+         inkscape:connector-curvature="0" />
+      <text
+         xml:space="preserve"
+         style="font-size:40px;font-style:normal;font-weight:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         x="301.18109"
+         y="270.83463"
+         id="text6645"
+         sodipodi:linespacing="125%"><tspan
+           sodipodi:role="line"
+           x="301.18109"
+           y="270.83463"
+           style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+           id="tspan6647">The root was previously BT(h+2).  It is now BT(h+2).</tspan><tspan
+           id="tspan6649"
+           sodipodi:role="line"
+           x="301.18109"
+           y="283.95963"
+           style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">We are done.</tspan></text>
+      <g
+         transform="translate(70.866132,194.88182)"
+         id="g6651">
+        <path
+           style="fill:none;stroke:#000000;stroke-width:1.0629921;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+           d="m 354.33071,131.10234 -70.86614,35.43308"
+           id="path6653"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cc" />
+        <path
+           sodipodi:nodetypes="cc"
+           inkscape:connector-curvature="0"
+           id="path6655"
+           d="M 283.46457,166.53542 248.0315,184.25195"
+           style="fill:none;stroke:#000000;stroke-width:1.0629921;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+        <path
+           inkscape:connector-curvature="0"
+           id="path6657"
+           d="m 425.19686,166.53549 -35.43308,17.71646"
+           style="fill:none;stroke:#000000;stroke-width:1.0629921;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+           sodipodi:nodetypes="cc" />
+        <path
+           inkscape:connector-curvature="0"
+           id="path6659"
+           d="m 425.19686,166.53549 35.43307,17.71654"
+           style="fill:none;stroke:#000000;stroke-width:1.0629921;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+           sodipodi:nodetypes="cc" />
+        <path
+           sodipodi:nodetypes="cc"
+           inkscape:connector-curvature="0"
+           id="path6661"
+           d="m 354.33071,131.10234 70.86615,35.43315"
+           style="fill:none;stroke:#000000;stroke-width:1.0629921;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+        <path
+           sodipodi:nodetypes="cc"
+           style="fill:none;stroke:#000000;stroke-width:1.0629921;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+           d="m 106.2992,822.04715 35.43307,17.71653"
+           id="path6663"
+           inkscape:connector-curvature="0"
+           transform="translate(177.16537,-655.51173)" />
+        <g
+           transform="translate(1.8456512e-6,35.433072)"
+           id="g6665">
+          <path
+             sodipodi:type="arc"
+             style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:6.85714245;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+             id="path6667"
+             sodipodi:cx="297.85715"
+             sodipodi:cy="99.505035"
+             sodipodi:rx="34.285713"
+             sodipodi:ry="34.285713"
+             d="m 332.14286,99.505035 c 0,18.935475 -15.35024,34.285715 -34.28571,34.285715 -18.93548,0 -34.28572,-15.35024 -34.28572,-34.285715 0,-18.935476 15.35024,-34.285713 34.28572,-34.285713 18.93547,0 34.28571,15.350237 34.28571,34.285713 z"
+             transform="matrix(0.5167323,0,0,0.5167323,129.55216,79.684877)" />
+          <text
+             xml:space="preserve"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             x="281.10742"
+             y="133.28091"
+             id="text6669"
+             sodipodi:linespacing="125%"><tspan
+               sodipodi:role="line"
+               id="tspan6671"
+               x="281.10742"
+               y="133.28091"
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">v</tspan></text>
+        </g>
+        <g
+           id="g6673">
+          <path
+             inkscape:connector-curvature="0"
+             id="path6675"
+             d="m 248.0315,184.25195 -17.71653,35.43307 35.43307,0 z"
+             style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:3.54330707;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+          <text
+             sodipodi:linespacing="125%"
+             id="text6677"
+             y="209.73633"
+             x="247.56259"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             xml:space="preserve"><tspan
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+               y="209.73633"
+               x="247.56259"
+               id="tspan6679"
+               sodipodi:role="line">l</tspan></text>
+          <text
+             xml:space="preserve"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             x="248.03148"
+             y="237.40161"
+             id="text6681"
+             sodipodi:linespacing="125%"><tspan
+               sodipodi:role="line"
+               id="tspan6683"
+               x="248.03148"
+               y="237.40161"
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">h</tspan></text>
+        </g>
+        <g
+           id="g6685"
+           transform="translate(1.1464567e-5,7.9959399e-5)">
+          <path
+             style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:3.54330707;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+             d="m 318.89764,184.25195 -17.71653,35.43307 35.43307,0 z"
+             id="path6687"
+             inkscape:connector-curvature="0" />
+          <text
+             xml:space="preserve"
+             style="font-size:40px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             x="317.65021"
+             y="209.73633"
+             id="text6689"
+             sodipodi:linespacing="125%"><tspan
+               sodipodi:role="line"
+               id="tspan6691"
+               x="317.65021"
+               y="209.73633"
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">rll</tspan></text>
+          <text
+             sodipodi:linespacing="125%"
+             id="text6693"
+             y="237.40154"
+             x="318.89761"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             xml:space="preserve"><tspan
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+               y="237.40154"
+               x="318.89761"
+               id="tspan6695"
+               sodipodi:role="line">BT(h)</tspan></text>
+        </g>
+        <g
+           id="g6697"
+           transform="translate(70.866155,7.8722303e-5)">
+          <path
+             inkscape:connector-curvature="0"
+             id="path6699"
+             d="m 389.76377,184.25195 -17.71653,35.43307 35.43307,0 z"
+             style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:3.54330707;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+          <text
+             sodipodi:linespacing="125%"
+             id="text6701"
+             y="209.4838"
+             x="386.37872"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             xml:space="preserve"><tspan
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+               y="209.4838"
+               x="386.37872"
+               id="tspan6703"
+               sodipodi:role="line">rr</tspan></text>
+          <text
+             xml:space="preserve"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             x="389.76376"
+             y="237.40154"
+             id="text6705"
+             sodipodi:linespacing="125%"><tspan
+               sodipodi:role="line"
+               id="tspan6707"
+               x="389.76376"
+               y="237.40154"
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">BT(h)</tspan></text>
+        </g>
+        <g
+           id="g6709"
+           transform="translate(70.866155,7.8722303e-5)">
+          <path
+             transform="matrix(0.5167323,0,0,0.5167323,200.4183,115.11795)"
+             d="m 332.14286,99.505035 c 0,18.935475 -15.35024,34.285715 -34.28571,34.285715 -18.93548,0 -34.28572,-15.35024 -34.28572,-34.285715 0,-18.935476 15.35024,-34.285713 34.28572,-34.285713 18.93547,0 34.28571,15.350237 34.28571,34.285713 z"
+             sodipodi:ry="34.285713"
+             sodipodi:rx="34.285713"
+             sodipodi:cy="99.505035"
+             sodipodi:cx="297.85715"
+             id="path6711"
+             style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:6.85714245;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+             sodipodi:type="arc" />
+          <text
+             sodipodi:linespacing="125%"
+             id="text6713"
+             y="169.27"
+             x="350.43805"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             xml:space="preserve"><tspan
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+               y="169.27"
+               x="350.43805"
+               id="tspan6715"
+               sodipodi:role="line">rv</tspan></text>
+          <text
+             sodipodi:linespacing="125%"
+             id="text6717"
+             y="155.96849"
+             x="393.74802"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             xml:space="preserve"><tspan
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+               y="155.96849"
+               x="393.74802"
+               id="tspan6719"
+               sodipodi:role="line">BT(h+1)</tspan></text>
+          <text
+             xml:space="preserve"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             x="173.74802"
+             y="155.96849"
+             id="text6721"
+             sodipodi:linespacing="125%"><tspan
+               sodipodi:role="line"
+               id="tspan6723"
+               x="173.74802"
+               y="155.96849"
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">BT(h+1)</tspan></text>
+        </g>
+        <g
+           transform="translate(3.5779346e-6,-35.433072)"
+           id="g6725">
+          <path
+             transform="matrix(0.5167323,0,0,0.5167323,200.4183,115.11795)"
+             d="m 332.14286,99.505035 c 0,18.935475 -15.35024,34.285715 -34.28571,34.285715 -18.93548,0 -34.28572,-15.35024 -34.28572,-34.285715 0,-18.935476 15.35024,-34.285713 34.28572,-34.285713 18.93547,0 34.28571,15.350237 34.28571,34.285713 z"
+             sodipodi:ry="34.285713"
+             sodipodi:rx="34.285713"
+             sodipodi:cy="99.505035"
+             sodipodi:cx="297.85715"
+             id="path6727"
+             style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:6.85714245;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+             sodipodi:type="arc" />
+          <text
+             sodipodi:linespacing="125%"
+             id="text6729"
+             y="169.27"
+             x="355.65048"
+             style="font-size:40px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             xml:space="preserve"><tspan
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+               y="169.27"
+               x="355.65048"
+               id="tspan6731"
+               sodipodi:role="line">rlv</tspan></text>
+          <text
+             sodipodi:linespacing="125%"
+             id="text6733"
+             y="153.96849"
+             x="393.74802"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             xml:space="preserve"><tspan
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+               y="153.96849"
+               x="393.74802"
+               id="tspan6735"
+               sodipodi:role="line">BT(h+2)</tspan></text>
+        </g>
+        <g
+           transform="translate(70.866148,8.0825541e-5)"
+           id="g6737">
+          <path
+             inkscape:connector-curvature="0"
+             id="path6739"
+             d="m 318.89764,184.25195 -17.71653,35.43307 35.43307,0 z"
+             style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:3.54330707;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+          <text
+             sodipodi:linespacing="125%"
+             id="text6741"
+             y="209.73633"
+             x="313.4155"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             xml:space="preserve"><tspan
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+               y="209.73633"
+               x="313.4155"
+               id="tspan6743"
+               sodipodi:role="line">rlr</tspan></text>
+          <text
+             xml:space="preserve"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             x="318.89761"
+             y="237.40154"
+             id="text6745"
+             sodipodi:linespacing="125%"><tspan
+               sodipodi:role="line"
+               id="tspan6747"
+               x="318.89761"
+               y="237.40154"
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">BT(h)</tspan></text>
+        </g>
+      </g>
+    </g>
+    <text
+       sodipodi:linespacing="125%"
+       id="text4239-0-5-9"
+       y="1028.9283"
+       x="50.86618"
+       style="font-size:40px;font-style:normal;font-weight:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       xml:space="preserve"><tspan
+         style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;text-anchor:start;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+         y="1028.9283"
+         x="50.86618"
+         sodipodi:role="line"
+         id="tspan7204">Double rotate left.  Color previous root black.  Color new root with color of previous root.</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.0629921;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow2Mend-9)"
+       d="m 372.04724,1016.9283 301.1811,0 0,-17.71659"
+       id="path5779-0"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccc" />
+    <text
+       sodipodi:linespacing="125%"
+       id="text6252-6"
+       y="1010.3299"
+       x="381.76379"
+       style="font-size:40px;font-style:normal;font-weight:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       xml:space="preserve"><tspan
+         style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+         y="1010.3299"
+         x="381.76379"
+         id="tspan6254-9"
+         sodipodi:role="line">The root was red</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-weight:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="682.94495"
+       y="1012.6449"
+       id="text6258-7"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan6260-7"
+         x="682.94495"
+         y="1012.6449"
+         style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">The root was black</tspan></text>
+    <g
+       id="g6872"
+       transform="translate(17.716606,318.89685)">
+      <rect
+         ry="0.28726187"
+         y="255.1181"
+         x="283.46457"
+         height="35.433033"
+         width="230.31494"
+         id="rect6874"
+         style="fill:#c8c8c8;fill-opacity:1;stroke:none" />
+      <rect
+         style="fill:#e6e6e6;fill-opacity:1;stroke:none"
+         id="rect6876"
+         width="230.31496"
+         height="141.73227"
+         x="283.46454"
+         y="290.55112"
+         ry="1.1490486" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path6878"
+         d="m 354.33071,325.98423 0,-35.43307"
+         style="fill:none;stroke:#000000;stroke-width:1.0629921;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+      <text
+         xml:space="preserve"
+         style="font-size:40px;font-style:normal;font-weight:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         x="301.18109"
+         y="270.83463"
+         id="text6880"
+         sodipodi:linespacing="125%"><tspan
+           id="tspan6882"
+           sodipodi:role="line"
+           x="301.18109"
+           y="270.83463"
+           style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">Both children of the sibling are black, so we can</tspan><tspan
+           sodipodi:role="line"
+           x="301.18109"
+           y="283.95963"
+           style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+           id="tspan6884">redden <tspan
+   style="font-style:italic"
+   id="tspan6962">rv</tspan> to become RT(h).</tspan></text>
+      <g
+         transform="translate(70.866132,194.88182)"
+         id="g6888">
+        <path
+           inkscape:connector-curvature="0"
+           id="path6890"
+           d="M 283.46457,131.10234 248.0315,184.25195"
+           style="fill:none;stroke:#000000;stroke-width:1.0629921;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+        <path
+           inkscape:connector-curvature="0"
+           id="path6892"
+           d="m 354.33071,166.53541 -35.43307,17.71654"
+           style="fill:none;stroke:#000000;stroke-width:1.0629921;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+        <path
+           inkscape:connector-curvature="0"
+           id="path6894"
+           d="m 354.33071,166.53541 35.43307,17.71654"
+           style="fill:none;stroke:#000000;stroke-width:1.0629921;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+        <path
+           sodipodi:nodetypes="cc"
+           inkscape:connector-curvature="0"
+           id="path6896"
+           d="m 283.46457,131.10234 70.86614,35.43307"
+           style="fill:none;stroke:#000000;stroke-width:1.0629921;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+        <g
+           id="g6898">
+          <path
+             sodipodi:type="arc"
+             style="fill:#ffffff;fill-opacity:1;stroke:#969696;stroke-width:6.85714245;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+             id="path6900"
+             sodipodi:cx="297.85715"
+             sodipodi:cy="99.505035"
+             sodipodi:rx="34.285713"
+             sodipodi:ry="34.285713"
+             d="m 332.14286,99.505035 c 0,18.935475 -15.35024,34.285715 -34.28571,34.285715 -18.93548,0 -34.28572,-15.35024 -34.28572,-34.285715 0,-18.935476 15.35024,-34.285713 34.28572,-34.285713 18.93547,0 34.28571,15.350237 34.28571,34.285713 z"
+             transform="matrix(0.5167323,0,0,0.5167323,129.55216,79.684877)" />
+          <text
+             xml:space="preserve"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             x="281.10742"
+             y="133.28091"
+             id="text6902"
+             sodipodi:linespacing="125%"><tspan
+               sodipodi:role="line"
+               id="tspan6904"
+               x="281.10742"
+               y="133.28091"
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">v</tspan></text>
+        </g>
+        <g
+           id="g6906">
+          <path
+             inkscape:connector-curvature="0"
+             id="path6908"
+             d="m 248.0315,184.25195 -17.71653,35.43307 35.43307,0 z"
+             style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:3.54330707;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+          <text
+             sodipodi:linespacing="125%"
+             id="text6910"
+             y="209.73633"
+             x="247.56259"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             xml:space="preserve"><tspan
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+               y="209.73633"
+               x="247.56259"
+               id="tspan6912"
+               sodipodi:role="line">l</tspan></text>
+          <text
+             xml:space="preserve"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             x="229.74802"
+             y="185.96849"
+             id="text6914"
+             sodipodi:linespacing="125%"><tspan
+               sodipodi:role="line"
+               id="tspan6916"
+               x="229.74802"
+               y="185.96849"
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">BT(h)</tspan></text>
+        </g>
+        <g
+           id="g6918">
+          <path
+             style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:3.54330707;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+             d="m 318.89764,184.25195 -17.71653,35.43307 35.43307,0 z"
+             id="path6920"
+             inkscape:connector-curvature="0" />
+          <text
+             xml:space="preserve"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             x="315.4155"
+             y="209.73633"
+             id="text6922"
+             sodipodi:linespacing="125%"><tspan
+               sodipodi:role="line"
+               id="tspan6924"
+               x="315.4155"
+               y="209.73633"
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">rl</tspan></text>
+          <text
+             sodipodi:linespacing="125%"
+             id="text6926"
+             y="185.96849"
+             x="299.74802"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             xml:space="preserve"><tspan
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+               y="185.96849"
+               x="299.74802"
+               id="tspan6928"
+               sodipodi:role="line">BT(h)</tspan></text>
+        </g>
+        <g
+           id="g6930">
+          <path
+             inkscape:connector-curvature="0"
+             id="path6932"
+             d="m 389.76377,184.25195 -17.71653,35.43307 35.43307,0 z"
+             style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:3.54330707;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+          <text
+             sodipodi:linespacing="125%"
+             id="text6934"
+             y="209.4838"
+             x="386.37872"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             xml:space="preserve"><tspan
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+               y="209.4838"
+               x="386.37872"
+               id="tspan6936"
+               sodipodi:role="line">rr</tspan></text>
+          <text
+             xml:space="preserve"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             x="413.74802"
+             y="185.96849"
+             id="text6938"
+             sodipodi:linespacing="125%"><tspan
+               sodipodi:role="line"
+               id="tspan6940"
+               x="413.74802"
+               y="185.96849"
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">BT(h)</tspan></text>
+        </g>
+        <g
+           id="g6942">
+          <path
+             transform="matrix(0.5167323,0,0,0.5167323,200.4183,115.11795)"
+             d="m 332.14286,99.505035 c 0,18.935475 -15.35024,34.285715 -34.28571,34.285715 -18.93548,0 -34.28572,-15.35024 -34.28572,-34.285715 0,-18.935476 15.35024,-34.285713 34.28572,-34.285713 18.93547,0 34.28571,15.350237 34.28571,34.285713 z"
+             sodipodi:ry="34.285713"
+             sodipodi:rx="34.285713"
+             sodipodi:cy="99.505035"
+             sodipodi:cx="297.85715"
+             id="path6944"
+             style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:6.85714245;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+             sodipodi:type="arc" />
+          <text
+             sodipodi:linespacing="125%"
+             id="text6946"
+             y="169.27"
+             x="350.43805"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             xml:space="preserve"><tspan
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+               y="169.27"
+               x="350.43805"
+               id="tspan6948"
+               sodipodi:role="line">rv</tspan></text>
+          <text
+             sodipodi:linespacing="125%"
+             id="text6950"
+             y="155.96849"
+             x="393.74802"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             xml:space="preserve"><tspan
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+               y="155.96849"
+               x="393.74802"
+               id="tspan6952"
+               sodipodi:role="line">BT(h+1)</tspan></text>
+        </g>
+        <text
+           sodipodi:linespacing="125%"
+           id="text6954"
+           y="120.25195"
+           x="363.44879"
+           style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+           xml:space="preserve"><tspan
+             style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+             y="120.25195"
+             x="363.44879"
+             id="tspan6956"
+             sodipodi:role="line">[was RT(h+1) or BT(h+2)]</tspan></text>
+      </g>
+    </g>
+    <g
+       transform="translate(265.74809,318.89685)"
+       id="g6964">
+      <rect
+         style="fill:#b7e2ae;fill-opacity:1;stroke:none"
+         id="rect6966"
+         width="230.31494"
+         height="35.433033"
+         x="283.46457"
+         y="255.1181"
+         ry="0.28726187" />
+      <rect
+         ry="1.1490486"
+         y="290.55112"
+         x="283.46454"
+         height="141.73227"
+         width="230.31496"
+         id="rect6968"
+         style="fill:#def2da;fill-opacity:1;stroke:none" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1.0629921;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+         d="m 354.33065,343.70072 6e-5,-53.14956"
+         id="path6970"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="cc" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text6972"
+         y="270.83463"
+         x="301.18109"
+         style="font-size:40px;font-style:normal;font-weight:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+           y="270.83463"
+           x="301.18109"
+           sodipodi:role="line"
+           id="tspan7052">We have a BT(h+1).  The root was red, so it</tspan><tspan
+           style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+           y="283.95963"
+           x="301.18109"
+           sodipodi:role="line"
+           id="tspan7192">was an RT(h+1).  We are done.</tspan></text>
+      <g
+         id="g6980"
+         transform="translate(70.866132,194.88182)">
+        <path
+           style="fill:none;stroke:#000000;stroke-width:1.0629921;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+           d="M 283.46452,148.8189 248.0315,184.25195"
+           id="path6982"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cc" />
+        <path
+           style="fill:none;stroke:#000000;stroke-width:1.0629921;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+           d="m 354.33066,184.25197 -35.43302,-2e-5"
+           id="path6984"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cc" />
+        <path
+           style="fill:none;stroke:#000000;stroke-width:1.0629921;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+           d="m 354.33066,184.25197 35.43312,-2e-5"
+           id="path6986"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cc" />
+        <path
+           style="fill:none;stroke:#000000;stroke-width:1.0629921;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+           d="m 283.46452,148.8189 70.86614,35.43307"
+           id="path6988"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cc" />
+        <g
+           id="g6990"
+           transform="translate(-5.0595294e-5,17.716555)">
+          <path
+             transform="matrix(0.5167323,0,0,0.5167323,129.55216,79.684877)"
+             d="m 332.14286,99.505035 c 0,18.935475 -15.35024,34.285715 -34.28571,34.285715 -18.93548,0 -34.28572,-15.35024 -34.28572,-34.285715 0,-18.935476 15.35024,-34.285713 34.28572,-34.285713 18.93547,0 34.28571,15.350237 34.28571,34.285713 z"
+             sodipodi:ry="34.285713"
+             sodipodi:rx="34.285713"
+             sodipodi:cy="99.505035"
+             sodipodi:cx="297.85715"
+             id="path6992"
+             style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:6.85714245;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+             sodipodi:type="arc" />
+          <text
+             sodipodi:linespacing="125%"
+             id="text6994"
+             y="133.28091"
+             x="281.10742"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             xml:space="preserve"><tspan
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+               y="133.28091"
+               x="281.10742"
+               id="tspan6996"
+               sodipodi:role="line">v</tspan></text>
+        </g>
+        <g
+           id="g6998">
+          <path
+             style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:3.54330707;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+             d="m 248.0315,184.25195 -17.71653,35.43307 35.43307,0 z"
+             id="path7000"
+             inkscape:connector-curvature="0" />
+          <text
+             xml:space="preserve"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             x="247.56259"
+             y="209.73633"
+             id="text7002"
+             sodipodi:linespacing="125%"><tspan
+               sodipodi:role="line"
+               id="tspan7004"
+               x="247.56259"
+               y="209.73633"
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">l</tspan></text>
+          <text
+             sodipodi:linespacing="125%"
+             id="text7006"
+             y="185.96849"
+             x="229.74802"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             xml:space="preserve"><tspan
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+               y="185.96849"
+               x="229.74802"
+               id="tspan7008"
+               sodipodi:role="line">BT(h)</tspan></text>
+        </g>
+        <g
+           id="g7010">
+          <path
+             inkscape:connector-curvature="0"
+             id="path7012"
+             d="m 318.89764,184.25195 -17.71653,35.43307 35.43307,0 z"
+             style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:3.54330707;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+          <text
+             sodipodi:linespacing="125%"
+             id="text7014"
+             y="209.73633"
+             x="315.4155"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             xml:space="preserve"><tspan
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+               y="209.73633"
+               x="315.4155"
+               id="tspan7016"
+               sodipodi:role="line">rl</tspan></text>
+          <text
+             xml:space="preserve"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             x="299.74802"
+             y="185.96849"
+             id="text7018"
+             sodipodi:linespacing="125%"><tspan
+               sodipodi:role="line"
+               id="tspan7020"
+               x="299.74802"
+               y="185.96849"
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">BT(h)</tspan></text>
+        </g>
+        <g
+           id="g7022">
+          <path
+             style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:3.54330707;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+             d="m 389.76377,184.25195 -17.71653,35.43307 35.43307,0 z"
+             id="path7024"
+             inkscape:connector-curvature="0" />
+          <text
+             xml:space="preserve"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             x="386.37872"
+             y="209.4838"
+             id="text7026"
+             sodipodi:linespacing="125%"><tspan
+               sodipodi:role="line"
+               id="tspan7028"
+               x="386.37872"
+               y="209.4838"
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">rr</tspan></text>
+          <text
+             sodipodi:linespacing="125%"
+             id="text7030"
+             y="185.96849"
+             x="413.74802"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             xml:space="preserve"><tspan
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+               y="185.96849"
+               x="413.74802"
+               id="tspan7032"
+               sodipodi:role="line">BT(h)</tspan></text>
+        </g>
+        <g
+           id="g7034"
+           transform="translate(-4.886301e-5,17.716553)">
+          <path
+             sodipodi:type="arc"
+             style="fill:#ffffff;fill-opacity:1;stroke:#ff0000;stroke-width:6.85714245;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+             id="path7036"
+             sodipodi:cx="297.85715"
+             sodipodi:cy="99.505035"
+             sodipodi:rx="34.285713"
+             sodipodi:ry="34.285713"
+             d="m 332.14286,99.505035 c 0,18.935475 -15.35024,34.285715 -34.28571,34.285715 -18.93548,0 -34.28572,-15.35024 -34.28572,-34.285715 0,-18.935476 15.35024,-34.285713 34.28572,-34.285713 18.93547,0 34.28571,15.350237 34.28571,34.285713 z"
+             transform="matrix(0.5167323,0,0,0.5167323,200.4183,115.11795)" />
+          <text
+             xml:space="preserve"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             x="350.43805"
+             y="169.27"
+             id="text7038"
+             sodipodi:linespacing="125%"><tspan
+               sodipodi:role="line"
+               id="tspan7040"
+               x="350.43805"
+               y="169.27"
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">rv</tspan></text>
+          <text
+             xml:space="preserve"
+             style="font-size:40px;font-style:normal;font-weight:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             x="372.04724"
+             y="148.81888"
+             id="text7042"
+             sodipodi:linespacing="125%"><tspan
+               sodipodi:role="line"
+               id="tspan7044"
+               x="372.04724"
+               y="148.81888"
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">RT(h)</tspan></text>
+        </g>
+        <text
+           xml:space="preserve"
+           style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+           x="318.89758"
+           y="131.10236"
+           id="text7046"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan7048"
+             x="318.89758"
+             y="131.10236"
+             style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">BT(h+1)</tspan></text>
+      </g>
+    </g>
+    <g
+       id="g7106"
+       transform="translate(513.7796,318.89692)">
+      <rect
+         ry="0.28726187"
+         y="255.1181"
+         x="283.46457"
+         height="35.433033"
+         width="230.31494"
+         id="rect7108"
+         style="fill:#e2aeae;fill-opacity:1;stroke:none" />
+      <rect
+         style="fill:#f2dada;fill-opacity:1;stroke:none"
+         id="rect7110"
+         width="230.31496"
+         height="141.73227"
+         x="283.46454"
+         y="290.55112"
+         ry="1.1490486" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path7112"
+         d="m 354.33064,343.70065 7e-5,-53.14949"
+         style="fill:none;stroke:#000000;stroke-width:1.0629921;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+         sodipodi:nodetypes="cc" />
+      <text
+         xml:space="preserve"
+         style="font-size:40px;font-style:normal;font-weight:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         x="301.18109"
+         y="270.83463"
+         id="text7114"
+         sodipodi:linespacing="125%"><tspan
+           sodipodi:role="line"
+           x="301.18109"
+           y="270.83463"
+           style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+           id="tspan7116">We have a BT(h+1).  The root was black, so it</tspan><tspan
+           id="tspan7118"
+           sodipodi:role="line"
+           x="301.18109"
+           y="283.95963"
+           style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">was a BT(h+2).  We pass up the violation.</tspan></text>
+      <g
+         transform="translate(70.866132,194.88182)"
+         id="g7120">
+        <path
+           inkscape:connector-curvature="0"
+           id="path7122"
+           d="m 283.4645,148.81883 -35.433,35.43312"
+           style="fill:none;stroke:#000000;stroke-width:1.0629921;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+           sodipodi:nodetypes="cc" />
+        <path
+           inkscape:connector-curvature="0"
+           id="path7124"
+           d="m 354.33065,184.2519 -35.43301,5e-5"
+           style="fill:none;stroke:#000000;stroke-width:1.0629921;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+           sodipodi:nodetypes="cc" />
+        <path
+           inkscape:connector-curvature="0"
+           id="path7126"
+           d="m 354.33065,184.2519 35.43313,5e-5"
+           style="fill:none;stroke:#000000;stroke-width:1.0629921;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+           sodipodi:nodetypes="cc" />
+        <path
+           sodipodi:nodetypes="cc"
+           inkscape:connector-curvature="0"
+           id="path7128"
+           d="m 283.4645,148.81883 70.86615,35.43307"
+           style="fill:none;stroke:#000000;stroke-width:1.0629921;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+        <g
+           id="g7130"
+           transform="translate(-6.4528566e-5,17.716485)">
+          <path
+             sodipodi:type="arc"
+             style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:6.85714245;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+             id="path7132"
+             sodipodi:cx="297.85715"
+             sodipodi:cy="99.505035"
+             sodipodi:rx="34.285713"
+             sodipodi:ry="34.285713"
+             d="m 332.14286,99.505035 c 0,18.935475 -15.35024,34.285715 -34.28571,34.285715 -18.93548,0 -34.28572,-15.35024 -34.28572,-34.285715 0,-18.935476 15.35024,-34.285713 34.28572,-34.285713 18.93547,0 34.28571,15.350237 34.28571,34.285713 z"
+             transform="matrix(0.5167323,0,0,0.5167323,129.55216,79.684877)" />
+          <text
+             xml:space="preserve"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             x="281.10742"
+             y="133.28091"
+             id="text7134"
+             sodipodi:linespacing="125%"><tspan
+               sodipodi:role="line"
+               id="tspan7136"
+               x="281.10742"
+               y="133.28091"
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">v</tspan></text>
+        </g>
+        <g
+           id="g7138">
+          <path
+             inkscape:connector-curvature="0"
+             id="path7140"
+             d="m 248.0315,184.25195 -17.71653,35.43307 35.43307,0 z"
+             style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:3.54330707;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+          <text
+             sodipodi:linespacing="125%"
+             id="text7142"
+             y="209.73633"
+             x="247.56259"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             xml:space="preserve"><tspan
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+               y="209.73633"
+               x="247.56259"
+               id="tspan7144"
+               sodipodi:role="line">l</tspan></text>
+          <text
+             xml:space="preserve"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             x="229.74802"
+             y="185.96849"
+             id="text7146"
+             sodipodi:linespacing="125%"><tspan
+               sodipodi:role="line"
+               id="tspan7148"
+               x="229.74802"
+               y="185.96849"
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">BT(h)</tspan></text>
+        </g>
+        <g
+           id="g7150">
+          <path
+             style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:3.54330707;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+             d="m 318.89764,184.25195 -17.71653,35.43307 35.43307,0 z"
+             id="path7152"
+             inkscape:connector-curvature="0" />
+          <text
+             xml:space="preserve"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             x="315.4155"
+             y="209.73633"
+             id="text7154"
+             sodipodi:linespacing="125%"><tspan
+               sodipodi:role="line"
+               id="tspan7156"
+               x="315.4155"
+               y="209.73633"
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">rl</tspan></text>
+          <text
+             sodipodi:linespacing="125%"
+             id="text7158"
+             y="185.96849"
+             x="299.74802"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             xml:space="preserve"><tspan
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+               y="185.96849"
+               x="299.74802"
+               id="tspan7160"
+               sodipodi:role="line">BT(h)</tspan></text>
+        </g>
+        <g
+           id="g7162">
+          <path
+             inkscape:connector-curvature="0"
+             id="path7164"
+             d="m 389.76377,184.25195 -17.71653,35.43307 35.43307,0 z"
+             style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:3.54330707;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+          <text
+             sodipodi:linespacing="125%"
+             id="text7166"
+             y="209.4838"
+             x="386.37872"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             xml:space="preserve"><tspan
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+               y="209.4838"
+               x="386.37872"
+               id="tspan7168"
+               sodipodi:role="line">rr</tspan></text>
+          <text
+             xml:space="preserve"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             x="413.74802"
+             y="185.96849"
+             id="text7170"
+             sodipodi:linespacing="125%"><tspan
+               sodipodi:role="line"
+               id="tspan7172"
+               x="413.74802"
+               y="185.96849"
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">BT(h)</tspan></text>
+        </g>
+        <g
+           id="g7174"
+           transform="translate(-6.2800018e-5,17.716483)">
+          <path
+             transform="matrix(0.5167323,0,0,0.5167323,200.4183,115.11795)"
+             d="m 332.14286,99.505035 c 0,18.935475 -15.35024,34.285715 -34.28571,34.285715 -18.93548,0 -34.28572,-15.35024 -34.28572,-34.285715 0,-18.935476 15.35024,-34.285713 34.28572,-34.285713 18.93547,0 34.28571,15.350237 34.28571,34.285713 z"
+             sodipodi:ry="34.285713"
+             sodipodi:rx="34.285713"
+             sodipodi:cy="99.505035"
+             sodipodi:cx="297.85715"
+             id="path7176"
+             style="fill:#ffffff;fill-opacity:1;stroke:#ff0000;stroke-width:6.85714245;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+             sodipodi:type="arc" />
+          <text
+             sodipodi:linespacing="125%"
+             id="text7178"
+             y="169.27"
+             x="350.43805"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             xml:space="preserve"><tspan
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+               y="169.27"
+               x="350.43805"
+               id="tspan7180"
+               sodipodi:role="line">rv</tspan></text>
+          <text
+             sodipodi:linespacing="125%"
+             id="text7182"
+             y="148.81888"
+             x="383.76379"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             xml:space="preserve"><tspan
+               style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+               y="148.81888"
+               x="383.76379"
+               id="tspan7184"
+               sodipodi:role="line">RT(h)</tspan></text>
+        </g>
+        <text
+           sodipodi:linespacing="125%"
+           id="text7186"
+           y="131.10229"
+           x="318.89758"
+           style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+           xml:space="preserve"><tspan
+             style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+             y="131.10229"
+             x="318.89758"
+             id="tspan7188"
+             sodipodi:role="line">BT(h+1)</tspan></text>
+      </g>
+    </g>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.0629921;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow2Mend-9)"
+       d="m 53.149606,538.58182 0,35.43307"
+       id="path7198"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.0629921;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow2Mend-9)"
+       d="m 53.149606,556.29835 230.314964,0 0,-177.16535 17.71653,0"
+       id="path7200"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.0629921;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow2Mend-9)"
+       d="m 53.149606,999.21174 0,17.71656 318.897634,0 0,-17.71656"
+       id="path7206"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.0629921;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow2Mend-9)"
+       d="m 318.89764,361.41646 0,-17.71653 248.03149,0 0,17.71653"
+       id="path7208"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.0629921;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow2Mend-9)"
+       d="m 318.89764,751.18024 0,17.71654 248.03149,0 0,-17.71654"
+       id="path7210"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.0629921;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow2Mend-9)"
+       d="m 566.92913,768.89678 248.0315,0 0,-17.71654"
+       id="path7212"
+       inkscape:connector-curvature="0" />
+    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-weight:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="574.92914"
+       y="762.89679"
+       id="text7214"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan7216"
+         x="574.92914"
+         y="762.89679"
+         style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">The root was red</tspan></text>
+    <text
+       sodipodi:linespacing="125%"
+       id="text7218"
+       y="765.21179"
+       x="826.11029"
+       style="font-size:40px;font-style:normal;font-weight:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       xml:space="preserve"><tspan
+         style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+         y="765.21179"
+         x="826.11029"
+         id="tspan7220"
+         sodipodi:role="line">The root was black</tspan></text>
+    <text
+       sodipodi:linespacing="125%"
+       id="text7224"
+       y="780.61334"
+       x="318.89764"
+       style="font-size:40px;font-style:normal;font-weight:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       xml:space="preserve"><tspan
+         style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;text-anchor:start;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+         y="780.61334"
+         x="318.89764"
+         id="tspan7226"
+         sodipodi:role="line">Redden subtree at <tspan
+   style="font-style:italic"
+   id="tspan7228">rv</tspan>.  If the root is black, pass up the violation; else blacken the root and finish.</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.0629921;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow2Mend-9)"
+       d="m 53.149606,751.18024 0,53.14961"
+       id="path7232"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.0629921;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow2Mend-9)"
+       d="m 53.149606,768.89678 230.314964,0 0,-177.16535 17.71653,0"
+       id="path7234"
+       inkscape:connector-curvature="0" />
+    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-weight:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="59.149605"
+       y="762.89679"
+       id="text7236"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan7238"
+         x="59.149605"
+         y="762.89679"
+         style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;text-anchor:start;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">Test the color of the root of <tspan
+   id="tspan7240"
+   style="font-style:italic;font-weight:bold">rl</tspan>.</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-weight:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="61.149605"
+       y="798.61334"
+       id="text7242"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan7244"
+         x="61.149605"
+         y="798.61334"
+         style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"><tspan
+   style="font-style:italic;text-align:start;text-anchor:start"
+   id="tspan7246">rl</tspan> is an RT</tspan></text>
+    <text
+       transform="matrix(0,-1,1,0,0,0)"
+       sodipodi:linespacing="125%"
+       id="text7248"
+       y="295.18109"
+       x="-638.28259"
+       style="font-size:40px;font-style:normal;font-weight:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       xml:space="preserve"><tspan
+         style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+         y="295.18109"
+         x="-638.28259"
+         id="tspan7250"
+         sodipodi:role="line"><tspan
+   id="tspan7252"
+   style="font-style:italic;text-align:start;text-anchor:start">rl</tspan> is a BT</tspan></text>
+    <path
+       inkscape:connector-curvature="0"
+       id="path7198-2"
+       d="m 53.149606,325.98424 0,35.43307"
+       style="fill:none;stroke:#000000;stroke-width:1.0629921;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow2Mend-9)" />
+  </g>
+</svg>

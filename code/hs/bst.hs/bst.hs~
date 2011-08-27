@@ -1,6 +1,0 @@
--- A basic Binary Search Tree.
-
-data Tree a = Empty
-           | Tree (Tree a) a (Tree a)
-             deriving(Show)
-

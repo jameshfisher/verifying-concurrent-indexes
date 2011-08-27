@@ -1,0 +1,309 @@
+<section xmlns="http://www.w3.org/1999/xhtml"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xmlns:e="http://eegg.github.com/htmlx"
+	 xmlns:m="http://eegg.github.com/macro">
+
+  <h3>The <m:ll/> data structure</h3>
+
+  <p>
+    The linked list (<m:ll/>) is the simplest set data structure
+    that will submit to fairly efficient insertion, deletion and search
+    of elements from a general ordered universe.
+  </p>
+
+  <p>
+    A <m:ll/> representing set <e:st n="S"/> consists of a set of <e:size><e:st n="S"/></e:size> records,
+    called <e:jargon>nodes</e:jargon>, in memory.
+    Each node contains two fields, <code>value</code> and <code>tail</code>.
+    This can be coded in a couple of lines:
+
+    <div class="display">
+      <xi:include href="../../code/d/html/ll/node.d.html"/>
+    </div>
+  </p>
+
+  <p>
+    The fields <code>value</code> and <code>tail</code> have fixed length, respectively <e:var n="v"/> and <e:var n="t"/>.
+    An instance of the <code>Node</code> record thus has a fixed length in memory
+    <e:eq><e:fst><e:var n="l"/></e:fst><e:snd><e:plus><e:fst><e:var n="v"/></e:fst><e:snd><e:var n="t"/></e:snd></e:plus></e:snd></e:eq>.
+    Therefore any node beginning at some address <e:var n="a"/> spans the contiguous addresses <e:var n="a"/>…<e:plus><e:fst><e:var n="a"/></e:fst><e:snd><e:var n="l"/></e:snd></e:plus>.
+    The addresses occupied by the <code>Node</code>s are disjoint;
+    <m:ie/>, for any <code>Node</code>, its occupied addresses
+    <e:var n="a"/>…<e:plus><e:fst><e:var n="a"/></e:fst><e:snd><e:var n="l"/></e:snd></e:plus>
+    are occupied no other <code>Node</code>.
+    We say that a record beginning at address <e:var n="a"/> is <q>at <e:var n="a"/></q>.
+  </p>
+
+  <p>
+    There is a one-to-one correspondence between elements of <e:st n="S"/> and the set of <code>Node</code>s in the <m:ll/> representing <e:st n="S"/>.
+    <m:ie/>, each <code>Node</code> contains as its <code>value</code> field one element of <e:st n="S"/>,
+    and for each element of <e:st n="S"/>, there exists a <code>Node</code> containing it.
+    The <code>tail</code> field of a record <code>r</code> representing element <e:var n="s"/> is as follows:
+    if there are elements in <e:st n="S"/> larger than <e:var n="s"/>,
+    the <code>tail</code> field of <code>r</code> is set to the address of the <code>Node</code> representing the next-largest element;
+    otherwise, the <code>tail</code> field is set to <code>null</code>.
+  </p>
+
+  <p>
+    The final necessary piece of information is <code>head</code>, the address of the record representing the smallest element in <e:st n="S"/>.
+    This address and the set of memory locations occupied by the <code>Node</code>s comprise the <m:ll/> data structure.
+  </p>
+
+  <p>
+    We can visualize the address space of memory as a line of cells,
+    from addresses <e:const n="0"/> on the left-hand-side to <e:const n="address_max"/> on the right.
+    Here is an example.
+    Memory locations are one byte long.
+    There are <e:pow><e:fst>2</e:fst><e:snd>16</e:snd></e:pow> memory locations, spanning addresses <e:const n="0"/> to <e:const n="65,535"/>.
+    Thus a memory address is two bytes long.
+    The set <e:eq><e:fst><e:st n="S"/></e:fst><e:snd><e:set><e:const n="2"/>, <e:const n="29"/>, <e:const n="30"/>, <e:const n="77"/></e:set></e:snd></e:eq>.
+    These are taken from the set of numbers representable by one byte;
+    therefore the <code>value</code> field is one byte long.
+    The <code>tail</code> field, being an address, is two bytes long.
+    An single record is three bytes long.
+    In the following, arrows are used to highlight fields referencing other memory locations.
+
+    <div class="display">
+      <xi:include href="./example.svg" />
+    </div>
+  </p>
+
+  <p>
+    The <code>Node</code>s are at arbitrary memory locations;
+    the program does not have the ability to decide on the locations given to it.
+    The addresses cannot really contribute to the data held by the data structure,
+    and so the above diagram therefore contains a lot of visual <q>noise</q>.
+    We can abstract the diagram to remove these addresses and untangle the arrows:
+
+    <div class="display">
+      <xi:include href="./example_untangled.svg" />
+    </div>
+  </p>
+
+  <p>
+    It is now visually obvious why this is called a list:
+    the structure can be seen as a connected, directed, acyclic graph,
+    with a single path between the node distinguished as the first and that distinguished as the last,
+    on which all nodes lie.
+    The second thing this diagram makes visually obvious is that the linked list contains smaller linked lists within it.
+    For example, the <code>tail</code> field of the <code>Node</code> representing the element <e:const n="2"/>
+    is effectively the <code>head</code> address for a linked list containing the right-most three nodes.
+    We can outline the linked lists in the above diagram:
+
+    <div class="display">
+      <xi:include href="./example_nested.svg" />
+    </div>
+  </p>
+
+  <p>
+    It is now obvious that the <m:ll/> is a <e:jargon>recursive data structure</e:jargon>—it contains a smaller version of itself.
+    Abstracting from our example, we can show this recursion visually.
+
+    <div class="display">
+      <xi:include href="./recursive.svg" />
+    </div>
+  </p>
+
+  <p>
+    Notice in our example that though <e:eq><e:fst><e:size><e:st n="S"/></e:size></e:fst><e:snd><e:const n="4"/></e:snd></e:eq>,
+    there are actually <em>five</em> linked lists:
+    the final <code>null</code> pointer conceptually points to a linked list representing <m:scemp/>, which uses no memory locations.
+    This does not fit in the scheme of the above diagram, which really only applies to non-empty sets.
+    The linked list, then, actually uses two distinct representations of sets: one for non-empty sets as above,
+    and another for the empty set, signaled by the use of a <code>null</code> pointer.
+  </p>
+
+  <p>
+    Let us refer to these as <e:predicate>NonEmptyList</e:predicate> and <e:predicate>EmptyList</e:predicate> respectively,
+    which are both subtypes of the general type <e:predicate>List</e:predicate>.
+    These are all <e:jargon>predicates</e:jargon>, with two parameters corresponding to the two necessary <q>parts</q> of a <m:ll/>:
+    the <code>head</code> pointer and the memory locations.
+    That is, <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
+    describes a set of memory locations forming a linked list that represents set <e:st n="S"/>,
+    with <code>head</code> being the address of the first <code>Node</code> in the list
+    (or <code>null</code> if <e:eq><e:fst><e:st n="S"/></e:fst><e:snd><m:scemp/></e:snd></e:eq>).
+
+    <div class="display">
+      <xi:include href="./predicates.svg" />
+    </div>
+  </p>
+
+  <p>
+    We now have a strong visual intuition for how to describe the <m:ll/> formally.
+    The above diagram translates cleanly into the notation of separation logic.
+    Let's approach this top-down, and begin with the <e:predicate>List</e:predicate> predicate.
+    The <m:ll/> defines two representations of sets, and a general <e:predicate>List</e:predicate> simply uses one of the two.
+    We can therefore define <e:predicate>List</e:predicate> just as a disjunction:
+
+    <div class="displaymath">
+      <e:pred name="List"><code>n</code>, <e:st n="S"/></e:pred> ≝
+      <e:or>
+	<e:fst><e:pred name="EmptyList"><code>n</code>, <e:st n="S"/></e:pred></e:fst>
+	<e:snd><e:pred name="NonEmptyList"><code>n</code>, <e:st n="S"/></e:pred></e:snd>
+      </e:or>.
+    </div>
+  </p>
+
+  <p>
+    The empty set is represented by a <code>null</code> pointer and no allocated heap memory.
+    Translating this to separation logic is also straightforward:
+
+    <table class="displaymath">
+      <tbody>
+	<tr>
+	  <td>
+	    <e:pred name="EmptyList"><code>head</code>, <e:st n="S"/></e:pred> ≝
+	  </td>
+	  <td>
+	    <e:eq>
+	      <e:fst><code>head</code></e:fst>
+	      <e:snd><code>null</code></e:snd>
+	    </e:eq> ∧
+	  </td>
+	  <td></td>
+	</tr>
+	<tr>
+	  <td></td>
+	  <td>
+	    <e:eq>
+	      <e:fst><e:st n="S"/></e:fst>
+	      <e:snd><m:scemp/></e:snd>
+	    </e:eq> ∧
+	  </td>
+	  <td><e:st n="S"/> is the empty set and</td>
+	</tr>
+	<tr>
+	  <td></td>
+	  <td><m:hemp/>.</td>
+	  <td>there is no allocated memory.</td>
+	</tr>
+      </tbody>
+    </table>
+  </p>
+
+  <p>
+    The <e:predicate>NonEmptyList</e:predicate> is only a little more complex.
+    First, we must express the relationship between
+    the set <e:st n="S"/> represented by the list pointed to by <code>head</code>,
+    the value <e:var n="v"/> in the node,
+    and the set <e:st n="T"/> represented by the <e:var n="tail"/>.
+    First, <e:st n="S"/> is the element <e:var n="v"/> plus the elements in <e:st n="T"/>; we write
+    <e:eq>
+      <e:fst><e:st n="S"/></e:fst>
+      <e:snd><e:union>
+	  <e:fst><e:set><e:var n="value"/></e:set></e:fst>
+	  <e:snd><e:st n="T"/></e:snd>
+      </e:union></e:snd>
+    </e:eq>.
+    Second, the elements in the <e:st n="T"/> are all greater than <e:var n="v"/>; we write
+    <e:forall>
+      <e:fst>
+	<e:in>
+	  <e:fst><e:var n="t"/></e:fst>
+	  <e:snd><e:st n="T"/></e:snd>
+	</e:in>
+      </e:fst>
+      <e:snd>
+	<e:lt>
+	  <e:fst><e:var n="value"/></e:fst>
+	  <e:snd><e:var n="t"/></e:snd>
+        </e:lt>
+      </e:snd>
+    </e:forall>.
+
+    We can express this relationship with a helper predicate, <e:predicate>Compose</e:predicate>,
+    to be used by <e:predicate>NonEmptyList</e:predicate>.
+
+    <table class="displaymath">
+      <tbody>
+	<tr>
+	  <td><e:pred name="Compose"><e:var n="value"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ≝</td>
+	  <td>
+	    <e:eq>
+	      <e:fst>
+		<e:union>
+		  <e:fst><e:set><e:var n="value" /></e:set></e:fst>
+		  <e:snd><e:st n="T"/></e:snd>
+	      </e:union>
+	      </e:fst>
+	      <e:snd><e:st n="S"/></e:snd>
+	    </e:eq> ∧
+	  </td>
+	</tr>
+	<tr>
+	  <td></td>
+	  <td>
+	    <e:forall>
+	      <e:fst>
+		<e:in>
+		  <e:fst><e:var n="t"/></e:fst>
+		  <e:snd><e:st n="T"/></e:snd>
+		</e:in>
+	      </e:fst>
+	      <e:snd>
+		<e:lt>
+		  <e:fst><e:var n="value"/></e:fst>
+		  <e:snd><e:var n="t"/></e:snd>
+		</e:lt>
+	      </e:snd>
+	    </e:forall>.
+	  </td>
+	</tr>
+      </tbody>
+    </table>
+  </p>
+
+  <p>
+
+    A non-null pointer <code>n</code> is assumed to point to a <code>Node</code> instance,
+    which holds one element in the set in its <code>value</code> field,
+    plus a pointer in its <code>tail</code> field that points to a linked list containing the rest of the set.
+    This <code>tail</code> pointer is recursively interpreted as a list in the same way as <code>n</code>.
+    The memory allocated for the <code>tail</code> list is disjoint from the memory allocated for the head node,
+    and thus only a simple list can be represented.
+
+
+    If <code>n</code> is not <code>null</code>,
+    then it points to a valid <code>Node</code> instance:
+    <e:fcell><e:fst><code>n</code></e:fst><e:snd><e:var n="v" />, <e:var n="tail"/></e:snd></e:fcell>.
+    As <e:var n="tail"/> is also a pointer to a linked list,
+    we can recursively apply our <e:predicate>List</e:predicate> predicate to it, saying it represents some set <e:st n="T"/>:
+    <e:pred name="List"><e:var n="tail"/>, <e:const n="T"/></e:pred>.
+    The description of the <code>n</code> node and the description of the <e:var n="tail"/> list
+    are joined with the separating conjunction (∗),
+    because the tail does not contain the node pointed at by <code>n</code>.
+  </p>
+
+
+  <p>
+    We can then define a <e:predicate>NonEmptyList</e:predicate> as:
+
+    <table class="displaymath">
+      <tr>
+	<td><e:pred name="NonEmptyList"><code>n</code>, <e:st n="S"/></e:pred> ≝</td>
+	<td>∃<e:var n="value"/>, <e:var n="tail"/>, <e:st n="T"/>.</td>
+      </tr>
+      <tr>
+	<td></td>
+	<td><e:fcell><e:fst><code>n</code></e:fst><e:snd><e:var n="value" />, <e:var n="tail"/></e:snd></e:fcell> ∗</td>
+      </tr>
+      <tr>
+	<td></td>
+	<td><e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred> ∧</td>
+      </tr>
+      <tr>
+	<td></td>
+	<td>
+	  <e:pred name="Compose"><e:var n="value"/>, <e:st n="T"/>, <e:st n="S"/></e:pred>.
+	</td>
+      </tr>
+    </table>
+  </p>
+
+  <p>
+    Note we use the predicate <e:predicate>List</e:predicate>, which is mutually recursive with <e:predicate>NonEmptyList</e:predicate>.
+    It is defined simply as:
+
+  </p>
+</section>
+  

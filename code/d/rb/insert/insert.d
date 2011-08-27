@@ -5,7 +5,7 @@ import rb.node;
 static import rb.insert.recursive;
 static import rb.insert.iterative;
 
-const bool recursive = false;
+const bool recursive = true;
 
 Node* insert(Node* root, int value) {
   static if (recursive) {

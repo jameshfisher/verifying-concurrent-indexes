@@ -1,0 +1,29 @@
+<section class='generated_listing' xmlns='http://www.w3.org/1999/xhtml' xmlns:xi='http://www.w3.org/2001/XInclude' xmlns:e='http://eegg.github.com/htmlx' xmlns:m='http://eegg.github.com/macro'><e:displaycode>module ll.insert.iterative;
+
+import ll.node;
+
+Node* insert(Node* list, int value) {
+  Node* o;
+
+  if (!list || value &lt; list.value) {
+    o = new Node(value, list);
+  }
+  else {
+    if (value == list.value) {
+      o = list;
+    }
+    else {
+      Node* p = list;
+      while (p.tail &amp;&amp; p.tail.value &lt; value) {
+	p = p.tail;
+      }&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='CommentParagraph'>!p.tail || p.tail.value &gt;= value</div></div>
+<e:displaycode>      if (!p.tail || p.tail.value &gt; value) {
+	p.tail = new Node(value, p.tail);
+      }
+      o = list;
+    }
+  }
+
+  return o;
+}&#160;</e:displaycode></section>

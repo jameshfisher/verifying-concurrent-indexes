@@ -2,6 +2,13 @@ module rb.rotate;
 
 import rb.node;
 
+Node* single_plain(Node* oldRoot, int dir) {
+  Node * newRoot = oldRoot.c[!dir];
+  oldRoot.c[!dir] = newRoot.c[dir];
+  newRoot.c[dir] = oldRoot;
+  return newRoot;
+}
+
 Node * single(Node * oldRoot, int dir) {
 
   // 3T(n, S, bh, dir)
@@ -25,13 +32,10 @@ Node * single(Node * oldRoot, int dir) {
   //     /               /         \
   // sibling,       gc1,          gc2, 
   // BT(H-1)        BT(H-1)       BT(H-1)
-
-  Node * newRoot = oldRoot.c[!dir];
-  oldRoot.c[!dir] = newRoot.c[dir];
-  newRoot.c[dir] = oldRoot;
+  Node* newRoot = single_plain(oldRoot, dir);
 
   newRoot.black = true;
-  oldRoot.black = false;
+  newRoot.c[dir].black = false;
 
   //            newRoot, B
   //             /          \

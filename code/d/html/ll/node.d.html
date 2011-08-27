@@ -1,0 +1,15 @@
+<section class='generated_listing' xmlns='http://www.w3.org/1999/xhtml' xmlns:xi='http://www.w3.org/2001/XInclude' xmlns:e='http://eegg.github.com/htmlx' xmlns:m='http://eegg.github.com/macro'><e:displaycode>module ll.node;
+
+struct Node {
+  int value;   // The lowest value in the set
+  Node* tail;  // list containing all values greater than `value`
+
+  this(int value) {
+    this.value = value;  // The tail pointer is initialized to null
+  }
+
+  this(int value, Node* tail) {
+    this.value = value;
+    this.tail = tail;
+  }
+}&#160;</e:displaycode></section>

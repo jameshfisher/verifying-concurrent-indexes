@@ -1,0 +1,57 @@
+<section xmlns="http://www.w3.org/1999/xhtml"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xmlns:e="http://eegg.github.com/htmlx"
+	 xmlns:m="http://eegg.github.com/macro">
+  
+  <h3>Recursive <m:rbt /> algorithms</h3>
+
+  <p>
+    As the <m:rbt/> data structure is just an augmentation of the <m:bst/> data structure,
+    the <m:rbt/> <code>search</code> algorithm
+    is basically identical to the <m:bst/> <code>search</code> algorithm,
+    in both recursive and iterative versions,
+    so I exclude it here.
+  </p>
+
+  <section>
+    <h4>A recursive <m:rbt/> <code>insert</code> algorithm</h4>
+
+    <p>
+      Here is how the <code>ins_bal</code> procedure works:
+
+      <xi:include href="./recursive_insert_bal.svg" />
+    </p>
+
+    <p>
+      Here is how the <code>ins_aux</code> procedure works:
+
+      <xi:include href="./recursive_insert_aux.svg" />
+    </p>
+
+    <xi:include href="../../code/d/html/rb/insert/recursive.d.html" />    
+  </section>
+
+  <section>
+    <h4>A recursive <m:rbt/> <code>remove</code> algorithm</h4>
+
+    <p>
+      Here is how the <code>balance_black_sibling</code> procedure works:
+
+      <xi:include href="./recursive_remove_balance_black_sibling.svg" />
+    </p>
+
+    <p>
+      Here is how the <code>balance</code> procedure works:
+
+      <xi:include href="./recursive_remove_balance.svg" />
+    </p>
+
+    <p>
+      Here is how the <code>remove_aux</code> procedure works:
+
+      <xi:include href="./recursive_remove_aux.svg" />
+    </p>
+
+    <xi:include href="../../code/d/html/rb/remove/recursive.d.html" />
+  </section>
+</section>

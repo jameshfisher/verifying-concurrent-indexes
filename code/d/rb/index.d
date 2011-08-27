@@ -5,7 +5,7 @@ static import index;
 static import rb.node;
 static import rb.search.search;
 static import rb.insert.insert;
-static import rb.remove;
+static import rb.remove.remove;
 static import rb.contents;
 
 import std.stdio;
@@ -22,7 +22,7 @@ class RbIndex : index.Index {
   }
 
   void remove(int value) {
-    this.root = rb.remove.remove_push_down_iter(this.root, value);
+    this.root = rb.remove.remove.remove(this.root, value);
   }
 
   int[] contents() {

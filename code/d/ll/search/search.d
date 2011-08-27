@@ -5,7 +5,7 @@ import ll.node;
 static import ll.search.recursive;
 static import ll.search.iterative;
 
-const bool recursive = true;
+const bool recursive = false;
 
 bool search(Node* list, int value) {
   static if (recursive) {

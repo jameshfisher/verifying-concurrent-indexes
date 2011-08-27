@@ -1,0 +1,65 @@
+<section class='generated_listing' xmlns='http://www.w3.org/1999/xhtml' xmlns:xi='http://www.w3.org/2001/XInclude' xmlns:e='http://eegg.github.com/htmlx' xmlns:m='http://eegg.github.com/macro'><e:displaycode>module ll.search.recursive;
+
+import ll.node;
+
+bool search(Node* list, int v) {&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'>List(list, S)</div></div>
+<e:displaycode>  bool o;
+  if (list == null) {&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Assert if-condition.</div>List(list, S) ∧ list = null</div></div>
+
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Null pointer is empty list.</div>EmptyList(list, S)</div></div>
+
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>v is not in the empty set.</div>v ∉ S</div></div>
+<e:displaycode>
+    o = false;
+&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Assignment.</div>v ∉ S ∧ o = false</div></div>
+<e:displaycode>  }
+  else {&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Deny if-condition.</div>List(list, S) ∧ list ≠ null</div></div>
+
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Non-null is non-empty.</div>NonEmptyList(list, S)</div></div>
+
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Open NonEmptyList.</div>∃value, tail, T.<br /><span class='assertionIndent'> </span>list ↦ value, tail ∗<br /><span class='assertionIndent'> </span>List(tail, T) ∧<br /><span class='assertionIndent'> </span>Compose(value, T, S)</div></div>
+<e:displaycode>
+    if (list.value == value) {&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Assert if-condition.  Frame off heap.</div>∃T. Compose(v, T, S)</div></div>
+
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Head of list in set.</div>v ∈ S</div></div>
+<e:displaycode>
+      o = true;
+&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Assignment.</div>v ∈ S ∧ o = true</div></div>
+
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'>o ↔ v ∈ S</div></div>
+<e:displaycode>    }
+    else {&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Deny if-condition.</div>∃value, tail, T.<br /><span class='assertionIndent'> </span>list ↦ value, tail ∗<br /><span class='assertionIndent'> </span>List(tail, T) ∧<br /><span class='assertionIndent'> </span>Compose(value, T, S)<br /><span class='assertionIndent'> </span>∧ value ≠ v</div></div>
+<e:displaycode>      if (list.value &lt; v) {&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Assert if-condition.</div>∃value, tail, T.<br /><span class='assertionIndent'> </span>list ↦ value, tail ∗<br /><span class='assertionIndent'> </span>List(tail, T) ∧<br /><span class='assertionIndent'> </span>Compose(value, T, S)<br /><span class='assertionIndent'> </span>∧ value &lt; v</div></div>
+<e:displaycode>        o = search(list.tail, v);
+&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Inductive use of specification.</div>∃value, tail, T.<br /><span class='assertionIndent'> </span>list ↦ value, tail ∗<br /><span class='assertionIndent'> </span>List(tail, T) ∧<br /><span class='assertionIndent'> </span>Compose(value, T, S)<br /><span class='assertionIndent'> </span>∧ value &lt; v<br /><span class='assertionIndent'> </span>∧ o ↔ v ∈ T</div></div>
+
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>In tail is in set.</div>o ↔ v ∈ S</div></div>
+<e:displaycode>      }
+      else {&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Deny if-condition.  Frame off heap.</div>∃value, T. Compose(value, T, S)<br /><span class='assertionIndent'> </span>∧ v &lt; value</div></div>
+
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Less-than-head not in list.</div>v ∉ S</div></div>
+<e:displaycode>        o = false;
+&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Assignment.</div>v ∉ S ∧ o = false</div></div>
+
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'>o ↔ v ∈ S</div></div>
+<e:displaycode>      }&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'>o ↔ v ∈ S</div></div>
+<e:displaycode>    }&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'>o ↔ v ∈ S</div></div>
+<e:displaycode>  }
+&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'>o ↔ v ∈ S</div></div>
+<e:displaycode>
+  return o;
+}&#160;</e:displaycode></section>

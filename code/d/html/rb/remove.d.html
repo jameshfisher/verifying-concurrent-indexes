@@ -1,4 +1,4 @@
-<section xmlns='http://www.w3.org/1999/xhtml' xmlns:xi='http://www.w3.org/2001/XInclude' xmlns:e='http://eegg.github.com/htmlx' xmlns:m='http://eegg.github.com/macro'><e:displaycode>module rb.remove;
+<section class='generated_listing' xmlns='http://www.w3.org/1999/xhtml' xmlns:xi='http://www.w3.org/2001/XInclude' xmlns:e='http://eegg.github.com/htmlx' xmlns:m='http://eegg.github.com/macro'><e:displaycode>module rb.remove;
 
 import rb.node;
 import rb.rotate;
@@ -55,5 +55,4 @@ parent != null.  Might be the superroot.
 If found == null, we did not set it, it is not in node, and it is not in node.c[!dir], so if it is in the tree then it is in node.c[dir].
 If found != null, either we just set it, or we set it on the path from the parent.  value is either in node, or node.c[dir] tree.</div></div>
 <e:displaycode>
-    if (!red(node) &amp;&amp; !red(node.c[dir])) {&#160;</e:displaycode>
-<div
+    if (!red(node) &amp;&amp; !red(node.c[dir])) {&
