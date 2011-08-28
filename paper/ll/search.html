@@ -3,7 +3,56 @@
 	 xmlns:e="http://eegg.github.com/htmlx"
 	 xmlns:m="http://eegg.github.com/macro">
 
-  <h2><m:ll/> <code>search</code> algorithms</h2>
+  <h2>A recursive <m:ll/> <code>search</code> algorithm</h2>
+
+  <p>
+    The purpose of a <code>search</code> algorithm is to
+    determine whether a given element from the domain
+    is a member of the set represented by a particular <m:ll/>.
+    Our first task is to formally encode this purpose in a <e:jargon>specification</e:jargon>.
+    Our basic tool here is the concept of pre- and post-conditions:
+    given that <em>A</em> (some description of the program state) is true before the <code>search</code>,
+    <em>B</em> will be true afterwards.
+    Our task then is to establish first what is necessary before execution of <code>search</code>
+    in order for that execution to be meaningful,
+    and secondly what (given that this pre-condition is satisfied)
+    the <code>search</code> function guarantees will be true afterwards.
+  </p>
+
+  <p>
+    The <code>search</code> function takes two parameters:
+    <code>head</code>, a pointer into a <m:ll/>,
+    and <code>value</code>, the element we are searching for.
+    The value of the <code>value</code> parameter is arbitrary,
+    and so we need not concern ourselves with it in the precondition: all values are valid.
+    The <code>head</code> variable, on the other hand, is not arbitrary:
+    it must point to a valid <m:ll/>.
+    We can express that: <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>.
+  </p>
+
+  <p>
+    The execution of <code>search</code> will return a boolean value,
+    so the function will be called like so:
+    <code>o = search(head, value)</code>.
+    The value <code>o</code> will express whether
+    <e:in>
+      <e:fst><e:var n="value"/></e:fst>
+      <e:snd><e:st n="S"/></e:snd>
+    </e:in>;
+    <m:ie/>,
+    <e:doubleimpl>
+      <e:fst><code>o</code></e:fst>
+      <e:snd><e:in>
+	  <e:fst><e:var n="value"/></e:fst>
+	  <e:snd><e:st n="S"/></e:snd>
+      </e:in></e:snd>
+    </e:doubleimpl>.
+    There is an additional post-condition: <code>search</code> leaves the <m:ll/> intact,
+    and so <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred> continues to be true after execution.
+    (Notice this specification in fact allows the algorithm to alter memory
+    as long as it leaves it in a state that represents the abstract set <e:st n="S"/>.
+    For our purposes this makes the specification simpler.)
+  </p>
 
   <p>
     Our specification for <code>search</code> is:
@@ -20,6 +69,13 @@
 	</e:and>
       </e:post>
     </e:triple>
+  </p>
+
+  <p>
+    
+    <div class="display">
+      <xi:include href="./recursive_search.svg" />
+    </div>
   </p>
 
   <section>
