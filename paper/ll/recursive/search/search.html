@@ -56,37 +56,51 @@
 
   <p>
     Our specification for <code>search</code> is:
-    <e:triple>
-      <e:pre><e:pred name="List"><code>n</code>, <e:st n="S"/></e:pred></e:pre>
-      <e:command><code>o = search(n, v)</code></e:command>
-      <e:post>
-	<e:and>
-	  <e:fst><e:pred name="List"><code>n</code>, <e:st n="S"/></e:pred></e:fst>
-	  <e:snd><e:doubleimpl>
-	      <e:fst>o</e:fst>
-	      <e:snd><e:in><e:fst><code>v</code></e:fst><e:snd><e:st n="S"/></e:snd></e:in></e:snd>
-	  </e:doubleimpl></e:snd>
-	</e:and>
-      </e:post>
-    </e:triple>
-  </p>
 
-  <p>
-    
     <div class="display">
-      <xi:include href="./recursive_search.svg" />
+      <e:triple>
+	<e:pre><e:pred name="List"><code>tail</code>, <e:st n="S"/></e:pred></e:pre>
+	<e:command><code>o = search(tail, value)</code></e:command>
+	<e:post>
+	  <e:and>
+	    <e:fst><e:pred name="List"><code>tail</code>, <e:st n="S"/></e:pred></e:fst>
+	    <e:snd><e:doubleimpl>
+		<e:fst>o</e:fst>
+		<e:snd><e:in><e:fst><code>value</code></e:fst><e:snd><e:st n="S"/></e:snd></e:in></e:snd>
+	    </e:doubleimpl></e:snd>
+	  </e:and>
+	</e:post>
+      </e:triple>
     </div>
   </p>
 
-  <section>
-    <h3>A recursive <m:ll/> <code>search</code> algorithm</h3>
+  <p>
+    The recursive method to search a list closely follows the recursive data structure that we have defined.
+    Given a <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>, either it is empty or it is not.
+    If it is empty (as indicated by <e:eq><e:fst><code>head</code></e:fst><e:snd><code>null</code></e:snd></e:eq>),
+    then it does not contain <code>value</code>, so we can return <code>false</code>.
+    Otherwise, we look at the first value in the list, <e:var n="v"/>, and compare it to <code>value</code>.
+    Three relations are possible:
+    <e:lt><e:fst><code>value</code></e:fst><e:snd><e:var n="v"/></e:snd></e:lt>, or
+    <e:eq><e:fst><code>value</code></e:fst><e:snd><e:var n="v"/></e:snd></e:eq>, or
+    <e:lt><e:fst><e:var n="v"/></e:fst><e:snd><code>value</code></e:snd></e:lt>.
+    Most trivially, if <e:eq><e:fst><code>value</code></e:fst><e:snd><e:var n="v"/></e:snd></e:eq>
+    then <code>value</code> is in <e:st n="S"/>, so we can return <code>true</code>.
+    Next, if <e:lt><e:fst><code>value</code></e:fst><e:snd><e:var n="v"/></e:snd></e:lt>,
+    then <code>value</code> is not in <e:st n="S"/>, because the list is in ascending order.
+    Finally, if <e:lt><e:fst><e:var n="v"/></e:fst><e:snd><code>value</code></e:snd></e:lt>,
+    then <code>value</code> could be in <e:st n="S"/> if and only if it is in <e:st n="T"/>,
+    so we call <code>search(tail, value)</code>, and return that value.
+    Diagrammatically, our recursive search algorithm works as follows:
 
-    <xi:include href="../../code/d/html/ll/search/recursive.d.html"/>
-  </section>
+    <div class="display">
+      <xi:include href="./search.svg" />
+    </div>
+  </p>
 
-  <section>
-    <h3>An iterative <m:ll/> <code>search</code> algorithm</h3>
+  <p>
+    A full annotation of our recursive search algorithm follows.
 
-    <xi:include href="../../code/d/html/ll/search/iterative.d.html"/>
-  </section>
+    <xi:include href="../../../../code/d/html/ll/search/recursive.d.html"/>
+  </p>
 </section>

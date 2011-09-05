@@ -31,13 +31,13 @@ int findMax(Node* root) {
 }
 
 Node* clr(bool c, Node* root, bool* fixed) {
-  //// root some color * T(root.c[0], L, h) * T(root.c[0], R, i) && !fixed
+  //// root some color * T(root.c[0], L, h) * T(root.c[0], R, i) ∧ !fixed
 
   *fixed = true;
   root.black = c;
   root.c[0].black = root.c[1].black = true;
 
-  //// fixed && (c == red && RT(root, S)) || (c == black && EBT(root, S))
+  //// fixed ∧ (c == red ∧ RT(root, S)) || (c == black ∧ EBT(root, S))
 
   return root;
 }
@@ -53,7 +53,7 @@ Node* balB(Node* root, int dir, bool* fixed) {
     root = rb.rotate.single(root, dir);
     //// T(fix, h) * red root * T(near, h) * black sibling * RT(far, h)
     o = clr(oldColor, root, fixed);
-    //// fixed && 
+    //// fixed ∧ 
   }
   else {
     if (red(root.c[!dir].c[dir] )) {

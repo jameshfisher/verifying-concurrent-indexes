@@ -19,7 +19,7 @@ Node* remove(Node* n, int value) {
       while (i.tail &amp;&amp; i.tail.value &lt; value) {
 	i = i.tail;
       }&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='CommentParagraph'>!i.tail || value &gt;= i.tail.value</div></div>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='CommentParagraph'>!i.tail || value >= i.tail.value</div></div>
 <e:displaycode>
       if (i.tail &amp;&amp; i.tail.value == value) {
 	Node* d = i.tail;

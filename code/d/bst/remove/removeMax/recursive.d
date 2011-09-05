@@ -48,7 +48,7 @@ RemoveMaxRet removeMax(Node* root) {
     /// ∃v,l,L.
     ///   root↦v,l,null
     ///   ∗ Tree(l, L)
-    ///   ∧ v∈S ∧ ∀x∈L. x < v ∧ L = S - {v}.
+    ///   ∧ v∈S ∧ ∀x∈L. x &lt; v ∧ L = S - {v}.
 
     max = root.value;
     newRoot = root.c[0];
@@ -57,7 +57,7 @@ RemoveMaxRet removeMax(Node* root) {
     /// ∃L.
     ///   root↦max,newRoot,null
     ///   ∗ Tree(newRoot, L)
-    ///   ∧ max∈S ∧ ∀x∈L. x < max ∧ L = S - {max}.
+    ///   ∧ max∈S ∧ ∀x∈L. x &lt; max ∧ L = S - {max}.
 
     delete root;
 
@@ -65,7 +65,7 @@ RemoveMaxRet removeMax(Node* root) {
     // This gives our function postcondition.
     /// ∃T.
     ///   Tree(newRoot, T)
-    ///   ∧ max∈S ∧ ∀x∈T. x < max ∧ T = S - {max}.
+    ///   ∧ max∈S ∧ ∀x∈T. x &lt; max ∧ T = S - {max}.
   }
   else {
     // Negate if-condition.
@@ -93,7 +93,7 @@ RemoveMaxRet removeMax(Node* root) {
     ///   ∗ Tree(l, L)
     ///   ∗ Tree(rightRoot, N)
     ///   ∧ Compose(L, v, R, S)
-    ///   ∧ rightMax∈R ∧ ∀x∈N. x < rightMax ∧ N = R - {rightMax}.
+    ///   ∧ rightMax∈R ∧ ∀x∈N. x &lt; rightMax ∧ N = R - {rightMax}.
 
     root.c[1] = rightRoot;
 
@@ -103,22 +103,22 @@ RemoveMaxRet removeMax(Node* root) {
     ///   ∗ Tree(l, L)
     ///   ∗ Tree(rightRoot, N)
     ///   ∧ Compose(L, v, R, S)
-    ///   ∧ rightMax∈R ∧ ∀x∈N. x < rightMax ∧ N = R - {rightMax}.
+    ///   ∧ rightMax∈R ∧ ∀x∈N. x &lt; rightMax ∧ N = R - {rightMax}.
 
     // Close TopOfTree.
     /// ∃v.
     ///   TopOfTree(root, v, S - {rightMax})
-    ///   ∧ rightMax∈S ∧ ∀x∈(S-{rightMax}). x < rightMax.
+    ///   ∧ rightMax∈S ∧ ∀x∈(S-{rightMax}). x &lt; rightMax.
 
     // Introduce quantification on S - {rightMax}.
     /// ∃v, T.
     ///   TopOfTree(root, v, T)
-    ///   ∧ rightMax∈S ∧ ∀x∈T. x < rightMax ∧ T = S - {rightMax}.
+    ///   ∧ rightMax∈S ∧ ∀x∈T. x &lt; rightMax ∧ T = S - {rightMax}.
 
     // Close NonEmptyTree.
     /// ∃T.
     ///   NonEmptyTree(root, T)
-    ///   ∧ rightMax∈S ∧ ∀x∈T. x < rightMax ∧ T = S - {rightMax}.    
+    ///   ∧ rightMax∈S ∧ ∀x∈T. x &lt; rightMax ∧ T = S - {rightMax}.    
 
     max = rightMax;
     newRoot = root;
@@ -126,7 +126,7 @@ RemoveMaxRet removeMax(Node* root) {
     // Assignment.  Gives postcondition.
     /// ∃T.
     ///   Tree(newRoot, T)
-    ///   ∧ max∈S ∧ ∀x∈T. x < max ∧ T = S - {max}.
+    ///   ∧ max∈S ∧ ∀x∈T. x &lt; max ∧ T = S - {max}.
   }
 
   // Postcondition of both if branches.  
@@ -135,7 +135,7 @@ RemoveMaxRet removeMax(Node* root) {
   // and `newRoot` represents `S` with `max` subtracted.
   /// ∃T.
   ///   Tree(newRoot, T)
-  ///   ∧ max∈S ∧ ∀x∈T. x < max ∧ T = S - {max}.
+  ///   ∧ max∈S ∧ ∀x∈T. x &lt; max ∧ T = S - {max}.
 
 
   RemoveMaxRet o = {max: max, root: newRoot};

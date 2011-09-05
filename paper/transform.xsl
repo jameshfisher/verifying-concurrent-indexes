@@ -6,9 +6,15 @@
    xmlns:e="http://eegg.github.com/htmlx"	 
    xmlns:m="http://eegg.github.com/macro">
 
+  <xsl:strip-space elements="e:exists"/> <!-- seems to do fuckall -->
+
   <xsl:template match="e:displaycode">
     <pre class="prettyprint"><xsl:apply-templates /></pre>
   </xsl:template>
+
+  <xsl:template match="e:indent">
+    <div class="indent"><xsl:apply-templates /></div>
+  </xsl:template>  
 
   <!-- Macros -->
   <xsl:template match="m:api"><abbr title="Application Programming Interface" class="smallcaps">API</abbr></xsl:template>
@@ -23,6 +29,16 @@
   <xsl:template match="m:vs"><i>vs.</i></xsl:template>
 
   <xsl:template match="m:empty">∅</xsl:template>
+
+  <xsl:template match="m:orElim">∨E</xsl:template>
+  <xsl:template match="m:orIntro">∨I</xsl:template>
+  <xsl:template match="m:andElim">∧E</xsl:template>
+  <xsl:template match="m:andIntro">∧I</xsl:template>
+  <xsl:template match="m:impliesElim">→E</xsl:template>
+  <xsl:template match="m:impliesIntro">→I</xsl:template>
+  <xsl:template match="m:doubleImplElim">↔E</xsl:template>
+  <xsl:template match="m:doubleImplIntro">↔I</xsl:template>
+  <xsl:template match="m:existsIntro">∃I</xsl:template>
 
   <xsl:template match="m:lacuna">&#160;[…]&#160;</xsl:template>
 
@@ -54,6 +70,8 @@
 
   <xsl:template match="e:size">|<xsl:apply-templates />|</xsl:template>
 
+  <xsl:template match="e:define"><xsl:apply-templates select="e:fst" />&#160;≝&#160;<xsl:apply-templates select="e:snd" /></xsl:template>
+
   <xsl:template match="e:plus"><xsl:apply-templates select="e:fst" />&#160;+&#160;<xsl:apply-templates select="e:snd" /></xsl:template>
 
   <xsl:template match="e:setminus"><xsl:apply-templates select="e:fst" />&#160;∖&#160;<xsl:apply-templates select="e:snd" /></xsl:template>
@@ -63,6 +81,7 @@
   <xsl:template match="e:sep"><xsl:apply-templates select="e:fst" />&#160;∗&#160;<xsl:apply-templates select="e:snd" /></xsl:template>
   <xsl:template match="e:fcell"><xsl:apply-templates select="e:fst" />&#160;↦&#160;<xsl:apply-templates select="e:snd" /></xsl:template>
   <xsl:template match="e:union"><xsl:apply-templates select="e:fst" />&#160;∪&#160;<xsl:apply-templates select="e:snd" /></xsl:template>
+  <xsl:template match="e:intersection"><xsl:apply-templates select="e:fst" />&#160;∩&#160;<xsl:apply-templates select="e:snd" /></xsl:template>
 
   <xsl:template match="e:and"><xsl:apply-templates select="e:fst" />&#160;∧&#160;<xsl:apply-templates select="e:snd" /></xsl:template>
   <xsl:template match="e:or"><xsl:apply-templates select="e:fst" />&#160;∨&#160;<xsl:apply-templates select="e:snd" /></xsl:template>
@@ -70,6 +89,9 @@
   <xsl:template match="e:eq"><xsl:apply-templates select="e:fst" />&#160;=&#160;<xsl:apply-templates select="e:snd" /></xsl:template>
   <xsl:template match="e:noteq"><xsl:apply-templates select="e:fst" />&#160;≠&#160;<xsl:apply-templates select="e:snd" /></xsl:template>
   <xsl:template match="e:lt"><xsl:apply-templates select="e:fst" />&#160;&lt;&#160;<xsl:apply-templates select="e:snd" /></xsl:template>
+  <xsl:template match="e:leq"><xsl:apply-templates select="e:fst" />&#160;≤&#160;<xsl:apply-templates select="e:snd" /></xsl:template>
+  <xsl:template match="e:gt"><xsl:apply-templates select="e:fst" />&#160;&gt;&#160;<xsl:apply-templates select="e:snd" /></xsl:template>
+  <xsl:template match="e:geq"><xsl:apply-templates select="e:fst" />&#160;≥&#160;<xsl:apply-templates select="e:snd" /></xsl:template>
 
   <xsl:template match="e:minus"><xsl:apply-templates select="e:fst" />&#160;&#x2212;&#160;<xsl:apply-templates select="e:snd" /></xsl:template>
 
@@ -78,6 +100,11 @@
 
   <xsl:template match="e:impl"><xsl:apply-templates select="e:fst" />&#160;→&#160;<xsl:apply-templates select="e:snd" /></xsl:template>
   <xsl:template match="e:doubleimpl"><xsl:apply-templates select="e:fst" />&#160;↔&#160;<xsl:apply-templates select="e:snd" /></xsl:template>
+
+  <xsl:template match="e:logimpl"><xsl:apply-templates select="e:fst" />&#160;⇒&#160;<xsl:apply-templates select="e:snd" /></xsl:template>
+
+  <xsl:template match="e:fst"><xsl:apply-templates select="@*|node()" /></xsl:template>
+  <xsl:template match="e:snd"><xsl:apply-templates select="@*|node()" /></xsl:template>
 
   <xsl:template match="e:keysof"><span class="keysof">Keys</span>(<xsl:apply-templates />)</xsl:template>
   <xsl:template match="e:tuple">(<xsl:apply-templates />)</xsl:template>
@@ -95,7 +122,7 @@
   </xsl:template>
 
   <xsl:template match="e:pre|e:post|e:cond"><span class="cond math"><xsl:apply-templates /></span></xsl:template>
-  <xsl:template match="e:set">{&#160;<xsl:apply-templates select="@*|node()" />&#160;}</xsl:template>
+  <xsl:template match="e:set">{<xsl:apply-templates select="@*|node()" />}</xsl:template>
   <xsl:template match="e:setb"><span class="set math"><xsl:apply-templates select="e:fst" />&#160;:&#160;<xsl:apply-templates select="e:snd" /></span></xsl:template>
   <xsl:template match="e:command"><span class="command code"><xsl:apply-templates /></span></xsl:template>
 

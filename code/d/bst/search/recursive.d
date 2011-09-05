@@ -5,50 +5,165 @@ import bst.descend;
 
 
 bool search(Node* root, in int value) {
-  // Function precondition.
-  /// Tree(root, S)
   bool o;
+  // Function precondition.
+  /// <e:pred name="Tree"><code>root</code>, <e:st n="S"/></e:pred>
+
   if (root) {
-    // Assert if-test.
-    /// Tree(root, S) ∧ root≠null
+    // Assert if-condition.
+    /// <e:and>
+    ///   <e:fst><e:pred name="Tree"><code>root</code>, <e:st n="S"/></e:pred></e:fst>
+    ///   <e:snd><e:noteq><e:fst><code>root</code></e:fst><e:snd><code>null</code></e:snd></e:noteq></e:snd>
+    /// </e:and>
 
-    // Non-null pointer is non-empty tree (lemma).
-    /// NonEmptyTree(root, S)
+    // Lemma: <e:logimpl>
+    //   <e:fst><e:and>
+    //     <e:fst><e:pred name="Tree"><code>root</code>, <e:st n="S"/></e:pred></e:fst>
+    //     <e:snd><e:noteq><e:fst><code>root</code></e:fst><e:snd><code>null</code></e:snd></e:noteq></e:snd>
+    //   </e:and></e:fst>
+    //   <e:snd><e:pred name="NonEmptyTree"><code>root</code>, <e:st n="S"/></e:pred></e:snd>
+    // </e:logimpl>
+    /// <e:pred name="NonEmptyTree"><code>root</code>, <e:st n="S"/></e:pred>
 
-    if (root.value == value) {
-      // Assert if-test.  (Need lemma here.)
-      /// TopOfTree(root, value, S)
+    bool eq = rootEq(root, value);
+    // Specification for <code>rootEq</code>.
+    /// <e:exists>
+    ///   <e:fst><e:var n="v"/></e:fst>
+    ///   <e:snd><e:and>
+    ///     <e:fst><e:pred name="TopOfTree"><code>root</code>, <e:var n="v"/>, <e:st n="S"/></e:pred></e:fst>
+    ///     <e:snd><e:doubleimpl>
+    ///       <e:fst><code>eq</code></e:fst>
+    ///       <e:snd><e:eq>
+    ///         <e:fst><e:var n="v"/></e:fst>
+    ///         <e:snd><code>value</code></e:snd>
+    ///       </e:eq></e:snd>
+    ///     </e:doubleimpl></e:snd>
+    ///   </e:and></e:snd>
+    /// </e:exists>
 
-      // Root value in set (lemma).
-      /// TopOfTree(root, value, S) ∧ value ∈ S
+    if (eq) {
+      // Assert if-test.
+      /// <e:exists>
+      ///   <e:fst><e:var n="v"/></e:fst>
+      ///   <e:snd><e:and>
+      ///     <e:fst><e:pred name="TopOfTree"><code>root</code>, <e:var n="v"/>, <e:st n="S"/></e:pred></e:fst>
+      ///     <e:snd><e:doubleimpl>
+      ///       <e:fst><code>eq</code></e:fst>
+      ///       <e:snd><e:eq>
+      ///         <e:fst><e:var n="v"/></e:fst>
+      ///         <e:snd><code>value</code></e:snd>
+      ///       </e:eq></e:snd>
+      ///     </e:doubleimpl></e:snd>
+      ///   </e:and></e:snd>
+      /// </e:exists> ∧ <code>eq</code>
 
-      // Weaken TopOfTree.
-      /// Tree(root, S) ∧ value ∈ S
+      // Use <e:doubleimpl>
+      //   <e:fst><code>eq</code></e:fst>
+      //   <e:snd><e:eq>
+      //     <e:fst><e:var n="v"/></e:fst>
+      //     <e:snd><code>value</code></e:snd>
+      //   </e:eq></e:snd>
+      // </e:doubleimpl>.  Discard <code>eq</code>.
+      /// <e:exists>
+      ///   <e:fst><e:var n="v"/></e:fst>
+      ///   <e:snd><e:and>
+      ///     <e:fst><e:pred name="TopOfTree"><code>root</code>, <e:var n="v"/>, <e:st n="S"/></e:pred></e:fst>
+      ///     <e:snd><e:eq>
+      ///         <e:fst><e:var n="v"/></e:fst>
+      ///         <e:snd><code>value</code></e:snd>
+      ///       </e:eq></e:snd>
+      ///   </e:and></e:snd>
+      /// </e:exists>
+
+      // Substitution.
+      /// <e:pred name="TopOfTree"><code>root</code>, <code>value</code>, <e:st n="S"/></e:pred>
+
+      // Lemma: <e:logimpl>
+      //   <e:fst><e:pred name="TopOfTree"><code>root</code>, <code>value</code>, <e:st n="S"/></e:pred></e:fst>
+      //   <e:snd><e:in><e:fst><code>value</code></e:fst><e:snd><e:st n="S"/></e:snd></e:in></e:snd>
+      // </e:logimpl>
+      /// <e:and>
+      ///   <e:fst><e:pred name="TopOfTree"><code>root</code>, <code>value</code>, <e:st n="S"/></e:pred></e:fst>
+      ///   <e:snd><e:in><e:fst><code>value</code></e:fst><e:snd><e:st n="S"/></e:snd></e:in></e:snd>
+      /// </e:and>
+
+      // Reintroduce <m:existsIntro/> on <code>value</code> as <e:var n="v"/>.
+      /// <e:exists>
+      ///   <e:fst><e:var n="v"/></e:fst>
+      ///   <e:snd><e:and>
+      ///     <e:fst><e:pred name="TopOfTree"><code>root</code>, <e:var n="v"/>, <e:st n="S"/></e:pred></e:fst>
+      ///     <e:snd><e:in><e:fst><code>value</code></e:fst><e:snd><e:st n="S"/></e:snd></e:in></e:snd>
+      ///   </e:and></e:snd>
+      /// </e:exists>
+
+      // Close <e:pred name="Tree"><code>root</code>, <e:st n="S"/></e:pred>.
+      /// <e:and>
+      ///   <e:fst><e:pred name="Tree"><code>root</code>, <e:st n="S"/></e:pred></e:fst>
+      ///   <e:snd><e:in><e:fst><code>value</code></e:fst><e:snd><e:st n="S"/></e:snd></e:in></e:snd>
+      /// </e:and>
 
       o = true;
-
       // Assignment.
-      /// Tree(root, S) ∧ value ∈ S ∧ o = true
+      /// <e:and>
+      ///   <e:fst><e:pred name="Tree"><code>root</code>, <e:st n="S"/></e:pred></e:fst>
+      ///   <e:snd><e:in><e:fst><code>value</code></e:fst><e:snd><e:st n="S"/></e:snd></e:in></e:snd>
+      /// </e:and> ∧ <e:eq><e:fst><code>o</code></e:fst><e:snd><code>true</code></e:snd></e:eq>
 
-      // ???
-      /// Tree(root, S) ∧ o ↔ (value ∈ S)
+      // ?
+      /// <e:and>
+      ///   <e:fst><e:pred name="Tree"><code>root</code>, <e:st n="S"/></e:pred></e:fst>
+      ///   <e:snd><e:doubleimpl>
+      ///     <e:fst><code>o</code></e:fst>
+      ///     <e:snd><e:in><e:fst><code>value</code></e:fst><e:snd><e:st n="S"/></e:snd></e:in></e:snd>
+      ///   </e:doubleimpl></e:snd>
+      /// </e:and>
     }
     else {
-      // Deny if-test.
-      /// TopOfTree(root, v, S) ∧ v ≠ value
+      // Deny if-condition.
+      /// <e:exists>
+      ///   <e:fst><e:var n="v"/></e:fst>
+      ///   <e:snd><e:and>
+      ///     <e:fst><e:pred name="TopOfTree"><code>root</code>, <e:var n="v"/>, <e:st n="S"/></e:pred></e:fst>
+      ///     <e:snd><e:doubleimpl>
+      ///       <e:fst><code>eq</code></e:fst>
+      ///       <e:snd><e:eq>
+      ///         <e:fst><e:var n="v"/></e:fst>
+      ///         <e:snd><code>value</code></e:snd>
+      ///       </e:eq></e:snd>
+      ///     </e:doubleimpl></e:snd>
+      ///   </e:and></e:snd>
+      /// </e:exists> ∧ ¬<code>eq</code>
+
+      // Use <e:doubleimpl>
+      //   <e:fst><code>eq</code></e:fst>
+      //   <e:snd><e:eq>
+      //     <e:fst><e:var n="v"/></e:fst>
+      //     <e:snd><code>value</code></e:snd>
+      //   </e:eq></e:snd>
+      // </e:doubleimpl>.  Discard ¬<code>eq</code>.
+      /// <e:exists>
+      ///   <e:fst><e:var n="v"/></e:fst>
+      ///   <e:snd><e:and>
+      ///     <e:fst><e:pred name="TopOfTree"><code>root</code>, <e:var n="v"/>, <e:st n="S"/></e:pred></e:fst>
+      ///     <e:snd><e:noteq>
+      ///         <e:fst><e:var n="v"/></e:fst>
+      ///         <e:snd><code>value</code></e:snd>
+      ///       </e:noteq></e:snd>
+      ///   </e:and></e:snd>
+      /// </e:exists>
 
       Node* next = descend(root, value);
 
-      // Specification of descend.
+      // Specification of <code>descend</code>.
       /// TopOfTree(root, v, S) ∧
-      /// ∃Q. Tree(o, Q) ∧ (value∈Q ↔ value∈S)) ∧ |Q| < |S|
+      /// ∃Q. Tree(o, Q) ∧ (value∈Q ↔ value∈S)) ∧ |Q| &lt; |S|
 
-      // Note recursion terminates because |Q| < |S| and |Q| >= 0
+      // Note recursion terminates because |Q| &lt; |S| and |Q| &gt;= 0
       o = search(next, value);
 
       // Specification of search.
       /// TopOfTree(root, v, S) ∧
-      /// ∃Q. Tree(o, Q) ∧ (value∈Q ↔ value∈S)) ∧ |Q| < |S| ∧ o ↔ (value ∈ Q)
+      /// ∃Q. Tree(o, Q) ∧ (value∈Q ↔ value∈S)) ∧ |Q| &lt; |S| ∧ o ↔ (value ∈ Q)
 
       // Transitivity of ↔; escape ∃; weaken TopOfTree.
       /// Tree(root, S) ∧ o ↔ (value ∈ S)

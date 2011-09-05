@@ -1,0 +1,18 @@
+<section xmlns="http://www.w3.org/1999/xhtml"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xmlns:e="http://eegg.github.com/htmlx"
+	 xmlns:m="http://eegg.github.com/macro">
+
+  <h4><e:logimpl>
+      <e:fst><e:and>
+          <e:fst><e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred></e:fst>
+          <e:snd><e:noteq>
+	      <e:fst><code>head</code></e:fst>
+	      <e:snd><code>null</code></e:snd>
+          </e:noteq></e:snd>
+      </e:and></e:fst>
+      <e:snd><e:pred name="NonEmptyList"><code>head</code>, <e:st n="S"/></e:pred></e:snd>
+  </e:logimpl></h4>
+
+  <p>(Symmetrical to the converse lemma.)</p>
+</section>

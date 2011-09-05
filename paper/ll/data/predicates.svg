@@ -175,7 +175,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -221,7 +221,7 @@
            id="tspan3979"
            x="-8.8582716"
            y="453.99997"
-           style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">value</tspan></text>
+           style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">v</tspan></text>
       <text
          sodipodi:linespacing="125%"
          id="text3989"
@@ -321,14 +321,20 @@
            id="tspan5890"
            sodipodi:role="line">NonEmptyList(<tspan
    style="font-style:italic;font-weight:normal;fill:#000000;fill-opacity:1"
-   id="tspan6014">head</tspan>, S),</tspan><tspan
+   id="tspan6014">head</tspan>, <tspan
+   style="font-weight:bold"
+   id="tspan3054">S</tspan>),</tspan><tspan
            style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
            y="513.9306"
            x="-17.716541"
            sodipodi:role="line"
-           id="tspan6022">where S = {<tspan
+           id="tspan6022">where <tspan
+   style="font-weight:bold"
+   id="tspan3056">S</tspan> = {<tspan
    style="font-style:italic"
-   id="tspan6406">value</tspan>} ∪ T,</tspan><tspan
+   id="tspan6406">v</tspan>} ∪ <tspan
+   style="font-weight:bold"
+   id="tspan3060">T</tspan>,</tspan><tspan
            style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
            y="529.56995"
            x="-17.716541"
@@ -338,8 +344,8 @@
    id="tspan6024">t</tspan>∈<tspan
    style="font-weight:bold;fill:#000000;fill-opacity:1"
    id="tspan6026">T</tspan>.  <tspan
-   style="font-style:italic;fill:#000000;fill-opacity:1"
-   id="tspan6028">value</tspan> &lt; <tspan
+   style="font-style:italic"
+   id="tspan3058">v</tspan> &lt; <tspan
    style="font-style:italic;fill:#000000;fill-opacity:1"
    id="tspan6030">t</tspan>.</tspan></text>
     </g>
@@ -399,12 +405,16 @@
            y="498.29126"
            style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">EmptyList(<tspan
    id="tspan6014-4"
-   style="font-style:italic;font-weight:normal;fill:#000000;fill-opacity:1">head</tspan>, S),</tspan><tspan
+   style="font-style:italic;font-weight:normal;fill:#000000;fill-opacity:1">head</tspan>, <tspan
+   style="font-weight:bold"
+   id="tspan3050">S</tspan>),</tspan><tspan
            sodipodi:role="line"
            x="159.44882"
            y="513.93054"
            style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
-           id="tspan6383">where S = ∅.</tspan></text>
+           id="tspan6383">where <tspan
+   style="font-weight:bold"
+   id="tspan3052">S</tspan> = ∅.</tspan></text>
     </g>
     <text
        xml:space="preserve"
@@ -419,7 +429,9 @@
          y="379.13379"
          style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">List(<tspan
    id="tspan6014-4-9"
-   style="font-style:italic;font-weight:normal;fill:#000000;fill-opacity:1">head</tspan>, S)</tspan></text>
+   style="font-style:italic;font-weight:normal;fill:#000000;fill-opacity:1">head</tspan>, <tspan
+   style="font-weight:bold"
+   id="tspan3048">S</tspan>)</tspan></text>
     <path
        style="font-size:438.40066528px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
        d="m 210.82102,400 c 0,-3.29679 -0.75752,-6.05553 -7.08086,-6.05553 -3.51297,0.054 -164.72268,0.48926 -168.235653,0.48926 -1.891594,0 -4.325669,-2.16348 -4.649941,-6.97354 l -1.837634,0 c -0.324272,4.81006 -2.754601,6.97354 -4.592149,6.97354 -3.350832,-0.054 -179.779143,-0.48926 -183.724483,-0.48926 -6.2693,0 -6.91905,2.75874 -6.91905,6.05553 l 1.7837,0 c 0.54045,-4.05342 2.59532,-4.54207 5.08142,-4.54207 3.29678,0 179.24035,0.75894 182.915454,0.75894 2.972514,0 5.565386,-1.29945 6.267986,-4.48814 l 0.215738,0 c 0.756637,3.18869 3.295463,4.48814 6.267976,4.48814 3.512973,0 164.399306,-0.75894 167.804176,-0.75894 2.37801,0 4.37916,0.48865 4.91962,4.54207 z"

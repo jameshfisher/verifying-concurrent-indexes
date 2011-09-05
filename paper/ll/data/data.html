@@ -22,7 +22,7 @@
     This can be written in a few lines:
 
     <div class="display">
-      <xi:include href="../../code/d/html/ll/node.d.html"/>
+      <xi:include href="../../../code/d/html/ll/node.d.html"/>
     </div>
   </p>
 
@@ -175,10 +175,10 @@
     We can therefore define <e:predicate>List</e:predicate> just as a disjunction:
 
     <div class="displaymath">
-      <e:pred name="List"><code>n</code>, <e:st n="S"/></e:pred> ≝
+      <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred> ≝
       <e:or>
-	<e:fst><e:pred name="EmptyList"><code>n</code>, <e:st n="S"/></e:pred></e:fst>
-	<e:snd><e:pred name="NonEmptyList"><code>n</code>, <e:st n="S"/></e:pred></e:snd>
+	<e:fst><e:pred name="EmptyList"><code>head</code>, <e:st n="S"/></e:pred></e:fst>
+	<e:snd><e:pred name="NonEmptyList"><code>head</code>, <e:st n="S"/></e:pred></e:snd>
       </e:or>.
     </div>
   </p>

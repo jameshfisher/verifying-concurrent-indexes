@@ -3,9 +3,12 @@
 
 module GenerateHTML (html) where
 
-import Data.String.Utils
-
 import Paragraphs
+
+join :: String -> [String] -> String
+join    glue      []       =  ""
+join    glue      [s]      =  s
+join    glue      (s:ss)   =  s ++ glue ++ (join glue ss)
 
 html = htmlWrap . join "\n" . map paragraphToHTML
 
@@ -20,14 +23,14 @@ paragraphToHTML (CodeParagraph s) =
     else "<e:displaycode>" ++ (htmlEscape s) ++ "&#160;</e:displaycode>" -- stops xmlproc self-closing empty tags
 
 paragraphToHTML (CommentParagraph i s) =
-  "<div class='section'><pre class='indent'>" ++ (join "" (replicate i "&#160;")) ++ "</pre><div class='CommentParagraph'>" ++ (htmlEscape s) ++ "</div></div>"
+  "<div class='section'><pre class='indent'>" ++ (join "" (replicate i "&#160;")) ++ "</pre><div class='CommentParagraph'>" ++ s ++ "</div></div>"
 
 paragraphToHTML (AssertionParagraph i s) =
-  "<div class='section'><pre class='indent'>" ++ (join "" (replicate i "&#160;")) ++ "</pre><div class='AssertionParagraph'>" ++ (htmlAssertion (htmlEscape s)) ++ "</div></div>"
+  "<div class='section'><pre class='indent'>" ++ (join "" (replicate i "&#160;")) ++ "</pre><div class='AssertionParagraph'>" ++ s ++ "</div></div>"
 
 paragraphToHTML (CommentedAssertionParagraph (CommentParagraph i s1) (AssertionParagraph j s2)) =
   "<div class='section'><pre class='indent'>" ++ (join "" (replicate i "&#160;")) ++ "</pre><div class='AssertionParagraph'>" ++
-  "<div class='expl'>" ++ htmlEscape(s1) ++ "</div>" ++ (htmlAssertion (htmlEscape s2)) ++ "</div></div>"
+  "<div class='expl'>" ++ s1 ++ "</div>" ++ s2 ++ "</div></div>"
   
 
 htmlWrap s = htmlHeader ++ s ++ htmlFooter

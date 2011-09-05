@@ -48,7 +48,7 @@ h3 {
 
 h4 {
     margin: 1em 0 0 0;
-    font-style: italic;
+    text-decoration: underline;
 }
 
 .item {
@@ -99,3 +99,5 @@ div.display, div.displaymath, table.displaymath {
 .generated_listing {
   overflow: hidden;
 }
+
+div.indent { padding-left: 2em; }

@@ -39,6 +39,9 @@ div.section div.CommentParagraph {
   -moz-box-shadow: 1px 1px 0 #ccc;
 }
 
+div.noannotations div.AssertionParagraph { display: none; }
+div.noannotations div.CommentParagraph   { display: none; }
+
 span.assertionIndent {
   font-family: "Inconsolata";
 }

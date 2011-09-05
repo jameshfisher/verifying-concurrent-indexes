@@ -7,7 +7,7 @@ bool search(Node* list, int value) {
   while (list &amp;&amp; list.value &lt; value) {
     list = list.tail;
   }&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;</pre><div class='CommentParagraph'>(!list || list.value &gt;= value)</div></div>
+<div class='section'><pre class='indent'>&#160;&#160;</pre><div class='CommentParagraph'>(!list || list.value >= value)</div></div>
 <e:displaycode>
   bool o;
   if (!list) {

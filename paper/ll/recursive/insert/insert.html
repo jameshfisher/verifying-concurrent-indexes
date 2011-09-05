@@ -1,0 +1,75 @@
+<section xmlns="http://www.w3.org/1999/xhtml"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xmlns:e="http://eegg.github.com/htmlx"
+	 xmlns:m="http://eegg.github.com/macro">
+
+    <h3>A recursive <m:ll/> <code>insert</code> algorithm</h3>
+
+    <p>
+      The purpose of an <code>insert</code> algorithm is to
+      mutate the heap representing some set <e:st n="S"/>
+      such that it represents the set <e:union><e:fst><e:st n="S"/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:union>
+      for some given parameter <code>value</code>.
+      A function implementing <code>insert</code> returns a pointer into the new heap.
+      A specification for our <m:ll/> data structure falls naturally out of this description:
+
+      <div class="display">
+	<e:triple>
+	  <e:pre><e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred></e:pre>
+	  <e:command><code>nhead = insert(head, value);</code></e:command>
+	  <e:post><e:pred name="NonEmptyList"><code>nhead</code>,
+	      <e:union>
+		<e:fst><e:st n="S"/></e:fst>
+		<e:snd><e:set><code>value</code></e:set></e:snd>
+	      </e:union>
+	  </e:pred></e:post>
+	</e:triple>
+      </div>
+    </p>
+
+    <p>
+      The recursive <code>insert</code> algorithm works as follows.
+      We first determine whether the list is empty by testing for <e:eq><e:fst><code>value</code></e:fst><e:snd><code>null</code></e:snd></e:eq>.
+      If the list is empty, it represents <m:scemp/>, and we wish to mutate the state to represent
+      <e:union>
+	<e:fst><m:scemp/></e:fst>
+	<e:snd><e:set><code>value</code></e:set></e:snd>
+      </e:union>,
+      which is simply <e:set><code>value</code></e:set>.
+      The representation of this is a one-node list with its <e:var n="tail"/> field set to <code>null</code>;
+      we create this and return it.
+      If the list is not empty, we compare <e:var n="v"/>, the first value in the list, with <code>value</code>.
+      If <e:eq><e:fst><e:var n="v"/></e:fst><e:snd><code>value</code></e:snd></e:eq>,
+      then <e:in><e:fst><code>value</code></e:fst><e:snd><e:st n="S"/></e:snd></e:in>,
+      so <e:eq>
+	<e:fst><e:union>
+	    <e:fst><m:scemp/></e:fst>
+	    <e:snd><e:set><code>value</code></e:set></e:snd>
+	</e:union></e:fst>
+	<e:snd><e:st n="S"/></e:snd>
+      </e:eq>.
+      The <code>head</code> variable already points into a set representing <e:st n="S"/>,
+      so we just return <code>head</code>.
+      If <e:gt><e:fst><e:var n="v"/></e:fst><e:snd><code>value</code></e:snd></e:gt>,
+      then <e:notin><e:fst><code>value</code></e:fst><e:snd><e:st n="S"/></e:snd></e:notin>,
+      and we can construct a valid <m:ll/> representing <e:union><e:fst><e:st n="S"/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:union>
+      by appending a node containing <code>value</code> at the start.
+      Finally, if <e:lt><e:fst><e:var n="v"/></e:fst><e:snd><code>value</code></e:snd></e:lt>,
+      we call <code>insert(tail, value)</code> to obtain a pointer to a list
+      representing <e:union><e:fst><e:st n="T"/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:union>;
+      by replacing the <e:var n="tail"/> field of the first node with this new pointer,
+      we obtain a list representing <e:union><e:fst><e:set><e:var n="v"/></e:set></e:fst><e:snd><e:union><e:fst><e:st n="T"/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:union></e:snd></e:union>,
+      which is equal to <e:union><e:fst><e:st n="S"/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:union>.
+      We then return the original <code>head</code> pointer.
+    </p>
+
+    <div class="display">
+      <xi:include href="./insert.svg" />
+    </div>
+
+    <p>
+      The annotated code for recursive <code>insert</code> follows.
+
+      <xi:include href="../../../../code/d/html/ll/insert/recursive.d.html"/>
+    </p>
+</section>

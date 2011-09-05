@@ -1,0 +1,27 @@
+<section class='generated_listing' xmlns='http://www.w3.org/1999/xhtml' xmlns:xi='http://www.w3.org/2001/XInclude' xmlns:e='http://eegg.github.com/htmlx' xmlns:m='http://eegg.github.com/macro'><e:displaycode>module rb.blacken;
+
+import rb.node;
+
+Node* blacken(Node* root) {&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'>T(root, S) ∨ ∃ dir. RVT(root, S, dir)</div></div>
+<e:displaycode>
+  if (root != null &amp;&amp; !root.black) {&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'>(T(root, S) ∧ root != null ∧ ¬root.black ∨
+ ∃ dir. RVT(root, S, dir) ∧ root != null ∧ ¬root.black) </div></div>
+
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'></div></div>
+
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'>RT(root, S)</div></div>
+<e:displaycode>    root.black = true;&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'>BT(root, S)</div></div>
+<e:displaycode>  }
+  else {&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'>T(root, S) &&
+(root == null || root.black)</div></div>
+
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'>BT(root, S)</div></div>
+<e:displaycode>  }&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'>BT(root, S)</div></div>
+<e:displaycode>
+  return root;
+}&#160;</e:displaycode></section>

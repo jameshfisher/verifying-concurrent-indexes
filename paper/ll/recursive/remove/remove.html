@@ -1,0 +1,60 @@
+<section xmlns="http://www.w3.org/1999/xhtml"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xmlns:e="http://eegg.github.com/htmlx"
+	 xmlns:m="http://eegg.github.com/macro">
+
+  <h2><m:ll/> <code>remove</code> algorithms</h2>
+
+  <section>
+    <h3>A recursive <m:ll/> <code>remove</code> algorithm</h3>
+
+    <p>
+      The purpose of an <code>insert</code> algorithm is to
+      mutate the heap representing some set <e:st n="S"/>
+      such that it represents the set <e:setminus><e:fst><e:st n="S"/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:setminus>
+      for some given parameter <code>value</code>.
+      A function implementing <code>remove</code> returns a pointer into the new heap.
+      A specification for our <m:ll/> data structure falls naturally out of this description:
+
+      <div class="display">
+	<e:triple>
+	  <e:pre><e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred></e:pre>
+	  <e:command><code>nhead = insert(head, value);</code></e:command>
+	  <e:post><e:pred name="List"><code>nhead</code>,
+	      <e:setminus>
+		<e:fst><e:st n="S"/></e:fst>
+		<e:snd><e:set><code>value</code></e:set></e:snd>
+	      </e:setminus>
+	  </e:pred></e:post>
+	</e:triple>
+      </div>
+    </p>
+
+    <p>
+      The recursive <code>remove</code> algorithm follows a similar pattern to
+      the <code>search</code> and <code>insert</code> algorithms we have seen.
+      We have two cases: the list is empty or it is not.
+      If it is empty, it represents <m:scemp/>;
+      we must then return a list representing <e:setminus><e:fst><m:scemp/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:setminus>,
+      which is <m:scemp/>; we can therefore simply return <code>head</code>.
+      If it is not empty, then as before, we compare <code>value</code> and the value <e:var n="v"/> at the head of the list.
+      If they are equal, then <e:eq><e:fst><e:setminus><e:fst><e:st n="S"/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:setminus></e:fst><e:snd><e:st n="T"/></e:snd></e:eq>
+      represented by the <e:var n="tail"/> pointer; we delete the <code>head</code> node and return <e:var n="tail"/>.
+      If <e:lt><e:fst><code>value</code></e:fst><e:snd><e:var n="v"/></e:snd></e:lt>, then <e:st n="T"/> cannot contain <code>value</code>,
+      so <e:eq><e:fst><e:setminus><e:fst><e:st n="S"/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:setminus></e:fst><e:snd><e:st n="S"/></e:snd></e:eq>,
+      and again we can return the <code>head</code> pointer.
+      Otherwise, <e:gt><e:fst><code>value</code></e:fst><e:snd><e:var n="v"/></e:snd></e:gt>,
+      and we must recursively apply <code>remove</code> to the <e:var n="tail"/> pointer.
+    </p>
+
+    <div class="display">
+      <xi:include href="./remove.svg" />
+    </div>
+
+    <p>
+      The annotated code for recursive <code>remove</code> follows.
+
+      <xi:include href="../../../../code/d/html/ll/remove/recursive.d.html"/>
+    </p>
+  </section>
+</section>

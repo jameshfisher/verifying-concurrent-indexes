@@ -1,0 +1,235 @@
+<section xmlns="http://www.w3.org/1999/xhtml"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xmlns:e="http://eegg.github.com/htmlx"
+	 xmlns:m="http://eegg.github.com/macro">
+  
+  <h3>The <m:bst/> data structure</h3>
+
+  <p>
+    At each <code>Node</code> of an <m:ll/>,
+    we had a link to a smaller <m:ll/>:
+    the data structure contained a single smaller version of itself.
+    The sole difference that the binary tree introduces is that
+    it contains <em>two</em> smaller binary trees.
+    In the <m:ll/>, the set was split into
+    the element <e:var n="v"/> at the <code>head</code> node and the set <e:st n="T"/> held in the <code>tail</code> list.
+    In the binary tree, the same set is split into
+    an element <e:var n="v"/> at the <code>root</code> node (analogous to the <code>head</code> node in the <m:ll/>),
+    and <em>two</em> sets <e:st n="L"/> and <e:st n="R"/>,
+    held respectively in what are called the <code>left</code> and <code>right</code> subtrees.
+  </p>
+
+  <p>
+    In our <m:ll/>, we chose to order the elements of the set <e:st n="S"/> in strictly ascending order;
+    that is, the element <e:var n="v"/> was chosen as the minimal element of <e:st n="S"/>.
+    Such an ordered linked list might be termed a <em>Linked Search List</em>.
+    Similarly, we can order the elements of the binary tree.
+    Here, the choice of <e:var n="v"/> from <e:st n="S"/> is arbitrary.
+    The set <e:st n="L"/> is then chosen to hold all elements of <e:st n="S"/> that are strictly less than <e:var n="v"/>,
+    and the set <e:st n="R"/> holds all elements strictly greater than <e:var n="v"/>.
+    This particular type of binary tree with its elements ordered is called a <em>Binary Search Tree</em>,
+    which I will hereon abbreviate as <m:bst/>.
+  </p>
+
+  <p>
+    As with the <m:ll/>, a pointer into the <code>root</code> node is required to complete the representation of the set.
+    Also as with the <m:ll/>, <m:scemp/> has a distinct representation: a pointer to <code>null</code> and no allocated heap chunks.
+  </p>
+
+  <p>
+    We described a general pointer <code>head</code> into a list representing the set <e:st n="S"/>
+    with the predicate <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>.
+    Similarly, we will now describe a general pointer <code>root</code> into a <m:bst/> representing <e:st n="S"/>
+    with a predicate <e:pred name="Tree"><code>root</code>, <e:st n="S"/></e:pred>.
+  </p>
+
+  <p>
+    Where the two representations defined by the <m:ll/> were termed <e:predicate>EmptyList</e:predicate> and <e:predicate>NonEmptyList</e:predicate>,
+    we will analogously define <e:predicate>EmptyTree</e:predicate> and <e:predicate>NonEmptyTree</e:predicate>.
+    As with our visualization of the <m:ll/>, we can view the <m:bst/> predicates graphically:
+
+    <div class="display">
+      <xi:include href="./predicates.svg" />
+    </div>
+  </p>
+
+  <p>
+    The <e:predicate>Tree</e:predicate> predicate is defined in terms of the two concrete representations:
+
+    <div class="displaymath">
+      <e:define>
+	<e:fst><e:pred name="Tree"><code>root</code>, <e:st n="S"/></e:pred></e:fst>
+	<e:snd><e:or>
+	    <e:fst><e:pred name="EmptyTree"><code>root</code>, <e:st n="S"/></e:pred></e:fst>
+	    <e:snd><e:pred name="NonEmptyTree"><code>root</code>, <e:st n="S"/></e:pred></e:snd>
+	</e:or></e:snd>
+      </e:define>.
+    </div>
+  </p>
+
+  <p>
+    The <e:predicate>EmptyTree</e:predicate> predicate is in fact just <e:predicate>EmptyList</e:predicate> under a new name:
+
+    <table class="displaymath">
+      <tbody>
+	<tr>
+	  <td><e:pred name="EmptyTree"><e:var n="n"/>, <e:var n="S"/></e:pred> ≝</td>
+	  <td><e:eq><e:fst><e:var n="n"/></e:fst><e:snd><code>null</code></e:snd></e:eq> ∧</td>
+	  <td>An empty tree is indicated by a null pointer, </td>
+	</tr>
+	<tr>
+	  <td></td>
+	  <td><m:hemp/> ∧</td>
+	  <td>uses no space on the heap, and</td>
+	</tr>
+	<tr>
+	  <td></td>
+	  <td><e:eq><e:fst><e:var n="S"/></e:fst><e:snd><m:scemp/></e:snd></e:eq>.</td>
+	  <td>represents the empty set.</td>
+	</tr>
+      </tbody>
+    </table>
+  </p>
+
+  <p>
+    To describe the <e:predicate>NonEmptyTree</e:predicate>,
+    we first define the ordering of its elements.
+    We need a new <m:bst/> <e:predicate>Compose</e:predicate> predicate
+    on the total set <e:st n="S"/>, the root element <e:var n="v"/>, and the subsets <e:st n="L"/> and <e:st n="R"/>:
+
+    <table class="displaymath">
+      <tbody>
+	<tr>
+	  <td><e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred> ≝</td>
+	  <td>
+	    <e:eq>
+	      <e:fst>
+	      <e:union>
+		<e:fst><e:st n="L"/></e:fst>
+		<e:snd>
+		  <e:union>
+		    <e:fst><e:set><e:var n="v"/></e:set></e:fst>
+		    <e:snd><e:st n="R"/></e:snd>
+		  </e:union>
+		</e:snd>
+	      </e:union>
+	      </e:fst>
+	      <e:snd><e:st n="S"/></e:snd>
+	    </e:eq> ∧
+	  </td>
+	  <td><e:st n="L"/>, <e:var n="v"/>, and <e:st n="R"/> make up the set <e:st n="S"/>,</td>
+	</tr>
+	<tr>
+	  <td></td>
+	  <td>
+	    <e:forall>
+	      <e:fst>
+		<e:in><e:fst><e:var n="l"/></e:fst><e:snd><e:st n="L"/></e:snd></e:in>
+	      </e:fst>
+	      <e:snd>
+		<e:lt><e:fst><e:var n="l"/></e:fst><e:snd><e:var n="v"/></e:snd></e:lt>
+	      </e:snd>
+	    </e:forall> ∧
+	  </td>
+	  <td>all values in <e:st n="L"/> are less than <e:var n="v"/>, and</td>
+	</tr>
+	<tr>
+	  <td></td>
+	  <td>
+	    <e:forall>
+	      <e:fst>
+		<e:in>
+		  <e:fst><e:var n="r"/></e:fst>
+		  <e:snd><e:st n="R"/></e:snd>
+		</e:in>
+	      </e:fst>
+	      <e:snd>
+		<e:lt>
+		  <e:fst><e:var n="v"/></e:fst>
+		  <e:snd><e:var n="r"/></e:snd>
+		</e:lt>
+	      </e:snd>
+	    </e:forall>.
+	  </td>
+	  <td>all values in <e:st n="R"/> are greater than <e:var n="v"/>.</td>
+	</tr>
+      </tbody>
+    </table>
+  </p>
+
+  <p>
+    Using our <e:predicate>Compose</e:predicate> predicate,
+    we can describe a tree at address <code>root</code>
+    that stores the value <e:var n="v"/> at the root and represents the set <e:st n="S"/>.
+    We define an intermediary predicate, <e:predicate>TopOfTree</e:predicate>:
+
+    <table class="displaymath">
+      <tbody>
+	<tr>
+	  <td><e:pred name="TopOfTree"><code>root</code>, <e:var n="v"/>, <e:st n="S"/></e:pred> ≝</td>
+	  <td>∃<e:var n="l"/>,<e:var n="r"/>,<e:st n="L"/>,<e:st n="R"/>.</td>
+	  <td></td>
+	</tr>
+	<tr>
+	  <td></td>
+	  <td>
+	    <e:fcell>
+	      <e:fst><code>root</code></e:fst>
+	      <e:snd><e:var n="v"/>,<e:var n="l"/>,<e:var n="r"/></e:snd>
+	    </e:fcell>
+	  </td>
+	  <td><code>root</code> points to a <code>Node</code> with value <e:var n="v"/> and pointers <e:var n="l"/> and <e:var n="r"/></td>
+	</tr>
+	<tr>
+	  <td></td>
+	  <td>∗ <e:pred name="Tree"><e:var n="l"/>, <e:st n="L"/></e:pred></td>
+	  <td>where <e:var n="l"/> points into a <m:bst/> representing <e:st n="L"/>,</td>
+	</tr>
+	<tr>
+	  <td></td>
+	  <td>∗ <e:pred name="Tree"><e:var n="r"/>, <e:st n="R"/></e:pred></td>
+	  <td><e:var n="r"/> points into a <m:bst/> representing <e:st n="R"/>, and</td>
+	</tr>
+	<tr>
+	  <td></td>
+	  <td>∧ <e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>.</td>
+	  <td>the values in the tree are totally ordered.</td>
+	</tr>
+      </tbody>
+    </table>
+  </p>
+
+  <p>
+    The <e:predicate>TopOfTree</e:predicate> predicate allows us to gradually expand our knowledge of the tree as an algorithm proceeds.
+    Before we know the value at the root, though, we just know it's non-empty:
+
+    <table class="displaymath">
+      <tbody>
+	<tr>
+	  <td><e:pred name="NonEmptyTree"><code>root</code>, <e:st n="S"/></e:pred> ≝</td>
+	  <td><e:exists>
+	      <e:fst><e:var n="v"/></e:fst>
+	      <e:snd><e:pred name="TopOfTree"><code>root</code>, <e:var n="v"/>, <e:st n="S"/></e:pred></e:snd>
+	  </e:exists></td>
+	</tr>
+      </tbody>
+    </table>
+  </p>
+
+  <p>
+    Here is the module defining the structure of a node in the tree:
+
+    <div class="display">
+      <xi:include href="../../../code/d/html/bst/node.d.html" />
+    </div>
+  </p>
+
+  <p>
+    Notice the use of a <q>link array</q>:
+    rather than separate named <code>left</code> and <code>right</code> pointers,
+    these two pointers are held in a two-element array,
+    addressed respectively as <code>c[0]</code> and <code>c[1]</code>.
+    This enables us to parameterize procedures by the index
+    where the symmetry of the tree would otherwise demand two symmetrical blocks of code.
+  </p>
+</section>

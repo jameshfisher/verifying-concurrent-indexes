@@ -10,16 +10,54 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="832.67719"
-   height="584.64569"
+   height="797.24408"
    id="svg2"
    version="1.1"
    inkscape:version="0.48.1 r9760"
-   sodipodi:docname="recursive_search.svg"
+   sodipodi:docname="recursive_remove.svg"
    inkscape:export-filename="/home/james/inst/edu/3-msc/net-storage/terms/3/verifying-concurrent-indexes/paper/rbt/recursive_insert_aux.png"
    inkscape:export-xdpi="90"
    inkscape:export-ydpi="90">
   <defs
      id="defs4">
+    <marker
+       style="overflow:visible"
+       inkscape:stockid="InfiniteLineEnd"
+       id="InfiniteLineEnd"
+       refX="0"
+       refY="0"
+       orient="auto">
+      <g
+         id="g8169">
+        <circle
+           id="circle8171"
+           r="0.80000001"
+           cy="0"
+           cx="3"
+           sodipodi:cx="3"
+           sodipodi:cy="0"
+           sodipodi:rx="0.80000001"
+           sodipodi:ry="0.80000001" />
+        <circle
+           id="circle8173"
+           r="0.80000001"
+           cy="0"
+           cx="6.5"
+           sodipodi:cx="6.5"
+           sodipodi:cy="0"
+           sodipodi:rx="0.80000001"
+           sodipodi:ry="0.80000001" />
+        <circle
+           id="circle8175"
+           r="0.80000001"
+           cy="0"
+           cx="10"
+           sodipodi:cx="10"
+           sodipodi:cy="0"
+           sodipodi:rx="0.80000001"
+           sodipodi:ry="0.80000001" />
+      </g>
+    </marker>
     <marker
        inkscape:stockid="Arrow1Mend"
        orient="auto"
@@ -314,6 +352,76 @@
          d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
          transform="scale(-0.6,-0.6)" />
     </marker>
+    <marker
+       inkscape:stockid="Arrow2Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow2Mend-9-1"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path4799-2-5"
+         style="font-size:12px;fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="scale(-0.6,-0.6)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow2Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker3300"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path3302"
+         style="font-size:12px;fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="scale(-0.6,-0.6)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow2Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow2Mend-9-8"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path4799-2-31"
+         style="font-size:12px;fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="scale(-0.6,-0.6)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow2Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker3480"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path3482"
+         style="font-size:12px;fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="scale(-0.6,-0.6)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow2Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow2Mend-9-0"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path4799-2-34"
+         style="font-size:12px;fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="scale(-0.6,-0.6)" />
+    </marker>
   </defs>
   <sodipodi:namedview
      id="base"
@@ -322,14 +430,14 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.7"
-     inkscape:cx="447.88045"
-     inkscape:cy="264.65821"
+     inkscape:zoom="0.98994949"
+     inkscape:cx="533.4911"
+     inkscape:cy="510.43575"
      inkscape:document-units="mm"
-     inkscape:current-layer="g18357"
+     inkscape:current-layer="layer1"
      showgrid="true"
-     inkscape:window-width="1024"
-     inkscape:window-height="552"
+     inkscape:window-width="1920"
+     inkscape:window-height="1032"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
@@ -368,7 +476,7 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(0.53125,-308.78934)">
+     transform="translate(0.53125,-308.78936)">
     <g
        id="g9842"
        transform="translate(-0.53126553,246.55312)">
@@ -608,7 +716,9 @@
            y="285.95963"
            x="53.149605"
            sodipodi:role="line"
-           id="tspan4247">set S.  We are searching for <tspan
+           id="tspan4247">set <tspan
+   style="font-weight:bold"
+   id="tspan3280">S</tspan>.  We are removing <tspan
    style="font-style:italic"
    id="tspan4253">value</tspan>.</tspan></text>
       <g
@@ -686,10 +796,10 @@
          y="257.1181"
          ry="0.28726187" />
       <rect
-         ry="0.57452416"
+         ry="0.71815604"
          y="292.55112"
          x="35.433056"
-         height="70.866119"
+         height="88.582756"
          width="230.31496"
          id="rect9997"
          style="fill:#def2da;fill-opacity:1;stroke:none" />
@@ -709,9 +819,11 @@
            y="286.47394"
            x="53.149605"
            sodipodi:role="line"
-           id="tspan5731"><tspan
+           id="tspan5731">∅ ∖ {<tspan
    style="font-style:italic"
-   id="tspan5733">value</tspan> ∉ ∅.  Return false.</tspan><tspan
+   id="tspan13947">value</tspan>} = ∅.  Return <tspan
+   style="font-style:italic"
+   id="tspan7796">head</tspan>.</tspan><tspan
            style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
            y="302.11322"
            x="53.149605"
@@ -830,81 +942,6 @@
          inkscape:connector-curvature="0"
          sodipodi:nodetypes="cccc" />
     </g>
-    <g
-       id="g18357"
-       transform="translate(2.992126e-7,212.59841)">
-      <text
-         sodipodi:linespacing="125%"
-         id="text18359"
-         y="462.52161"
-         x="62.334919"
-         style="font-size:40px;font-style:normal;font-weight:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-         xml:space="preserve"><tspan
-           style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;text-anchor:start;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
-           y="462.52161"
-           x="62.334919"
-           id="tspan18361"
-           sodipodi:role="line">compare(<tspan
-   style="font-style:italic"
-   id="tspan5735">value</tspan>, <tspan
-   style="font-style:italic"
-   id="tspan5737">v</tspan>)</tspan></text>
-      <text
-         sodipodi:linespacing="125%"
-         id="text18365"
-         y="479.22571"
-         x="61.77824"
-         style="font-size:40px;font-style:normal;font-weight:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-         xml:space="preserve"><tspan
-           style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
-           y="479.22571"
-           x="61.77824"
-           id="tspan18367"
-           sodipodi:role="line">value<tspan
-   style="font-style:normal"
-   id="tspan5823"> &lt; </tspan>v</tspan></text>
-      <path
-         style="fill:none;stroke:#000000;stroke-width:1.0629921;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow2Mend-9)"
-         d="m 52.618356,450.52163 0,35.43307"
-         id="path18371"
-         inkscape:connector-curvature="0" />
-      <path
-         sodipodi:nodetypes="ccc"
-         inkscape:connector-curvature="0"
-         id="path18379"
-         d="m 52.618356,468.23816 265.748034,1e-5 0,17.71653"
-         style="fill:none;stroke:#000000;stroke-width:1.0629921;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow2Mend-9)" />
-      <text
-         xml:space="preserve"
-         style="font-size:40px;font-style:normal;font-weight:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-         x="329.77823"
-         y="479.22571"
-         id="text5993"
-         sodipodi:linespacing="125%"><tspan
-           sodipodi:role="line"
-           id="tspan5995"
-           x="329.77823"
-           y="479.22571"
-           style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">value = v  </tspan></text>
-      <path
-         style="fill:none;stroke:#000000;stroke-width:1.0629921;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow2Mend-9)"
-         d="m 318.36638,468.23816 265.74804,1e-5 0,17.71653"
-         id="path6093"
-         inkscape:connector-curvature="0"
-         sodipodi:nodetypes="ccc" />
-      <text
-         sodipodi:linespacing="125%"
-         id="text6095"
-         y="479.22571"
-         x="597.7782"
-         style="font-size:40px;font-style:normal;font-weight:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-         xml:space="preserve"><tspan
-           style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
-           y="479.22571"
-           x="597.7782"
-           id="tspan6097"
-           sodipodi:role="line">value &gt; v  </tspan></text>
-    </g>
     <path
        inkscape:connector-curvature="0"
        id="path7198-2-0"
@@ -945,7 +982,9 @@
              y="498.29132"
              style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">NonEmptyList(<tspan
    id="tspan5751"
-   style="font-style:italic;font-weight:normal;fill:#000000;fill-opacity:1">head</tspan>, S)</tspan><tspan
+   style="font-style:italic;font-weight:normal;fill:#000000;fill-opacity:1">head</tspan>, <tspan
+   style="font-weight:bold"
+   id="tspan4694">S</tspan>)</tspan><tspan
              id="tspan5753"
              sodipodi:role="line"
              x="-17.716541"
@@ -963,41 +1002,43 @@
          xml:space="preserve"
          style="font-size:40px;font-style:normal;font-weight:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
          x="53.149605"
-         y="272.83463"
+         y="270.83463"
          id="text5757"
          sodipodi:linespacing="125%"><tspan
-           id="tspan5765"
            sodipodi:role="line"
            x="53.149605"
-           y="272.83463"
-           style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"><tspan
-   style="font-style:italic"
-   id="tspan5827">value</tspan> ∉ {<tspan
-   style="font-style:italic"
-   id="tspan5825">v</tspan>}.  All in <tspan
-   style="font-weight:bold"
-   id="tspan5837">T </tspan>are &gt; <tspan
-   style="font-style:italic"
-   id="tspan5841">v</tspan>, so <tspan
-   style="font-style:italic"
-   id="tspan5859">value</tspan> ∉ <tspan
-   style="font-weight:bold"
-   id="tspan5843">T</tspan>.  So</tspan><tspan
-           sodipodi:role="line"
-           x="53.149605"
-           y="288.47394"
+           y="270.83463"
            style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
-           id="tspan5891"><tspan
+           id="tspan3674"><tspan
    style="font-style:italic"
-   id="tspan5895">value</tspan> ∉ {<tspan
+   id="tspan7811">value</tspan> ∉ {<tspan
    style="font-style:italic"
-   id="tspan5862">v</tspan>} ∪ <tspan
+   id="tspan7809">v</tspan>}.  All in <tspan
    style="font-weight:bold"
-   id="tspan5864">T</tspan>, so <tspan
+   id="tspan7813">T</tspan> are &gt; <tspan
    style="font-style:italic"
-   id="tspan5897">value</tspan> ∉ <tspan
+   id="tspan7815">v</tspan>, so <tspan
+   style="font-style:italic"
+   id="tspan7817">value</tspan> ∉ <tspan
    style="font-weight:bold"
-   id="tspan5899">S</tspan>.  Return false.</tspan></text>
+   id="tspan7819">T</tspan>.  So</tspan><tspan
+           sodipodi:role="line"
+           x="53.149605"
+           y="286.47394"
+           style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+           id="tspan7805"><tspan
+   style="font-style:italic"
+   id="tspan7821">value</tspan> ∉ <tspan
+   style="font-weight:bold"
+   id="tspan7823">S</tspan>, so <tspan
+   style="font-weight:bold"
+   id="tspan7825">S</tspan> ∖ {<tspan
+   style="font-style:italic"
+   id="tspan7827">value</tspan>} = <tspan
+   style="font-weight:bold"
+   id="tspan7829">S</tspan>.  Return <tspan
+   style="font-style:italic"
+   id="tspan7807">head</tspan>.</tspan></text>
       <g
          id="g5781"
          transform="translate(132.87403,-104.29917)">
@@ -1123,7 +1164,7 @@
        id="g5903"
        transform="translate(265.21677,441.43501)">
       <rect
-         style="fill:#b7e2ae;fill-opacity:1;stroke:none"
+         style="fill:#c8c8c8;fill-opacity:1;stroke:none"
          id="rect5905"
          width="230.31494"
          height="35.433033"
@@ -1137,7 +1178,7 @@
          height="124.01581"
          width="230.31496"
          id="rect5907"
-         style="fill:#def2da;fill-opacity:1;stroke:none" />
+         style="fill:#e6e6e6;fill-opacity:1;stroke:none" />
       <g
          transform="translate(194.88191,-104.29918)"
          id="g5909">
@@ -1145,19 +1186,23 @@
            sodipodi:linespacing="125%"
            id="text5911"
            y="498.29132"
-           x="-17.716541"
+           x="-27.716541"
            style="font-size:40px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
            xml:space="preserve"><tspan
              style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
              y="498.29132"
-             x="-17.716541"
+             x="-27.716541"
              id="tspan5913"
              sodipodi:role="line">NonEmptyList(<tspan
    style="font-style:italic;font-weight:normal;fill:#000000;fill-opacity:1"
-   id="tspan5915">head</tspan>, S)</tspan><tspan
+   id="tspan5915">head</tspan>, {<tspan
+   style="font-style:italic"
+   id="tspan7773">value</tspan>} ∪ <tspan
+   style="font-weight:bold"
+   id="tspan7775">S</tspan>)</tspan><tspan
              style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
-             y="511.41632"
-             x="-17.716541"
+             y="513.9306"
+             x="-27.716541"
              sodipodi:role="line"
              id="tspan5917" /></text>
         <rect
@@ -1175,30 +1220,22 @@
          x="53.149605"
          style="font-size:40px;font-style:normal;font-weight:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
          xml:space="preserve"><tspan
-           id="tspan5937"
            style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
            y="272.83463"
            x="53.149605"
-           sodipodi:role="line"><tspan
-   id="tspan5925"
-   style="font-style:italic">value</tspan> ∈ {<tspan
-   id="tspan5927"
-   style="font-style:italic">v</tspan>}, so <tspan
-   id="tspan5939"
-   style="font-style:italic">value</tspan> ∈ {<tspan
-   id="tspan5941"
-   style="font-style:italic">v</tspan>} ∪ <tspan
-   id="tspan5943"
-   style="font-weight:bold">T</tspan>, so <tspan
+           sodipodi:role="line"
+           id="tspan6011"><tspan
    id="tspan5945"
-   style="font-style:italic">value</tspan> ∈ <tspan
-   id="tspan5947"
-   style="font-weight:bold">S</tspan>.</tspan><tspan
+   style="font-style:normal;font-weight:bold">S</tspan> ∖ {<tspan
+   style="font-style:italic"
+   id="tspan7846">value</tspan>} = <tspan
+   style="font-weight:bold"
+   id="tspan7850">T</tspan>. But we already have a list</tspan><tspan
            style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
            y="285.95963"
            x="53.149605"
            sodipodi:role="line"
-           id="tspan6011">Return true.</tspan></text>
+           id="tspan7852">representing T ...</tspan></text>
       <g
          transform="translate(132.87403,-104.29917)"
          id="g5949">
@@ -1325,9 +1362,9 @@
          height="35.433033"
          width="230.31494"
          id="rect6015"
-         style="fill:#d3aee2;fill-opacity:1;stroke:none" />
+         style="fill:#c8c8c8;fill-opacity:1;stroke:none" />
       <rect
-         style="fill:#ebdaf2;fill-opacity:1;stroke:none"
+         style="fill:#e6e6e6;fill-opacity:1;stroke:none"
          id="rect6017"
          width="230.31496"
          height="124.01581"
@@ -1375,26 +1412,24 @@
            x="53.149605"
            y="272.83463"
            style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
-           id="tspan6033"><tspan
+           id="tspan5992"><tspan
+             style="font-style:italic"
+             id="tspan5990"><tspan
+               style="font-style:normal"
+               id="tspan6000">The head of the list is consistent with <tspan
    style="font-style:italic"
-   id="tspan6035">value</tspan> ∈ {<tspan
-   style="font-style:italic"
-   id="tspan6037">v</tspan>}, so <tspan
-   style="font-style:italic"
-   id="tspan6039">value</tspan> ∈ {<tspan
-   style="font-style:italic"
-   id="tspan6041">v</tspan>} ∪ <tspan
+   id="tspan6007">value</tspan><tspan
    style="font-weight:bold"
-   id="tspan6043">T</tspan>, so <tspan
-   style="font-style:italic"
-   id="tspan6045">value</tspan> ∈ <tspan
-   style="font-weight:bold"
-   id="tspan6047">S</tspan>.</tspan><tspan
-           id="tspan6049"
+   id="tspan6009"><tspan
+   style="font-weight:normal"
+   id="tspan8539"> ∉</tspan> S</tspan>.</tspan></tspan></tspan><tspan
            sodipodi:role="line"
            x="53.149605"
            y="285.95963"
-           style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">Return true.</tspan></text>
+           style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+           id="tspan6002">We must remove <tspan
+   style="font-style:italic"
+   id="tspan6004">value</tspan> from the tail.</tspan></text>
       <g
          id="g6051"
          transform="translate(132.87403,-104.29917)">
@@ -1515,6 +1550,532 @@
          d="m 70.866144,345.70079 35.433076,0"
          style="fill:#00774a;fill-opacity:1;stroke:#000000;stroke-width:0.99921262;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow2Mend-9)"
          id="path6091" />
+    </g>
+    <g
+       id="g18357"
+       transform="translate(2.992126e-7,212.59841)">
+      <text
+         sodipodi:linespacing="125%"
+         id="text18359"
+         y="462.52161"
+         x="62.334919"
+         style="font-size:40px;font-style:normal;font-weight:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;text-anchor:start;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+           y="462.52161"
+           x="62.334919"
+           id="tspan18361"
+           sodipodi:role="line">compare(<tspan
+   style="font-style:italic"
+   id="tspan5735">value</tspan>, <tspan
+   style="font-style:italic"
+   id="tspan5737">v</tspan>)</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text18365"
+         y="479.22571"
+         x="61.77824"
+         style="font-size:40px;font-style:normal;font-weight:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+           y="479.22571"
+           x="61.77824"
+           id="tspan18367"
+           sodipodi:role="line">value<tspan
+   style="font-style:normal"
+   id="tspan5823"> &lt; </tspan>v</tspan></text>
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1.0629921;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow2Mend-9)"
+         d="m 52.618356,450.52163 0,35.43307"
+         id="path18371"
+         inkscape:connector-curvature="0" />
+      <path
+         sodipodi:nodetypes="ccc"
+         inkscape:connector-curvature="0"
+         id="path18379"
+         d="m 52.618356,468.23816 265.748034,1e-5 0,17.71653"
+         style="fill:none;stroke:#000000;stroke-width:1.0629921;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow2Mend-9)" />
+      <text
+         xml:space="preserve"
+         style="font-size:40px;font-style:normal;font-weight:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         x="329.77823"
+         y="479.22571"
+         id="text5993"
+         sodipodi:linespacing="125%"><tspan
+           sodipodi:role="line"
+           id="tspan5995"
+           x="329.77823"
+           y="479.22571"
+           style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">value = v  </tspan></text>
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1.0629921;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow2Mend-9)"
+         d="m 318.36638,468.23816 265.74804,1e-5 0,17.71653"
+         id="path6093"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccc" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text6095"
+         y="479.22571"
+         x="597.7782"
+         style="font-size:40px;font-style:normal;font-weight:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+           y="479.22571"
+           x="597.7782"
+           id="tspan6097"
+           sodipodi:role="line">value &gt; v  </tspan></text>
+    </g>
+    <g
+       id="g6017"
+       transform="translate(530.9648,636.31693)">
+      <rect
+         style="fill:#d3aee2;fill-opacity:1;stroke:none"
+         id="rect6019"
+         width="318.89761"
+         height="35.433033"
+         x="-53.149593"
+         y="257.1181"
+         ry="0.28726187" />
+      <rect
+         ry="1.149049"
+         y="292.55112"
+         x="-53.149593"
+         height="141.73235"
+         width="318.89761"
+         id="rect6021"
+         style="fill:#ebdaf2;fill-opacity:1;stroke:none" />
+      <g
+         transform="translate(106.29924,-104.29925)"
+         id="g6023">
+        <text
+           sodipodi:linespacing="125%"
+           id="text6025"
+           y="516.29132"
+           x="12.283459"
+           style="font-size:40px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+           xml:space="preserve"><tspan
+             style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+             y="516.29132"
+             x="12.283459"
+             sodipodi:role="line"
+             id="tspan6032">NonEmptyList(<tspan
+   style="font-style:italic;font-weight:normal;fill:#000000;fill-opacity:1"
+   id="tspan6030">head</tspan>, <tspan
+   style="font-weight:bold"
+   id="tspan8547">S</tspan> ∖ {<tspan
+   style="font-style:italic"
+   id="tspan8549">value</tspan>})</tspan></text>
+        <rect
+           style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.68073809;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+           id="rect6034"
+           width="248.03149"
+           height="88.582603"
+           x="-106.29922"
+           y="414.56696" />
+      </g>
+      <text
+         sodipodi:linespacing="125%"
+         id="text6036"
+         y="270.83463"
+         x="-40.850395"
+         style="font-size:40px;font-style:normal;font-weight:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           id="tspan6048"
+           style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+           y="270.83463"
+           x="-40.850395"
+           sodipodi:role="line"><tspan
+   style="font-style:italic"
+   id="tspan7715">head</tspan> now points to a list representing {<tspan
+   style="font-style:italic"
+   id="tspan7717">v</tspan>} ∪ <tspan
+   style="font-weight:bold"
+   id="tspan8559">T</tspan> ∖ {<tspan
+   style="font-style:italic"
+   id="tspan8561">value</tspan>}, which by</tspan><tspan
+           style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+           y="286.47394"
+           x="-40.850395"
+           sodipodi:role="line"
+           id="tspan7723">commutativity and substitution is <tspan
+   style="font-weight:bold"
+   id="tspan8565">S</tspan> ∖ {<tspan
+   style="font-style:italic"
+   id="tspan8563">value</tspan>}.  Return <tspan
+   style="font-style:italic"
+   id="tspan7729">head</tspan>.</tspan></text>
+      <g
+         transform="translate(44.291358,-104.29924)"
+         id="g6052">
+        <g
+           id="g6054"
+           style="fill:#c8c8c8;fill-opacity:1;stroke:#663e00;stroke-opacity:1"
+           transform="translate(-35.43307,88.582679)">
+          <path
+             style="opacity:0.3;fill:#c8c8c8;fill-opacity:1;stroke:#663e00;stroke-width:1.77165353;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:1.77165354, 1.77165354;stroke-dashoffset:0"
+             d="m 79.724406,343.70076 0,35.43307"
+             id="path6056"
+             inkscape:connector-curvature="0" />
+          <rect
+             y="343.70074"
+             x="8.858264"
+             height="35.433071"
+             width="70.866142"
+             id="rect6058"
+             style="fill:none;stroke:#663e00;stroke-width:1.77165353;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
+          <path
+             transform="translate(-4e-6,308.26769)"
+             inkscape:connector-curvature="0"
+             id="path6060"
+             d="m 44.291339,35.433069 0,35.433071"
+             style="fill:#c8c8c8;fill-opacity:1;stroke:#663e00;stroke-width:1.77165353;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+        </g>
+        <text
+           xml:space="preserve"
+           style="font-size:40px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+           x="-8.8582706"
+           y="445.99994"
+           id="text6062"
+           sodipodi:linespacing="125%"><tspan
+             id="tspan6064"
+             sodipodi:role="line"
+             x="-8.8582706"
+             y="445.99994"
+             style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">v</tspan><tspan
+             id="tspan6066"
+             sodipodi:role="line"
+             x="-8.8582706"
+             y="459.12494"
+             style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">&lt; value</tspan></text>
+        <text
+           sodipodi:linespacing="125%"
+           id="text6068"
+           y="453.99997"
+           x="26.5748"
+           style="font-size:40px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+           xml:space="preserve"><tspan
+             style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+             y="453.99997"
+             x="26.5748"
+             id="tspan6070"
+             sodipodi:role="line" /></text>
+        <text
+           xml:space="preserve"
+           style="font-size:40px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+           x="-77.724419"
+           y="451.99997"
+           id="text6072"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan6074"
+             x="-77.724419"
+             y="451.99997"
+             style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">head</tspan></text>
+        <text
+           sodipodi:linespacing="125%"
+           id="text6076"
+           y="453.99994"
+           x="26.574816"
+           style="font-size:40px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+           xml:space="preserve"><tspan
+             style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+             y="453.99994"
+             x="26.574816"
+             id="tspan6078"
+             sodipodi:role="line">ntail</tspan></text>
+      </g>
+      <g
+         transform="translate(145.73231,-104.29925)"
+         id="g6080">
+        <rect
+           transform="translate(-487.20473,405.70863)"
+           y="26.574804"
+           x="504.92126"
+           height="35.433071"
+           width="35.433071"
+           id="rect6082"
+           style="fill:none;stroke:#5c7700;stroke-width:1.77165353;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+        <text
+           xml:space="preserve"
+           style="font-size:40px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#5c7700;fill-opacity:1;stroke:none;font-family:Sans"
+           x="35.433056"
+           y="480.57477"
+           id="text6084"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan6086"
+             x="35.433056"
+             y="480.57477"
+             style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;fill:#5c7700;fill-opacity:1;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">List(<tspan
+   style="font-style:italic"
+   id="tspan6088">tail</tspan>, <tspan
+   style="font-weight:bold"
+   id="tspan6090">T</tspan>)</tspan></text>
+      </g>
+      <path
+         sodipodi:nodetypes="cc"
+         inkscape:connector-curvature="0"
+         d="m 88.58271,345.70068 17.71653,4e-5"
+         style="fill:#380066;fill-opacity:1;stroke:#380066;stroke-width:0.99921262;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow2Mend-9)"
+         id="path6092" />
+      <path
+         id="path6094"
+         style="fill:#00774a;fill-opacity:1;stroke:#000000;stroke-width:0.99921262;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow2Mend-9)"
+         d="m -17.716528,345.70072 35.433076,0"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="cc" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path18971"
+         d="m 154.67385,322.01679 c -11.22512,7.89072 -14.07292,23.31242 -10.86578,35.97679 1.60873,6.46591 5.41972,12.44421 10.9264,16.26078 -0.3416,-1.31822 -2.47816,-2.64673 -3.21509,-4.20314 -7.47194,-11.6024 -7.97069,-27.2987 -2.34662,-39.80554 1.39533,-3.00426 3.31653,-5.79573 5.74356,-8.03188 l -0.18185,-0.24248 -0.0606,0.0454 z"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#380066;fill-opacity:1;stroke:none;font-family:Minion Pro;-inkscape-font-specification:Minion Pro" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path18973"
+         d="m 226.68489,322.2138 c 9.03109,8.87477 10.88356,22.81877 8.69869,34.8402 -1.27297,6.2828 -3.93445,12.56835 -8.71384,16.95789 1.32634,0.0343 2.83147,-2.05233 4.04625,-3.04606 9.23731,-9.57691 10.25123,-24.74921 5.83449,-36.77998 -1.96016,-4.90004 -5.3251,-9.20547 -9.66858,-12.22968 l -0.19701,0.25763 z"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#380066;fill-opacity:1;stroke:none;font-family:Minion Pro;-inkscape-font-specification:Minion Pro" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text18975"
+         y="349.70071"
+         x="108.5827"
+         style="font-size:40px;font-style:normal;font-weight:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#380066;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;fill:#380066;fill-opacity:1;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+           y="349.70071"
+           x="108.5827"
+           id="tspan18977"
+           sodipodi:role="line">remove</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:40px;font-style:normal;font-weight:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#380066;fill-opacity:1;stroke:none;font-family:Sans"
+         x="204.5827"
+         y="349.70071"
+         id="text7660"
+         sodipodi:linespacing="125%"><tspan
+           sodipodi:role="line"
+           id="tspan7662"
+           x="204.5827"
+           y="349.70071"
+           style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;fill:#380066;fill-opacity:1;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">, <tspan
+   style="font-style:italic;fill:#380066;fill-opacity:1"
+   id="tspan7664">value</tspan></tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:40px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#380066;fill-opacity:1;stroke:none;font-family:Sans"
+         x="191.16537"
+         y="391.99207"
+         id="text6084-0"
+         sodipodi:linespacing="125%"><tspan
+           sodipodi:role="line"
+           id="tspan6086-5"
+           x="191.16537"
+           y="391.99207"
+           style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;fill:#380066;fill-opacity:1;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">List(<tspan
+   style="font-style:italic;fill:#380066;fill-opacity:1"
+   id="tspan7693">ntail</tspan>, <tspan
+   style="font-weight:bold"
+   id="tspan8545">T</tspan> ∖ {<tspan
+   style="font-style:italic"
+   id="tspan8543">value</tspan>})</tspan></text>
+    </g>
+    <g
+       transform="translate(531.49606,407.48033)"
+       id="g7731">
+      <text
+         sodipodi:linespacing="125%"
+         id="text7733"
+         y="464.52161"
+         x="62.334919"
+         style="font-size:40px;font-style:normal;font-weight:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;text-anchor:start;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+           y="464.52161"
+           x="62.334919"
+           sodipodi:role="line"
+           id="tspan7741">Recursively apply remove to <tspan
+   style="font-style:italic"
+   id="tspan7759">tail</tspan>, yielding new</tspan><tspan
+           style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;text-anchor:start;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+           y="477.64661"
+           x="62.334919"
+           sodipodi:role="line"
+           id="tspan7761">pointer <tspan
+   style="font-style:italic"
+   id="tspan7765">ntail</tspan>.  Set <tspan
+   style="font-style:italic"
+   id="tspan7769">tail</tspan> field of first node to <tspan
+   style="font-style:italic"
+   id="tspan7767">ntail</tspan>.</tspan></text>
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1.0629921;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow2Mend-9)"
+         d="m 52.618356,450.52163 0,35.43307"
+         id="path7745"
+         inkscape:connector-curvature="0" />
+    </g>
+    <g
+       transform="translate(176.63409,636.31693)"
+       id="g7854">
+      <rect
+         ry="0.28726187"
+         y="257.1181"
+         x="35.433086"
+         height="35.433033"
+         width="230.31494"
+         id="rect7856"
+         style="fill:#b7e2ae;fill-opacity:1;stroke:none" />
+      <rect
+         style="fill:#def2da;fill-opacity:1;stroke:none"
+         id="rect7858"
+         width="230.31496"
+         height="88.582733"
+         x="35.433056"
+         y="292.55112"
+         ry="0.71815586" />
+      <text
+         xml:space="preserve"
+         style="font-size:40px;font-style:normal;font-weight:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         x="53.149605"
+         y="272.83463"
+         id="text7876"
+         sodipodi:linespacing="125%"><tspan
+           sodipodi:role="line"
+           x="53.149605"
+           y="272.83463"
+           style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+           id="tspan8453">We have List(<tspan
+   style="font-style:italic"
+   id="tspan8463">tail</tspan>, <tspan
+   style="font-weight:bold"
+   id="tspan8465">T</tspan>), but <tspan
+   style="font-weight:bold"
+   id="tspan8467">S</tspan> ∖ {<tspan
+   style="font-style:italic"
+   id="tspan8469">value</tspan>} = <tspan
+   style="font-weight:bold"
+   id="tspan8471">T</tspan>, so</tspan><tspan
+           id="tspan7886"
+           sodipodi:role="line"
+           x="53.149605"
+           y="288.47394"
+           style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">List(<tspan
+   style="font-style:italic"
+   id="tspan8479">tail</tspan>, <tspan
+   style="font-weight:bold"
+   id="tspan8477">S </tspan>∖ {<tspan
+   style="font-style:italic"
+   id="tspan8475">value</tspan>}).  Return <tspan
+   style="font-style:italic"
+   id="tspan8506">tail</tspan>.</tspan></text>
+      <g
+         id="g7888"
+         transform="translate(132.87403,-104.29917)">
+        <text
+           xml:space="preserve"
+           style="font-size:40px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+           x="26.5748"
+           y="453.99997"
+           id="text7902"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan7904"
+             x="26.5748"
+             y="453.99997"
+             style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro" /></text>
+        <text
+           sodipodi:linespacing="125%"
+           id="text7906"
+           y="434.28342"
+           x="-77.724403"
+           style="font-size:40px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+           xml:space="preserve"><tspan
+             style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+             y="434.28342"
+             x="-77.724403"
+             id="tspan7908"
+             sodipodi:role="line">head</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-size:40px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+           x="34.291344"
+           y="434.28342"
+           id="text7910"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan7912"
+             x="34.291344"
+             y="434.28342"
+             style="font-size:10.5px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">tail</tspan></text>
+      </g>
+      <g
+         id="g7914"
+         transform="translate(194.8819,-122.01573)">
+        <rect
+           style="fill:#ffffff;fill-opacity:1;stroke:#5c7700;stroke-width:1.77165353;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+           id="rect7916"
+           width="35.433071"
+           height="35.433071"
+           x="504.92126"
+           y="26.574804"
+           transform="translate(-487.20473,405.70863)" />
+        <text
+           sodipodi:linespacing="125%"
+           id="text7918"
+           y="480.57477"
+           x="35.433056"
+           style="font-size:40px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#5c7700;fill-opacity:1;stroke:none;font-family:Sans"
+           xml:space="preserve"><tspan
+             style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;fill:#5c7700;fill-opacity:1;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+             y="480.57477"
+             x="35.433056"
+             id="tspan7920"
+             sodipodi:role="line">List(<tspan
+   id="tspan7922"
+   style="font-style:italic">tail</tspan>, <tspan
+   id="tspan7924"
+   style="font-weight:bold">T</tspan>)</tspan></text>
+      </g>
+      <path
+         id="path7926"
+         style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.99921262;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow2Mend-9)"
+         d="m 177.16537,327.98424 35.43307,10e-6"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="cc" />
+      <path
+         sodipodi:nodetypes="cc"
+         inkscape:connector-curvature="0"
+         d="m 70.866156,327.98424 35.433074,0"
+         style="fill:#00774a;fill-opacity:1;stroke:#000000;stroke-width:0.99921262;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#InfiniteLineEnd)"
+         id="path7928" />
+    </g>
+    <g
+       id="g8508"
+       transform="translate(265.74803,407.48033)">
+      <text
+         xml:space="preserve"
+         style="font-size:40px;font-style:normal;font-weight:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         x="62.334919"
+         y="464.52161"
+         id="text8510"
+         sodipodi:linespacing="125%"><tspan
+           id="tspan8516"
+           sodipodi:role="line"
+           x="62.334919"
+           y="464.52161"
+           style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;text-anchor:start;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">Read the value tail into local variable.</tspan><tspan
+           sodipodi:role="line"
+           x="62.334919"
+           y="477.64661"
+           style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;text-anchor:start;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
+           id="tspan8529">Delete <tspan
+   style="font-style:italic"
+   id="tspan8531">head</tspan> node.</tspan></text>
+      <path
+         inkscape:connector-curvature="0"
+         id="path8524"
+         d="m 52.618356,450.52163 0,35.43307"
+         style="fill:none;stroke:#000000;stroke-width:1.0629921;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow2Mend-9)" />
     </g>
   </g>
 </svg>

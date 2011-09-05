@@ -4,38 +4,150 @@ import bst.node;
 import bst.descend;
 
 
-bool search(Node* root, in int value) {&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Function precondition.</div>Tree(root, S)</div></div>
-<e:displaycode>  bool o;
+bool search(Node* root, in int value) {
+  bool o;&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Function precondition.</div><e:pred name="Tree"><code>root</code>, <e:st n="S"/></e:pred></div></div>
+<e:displaycode>
   if (root) {&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Assert if-test.</div>Tree(root, S) ∧ root≠null</div></div>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Assert if-condition.</div><e:and>
+  <e:fst><e:pred name="Tree"><code>root</code>, <e:st n="S"/></e:pred></e:fst>
+  <e:snd><e:noteq><e:fst><code>root</code></e:fst><e:snd><code>null</code></e:snd></e:noteq></e:snd>
+</e:and></div></div>
 
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Non-null pointer is non-empty tree (lemma).</div>NonEmptyTree(root, S)</div></div>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Lemma: <e:logimpl>
+  <e:fst><e:and>
+    <e:fst><e:pred name="Tree"><code>root</code>, <e:st n="S"/></e:pred></e:fst>
+    <e:snd><e:noteq><e:fst><code>root</code></e:fst><e:snd><code>null</code></e:snd></e:noteq></e:snd>
+  </e:and></e:fst>
+  <e:snd><e:pred name="NonEmptyTree"><code>root</code>, <e:st n="S"/></e:pred></e:snd>
+</e:logimpl></div><e:pred name="NonEmptyTree"><code>root</code>, <e:st n="S"/></e:pred></div></div>
 <e:displaycode>
-    if (root.value == value) {&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Assert if-test.  (Need lemma here.)</div>TopOfTree(root, value, S)</div></div>
-
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Root value in set (lemma).</div>TopOfTree(root, value, S) ∧ value ∈ S</div></div>
-
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Weaken TopOfTree.</div>Tree(root, S) ∧ value ∈ S</div></div>
+    bool eq = rootEq(root, value);&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Specification for <code>rootEq</code>.</div><e:exists>
+  <e:fst><e:var n="v"/></e:fst>
+  <e:snd><e:and>
+    <e:fst><e:pred name="TopOfTree"><code>root</code>, <e:var n="v"/>, <e:st n="S"/></e:pred></e:fst>
+    <e:snd><e:doubleimpl>
+      <e:fst><code>eq</code></e:fst>
+      <e:snd><e:eq>
+        <e:fst><e:var n="v"/></e:fst>
+        <e:snd><code>value</code></e:snd>
+      </e:eq></e:snd>
+    </e:doubleimpl></e:snd>
+  </e:and></e:snd>
+</e:exists></div></div>
 <e:displaycode>
-      o = true;
-&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Assignment.</div>Tree(root, S) ∧ value ∈ S ∧ o = true</div></div>
+    if (eq) {&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Assert if-test.</div><e:exists>
+  <e:fst><e:var n="v"/></e:fst>
+  <e:snd><e:and>
+    <e:fst><e:pred name="TopOfTree"><code>root</code>, <e:var n="v"/>, <e:st n="S"/></e:pred></e:fst>
+    <e:snd><e:doubleimpl>
+      <e:fst><code>eq</code></e:fst>
+      <e:snd><e:eq>
+        <e:fst><e:var n="v"/></e:fst>
+        <e:snd><code>value</code></e:snd>
+      </e:eq></e:snd>
+    </e:doubleimpl></e:snd>
+  </e:and></e:snd>
+</e:exists> ∧ <code>eq</code></div></div>
 
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>???</div>Tree(root, S) ∧ o ↔ (value ∈ S)</div></div>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Use <e:doubleimpl>
+  <e:fst><code>eq</code></e:fst>
+  <e:snd><e:eq>
+    <e:fst><e:var n="v"/></e:fst>
+    <e:snd><code>value</code></e:snd>
+  </e:eq></e:snd>
+</e:doubleimpl>.  Discard <code>eq</code>.</div><e:exists>
+  <e:fst><e:var n="v"/></e:fst>
+  <e:snd><e:and>
+    <e:fst><e:pred name="TopOfTree"><code>root</code>, <e:var n="v"/>, <e:st n="S"/></e:pred></e:fst>
+    <e:snd><e:eq>
+        <e:fst><e:var n="v"/></e:fst>
+        <e:snd><code>value</code></e:snd>
+      </e:eq></e:snd>
+  </e:and></e:snd>
+</e:exists></div></div>
+
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Substitution.</div><e:pred name="TopOfTree"><code>root</code>, <code>value</code>, <e:st n="S"/></e:pred></div></div>
+
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Lemma: <e:logimpl>
+  <e:fst><e:pred name="TopOfTree"><code>root</code>, <code>value</code>, <e:st n="S"/></e:pred></e:fst>
+  <e:snd><e:in><e:fst><code>value</code></e:fst><e:snd><e:st n="S"/></e:snd></e:in></e:snd>
+</e:logimpl></div><e:and>
+  <e:fst><e:pred name="TopOfTree"><code>root</code>, <code>value</code>, <e:st n="S"/></e:pred></e:fst>
+  <e:snd><e:in><e:fst><code>value</code></e:fst><e:snd><e:st n="S"/></e:snd></e:in></e:snd>
+</e:and></div></div>
+
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Reintroduce <m:existsIntro/> on <code>value</code> as <e:var n="v"/>.</div><e:exists>
+  <e:fst><e:var n="v"/></e:fst>
+  <e:snd><e:and>
+    <e:fst><e:pred name="TopOfTree"><code>root</code>, <e:var n="v"/>, <e:st n="S"/></e:pred></e:fst>
+    <e:snd><e:in><e:fst><code>value</code></e:fst><e:snd><e:st n="S"/></e:snd></e:in></e:snd>
+  </e:and></e:snd>
+</e:exists></div></div>
+
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Close <e:pred name="Tree"><code>root</code>, <e:st n="S"/></e:pred>.</div><e:and>
+  <e:fst><e:pred name="Tree"><code>root</code>, <e:st n="S"/></e:pred></e:fst>
+  <e:snd><e:in><e:fst><code>value</code></e:fst><e:snd><e:st n="S"/></e:snd></e:in></e:snd>
+</e:and></div></div>
+<e:displaycode>
+      o = true;&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Assignment.</div><e:and>
+  <e:fst><e:pred name="Tree"><code>root</code>, <e:st n="S"/></e:pred></e:fst>
+  <e:snd><e:in><e:fst><code>value</code></e:fst><e:snd><e:st n="S"/></e:snd></e:in></e:snd>
+</e:and> ∧ <e:eq><e:fst><code>o</code></e:fst><e:snd><code>true</code></e:snd></e:eq></div></div>
+
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>?</div><e:and>
+  <e:fst><e:pred name="Tree"><code>root</code>, <e:st n="S"/></e:pred></e:fst>
+  <e:snd><e:doubleimpl>
+    <e:fst><code>o</code></e:fst>
+    <e:snd><e:in><e:fst><code>value</code></e:fst><e:snd><e:st n="S"/></e:snd></e:in></e:snd>
+  </e:doubleimpl></e:snd>
+</e:and></div></div>
 <e:displaycode>    }
     else {&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Deny if-test.</div>TopOfTree(root, v, S) ∧ v ≠ value</div></div>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Deny if-condition.</div><e:exists>
+  <e:fst><e:var n="v"/></e:fst>
+  <e:snd><e:and>
+    <e:fst><e:pred name="TopOfTree"><code>root</code>, <e:var n="v"/>, <e:st n="S"/></e:pred></e:fst>
+    <e:snd><e:doubleimpl>
+      <e:fst><code>eq</code></e:fst>
+      <e:snd><e:eq>
+        <e:fst><e:var n="v"/></e:fst>
+        <e:snd><code>value</code></e:snd>
+      </e:eq></e:snd>
+    </e:doubleimpl></e:snd>
+  </e:and></e:snd>
+</e:exists> ∧ ¬<code>eq</code></div></div>
+
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Use <e:doubleimpl>
+  <e:fst><code>eq</code></e:fst>
+  <e:snd><e:eq>
+    <e:fst><e:var n="v"/></e:fst>
+    <e:snd><code>value</code></e:snd>
+  </e:eq></e:snd>
+</e:doubleimpl>.  Discard ¬<code>eq</code>.</div><e:exists>
+  <e:fst><e:var n="v"/></e:fst>
+  <e:snd><e:and>
+    <e:fst><e:pred name="TopOfTree"><code>root</code>, <e:var n="v"/>, <e:st n="S"/></e:pred></e:fst>
+    <e:snd><e:noteq>
+        <e:fst><e:var n="v"/></e:fst>
+        <e:snd><code>value</code></e:snd>
+      </e:noteq></e:snd>
+  </e:and></e:snd>
+</e:exists></div></div>
 <e:displaycode>
       Node* next = descend(root, value);
 &#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Specification of descend.</div>TopOfTree(root, v, S) ∧<br /><span class='assertionIndent'> </span>∃Q. Tree(o, Q) ∧ (value∈Q ↔ value∈S)) ∧ |Q| &lt; |S|</div></div>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Specification of <code>descend</code>.</div>TopOfTree(root, v, S) ∧
+∃Q. Tree(o, Q) ∧ (value∈Q ↔ value∈S)) ∧ |Q| &lt; |S|</div></div>
 
 <div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='CommentParagraph'>Note recursion terminates because |Q| &lt; |S| and |Q| &gt;= 0</div></div>
 <e:displaycode>      o = search(next, value);
 &#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Specification of search.</div>TopOfTree(root, v, S) ∧<br /><span class='assertionIndent'> </span>∃Q. Tree(o, Q) ∧ (value∈Q ↔ value∈S)) ∧ |Q| &lt; |S| ∧ o ↔ (value ∈ Q)</div></div>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Specification of search.</div>TopOfTree(root, v, S) ∧
+∃Q. Tree(o, Q) ∧ (value∈Q ↔ value∈S)) ∧ |Q| &lt; |S| ∧ o ↔ (value ∈ Q)</div></div>
 
 <div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Transitivity of ↔; escape ∃; weaken TopOfTree.</div>Tree(root, S) ∧ o ↔ (value ∈ S)</div></div>
 <e:displaycode>    }&#160;</e:displaycode>

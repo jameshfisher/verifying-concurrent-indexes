@@ -17,7 +17,7 @@ Node* insert(Node* list, int value) {
       while (p.tail &amp;&amp; p.tail.value &lt; value) {
 	p = p.tail;
       }&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='CommentParagraph'>!p.tail || p.tail.value &gt;= value</div></div>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='CommentParagraph'>!p.tail || p.tail.value >= value</div></div>
 <e:displaycode>      if (!p.tail || p.tail.value &gt; value) {
 	p.tail = new Node(value, p.tail);
       }
