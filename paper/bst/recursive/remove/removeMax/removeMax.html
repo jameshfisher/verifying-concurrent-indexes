@@ -1,0 +1,38 @@
+<section xmlns="http://www.w3.org/1999/xhtml"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xmlns:e="http://eegg.github.com/htmlx"
+	 xmlns:m="http://eegg.github.com/macro">
+
+  <h5>Recursive <m:bst/><code>removeMax</code></h5>
+
+  <div class="display">
+    <xi:include href="./removeMax.svg" />
+  </div>
+
+  <p>
+    <e:define><e:fst><e:pred name="Max"><e:var n="m"/>, <e:st n="S"/></e:pred></e:fst>
+      <e:snd><e:and>
+	  <e:fst><e:in>
+	      <e:fst><e:var n="m"/></e:fst>
+	      <e:snd><e:st n="S"/></e:snd>
+	  </e:in></e:fst>
+	  <e:snd><e:forall>
+	      <e:fst><e:in>
+		  <e:fst><e:var n="s"/></e:fst>
+		  <e:snd><e:st n="S"/></e:snd>
+	      </e:in></e:fst>
+	      <e:snd><e:leq>
+		  <e:fst><e:var n="s"/></e:fst>
+		  <e:snd><e:var n="m"/></e:snd>
+	      </e:leq></e:snd>
+	  </e:forall></e:snd>
+      </e:and></e:snd>
+    </e:define>
+  </p>
+
+  <p>
+    Here's <code>removeMax</code>:
+
+    <xi:include href="../../../../../code/d/html/bst/remove/removeMax/recursive.d.html" />
+  </p>
+</section>

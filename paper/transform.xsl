@@ -39,11 +39,15 @@
   <xsl:template match="m:doubleImplElim">↔E</xsl:template>
   <xsl:template match="m:doubleImplIntro">↔I</xsl:template>
   <xsl:template match="m:existsIntro">∃I</xsl:template>
+  <xsl:template match="m:existsElim">∃E</xsl:template>
 
   <xsl:template match="m:lacuna">&#160;[…]&#160;</xsl:template>
 
   <xsl:template match="m:hemp"><b>emp</b></xsl:template>
   <xsl:template match="m:scemp">∅</xsl:template>
+
+  <xsl:template match="m:red"><span class="red">●</span></xsl:template>
+  <xsl:template match="m:black"><span class="black">●</span></xsl:template>
   
   <xsl:template match="e:note|e:cite">
     <span class="note">
@@ -72,9 +76,10 @@
 
   <xsl:template match="e:define"><xsl:apply-templates select="e:fst" />&#160;≝&#160;<xsl:apply-templates select="e:snd" /></xsl:template>
 
-  <xsl:template match="e:plus"><xsl:apply-templates select="e:fst" />&#160;+&#160;<xsl:apply-templates select="e:snd" /></xsl:template>
+  <xsl:template match="e:plus"><xsl:apply-templates select="e:fst" />+<xsl:apply-templates select="e:snd" /></xsl:template>
+  <xsl:template match="e:minus"><xsl:apply-templates select="e:fst" />&#x2212;<xsl:apply-templates select="e:snd" /></xsl:template>
 
-  <xsl:template match="e:setminus"><xsl:apply-templates select="e:fst" />&#160;∖&#160;<xsl:apply-templates select="e:snd" /></xsl:template>
+  <xsl:template match="e:setminus"><xsl:apply-templates select="e:fst" />∖<xsl:apply-templates select="e:snd" /></xsl:template>
   <xsl:template match="e:notin"><xsl:apply-templates select="e:fst" />&#160;∉&#160;<xsl:apply-templates select="e:snd" /></xsl:template>
   <xsl:template match="e:in"><xsl:apply-templates select="e:fst" />&#160;∈&#160;<xsl:apply-templates select="e:snd" /></xsl:template>
   <xsl:template match="e:subset"><xsl:apply-templates select="e:fst" />&#160;⊆&#160;<xsl:apply-templates select="e:snd" /></xsl:template>
@@ -92,8 +97,6 @@
   <xsl:template match="e:leq"><xsl:apply-templates select="e:fst" />&#160;≤&#160;<xsl:apply-templates select="e:snd" /></xsl:template>
   <xsl:template match="e:gt"><xsl:apply-templates select="e:fst" />&#160;&gt;&#160;<xsl:apply-templates select="e:snd" /></xsl:template>
   <xsl:template match="e:geq"><xsl:apply-templates select="e:fst" />&#160;≥&#160;<xsl:apply-templates select="e:snd" /></xsl:template>
-
-  <xsl:template match="e:minus"><xsl:apply-templates select="e:fst" />&#160;&#x2212;&#160;<xsl:apply-templates select="e:snd" /></xsl:template>
 
   <xsl:template match="e:forall">∀<xsl:apply-templates select="e:fst" />.&#160;<xsl:apply-templates select="e:snd" /></xsl:template>
   <xsl:template match="e:exists">∃<xsl:apply-templates select="e:fst" />.&#160;<xsl:apply-templates select="e:snd" /></xsl:template>

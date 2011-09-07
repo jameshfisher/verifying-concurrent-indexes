@@ -6,57 +6,347 @@ import bst.remove.removeMax.RemoveMaxRet;
 
 
 Node* removeRoot(Node* root) {
-  assert(root != null);
+  Node* o;&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Function precondition.</div><e:pred name="TopOfTree"><code>root</code>, <e:var n="v"/>, <e:st n="S"/></e:pred></div></div>
 
-  if (root.c[0] &amp;&amp; root.c[1]) {
-    RemoveMaxRet r = removeMax(root.c[0]);
-    root.value = r.max;
-    root.c[0] = r.root;
-  }
-  else {
-    assert(!root.c[0] || !root.c[1]);
-    Node* rem = root;
-    if (root.c[0]) {
-      root = root.c[0];
-    }
-    else {
-      root = root.c[1];
-    }&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='CommentParagraph'>delete rem;</div></div>
+<div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Open <e:pred name="TopOfTree"><code>root</code>, <e:var n="v"/>, <e:st n="S"/></e:pred>.</div><e:exists>
+  <e:fst><e:var n="v"/>, <e:var n="l"/>, <e:var n="r"/>, <e:st n="L"/>, <e:st n="R"/></e:fst>
+  <e:snd><e:indent>
+    <e:sep>
+      <e:fst><e:fcell>
+            <e:fst><code>root</code></e:fst>
+            <e:snd><e:var n="v"/>,<e:var n="l"/>,<e:var n="r"/></e:snd>
+          </e:fcell></e:fst>
+      <e:snd><e:sep>
+            <e:fst><e:pred name="Tree"><e:var n="l"/>, <e:st n="L"/></e:pred></e:fst>
+            <e:snd><e:pred name="Tree"><e:var n="r"/>, <e:st n="R"/></e:pred></e:snd>
+      </e:sep></e:snd>
+    </e:sep> ∧<br />
+    <e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
+  </e:indent></e:snd>
+</e:exists></div></div>
+<e:displaycode>
+  if (root.c[0] == null) {&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Assert if-condition.  Substitution.</div><e:exists>
+  <e:fst><e:var n="v"/>, <e:var n="r"/>, <e:st n="L"/>, <e:st n="R"/></e:fst>
+  <e:snd><e:indent>
+    <e:sep>
+      <e:fst><e:fcell>
+            <e:fst><code>root</code></e:fst>
+            <e:snd><e:var n="v"/>,<code>null</code>,<e:var n="r"/></e:snd>
+          </e:fcell></e:fst>
+      <e:snd><e:sep>
+            <e:fst><e:pred name="Tree"><code>null</code>, <e:st n="L"/></e:pred></e:fst>
+            <e:snd><e:pred name="Tree"><e:var n="r"/>, <e:st n="R"/></e:pred></e:snd>
+      </e:sep></e:snd>
+    </e:sep> ∧<br />
+    <e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
+  </e:indent></e:snd>
+</e:exists></div></div>
+
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Lemma: <e:logimpl>
+  <e:fst><e:pred name="Tree"><code>null</code>, <e:st n="S"/></e:pred></e:fst>
+  <e:snd><e:pred name="EmptyTree"><code>null</code>, <e:st n="S"/></e:pred></e:snd>
+</e:logimpl>.</div><e:exists>
+  <e:fst><e:var n="v"/>, <e:var n="r"/>, <e:st n="L"/>, <e:st n="R"/></e:fst>
+  <e:snd><e:indent>
+    <e:sep>
+      <e:fst><e:fcell>
+            <e:fst><code>root</code></e:fst>
+            <e:snd><e:var n="v"/>,<code>null</code>,<e:var n="r"/></e:snd>
+          </e:fcell></e:fst>
+      <e:snd><e:sep>
+            <e:fst><e:pred name="EmptyTree"><code>null</code>, <e:st n="L"/></e:pred></e:fst>
+            <e:snd><e:pred name="Tree"><e:var n="r"/>, <e:st n="R"/></e:pred></e:snd>
+      </e:sep></e:snd>
+    </e:sep> ∧<br />
+    <e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
+  </e:indent></e:snd>
+</e:exists></div></div>
+
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Open <e:pred name="EmptyTree"><code>null</code>, <e:st n="L"/></e:pred>.</div><e:exists>
+  <e:fst><e:var n="v"/>, <e:var n="l"/>, <e:var n="r"/>, <e:st n="L"/>, <e:st n="R"/></e:fst>
+  <e:snd><e:indent>
+    <e:sep>
+      <e:fst><e:fcell>
+            <e:fst><code>root</code></e:fst>
+            <e:snd><e:var n="v"/>,<code>null</code>,<e:var n="r"/></e:snd>
+          </e:fcell></e:fst>
+      <e:snd><e:sep>
+            <e:fst><m:hemp/></e:fst>
+            <e:snd><e:pred name="Tree"><e:var n="r"/>, <e:st n="R"/></e:pred></e:snd>
+      </e:sep></e:snd>
+    </e:sep> ∧<br />
+    <e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred> ∧
+    <e:eq><e:fst><e:st n="L"/></e:fst><e:snd><m:scemp/></e:snd></e:eq>
+  </e:indent></e:snd>
+</e:exists></div></div>
+
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Use <e:sep><e:fst><e:predicate>X</e:predicate></e:fst><e:snd><m:hemp/></e:snd></e:sep> = <e:predicate>X</e:predicate>.</div><e:exists>
+  <e:fst><e:var n="v"/>, <e:var n="r"/>, <e:st n="L"/>, <e:st n="R"/></e:fst>
+  <e:snd><e:indent>
+    <e:sep>
+      <e:fst><e:fcell>
+        <e:fst><code>root</code></e:fst>
+        <e:snd><e:var n="v"/>,<code>null</code>,<e:var n="r"/></e:snd>
+      </e:fcell></e:fst>
+      <e:snd><e:pred name="Tree"><e:var n="r"/>, <e:st n="R"/></e:pred></e:snd>
+    </e:sep> ∧<br />
+    <e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred> ∧
+    <e:eq><e:fst><e:st n="L"/></e:fst><e:snd><m:scemp/></e:snd></e:eq>
+  </e:indent></e:snd>
+</e:exists></div></div>
+
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Substitution.</div><e:exists>
+  <e:fst><e:var n="v"/>, <e:var n="r"/>, <e:st n="R"/></e:fst>
+  <e:snd><e:indent>
+    <e:sep>
+      <e:fst><e:fcell>
+        <e:fst><code>root</code></e:fst>
+        <e:snd><e:var n="v"/>,<code>null</code>,<e:var n="r"/></e:snd>
+      </e:fcell></e:fst>
+      <e:snd><e:pred name="Tree"><e:var n="r"/>, <e:st n="R"/></e:pred></e:snd>
+    </e:sep> ∧<br />
+    <e:pred name="Compose"><m:scemp/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
+  </e:indent></e:snd>
+</e:exists></div></div>
+<e:displaycode>
+    o = root.c[1];&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Assignment.</div><e:exists>
+  <e:fst><e:var n="v"/>, <e:st n="R"/></e:fst>
+  <e:snd><e:indent>
+    <e:sep>
+      <e:fst><e:fcell>
+            <e:fst><code>root</code></e:fst>
+            <e:snd><e:var n="v"/>,<code>null</code>,<code>o</code></e:snd>
+          </e:fcell></e:fst>
+      <e:snd><e:pred name="Tree"><code>o</code>, <e:st n="R"/></e:pred></e:snd>
+    </e:sep> ∧<br />
+    <e:pred name="Compose"><m:scemp/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
+  </e:indent></e:snd>
+</e:exists></div></div>
+<e:displaycode>
+    delete root;&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Free heap chunk.</div><e:exists>
+  <e:fst><e:st n="R"/></e:fst>
+  <e:snd>
+    <e:pred name="Tree"><code>o</code>, <e:st n="R"/></e:pred> ∧
+    <e:pred name="Compose"><m:scemp/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
+  </e:snd>
+</e:exists></div></div>
+
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Lemma: <e:logimpl>
+  <e:fst><e:pred name="Compose"><m:scemp/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred></e:fst>
+  <e:snd><e:eq><e:fst><e:st n="R"/></e:fst><e:snd><e:setminus><e:fst><e:st n="S"/></e:fst><e:snd><e:set><e:var n="v"/></e:set></e:snd></e:setminus></e:snd></e:eq></e:snd>
+</e:logimpl></div><e:exists>
+  <e:fst><e:st n="R"/></e:fst>
+  <e:snd>
+    <e:pred name="Tree"><code>o</code>, <e:st n="R"/></e:pred> ∧
+    <e:pred name="Compose"><m:scemp/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred> ∧
+    <e:eq><e:fst><e:st n="R"/></e:fst><e:snd><e:setminus><e:fst><e:st n="S"/></e:fst><e:snd><e:set><e:var n="v"/></e:set></e:snd></e:setminus></e:snd></e:eq>
+  </e:snd>
+</e:exists></div></div>
+
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Substitution.  Discard <e:pred name="Compose"><m:scemp/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
+and <e:eq><e:fst><e:st n="R"/></e:fst><e:snd><e:setminus><e:fst><e:st n="S"/></e:fst><e:snd><e:set><e:var n="v"/></e:set></e:snd></e:setminus></e:snd></e:eq>.</div><e:pred name="Tree"><code>o</code>, <e:setminus><e:fst><e:st n="S"/></e:fst><e:snd><e:set><e:var n="v"/></e:set></e:snd></e:setminus></e:pred></div></div>
 <e:displaycode>  }
+  else {&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Deny if-condition.</div><e:exists>
+  <e:fst><e:var n="v"/>, <e:var n="l"/>, <e:var n="r"/>, <e:st n="L"/>, <e:st n="R"/></e:fst>
+  <e:snd><e:indent>
+    <e:sep>
+      <e:fst><e:fcell>
+            <e:fst><code>root</code></e:fst>
+            <e:snd><e:var n="v"/>,<e:var n="l"/>,<e:var n="r"/></e:snd>
+          </e:fcell></e:fst>
+      <e:snd><e:sep>
+            <e:fst><e:pred name="Tree"><e:var n="l"/>, <e:st n="L"/></e:pred></e:fst>
+            <e:snd><e:pred name="Tree"><e:var n="r"/>, <e:st n="R"/></e:pred></e:snd>
+      </e:sep></e:snd>
+    </e:sep> ∧<br />
+    <e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred> ∧
+    <e:noteq><e:fst><e:var n="l"/></e:fst><e:snd><code>null</code></e:snd></e:noteq>
+  </e:indent></e:snd>
+</e:exists></div></div>
+
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Lemma: .</div><e:exists>
+  <e:fst><e:var n="v"/>, <e:var n="l"/>, <e:var n="r"/>, <e:st n="L"/>, <e:st n="R"/></e:fst>
+  <e:snd><e:indent>
+    <e:sep>
+      <e:fst><e:fcell>
+            <e:fst><code>root</code></e:fst>
+            <e:snd><e:var n="v"/>,<e:var n="l"/>,<e:var n="r"/></e:snd>
+          </e:fcell></e:fst>
+      <e:snd><e:sep>
+            <e:fst><e:pred name="NonEmptyTree"><e:var n="l"/>, <e:st n="L"/></e:pred></e:fst>
+            <e:snd><e:pred name="Tree"><e:var n="r"/>, <e:st n="R"/></e:pred></e:snd>
+      </e:sep></e:snd>
+    </e:sep> ∧<br />
+    <e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
+  </e:indent></e:snd>
+</e:exists></div></div>
+<e:displaycode>
+    if (root.c[1] == null) {&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='CommentParagraph'>This branch mostly symmetrical to the previous…</div></div>
+<e:displaycode>      o = root.c[0];
+      delete root;&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><e:pred name="Tree"><code>o</code>, <e:setminus><e:fst><e:st n="S"/></e:fst><e:snd><e:set><e:var n="v"/></e:set></e:snd></e:setminus></e:pred></div></div>
+<e:displaycode>    }
+    else {&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Deny if-condition.  Use lemma: .</div><e:exists>
+  <e:fst><e:var n="v"/>, <e:var n="l"/>, <e:var n="r"/>, <e:st n="L"/>, <e:st n="R"/></e:fst>
+  <e:snd><e:indent>
+    <e:sep>
+      <e:fst><e:fcell>
+            <e:fst><code>root</code></e:fst>
+            <e:snd><e:var n="v"/>,<e:var n="l"/>,<e:var n="r"/></e:snd>
+          </e:fcell></e:fst>
+      <e:snd><e:sep>
+            <e:fst><e:pred name="NonEmptyTree"><e:var n="l"/>, <e:st n="L"/></e:pred></e:fst>
+            <e:snd><e:pred name="NonEmptyTree"><e:var n="r"/>, <e:st n="R"/></e:pred></e:snd>
+      </e:sep></e:snd>
+    </e:sep> ∧<br />
+    <e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
+  </e:indent></e:snd>
+</e:exists></div></div>
+<e:displaycode>
+      RemoveMaxRet r = removeMax(root.c[0]); auto nv = r.max; auto newLeft = r.root;&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Specification of <code>removeMax</code>.</div><e:exists>
+  <e:fst><e:var n="v"/>, <e:var n="l"/>, <e:var n="r"/>, <e:st n="L"/>, <e:st n="R"/></e:fst>
+  <e:snd><e:indent>
+    <e:sep>
+      <e:fst><e:fcell>
+            <e:fst><code>root</code></e:fst>
+            <e:snd><e:var n="v"/>,<e:var n="l"/>,<e:var n="r"/></e:snd>
+          </e:fcell></e:fst>
+      <e:snd><e:sep>
+            <e:fst><e:pred name="Tree"><code>newLeft</code>, <e:setminus><e:fst><e:st n="L"/></e:fst><e:snd><e:set><code>nv</code></e:set></e:snd></e:setminus></e:pred></e:fst>
+            <e:snd><e:pred name="NonEmptyTree"><e:var n="r"/>, <e:st n="R"/></e:pred></e:snd>
+      </e:sep></e:snd>
+    </e:sep> ∧<br />
+    <e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred> ∧
+    <e:pred name="Max"><code>nv</code>, <e:st n="L"/></e:pred>
+  </e:indent></e:snd>
+</e:exists></div></div>
+<e:displaycode>
+      root.value = max; root.c[0] = newLeft;&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Assignment.</div><e:exists>
+  <e:fst><e:var n="v"/>, <e:var n="r"/>, <e:st n="L"/>, <e:st n="R"/></e:fst>
+  <e:snd><e:indent>
+    <e:sep>
+      <e:fst><e:fcell>
+            <e:fst><code>root</code></e:fst>
+            <e:snd><code>nv</code>,<code>newLeft</code>,<e:var n="r"/></e:snd>
+          </e:fcell></e:fst>
+      <e:snd><e:sep>
+            <e:fst><e:pred name="Tree"><code>newLeft</code>, <e:setminus><e:fst><e:st n="L"/></e:fst><e:snd><e:set><code>nv</code></e:set></e:snd></e:setminus></e:pred></e:fst>
+            <e:snd><e:pred name="NonEmptyTree"><e:var n="r"/>, <e:st n="R"/></e:pred></e:snd>
+      </e:sep></e:snd>
+    </e:sep> ∧<br />
+    <e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred> ∧
+    <e:pred name="Max"><code>nv</code>, <e:st n="L"/></e:pred>
+  </e:indent></e:snd>
+</e:exists></div></div>
+
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'><m:existsIntro/> on <code>newLeft</code> as <e:var n="l"/>.</div><e:exists>
+  <e:fst><e:var n="v"/>, <e:var n="l"/>, <e:var n="r"/>, <e:st n="L"/>, <e:st n="R"/></e:fst>
+  <e:snd><e:indent>
+    <e:sep>
+      <e:fst><e:fcell>
+            <e:fst><code>root</code></e:fst>
+            <e:snd><code>nv</code>,<e:var n="l"/>,<e:var n="r"/></e:snd>
+          </e:fcell></e:fst>
+      <e:snd><e:sep>
+            <e:fst><e:pred name="Tree"><e:var n="l"/>, <e:setminus><e:fst><e:st n="L"/></e:fst><e:snd><e:set><code>nv</code></e:set></e:snd></e:setminus></e:pred></e:fst>
+            <e:snd><e:pred name="NonEmptyTree"><e:var n="r"/>, <e:st n="R"/></e:pred></e:snd>
+      </e:sep></e:snd>
+    </e:sep> ∧<br />
+    <e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred> ∧
+    <e:pred name="Max"><code>nv</code>, <e:st n="L"/></e:pred>
+  </e:indent></e:snd>
+</e:exists></div></div>
+
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Weakening lemma: .</div><e:exists>
+  <e:fst><e:var n="v"/>, <e:var n="l"/>, <e:var n="r"/>, <e:st n="L"/>, <e:st n="R"/></e:fst>
+  <e:snd><e:indent>
+    <e:sep>
+      <e:fst><e:fcell>
+            <e:fst><code>root</code></e:fst>
+            <e:snd><code>nv</code>,<e:var n="l"/>,<e:var n="r"/></e:snd>
+          </e:fcell></e:fst>
+      <e:snd><e:sep>
+            <e:fst><e:pred name="Tree"><e:var n="l"/>, <e:setminus><e:fst><e:st n="L"/></e:fst><e:snd><e:set><code>nv</code></e:set></e:snd></e:setminus></e:pred></e:fst>
+            <e:snd><e:pred name="Tree"><e:var n="r"/>, <e:st n="R"/></e:pred></e:snd>
+      </e:sep></e:snd>
+    </e:sep> ∧<br />
+    <e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred> ∧
+    <e:pred name="Max"><code>nv</code>, <e:st n="L"/></e:pred>
+  </e:indent></e:snd>
+</e:exists></div></div>
+
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Lemma: <e:logimpl>
+  <e:fst><e:and>
+    <e:fst><e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred></e:fst>
+    <e:snd><e:pred name="Max"><code>nv</code>, <e:st n="L"/></e:pred></e:snd>
+  </e:and></e:fst>
+  <e:snd><e:pred name="Compose"><e:setminus><e:fst><e:st n="L"/></e:fst><e:snd><e:set><code>nv</code></e:set></e:snd></e:setminus>, <code>nv</code>, <e:st n="R"/>, <e:setminus><e:fst><e:st n="S"/></e:fst><e:snd><e:set><e:var n="v"/></e:set></e:snd></e:setminus></e:pred></e:snd>
+</e:logimpl>.<br />
+Discard <e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
+and <e:pred name="Max"><code>nv</code>, <e:st n="L"/></e:pred>.</div><e:exists>
+  <e:fst><e:var n="l"/>, <e:var n="r"/>, <e:st n="L"/>, <e:st n="R"/></e:fst>
+  <e:snd><e:indent>
+    <e:sep>
+      <e:fst><e:fcell>
+            <e:fst><code>root</code></e:fst>
+            <e:snd><code>nv</code>,<e:var n="l"/>,<e:var n="r"/></e:snd>
+          </e:fcell></e:fst>
+      <e:snd><e:sep>
+            <e:fst><e:pred name="Tree"><e:var n="l"/>, <e:setminus><e:fst><e:st n="L"/></e:fst><e:snd><e:set><code>nv</code></e:set></e:snd></e:setminus></e:pred></e:fst>
+            <e:snd><e:pred name="Tree"><e:var n="r"/>, <e:st n="R"/></e:pred></e:snd>
+      </e:sep></e:snd>
+    </e:sep> ∧<br />
+    <e:pred name="Compose"><e:setminus><e:fst><e:st n="L"/></e:fst><e:snd><e:set><code>nv</code></e:set></e:snd></e:setminus>, <code>nv</code>, <e:st n="R"/>, <e:setminus><e:fst><e:st n="S"/></e:fst><e:snd><e:set><e:var n="v"/></e:set></e:snd></e:setminus></e:pred>
+  </e:indent></e:snd>
+</e:exists></div></div>
+
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'><m:existsIntro/> on <e:setminus><e:fst><e:st n="L"/></e:fst><e:snd><e:set><code>nv</code></e:set></e:snd></e:setminus> as <e:st n="L"/>.</div><e:exists>
+  <e:fst><e:var n="l"/>, <e:var n="r"/>, <e:st n="L"/>, <e:st n="R"/></e:fst>
+  <e:snd><e:indent>
+    <e:sep>
+      <e:fst><e:fcell>
+            <e:fst><code>root</code></e:fst>
+            <e:snd><code>nv</code>,<e:var n="l"/>,<e:var n="r"/></e:snd>
+          </e:fcell></e:fst>
+      <e:snd><e:sep>
+            <e:fst><e:pred name="Tree"><e:var n="l"/>, <e:st n="L"/></e:pred></e:fst>
+            <e:snd><e:pred name="Tree"><e:var n="r"/>, <e:st n="R"/></e:pred></e:snd>
+      </e:sep></e:snd>
+    </e:sep> ∧<br />
+    <e:pred name="Compose"><e:st n="L"/>, <code>nv</code>, <e:st n="R"/>, <e:setminus><e:fst><e:st n="S"/></e:fst><e:snd><e:set><e:var n="v"/></e:set></e:snd></e:setminus></e:pred>
+  </e:indent></e:snd>
+</e:exists></div></div>
+
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Close <e:pred name="TopOfTree"><code>root</code>, <code>nv</code>, <e:setminus><e:fst><e:st n="S"/></e:fst><e:snd><e:set><e:var n="v"/></e:set></e:snd></e:setminus></e:pred>.</div><e:pred name="TopOfTree"><code>root</code>, <code>nv</code>, <e:setminus><e:fst><e:st n="S"/></e:fst><e:snd><e:set><e:var n="v"/></e:set></e:snd></e:setminus></e:pred></div></div>
+
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'><m:existsIntro/> on <code>nv</code> as <e:var n="v"/>.</div><e:exists>
+  <e:fst><e:var n="v"/></e:fst>
+  <e:snd>
+    <e:pred name="TopOfTree"><code>root</code>, <e:var n="v"/>, <e:setminus><e:fst><e:st n="S"/></e:fst><e:snd><e:set><e:var n="v"/></e:set></e:snd></e:setminus></e:pred>
+  </e:snd>
+</e:exists></div></div>
+
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Close <e:pred name="NonEmptyTree"><code>root</code>, <e:setminus><e:fst><e:st n="S"/></e:fst><e:snd><e:set><e:var n="v"/></e:set></e:snd></e:setminus></e:pred>.</div><e:pred name="NonEmptyTree"><code>root</code>, <e:setminus><e:fst><e:st n="S"/></e:fst><e:snd><e:set><e:var n="v"/></e:set></e:snd></e:setminus></e:pred></div></div>
+
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Weakening</div><e:pred name="Tree"><code>root</code>, <e:setminus><e:fst><e:st n="S"/></e:fst><e:snd><e:set><e:var n="v"/></e:set></e:snd></e:setminus></e:pred></div></div>
+<e:displaycode>
+      o = root;&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Assignment.</div><e:pred name="Tree"><code>o</code>, <e:setminus><e:fst><e:st n="S"/></e:fst><e:snd><e:set><e:var n="v"/></e:set></e:snd></e:setminus></e:pred></div></div>
+<e:displaycode>    }&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>If-rule.</div><e:pred name="Tree"><code>o</code>, <e:setminus><e:fst><e:st n="S"/></e:fst><e:snd><e:set><e:var n="v"/></e:set></e:snd></e:setminus></e:pred></div></div>
+<e:displaycode>  }&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>If-rule.  Postcondition.</div><e:pred name="Tree"><code>o</code>, <e:setminus><e:fst><e:st n="S"/></e:fst><e:snd><e:set><e:var n="v"/></e:set></e:snd></e:setminus></e:pred></div></div>
+<e:displaycode>
   return root;
 }
 
-
-unittest {
-  auto a = new Node(5);
-  a = removeRoot(a);
-  assert(a == null);
-}
-
-
-unittest {
-  auto a = new Node(5);
-  a.c[0] = new Node(4);
-  a = removeRoot(a);
-  assert(a);
-  assert(a.value == 4);
-  assert(!a.c[0]);
-  assert(!a.c[1]);
-}
-
-
-unittest {
-  auto a = new Node(5);
-  a.c[0] = new Node(4);
-  a.c[1] = new Node(6);
-  a = removeRoot(a);
-
-  assert(a);
-  assert(a.value == 4);
-  assert(a.c[0] == null);
-  assert(a.c[1]);
-  assert(a.c[1].value == 6);
-  assert(!a.c[1].c[0]);
-  assert(!a.c[1].c[1]);
-}&#160;</e:displaycode></section>
+&#160;</e:displaycode></section>

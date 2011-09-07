@@ -7,136 +7,403 @@ import bst.remove.removeMax.RemoveMaxRet;
 import std.stdio;
 
 RemoveMaxRet removeMax(Node* root) {
-  // We can only remove the maximum from a non-empty tree!
-  /// NonEmptyTree(root, S)
-
   assert(root != null);
 
-  // Expand NonEmptyTree(root).
-  /// ∃v. TopOfTree(root, v, S).
-
-  // Expand TopOfTree(root, v, S).
-  /// ∃v,l,r,L,R.
-  ///   root↦v,l,r
-  ///   ∗ Tree(l, L)
-  ///   ∗ Tree(r, R)
-  ///   ∧ Compose(L, v, R, S).
-
-  auto r = root.c[1];
-
-  // Take `r` out of quantification.
-  /// ∃v,l,L,R.
-  ///   root↦v,l,r
-  ///   ∗ Tree(l, L)
-  ///   ∗ Tree(r, R)
-  ///   ∧ Compose(L, v, R, S).
-
-
-
-  // We're going to put the return values here.
   int max;
   Node* newRoot;
 
-  if (!r) {
-    // Assert if-condition.  Discard EmptyTree.
-    /// ∃v,l,L.
-    ///   root↦v,l,null
-    ///   ∗ Tree(l, L)
-    ///   ∧ Compose(L, v, ∅, S).
+  // Function precondition.
+  /// <e:pred name="NonEmptyTree"><code>root</code>, <e:st n="S"/></e:pred>
 
-    // Found-max (lemma on Compose).  Discard Compose.
-    /// ∃v,l,L.
-    ///   root↦v,l,null
-    ///   ∗ Tree(l, L)
-    ///   ∧ v∈S ∧ ∀x∈L. x &lt; v ∧ L = S - {v}.
+  // Open <e:pred name="NonEmptyTree"><code>root</code>, <e:st n="S"/></e:pred>.
+  /// <e:exists><e:fst><e:var n="v"/></e:fst>
+  ///   <e:snd><e:pred name="TopOfTree"><code>root</code>, <e:var n="v"/>, <e:st n="S"/></e:pred></e:snd>
+  /// </e:exists>
+
+  // Open <e:pred name="TopOfTree"><code>root</code>, <e:var n="v"/>, <e:st n="S"/></e:pred>.
+  /// <e:exists>
+  ///   <e:fst><e:var n="v"/>, <e:var n="l"/>, <e:var n="r"/>, <e:st n="L"/>, <e:st n="R"/></e:fst>
+  ///   <e:snd><e:indent>
+  ///     <e:sep>
+  ///       <e:fst><e:fcell>
+  ///             <e:fst><code>root</code></e:fst>
+  ///             <e:snd><e:var n="v"/>,<e:var n="l"/>,<e:var n="r"/></e:snd>
+  ///           </e:fcell></e:fst>
+  ///       <e:snd><e:sep>
+  ///             <e:fst><e:pred name="Tree"><e:var n="l"/>, <e:st n="L"/></e:pred></e:fst>
+  ///             <e:snd><e:pred name="Tree"><e:var n="r"/>, <e:st n="R"/></e:pred></e:snd>
+  ///       </e:sep></e:snd>
+  ///     </e:sep> ∧<br />
+  ///     <e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
+  ///   </e:indent></e:snd>
+  /// </e:exists>
+
+  auto r = root.c[1];
+  // <m:existsElim/> on <e:var n="r"/> as <code>r</code>.
+  /// <e:exists>
+  ///   <e:fst><e:var n="v"/>, <e:var n="l"/>, <e:st n="L"/>, <e:st n="R"/></e:fst>
+  ///   <e:snd><e:indent>
+  ///     <e:sep>
+  ///       <e:fst><e:fcell>
+  ///             <e:fst><code>root</code></e:fst>
+  ///             <e:snd><e:var n="v"/>,<e:var n="l"/>,<code>r</code></e:snd>
+  ///           </e:fcell></e:fst>
+  ///       <e:snd><e:sep>
+  ///             <e:fst><e:pred name="Tree"><e:var n="l"/>, <e:st n="L"/></e:pred></e:fst>
+  ///             <e:snd><e:pred name="Tree"><code>r</code>, <e:st n="R"/></e:pred></e:snd>
+  ///       </e:sep></e:snd>
+  ///     </e:sep> ∧<br />
+  ///     <e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
+  ///   </e:indent></e:snd>
+  /// </e:exists>
+
+  if (r == null) {
+    // Assert if-condition.  Substitution.
+    /// <e:exists>
+    ///   <e:fst><e:var n="v"/>, <e:var n="l"/>, <e:st n="L"/>, <e:st n="R"/></e:fst>
+    ///   <e:snd><e:indent>
+    ///     <e:sep>
+    ///       <e:fst><e:fcell>
+    ///             <e:fst><code>root</code></e:fst>
+    ///             <e:snd><e:var n="v"/>,<e:var n="l"/>,<code>null</code></e:snd>
+    ///           </e:fcell></e:fst>
+    ///       <e:snd><e:sep>
+    ///             <e:fst><e:pred name="Tree"><e:var n="l"/>, <e:st n="L"/></e:pred></e:fst>
+    ///             <e:snd><e:pred name="Tree"><code>null</code>, <e:st n="R"/></e:pred></e:snd>
+    ///       </e:sep></e:snd>
+    ///     </e:sep> ∧<br />
+    ///     <e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
+    ///   </e:indent></e:snd>
+    /// </e:exists>
+
+    // Lemma: <e:logimpl>
+    //   <e:fst><e:pred name="Tree"><code>null</code>, <e:st n="R"/></e:pred></e:fst>
+    //   <e:snd><e:pred name="EmptyTree"><code>null</code>, <e:st n="R"/></e:pred></e:snd>
+    // </e:logimpl>
+    /// <e:exists>
+    ///   <e:fst><e:var n="v"/>, <e:var n="l"/>, <e:st n="L"/>, <e:st n="R"/></e:fst>
+    ///   <e:snd><e:indent>
+    ///     <e:sep>
+    ///       <e:fst><e:fcell>
+    ///             <e:fst><code>root</code></e:fst>
+    ///             <e:snd><e:var n="v"/>,<e:var n="l"/>,<code>null</code></e:snd>
+    ///           </e:fcell></e:fst>
+    ///       <e:snd><e:sep>
+    ///             <e:fst><e:pred name="Tree"><e:var n="l"/>, <e:st n="L"/></e:pred></e:fst>
+    ///             <e:snd><e:pred name="EmptyTree"><code>null</code>, <e:st n="R"/></e:pred></e:snd>
+    ///       </e:sep></e:snd>
+    ///     </e:sep> ∧<br />
+    ///     <e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
+    ///   </e:indent></e:snd>
+    /// </e:exists>
+
+    // Lemma: <e:logimpl>
+    //   <e:fst><e:pred name="EmptyTree"><e:var n="r"/>, <e:st n="R"/></e:pred></e:fst>
+    //   <e:snd><e:eq><e:fst><e:st n="R"/></e:fst><e:snd><m:scemp/></e:snd></e:eq></e:snd>
+    // </e:logimpl>.  Substitution.  Discard <e:eq><e:fst><e:st n="R"/></e:fst><e:snd><m:scemp/></e:snd></e:eq>.
+    /// <e:exists>
+    ///   <e:fst><e:var n="v"/>, <e:var n="l"/>, <e:st n="L"/></e:fst>
+    ///   <e:snd><e:indent>
+    ///     <e:sep>
+    ///       <e:fst><e:fcell>
+    ///             <e:fst><code>root</code></e:fst>
+    ///             <e:snd><e:var n="v"/>,<e:var n="l"/>,<code>null</code></e:snd>
+    ///           </e:fcell></e:fst>
+    ///       <e:snd><e:sep>
+    ///             <e:fst><e:pred name="Tree"><e:var n="l"/>, <e:st n="L"/></e:pred></e:fst>
+    ///             <e:snd><e:pred name="EmptyTree"><code>null</code>, <m:scemp/></e:pred></e:snd>
+    ///       </e:sep></e:snd>
+    ///     </e:sep> ∧<br />
+    ///     <e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <m:scemp/>, <e:st n="S"/></e:pred>
+    ///   </e:indent></e:snd>
+    /// </e:exists>
+
+    // Open <e:pred name="EmptyTree"><code>null</code>, <m:scemp/></e:pred>.  Discard <e:eq><e:fst><code>null</code></e:fst><e:snd><code>null</code></e:snd></e:eq>
+    // and <e:eq><e:fst><m:scemp/></e:fst><e:snd><m:scemp/></e:snd></e:eq>.
+    /// <e:exists>
+    ///   <e:fst><e:var n="v"/>, <e:var n="l"/>, <e:st n="L"/></e:fst>
+    ///   <e:snd><e:indent>
+    ///     <e:sep>
+    ///       <e:fst><e:fcell>
+    ///             <e:fst><code>root</code></e:fst>
+    ///             <e:snd><e:var n="v"/>,<e:var n="l"/>,<code>null</code></e:snd>
+    ///           </e:fcell></e:fst>
+    ///       <e:snd><e:sep>
+    ///             <e:fst><e:pred name="Tree"><e:var n="l"/>, <e:st n="L"/></e:pred></e:fst>
+    ///             <e:snd><m:hemp/></e:snd>
+    ///       </e:sep></e:snd>
+    ///     </e:sep> ∧<br />
+    ///     <e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <m:scemp/>, <e:st n="S"/></e:pred>
+    ///   </e:indent></e:snd>
+    /// </e:exists>
+    
+    // <e:sep><e:fst><e:predicate>X</e:predicate></e:fst><e:snd><m:hemp/></e:snd></e:sep> = <e:predicate>X</e:predicate>.
+    /// <e:exists>
+    ///   <e:fst><e:var n="v"/>, <e:var n="l"/>, <e:st n="L"/></e:fst>
+    ///   <e:snd><e:indent>
+    ///     <e:sep>
+    ///       <e:fst><e:fcell>
+    ///             <e:fst><code>root</code></e:fst>
+    ///             <e:snd><e:var n="v"/>,<e:var n="l"/>,<code>null</code></e:snd>
+    ///           </e:fcell></e:fst>
+    ///       <e:snd><e:pred name="Tree"><e:var n="l"/>, <e:st n="L"/></e:pred></e:snd>
+    ///     </e:sep> ∧<br />
+    ///     <e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <m:scemp/>, <e:st n="S"/></e:pred>
+    ///   </e:indent></e:snd>
+    /// </e:exists>
+
+    // Lemma: <e:logimpl>
+    //   <e:fst><e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <m:scemp/>, <e:st n="S"/></e:pred></e:fst>
+    //   <e:snd><e:and>
+    //     <e:fst><e:pred name="Max"><e:var n="v"/>, <e:st n="S"/></e:pred></e:fst>
+    //     <e:snd><e:eq>
+    //       <e:fst><e:st n="L"/></e:fst>
+    //       <e:snd><e:setminus>
+    //         <e:fst><e:st n="S"/></e:fst>
+    //         <e:snd><e:set><e:var n="v"/></e:set></e:snd>
+    //       </e:setminus></e:snd>
+    //     </e:eq></e:snd>
+    //   </e:and></e:snd>
+    // </e:logimpl>.<br />
+    // Discard <e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <m:scemp/>, <e:st n="S"/></e:pred>.
+    /// <e:exists>
+    ///   <e:fst><e:var n="v"/>, <e:var n="l"/></e:fst>
+    ///   <e:snd><e:indent>
+    ///     <e:sep>
+    ///       <e:fst><e:fcell>
+    ///         <e:fst><code>root</code></e:fst>
+    ///         <e:snd><e:var n="v"/>,<e:var n="l"/>,<code>null</code></e:snd>
+    ///       </e:fcell></e:fst>
+    ///       <e:snd><e:pred name="Tree"><e:var n="l"/>, <e:st n="L"/></e:pred></e:snd>
+    ///     </e:sep> ∧<br />
+    ///     <e:pred name="Max"><e:var n="v"/>, <e:st n="S"/></e:pred> ∧
+    ///     <e:eq>
+    ///       <e:fst><e:st n="L"/></e:fst>
+    ///       <e:snd><e:setminus>
+    ///         <e:fst><e:st n="S"/></e:fst>
+    ///         <e:snd><e:set><e:var n="v"/></e:set></e:snd>
+    ///       </e:setminus></e:snd>
+    ///     </e:eq>
+    ///   </e:indent></e:snd>
+    /// </e:exists>
+
+    // Substitution.  Discard <e:eq>
+    //       <e:fst><e:st n="L"/></e:fst>
+    //       <e:snd><e:setminus>
+    //         <e:fst><e:st n="S"/></e:fst>
+    //         <e:snd><e:set><e:var n="v"/></e:set></e:snd>
+    //       </e:setminus></e:snd>
+    //     </e:eq>.
+    /// <e:exists>
+    ///   <e:fst><e:var n="v"/>, <e:var n="l"/></e:fst>
+    ///   <e:snd><e:indent>
+    ///     <e:sep>
+    ///       <e:fst><e:fcell>
+    ///         <e:fst><code>root</code></e:fst>
+    ///         <e:snd><e:var n="v"/>,<e:var n="l"/>,<code>null</code></e:snd>
+    ///       </e:fcell></e:fst>
+    ///       <e:snd><e:pred name="Tree"><e:var n="l"/>, <e:setminus><e:fst><e:st n="S"/></e:fst><e:snd><e:set><e:var n="v"/></e:set></e:snd></e:setminus></e:pred></e:snd>
+    ///     </e:sep> ∧
+    ///     <e:pred name="Max"><e:var n="v"/>, <e:st n="S"/></e:pred>
+    ///   </e:indent></e:snd>
+    /// </e:exists>
 
     max = root.value;
     newRoot = root.c[0];
-
     // Assignment (twice).
-    /// ∃L.
-    ///   root↦max,newRoot,null
-    ///   ∗ Tree(newRoot, L)
-    ///   ∧ max∈S ∧ ∀x∈L. x &lt; max ∧ L = S - {max}.
+    /// <e:sep>
+    ///   <e:fst><e:fcell>
+    ///     <e:fst><code>root</code></e:fst>
+    ///     <e:snd><code>max</code>,<code>newRoot</code>,<code>null</code></e:snd>
+    ///   </e:fcell></e:fst>
+    ///   <e:snd><e:pred name="Tree"><code>newRoot</code>, <e:setminus><e:fst><e:st n="S"/></e:fst><e:snd><e:set><code>max</code></e:set></e:snd></e:setminus></e:pred></e:snd>
+    /// </e:sep> ∧
+    /// <e:pred name="Max"><code>max</code>, <e:st n="S"/></e:pred>
 
     delete root;
-
-    // `root` is dangling.  Rename bound variable.
-    // This gives our function postcondition.
-    /// ∃T.
-    ///   Tree(newRoot, T)
-    ///   ∧ max∈S ∧ ∀x∈T. x &lt; max ∧ T = S - {max}.
+    // Free heap chunk.
+    /// <e:pred name="Tree"><code>newRoot</code>, <e:setminus><e:fst><e:st n="S"/></e:fst><e:snd><e:set><code>max</code></e:set></e:snd></e:setminus></e:pred> ∧
+    /// <e:pred name="Max"><code>max</code>, <e:st n="S"/></e:pred>
   }
   else {
-    // Negate if-condition.
-    /// ∃v,l,L,R.
-    ///   root↦v,l,r
-    ///   ∗ Tree(l, L)
-    ///   ∗ Tree(r, R)
-    ///   ∧ Compose(L, v, R, S)
-    ///   ∧ r.
+    // Deny if-condition.
+    /// <e:exists>
+    ///   <e:fst><e:var n="v"/>, <e:var n="l"/>, <e:st n="L"/>, <e:st n="R"/></e:fst>
+    ///   <e:snd><e:indent>
+    ///     <e:sep>
+    ///       <e:fst><e:fcell>
+    ///             <e:fst><code>root</code></e:fst>
+    ///             <e:snd><e:var n="v"/>,<e:var n="l"/>,<code>r</code></e:snd>
+    ///           </e:fcell></e:fst>
+    ///       <e:snd><e:sep>
+    ///             <e:fst><e:pred name="Tree"><e:var n="l"/>, <e:st n="L"/></e:pred></e:fst>
+    ///             <e:snd><e:pred name="Tree"><code>r</code>, <e:st n="R"/></e:pred></e:snd>
+    ///       </e:sep></e:snd>
+    ///     </e:sep> ∧<br />
+    ///     <e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred> ∧<br />
+    ///     <e:noteq><e:fst><code>r</code></e:fst><e:snd><code>null</code></e:snd></e:noteq>
+    ///   </e:indent></e:snd>
+    /// </e:exists>
 
-    // Non-null pointer is non-empty tree (lemma).
-    /// ∃v,l,L,R.
-    ///   root↦v,l,r
-    ///   ∗ Tree(l, L)
-    ///   ∗ NonEmptyTree(r, R)
-    ///   ∧ Compose(L, v, R, S).
+    // Lemma: <e:logimpl>
+    //   <e:fst><e:and>
+    //     <e:fst><e:pred name="Tree"><code>r</code>, <e:st n="R"/></e:pred></e:fst>
+    //     <e:snd><e:noteq><e:fst><code>r</code></e:fst><e:snd><code>null</code></e:snd></e:noteq></e:snd>
+    //   </e:and></e:fst>
+    //   <e:snd><e:pred name="NonEmptyTree"><code>r</code>, <e:st n="R"/></e:pred></e:snd>
+    // </e:logimpl>.
+    // Discard <e:noteq><e:fst><e:var n="r"/></e:fst><e:snd><code>null</code></e:snd></e:noteq>.
+    /// <e:exists>
+    ///   <e:fst><e:var n="v"/>, <e:var n="l"/>, <e:st n="L"/>, <e:st n="R"/></e:fst>
+    ///   <e:snd><e:indent>
+    ///     <e:sep>
+    ///       <e:fst><e:fcell>
+    ///             <e:fst><code>root</code></e:fst>
+    ///             <e:snd><e:var n="v"/>,<e:var n="l"/>,<code>r</code></e:snd>
+    ///           </e:fcell></e:fst>
+    ///       <e:snd><e:sep>
+    ///             <e:fst><e:pred name="Tree"><e:var n="l"/>, <e:st n="L"/></e:pred></e:fst>
+    ///             <e:snd><e:pred name="NonEmptyTree"><code>r</code>, <e:st n="R"/></e:pred></e:snd>
+    ///       </e:sep></e:snd>
+    ///     </e:sep> ∧<br />
+    ///     <e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
+    ///   </e:indent></e:snd>
+    /// </e:exists>
 
-    auto d = removeMax(r);
-    auto rightMax = d.max;
-    auto rightRoot = d.root;
-
-    // removeMax consumes NonEmptyTree(r, R).  `r` is now dangling.
-    /// ∃v,l,L,R,N.
-    ///   root↦v,l,r
-    ///   ∗ Tree(l, L)
-    ///   ∗ Tree(rightRoot, N)
-    ///   ∧ Compose(L, v, R, S)
-    ///   ∧ rightMax∈R ∧ ∀x∈N. x &lt; rightMax ∧ N = R - {rightMax}.
+    auto d = removeMax(r); auto rightMax = d.max; auto rightRoot = d.root;
+    // Specification for <code>removeMax</code>.
+    /// <e:exists>
+    ///   <e:fst><e:var n="v"/>, <e:var n="l"/>, <e:st n="L"/>, <e:st n="R"/></e:fst>
+    ///   <e:snd><e:indent>
+    ///     <e:sep>
+    ///       <e:fst><e:fcell>
+    ///             <e:fst><code>root</code></e:fst>
+    ///             <e:snd><e:var n="v"/>,<e:var n="l"/>,<code>r</code></e:snd>
+    ///           </e:fcell></e:fst>
+    ///       <e:snd><e:sep>
+    ///             <e:fst><e:pred name="Tree"><e:var n="l"/>, <e:st n="L"/></e:pred></e:fst>
+    ///             <e:snd><e:pred name="Tree"><code>rightRoot</code>, <e:setminus><e:fst><e:st n="R"/></e:fst><e:snd><e:set><code>rightMax</code></e:set></e:snd></e:setminus></e:pred></e:snd>
+    ///       </e:sep></e:snd>
+    ///     </e:sep> ∧<br />
+    ///     <e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred> ∧
+    ///     <e:pred name="Max"><code>rightMax</code>, <e:st n="R"/></e:pred>
+    ///   </e:indent></e:snd>
+    /// </e:exists>
 
     root.c[1] = rightRoot;
-
     // Assignment.
-    /// ∃v,l,L,R,N.
-    ///   root↦v,l,rightRoot
-    ///   ∗ Tree(l, L)
-    ///   ∗ Tree(rightRoot, N)
-    ///   ∧ Compose(L, v, R, S)
-    ///   ∧ rightMax∈R ∧ ∀x∈N. x &lt; rightMax ∧ N = R - {rightMax}.
+    /// <e:exists>
+    ///   <e:fst><e:var n="v"/>, <e:var n="l"/>, <e:st n="L"/>, <e:st n="R"/></e:fst>
+    ///   <e:snd><e:indent>
+    ///     <e:sep>
+    ///       <e:fst><e:fcell>
+    ///             <e:fst><code>root</code></e:fst>
+    ///             <e:snd><e:var n="v"/>,<e:var n="l"/>,<code>rightRoot</code></e:snd>
+    ///           </e:fcell></e:fst>
+    ///       <e:snd><e:sep>
+    ///             <e:fst><e:pred name="Tree"><e:var n="l"/>, <e:st n="L"/></e:pred></e:fst>
+    ///             <e:snd><e:pred name="Tree"><code>rightRoot</code>, <e:setminus><e:fst><e:st n="R"/></e:fst><e:snd><e:set><code>rightMax</code></e:set></e:snd></e:setminus></e:pred></e:snd>
+    ///       </e:sep></e:snd>
+    ///     </e:sep> ∧<br />
+    ///     <e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred> ∧
+    ///     <e:pred name="Max"><code>rightMax</code>, <e:st n="R"/></e:pred>
+    ///   </e:indent></e:snd>
+    /// </e:exists>
 
-    // Close TopOfTree.
-    /// ∃v.
-    ///   TopOfTree(root, v, S - {rightMax})
-    ///   ∧ rightMax∈S ∧ ∀x∈(S-{rightMax}). x &lt; rightMax.
+    // <m:existsIntro/> on <code>rightRoot</code> as <e:var n="r"/>.
+    /// <e:exists>
+    ///   <e:fst><e:var n="v"/>, <e:var n="l"/>, <e:var n="r"/>, <e:st n="L"/>, <e:st n="R"/></e:fst>
+    ///   <e:snd><e:indent>
+    ///     <e:sep>
+    ///       <e:fst><e:fcell>
+    ///             <e:fst><code>root</code></e:fst>
+    ///             <e:snd><e:var n="v"/>,<e:var n="l"/>,<e:var n="r"/></e:snd>
+    ///           </e:fcell></e:fst>
+    ///       <e:snd><e:sep>
+    ///             <e:fst><e:pred name="Tree"><e:var n="l"/>, <e:st n="L"/></e:pred></e:fst>
+    ///             <e:snd><e:pred name="Tree"><e:var n="r"/>, <e:setminus><e:fst><e:st n="R"/></e:fst><e:snd><e:set><code>rightMax</code></e:set></e:snd></e:setminus></e:pred></e:snd>
+    ///       </e:sep></e:snd>
+    ///     </e:sep> ∧<br />
+    ///     <e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred> ∧
+    ///     <e:pred name="Max"><code>rightMax</code>, <e:st n="R"/></e:pred>
+    ///   </e:indent></e:snd>
+    /// </e:exists>
 
-    // Introduce quantification on S - {rightMax}.
-    /// ∃v, T.
-    ///   TopOfTree(root, v, T)
-    ///   ∧ rightMax∈S ∧ ∀x∈T. x &lt; rightMax ∧ T = S - {rightMax}.
+    // Lemma: <e:logimpl>
+    //   <e:fst><e:and>
+    //     <e:fst><e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred></e:fst>
+    //     <e:snd><e:pred name="Max"><e:var n="r"/>, <e:st n="R"/></e:pred></e:snd>
+    //   </e:and></e:fst>
+    //   <e:snd><e:and>
+    //     <e:fst><e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:setminus><e:fst><e:st n="R"/></e:fst><e:snd><e:set><e:var n="r"/></e:set></e:snd></e:setminus>, <e:setminus><e:fst><e:st n="S"/></e:fst><e:snd><e:set><e:var n="r"/></e:set></e:snd></e:setminus></e:pred></e:fst>
+    //     <e:snd><e:pred name="Max"><e:var n="r"/>, <e:st n="S"/></e:pred></e:snd>
+    //   </e:and></e:snd>
+    // </e:logimpl>.<br />
+    // Discard <e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred> and <e:pred name="Max"><code>rightMax</code>, <e:st n="R"/></e:pred>.
+    /// <e:exists>
+    ///   <e:fst><e:var n="v"/>, <e:var n="l"/>, <e:var n="r"/>, <e:st n="L"/>, <e:st n="R"/></e:fst>
+    ///   <e:snd><e:indent>
+    ///     <e:sep>
+    ///       <e:fst><e:fcell>
+    ///             <e:fst><code>root</code></e:fst>
+    ///             <e:snd><e:var n="v"/>,<e:var n="l"/>,<e:var n="r"/></e:snd>
+    ///           </e:fcell></e:fst>
+    ///       <e:snd><e:sep>
+    ///             <e:fst><e:pred name="Tree"><e:var n="l"/>, <e:st n="L"/></e:pred></e:fst>
+    ///             <e:snd><e:pred name="Tree"><e:var n="r"/>, <e:setminus><e:fst><e:st n="R"/></e:fst><e:snd><e:set><code>rightMax</code></e:set></e:snd></e:setminus></e:pred></e:snd>
+    ///       </e:sep></e:snd>
+    ///     </e:sep> ∧<br />
+    ///     <e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:setminus><e:fst><e:st n="R"/></e:fst><e:snd><e:set><code>rightMax</code></e:set></e:snd></e:setminus>, <e:setminus><e:fst><e:st n="S"/></e:fst><e:snd><e:set><code>rightMax</code></e:set></e:snd></e:setminus></e:pred> ∧
+    ///     <e:pred name="Max"><code>rightMax</code>, <e:st n="S"/></e:pred>
+    ///   </e:indent></e:snd>
+    /// </e:exists>
 
-    // Close NonEmptyTree.
-    /// ∃T.
-    ///   NonEmptyTree(root, T)
-    ///   ∧ rightMax∈S ∧ ∀x∈T. x &lt; rightMax ∧ T = S - {rightMax}.    
+    // <m:existsIntro/> on <e:setminus><e:fst><e:st n="R"/></e:fst><e:snd><e:set><code>rightMax</code></e:set></e:snd></e:setminus> as <e:st n="R"/>.
+    /// <e:exists>
+    ///   <e:fst><e:var n="v"/>, <e:var n="l"/>, <e:var n="r"/>, <e:st n="L"/>, <e:st n="R"/></e:fst>
+    ///   <e:snd><e:indent>
+    ///     <e:sep>
+    ///       <e:fst><e:fcell>
+    ///             <e:fst><code>root</code></e:fst>
+    ///             <e:snd><e:var n="v"/>,<e:var n="l"/>,<e:var n="r"/></e:snd>
+    ///           </e:fcell></e:fst>
+    ///       <e:snd><e:sep>
+    ///             <e:fst><e:pred name="Tree"><e:var n="l"/>, <e:st n="L"/></e:pred></e:fst>
+    ///             <e:snd><e:pred name="Tree"><e:var n="r"/>, <e:st n="R"/></e:pred></e:snd>
+    ///       </e:sep></e:snd>
+    ///     </e:sep> ∧<br />
+    ///     <e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:setminus><e:fst><e:st n="S"/></e:fst><e:snd><e:set><code>rightMax</code></e:set></e:snd></e:setminus></e:pred> ∧
+    ///     <e:pred name="Max"><code>rightMax</code>, <e:st n="S"/></e:pred>
+    ///   </e:indent></e:snd>
+    /// </e:exists>
+
+    // Close <e:pred name="TopOfTree"><code>root</code>, <e:var n="v"/>, <e:setminus><e:fst><e:st n="S"/></e:fst><e:snd><e:set><code>rightMax</code></e:set></e:snd></e:setminus></e:pred>.
+    /// <e:exists>
+    ///   <e:fst><e:var n="v"/></e:fst>
+    ///   <e:snd>
+    ///     <e:pred name="TopOfTree"><code>root</code>, <e:var n="v"/>, <e:setminus><e:fst><e:st n="S"/></e:fst><e:snd><e:set><code>rightMax</code></e:set></e:snd></e:setminus></e:pred> ∧
+    ///     <e:pred name="Max"><code>rightMax</code>, <e:st n="S"/></e:pred>
+    ///   </e:snd>
+    /// </e:exists>
+
+    // Close <e:pred name="NonEmptyTree"><code>root</code>, <e:setminus><e:fst><e:st n="S"/></e:fst><e:snd><e:set><code>rightMax</code></e:set></e:snd></e:setminus></e:pred>.
+    /// <e:pred name="NonEmptyTree"><code>root</code>, <e:setminus><e:fst><e:st n="S"/></e:fst><e:snd><e:set><code>rightMax</code></e:set></e:snd></e:setminus></e:pred> ∧
+    /// <e:pred name="Max"><code>rightMax</code>, <e:st n="S"/></e:pred>
+
+    // Weaken
+    /// <e:pred name="Tree"><code>root</code>, <e:setminus><e:fst><e:st n="S"/></e:fst><e:snd><e:set><code>rightMax</code></e:set></e:snd></e:setminus></e:pred> ∧
+    /// <e:pred name="Max"><code>rightMax</code>, <e:st n="S"/></e:pred>
 
     max = rightMax;
     newRoot = root;
-
-    // Assignment.  Gives postcondition.
-    /// ∃T.
-    ///   Tree(newRoot, T)
-    ///   ∧ max∈S ∧ ∀x∈T. x &lt; max ∧ T = S - {max}.
+    // Assignment.
+    /// <e:pred name="Tree"><code>newRoot</code>, <e:setminus><e:fst><e:st n="S"/></e:fst><e:snd><e:set><code>max</code></e:set></e:snd></e:setminus></e:pred> ∧
+    /// <e:pred name="Max"><code>max</code>, <e:st n="S"/></e:pred>
   }
 
-  // Postcondition of both if branches.  
-  // Function postcondition.
-  // `max` is the maximum element in `S`,
-  // and `newRoot` represents `S` with `max` subtracted.
-  /// ∃T.
-  ///   Tree(newRoot, T)
-  ///   ∧ max∈S ∧ ∀x∈T. x &lt; max ∧ T = S - {max}.
-
+  // If-rule.
+  /// <e:pred name="Tree"><code>newRoot</code>, <e:setminus><e:fst><e:st n="S"/></e:fst><e:snd><e:set><code>max</code></e:set></e:snd></e:setminus></e:pred> ∧
+  /// <e:pred name="Max"><code>max</code>, <e:st n="S"/></e:pred>
 
   RemoveMaxRet o = {max: max, root: newRoot};
   return o;

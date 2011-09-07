@@ -5,23 +5,17 @@ import rb.node;
 Node* blacken(Node* root) {&#160;</e:displaycode>
 <div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'>T(root, S) ∨ ∃ dir. RVT(root, S, dir)</div></div>
 <e:displaycode>
-  if (root != null &amp;&amp; !root.black) {&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'>(T(root, S) ∧ root != null ∧ ¬root.black ∨
- ∃ dir. RVT(root, S, dir) ∧ root != null ∧ ¬root.black) </div></div>
-
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'></div></div>
-
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'>RT(root, S)</div></div>
-<e:displaycode>    root.black = true;&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'>BT(root, S)</div></div>
+  if (root == null) {&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='CommentParagraph'>skip</div></div>
 <e:displaycode>  }
-  else {&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'>T(root, S) &&
-(root == null || root.black)</div></div>
+  else {
+    if (root.black) {&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='CommentParagraph'>skip</div></div>
+<e:displaycode>    }
+    else {
+      root.black = true;
+    }
+  }
 
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'>BT(root, S)</div></div>
-<e:displaycode>  }&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'>BT(root, S)</div></div>
-<e:displaycode>
   return root;
 }&#160;</e:displaycode></section>

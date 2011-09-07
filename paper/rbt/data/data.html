@@ -6,24 +6,102 @@
   <h3>The <m:rbt /> data structure</h3>
 
   <p>
-    We need to define some predicates to describe the state of the tree
-    at various points in the procedures—types of valid and <q>invalid</q> trees and subtrees.
-    We use the same <e:predicate>Compose</e:predicate> predicate as before.
+    The <m:rbt/> is an augmentation of the <m:bst/>,
+    and as such it is also a recursive data structure:
+    a specific <m:rbt/> contains smaller <m:rbt/>s
+    (subject to restrictions that will be explained).
+    As before, the recursive algorithms on the <m:rbt/>
+    follow the recursive definition of the data structure,
+    and many of the proofs we used for the <m:bst/>
+    (such as the lemmata relating to the <e:predicate>Compose</e:predicate> predicate)
+    can be reused here.
   </p>
 
   <p>
-    It is convenient to think of an <m:rbt/> as composed of <q>red-rooted</q> trees and <q>black-rooted</q> trees.
-    I use separate predicates for each: <e:predicate>RT</e:predicate> and <e:predicate>BT</e:predicate>.
+    The specific augmentation that the <m:rbt/> makes
+    is to modify the <code>Node</code> definition
+    such that each node in the structure
+    carries a single extra bit of information.
+    Typically, and for simplicity, this bit is carried
+    as a single extra boolean field in the <code>Node</code>.
+    <e:note>
+      Other methods exist, such as using the relative size of the subtree pointers as integers,
+      but these are optimizations and lead to less clarity.
+    </e:note>
+    This bit is called the node's <code>color</code>,
+    and the two values the bit may take on are named not <code>true</code> and <code>false</code>,
+    but rather <q>red</q> and <q>black</q>
+    (the primary reason for which is convenience in visual representations of the data structure).
+    In the code, we will assign <code>false</code> to play the role of red and <code>true</code> to black.
   </p>
 
   <p>
-    Here is the recursive data structure represented graphically:
+    The distribution of red bits and black bits over an <m:rbt/> is not arbitrary.
+    In explaining the restrictions,
+    it is helpful to think of a tree as being either <q>red-rooted</q> or <q>black-rooted</q>,
+    where this indicates the color stored in the <code>color</code> field of the root node.
+    We shall develop separate predicates for each:
+    <e:predicate>RT</e:predicate> shall describe a red-rooted <m:rbt/>,
+    and <e:predicate>BT</e:predicate> a black-rooted one.
   </p>
 
   <p>
-    A red-rooted tree, <e:predicate>RT</e:predicate>, looks like this:
+    A red-rooted tree, <e:predicate>RT</e:predicate>,
+    is subject to the restriction that neither of its child subtrees are red-rooted.
+    This is equivalent to saying that if a node is red, then its parent is black;
+    and is again equivalent to saying that there shall be no two red nodes <q>in a row</q> in any proper path.
+    These equivalent rules are known as the <e:jargon>red rule</e:jargon>.
+    I prefer the first formulation of it, as it more readily translates to our inductive definition of an <m:rbt/>.
+  </p>
 
-    <xi:include href="./RT.svg" />
+  <p>
+    There is no such rule for black-rooted trees: their child subtrees are unrestricted in the color of their root.
+    Black nodes are subject to a different, more complex, restriction: that
+    <em>from any node in the tree</em> (whether red or black), <em>all proper paths from that node to a leaf contain the same number of black nodes</em>.
+    This rule and equivalent statements of it are called the <e:jargon>black rule</e:jargon>.
+  </p>
+
+  <p>
+    To encode this rule in our predicates, let us call the number of black nodes on the path from some node
+    the <e:jargon>black-height</e:jargon> of that node.
+    In terms of our inductive definition, we say that the black-height is an attribute of the tree,
+    and as such our predicates are parameterized by it:
+    <e:pred name="BT"><code>root</code>, <e:st n="S"/>, <e:var n="h"/></e:pred>
+    describes a black-rooted <m:rbt/>, at root address <code>root</code>, representing set <e:st n="S"/>, with a black-height of <e:var n="h"/>.
+    In exactly the same way,
+    <e:pred name="RT"><code>root</code>, <e:st n="S"/>, <e:var n="h"/></e:pred>
+    describes a <em>red-rooted</em> <m:rbt/>, at root address <code>root</code>, representing set <e:st n="S"/>, with a black-height of <e:var n="h"/>.
+  </p>
+
+  <p>
+    Consider a black-rooted tree at black-height <e:var n="h"/>—what is the black-height of one of its subtrees?
+    Since all paths to the leaves contain the same number of black nodes, just consider a single path to a single leaf.
+    This path runs through one of the child nodes of the root.
+    Since the root node is one of the <e:var n="h"/> black nodes,
+    the other <e:minus><e:fst><e:var n="h"/></e:fst><e:snd><e:const n="1"/></e:snd></e:minus> black nodes
+    must be in the section of the path descending from the child node to the leaf.
+    As this was for an arbitrary path through an arbitrary child node,
+    both subtrees are at black-height <e:minus><e:fst><e:var n="h"/></e:fst><e:snd><e:const n="1"/></e:snd></e:minus>.
+    Now consider a red-rooted tree at black-height <e:var n="h"/>—what is the black-height of its subtrees?
+    Since the root is red, it never contributes to the <e:var n="h"/> black nodes on any path,
+    and so all <e:var n="h"/> black nodes are in the black-height of the subtree;
+    <m:ie/>, the subtrees of a red-rooted tree at height <e:var n="h"/> are also at height <e:var n="h"/>.
+  </p>
+
+  <p>
+    Finally, the <m:rbt/> has a separate representation of <m:scemp/>,
+    and once again, it is a pointer to <code>null</code> with no allocated memory.
+    Despite having no root <code>Node</code> with a <code>color</code> field,
+    the empty tree is interpreted as being <q>black-rooted</q>,
+    with a black-height of 1.
+  </p>
+
+  <p>
+    As before, the <m:rbt/>'s recursive structure can be shown graphically:
+
+    <div class="display">
+      <xi:include href="./predicates.svg" />
+    </div>
   </p>
 
   <p>

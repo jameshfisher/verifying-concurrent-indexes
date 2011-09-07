@@ -14,7 +14,7 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.48.1 r9760"
-   sodipodi:docname="recursive_remove.svg"
+   sodipodi:docname="remove.svg"
    inkscape:export-filename="/home/james/inst/edu/3-msc/net-storage/terms/3/verifying-concurrent-indexes/paper/rbt/recursive_insert_aux.png"
    inkscape:export-xdpi="90"
    inkscape:export-ydpi="90">
@@ -448,9 +448,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.979899"
-     inkscape:cx="311.90727"
-     inkscape:cy="297.54061"
+     inkscape:zoom="1.4"
+     inkscape:cx="195.07319"
+     inkscape:cy="329.59933"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -486,7 +486,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -1043,7 +1043,9 @@
            x="53.149605"
            y="272.83463"
            style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
-           id="tspan7003">We need to remove the value at the root.  We</tspan><tspan
+           id="tspan7003">We need to remove <tspan
+   style="font-style:italic"
+   id="tspan4351">value</tspan> at the root.  We</tspan><tspan
            sodipodi:role="line"
            x="53.149605"
            y="285.95963"
@@ -1290,22 +1292,20 @@
            x="53.149605"
            y="272.83463"
            style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"
-           id="tspan11811">We cannot insert into the <tspan
+           id="tspan11811">{<tspan
    style="font-style:italic"
-   id="tspan11846">right</tspan> tree, because</tspan><tspan
+   id="tspan4359">v</tspan>} and <tspan
+   style="font-weight:bold"
+   id="tspan4361">R</tspan> do not contain <tspan
+   style="font-style:italic"
+   id="tspan4363">value</tspan>, and so we have</tspan><tspan
            id="tspan7208"
            sodipodi:role="line"
            x="53.149605"
-           y="288.47394"
-           style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">that would break ∀<tspan
-   style="font-style:italic"
-   id="tspan7439">r</tspan>∈<tspan
+           y="285.95963"
+           style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">removed from them.  We now remove from <tspan
    style="font-weight:bold"
-   id="tspan7441">R</tspan>.  <tspan
-   style="font-style:italic"
-   id="tspan7463">v</tspan>&lt;<tspan
-   style="font-style:italic"
-   id="tspan7465">r.</tspan></tspan></text>
+   id="tspan4365">L</tspan>.</tspan></text>
       <g
          id="g7210"
          transform="translate(-185.49234,205.21843)">
@@ -1634,13 +1634,7 @@
    style="font-weight:bold"
    id="tspan12138">= S</tspan> ∖ {<tspan
    style="font-style:italic"
-   id="tspan12124">value</tspan>}, ∵ <tspan
-   style="font-style:italic"
-   id="tspan13969">value</tspan> ∉ {<tspan
-   style="font-style:italic"
-   id="tspan13971">v</tspan>} ∪ <tspan
-   style="font-weight:bold"
-   id="tspan13973">R</tspan>.  Return <tspan
+   id="tspan12124">value</tspan>}.  Return <tspan
    style="font-style:italic"
    id="tspan12145">head</tspan>.</tspan></text>
       <g
