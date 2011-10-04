@@ -52,7 +52,7 @@
     <li>
       <e:logimpl>
 	<e:fst><e:and>
-            <e:fst><e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred></e:fst>
+            <e:fst><e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred></e:fst>
             <e:snd><e:lt><e:fst><code>value</code></e:fst><e:snd><e:var n="v"/></e:snd></e:lt></e:snd>
 	</e:and></e:fst>
 	<e:snd><e:doubleimpl>
@@ -65,10 +65,10 @@
     <li>
       <e:logimpl>
 	<e:fst><e:and>
-            <e:fst><e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred></e:fst>
+            <e:fst><e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred></e:fst>
             <e:snd><e:lt><e:fst><code>value</code></e:fst><e:snd><e:var n="v"/></e:snd></e:lt></e:snd>
 	</e:and></e:fst>
-	<e:snd><e:pred name="Compose">
+	<e:snd><e:pred name="TreeCompose">
             <e:union><e:fst><e:st n="L" /></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:union>,
             <e:var n="v"/>, <e:st n="R"/>,
             <e:union><e:fst><e:st n="S" /></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:union>
@@ -80,10 +80,10 @@
       Symmetrical:
       <e:logimpl>
 	<e:fst><e:and>
-            <e:fst><e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred></e:fst>
+            <e:fst><e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred></e:fst>
             <e:snd><e:lt><e:fst><e:var n="v"/></e:fst><e:snd><code>value</code></e:snd></e:lt></e:snd>
 	</e:and></e:fst>
-	<e:snd><e:pred name="Compose">
+	<e:snd><e:pred name="TreeCompose">
             <e:st n="L"/>, <e:var n="v"/>, 
             <e:union><e:fst><e:st n="R" /></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:union>,
             <e:union><e:fst><e:st n="S" /></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:union>
@@ -93,7 +93,7 @@
 
     <li>
       <e:logimpl>
-	<e:fst><e:pred name="Compose"><m:scemp/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred></e:fst>
+	<e:fst><e:pred name="TreeCompose"><m:scemp/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred></e:fst>
 	<e:snd><e:eq><e:fst><e:st n="R"/></e:fst><e:snd><e:setminus><e:fst><e:st n="S"/></e:fst><e:snd><e:set><e:var n="v"/></e:set></e:snd></e:setminus></e:snd></e:eq></e:snd>
       </e:logimpl>
     </li>
@@ -110,7 +110,7 @@
      <e:derivation>
 
        <e:step name="givenCompose">
-	 <e:derive><e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred></e:derive>
+	 <e:derive><e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred></e:derive>
 	 <e:by>given</e:by>
        </e:step>
 
@@ -239,7 +239,7 @@
       <e:derive>
 	<e:and>
 	  <e:fst>
-	    <e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
+	    <e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
 	  </e:fst>
 	  <e:snd>
 	    <e:lt><e:fst><e:var n="w"/></e:fst><e:snd><e:var n="v"/></e:snd></e:lt>
@@ -250,7 +250,7 @@
     </e:step>
 
     <e:step name="compose">
-      <e:derive><e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred></e:derive>
+      <e:derive><e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred></e:derive>
       <e:by><e:from name="given"/>, ∧E</e:by>
     </e:step>
 
@@ -491,7 +491,7 @@
   <e:derivation>
     <e:step name="given">
       <e:derive>
-	<e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <m:empty/>, <e:st n="S"/></e:pred>
+	<e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <m:empty/>, <e:st n="S"/></e:pred>
       </e:derive>
       <e:by>given</e:by>
     </e:step>

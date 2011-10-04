@@ -6,24 +6,24 @@
 
   <e:caption><e:logimpl>
       <e:fst><e:and>
-          <e:fst><e:pred name="Compose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred></e:fst>
+          <e:fst><e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred></e:fst>
           <e:snd><e:lt><e:fst><e:var n="w"/></e:fst><e:snd><e:var n="v"/></e:snd></e:lt></e:snd>
       </e:and></e:fst>
-      <e:snd><e:pred name="Compose"><e:var n="w"/>, <e:st n="S"/>, <e:union><e:fst><e:st n="S"/></e:fst><e:snd><e:set><e:var n="w"/></e:set></e:snd></e:union></e:pred></e:snd>
+      <e:snd><e:pred name="ListCompose"><e:var n="w"/>, <e:st n="S"/>, <e:union><e:fst><e:st n="S"/></e:fst><e:snd><e:set><e:var n="w"/></e:set></e:snd></e:union></e:pred></e:snd>
   </e:logimpl></e:caption>
 
   <e:contents>
     <e:derivation>
       <e:step name="given">
 	<e:derive><e:and>
-            <e:fst><e:pred name="Compose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred></e:fst>
+            <e:fst><e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred></e:fst>
             <e:snd><e:lt><e:fst><e:var n="w"/></e:fst><e:snd><e:var n="v"/></e:snd></e:lt></e:snd>
 	</e:and></e:derive>
 	<e:by>given</e:by>
       </e:step>
 
       <e:step name="givenCompose">
-	<e:derive><e:pred name="Compose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred></e:derive>
+	<e:derive><e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred></e:derive>
 	<e:by><e:from name="given"/>, <m:andElim/></e:by>
       </e:step>
 
@@ -189,7 +189,7 @@
       </e:step>
 
       <e:step name="qed">
-	<e:derive><e:pred name="Compose"><e:var n="w"/>, <e:st n="S"/>, <e:union><e:fst><e:st n="S"/></e:fst><e:snd><e:set><e:var n="w"/></e:set></e:snd></e:union></e:pred></e:derive>
+	<e:derive><e:pred name="ListCompose"><e:var n="w"/>, <e:st n="S"/>, <e:union><e:fst><e:st n="S"/></e:fst><e:snd><e:set><e:var n="w"/></e:set></e:snd></e:union></e:pred></e:derive>
 	<e:by><e:from name="valueUSIsSUvalue"/>, <e:from name="allInSGreaterThanvalue"/>, close predicate</e:by>
       </e:step>
     </e:derivation>

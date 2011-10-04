@@ -5,10 +5,10 @@
 
   <e:h><e:logimpl>
       <e:and>
-          <e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
+          <e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
           <e:lt><e:var n="w"/><e:var n="v"/></e:lt>
       </e:and>
-      <e:pred name="Compose">
+      <e:pred name="TreeCompose">
 	  <e:setminus><e:st n="L"/><e:set><e:var n="w"/></e:set></e:setminus>,
 	  <e:var n="v"/>, <e:st n="R"/>,
 	  <e:setminus><e:st n="S"/><e:set><e:var n="w"/></e:set></e:setminus>
@@ -20,14 +20,14 @@
   <e:derivation>
     <e:step name="given">
       <e:derive><e:and>
-          <e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
+          <e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
           <e:lt><e:var n="w"/><e:var n="v"/></e:lt>
       </e:and></e:derive>
       <e:by>given</e:by>
     </e:step>
 
     <e:step name="givenCompose">
-      <e:derive><e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred></e:derive>
+      <e:derive><e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred></e:derive>
       <e:by><e:from name="given"/>, <m:andElim/></e:by>
     </e:step>
 
@@ -200,7 +200,7 @@
     </e:step>
 
     <e:step name="qed">
-      <e:derive><e:pred name="Compose">
+      <e:derive><e:pred name="TreeCompose">
 	  <e:setminus><e:st n="L"/><e:set><e:var n="w"/></e:set></e:setminus>,
 	  <e:var n="v"/>, <e:st n="R"/>,
 	  <e:setminus><e:st n="S"/><e:set><e:var n="w"/></e:set></e:setminus>

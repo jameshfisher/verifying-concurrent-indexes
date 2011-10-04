@@ -5,11 +5,11 @@
 
   <e:h><e:logimpl>
       <e:fst><e:and>
-          <e:fst><e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred></e:fst>
+          <e:fst><e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred></e:fst>
           <e:snd><e:pred name="Max"><e:var n="r"/>, <e:st n="R"/></e:pred></e:snd>
       </e:and></e:fst>
       <e:snd><e:and>
-          <e:fst><e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:setminus><e:fst><e:st n="R"/></e:fst><e:snd><e:set><e:var n="r"/></e:set></e:snd></e:setminus>, <e:setminus><e:fst><e:st n="S"/></e:fst><e:snd><e:set><e:var n="r"/></e:set></e:snd></e:setminus></e:pred></e:fst>
+          <e:fst><e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:setminus><e:fst><e:st n="R"/></e:fst><e:snd><e:set><e:var n="r"/></e:set></e:snd></e:setminus>, <e:setminus><e:fst><e:st n="S"/></e:fst><e:snd><e:set><e:var n="r"/></e:set></e:snd></e:setminus></e:pred></e:fst>
           <e:snd><e:pred name="Max"><e:var n="r"/>, <e:st n="S"/></e:pred></e:snd>
       </e:and></e:snd>
   </e:logimpl></e:h>
@@ -25,14 +25,14 @@
   <e:derivation>
     <e:step name="given">
       <e:derive><e:and>
-          <e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
+          <e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
           <e:pred name="Max"><e:var n="r"/>, <e:st n="R"/></e:pred>
       </e:and></e:derive>
       <e:by>given</e:by>
     </e:step>
 
     <e:step name="givenCompose">
-      <e:derive><e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred></e:derive>
+      <e:derive><e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred></e:derive>
       <e:by><e:from name="given"/>, <m:andElim/></e:by>
     </e:step>
 
@@ -351,7 +351,7 @@
     </e:step>
 
     <e:step name="qedCompose">
-      <e:derive><e:fst><e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:setminus><e:fst><e:st n="R"/></e:fst><e:snd><e:set><e:var n="r"/></e:set></e:snd></e:setminus>, <e:setminus><e:fst><e:st n="S"/></e:fst><e:snd><e:set><e:var n="r"/></e:set></e:snd></e:setminus></e:pred></e:fst></e:derive>
+      <e:derive><e:fst><e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:setminus><e:fst><e:st n="R"/></e:fst><e:snd><e:set><e:var n="r"/></e:set></e:snd></e:setminus>, <e:setminus><e:fst><e:st n="S"/></e:fst><e:snd><e:set><e:var n="r"/></e:set></e:snd></e:setminus></e:pred></e:fst></e:derive>
       <e:by><e:from name="composeParts"/>, close predicate</e:by>
     </e:step>
 
@@ -467,7 +467,7 @@
 
     <e:step name="qed">
       <e:derive><e:and>
-          <e:fst><e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:setminus><e:fst><e:st n="R"/></e:fst><e:snd><e:set><e:var n="r"/></e:set></e:snd></e:setminus>, <e:setminus><e:fst><e:st n="S"/></e:fst><e:snd><e:set><e:var n="r"/></e:set></e:snd></e:setminus></e:pred></e:fst>
+          <e:fst><e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:setminus><e:fst><e:st n="R"/></e:fst><e:snd><e:set><e:var n="r"/></e:set></e:snd></e:setminus>, <e:setminus><e:fst><e:st n="S"/></e:fst><e:snd><e:set><e:var n="r"/></e:set></e:snd></e:setminus></e:pred></e:fst>
           <e:snd><e:pred name="Max"><e:var n="r"/>, <e:st n="S"/></e:pred></e:snd>
       </e:and></e:derive>
       <e:by><e:from name="qedCompose"/>, <e:from name="rMaxOfS"/>, <m:andIntro/></e:by>

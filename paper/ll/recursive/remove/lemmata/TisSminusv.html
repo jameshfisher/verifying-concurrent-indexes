@@ -5,7 +5,7 @@
 	 xmlns:m="http://eegg.github.com/macro">
 
   <e:caption><e:logimpl>
-      <e:fst><e:pred name="Compose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred></e:fst>
+      <e:fst><e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred></e:fst>
       <e:snd><e:eq>
           <e:fst><e:st n="T"/></e:fst>
           <e:snd><e:setminus>
@@ -18,7 +18,7 @@
   <e:contents>
     <e:derivation>
       <e:step name="given">
-	<e:derive><e:pred name="Compose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred></e:derive>
+	<e:derive><e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred></e:derive>
 	<e:by>given</e:by>
       </e:step>
 

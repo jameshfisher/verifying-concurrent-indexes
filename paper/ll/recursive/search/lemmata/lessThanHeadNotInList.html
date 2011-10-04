@@ -6,7 +6,7 @@
 
   <e:caption><e:logimpl>
       <e:fst><e:and>
-          <e:fst><e:pred name="Compose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred></e:fst>
+          <e:fst><e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred></e:fst>
           <e:snd><e:lt>
 	      <e:fst><code>value</code></e:fst>
 	      <e:snd><e:var n="v"/></e:snd>
@@ -22,7 +22,7 @@
     <e:derivation>
       <e:step name="given">
 	<e:derive><e:and>
-            <e:fst><e:pred name="Compose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred></e:fst>
+            <e:fst><e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred></e:fst>
             <e:snd><e:lt>
 		<e:fst><code>value</code></e:fst>
 		<e:snd><e:var n="v"/></e:snd>
@@ -33,7 +33,7 @@
 
       <e:step name="noteq">
 	<e:derive><e:and>
-            <e:fst><e:pred name="Compose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred></e:fst>
+            <e:fst><e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred></e:fst>
             <e:snd><e:noteq>
 		<e:fst><code>value</code></e:fst>
 		<e:snd><e:var n="v"/></e:snd>
@@ -82,8 +82,8 @@
 	<e:by><e:from name="applyLemma"/>, <m:doubleImplElim/></e:by>
       </e:step>
 
-      <e:step name="Compose">
-	<e:derive><e:pred name="Compose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred></e:derive>
+      <e:step name="ListCompose">
+	<e:derive><e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred></e:derive>
 	<e:by><e:from name="given"/>, <m:andElim/></e:by>
       </e:step>
 
@@ -123,7 +123,7 @@
 	    </e:snd>
 	  </e:forall>
 	</e:derive>
-	<e:by><e:from name="Compose"/>, open predicate</e:by>
+	<e:by><e:from name="ListCompose"/>, open predicate</e:by>
       </e:step>
 
       <e:step name="allInTGreaterThanV">

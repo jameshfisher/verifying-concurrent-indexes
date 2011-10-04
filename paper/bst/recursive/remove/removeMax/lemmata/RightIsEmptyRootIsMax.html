@@ -4,7 +4,7 @@
 	 xmlns:m="http://eegg.github.com/macro">
 
   <e:h><e:logimpl>
-      <e:fst><e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <m:scemp/>, <e:st n="S"/></e:pred></e:fst>
+      <e:fst><e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <m:scemp/>, <e:st n="S"/></e:pred></e:fst>
       <e:snd><e:pred name="Max"><e:var n="v"/>, <e:st n="S"/></e:pred></e:snd>
   </e:logimpl></e:h>
 
@@ -17,7 +17,7 @@
 
   <e:derivation>
     <e:step name="given">
-      <e:derive><e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <m:scemp/>, <e:st n="S"/></e:pred></e:derive>
+      <e:derive><e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <m:scemp/>, <e:st n="S"/></e:pred></e:derive>
       <e:by>given</e:by>
     </e:step>
 

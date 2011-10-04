@@ -834,7 +834,7 @@ struct Node {
 
       <tr><td><span class="step">5</span>.</td><td class="indent1"><span class="pred_name">NonEmptyList</span>(<code>head</code>, <span class="st">S</span>)</td><td>assume</td></tr>
 
-      <tr><td><span class="step">6</span>.</td><td class="indent1">∃<span class="var">v</span>, <span class="var">t</span>, <span class="st">T</span>. <span class="pred_name">Compose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>) ∧<br/><code>head</code> ↦ <span class="var">v</span>, <span class="var">t</span> ∗ <span class="pred_name">List</span>(<span class="var">t</span>, <span class="st">T</span>)</td><td><span class="step">5</span>, open predicate</td></tr>
+      <tr><td><span class="step">6</span>.</td><td class="indent1">∃<span class="var">v</span>, <span class="var">t</span>, <span class="st">T</span>. <span class="pred_name">ListCompose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>) ∧<br/><code>head</code> ↦ <span class="var">v</span>, <span class="var">t</span> ∗ <span class="pred_name">List</span>(<span class="var">t</span>, <span class="st">T</span>)</td><td><span class="step">5</span>, open predicate</td></tr>
 
       <tr><td><span class="step">7</span>.</td><td class="indent1">∃<span class="var">v</span>, <span class="var">t</span>. <code>head</code> ↦ <span class="var">v</span>, <span class="var">t</span></td><td><span class="step">6</span>, ∧E, frame off <span class="pred_name">List</span>(<span class="var">t</span>, <span class="st">T</span>)</td></tr>
 
@@ -909,11 +909,11 @@ struct Node {
     then <code>value</code> is not in <span class="st">S</span>,
     because the list is in ascending order:
 
-    <figure class="lemma"><figcaption><span class="figure_number">Lemma 4.</span><br/><e:caption><span class="pred_name">Compose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>) ∧ <code>value</code> &lt; <span class="var">v</span> ⇒ <code>value</code> ∉ <span class="st">S</span></e:caption></figcaption><e:contents>
+    <figure class="lemma"><figcaption><span class="figure_number">Lemma 4.</span><br/><e:caption><span class="pred_name">ListCompose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>) ∧ <code>value</code> &lt; <span class="var">v</span> ⇒ <code>value</code> ∉ <span class="st">S</span></e:caption></figcaption><e:contents>
     <table class="derivation displaymath">
-      <tr><td><span class="step">1</span>.</td><td class=""><span class="pred_name">Compose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>) ∧ <code>value</code> &lt; <span class="var">v</span></td><td>given</td></tr>
+      <tr><td><span class="step">1</span>.</td><td class=""><span class="pred_name">ListCompose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>) ∧ <code>value</code> &lt; <span class="var">v</span></td><td>given</td></tr>
 
-      <tr><td><span class="step">2</span>.</td><td class=""><span class="pred_name">Compose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>) ∧ <code>value</code> ≠ <span class="var">v</span></td><td>
+      <tr><td><span class="step">2</span>.</td><td class=""><span class="pred_name">ListCompose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>) ∧ <code>value</code> ≠ <span class="var">v</span></td><td>
 	  <span class="step">1</span>,
 	  <span class="var">a</span> &lt; <span class="var">b</span> ⇒ <span class="var">a</span> ≠ <span class="var">b</span>
 	</td></tr>
@@ -922,7 +922,7 @@ struct Node {
 
       <tr><td><span class="step">4</span>.</td><td class=""><code>value</code> ∈ <span class="st">T</span> → <code>value</code> ∈ <span class="st">S</span></td><td><span class="step">3</span>, ↔E</td></tr>
 
-      <tr><td><span class="step">5</span>.</td><td class=""><span class="pred_name">Compose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>)</td><td><span class="step">1</span>, ∧E</td></tr>
+      <tr><td><span class="step">5</span>.</td><td class=""><span class="pred_name">ListCompose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>)</td><td><span class="step">1</span>, ∧E</td></tr>
 
       <tr><td><span class="step">6</span>.</td><td class="">
 	  <code>value</code> &lt; <span class="var">v</span>
@@ -951,11 +951,11 @@ struct Node {
     then <code>value</code> can be in <span class="st">S</span> if and only if it is in <span class="st">T</span>,
     the set of values in the list pointed at by <code>head.tail</code>:
 
-    <figure class="lemma"><figcaption><span class="figure_number">Lemma 5.</span><br/><e:caption><span class="pred_name">Compose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>) ∧ <span class="var">v</span> ≠ <code>value</code> ⇒ <code>value</code> ∈ <span class="st">T</span> ↔ <code>value</code> ∈ <span class="st">S</span></e:caption></figcaption><e:contents>
+    <figure class="lemma"><figcaption><span class="figure_number">Lemma 5.</span><br/><e:caption><span class="pred_name">ListCompose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>) ∧ <span class="var">v</span> ≠ <code>value</code> ⇒ <code>value</code> ∈ <span class="st">T</span> ↔ <code>value</code> ∈ <span class="st">S</span></e:caption></figcaption><e:contents>
     <table class="derivation displaymath">
-      <tr><td><span class="step">1</span>.</td><td class=""><span class="pred_name">Compose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>) ∧ <span class="var">v</span> ≠ <code>value</code></td><td>given</td></tr>
+      <tr><td><span class="step">1</span>.</td><td class=""><span class="pred_name">ListCompose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>) ∧ <span class="var">v</span> ≠ <code>value</code></td><td>given</td></tr>
 
-      <tr><td><span class="step">2</span>.</td><td class=""><span class="pred_name">Compose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>)</td><td><span class="step">1</span>, ∧E</td></tr>
+      <tr><td><span class="step">2</span>.</td><td class=""><span class="pred_name">ListCompose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>)</td><td><span class="step">1</span>, ∧E</td></tr>
 
       <tr><td><span class="step">3</span>.</td><td class=""><span class="var">v</span> ≠ <code>value</code></td><td><span class="step">1</span>, ∧E</td></tr>
 
@@ -1426,11 +1426,11 @@ Use ¬(<span class="var">v</span> &lt; <code>value</code>) ⇒ <code>value</
       by appending a node containing <code>value</code> at the start.
       This maintains the ordering restriction on the list:
 
-      <figure class="lemma"><figcaption><span class="figure_number">Lemma 6.</span><br/><e:caption><span class="pred_name">Compose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>) ∧ <span class="var">w</span> &lt; <span class="var">v</span> ⇒ <span class="pred_name">Compose</span>(<span class="var">w</span>, <span class="st">S</span>, <span class="st">S</span> ∪ {<span class="var">w</span>})</e:caption></figcaption><e:contents>
+      <figure class="lemma"><figcaption><span class="figure_number">Lemma 6.</span><br/><e:caption><span class="pred_name">ListCompose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>) ∧ <span class="var">w</span> &lt; <span class="var">v</span> ⇒ <span class="pred_name">ListCompose</span>(<span class="var">w</span>, <span class="st">S</span>, <span class="st">S</span> ∪ {<span class="var">w</span>})</e:caption></figcaption><e:contents>
     <table class="derivation displaymath">
-      <tr><td><span class="step">1</span>.</td><td class=""><span class="pred_name">Compose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>) ∧ <span class="var">w</span> &lt; <span class="var">v</span></td><td>given</td></tr>
+      <tr><td><span class="step">1</span>.</td><td class=""><span class="pred_name">ListCompose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>) ∧ <span class="var">w</span> &lt; <span class="var">v</span></td><td>given</td></tr>
 
-      <tr><td><span class="step">2</span>.</td><td class=""><span class="pred_name">Compose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>)</td><td><span class="step">1</span>, ∧E</td></tr>
+      <tr><td><span class="step">2</span>.</td><td class=""><span class="pred_name">ListCompose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>)</td><td><span class="step">1</span>, ∧E</td></tr>
 
       <tr><td><span class="step">3</span>.</td><td class=""><span class="var">w</span> &lt; <span class="var">v</span></td><td><span class="step">1</span>, ∧E</td></tr>
 
@@ -1461,7 +1461,7 @@ Use ¬(<span class="var">v</span> &lt; <code>value</code>) ⇒ <code>value</
 	  ∀<span class="var">t</span> ∈ <span class="st">S</span>. <span class="var">w</span> &lt; <span class="var">t</span>
 	</td><td><span class="step">10</span>, <span class="step">5</span>, substitution</td></tr>
 
-      <tr><td><span class="step">12</span>.</td><td class=""><span class="pred_name">Compose</span>(<span class="var">w</span>, <span class="st">S</span>, <span class="st">S</span> ∪ {<span class="var">w</span>})</td><td><span class="step">8</span>, <span class="step">11</span>, close predicate</td></tr>
+      <tr><td><span class="step">12</span>.</td><td class=""><span class="pred_name">ListCompose</span>(<span class="var">w</span>, <span class="st">S</span>, <span class="st">S</span> ∪ {<span class="var">w</span>})</td><td><span class="step">8</span>, <span class="step">11</span>, close predicate</td></tr>
     </table>
   </e:contents></figure>
     </p>
@@ -1475,13 +1475,13 @@ Use ¬(<span class="var">v</span> &lt; <code>value</code>) ⇒ <code>value</
       which is equal to <span class="st">S</span> ∪ {<code>value</code>},
       and the ordering restriction is maintained:
 
-      <figure class="lemma"><figcaption><span class="figure_number">Lemma 7.</span><br/><e:caption><span class="pred_name">Compose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>) ∧ <span class="var">v</span> &lt; <code>value</code> ⇒ <span class="pred_name">Compose</span>(<span class="var">v</span>,
+      <figure class="lemma"><figcaption><span class="figure_number">Lemma 7.</span><br/><e:caption><span class="pred_name">ListCompose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>) ∧ <span class="var">v</span> &lt; <code>value</code> ⇒ <span class="pred_name">ListCompose</span>(<span class="var">v</span>,
 	  <span class="st">T</span> ∪ {<code>value</code>},
 	  <span class="st">S</span> ∪ {<code>value</code>})</e:caption></figcaption><e:contents>
     <table class="derivation displaymath">
-      <tr><td><span class="step">1</span>.</td><td class=""><span class="pred_name">Compose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>) ∧ <span class="var">v</span> &lt; <code>value</code></td><td>given</td></tr>
+      <tr><td><span class="step">1</span>.</td><td class=""><span class="pred_name">ListCompose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>) ∧ <span class="var">v</span> &lt; <code>value</code></td><td>given</td></tr>
 
-      <tr><td><span class="step">2</span>.</td><td class=""><span class="pred_name">Compose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>)</td><td><span class="step">1</span>, ∧E</td></tr>
+      <tr><td><span class="step">2</span>.</td><td class=""><span class="pred_name">ListCompose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>)</td><td><span class="step">1</span>, ∧E</td></tr>
 
       <tr><td><span class="step">3</span>.</td><td class=""><span class="var">v</span> &lt; <code>value</code></td><td><span class="step">1</span>, ∧E</td></tr>
 
@@ -1506,7 +1506,7 @@ Use ¬(<span class="var">v</span> &lt; <code>value</code>) ⇒ <code>value</
 	  ∀<span class="var">t</span> ∈ <span class="st">T</span> ∪ {<code>value</code>}. <span class="var">v</span> &lt; <span class="var">t</span>
 	</td><td><span class="step">6</span>, <span class="step">8</span>, ??</td></tr>
 
-      <tr><td><span class="step">10</span>.</td><td class=""><span class="pred_name">Compose</span>(<span class="var">v</span>,
+      <tr><td><span class="step">10</span>.</td><td class=""><span class="pred_name">ListCompose</span>(<span class="var">v</span>,
 	    <span class="st">T</span> ∪ {<code>value</code>},
 	    <span class="st">S</span> ∪ {<code>value</code>})</td><td><span class="step">7</span>, <span class="step">9</span>, close predicate</td></tr>
     </table>
@@ -2087,9 +2087,9 @@ Use ¬(<span class="var">v</span> &lt; <code>value</code>) ⇒ <code>value</
     If they are equal, then <span class="st">S</span>∖{<code>value</code>} = <span class="st">T</span>
     represented by the <span class="var">tail</span> pointer; we delete the <code>head</code> node and return <span class="var">tail</span>.
 
-    <figure class="lemma"><figcaption><span class="figure_number">Lemma 8.</span><br/><e:caption><span class="pred_name">Compose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>) ⇒ <span class="st">T</span> = <span class="st">S</span>∖{<span class="var">v</span>}</e:caption></figcaption><e:contents>
+    <figure class="lemma"><figcaption><span class="figure_number">Lemma 8.</span><br/><e:caption><span class="pred_name">ListCompose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>) ⇒ <span class="st">T</span> = <span class="st">S</span>∖{<span class="var">v</span>}</e:caption></figcaption><e:contents>
     <table class="derivation displaymath">
-      <tr><td><span class="step">1</span>.</td><td class=""><span class="pred_name">Compose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>)</td><td>given</td></tr>
+      <tr><td><span class="step">1</span>.</td><td class=""><span class="pred_name">ListCompose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>)</td><td>given</td></tr>
 
       <tr><td><span class="step">2</span>.</td><td class="">
 	  {<span class="var">v</span>} ∪ <span class="st">T</span> = <span class="st">S</span> ∧
@@ -2118,11 +2118,11 @@ Use ¬(<span class="var">v</span> &lt; <code>value</code>) ⇒ <code>value</
     so <span class="st">S</span>∖{<code>value</code>} = <span class="st">S</span>,
     and again we can return the <code>head</code> pointer.
 
-    <figure class="lemma"><figcaption><span class="figure_number">Lemma 9.</span><br/><e:caption><span class="pred_name">Compose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>) ∧ <span class="var">v</span> ≠ <span class="var">w</span> ⇒ <span class="pred_name">Compose</span>(<span class="var">v</span>, <span class="st">T</span>∖{<span class="var">w</span>}, <span class="st">S</span>∖{<span class="var">w</span>})</e:caption></figcaption><e:contents>
+    <figure class="lemma"><figcaption><span class="figure_number">Lemma 9.</span><br/><e:caption><span class="pred_name">ListCompose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>) ∧ <span class="var">v</span> ≠ <span class="var">w</span> ⇒ <span class="pred_name">ListCompose</span>(<span class="var">v</span>, <span class="st">T</span>∖{<span class="var">w</span>}, <span class="st">S</span>∖{<span class="var">w</span>})</e:caption></figcaption><e:contents>
     <table class="derivation displaymath">
-      <tr><td><span class="step">1</span>.</td><td class=""><span class="pred_name">Compose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>) ∧ <span class="var">v</span> ≠ <span class="var">w</span></td><td>given</td></tr>
+      <tr><td><span class="step">1</span>.</td><td class=""><span class="pred_name">ListCompose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>) ∧ <span class="var">v</span> ≠ <span class="var">w</span></td><td>given</td></tr>
 
-      <tr><td><span class="step">2</span>.</td><td class=""><span class="pred_name">Compose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>)</td><td><span class="step">1</span>, ∧E</td></tr>
+      <tr><td><span class="step">2</span>.</td><td class=""><span class="pred_name">ListCompose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>)</td><td><span class="step">1</span>, ∧E</td></tr>
 
       <tr><td><span class="step">3</span>.</td><td class=""><span class="var">v</span> ≠ <span class="var">w</span></td><td><span class="step">1</span>, ∧E</td></tr>
 
@@ -2151,7 +2151,7 @@ Use ¬(<span class="var">v</span> &lt; <code>value</code>) ⇒ <code>value</
 	  ∀<span class="var">t</span> ∈ (<span class="st">T</span>∖{<span class="var">w</span>}). <span class="var">v</span> &lt; <span class="var">t</span>
 	</td><td><span class="step">10</span>, <span class="step">11</span>, ∧I</td></tr>
 
-      <tr><td><span class="step">13</span>.</td><td class=""><span class="pred_name">Compose</span>(<span class="var">v</span>, <span class="st">T</span>∖{<span class="var">w</span>}, <span class="st">S</span>∖{<span class="var">w</span>})</td><td><span class="step">12</span>, close predicate</td></tr>
+      <tr><td><span class="step">13</span>.</td><td class=""><span class="pred_name">ListCompose</span>(<span class="var">v</span>, <span class="st">T</span>∖{<span class="var">w</span>}, <span class="st">S</span>∖{<span class="var">w</span>})</td><td><span class="step">12</span>, close predicate</td></tr>
     </table>
   </e:contents></figure>
   </p>
