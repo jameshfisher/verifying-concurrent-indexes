@@ -21,9 +21,10 @@
     Each node contains two fields, <code>value</code> and <code>tail</code>.
     This can be written in a few lines:
 
-    <div class="display">
-      <xi:include href="../../../code/d/html/ll/node.d.html"/>
-    </div>
+    <e:listing>
+      <e:caption>The <code>Node</code> data structure.</e:caption>
+      <e:contents><xi:include href="../../../code/d/html/ll/node.d.html"/></e:contents>
+    </e:listing>
   </p>
 
   <p>
@@ -31,14 +32,14 @@
     respectively <e:var n="v"/> and <e:var n="t"/>.
     An instance of the <code>Node</code> record thus has a fixed length in memory
     <e:eq>
-      <e:fst><e:var n="l"/></e:fst>
-      <e:snd><e:plus>
-	  <e:fst><e:var n="v"/></e:fst>
-	  <e:snd><e:var n="t"/></e:snd>
-      </e:plus></e:snd>
+      <e:var n="l"/>
+      <e:plus>
+	<e:fst><e:var n="v"/></e:fst>
+	<e:snd><e:var n="t"/></e:snd>
+      </e:plus>
     </e:eq>.
     Therefore any node beginning at some address <e:var n="a"/> spans the contiguous addresses
-    <e:var n="a"/>…<e:plus><e:fst><e:var n="a"/></e:fst><e:snd><e:var n="l"/></e:snd></e:plus>.
+    <e:var n="a"/>…<e:plus><e:var n="a"/><e:var n="l"/></e:plus>.
     The addresses occupied by the <code>Node</code>s are <e:jargon>disjoint</e:jargon>;
     <m:ie/>, for any <code>Node</code>, its occupied addresses
     are occupied no other <code>Node</code>.
@@ -87,9 +88,19 @@
     an single record is thus three bytes in total.
     In the following diagram, arrows are used to highlight fields that reference other memory locations.
 
-    <div class="display">
-      <xi:include href="./example.svg" />
-    </div>
+    <e:diagram>
+      <e:caption>An example <m:ll/> representing the set
+	<e:eq>
+	  <e:st n="S"/>
+	  <e:set>
+	    <e:const n="2"/>,
+	    <e:const n="29"/>,
+	    <e:const n="30"/>,
+	    <e:const n="77"/>
+	  </e:set>
+	</e:eq>.</e:caption>
+      <e:contents><xi:include href="./example.svg" /></e:contents>
+    </e:diagram>
   </p>
 
   <p>
@@ -99,9 +110,11 @@
     and so the above diagram therefore contains a lot of visual <q>noise</q>.
     We can abstract the diagram to remove these addresses and untangle the arrows:
 
-    <div class="display">
-      <xi:include href="./example_untangled.svg" />
-    </div>
+
+    <e:diagram>
+      <e:caption>The previous example, untangled.</e:caption>
+      <e:contents><xi:include href="./example_untangled.svg" /></e:contents>
+    </e:diagram>
   </p>
 
   <p>
@@ -115,9 +128,10 @@
     is effectively the <code>head</code> address for a linked list containing the right-most three nodes.
     We can outline all the linked lists in the above diagram:
 
-    <div class="display">
-      <xi:include href="./example_nested.svg" />
-    </div>
+    <e:diagram>
+      <e:caption>The previous example showing nested structure.</e:caption>
+      <e:contents><xi:include href="./example_nested.svg"/></e:contents>
+    </e:diagram>
   </p>
 
   <p>
@@ -125,17 +139,14 @@
     it contains smaller versions of the same structure.
     Abstracting from our example, we can show this recursion visually:
 
-    <div class="display">
-      <xi:include href="./recursive.svg" />
-    </div>
+    <e:diagram>
+      <e:caption>The previous example showing recursive structure.</e:caption>
+      <e:contents><xi:include href="./recursive.svg" /></e:contents>
+    </e:diagram>
   </p>
 
   <p>
-    Notice in our example that though
-    <e:eq>
-      <e:fst><e:size><e:st n="S"/></e:size></e:fst>
-      <e:snd><e:const n="4"/></e:snd>
-    </e:eq>,
+    Notice in our example that though <e:eq><e:size><e:st n="S"/></e:size><e:const n="4"/></e:eq>,
     there are actually <em>five</em> linked lists:
     the final <code>null</code> pointer conceptually points to
     a linked list representing <m:scemp/>, which uses no memory locations.
@@ -160,9 +171,10 @@
     with <code>head</code> being the address of the first <code>Node</code> in the list
     (or <code>null</code> if <e:eq><e:fst><e:st n="S"/></e:fst><e:snd><m:scemp/></e:snd></e:eq>).
 
-    <div class="display">
-      <xi:include href="./predicates.svg" />
-    </div>
+    <e:diagram>
+      <e:caption>Our basic <m:ll/> predicates.</e:caption>
+      <e:contents><xi:include href="./predicates.svg" /></e:contents>
+    </e:diagram>
   </p>
 
   <p>
@@ -174,50 +186,52 @@
     one of the two representations is being used to represent the set.
     We can therefore define <e:predicate>List</e:predicate> just as a disjunction:
 
-    <div class="displaymath">
+    <e:definition name="List">
       <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred> ≝
       <e:or>
 	<e:fst><e:pred name="EmptyList"><code>head</code>, <e:st n="S"/></e:pred></e:fst>
 	<e:snd><e:pred name="NonEmptyList"><code>head</code>, <e:st n="S"/></e:pred></e:snd>
       </e:or>.
-    </div>
+    </e:definition>
   </p>
 
   <p>
     The empty set is represented by a <code>null</code> pointer and no allocated heap memory.
     Translating this to separation logic is also straightforward:
 
-    <table class="displaymath">
-      <tbody>
-	<tr>
-	  <td>
-	    <e:pred name="EmptyList"><code>head</code>, <e:st n="S"/></e:pred> ≝
-	  </td>
-	  <td>
-	    <e:eq>
-	      <e:fst><code>head</code></e:fst>
-	      <e:snd><code>null</code></e:snd>
-	    </e:eq> ∧
-	  </td>
-	  <td></td>
-	</tr>
-	<tr>
-	  <td></td>
-	  <td>
-	    <e:eq>
-	      <e:fst><e:st n="S"/></e:fst>
-	      <e:snd><m:scemp/></e:snd>
-	    </e:eq> ∧
-	  </td>
-	  <td><e:st n="S"/> is the empty set and</td>
-	</tr>
-	<tr>
-	  <td></td>
-	  <td><m:hemp/>.</td>
-	  <td>there is no allocated memory.</td>
-	</tr>
-      </tbody>
-    </table>
+    <e:definition name="EmptyList">
+      <table>
+	<tbody>
+	  <tr>
+	    <td>
+	      <e:pred name="EmptyList"><code>head</code>, <e:st n="S"/></e:pred> ≝
+	    </td>
+	    <td>
+	      <e:eq>
+		<e:fst><code>head</code></e:fst>
+		<e:snd><code>null</code></e:snd>
+	      </e:eq> ∧
+	    </td>
+	    <td></td>
+	  </tr>
+	  <tr>
+	    <td></td>
+	    <td>
+	      <e:eq>
+		<e:fst><e:st n="S"/></e:fst>
+		<e:snd><m:scemp/></e:snd>
+	      </e:eq> ∧
+	    </td>
+	    <td><e:st n="S"/> is the empty set and</td>
+	  </tr>
+	  <tr>
+	    <td></td>
+	    <td><m:hemp/>.</td>
+	    <td>there is no allocated memory.</td>
+	  </tr>
+	</tbody>
+      </table>
+    </e:definition>
   </p>
 
   <p>
@@ -228,11 +242,11 @@
     and the set <e:st n="T"/> represented by the <e:var n="tail"/> pointer.
     First, <e:st n="S"/> is the element <e:var n="v"/> plus the elements in <e:st n="T"/>; we write
     <e:eq>
-      <e:fst><e:st n="S"/></e:fst>
-      <e:snd><e:union>
-	  <e:fst><e:set><e:var n="value"/></e:set></e:fst>
-	  <e:snd><e:st n="T"/></e:snd>
-      </e:union></e:snd>
+      <e:st n="S"/>
+      <e:union>
+	  <e:set><e:var n="value"/></e:set>
+	  <e:st n="T"/>
+      </e:union>
     </e:eq>.
     But <e:var n="value"/> is not just an arbitrarily chosen value from <e:st n="S"/>,
     it is the smallest element.
@@ -253,46 +267,48 @@
       </e:snd>
     </e:forall>.
 
-    We can express this relationship with a helper predicate, <e:predicate>Compose</e:predicate>,
+    We can express this relationship with a helper predicate, <e:predicate>ListCompose</e:predicate>,
     to be used by <e:predicate>NonEmptyList</e:predicate>.
 
-    <table class="displaymath">
-      <tbody>
-	<tr>
-	  <td><e:pred name="Compose"><e:var n="value"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ≝</td>
-	  <td>
-	    <e:eq>
-	      <e:fst>
-		<e:union>
-		  <e:fst><e:set><e:var n="value" /></e:set></e:fst>
-		  <e:snd><e:st n="T"/></e:snd>
-	      </e:union>
-	      </e:fst>
-	      <e:snd><e:st n="S"/></e:snd>
-	    </e:eq> ∧
-	  </td>
-	</tr>
-	<tr>
-	  <td></td>
-	  <td>
-	    <e:forall>
-	      <e:fst>
-		<e:in>
-		  <e:fst><e:var n="t"/></e:fst>
-		  <e:snd><e:st n="T"/></e:snd>
-		</e:in>
-	      </e:fst>
-	      <e:snd>
-		<e:lt>
-		  <e:fst><e:var n="value"/></e:fst>
-		  <e:snd><e:var n="t"/></e:snd>
-		</e:lt>
-	      </e:snd>
-	    </e:forall>.
-	  </td>
-	</tr>
-      </tbody>
-    </table>
+    <e:definition name="ListCompose">
+      <table>
+	<tbody>
+	  <tr>
+	    <td><e:pred name="ListCompose"><e:var n="value"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ≝</td>
+	    <td>
+	      <e:eq>
+		<e:fst>
+		  <e:union>
+		    <e:fst><e:set><e:var n="value" /></e:set></e:fst>
+		    <e:snd><e:st n="T"/></e:snd>
+		  </e:union>
+		</e:fst>
+		<e:snd><e:st n="S"/></e:snd>
+	      </e:eq> ∧
+	    </td>
+	  </tr>
+	  <tr>
+	    <td></td>
+	    <td>
+	      <e:forall>
+		<e:fst>
+		  <e:in>
+		    <e:fst><e:var n="t"/></e:fst>
+		    <e:snd><e:st n="T"/></e:snd>
+		  </e:in>
+		</e:fst>
+		<e:snd>
+		  <e:lt>
+		    <e:fst><e:var n="value"/></e:fst>
+		    <e:snd><e:var n="t"/></e:snd>
+		  </e:lt>
+		</e:snd>
+	      </e:forall>.
+	    </td>
+	  </tr>
+	</tbody>
+      </table>
+    </e:definition>
   </p>
 
   <p>
@@ -303,11 +319,11 @@
     which together with <e:set><e:var n="value"/></e:set> forms <e:st n="S"/>.
     While we're at it, we can choose <e:var n="value"/> to be the minimal element,
     as we will shortly be concerned with this value when describing the first <code>Node</code> in the list.
-    Now we can use our <e:predicate>Compose</e:predicate> predicate
+    Now we can use our <e:predicate>ListCompose</e:predicate> predicate
     to describe <e:var n="value"/> and <e:st n="T"/> in relation to <e:st n="S"/>; we write
     <e:exists>
       <e:fst><e:var n="value"/>, <e:st n="T"/></e:fst>
-      <e:snd><e:pred name="Compose"><e:var n="value"/>, <e:st n="T"/>, <e:st n="S"/></e:pred></e:snd>
+      <e:snd><e:pred name="ListCompose"><e:var n="value"/>, <e:st n="T"/>, <e:st n="S"/></e:pred></e:snd>
     </e:exists>.
   </p>
 
@@ -343,26 +359,28 @@
     Notice that <e:predicate>List</e:predicate> and <e:predicate>NonEmptyList</e:predicate> are mutually recursive.
     We are now in a position to define <e:predicate>NonEmptyList</e:predicate>:
 
-    <table class="displaymath">
-      <tr>
-	<td><e:pred name="NonEmptyList"><code>head</code>, <e:st n="S"/></e:pred> ≝</td>
-	<td>∃<e:var n="value"/>, <e:var n="tail"/>, <e:st n="T"/>.</td>
-      </tr>
-      <tr>
-	<td></td>
-	<td><e:pred name="Compose"><e:var n="value"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧</td>
-      </tr>
-      <tr>
-	<td></td>
-	<td><e:sep>
-	  <e:fst><e:fcell>
-	      <e:fst><code>head</code></e:fst>
-	      <e:snd><e:var n="value" />, <e:var n="tail"/></e:snd>
-	  </e:fcell></e:fst>
-	  <e:snd><e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred></e:snd>
-	</e:sep>.</td>
-      </tr>
-    </table>
+    <e:definition name="NonEmptyList">
+      <table>
+	<tr>
+	  <td><e:pred name="NonEmptyList"><code>head</code>, <e:st n="S"/></e:pred> ≝</td>
+	  <td>∃<e:var n="value"/>, <e:var n="tail"/>, <e:st n="T"/>.</td>
+	</tr>
+	<tr>
+	  <td></td>
+	  <td><e:pred name="ListCompose"><e:var n="value"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧</td>
+	</tr>
+	<tr>
+	  <td></td>
+	  <td><e:sep>
+	      <e:fst><e:fcell>
+		  <e:fst><code>head</code></e:fst>
+		  <e:snd><e:var n="value" />, <e:var n="tail"/></e:snd>
+	      </e:fcell></e:fst>
+	      <e:snd><e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred></e:snd>
+	    </e:sep>.</td>
+	</tr>
+      </table>
+    </e:definition>
   </p>
 </section>
   

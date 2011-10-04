@@ -1,0 +1,97 @@
+<e:lemma name="headIsNullIsEmptyList"
+	 xmlns="http://www.w3.org/1999/xhtml"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xmlns:e="http://eegg.github.com/htmlx"
+	 xmlns:m="http://eegg.github.com/macro">
+
+  <e:caption><e:logimpl>
+      <e:fst><e:and>
+          <e:fst><e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred></e:fst>
+          <e:snd><e:eq><e:fst><code>head</code></e:fst><e:snd><code>null</code></e:snd></e:eq></e:snd>
+      </e:and></e:fst>
+      <e:snd><e:pred name="EmptyList"><code>head</code>, <e:st n="S"/></e:pred></e:snd>
+  </e:logimpl></e:caption>
+
+  <e:contents>
+    <e:derivation>
+
+      <e:step name="given">
+	<e:derive><e:and>
+            <e:fst><e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred></e:fst>
+            <e:snd><e:eq><e:fst><code>head</code></e:fst><e:snd><code>null</code></e:snd></e:eq></e:snd>
+	</e:and></e:derive>
+	<e:by>given</e:by>
+      </e:step>
+
+      <e:step name="list">
+	<e:derive><e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred></e:derive>
+	<e:by><e:from name="given"/>, ∧E</e:by>
+      </e:step>
+
+      <e:step name="headnull">
+	<e:derive><e:eq><e:fst><code>head</code></e:fst><e:snd><code>null</code></e:snd></e:eq></e:derive>
+	<e:by><e:from name="given"/>, ∧E</e:by>
+      </e:step>
+
+      <e:step name="openList">
+	<e:derive><e:or>
+	    <e:fst><e:pred name="EmptyList"><code>head</code>, <e:st n="S"/></e:pred></e:fst>
+	    <e:snd><e:pred name="NonEmptyList"><code>head</code>, <e:st n="S"/></e:pred></e:snd>
+	</e:or></e:derive>
+	<e:by><e:from name="list"/>, open predicate</e:by>
+      </e:step>
+
+      <e:step name="assumeNonEmpty" indent="indent1">
+	<e:derive><e:pred name="NonEmptyList"><code>head</code>, <e:st n="S"/></e:pred></e:derive>
+	<e:by>assume</e:by>
+      </e:step>
+
+      <e:step name="openNonEmpty" indent="indent1">
+	<e:derive><e:exists>
+	    <e:fst><e:var n="v"/>, <e:var n="t"/>, <e:st n="T"/></e:fst>
+	    <e:snd>
+	      <e:pred name="Compose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
+	      <e:sep>
+		<e:fst><e:fcell>
+		    <e:fst><code>head</code></e:fst>
+		    <e:snd><e:var n="v" />, <e:var n="t"/></e:snd>
+		</e:fcell></e:fst>
+		<e:snd><e:pred name="List"><e:var n="t"/>, <e:st n="T"/></e:pred></e:snd>
+	      </e:sep>
+	    </e:snd>
+	</e:exists></e:derive>
+	<e:by><e:from name="assumeNonEmpty"/>, open predicate</e:by>
+      </e:step>
+
+      <e:step name="headPointsTo" indent="indent1">
+	<e:derive><e:exists>
+	    <e:fst><e:var n="v"/>, <e:var n="t"/></e:fst>
+	    <e:snd><e:fcell>
+		<e:fst><code>head</code></e:fst>
+		<e:snd><e:var n="v" />, <e:var n="t"/></e:snd>
+	    </e:fcell></e:snd>
+	</e:exists></e:derive>
+	<e:by><e:from name="openNonEmpty"/>, ∧E, frame off <e:pred name="List"><e:var n="t"/>, <e:st n="T"/></e:pred></e:by>
+      </e:step>
+
+      <e:step name="headNotNull" indent="indent1">
+	<e:derive><e:noteq>
+	    <e:fst><code>head</code></e:fst>
+	    <e:snd><code>null</code></e:snd>
+	</e:noteq></e:derive>
+	<e:by><e:from name="headPointsTo"/>, pointer non-null</e:by>
+      </e:step>
+
+      <e:step name="notNotEmpty">
+	<e:derive>¬<e:pred name="NonEmptyList"><code>head</code>, <e:st n="S"/></e:pred></e:derive>
+	<e:by><e:from name="assumeNonEmpty"/>, <e:from name="headNull"/>, <e:from name="headNotNull"/>, RAA</e:by>
+      </e:step>
+
+      <e:step name="qed">
+	<e:derive><e:pred name="EmptyList"><code>head</code>, <e:st n="S"/></e:pred></e:derive>
+	<e:by><e:from name="openList"/>, <e:from name="notNotEmpty"/>, ∨E</e:by>
+      </e:step>
+
+    </e:derivation>
+  </e:contents>
+</e:lemma>

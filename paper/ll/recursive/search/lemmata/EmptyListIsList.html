@@ -1,0 +1,33 @@
+<e:lemma name="EmptyListIsList"
+	 xmlns="http://www.w3.org/1999/xhtml"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xmlns:e="http://eegg.github.com/htmlx"
+	 xmlns:m="http://eegg.github.com/macro">
+
+  <e:caption><e:logimpl>
+      <e:fst><e:pred name="EmptyList"><code>head</code>, <e:st n="S"/></e:pred></e:fst>
+      <e:snd><e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred></e:snd>
+  </e:logimpl></e:caption>
+
+  <e:contents>
+    <e:derivation>
+      <e:step name="given">
+	<e:derive><e:pred name="EmptyList"><code>head</code>, <e:st n="S"/></e:pred></e:derive>
+	<e:by>given</e:by>
+      </e:step>
+
+      <e:step name="orNonEmpty">
+	<e:derive><e:or>
+	    <e:fst><e:pred name="EmptyList"><code>head</code>, <e:st n="S"/></e:pred></e:fst>
+	    <e:snd><e:pred name="NonEmptyList"><code>head</code>, <e:st n="S"/></e:pred></e:snd>
+	</e:or></e:derive>
+	<e:by><e:from name="given"/>, ∨I</e:by>
+      </e:step>
+
+      <e:step name="qed">
+	<e:derive><e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred></e:derive>
+	<e:by><e:from name="orNonEmpty"/>, close predicate</e:by>
+      </e:step>
+    </e:derivation>
+  </e:contents>
+</e:lemma>
