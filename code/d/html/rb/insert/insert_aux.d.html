@@ -8,17 +8,42 @@ Node* insert_aux(Node* root, int value) {
 <div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'><e:or>
   <e:fst>(<e:and>
     <e:fst><e:pred name="BT"><code>root</code>, <e:st n="S"/>, <e:var n="h"/></e:pred></e:fst>
-    <e:snd>sentinel</e:snd>
+    <e:snd>black</e:snd>
   </e:and>)</e:fst>
   <e:snd>(<e:and>
     <e:fst><e:pred name="RT"><code>root</code>, <e:st n="S"/>, <e:var n="h"/></e:pred></e:fst>
-    <e:snd>¬sentinel</e:snd>
+    <e:snd>¬black</e:snd>
   </e:and>)</e:snd>
 </e:or></div></div>
 <e:displaycode>
-  if (root == null) {
-    o = new Node(value);
-  }
+  if (root == null) {&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><e:and>
+  <e:fst><e:pred name="EBT"><code>root</code>, <e:st n="S"/>, <e:var n="h"/></e:pred></e:fst>
+  <e:snd>black</e:snd>
+</e:and></div></div>
+<e:displaycode>    o = new Node(value);&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><e:and>
+  <e:fst><e:pred name="RT"><code>o</code>, <e:union><e:fst><e:st n="S"/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:union>, <e:var n="h"/></e:pred></e:fst>
+  <e:snd>black</e:snd>
+</e:and></div></div>
+
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'><m:orIntro/>.</div><e:or>
+  <e:fst>(<e:and>
+    <e:fst>(<e:or>
+      <e:fst><e:pred name="BT"><code>o</code>, <e:union><e:fst><e:st n="S"/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:union>, <e:var n="h"/></e:pred></e:fst>
+      <e:snd><e:pred name="RT"><code>o</code>, <e:union><e:fst><e:st n="S"/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:union>, <e:var n="h"/></e:pred></e:snd>
+    </e:or>)</e:fst>
+    <e:snd>black</e:snd>
+  </e:and>)</e:fst>
+  <e:snd><br/>(<e:and>
+    <e:fst>(<e:or>
+      <e:fst><e:pred name="RT"><code>o</code>, <e:union><e:fst><e:st n="S"/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:union>, <e:var n="h"/></e:pred></e:fst>
+      <e:snd><e:pred name="RVT"><code>o</code>, <e:union><e:fst><e:st n="S"/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:union>, <e:var n="h"/></e:pred></e:snd>
+    </e:or>)</e:fst>
+    <e:snd>¬black</e:snd>
+  </e:and>)</e:snd>
+</e:or></div></div>
+<e:displaycode>  }
   else {
     if (root.value == value) {
       o = root;
@@ -32,17 +57,17 @@ Node* insert_aux(Node* root, int value) {
 <div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'><e:or>
   <e:fst>(<e:and>
     <e:fst>(<e:or>
-      <e:fst><e:pred name="BT"><code>root</code>, <e:union><e:fst><e:st n="S"/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:union>, <e:var n="h"/></e:pred></e:fst>
-      <e:snd><e:pred name="RT"><code>root</code>, <e:union><e:fst><e:st n="S"/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:union>, <e:var n="h"/></e:pred></e:snd>
+      <e:fst><e:pred name="BT"><code>o</code>, <e:union><e:fst><e:st n="S"/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:union>, <e:var n="h"/></e:pred></e:fst>
+      <e:snd><e:pred name="RT"><code>o</code>, <e:union><e:fst><e:st n="S"/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:union>, <e:var n="h"/></e:pred></e:snd>
     </e:or>)</e:fst>
-    <e:snd>sentinel</e:snd>
+    <e:snd>black</e:snd>
   </e:and>)</e:fst>
   <e:snd><br/>(<e:and>
     <e:fst>(<e:or>
-      <e:fst><e:pred name="RT"><code>root</code>, <e:union><e:fst><e:st n="S"/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:union>, <e:var n="h"/></e:pred></e:fst>
-      <e:snd><e:pred name="RVT"><code>root</code>, <e:union><e:fst><e:st n="S"/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:union>, <e:var n="h"/></e:pred></e:snd>
+      <e:fst><e:pred name="RT"><code>o</code>, <e:union><e:fst><e:st n="S"/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:union>, <e:var n="h"/></e:pred></e:fst>
+      <e:snd><e:pred name="RVT"><code>o</code>, <e:union><e:fst><e:st n="S"/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:union>, <e:var n="h"/></e:pred></e:snd>
     </e:or>)</e:fst>
-    <e:snd>¬sentinel</e:snd>
+    <e:snd>¬black</e:snd>
   </e:and>)</e:snd>
 </e:or></div></div>
 <e:displaycode>

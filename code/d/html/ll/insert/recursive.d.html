@@ -95,7 +95,7 @@ Node* insert(Node* head, int value) {
 
 <div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Open <e:pred name="NonEmptyList"><code>head</code>, <e:st n="S"/></e:pred>.</div>∃<e:var n="v"/>, <e:var n="tail"/>, <e:st n="T"/>.<br />
 <e:indent>
-  <e:pred name="Compose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
+  <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
   <e:sep>
     <e:fst><e:fcell>
       <e:fst><code>head</code></e:fst>
@@ -108,7 +108,7 @@ Node* insert(Node* head, int value) {
     if (head.value == value) {&#160;</e:displaycode>
 <div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Assert if-condition: substitute <code>value</code> for <e:var n="v"/>.</div>∃<e:var n="tail"/>, <e:st n="T"/>.<br />
 <e:indent>
-  <e:pred name="Compose"><code>value</code>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
+  <e:pred name="ListCompose"><code>value</code>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
   <e:sep>
     <e:fst><e:fcell>
       <e:fst><code>head</code></e:fst>
@@ -119,14 +119,14 @@ Node* insert(Node* head, int value) {
 </e:indent></div></div>
 
 <div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'><e:logimpl>
-  <e:fst><e:pred name="Compose"><code>value</code>, <e:st n="T"/>, <e:st n="S"/></e:pred></e:fst>
+  <e:fst><e:pred name="ListCompose"><code>value</code>, <e:st n="T"/>, <e:st n="S"/></e:pred></e:fst>
   <e:snd><e:in>
     <e:fst><code>value</code></e:fst>
     <e:snd><e:st n="S"/></e:snd>
   </e:in></e:snd>
 </e:logimpl>.</div>∃<e:var n="tail"/>, <e:st n="T"/>.<br />
 <e:indent>
-  <e:pred name="Compose"><code>value</code>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
+  <e:pred name="ListCompose"><code>value</code>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
   <e:sep>
     <e:fst><e:fcell>
       <e:fst><code>head</code></e:fst>
@@ -215,7 +215,7 @@ Node* insert(Node* head, int value) {
     else {&#160;</e:displaycode>
 <div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Deny if-condition.</div>∃<e:var n="v"/>, <e:var n="tail"/>, <e:st n="T"/>.<br />
 <e:indent>
-  <e:pred name="Compose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
+  <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
   <e:sep>
     <e:fst><e:fcell>
       <e:fst><code>head</code></e:fst>
@@ -232,7 +232,7 @@ Node* insert(Node* head, int value) {
       if (head.value &lt; value) {&#160;</e:displaycode>
 <div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Assert if-condition.</div>∃<e:var n="v"/>, <e:var n="tail"/>, <e:st n="T"/>.<br />
 <e:indent>
-  <e:pred name="Compose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
+  <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
   <e:sep>
     <e:fst><e:fcell>
       <e:fst><code>head</code></e:fst>
@@ -249,7 +249,7 @@ Node* insert(Node* head, int value) {
         Node* ntail = insert(head.tail, value);&#160;</e:displaycode>
 <div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Use specification for <code>insert</code>.</div>∃<e:var n="v"/>, <e:var n="tail"/>, <e:st n="T"/>.<br />
 <e:indent>
-  <e:pred name="Compose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
+  <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
   <e:sep>
     <e:fst><e:fcell>
       <e:fst><code>head</code></e:fst>
@@ -266,7 +266,7 @@ Node* insert(Node* head, int value) {
         head.tail = ntail;&#160;</e:displaycode>
 <div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Assignment.  Reintroduce existential quantification.</div>∃<e:var n="v"/>, <e:var n="tail"/>, <e:st n="T"/>.<br />
 <e:indent>
-  <e:pred name="Compose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
+  <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
   <e:sep>
     <e:fst><e:fcell>
       <e:fst><code>head</code></e:fst>
@@ -282,17 +282,17 @@ Node* insert(Node* head, int value) {
 
 <div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Lemma: <e:logimpl>
   <e:fst><e:and>
-    <e:fst><e:pred name="Compose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred></e:fst>
+    <e:fst><e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred></e:fst>
     <e:snd><e:lt><e:fst><e:var n="v"/></e:fst><e:snd><code>value</code></e:snd></e:lt></e:snd>
   </e:and></e:fst>
-  <e:snd><e:pred name="Compose">
+  <e:snd><e:pred name="ListCompose">
     <e:var n="v"/>,
     <e:union><e:fst><e:st n="T"/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:union>,
     <e:union><e:fst><e:st n="S"/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:union>
   </e:pred></e:snd>
 </e:logimpl></div>∃<e:var n="v"/>, <e:var n="tail"/>, <e:st n="T"/>.<br />
 <e:indent>
-  <e:pred name="Compose"><e:var n="v"/>, <e:union><e:fst><e:st n="T"/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:union>, <e:union><e:fst><e:st n="S"/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:union></e:pred> ∧<br />
+  <e:pred name="ListCompose"><e:var n="v"/>, <e:union><e:fst><e:st n="T"/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:union>, <e:union><e:fst><e:st n="S"/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:union></e:pred> ∧<br />
   <e:sep>
     <e:fst><e:fcell>
       <e:fst><code>head</code></e:fst>
@@ -304,7 +304,7 @@ Node* insert(Node* head, int value) {
 
 <div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Introduce existential quantification on <e:union><e:fst><e:st n="T"/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:union>.</div>∃<e:var n="v"/>, <e:var n="tail"/>, <e:st n="T"/>.<br />
 <e:indent>
-  <e:pred name="Compose"><e:var n="v"/>, <e:st n="T"/>, <e:union><e:fst><e:st n="S"/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:union></e:pred> ∧<br />
+  <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:union><e:fst><e:st n="S"/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:union></e:pred> ∧<br />
   <e:sep>
     <e:fst><e:fcell>
       <e:fst><code>head</code></e:fst>
@@ -350,7 +350,7 @@ Use <e:logimpl>
   </e:leq></e:snd>
 </e:logimpl>.</div>∃<e:var n="v"/>, <e:var n="tail"/>, <e:st n="T"/>.<br />
 <e:indent>
-  <e:pred name="Compose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
+  <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
   <e:sep>
     <e:fst><e:fcell>
       <e:fst><code>head</code></e:fst>
@@ -387,7 +387,7 @@ Use <e:logimpl>
   </e:lt></e:snd>
  </e:logimpl>.</div>∃<e:var n="v"/>, <e:var n="tail"/>, <e:st n="T"/>.<br />
 <e:indent>
-  <e:pred name="Compose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
+  <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
   <e:sep>
     <e:fst><e:fcell>
       <e:fst><code>head</code></e:fst>
@@ -404,7 +404,7 @@ Use <e:logimpl>
         nhead = new Node(value, head);&#160;</e:displaycode>
 <div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Specification for <code>new Node(value, head)</code>.</div>∃<e:var n="v"/>, <e:var n="tail"/>, <e:st n="T"/>.<br />
 <e:indent>
-  <e:pred name="Compose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
+  <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
   <e:sep>
     <e:fst><e:fcell>
       <e:fst><code>nhead</code></e:fst>
@@ -425,7 +425,7 @@ Use <e:logimpl>
 </e:indent></div></div>
 
 <div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Close <e:pred name="NonEmptyList"><code>head</code>, <e:st n="S"/></e:pred>.</div><e:and>
-  <e:fst><e:pred name="Compose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred></e:fst>
+  <e:fst><e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred></e:fst>
   <e:snd><e:lt><e:fst><code>value</code></e:fst><e:snd><e:var n="v"/></e:snd></e:lt></e:snd>
 </e:and> ∧<br />
 <e:sep>
@@ -438,11 +438,11 @@ Use <e:logimpl>
 
 <div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Lemma: <e:logimpl>
  <e:fst><e:and>
-   <e:fst><e:pred name="Compose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred></e:fst>
+   <e:fst><e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred></e:fst>
    <e:snd><e:lt><e:fst><code>value</code></e:fst><e:snd><e:var n="v"/></e:snd></e:lt></e:snd>
  </e:and></e:fst>
- <e:snd><e:pred name="Compose"><code>value</code>, <e:st n="S"/>, <e:union><e:fst><e:st n="S"/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:union></e:pred></e:snd>
-</e:logimpl></div><e:pred name="Compose"><code>value</code>, <e:st n="S"/>, <e:union><e:fst><e:st n="S"/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:union></e:pred> ∧<br />
+ <e:snd><e:pred name="ListCompose"><code>value</code>, <e:st n="S"/>, <e:union><e:fst><e:st n="S"/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:union></e:pred></e:snd>
+</e:logimpl></div><e:pred name="ListCompose"><code>value</code>, <e:st n="S"/>, <e:union><e:fst><e:st n="S"/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:union></e:pred> ∧<br />
 <e:sep>
   <e:fst><e:fcell>
     <e:fst><code>nhead</code></e:fst>
@@ -454,7 +454,7 @@ Use <e:logimpl>
 <div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Weakening lemma: <e:logimpl>
   <e:fst><e:pred name="NonEmptyList"><code>head</code>, <e:st n="S"/></e:pred></e:fst>
   <e:snd><e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred></e:snd>
-</e:logimpl>.</div><e:pred name="Compose"><code>value</code>, <e:st n="S"/>, <e:union><e:fst><e:st n="S"/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:union></e:pred> ∧<br />
+</e:logimpl>.</div><e:pred name="ListCompose"><code>value</code>, <e:st n="S"/>, <e:union><e:fst><e:st n="S"/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:union></e:pred> ∧<br />
 <e:sep>
   <e:fst><e:fcell>
     <e:fst><code>nhead</code></e:fst>
@@ -465,7 +465,7 @@ Use <e:logimpl>
 
 <div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'><m:existsIntro/> on <e:st n="S"/> as <e:st n="T"/>, <code>head</code> as <e:var n="tail"/>, and <code>value</code> as <e:var n="v"/>.</div>∃<e:var n="v"/>, <e:var n="tail"/>, <e:st n="T"/>.<br />
 <e:indent>
-  <e:pred name="Compose"><e:var n="v"/>, <e:st n="T"/>, <e:union><e:fst><e:st n="S"/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:union></e:pred> ∧<br />
+  <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:union><e:fst><e:st n="S"/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:union></e:pred> ∧<br />
   <e:sep>
     <e:fst><e:fcell>
       <e:fst><code>nhead</code></e:fst>
