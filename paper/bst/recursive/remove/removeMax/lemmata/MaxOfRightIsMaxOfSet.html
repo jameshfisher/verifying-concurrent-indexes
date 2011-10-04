@@ -3,7 +3,7 @@
 	 xmlns:e="http://eegg.github.com/htmlx"
 	 xmlns:m="http://eegg.github.com/macro">
 
-  <h4><e:logimpl>
+  <e:h><e:logimpl>
       <e:fst><e:and>
           <e:fst><e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred></e:fst>
           <e:snd><e:pred name="Max"><e:var n="r"/>, <e:st n="R"/></e:pred></e:snd>
@@ -12,7 +12,7 @@
           <e:fst><e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:setminus><e:fst><e:st n="R"/></e:fst><e:snd><e:set><e:var n="r"/></e:set></e:snd></e:setminus>, <e:setminus><e:fst><e:st n="S"/></e:fst><e:snd><e:set><e:var n="r"/></e:set></e:snd></e:setminus></e:pred></e:fst>
           <e:snd><e:pred name="Max"><e:var n="r"/>, <e:st n="S"/></e:pred></e:snd>
       </e:and></e:snd>
-  </e:logimpl></h4>
+  </e:logimpl></e:h>
 
   <p>
     This lemma is used in the <code>removeMax</code> function

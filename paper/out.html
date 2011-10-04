@@ -16,9 +16,7 @@
   </head>
   <body>
     <section class="content">
-      <hgroup>
-	<h1>Verifying indexes</h1>
-      </hgroup>
+      <h1>Verifying indexes</h1>
 
       <table>
 	<tbody>
@@ -761,11 +759,11 @@ struct Node {
 </section>
   <section xml:base="recursive/recursive.html">
 
-  <h2>Recursive <abbr title="Linked List" class="smallcaps">LL</abbr> algorithms</h2>
+  <h3>Recursive <abbr title="Linked List" class="smallcaps">LL</abbr> algorithms</h3>
 
   <section xml:base="search/search.html">
 
-  <h2>A recursive <abbr title="Linked List" class="smallcaps">LL</abbr> <code>search</code> algorithm</h2>
+  <h4>A recursive <abbr title="Linked List" class="smallcaps">LL</abbr> <code>search</code> algorithm</h4>
 
   <p>
     The purpose of a <code>search</code> algorithm is to
@@ -1385,7 +1383,7 @@ Use ¬(<span class="var">v</span> &lt; <code>value</code>) ⇒ <code>value</
 </section>
   <section xml:base="insert/insert.html">
 
-    <h3>A recursive <abbr title="Linked List" class="smallcaps">LL</abbr> <code>insert</code> algorithm</h3>
+    <h4>A recursive <abbr title="Linked List" class="smallcaps">LL</abbr> <code>insert</code> algorithm</h4>
 
     <p>
       The purpose of an <code>insert</code> algorithm is to
@@ -2060,39 +2058,36 @@ Use ¬(<span class="var">v</span> &lt; <code>value</code>) ⇒ <code>value</
 </section>
   <section xml:base="remove/remove.html">
 
-  <h2><abbr title="Linked List" class="smallcaps">LL</abbr> <code>remove</code> algorithms</h2>
+  <h4>A recursive <abbr title="Linked List" class="smallcaps">LL</abbr> <code>remove</code> algorithm</h4>
 
-  <section>
-    <h3>A recursive <abbr title="Linked List" class="smallcaps">LL</abbr> <code>remove</code> algorithm</h3>
+  <p>
+    The purpose of a <code>remove</code> algorithm is to
+    mutate the heap representing some set <span class="st">S</span>
+    such that it represents the set <span class="st">S</span>∖{<code>value</code>}
+    for some given parameter <code>value</code>.
+    A function implementing <code>remove</code> returns a pointer into the new heap.
 
-    <p>
-      The purpose of a <code>remove</code> algorithm is to
-      mutate the heap representing some set <span class="st">S</span>
-      such that it represents the set <span class="st">S</span>∖{<code>value</code>}
-      for some given parameter <code>value</code>.
-      A function implementing <code>remove</code> returns a pointer into the new heap.
+    <figure class="specification"><figcaption><span class="figure_number">Specification 3.</span><br/><e:caption>The <code>remove</code> procedure.</e:caption></figcaption><div><e:contents>
+	<span class="triple"><div class="cond"><span class="pred_name">List</span>(<code>head</code>, <span class="st">S</span>)</div><pre class="prettyprint"><code>nhead = remove(head, value);</code></pre><div class="cond"><span class="pred_name">List</span>(<code>nhead</code>,
+	      <span class="st">S</span>∖{<code>value</code>})</div></span>
+      </e:contents></div></figure>
+  </p>
 
-      <figure class="specification"><figcaption><span class="figure_number">Specification 3.</span><br/><e:caption>The <code>remove</code> procedure.</e:caption></figcaption><div><e:contents>
-	  <span class="triple"><div class="cond"><span class="pred_name">List</span>(<code>head</code>, <span class="st">S</span>)</div><pre class="prettyprint"><code>nhead = remove(head, value);</code></pre><div class="cond"><span class="pred_name">List</span>(<code>nhead</code>,
-		<span class="st">S</span>∖{<code>value</code>})</div></span>
-	</e:contents></div></figure>
-    </p>
+  <p>
+    The recursive <code>remove</code> algorithm follows a similar pattern to
+    the <code>search</code> and <code>insert</code> algorithms we have seen.
+    We have two cases: the list is empty or it is not.
+    If it is empty, it represents ∅;
+    we must then return a list representing {<code>value</code>},
+    which is ∅; we can therefore simply return <code>head</code>.
+  </p>
 
-    <p>
-      The recursive <code>remove</code> algorithm follows a similar pattern to
-      the <code>search</code> and <code>insert</code> algorithms we have seen.
-      We have two cases: the list is empty or it is not.
-      If it is empty, it represents ∅;
-      we must then return a list representing {<code>value</code>},
-      which is ∅; we can therefore simply return <code>head</code>.
-    </p>
+  <p>
+    If it is not empty, then as before, we compare <code>value</code> and the value <span class="var">v</span> at the head of the list.
+    If they are equal, then <span class="st">S</span>∖{<code>value</code>} = <span class="st">T</span>
+    represented by the <span class="var">tail</span> pointer; we delete the <code>head</code> node and return <span class="var">tail</span>.
 
-    <p>
-      If it is not empty, then as before, we compare <code>value</code> and the value <span class="var">v</span> at the head of the list.
-      If they are equal, then <span class="st">S</span>∖{<code>value</code>} = <span class="st">T</span>
-      represented by the <span class="var">tail</span> pointer; we delete the <code>head</code> node and return <span class="var">tail</span>.
-
-      <figure class="lemma"><figcaption><span class="figure_number">Lemma 8.</span><br/><e:caption><span class="pred_name">Compose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>) ⇒ <span class="st">T</span> = <span class="st">S</span>∖{<span class="var">v</span>}</e:caption></figcaption><e:contents>
+    <figure class="lemma"><figcaption><span class="figure_number">Lemma 8.</span><br/><e:caption><span class="pred_name">Compose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>) ⇒ <span class="st">T</span> = <span class="st">S</span>∖{<span class="var">v</span>}</e:caption></figcaption><e:contents>
     <table class="derivation displaymath">
       <tr><td><span class="step">1</span>.</td><td class=""><span class="pred_name">Compose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>)</td><td>given</td></tr>
 
@@ -2116,14 +2111,14 @@ Use ¬(<span class="var">v</span> &lt; <code>value</code>) ⇒ <code>value</
       <tr><td><span class="step">9</span>.</td><td class=""><span class="st">T</span> = <span class="st">S</span>∖{<span class="var">v</span>}</td><td><span class="step">3</span>, <span class="step">8</span></td></tr>
     </table>
   </e:contents></figure>
-    </p>
+  </p>
 
-    <p>
-      If <code>value</code> &lt; <span class="var">v</span>, then <span class="st">T</span> cannot contain <code>value</code>,
-      so <span class="st">S</span>∖{<code>value</code>} = <span class="st">S</span>,
-      and again we can return the <code>head</code> pointer.
+  <p>
+    If <code>value</code> &lt; <span class="var">v</span>, then <span class="st">T</span> cannot contain <code>value</code>,
+    so <span class="st">S</span>∖{<code>value</code>} = <span class="st">S</span>,
+    and again we can return the <code>head</code> pointer.
 
-      <figure class="lemma"><figcaption><span class="figure_number">Lemma 9.</span><br/><e:caption><span class="pred_name">Compose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>) ∧ <span class="var">v</span> ≠ <span class="var">w</span> ⇒ <span class="pred_name">Compose</span>(<span class="var">v</span>, <span class="st">T</span>∖{<span class="var">w</span>}, <span class="st">S</span>∖{<span class="var">w</span>})</e:caption></figcaption><e:contents>
+    <figure class="lemma"><figcaption><span class="figure_number">Lemma 9.</span><br/><e:caption><span class="pred_name">Compose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>) ∧ <span class="var">v</span> ≠ <span class="var">w</span> ⇒ <span class="pred_name">Compose</span>(<span class="var">v</span>, <span class="st">T</span>∖{<span class="var">w</span>}, <span class="st">S</span>∖{<span class="var">w</span>})</e:caption></figcaption><e:contents>
     <table class="derivation displaymath">
       <tr><td><span class="step">1</span>.</td><td class=""><span class="pred_name">Compose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>) ∧ <span class="var">v</span> ≠ <span class="var">w</span></td><td>given</td></tr>
 
@@ -2159,14 +2154,14 @@ Use ¬(<span class="var">v</span> &lt; <code>value</code>) ⇒ <code>value</
       <tr><td><span class="step">13</span>.</td><td class=""><span class="pred_name">Compose</span>(<span class="var">v</span>, <span class="st">T</span>∖{<span class="var">w</span>}, <span class="st">S</span>∖{<span class="var">w</span>})</td><td><span class="step">12</span>, close predicate</td></tr>
     </table>
   </e:contents></figure>
-    </p>
+  </p>
 
-    <p>
-      Otherwise, <code>value</code> &gt; <span class="var">v</span>,
-      and we must recursively apply <code>remove</code> to the <span class="var">tail</span> pointer.
-    </p>
+  <p>
+    Otherwise, <code>value</code> &gt; <span class="var">v</span>,
+    and we must recursively apply <code>remove</code> to the <span class="var">tail</span> pointer.
+  </p>
 
-    <figure class="diagram"><figcaption><span class="figure_number">Diagram 8.</span><br/><e:caption>The <code>remove</code> procedure as a flow diagram.</e:caption></figcaption><e:contents><!-- Created with Inkscape (http://www.inkscape.org/) --><svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="832.67719" height="797.24408" id="svg2" version="1.1" inkscape:version="0.48.1 r9760" sodipodi:docname="recursive_remove.svg" inkscape:export-filename="/home/james/inst/edu/3-msc/net-storage/terms/3/verifying-concurrent-indexes/paper/rbt/recursive_insert_aux.png" inkscape:export-xdpi="90" inkscape:export-ydpi="90">
+  <figure class="diagram"><figcaption><span class="figure_number">Diagram 8.</span><br/><e:caption>The <code>remove</code> procedure as a flow diagram.</e:caption></figcaption><e:contents><!-- Created with Inkscape (http://www.inkscape.org/) --><svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="832.67719" height="797.24408" id="svg2" version="1.1" inkscape:version="0.48.1 r9760" sodipodi:docname="recursive_remove.svg" inkscape:export-filename="/home/james/inst/edu/3-msc/net-storage/terms/3/verifying-concurrent-indexes/paper/rbt/recursive_insert_aux.png" inkscape:export-xdpi="90" inkscape:export-ydpi="90">
   <defs id="defs4">
     <marker style="overflow:visible" inkscape:stockid="InfiniteLineEnd" id="InfiniteLineEnd" refX="0" refY="0" orient="auto">
       <g id="g8169">
@@ -2473,10 +2468,10 @@ Use ¬(<span class="var">v</span> &lt; <code>value</code>) ⇒ <code>value</
   </g>
 </svg></e:contents></figure>
 
-    <p>
-      The annotated code for recursive <code>remove</code> follows.
+  <p>
+    The annotated code for recursive <code>remove</code> follows.
 
-      <figure class="annotation"><figcaption><span class="figure_number">Annotation 3.</span><br/><e:caption>Recursive <code>remove</code>.</e:caption></figcaption><div><e:contents><section class="generated_listing" xml:base="../../../../code/d/html/ll/remove/recursive.d.html"><pre class="prettyprint">module ll.remove.recursive;
+    <figure class="annotation"><figcaption><span class="figure_number">Annotation 3.</span><br/><e:caption>Recursive <code>remove</code>.</e:caption></figcaption><div><e:contents><section class="generated_listing" xml:base="../../../../code/d/html/ll/remove/recursive.d.html"><pre class="prettyprint">module ll.remove.recursive;
 
 import ll.node;
 
@@ -2649,8 +2644,7 @@ Use ¬(<span class="var">v</span> &lt; <code>value</code>) ⇒ <code>value</
 <pre class="prettyprint">
   return o;
 } </pre></section></e:contents></div></figure>
-    </p>
-  </section>
+  </p>
 </section>
 </section>
 </section>
