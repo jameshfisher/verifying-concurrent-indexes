@@ -33,6 +33,11 @@
     but rather <q>red</q> and <q>black</q>
     (the primary reason for which is convenience in visual representations of the data structure).
     In the code, we will assign <code>false</code> to play the role of red and <code>true</code> to black.
+    Here is the <code>Node</code> structure for the <m:rbt/>:
+
+    <div class="display">
+      <xi:include href="../../../code/d/html/rb/node.d.html" />
+    </div>
   </p>
 
   <p>
@@ -105,13 +110,28 @@
   </p>
 
   <p>
-    A red-rooted tree pointed to by <code>n</code> represents set <e:st n="S"/> with a tree of black-height <e:var n="bh"/> if
+    We can now translate our visual representations into separation logic.
+    An <e:predicate>RBT</e:predicate> is either red or black:
+
+    <div class="display">
+      <e:define><e:pred name="RBT"><code>root</code>, <e:st n="S"/>, <e:var n="h"/></e:pred>
+	<e:or>
+	  <e:pred name="RT"><code>root</code>, <e:st n="S"/>, <e:var n="h"/></e:pred>
+	  <e:pred name="BT"><code>root</code>, <e:st n="S"/>, <e:var n="h"/></e:pred>
+	</e:or>
+      </e:define>
+    </div>
+  </p>
+
+  <p>
+    The <e:predicate>RT</e:predicate> is easier to describe, as there is only one type.
+    A red-rooted tree pointed to by <code>root</code> represents set <e:st n="S"/> with a tree of black-height <e:var n="h"/> iff
 
     <table class="displaymath">
       <tr>
-	<td><e:pred name="RT"><code>n</code>, <e:st n="S"/>, <e:var n="bh"/></e:pred> =</td>
+	<td><e:pred name="RT"><code>root</code>, <e:st n="S"/>, <e:var n="h"/></e:pred> ≝</td>
 	<td>
-	  ∃ <e:var n="v"/>, <e:var n="c[0]"/>, <e:var n="c[1]"/>, <e:st n="L"/>, <e:st n="R"/>.
+	  ∃ <e:var n="v"/>, <e:var n="l"/>, <e:var n="r"/>, <e:st n="L"/>, <e:st n="R"/>.
 	</td>
 	<td>there exist element <e:var n="v"/> and sets <e:st n="L"/> and <e:st n="R"/></td>
       </tr>
@@ -124,61 +144,60 @@
 	<td></td>
 	<td>
 	  <e:fcell>
-	    <e:fst><code>n</code></e:fst>
-	    <e:snd><e:var n="v"/>, <e:var n="c[0]"/>, <e:var n="c[1]"/>, <e:const n="false"/></e:snd>
+	    <e:fst><code>root</code></e:fst>
+	    <e:snd><e:var n="v"/>, <e:var n="l"/>, <e:var n="r"/>, <e:const n="false"/></e:snd>
 	  </e:fcell> ∗
 	</td>
-	<td><code>n</code> points to a red node containing <e:var n="v"/> and child pointers</td>
+	<td><code>root</code> points to a red node containing <e:var n="v"/> and child pointers</td>
       </tr>
       <tr>
 	<td></td>
 	<td>
-	  <e:pred name="BT"><e:var n="c[0]"/>, <e:st n="L"/>, <e:var n="bh"/></e:pred> ∗
+	  <e:pred name="BT"><e:var n="l"/>, <e:st n="L"/>, <e:var n="h"/></e:pred> ∗
 	</td>
 	<td>to black trees representing <e:st n="L"/></td>
       </tr>
       <tr>
 	<td></td>
 	<td>
-	  <e:pred name="BT"><e:var n="c[1]"/>, <e:st n="R"/>, <e:var n="bh"/></e:pred>
+	  <e:pred name="BT"><e:var n="r"/>, <e:st n="R"/>, <e:var n="h"/></e:pred>
 	</td>
-	<td>and <e:st n="R"/>, with the same black height.</td>
+	<td>and <e:st n="R"/>, with the same black-height.</td>
       </tr>
     </table>
   </p>
 
   <p>
-    There's only one kind of RT, as the rules demand both children are black.
-    However, there are multiple types of BT, analogous to the multiple node types in a 2,3,4-tree.
-    There are two-nodes, in which both children are also black.
-    There are three-nodes, in which one child is black (a BT) and one is red (an RT).
-    That is, the RBT rules have two representations of a three-node:
-    where the left child is the RT (<q>left-leaning</q>),
-    and where the right child is the RT (<q>right-leaning</q>).
-    Finally, there are four-nodes, where both children are RTs.
+    There are multiple types of <e:predicate>BT</e:predicate>.
+    As the empty tree counts as black-rooted,
+    our principal distinction is between empty and non-empty black-rooted trees.
+    We'll name these <q><e:predicate>EBT</e:predicate>s</q> and <q><e:predicate>NBT</e:predicate>s</q>:
+
+    <div class="display">
+      <e:define><e:pred name="BT"><code>root</code>, <e:st n="S"/>, <e:var n="h"/></e:pred>
+	<e:or>
+	  <e:pred name="EBT"><code>root</code>, <e:st n="S"/>, <e:var n="h"/></e:pred>
+	  <e:pred name="NBT"><code>root</code>, <e:st n="S"/>, <e:var n="h"/></e:pred>
+	</e:or>
+      </e:define>
+    </div>
   </p>
 
   <p>
-    First, two-nodes (2T).
-    Two distinct types of two-node exist: empty and non-empty.
-    The empty tree <e:predicate>ET</e:predicate> is easiest to describe, and looks like this:
-
-    <xi:include href="./ET.svg" />
-  </p>
-
-  <p>
-    The empty tree:
+    Empty black-rooted trees are again easy to describe:
+    a <code>null</code> pointer and empty heap.
+    We just add that the empty tree has a black-height of 1:
 
     <table class="displaymath">
       <tbody>
 	<tr>
-	  <td><e:pred name="ET"><code>n</code>, <e:st n="S"/>, <e:var n="bh"/></e:pred> =</td>
-	  <td><e:eq><e:fst><code>n</code></e:fst><e:snd><code>null</code></e:snd></e:eq> ∧</td>
-	  <td><e:var n="n"/> is <code>null</code>,</td>
+	  <td><e:pred name="EBT"><code>root</code>, <e:st n="S"/>, <e:var n="h"/></e:pred> =</td>
+	  <td><e:eq><e:fst><code>root</code></e:fst><e:snd><code>null</code></e:snd></e:eq> ∧</td>
+	  <td><code>root</code> is <code>null</code>,</td>
 	</tr>
 	<tr>
 	  <td></td>
-	  <td><e:eq><e:fst><e:st n="S"/></e:fst><e:snd><m:scemp/></e:snd></e:eq> ∧</td>
+	  <td><e:eq><e:st n="S"/><e:snd><m:scemp/></e:snd></e:eq> ∧</td>
           <td>the tree represents the empty set,</td>
 	</tr>
 	<tr>
@@ -188,7 +207,7 @@
 	</tr>
 	<tr>
 	  <td></td>
-	  <td><e:eq><e:fst><e:var n="bh"/></e:fst><e:snd><e:const n="1"/></e:snd></e:eq></td>
+	  <td><e:eq><e:var n="h"/><e:const n="1"/></e:eq></td>
           <td>and we have a black-height of 1.</td>
 	</tr>
       </tbody>
@@ -196,13 +215,65 @@
   </p>
 
   <p>
-    Next we capture the non-empty two-node.
-    
-    <xi:include href="./2T.svg" />
+    The non-empty black-rooted tree
+    analogous to the multiple node types in a 2,3,4-tree.
+    There are two-nodes, in which both children are also black.
+    There are three-nodes, in which one child is a <e:predicate>BT</e:predicate> and one is an <e:predicate>RT</e:predicate>.
+    That is, the <m:rbt/> has two representations of a <q>three-node</q>:
+    where the left child is the <e:predicate>RT</e:predicate> (<q>left-leaning</q>),
+    and where the right child is the <e:predicate>RT</e:predicate> (<q>right-leaning</q>).
+    Finally, there are four-nodes, where both children are <e:predicate>RT</e:predicate>s.
+    Creating predicates for each of these will become unwieldy,
+    and so we just use our <e:predicate>RBT</e:predicate> predicate on the subtrees.
+    A non-empty black-rooted tree pointed to by <code>root</code> represents set <e:st n="S"/> with a tree of black-height <e:var n="h"/> iff
+
+    <table class="displaymath">
+      <tr>
+	<td><e:pred name="NBT"><code>root</code>, <e:st n="S"/>, <e:var n="h"/></e:pred> ≝</td>
+	<td>
+	  ∃ <e:var n="v"/>, <e:var n="l"/>, <e:var n="r"/>, <e:st n="L"/>, <e:st n="R"/>.
+	</td>
+	<td>there exist element <e:var n="v"/> and sets <e:st n="L"/> and <e:st n="R"/></td>
+      </tr>
+      <tr>
+	<td></td>
+	<td><e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred> ∧</td>
+	<td>such that <e:st n="L"/>, <e:var n="v"/> and <e:st n="R"/> make up <e:st n="S"/>, and</td>
+      </tr>
+      <tr>
+	<td></td>
+	<td>
+	  <e:fcell>
+	    <e:fst><code>root</code></e:fst>
+	    <e:snd><e:var n="v"/>, <e:var n="l"/>, <e:var n="r"/>, <e:const n="false"/></e:snd>
+	  </e:fcell> ∗
+	</td>
+	<td><code>root</code> points to a red node containing <e:var n="v"/> and child pointers</td>
+      </tr>
+      <tr>
+	<td></td>
+	<td>
+	  <e:pred name="RBT"><e:var n="l"/>, <e:st n="L"/>, <e:minus><e:var n="h"/><e:const n="1"/></e:minus></e:pred> ∗
+	</td>
+	<td>to black trees representing <e:st n="L"/></td>
+      </tr>
+      <tr>
+	<td></td>
+	<td>
+	  <e:pred name="RBT"><e:var n="r"/>, <e:st n="R"/>, <e:minus><e:var n="h"/><e:const n="1"/></e:minus></e:pred>
+	</td>
+	<td>and <e:st n="R"/>, with one less black-height.</td>
+      </tr>
+    </table>
   </p>
 
   <p>
-    Represents set <e:st n="S"/> with black-height <e:var n="bh"/> if
+  </p>
+
+<!--
+  <p>
+    Next we capture the non-empty two-node.
+    This represents set <e:st n="S"/> with black-height <e:var n="bh"/> if
 
     <table class="displaymath">
       <tbody>
@@ -385,7 +456,6 @@
     </table>
   </p>
 
-<!--
 
 
   RVT(n, S, bh, 1) =        // right-leaning red-violated tree

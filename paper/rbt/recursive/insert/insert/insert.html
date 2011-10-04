@@ -1,0 +1,37 @@
+<section xmlns="http://www.w3.org/1999/xhtml"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xmlns:e="http://eegg.github.com/htmlx"
+	 xmlns:m="http://eegg.github.com/macro">
+
+  <h5>The <code>insert</code> procedure</h5>
+
+  <p>
+    This simple procedure is used on the entire <m:rbt/>.
+    It makes an auxiliary call to <code>insert_aux</code>,
+    then fixes the returned tree using a call to <code>blacken</code>.
+    The height of the final tree is either the previous height
+    or one greater than the previous height.
+
+    <div class="display">
+      <e:triple>
+	<e:pre><e:pred name="BT"><code>root</code>, <e:st n="S"/>, <e:var n="h"/></e:pred></e:pre>
+	<e:command>o = insert(root, value);</e:command>
+	<e:post><e:exists>
+	    <e:fst><e:var n="nh"/></e:fst>
+	    <e:snd><e:and>
+		<e:pred name="BT"><code>o</code>, <e:union><e:fst><e:st n="S"/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:union>, <e:var n="nh"/></e:pred>
+		<e:in>
+		  <e:var n="nh"/>
+		  <e:set>
+		    <e:var n="h"/>,
+		    <e:plus><e:fst><e:var n="h"/></e:fst><e:snd><e:const n="1"/></e:snd></e:plus>
+		  </e:set>
+		</e:in>
+	    </e:and></e:snd>
+	</e:exists></e:post>
+      </e:triple>
+    </div>
+  </p>
+
+  <xi:include href="../../../../../code/d/html/rb/insert/recursive.d.html" />
+</section>

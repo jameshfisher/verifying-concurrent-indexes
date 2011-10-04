@@ -1,0 +1,41 @@
+<section xmlns="http://www.w3.org/1999/xhtml"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xmlns:e="http://eegg.github.com/htmlx"
+	 xmlns:m="http://eegg.github.com/macro">
+
+  <h5>The <code>insert_aux</code> procedure</h5>
+
+  <p>
+    This procedure is really an augmented <m:bst/> <code>insert</code>.
+    It is structured in the same way,
+    with the sole addition that the tree is passed through <code>insert_bal</code>
+    before returning it.
+    The call to <code>insert_bal</code> enables it to satisfy its postcondition.
+    There are really two specifications for <code>insert</code>,
+    depending on whether it is passed an <e:predicate>RT</e:predicate> or a <e:predicate>BT</e:predicate>:
+
+    <div class="display">
+      <e:triple>
+	<e:pre><e:pred name="BT"><code>root</code>, <e:st n="S"/>, <e:var n="h"/></e:pred></e:pre>
+	<e:command>o = insert_aux(root, value);</e:command>
+	<e:post><e:pred name="RBT"><code>o</code>, <e:union><e:st n="S"/><e:set><code>value</code></e:set></e:union>, <e:var n="h"/></e:pred></e:post>
+      </e:triple><br/>
+      <e:triple>
+	<e:pre><e:pred name="RT"><code>root</code>, <e:st n="S"/>, <e:var n="h"/></e:pred></e:pre>
+	<e:command>o = insert_aux(root, value);</e:command>
+	<e:post><e:or>
+	    <e:pred name="RBT"><code>o</code>, <e:union><e:st n="S"/><e:set><code>value</code></e:set></e:union>, <e:var n="h"/></e:pred>
+	    <e:pred name="RVT"><code>o</code>, <e:union><e:st n="S"/><e:set><code>value</code></e:set></e:union>, <e:var n="h"/></e:pred>
+	</e:or></e:post>
+      </e:triple>
+    </div>
+  </p>
+
+  <p>
+    Here is how the <code>insert_aux</code> procedure works:
+
+    <xi:include href="./insert_aux.svg" />
+  </p>
+
+  <xi:include href="../../../../../code/d/html/rb/insert/insert_aux.d.html" />
+</section>

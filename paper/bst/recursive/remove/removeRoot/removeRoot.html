@@ -5,6 +5,23 @@
 
   <h5>Recursive <m:bst/> <code>removeRoot</code></h5>
 
+  <p>
+    The <code>removeRoot</code> procedure uses <code>removeMax</code>
+    to merge two subtrees.
+    It is passed the tree with the two subtrees that must be merged,
+    and returns a tree representing the union of the sets represented by those subtrees.
+  </p>
+
+  <div class="display">
+    <e:triple>
+      <e:pre><e:pred name="TopOfTree"><code>root</code>, <e:var n="v"/>, <e:st n="S"/></e:pred></e:pre>
+      <e:command>o = removeRoot(root);</e:command>
+      <e:post><e:pred name="Tree"><code>o</code>, <e:setminus><e:fst><e:st n="S"/></e:fst><e:snd><e:set><e:var n="v"/></e:set></e:snd></e:setminus></e:pred></e:post>
+    </e:triple>
+  </div>
+
+  <xi:include href="./lemmata/lemmata.html" />
+
   <div class="display">
     <xi:include href="./removeRoot.svg" />
   </div>

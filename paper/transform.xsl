@@ -6,7 +6,7 @@
    xmlns:e="http://eegg.github.com/htmlx"	 
    xmlns:m="http://eegg.github.com/macro">
 
-  <xsl:strip-space elements="e:exists"/> <!-- seems to do fuckall -->
+  <xsl:strip-space elements="e:exists e:fst e:snd e:pred"/>
 
   <xsl:template match="e:displaycode">
     <pre class="prettyprint"><xsl:apply-templates /></pre>
@@ -16,39 +16,6 @@
     <div class="indent"><xsl:apply-templates /></div>
   </xsl:template>  
 
-  <!-- Macros -->
-  <xsl:template match="m:api"><abbr title="Application Programming Interface" class="smallcaps">API</abbr></xsl:template>
-  <xsl:template match="m:url"><abbr title="Uniform Resource Locator" class="smallcaps">URL</abbr></xsl:template>
-  <xsl:template match="m:adt"><abbr title="Abstract Data Type" class="smallcaps">ADT</abbr></xsl:template>
-  <xsl:template match="m:ll"><abbr title="Linked List" class="smallcaps">LL</abbr></xsl:template>
-  <xsl:template match="m:bst"><abbr title="Binary Search Tree" class="smallcaps">BST</abbr></xsl:template>
-  <xsl:template match="m:rbt"><abbr title="Red-Black Tree" class="smallcaps">RBT</abbr></xsl:template>
-
-  <xsl:template match="m:eg"><i>e.g.</i></xsl:template>
-  <xsl:template match="m:ie"><i>i.e.</i></xsl:template>
-  <xsl:template match="m:vs"><i>vs.</i></xsl:template>
-
-  <xsl:template match="m:empty">∅</xsl:template>
-
-  <xsl:template match="m:orElim">∨E</xsl:template>
-  <xsl:template match="m:orIntro">∨I</xsl:template>
-  <xsl:template match="m:andElim">∧E</xsl:template>
-  <xsl:template match="m:andIntro">∧I</xsl:template>
-  <xsl:template match="m:impliesElim">→E</xsl:template>
-  <xsl:template match="m:impliesIntro">→I</xsl:template>
-  <xsl:template match="m:doubleImplElim">↔E</xsl:template>
-  <xsl:template match="m:doubleImplIntro">↔I</xsl:template>
-  <xsl:template match="m:existsIntro">∃I</xsl:template>
-  <xsl:template match="m:existsElim">∃E</xsl:template>
-
-  <xsl:template match="m:lacuna">&#160;[…]&#160;</xsl:template>
-
-  <xsl:template match="m:hemp"><b>emp</b></xsl:template>
-  <xsl:template match="m:scemp">∅</xsl:template>
-
-  <xsl:template match="m:red"><span class="red">●</span></xsl:template>
-  <xsl:template match="m:black"><span class="black">●</span></xsl:template>
-  
   <xsl:template match="e:note|e:cite">
     <span class="note">
       <xsl:apply-templates select="@*|node()"/>
@@ -57,7 +24,7 @@
 
   <xsl:template match="e:descriptionlist">
     <ul>
-      <xsl:apply-templates match="e:li" />
+      <xsl:apply-templates select="e:li" />
     </ul>
   </xsl:template>
 
@@ -68,43 +35,64 @@
   <xsl:template match="e:var"><span class="var"><xsl:value-of select="@n" /></span></xsl:template>
   <xsl:template match="e:st"><span class="st"><xsl:value-of select="@n" /></span></xsl:template> <!-- a set -->
 
+  <xsl:template name="op">
+    <xsl:param name="sym"/>
+    <xsl:variable name="l" select="@type"/>
+    <xsl:variable name="p" select="@parens"/>
+    <xsl:if test="$p='yes'">(</xsl:if><xsl:for-each select="*">
+      <xsl:apply-templates select="." />
+      <xsl:if test="following-sibling::*">&#160;<xsl:value-of select="$sym"/>&#160;<xsl:if test="$l='lines'"><br/></xsl:if></xsl:if>
+    </xsl:for-each><xsl:if test="$p='yes'">)</xsl:if>
+  </xsl:template>
+
+  <xsl:template name="opNoSpaces">
+    <xsl:param name="sym"/>
+    <xsl:variable name="l" select="@type"/>
+    <xsl:variable name="p" select="@parens"/>
+    <xsl:if test="$p='yes'">(</xsl:if><xsl:for-each select="*">
+      <xsl:apply-templates select="." />
+      <xsl:if test="following-sibling::*"><xsl:value-of select="$sym"/><xsl:if test="$l='lines'"><br/></xsl:if></xsl:if>
+    </xsl:for-each><xsl:if test="$p='yes'">)</xsl:if>
+  </xsl:template>
+
   <xsl:template match="e:fpfun"><xsl:apply-templates select="e:fst" />&#160;⇀<sub>fin</sub>&#160;<xsl:apply-templates select="e:snd" /></xsl:template>
 
   <xsl:template match="e:fupd"><xsl:apply-templates select="e:fst" />&#160;[&#160;<xsl:apply-templates select="e:snd" />&#160;↦&#160;<xsl:apply-templates select="e:thd" />]</xsl:template>
 
   <xsl:template match="e:size">|<xsl:apply-templates />|</xsl:template>
 
-  <xsl:template match="e:define"><xsl:apply-templates select="e:fst" />&#160;≝&#160;<xsl:apply-templates select="e:snd" /></xsl:template>
+  <xsl:template match="e:define"><xsl:call-template name="op"><xsl:with-param name="sym">≝</xsl:with-param></xsl:call-template></xsl:template>
 
-  <xsl:template match="e:plus"><xsl:apply-templates select="e:fst" />+<xsl:apply-templates select="e:snd" /></xsl:template>
-  <xsl:template match="e:minus"><xsl:apply-templates select="e:fst" />&#x2212;<xsl:apply-templates select="e:snd" /></xsl:template>
+  <xsl:template match="e:plus"><xsl:call-template name="opNoSpaces"><xsl:with-param name="sym">+</xsl:with-param></xsl:call-template></xsl:template>
+  <xsl:template match="e:minus"><xsl:call-template name="opNoSpaces"><xsl:with-param name="sym">&#x2212;</xsl:with-param></xsl:call-template></xsl:template>
 
-  <xsl:template match="e:setminus"><xsl:apply-templates select="e:fst" />∖<xsl:apply-templates select="e:snd" /></xsl:template>
-  <xsl:template match="e:notin"><xsl:apply-templates select="e:fst" />&#160;∉&#160;<xsl:apply-templates select="e:snd" /></xsl:template>
-  <xsl:template match="e:in"><xsl:apply-templates select="e:fst" />&#160;∈&#160;<xsl:apply-templates select="e:snd" /></xsl:template>
-  <xsl:template match="e:subset"><xsl:apply-templates select="e:fst" />&#160;⊆&#160;<xsl:apply-templates select="e:snd" /></xsl:template>
-  <xsl:template match="e:sep"><xsl:apply-templates select="e:fst" />&#160;∗&#160;<xsl:apply-templates select="e:snd" /></xsl:template>
-  <xsl:template match="e:fcell"><xsl:apply-templates select="e:fst" />&#160;↦&#160;<xsl:apply-templates select="e:snd" /></xsl:template>
-  <xsl:template match="e:union"><xsl:apply-templates select="e:fst" />&#160;∪&#160;<xsl:apply-templates select="e:snd" /></xsl:template>
-  <xsl:template match="e:intersection"><xsl:apply-templates select="e:fst" />&#160;∩&#160;<xsl:apply-templates select="e:snd" /></xsl:template>
+  <xsl:template match="e:setminus"><xsl:call-template name="opNoSpaces"><xsl:with-param name="sym">∖</xsl:with-param></xsl:call-template></xsl:template>
+  <xsl:template match="e:notin"><xsl:call-template name="op"><xsl:with-param name="sym">∉</xsl:with-param></xsl:call-template></xsl:template>
+  <xsl:template match="e:in"><xsl:call-template name="op"><xsl:with-param name="sym">∈</xsl:with-param></xsl:call-template></xsl:template>
+  <xsl:template match="e:subset"><xsl:call-template name="op"><xsl:with-param name="sym">⊆</xsl:with-param></xsl:call-template></xsl:template>
+  <xsl:template match="e:notsubset"><xsl:call-template name="op"><xsl:with-param name="sym">⊈</xsl:with-param></xsl:call-template></xsl:template>
+  <xsl:template match="e:union"><xsl:call-template name="op"><xsl:with-param name="sym">∪</xsl:with-param></xsl:call-template></xsl:template>
+  <xsl:template match="e:intersection"><xsl:call-template name="op"><xsl:with-param name="sym">∩</xsl:with-param></xsl:call-template></xsl:template>
 
-  <xsl:template match="e:and"><xsl:apply-templates select="e:fst" />&#160;∧&#160;<xsl:apply-templates select="e:snd" /></xsl:template>
-  <xsl:template match="e:or"><xsl:apply-templates select="e:fst" />&#160;∨&#160;<xsl:apply-templates select="e:snd" /></xsl:template>
+  <xsl:template match="e:sep"><xsl:call-template name="op"><xsl:with-param name="sym">∗</xsl:with-param></xsl:call-template></xsl:template>
+  <xsl:template match="e:fcell"><xsl:call-template name="op"><xsl:with-param name="sym">↦</xsl:with-param></xsl:call-template></xsl:template>
 
-  <xsl:template match="e:eq"><xsl:apply-templates select="e:fst" />&#160;=&#160;<xsl:apply-templates select="e:snd" /></xsl:template>
-  <xsl:template match="e:noteq"><xsl:apply-templates select="e:fst" />&#160;≠&#160;<xsl:apply-templates select="e:snd" /></xsl:template>
-  <xsl:template match="e:lt"><xsl:apply-templates select="e:fst" />&#160;&lt;&#160;<xsl:apply-templates select="e:snd" /></xsl:template>
-  <xsl:template match="e:leq"><xsl:apply-templates select="e:fst" />&#160;≤&#160;<xsl:apply-templates select="e:snd" /></xsl:template>
-  <xsl:template match="e:gt"><xsl:apply-templates select="e:fst" />&#160;&gt;&#160;<xsl:apply-templates select="e:snd" /></xsl:template>
-  <xsl:template match="e:geq"><xsl:apply-templates select="e:fst" />&#160;≥&#160;<xsl:apply-templates select="e:snd" /></xsl:template>
+
+  <xsl:template match="e:and"><xsl:call-template name="op"><xsl:with-param name="sym">∧</xsl:with-param></xsl:call-template></xsl:template>
+  <xsl:template match="e:or"><xsl:call-template name="op"><xsl:with-param name="sym">∨</xsl:with-param></xsl:call-template></xsl:template>
+  <xsl:template match="e:eq"><xsl:call-template name="op"><xsl:with-param name="sym">=</xsl:with-param></xsl:call-template></xsl:template>
+  <xsl:template match="e:noteq"><xsl:call-template name="op"><xsl:with-param name="sym">≠</xsl:with-param></xsl:call-template></xsl:template>
+  <xsl:template match="e:lt"><xsl:call-template name="op"><xsl:with-param name="sym">&lt;</xsl:with-param></xsl:call-template></xsl:template>
+  <xsl:template match="e:leq"><xsl:call-template name="op"><xsl:with-param name="sym">≤</xsl:with-param></xsl:call-template></xsl:template>
+  <xsl:template match="e:gt"><xsl:call-template name="op"><xsl:with-param name="sym">&gt;</xsl:with-param></xsl:call-template></xsl:template>
+  <xsl:template match="e:geq"><xsl:call-template name="op"><xsl:with-param name="sym">≥</xsl:with-param></xsl:call-template></xsl:template>
+  <xsl:template match="e:impl"><xsl:call-template name="op"><xsl:with-param name="sym">→</xsl:with-param></xsl:call-template></xsl:template>
+  <xsl:template match="e:doubleimpl"><xsl:call-template name="op"><xsl:with-param name="sym">↔</xsl:with-param></xsl:call-template></xsl:template>
 
   <xsl:template match="e:forall">∀<xsl:apply-templates select="e:fst" />.&#160;<xsl:apply-templates select="e:snd" /></xsl:template>
   <xsl:template match="e:exists">∃<xsl:apply-templates select="e:fst" />.&#160;<xsl:apply-templates select="e:snd" /></xsl:template>
 
-  <xsl:template match="e:impl"><xsl:apply-templates select="e:fst" />&#160;→&#160;<xsl:apply-templates select="e:snd" /></xsl:template>
-  <xsl:template match="e:doubleimpl"><xsl:apply-templates select="e:fst" />&#160;↔&#160;<xsl:apply-templates select="e:snd" /></xsl:template>
-
-  <xsl:template match="e:logimpl"><xsl:apply-templates select="e:fst" />&#160;⇒&#160;<xsl:apply-templates select="e:snd" /></xsl:template>
+  <xsl:template match="e:logimpl"><xsl:call-template name="op"><xsl:with-param name="sym">⇒</xsl:with-param></xsl:call-template></xsl:template>
 
   <xsl:template match="e:fst"><xsl:apply-templates select="@*|node()" /></xsl:template>
   <xsl:template match="e:snd"><xsl:apply-templates select="@*|node()" /></xsl:template>
@@ -124,10 +112,10 @@
     </span>
   </xsl:template>
 
-  <xsl:template match="e:pre|e:post|e:cond"><span class="cond math"><xsl:apply-templates /></span></xsl:template>
+  <xsl:template match="e:pre|e:post|e:cond"><div class="cond"><xsl:apply-templates /></div></xsl:template>
   <xsl:template match="e:set">{<xsl:apply-templates select="@*|node()" />}</xsl:template>
   <xsl:template match="e:setb"><span class="set math"><xsl:apply-templates select="e:fst" />&#160;:&#160;<xsl:apply-templates select="e:snd" /></span></xsl:template>
-  <xsl:template match="e:command"><span class="command code"><xsl:apply-templates /></span></xsl:template>
+  <xsl:template match="e:command"><pre class="prettyprint"><xsl:apply-templates /></pre></xsl:template>
 
   <xsl:template match="e:li">
     <li>
@@ -145,6 +133,7 @@
   </xsl:template>
 
   <xsl:template match="e:pred"><span class="pred_name"><xsl:value-of select="@name" /></span>(<xsl:apply-templates />)</xsl:template>
+  <xsl:template match="e:func"><span class="func_name"><xsl:value-of select="@n" /></span>(<xsl:apply-templates />)</xsl:template>
   <xsl:template match="e:predicate"><span class="pred_name"><xsl:apply-templates /></span></xsl:template>
 
   <!-- This should only emphasize on first use -->
@@ -157,7 +146,7 @@
   </xsl:template>
   <xsl:template match="e:step">
     <tr>
-      <td><xsl:number />.</td>
+      <td><span class="step"><xsl:number /></span>.</td>
       <td>
 	<xsl:attribute name="class"><xsl:value-of select="@indent" /></xsl:attribute>
 	<xsl:apply-templates select="e:derive"/>
@@ -167,8 +156,94 @@
   </xsl:template>
   <xsl:template match="e:derive"><xsl:apply-templates select="@*|node()" /></xsl:template>
   <xsl:template match="e:by"><td><xsl:apply-templates select="@*|node()" /></td></xsl:template>
-  <xsl:template match="e:from"><xsl:value-of select="@name"/></xsl:template> <!-- ancestor::e:derivation/child::e:step[name=@name] -->
 
+  <xsl:template match="e:from[@name]"><!-- http://stackoverflow.com/questions/7351574/xslt-find-number-of-given-node -->
+    <span class="step">
+      <xsl:variable name="vReferred" select="ancestor::e:derivation[1]/e:step[@name = current()/@name]"/>
+      <xsl:for-each select="$vReferred"><xsl:number count="e:step" /></xsl:for-each>
+    </span>
+  </xsl:template>
+
+  <xsl:template match="e:listing">
+    <figure class="listing">
+      <figcaption>
+        <span class="figure_number">Listing <xsl:number count="e:listing" level="multiple"/>.</span><br />
+	<xsl:apply-templates select="e:caption"/>
+      </figcaption>
+      <xsl:apply-templates select="e:contents"/>
+    </figure>
+  </xsl:template>
+
+ <xsl:template match="e:diagram">
+    <figure class="diagram">
+      <figcaption>
+        <span class="figure_number">Diagram <xsl:number count="e:diagram" level="any"/>.</span><br />
+	<xsl:apply-templates select="e:caption"/>
+      </figcaption>
+      <xsl:apply-templates select="e:contents"/>
+    </figure>
+  </xsl:template>
+
+ <xsl:template match="e:definition">
+    <figure class="definition">
+      <figcaption><span class="figure_number">Definition <xsl:number count="e:definition" level="any"/>.</span></figcaption>
+      <div><xsl:apply-templates /></div>
+    </figure>
+  </xsl:template>
+
+ <xsl:template match="e:lemma">
+    <figure class="lemma">
+      <figcaption>
+        <span class="figure_number">Lemma <xsl:number count="e:lemma" level="any"/>.</span><br />
+	<xsl:apply-templates select="e:caption"/>
+      </figcaption>
+      <xsl:apply-templates select="e:contents"/>
+    </figure>
+  </xsl:template>
+
+  <xsl:template match="e:specification">
+    <figure class="specification">
+      <figcaption>
+        <span class="figure_number">Specification <xsl:number count="e:specification" level="any"/>.</span><br />
+	<xsl:apply-templates select="e:caption"/>
+      </figcaption>
+      <div><xsl:apply-templates select="e:contents"/></div>
+    </figure>
+  </xsl:template>
+
+  <xsl:template match="e:annotation">
+    <figure class="annotation">
+      <figcaption>
+        <span class="figure_number">Annotation <xsl:number count="e:annotation" level="any"/>.</span><br />
+	<xsl:apply-templates select="e:caption"/>
+      </figcaption>
+      <div><xsl:apply-templates select="e:contents"/></div>
+    </figure>
+  </xsl:template>
+
+  <xsl:template match="e:h">
+    <xsl:variable name="depth" select="count(ancestor::*[name()='section'])"/>
+    <xsl:choose>
+      <xsl:when test="$depth=1">
+	<h1><xsl:apply-templates/></h1>
+      </xsl:when>
+      <xsl:when test="$depth=2">
+	<h2><xsl:apply-templates/></h2>
+      </xsl:when>
+      <xsl:when test="$depth=3">
+	<h3><xsl:apply-templates/></h3>
+      </xsl:when>
+      <xsl:when test="$depth=4">
+	<h4><xsl:apply-templates/></h4>
+      </xsl:when>
+      <xsl:when test="$depth=5">
+	<h5><xsl:apply-templates/></h5>
+      </xsl:when>
+      <xsl:otherwise>
+	<h6><xsl:apply-templates/></h6>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
 
   <!-- passthrough -->
   <xsl:template match="@*|node()">

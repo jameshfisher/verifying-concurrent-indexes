@@ -63,7 +63,7 @@ h4 {
 .st { font-style: normal; font-weight: bold; color: brown; }
 .pred_name, .keysof { font-family: "Arial"; font-size: 0.8em; color: green; }
 
-.cond:before, .command:before, .set:before {
+.cond:before, .set:before {
     content: "{";
     font-style: normal;
     font-family: "Minion Pro";
@@ -71,16 +71,12 @@ h4 {
     margin: 0 0.2em;
 }
 
-.cond:after, .command:after, .set:after {
+.cond:after, .set:after {
     content: "}";
     font-style: normal;
     font-family: "Minion Pro";
     font-size: 1em;
     margin: 0 0.2em;
-}
-
-.cond {
-    color: blue;
 }
 
 sub {
@@ -101,3 +97,29 @@ div.display, div.displaymath, table.displaymath {
 }
 
 div.indent { padding-left: 2em; }
+
+
+
+figure {
+  margin: 1em 0;
+}
+
+figure figcaption {
+    float: left;
+    width: 10em;
+    margin-left: -12em;
+    margin-right: 2em;
+    font-size: 0.8em;
+}
+
+figure figcaption span.figure_number { font-weight: bold; }
+
+figure.definition > div {
+  padding-left: 1em;
+}
+
+figure.annotation > div {
+  margin-left: -1em;
+  padding-left: 1em;
+  border-left: 1px solid black;
+}

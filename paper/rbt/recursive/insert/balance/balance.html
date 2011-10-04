@@ -1,0 +1,65 @@
+<section xmlns="http://www.w3.org/1999/xhtml"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xmlns:e="http://eegg.github.com/htmlx"
+	 xmlns:m="http://eegg.github.com/macro">
+
+  <h5>The <code>insert_bal</code> helper procedure</h5>
+
+  <p>
+    The <code>insert_bal</code> procedure is used by <code>insert_aux</code>
+    to perform any necessary recoloring or rotations.
+    It takes a tree that may have an <e:predicate>RVT</e:predicate>
+    as one, specified, subtree,
+    and transforms the tree to return
+    either an <e:predicate>RVT</e:predicate> or an <e:predicate>RBT</e:predicate>.
+    More precisely, if the root of the tree passed to it is red,
+    it will return either an <e:predicate>RVT</e:predicate> or an <e:predicate>RBT</e:predicate>;
+    if the root of the tree is black, it will return an <e:predicate>RBT</e:predicate>.
+  </p>
+
+  <p>
+    The procedure works as follows.
+    First, it checks the color of the root of the specified subtree.
+    If the subtree is a <e:predicate>BT</e:predicate>, then the whole tree is either
+    a <e:predicate>RT</e:predicate> or <e:predicate>BT</e:predicate> depending on the root color.
+    The tree is then an <e:predicate>RBT</e:predicate>, and we're done.
+  </p>
+
+  <p>
+    If the subtree was red-rooted,
+    it is either an <e:predicate>RT</e:predicate> or <e:predicate>RVT</e:predicate>.
+    We check both sub-subtrees to determine which it is.
+    If both sub-subtrees are black, then the subtree itself is an <e:predicate>RT</e:predicate>.
+    Depending on the color of the root,
+    the entire tree is either an <e:predicate>RVT</e:predicate> or a <e:predicate>NBT</e:predicate>,
+    which satisfies the postcondition, and we pass up the tree.
+  </p>
+
+  <p>
+    Otherwise, one sub-subtree is an <e:predicate>RT</e:predicate>,
+    making the subtree an <e:predicate>RVT</e:predicate>.
+    This must be fixed by recoloring or rotation.
+    Recoloring is <q>cheaper</q>, so we try that first:
+    if the <em>other</em> subtree is red-rooted,
+    then we blacken both subtrees and color the root red,
+    creating an <e:predicate>RT</e:predicate>.
+  </p>
+
+  <p>
+    If the other subtree is black-rooted, we must rotate.
+    At this point, we have four black-rooted sub-subtrees at some height <e:var n="h"/>,
+    and three <code>Node</code>s <q>on top</q> of these.
+    With either a single or double rotation
+    (as shown in the diagram to follow),
+    we form a new <e:predicate>BT</e:predicate> at height <e:plus><e:var n="h"/><e:const n="1"/></e:plus>,
+    and return that.
+  </p>
+
+  <p>
+    <xi:include href="./balance.svg" />
+  </p>
+
+  <p>
+    <xi:include href="../../../../../code/d/html/rb/insert/balance.d.html" />
+  </p>
+</section>

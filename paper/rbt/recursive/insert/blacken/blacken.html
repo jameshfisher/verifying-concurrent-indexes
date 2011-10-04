@@ -1,0 +1,23 @@
+<section xmlns="http://www.w3.org/1999/xhtml"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xmlns:e="http://eegg.github.com/htmlx"
+	 xmlns:m="http://eegg.github.com/macro">
+
+  <h5><code>blacken</code>ing the root</h5>
+
+  <p>
+    The <code>blacken</code> function is the last operation to be performed on the tree after an insertion.
+    When <code>insert_aux</code> returns an <e:predicate>RVT</e:predicate> in mid-operation,
+    it has to perform recolorings or rotations to transform the tree
+    into an <e:predicate>RBT</e:predicate> or <e:predicate>RVT</e:predicate>
+    at the same height.
+    However, at the root we don't care about maintaining the height,
+    which enables an easier solution: coloring the root of an <e:predicate>RVT</e:predicate> black
+    turns it into a valid <e:predicate>NBT</e:predicate> at one greater black-height.
+    We do not need to check whether the returned tree <em>is</em> an <e:predicate>RVT</e:predicate>,
+    because blackening the root of an <e:predicate>RT</e:predicate> or <e:predicate>BT</e:predicate>
+    also gives us a valid <e:predicate>NBT</e:predicate>.
+
+    <xi:include href="../../../../../code/d/html/rb/blacken.d.html" />
+  </p>
+</section>

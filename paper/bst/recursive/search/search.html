@@ -5,6 +5,27 @@
 
   <h4>Recursive <code>search</code></h4>
 
+  <p>
+    The purpose of the <code>search</code> algorithm is identical
+    to that in the <m:ll/>, and its specification has an identical structure:
+
+    <div class="display">
+      <e:triple>
+	<e:pre><e:pred name="Tree"><code>root</code>, <e:st n="S"/></e:pred></e:pre>
+	<e:command><code>o = search(root, value);</code></e:command>
+	<e:post>
+	  <e:and>
+	    <e:pred name="Tree"><code>o</code>, <e:st n="S"/></e:pred>
+	    <e:doubleimpl>
+		<e:fst>o</e:fst>
+		<e:snd><e:in><e:fst><code>value</code></e:fst><e:snd><e:st n="S"/></e:snd></e:in></e:snd>
+	    </e:doubleimpl>
+	  </e:and>
+	</e:post>
+      </e:triple>
+    </div>
+  </p>
+
   <div class="display">
     <xi:include href="./search.svg" />
   </div>

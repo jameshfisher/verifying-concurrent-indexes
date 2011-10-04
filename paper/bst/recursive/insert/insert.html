@@ -5,6 +5,23 @@
 
   <h4>Recursive <code>insert</code></h4>
 
+  <p>
+    The specification for <code>insert</code> follows the same structure as for the <m:ll/>:
+
+    <div class="display">
+      <e:triple>
+	<e:pre><e:pred name="Tree"><code>root</code>, <e:st n="S"/></e:pred></e:pre>
+	<e:command><code>o = insert(root, value);</code></e:command>
+	<e:post><e:pred name="NonEmptyTree"><code>o</code>,
+	    <e:union>
+	      <e:fst><e:st n="S"/></e:fst>
+	      <e:snd><e:set><code>value</code></e:set></e:snd>
+	    </e:union>
+	</e:pred></e:post>
+      </e:triple>
+    </div>
+  </p>
+
   <div class="display">
     <xi:include href="./insert.svg" />
   </div>

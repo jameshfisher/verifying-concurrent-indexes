@@ -1,0 +1,50 @@
+<section class='generated_listing' xmlns='http://www.w3.org/1999/xhtml' xmlns:xi='http://www.w3.org/2001/XInclude' xmlns:e='http://eegg.github.com/htmlx' xmlns:m='http://eegg.github.com/macro'><e:displaycode>module rb.insert.insert_aux;
+
+import rb.node;
+import rb.insert.balance;
+
+Node* insert_aux(Node* root, int value) {
+  Node* o;&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'><e:or>
+  <e:fst>(<e:and>
+    <e:fst><e:pred name="BT"><code>root</code>, <e:st n="S"/>, <e:var n="h"/></e:pred></e:fst>
+    <e:snd>sentinel</e:snd>
+  </e:and>)</e:fst>
+  <e:snd>(<e:and>
+    <e:fst><e:pred name="RT"><code>root</code>, <e:st n="S"/>, <e:var n="h"/></e:pred></e:fst>
+    <e:snd>¬sentinel</e:snd>
+  </e:and>)</e:snd>
+</e:or></div></div>
+<e:displaycode>
+  if (root == null) {
+    o = new Node(value);
+  }
+  else {
+    if (root.value == value) {
+      o = root;
+    }
+    else {
+      int dir = root.value &lt; value;
+      root.c[dir] = insert_aux(root.c[dir], value);
+      o =  balance(root, dir);
+    }
+  }&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'><e:or>
+  <e:fst>(<e:and>
+    <e:fst>(<e:or>
+      <e:fst><e:pred name="BT"><code>root</code>, <e:union><e:fst><e:st n="S"/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:union>, <e:var n="h"/></e:pred></e:fst>
+      <e:snd><e:pred name="RT"><code>root</code>, <e:union><e:fst><e:st n="S"/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:union>, <e:var n="h"/></e:pred></e:snd>
+    </e:or>)</e:fst>
+    <e:snd>sentinel</e:snd>
+  </e:and>)</e:fst>
+  <e:snd><br/>(<e:and>
+    <e:fst>(<e:or>
+      <e:fst><e:pred name="RT"><code>root</code>, <e:union><e:fst><e:st n="S"/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:union>, <e:var n="h"/></e:pred></e:fst>
+      <e:snd><e:pred name="RVT"><code>root</code>, <e:union><e:fst><e:st n="S"/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:union>, <e:var n="h"/></e:pred></e:snd>
+    </e:or>)</e:fst>
+    <e:snd>¬sentinel</e:snd>
+  </e:and>)</e:snd>
+</e:or></div></div>
+<e:displaycode>
+  return o;
+}&#160;</e:displaycode></section>
