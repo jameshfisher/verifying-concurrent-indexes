@@ -96,7 +96,7 @@ Node* descend(Node* root, in int value) {
   ///	        <e:snd><e:pred name="Tree"><e:var n="r"/>, <e:st n="R"/></e:pred></e:snd>
   ///         </e:sep></e:snd>
   ///       </e:sep> ∧<br />
-  ///       <e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
+  ///       <e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
   ///     </e:fst>
   ///     <e:snd><br /><e:indent><e:or>
   ///       <e:fst>(<e:and>
@@ -139,7 +139,7 @@ Node* descend(Node* root, in int value) {
   ///	        <e:snd><e:pred name="Tree"><e:var n="r"/>, <e:st n="R"/></e:pred></e:snd>
   ///         </e:sep></e:snd>
   ///       </e:sep> ∧<br />
-  ///       <e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
+  ///       <e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
   ///     </e:fst>
   ///     <e:snd><br /><e:indent><e:or>
   ///       <e:fst>(<e:and>
@@ -181,7 +181,7 @@ Node* descend(Node* root, in int value) {
   ///	        <e:snd><e:pred name="Tree"><e:var n="r"/>, <e:st n="R"/></e:pred></e:snd>
   ///         </e:sep></e:snd>
   ///       </e:sep> ∧<br />
-  ///       <e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
+  ///       <e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
   ///     </e:fst>
   ///     <e:snd><br /><e:indent><e:or>
   ///       <e:fst>(<e:and>
@@ -204,7 +204,7 @@ Node* descend(Node* root, in int value) {
 
   // Lemma: <e:logimpl>
   //   <e:fst><e:and>
-  //     <e:fst><e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred></e:fst>
+  //     <e:fst><e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred></e:fst>
   //     <e:snd><e:lt><e:fst><e:var n="v"/></e:fst><e:snd><code>value</code></e:snd></e:lt></e:snd>
   //   </e:and></e:fst>
   //   <e:snd><e:doubleimpl>
@@ -214,7 +214,7 @@ Node* descend(Node* root, in int value) {
   // </e:logimpl>.<br />
   // Lemma: <e:logimpl>
   //   <e:fst><e:and>
-  //     <e:fst><e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred></e:fst>
+  //     <e:fst><e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred></e:fst>
   //     <e:snd><e:lt><e:fst><code>value</code></e:fst><e:snd><e:var n="v"/></e:snd></e:lt></e:snd>
   //   </e:and></e:fst>
   //   <e:snd><e:doubleimpl>
@@ -236,7 +236,7 @@ Node* descend(Node* root, in int value) {
   ///	        <e:snd><e:pred name="Tree"><e:var n="r"/>, <e:st n="R"/></e:pred></e:snd>
   ///         </e:sep></e:snd>
   ///       </e:sep> ∧<br />
-  ///       <e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
+  ///       <e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
   ///     </e:fst>
   ///     <e:snd><br /><e:indent><e:or>
   ///       <e:fst>(<e:and>
@@ -272,7 +272,7 @@ Node* descend(Node* root, in int value) {
   ///	        <e:snd><e:pred name="Tree"><e:var n="r"/>, <e:st n="R"/></e:pred></e:snd>
   ///         </e:sep></e:snd>
   ///       </e:sep> ∧<br />
-  ///       <e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
+  ///       <e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
   ///     </e:fst>
   ///     <e:snd><br /><e:indent><e:or>
   ///       <e:fst><e:exists><e:fst><e:st n="Q"/></e:fst><e:snd>(<e:and>

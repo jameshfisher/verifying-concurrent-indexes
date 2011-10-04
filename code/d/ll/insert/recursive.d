@@ -106,7 +106,7 @@ Node* insert(Node* head, int value) {
     // Open <e:pred name="NonEmptyList"><code>head</code>, <e:st n="S"/></e:pred>.
     /// ∃<e:var n="v"/>, <e:var n="tail"/>, <e:st n="T"/>.<br />
     /// <e:indent>
-    ///   <e:pred name="Compose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
+    ///   <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
     ///   <e:sep>
     ///     <e:fst><e:fcell>
     ///       <e:fst><code>head</code></e:fst>
@@ -120,7 +120,7 @@ Node* insert(Node* head, int value) {
       // Assert if-condition: substitute <code>value</code> for <e:var n="v"/>.
       /// ∃<e:var n="tail"/>, <e:st n="T"/>.<br />
       /// <e:indent>
-      ///   <e:pred name="Compose"><code>value</code>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
+      ///   <e:pred name="ListCompose"><code>value</code>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
       ///   <e:sep>
       ///     <e:fst><e:fcell>
       ///       <e:fst><code>head</code></e:fst>
@@ -131,7 +131,7 @@ Node* insert(Node* head, int value) {
       /// </e:indent>
 
       // <e:logimpl>
-      //   <e:fst><e:pred name="Compose"><code>value</code>, <e:st n="T"/>, <e:st n="S"/></e:pred></e:fst>
+      //   <e:fst><e:pred name="ListCompose"><code>value</code>, <e:st n="T"/>, <e:st n="S"/></e:pred></e:fst>
       //   <e:snd><e:in>
       //     <e:fst><code>value</code></e:fst>
       //     <e:snd><e:st n="S"/></e:snd>
@@ -139,7 +139,7 @@ Node* insert(Node* head, int value) {
       // </e:logimpl>.
       /// ∃<e:var n="tail"/>, <e:st n="T"/>.<br />
       /// <e:indent>
-      ///   <e:pred name="Compose"><code>value</code>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
+      ///   <e:pred name="ListCompose"><code>value</code>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
       ///   <e:sep>
       ///     <e:fst><e:fcell>
       ///       <e:fst><code>head</code></e:fst>
@@ -234,7 +234,7 @@ Node* insert(Node* head, int value) {
       // Deny if-condition.
       /// ∃<e:var n="v"/>, <e:var n="tail"/>, <e:st n="T"/>.<br />
       /// <e:indent>
-      ///   <e:pred name="Compose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
+      ///   <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
       ///   <e:sep>
       ///     <e:fst><e:fcell>
       ///       <e:fst><code>head</code></e:fst>
@@ -252,7 +252,7 @@ Node* insert(Node* head, int value) {
         // Assert if-condition.
         /// ∃<e:var n="v"/>, <e:var n="tail"/>, <e:st n="T"/>.<br />
         /// <e:indent>
-        ///   <e:pred name="Compose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
+        ///   <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
         ///   <e:sep>
         ///     <e:fst><e:fcell>
         ///       <e:fst><code>head</code></e:fst>
@@ -270,7 +270,7 @@ Node* insert(Node* head, int value) {
         // Use specification for <code>insert</code>.
         /// ∃<e:var n="v"/>, <e:var n="tail"/>, <e:st n="T"/>.<br />
         /// <e:indent>
-        ///   <e:pred name="Compose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
+        ///   <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
         ///   <e:sep>
         ///     <e:fst><e:fcell>
         ///       <e:fst><code>head</code></e:fst>
@@ -288,7 +288,7 @@ Node* insert(Node* head, int value) {
         // Assignment.  Reintroduce existential quantification.
         /// ∃<e:var n="v"/>, <e:var n="tail"/>, <e:st n="T"/>.<br />
         /// <e:indent>
-        ///   <e:pred name="Compose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
+        ///   <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
         ///   <e:sep>
         ///     <e:fst><e:fcell>
         ///       <e:fst><code>head</code></e:fst>
@@ -304,10 +304,10 @@ Node* insert(Node* head, int value) {
 
         // Lemma: <e:logimpl>
         //   <e:fst><e:and>
-        //     <e:fst><e:pred name="Compose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred></e:fst>
+        //     <e:fst><e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred></e:fst>
         //     <e:snd><e:lt><e:fst><e:var n="v"/></e:fst><e:snd><code>value</code></e:snd></e:lt></e:snd>
         //   </e:and></e:fst>
-        //   <e:snd><e:pred name="Compose">
+        //   <e:snd><e:pred name="ListCompose">
         //     <e:var n="v"/>,
         //     <e:union><e:fst><e:st n="T"/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:union>,
         //     <e:union><e:fst><e:st n="S"/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:union>
@@ -315,7 +315,7 @@ Node* insert(Node* head, int value) {
         // </e:logimpl>
         /// ∃<e:var n="v"/>, <e:var n="tail"/>, <e:st n="T"/>.<br />
         /// <e:indent>
-        ///   <e:pred name="Compose"><e:var n="v"/>, <e:union><e:fst><e:st n="T"/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:union>, <e:union><e:fst><e:st n="S"/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:union></e:pred> ∧<br />
+        ///   <e:pred name="ListCompose"><e:var n="v"/>, <e:union><e:fst><e:st n="T"/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:union>, <e:union><e:fst><e:st n="S"/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:union></e:pred> ∧<br />
         ///   <e:sep>
         ///     <e:fst><e:fcell>
         ///       <e:fst><code>head</code></e:fst>
@@ -328,7 +328,7 @@ Node* insert(Node* head, int value) {
         // Introduce existential quantification on <e:union><e:fst><e:st n="T"/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:union>.
         /// ∃<e:var n="v"/>, <e:var n="tail"/>, <e:st n="T"/>.<br />
         /// <e:indent>
-        ///   <e:pred name="Compose"><e:var n="v"/>, <e:st n="T"/>, <e:union><e:fst><e:st n="S"/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:union></e:pred> ∧<br />
+        ///   <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:union><e:fst><e:st n="S"/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:union></e:pred> ∧<br />
         ///   <e:sep>
         ///     <e:fst><e:fcell>
         ///       <e:fst><code>head</code></e:fst>
@@ -377,7 +377,7 @@ Node* insert(Node* head, int value) {
         // </e:logimpl>.
         /// ∃<e:var n="v"/>, <e:var n="tail"/>, <e:st n="T"/>.<br />
         /// <e:indent>
-        ///   <e:pred name="Compose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
+        ///   <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
         ///   <e:sep>
         ///     <e:fst><e:fcell>
         ///       <e:fst><code>head</code></e:fst>
@@ -415,7 +415,7 @@ Node* insert(Node* head, int value) {
         //  </e:logimpl>.
         /// ∃<e:var n="v"/>, <e:var n="tail"/>, <e:st n="T"/>.<br />
         /// <e:indent>
-        ///   <e:pred name="Compose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
+        ///   <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
         ///   <e:sep>
         ///     <e:fst><e:fcell>
         ///       <e:fst><code>head</code></e:fst>
@@ -433,7 +433,7 @@ Node* insert(Node* head, int value) {
         // Specification for <code>new Node(value, head)</code>.
         /// ∃<e:var n="v"/>, <e:var n="tail"/>, <e:st n="T"/>.<br />
         /// <e:indent>
-        ///   <e:pred name="Compose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
+        ///   <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
         ///   <e:sep>
         ///     <e:fst><e:fcell>
         ///       <e:fst><code>nhead</code></e:fst>
@@ -455,7 +455,7 @@ Node* insert(Node* head, int value) {
 
         // Close <e:pred name="NonEmptyList"><code>head</code>, <e:st n="S"/></e:pred>.
         /// <e:and>
-        ///   <e:fst><e:pred name="Compose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred></e:fst>
+        ///   <e:fst><e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred></e:fst>
         ///   <e:snd><e:lt><e:fst><code>value</code></e:fst><e:snd><e:var n="v"/></e:snd></e:lt></e:snd>
         /// </e:and> ∧<br />
         /// <e:sep>
@@ -468,12 +468,12 @@ Node* insert(Node* head, int value) {
 
         // Lemma: <e:logimpl>
         //  <e:fst><e:and>
-        //    <e:fst><e:pred name="Compose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred></e:fst>
+        //    <e:fst><e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred></e:fst>
         //    <e:snd><e:lt><e:fst><code>value</code></e:fst><e:snd><e:var n="v"/></e:snd></e:lt></e:snd>
         //  </e:and></e:fst>
-        //  <e:snd><e:pred name="Compose"><code>value</code>, <e:st n="S"/>, <e:union><e:fst><e:st n="S"/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:union></e:pred></e:snd>
+        //  <e:snd><e:pred name="ListCompose"><code>value</code>, <e:st n="S"/>, <e:union><e:fst><e:st n="S"/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:union></e:pred></e:snd>
         // </e:logimpl>
-        /// <e:pred name="Compose"><code>value</code>, <e:st n="S"/>, <e:union><e:fst><e:st n="S"/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:union></e:pred> ∧<br />
+        /// <e:pred name="ListCompose"><code>value</code>, <e:st n="S"/>, <e:union><e:fst><e:st n="S"/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:union></e:pred> ∧<br />
         /// <e:sep>
         ///   <e:fst><e:fcell>
         ///     <e:fst><code>nhead</code></e:fst>
@@ -486,7 +486,7 @@ Node* insert(Node* head, int value) {
         //   <e:fst><e:pred name="NonEmptyList"><code>head</code>, <e:st n="S"/></e:pred></e:fst>
         //   <e:snd><e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred></e:snd>
         // </e:logimpl>.
-        /// <e:pred name="Compose"><code>value</code>, <e:st n="S"/>, <e:union><e:fst><e:st n="S"/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:union></e:pred> ∧<br />
+        /// <e:pred name="ListCompose"><code>value</code>, <e:st n="S"/>, <e:union><e:fst><e:st n="S"/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:union></e:pred> ∧<br />
         /// <e:sep>
         ///   <e:fst><e:fcell>
         ///     <e:fst><code>nhead</code></e:fst>
@@ -498,7 +498,7 @@ Node* insert(Node* head, int value) {
         // <m:existsIntro/> on <e:st n="S"/> as <e:st n="T"/>, <code>head</code> as <e:var n="tail"/>, and <code>value</code> as <e:var n="v"/>.
         /// ∃<e:var n="v"/>, <e:var n="tail"/>, <e:st n="T"/>.<br />
         /// <e:indent>
-        ///   <e:pred name="Compose"><e:var n="v"/>, <e:st n="T"/>, <e:union><e:fst><e:st n="S"/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:union></e:pred> ∧<br />
+        ///   <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:union><e:fst><e:st n="S"/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:union></e:pred> ∧<br />
         ///   <e:sep>
         ///     <e:fst><e:fcell>
         ///       <e:fst><code>nhead</code></e:fst>

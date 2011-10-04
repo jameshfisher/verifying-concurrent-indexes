@@ -34,7 +34,7 @@ RemoveMaxRet removeMax(Node* root) {
   ///             <e:snd><e:pred name="Tree"><e:var n="r"/>, <e:st n="R"/></e:pred></e:snd>
   ///       </e:sep></e:snd>
   ///     </e:sep> ∧<br />
-  ///     <e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
+  ///     <e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
   ///   </e:indent></e:snd>
   /// </e:exists>
 
@@ -53,7 +53,7 @@ RemoveMaxRet removeMax(Node* root) {
   ///             <e:snd><e:pred name="Tree"><code>r</code>, <e:st n="R"/></e:pred></e:snd>
   ///       </e:sep></e:snd>
   ///     </e:sep> ∧<br />
-  ///     <e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
+  ///     <e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
   ///   </e:indent></e:snd>
   /// </e:exists>
 
@@ -72,7 +72,7 @@ RemoveMaxRet removeMax(Node* root) {
     ///             <e:snd><e:pred name="Tree"><code>null</code>, <e:st n="R"/></e:pred></e:snd>
     ///       </e:sep></e:snd>
     ///     </e:sep> ∧<br />
-    ///     <e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
+    ///     <e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
     ///   </e:indent></e:snd>
     /// </e:exists>
 
@@ -93,7 +93,7 @@ RemoveMaxRet removeMax(Node* root) {
     ///             <e:snd><e:pred name="EmptyTree"><code>null</code>, <e:st n="R"/></e:pred></e:snd>
     ///       </e:sep></e:snd>
     ///     </e:sep> ∧<br />
-    ///     <e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
+    ///     <e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
     ///   </e:indent></e:snd>
     /// </e:exists>
 
@@ -114,7 +114,7 @@ RemoveMaxRet removeMax(Node* root) {
     ///             <e:snd><e:pred name="EmptyTree"><code>null</code>, <m:scemp/></e:pred></e:snd>
     ///       </e:sep></e:snd>
     ///     </e:sep> ∧<br />
-    ///     <e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <m:scemp/>, <e:st n="S"/></e:pred>
+    ///     <e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <m:scemp/>, <e:st n="S"/></e:pred>
     ///   </e:indent></e:snd>
     /// </e:exists>
 
@@ -133,7 +133,7 @@ RemoveMaxRet removeMax(Node* root) {
     ///             <e:snd><m:hemp/></e:snd>
     ///       </e:sep></e:snd>
     ///     </e:sep> ∧<br />
-    ///     <e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <m:scemp/>, <e:st n="S"/></e:pred>
+    ///     <e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <m:scemp/>, <e:st n="S"/></e:pred>
     ///   </e:indent></e:snd>
     /// </e:exists>
     
@@ -148,12 +148,12 @@ RemoveMaxRet removeMax(Node* root) {
     ///           </e:fcell></e:fst>
     ///       <e:snd><e:pred name="Tree"><e:var n="l"/>, <e:st n="L"/></e:pred></e:snd>
     ///     </e:sep> ∧<br />
-    ///     <e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <m:scemp/>, <e:st n="S"/></e:pred>
+    ///     <e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <m:scemp/>, <e:st n="S"/></e:pred>
     ///   </e:indent></e:snd>
     /// </e:exists>
 
     // Lemma: <e:logimpl>
-    //   <e:fst><e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <m:scemp/>, <e:st n="S"/></e:pred></e:fst>
+    //   <e:fst><e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <m:scemp/>, <e:st n="S"/></e:pred></e:fst>
     //   <e:snd><e:and>
     //     <e:fst><e:pred name="Max"><e:var n="v"/>, <e:st n="S"/></e:pred></e:fst>
     //     <e:snd><e:eq>
@@ -165,7 +165,7 @@ RemoveMaxRet removeMax(Node* root) {
     //     </e:eq></e:snd>
     //   </e:and></e:snd>
     // </e:logimpl>.<br />
-    // Discard <e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <m:scemp/>, <e:st n="S"/></e:pred>.
+    // Discard <e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <m:scemp/>, <e:st n="S"/></e:pred>.
     /// <e:exists>
     ///   <e:fst><e:var n="v"/>, <e:var n="l"/></e:fst>
     ///   <e:snd><e:indent>
@@ -240,7 +240,7 @@ RemoveMaxRet removeMax(Node* root) {
     ///             <e:snd><e:pred name="Tree"><code>r</code>, <e:st n="R"/></e:pred></e:snd>
     ///       </e:sep></e:snd>
     ///     </e:sep> ∧<br />
-    ///     <e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred> ∧<br />
+    ///     <e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred> ∧<br />
     ///     <e:noteq><e:fst><code>r</code></e:fst><e:snd><code>null</code></e:snd></e:noteq>
     ///   </e:indent></e:snd>
     /// </e:exists>
@@ -266,7 +266,7 @@ RemoveMaxRet removeMax(Node* root) {
     ///             <e:snd><e:pred name="NonEmptyTree"><code>r</code>, <e:st n="R"/></e:pred></e:snd>
     ///       </e:sep></e:snd>
     ///     </e:sep> ∧<br />
-    ///     <e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
+    ///     <e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
     ///   </e:indent></e:snd>
     /// </e:exists>
 
@@ -285,7 +285,7 @@ RemoveMaxRet removeMax(Node* root) {
     ///             <e:snd><e:pred name="Tree"><code>rightRoot</code>, <e:setminus><e:fst><e:st n="R"/></e:fst><e:snd><e:set><code>rightMax</code></e:set></e:snd></e:setminus></e:pred></e:snd>
     ///       </e:sep></e:snd>
     ///     </e:sep> ∧<br />
-    ///     <e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred> ∧
+    ///     <e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred> ∧
     ///     <e:pred name="Max"><code>rightMax</code>, <e:st n="R"/></e:pred>
     ///   </e:indent></e:snd>
     /// </e:exists>
@@ -305,7 +305,7 @@ RemoveMaxRet removeMax(Node* root) {
     ///             <e:snd><e:pred name="Tree"><code>rightRoot</code>, <e:setminus><e:fst><e:st n="R"/></e:fst><e:snd><e:set><code>rightMax</code></e:set></e:snd></e:setminus></e:pred></e:snd>
     ///       </e:sep></e:snd>
     ///     </e:sep> ∧<br />
-    ///     <e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred> ∧
+    ///     <e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred> ∧
     ///     <e:pred name="Max"><code>rightMax</code>, <e:st n="R"/></e:pred>
     ///   </e:indent></e:snd>
     /// </e:exists>
@@ -324,22 +324,22 @@ RemoveMaxRet removeMax(Node* root) {
     ///             <e:snd><e:pred name="Tree"><e:var n="r"/>, <e:setminus><e:fst><e:st n="R"/></e:fst><e:snd><e:set><code>rightMax</code></e:set></e:snd></e:setminus></e:pred></e:snd>
     ///       </e:sep></e:snd>
     ///     </e:sep> ∧<br />
-    ///     <e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred> ∧
+    ///     <e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred> ∧
     ///     <e:pred name="Max"><code>rightMax</code>, <e:st n="R"/></e:pred>
     ///   </e:indent></e:snd>
     /// </e:exists>
 
     // Lemma: <e:logimpl>
     //   <e:fst><e:and>
-    //     <e:fst><e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred></e:fst>
+    //     <e:fst><e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred></e:fst>
     //     <e:snd><e:pred name="Max"><e:var n="r"/>, <e:st n="R"/></e:pred></e:snd>
     //   </e:and></e:fst>
     //   <e:snd><e:and>
-    //     <e:fst><e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:setminus><e:fst><e:st n="R"/></e:fst><e:snd><e:set><e:var n="r"/></e:set></e:snd></e:setminus>, <e:setminus><e:fst><e:st n="S"/></e:fst><e:snd><e:set><e:var n="r"/></e:set></e:snd></e:setminus></e:pred></e:fst>
+    //     <e:fst><e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:setminus><e:fst><e:st n="R"/></e:fst><e:snd><e:set><e:var n="r"/></e:set></e:snd></e:setminus>, <e:setminus><e:fst><e:st n="S"/></e:fst><e:snd><e:set><e:var n="r"/></e:set></e:snd></e:setminus></e:pred></e:fst>
     //     <e:snd><e:pred name="Max"><e:var n="r"/>, <e:st n="S"/></e:pred></e:snd>
     //   </e:and></e:snd>
     // </e:logimpl>.<br />
-    // Discard <e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred> and <e:pred name="Max"><code>rightMax</code>, <e:st n="R"/></e:pred>.
+    // Discard <e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred> and <e:pred name="Max"><code>rightMax</code>, <e:st n="R"/></e:pred>.
     /// <e:exists>
     ///   <e:fst><e:var n="v"/>, <e:var n="l"/>, <e:var n="r"/>, <e:st n="L"/>, <e:st n="R"/></e:fst>
     ///   <e:snd><e:indent>
@@ -353,7 +353,7 @@ RemoveMaxRet removeMax(Node* root) {
     ///             <e:snd><e:pred name="Tree"><e:var n="r"/>, <e:setminus><e:fst><e:st n="R"/></e:fst><e:snd><e:set><code>rightMax</code></e:set></e:snd></e:setminus></e:pred></e:snd>
     ///       </e:sep></e:snd>
     ///     </e:sep> ∧<br />
-    ///     <e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:setminus><e:fst><e:st n="R"/></e:fst><e:snd><e:set><code>rightMax</code></e:set></e:snd></e:setminus>, <e:setminus><e:fst><e:st n="S"/></e:fst><e:snd><e:set><code>rightMax</code></e:set></e:snd></e:setminus></e:pred> ∧
+    ///     <e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:setminus><e:fst><e:st n="R"/></e:fst><e:snd><e:set><code>rightMax</code></e:set></e:snd></e:setminus>, <e:setminus><e:fst><e:st n="S"/></e:fst><e:snd><e:set><code>rightMax</code></e:set></e:snd></e:setminus></e:pred> ∧
     ///     <e:pred name="Max"><code>rightMax</code>, <e:st n="S"/></e:pred>
     ///   </e:indent></e:snd>
     /// </e:exists>
@@ -372,7 +372,7 @@ RemoveMaxRet removeMax(Node* root) {
     ///             <e:snd><e:pred name="Tree"><e:var n="r"/>, <e:st n="R"/></e:pred></e:snd>
     ///       </e:sep></e:snd>
     ///     </e:sep> ∧<br />
-    ///     <e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:setminus><e:fst><e:st n="S"/></e:fst><e:snd><e:set><code>rightMax</code></e:set></e:snd></e:setminus></e:pred> ∧
+    ///     <e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:setminus><e:fst><e:st n="S"/></e:fst><e:snd><e:set><code>rightMax</code></e:set></e:snd></e:setminus></e:pred> ∧
     ///     <e:pred name="Max"><code>rightMax</code>, <e:st n="S"/></e:pred>
     ///   </e:indent></e:snd>
     /// </e:exists>

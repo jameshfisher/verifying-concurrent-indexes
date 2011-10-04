@@ -154,7 +154,7 @@ Node* insert(Node* root, int value) {
       ///             <e:snd><e:pred name="Tree"><e:var n="r"/>, <e:st n="R"/></e:pred></e:snd>
       ///       </e:sep></e:snd>
       ///     </e:sep> ∧<br />
-      ///     <e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred> ∧<br />
+      ///     <e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred> ∧<br />
       ///     <e:noteq>
       ///       <e:fst><e:var n="v"/></e:fst>
       ///       <e:snd><code>value</code></e:snd>
@@ -176,7 +176,7 @@ Node* insert(Node* root, int value) {
         ///           <e:snd><e:pred name="Tree"><e:var n="r"/>, <e:st n="R"/></e:pred></e:snd>
         ///       </e:sep></e:snd>
         ///     </e:sep> ∧<br />
-        ///     <e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred> ∧<br />
+        ///     <e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred> ∧<br />
         ///     <e:lt>
         ///       <e:fst><code>value</code></e:fst>
         ///       <e:snd><e:var n="v"/></e:snd>
@@ -198,7 +198,7 @@ Node* insert(Node* root, int value) {
         ///           <e:snd><e:pred name="Tree"><e:var n="r"/>, <e:st n="R"/></e:pred></e:snd>
         ///       </e:sep></e:snd>
         ///     </e:sep> ∧<br />
-        ///     <e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred> ∧<br />
+        ///     <e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred> ∧<br />
         ///     <e:lt>
         ///       <e:fst><code>value</code></e:fst>
         ///       <e:snd><e:var n="v"/></e:snd>
@@ -220,7 +220,7 @@ Node* insert(Node* root, int value) {
         ///           <e:snd><e:pred name="Tree"><e:var n="r"/>, <e:st n="R"/></e:pred></e:snd>
         ///       </e:sep></e:snd>
         ///     </e:sep> ∧<br />
-        ///     <e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred> ∧<br />
+        ///     <e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred> ∧<br />
         ///     <e:lt>
         ///       <e:fst><code>value</code></e:fst>
         ///       <e:snd><e:var n="v"/></e:snd>
@@ -242,7 +242,7 @@ Node* insert(Node* root, int value) {
         ///           <e:snd><e:pred name="Tree"><e:var n="r"/>, <e:st n="R"/></e:pred></e:snd>
         ///       </e:sep></e:snd>
         ///     </e:sep> ∧<br />
-        ///     <e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred> ∧<br />
+        ///     <e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred> ∧<br />
         ///     <e:lt>
         ///       <e:fst><code>value</code></e:fst>
         ///       <e:snd><e:var n="v"/></e:snd>
@@ -264,7 +264,7 @@ Node* insert(Node* root, int value) {
         ///           <e:snd><e:pred name="Tree"><e:var n="r"/>, <e:st n="R"/></e:pred></e:snd>
         ///       </e:sep></e:snd>
         ///     </e:sep> ∧<br />
-        ///     <e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred> ∧<br />
+        ///     <e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred> ∧<br />
         ///     <e:lt>
         ///       <e:fst><code>value</code></e:fst>
         ///       <e:snd><e:var n="v"/></e:snd>
@@ -274,16 +274,16 @@ Node* insert(Node* root, int value) {
 
         // Lemma: <e:logimpl>
         //  <e:fst><e:and>
-        //    <e:fst><e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred></e:fst>
+        //    <e:fst><e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred></e:fst>
         //    <e:snd><e:lt><e:fst><code>value</code></e:fst><e:snd><e:var n="v"/></e:snd></e:lt></e:snd>
         //  </e:and></e:fst>
-        //  <e:snd><e:pred name="Compose">
+        //  <e:snd><e:pred name="TreeCompose">
         //    <e:union><e:fst><e:st n="L" /></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:union>,
         //    <e:var n="v"/>, <e:st n="R"/>,
         //    <e:union><e:fst><e:st n="S" /></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:union>
         //  </e:pred></e:snd>
         // </e:logimpl>.<br />
-        // Discard <e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred> and
+        // Discard <e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred> and
         // <e:lt><e:fst><code>value</code></e:fst><e:snd><e:var n="v"/></e:snd></e:lt>.
         /// <e:exists>
         ///   <e:fst><e:var n="v"/>, <e:var n="l"/>, <e:var n="r"/>, <e:st n="L"/>, <e:st n="R"/></e:fst>
@@ -298,7 +298,7 @@ Node* insert(Node* root, int value) {
         ///           <e:snd><e:pred name="Tree"><e:var n="r"/>, <e:st n="R"/></e:pred></e:snd>
         ///       </e:sep></e:snd>
         ///     </e:sep> ∧<br />
-        ///     <e:pred name="Compose">
+        ///     <e:pred name="TreeCompose">
         ///       <e:union><e:fst><e:st n="L" /></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:union>,
         ///       <e:var n="v"/>, <e:st n="R"/>,
         ///       <e:union><e:fst><e:st n="S" /></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:union>
@@ -320,7 +320,7 @@ Node* insert(Node* root, int value) {
         ///           <e:snd><e:pred name="Tree"><e:var n="r"/>, <e:st n="R"/></e:pred></e:snd>
         ///       </e:sep></e:snd>
         ///     </e:sep> ∧<br />
-        ///     <e:pred name="Compose">
+        ///     <e:pred name="TreeCompose">
         ///       <e:st n="L" />,
         ///       <e:var n="v"/>, <e:st n="R"/>,
         ///       <e:union><e:fst><e:st n="S" /></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:union>

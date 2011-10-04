@@ -108,7 +108,7 @@ bool search(Node* head, int value) {
     // Open <e:pred name="NonEmptyList"><code>head</code>, <e:st n="S"/></e:pred>.
     /// ∃<e:var n="v"/>, <e:var n="tail"/>, <e:st n="T"/>.<br />
     /// <e:indent>
-    ///   <e:pred name="Compose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
+    ///   <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
     ///   <e:sep>
     ///     <e:fst><e:fcell>
     ///       <e:fst><code>head</code></e:fst>
@@ -122,7 +122,7 @@ bool search(Node* head, int value) {
       // Assert if-condition: substitute <code>value</code> for <e:var n="v"/>.
       /// ∃<e:var n="tail"/>, <e:st n="T"/>.<br />
       /// <e:indent>
-      ///   <e:pred name="Compose"><code>value</code>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
+      ///   <e:pred name="ListCompose"><code>value</code>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
       ///   <e:sep>
       ///     <e:fst><e:fcell>
       ///       <e:fst><code>head</code></e:fst>
@@ -133,7 +133,7 @@ bool search(Node* head, int value) {
       /// </e:indent>
 
       // <e:logimpl>
-      //   <e:fst><e:pred name="Compose"><code>value</code>, <e:st n="T"/>, <e:st n="S"/></e:pred></e:fst>
+      //   <e:fst><e:pred name="ListCompose"><code>value</code>, <e:st n="T"/>, <e:st n="S"/></e:pred></e:fst>
       //   <e:snd><e:in>
       //     <e:fst><code>value</code></e:fst>
       //     <e:snd><e:st n="S"/></e:snd>
@@ -141,7 +141,7 @@ bool search(Node* head, int value) {
       // </e:logimpl>.
       /// ∃<e:var n="tail"/>, <e:st n="T"/>.<br />
       /// <e:indent>
-      ///   <e:pred name="Compose"><code>value</code>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
+      ///   <e:pred name="ListCompose"><code>value</code>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
       ///   <e:sep>
       ///     <e:fst><e:fcell>
       ///       <e:fst><code>head</code></e:fst>
@@ -208,7 +208,7 @@ bool search(Node* head, int value) {
       // Deny if-condition.
       /// ∃<e:var n="v"/>, <e:var n="tail"/>, <e:st n="T"/>.<br />
       /// <e:indent>
-      ///   <e:pred name="Compose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
+      ///   <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
       ///   <e:sep>
       ///     <e:fst><e:fcell>
       ///       <e:fst><code>head</code></e:fst>
@@ -226,7 +226,7 @@ bool search(Node* head, int value) {
         // Assert if-condition.
         /// ∃<e:var n="v"/>, <e:var n="tail"/>, <e:st n="T"/>.<br />
         /// <e:indent>
-        ///   <e:pred name="Compose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
+        ///   <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
         ///   <e:sep>
         ///     <e:fst><e:fcell>
         ///       <e:fst><code>head</code></e:fst>
@@ -243,7 +243,7 @@ bool search(Node* head, int value) {
         // Lemma:
         // <e:logimpl>
         //   <e:fst><e:and>
-        //     <e:fst><e:pred name="Compose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred></e:fst>
+        //     <e:fst><e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred></e:fst>
         //     <e:snd><e:lt>
         //       <e:fst><e:var n="v"/></e:fst>
         //       <e:snd><code>value</code></e:snd>
@@ -262,7 +262,7 @@ bool search(Node* head, int value) {
         // </e:logimpl>.
         /// ∃<e:var n="v"/>, <e:var n="tail"/>, <e:st n="T"/>.<br />
         /// <e:indent>
-        ///   <e:pred name="Compose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
+        ///   <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
         ///   <e:sep>
         ///     <e:fst><e:fcell>
         ///       <e:fst><code>head</code></e:fst>
@@ -291,7 +291,7 @@ bool search(Node* head, int value) {
         // Note <e:lt><e:fst><e:size><e:st n="T"/></e:size></e:fst><e:snd><e:size><e:st n="S"/></e:size></e:snd></e:lt>.
         /// ∃<e:var n="v"/>, <e:var n="tail"/>, <e:st n="T"/>.<br />
         /// <e:indent>
-        ///   <e:pred name="Compose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
+        ///   <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
         ///   <e:sep>
         ///     <e:fst><e:fcell>
         ///       <e:fst><code>head</code></e:fst>
@@ -325,7 +325,7 @@ bool search(Node* head, int value) {
         // Transitivity of double implication.  Discard unrequired assertions.
         /// ∃<e:var n="v"/>, <e:var n="tail"/>, <e:st n="T"/>.<br />
         /// <e:indent>
-        ///   <e:pred name="Compose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
+        ///   <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
         ///   <e:sep>
         ///     <e:fst><e:fcell>
         ///       <e:fst><code>head</code></e:fst>
@@ -383,7 +383,7 @@ bool search(Node* head, int value) {
         // </e:logimpl>.
         /// ∃<e:var n="v"/>, <e:var n="tail"/>, <e:st n="T"/>.<br />
         /// <e:indent>
-        ///   <e:pred name="Compose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
+        ///   <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
         ///   <e:sep>
         ///     <e:fst><e:fcell>
         ///       <e:fst><code>head</code></e:fst>
@@ -421,7 +421,7 @@ bool search(Node* head, int value) {
         //  </e:logimpl>.
         /// ∃<e:var n="v"/>, <e:var n="tail"/>, <e:st n="T"/>.<br />
         /// <e:indent>
-        ///   <e:pred name="Compose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
+        ///   <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
         ///   <e:sep>
         ///     <e:fst><e:fcell>
         ///       <e:fst><code>head</code></e:fst>
@@ -437,7 +437,7 @@ bool search(Node* head, int value) {
 
         // Lemma: <e:logimpl>
         //   <e:fst>(<e:and>
-        //     <e:fst><e:pred name="Compose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred></e:fst>
+        //     <e:fst><e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred></e:fst>
         //     <e:snd><e:lt>
         //       <e:fst><code>value</code></e:fst>
         //       <e:snd><e:var n="v"/></e:snd>
@@ -450,7 +450,7 @@ bool search(Node* head, int value) {
         // </e:logimpl>.
         /// ∃<e:var n="v"/>, <e:var n="tail"/>, <e:st n="T"/>.<br />
         /// <e:indent>
-        ///   <e:pred name="Compose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
+        ///   <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
         ///   <e:sep>
         ///     <e:fst><e:fcell>
         ///       <e:fst><code>head</code></e:fst>
