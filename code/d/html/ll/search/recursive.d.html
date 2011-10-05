@@ -7,105 +7,105 @@ bool search(Node* head, int value) {&#160;</e:displaycode>
 <e:displaycode>  bool o;
   if (head == null) {&#160;</e:displaycode>
 <div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Assert if-condition.</div><e:and>
-  <e:fst><e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred></e:fst>
-  <e:snd><e:eq>
-    <e:fst><code>head</code></e:fst>
-    <e:snd><code>null</code></e:snd>
-  </e:eq></e:snd>
+  <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
+  <e:eq>
+    <code>head</code>
+    <code>null</code>
+  </e:eq>
 </e:and></div></div>
 
 <div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Lemma: <e:logimpl>
-  <e:fst><e:and>
-    <e:fst><e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred></e:fst>
-    <e:snd><e:eq><e:fst><code>head</code></e:fst><e:snd><code>null</code></e:snd></e:eq></e:snd>
-  </e:and></e:fst>
-  <e:snd><e:pred name="EmptyList"><code>head</code>, <e:st n="S"/></e:pred></e:snd>
+  <e:and>
+    <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
+    <e:eq><code>head</code><code>null</code></e:eq>
+  </e:and>
+  <e:pred name="EmptyList"><code>head</code>, <e:st n="S"/></e:pred>
 </e:logimpl>.</div><e:pred name="EmptyList"><code>head</code>, <e:st n="S"/></e:pred></div></div>
 
 <div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Lemma: <e:logimpl>
-  <e:fst><e:pred name="EmptyList"><code>head</code>, <e:st n="S"/></e:pred></e:fst>
-  <e:snd><e:notin>
-    <e:fst><code>value</code></e:fst>
-    <e:snd><e:st n="S"/></e:snd>
-  </e:notin></e:snd>
+  <e:pred name="EmptyList"><code>head</code>, <e:st n="S"/></e:pred>
+  <e:notin>
+    <code>value</code>
+    <e:st n="S"/>
+  </e:notin>
 </e:logimpl>.</div><e:and>
-  <e:fst><e:pred name="EmptyList"><code>head</code>, <e:st n="S"/></e:pred></e:fst>
-  <e:snd><e:notin>
-    <e:fst><code>value</code></e:fst>
-    <e:snd><e:st n="S"/></e:snd>
-  </e:notin></e:snd>
+  <e:pred name="EmptyList"><code>head</code>, <e:st n="S"/></e:pred>
+  <e:notin>
+    <code>value</code>
+    <e:st n="S"/>
+  </e:notin>
 </e:and></div></div>
 
 <div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Weakening lemma: <e:logimpl>
-  <e:fst><e:pred name="EmptyList"><code>head</code>, <e:st n="S"/></e:pred></e:fst>
-  <e:snd><e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred></e:snd>
+  <e:pred name="EmptyList"><code>head</code>, <e:st n="S"/></e:pred>
+  <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
 </e:logimpl>.</div><e:and>
-  <e:fst><e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred></e:fst>
-  <e:snd><e:notin>
-    <e:fst><code>value</code></e:fst>
-    <e:snd><e:st n="S"/></e:snd>
-  </e:notin></e:snd>
+  <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
+  <e:notin>
+    <code>value</code>
+    <e:st n="S"/>
+  </e:notin>
 </e:and></div></div>
 <e:displaycode>
     o = false;&#160;</e:displaycode>
 <div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Assignment.</div><e:and>
-  <e:fst><e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred></e:fst>
-  <e:snd><e:and>
-    <e:fst>
+  <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
+  <e:and>
+    
       <e:notin>
-        <e:fst><code>value</code></e:fst>
-        <e:snd><e:st n="S"/></e:snd>
+        <code>value</code>
+        <e:st n="S"/>
       </e:notin>
-    </e:fst>
-    <e:snd>
+    
+    
       <e:eq>
-        <e:fst><code>o</code></e:fst>
-        <e:snd><code>false</code></e:snd>
+        <code>o</code>
+        <code>false</code>
       </e:eq>
-    </e:snd>
-  </e:and></e:snd>
+    
+  </e:and>
 </e:and></div></div>
 
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'><e:doubleimpl><e:fst>false</e:fst><e:snd>false</e:snd></e:doubleimpl>.</div><e:and>
-  <e:fst><e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred></e:fst>
-  <e:snd><e:doubleimpl>
-    <e:fst><code>o</code></e:fst>
-    <e:snd><e:in>
-      <e:fst><code>value</code></e:fst>
-      <e:snd><e:st n="S"/></e:snd>
-    </e:in></e:snd>
-  </e:doubleimpl></e:snd>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'><e:doubleimpl>falsefalse</e:doubleimpl>.</div><e:and>
+  <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
+  <e:doubleimpl>
+    <code>o</code>
+    <e:in>
+      <code>value</code>
+      <e:st n="S"/>
+    </e:in>
+  </e:doubleimpl>
 </e:and></div></div>
 <e:displaycode>  }
   else {&#160;</e:displaycode>
 <div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Deny if-condition.</div><e:and>
-  <e:fst><e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred></e:fst>
-  <e:snd><e:noteq>
-    <e:fst><code>head</code></e:fst>
-    <e:snd><code>null</code></e:snd>
-  </e:noteq></e:snd>
+  <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
+  <e:noteq>
+    <code>head</code>
+    <code>null</code>
+  </e:noteq>
 </e:and></div></div>
 
 <div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Lemma: <e:logimpl>
-  <e:fst><e:and>
-    <e:fst><e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred></e:fst>
-    <e:snd><e:noteq>
-      <e:fst><code>head</code></e:fst>
-      <e:snd><code>null</code></e:snd>
-    </e:noteq></e:snd>
-  </e:and></e:fst>
-  <e:snd><e:pred name="NonEmptyList"><code>head</code>, <e:st n="S"/></e:pred></e:snd>
+  <e:and>
+    <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
+    <e:noteq>
+      <code>head</code>
+      <code>null</code>
+    </e:noteq>
+  </e:and>
+  <e:pred name="NonEmptyList"><code>head</code>, <e:st n="S"/></e:pred>
 </e:logimpl>.</div><e:pred name="NonEmptyList"><code>head</code>, <e:st n="S"/></e:pred></div></div>
 
 <div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Open <e:pred name="NonEmptyList"><code>head</code>, <e:st n="S"/></e:pred>.</div>∃<e:var n="v"/>, <e:var n="tail"/>, <e:st n="T"/>.<br />
 <e:indent>
   <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
   <e:sep>
-    <e:fst><e:fcell>
-      <e:fst><code>head</code></e:fst>
-      <e:snd><e:var n="v"/>, <e:var n="tail"/></e:snd>
-    </e:fcell></e:fst>
-    <e:snd><e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred></e:snd>
+    <e:fcell>
+      <code>head</code>
+      <e:var n="v"/>, <e:var n="tail"/>
+    </e:fcell>
+    <e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred>
   </e:sep>
 </e:indent></div></div>
 <e:displaycode>
@@ -114,79 +114,79 @@ bool search(Node* head, int value) {&#160;</e:displaycode>
 <e:indent>
   <e:pred name="ListCompose"><code>value</code>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
   <e:sep>
-    <e:fst><e:fcell>
-      <e:fst><code>head</code></e:fst>
-      <e:snd><code>value</code>, <e:var n="tail"/></e:snd>
-    </e:fcell></e:fst>
-    <e:snd><e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred></e:snd>
+    <e:fcell>
+      <code>head</code>
+      <code>value</code>, <e:var n="tail"/>
+    </e:fcell>
+    <e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred>
   </e:sep>
 </e:indent></div></div>
 
 <div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'><e:logimpl>
-  <e:fst><e:pred name="ListCompose"><code>value</code>, <e:st n="T"/>, <e:st n="S"/></e:pred></e:fst>
-  <e:snd><e:in>
-    <e:fst><code>value</code></e:fst>
-    <e:snd><e:st n="S"/></e:snd>
-  </e:in></e:snd>
+  <e:pred name="ListCompose"><code>value</code>, <e:st n="T"/>, <e:st n="S"/></e:pred>
+  <e:in>
+    <code>value</code>
+    <e:st n="S"/>
+  </e:in>
 </e:logimpl>.</div>∃<e:var n="tail"/>, <e:st n="T"/>.<br />
 <e:indent>
   <e:pred name="ListCompose"><code>value</code>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
   <e:sep>
-    <e:fst><e:fcell>
-      <e:fst><code>head</code></e:fst>
-      <e:snd><code>value</code>, <e:var n="tail"/></e:snd>
-    </e:fcell></e:fst>
-    <e:snd><e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred></e:snd>
+    <e:fcell>
+      <code>head</code>
+      <code>value</code>, <e:var n="tail"/>
+    </e:fcell>
+    <e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred>
   </e:sep> ∧<br />
   <e:in>
-    <e:fst><code>value</code></e:fst>
-    <e:snd><e:st n="S"/></e:snd>
+    <code>value</code>
+    <e:st n="S"/>
   </e:in>
 </e:indent></div></div>
 
 <div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Close <e:pred name="NonEmptyList"><code>head</code>, <e:st n="S"/></e:pred>.</div><e:and>
-  <e:fst><e:pred name="NonEmptyList"><code>head</code>, <e:st n="S"/></e:pred></e:fst>
-  <e:snd><e:in>
-    <e:fst><code>value</code></e:fst>
-    <e:snd><e:st n="S"/></e:snd>
-  </e:in></e:snd>
+  <e:pred name="NonEmptyList"><code>head</code>, <e:st n="S"/></e:pred>
+  <e:in>
+    <code>value</code>
+    <e:st n="S"/>
+  </e:in>
 </e:and></div></div>
 
 <div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Weakening lemma: <e:logimpl>
-  <e:fst><e:pred name="NonEmptyList"><code>head</code>, <e:st n="S"/></e:pred></e:fst>
-  <e:snd><e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred></e:snd>
+  <e:pred name="NonEmptyList"><code>head</code>, <e:st n="S"/></e:pred>
+  <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
 </e:logimpl>.</div><e:and>
-  <e:fst><e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred></e:fst>
-  <e:snd><e:in>
-    <e:fst><code>value</code></e:fst>
-    <e:snd><e:st n="S"/></e:snd>
-  </e:in></e:snd>
+  <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
+  <e:in>
+    <code>value</code>
+    <e:st n="S"/>
+  </e:in>
 </e:and></div></div>
 <e:displaycode>
       o = true;&#160;</e:displaycode>
 <div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Assignment.</div><e:and>
-  <e:fst><e:and>
-    <e:fst><e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred></e:fst>
-    <e:snd><e:in>
-      <e:fst><code>value</code></e:fst>
-      <e:snd><e:st n="S"/></e:snd>
-    </e:in></e:snd>
-  </e:and></e:fst>
-  <e:snd><e:eq>
-    <e:fst><code>o</code></e:fst>
-    <e:snd><code>true</code></e:snd>
-  </e:eq></e:snd>
+  <e:and>
+    <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
+    <e:in>
+      <code>value</code>
+      <e:st n="S"/>
+    </e:in>
+  </e:and>
+  <e:eq>
+    <code>o</code>
+    <code>true</code>
+  </e:eq>
 </e:and></div></div>
 
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'><e:doubleimpl><e:fst>true</e:fst><e:snd>true</e:snd></e:doubleimpl>.</div><e:and>
-  <e:fst><e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred></e:fst>
-  <e:snd><e:doubleimpl>
-    <e:fst><code>o</code></e:fst>
-    <e:snd><e:in>
-      <e:fst><code>value</code></e:fst>
-      <e:snd><e:st n="S"/></e:snd>
-    </e:in></e:snd>
-  </e:doubleimpl></e:snd>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'><e:doubleimpl>truetrue</e:doubleimpl>.</div><e:and>
+  <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
+  <e:doubleimpl>
+    <code>o</code>
+    <e:in>
+      <code>value</code>
+      <e:st n="S"/>
+    </e:in>
+  </e:doubleimpl>
 </e:and></div></div>
 <e:displaycode>    }
     else {&#160;</e:displaycode>
@@ -194,15 +194,15 @@ bool search(Node* head, int value) {&#160;</e:displaycode>
 <e:indent>
   <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
   <e:sep>
-    <e:fst><e:fcell>
-      <e:fst><code>head</code></e:fst>
-      <e:snd><e:var n="v"/>, <e:var n="tail"/></e:snd>
-    </e:fcell></e:fst>
-    <e:snd><e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred></e:snd>
+    <e:fcell>
+      <code>head</code>
+      <e:var n="v"/>, <e:var n="tail"/>
+    </e:fcell>
+    <e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred>
   </e:sep> ∧<br />
   <e:noteq>
-    <e:fst><e:var n="v"/></e:fst>
-    <e:snd><code>value</code></e:snd>
+    <e:var n="v"/>
+    <code>value</code>
   </e:noteq>
 </e:indent></div></div>
 <e:displaycode>
@@ -211,95 +211,95 @@ bool search(Node* head, int value) {&#160;</e:displaycode>
 <e:indent>
   <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
   <e:sep>
-    <e:fst><e:fcell>
-      <e:fst><code>head</code></e:fst>
-      <e:snd><e:var n="v"/>, <e:var n="tail"/></e:snd>
-    </e:fcell></e:fst>
-    <e:snd><e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred></e:snd>
+    <e:fcell>
+      <code>head</code>
+      <e:var n="v"/>, <e:var n="tail"/>
+    </e:fcell>
+    <e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred>
   </e:sep> ∧<br />
   <e:lt>
-    <e:fst><e:var n="v"/></e:fst>
-    <e:snd><code>value</code></e:snd>
+    <e:var n="v"/>
+    <code>value</code>
   </e:lt>
 </e:indent></div></div>
 
 <div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Lemma:
 <e:logimpl>
-  <e:fst><e:and>
-    <e:fst><e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred></e:fst>
-    <e:snd><e:lt>
-      <e:fst><e:var n="v"/></e:fst>
-      <e:snd><code>value</code></e:snd>
-    </e:lt></e:snd>
-  </e:and></e:fst>
-  <e:snd><e:doubleimpl>
-    <e:fst><e:in>
-      <e:fst><code>value</code></e:fst>
-      <e:snd><e:st n="T"/></e:snd>
-    </e:in></e:fst>
-    <e:snd><e:in>
-      <e:fst><code>value</code></e:fst>
-      <e:snd><e:st n="S"/></e:snd>
-    </e:in></e:snd>
-  </e:doubleimpl></e:snd>
+  <e:and>
+    <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred>
+    <e:lt>
+      <e:var n="v"/>
+      <code>value</code>
+    </e:lt>
+  </e:and>
+  <e:doubleimpl>
+    <e:in>
+      <code>value</code>
+      <e:st n="T"/>
+    </e:in>
+    <e:in>
+      <code>value</code>
+      <e:st n="S"/>
+    </e:in>
+  </e:doubleimpl>
 </e:logimpl>.</div>∃<e:var n="v"/>, <e:var n="tail"/>, <e:st n="T"/>.<br />
 <e:indent>
   <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
   <e:sep>
-    <e:fst><e:fcell>
-      <e:fst><code>head</code></e:fst>
-      <e:snd><e:var n="v"/>, <e:var n="tail"/></e:snd>
-    </e:fcell></e:fst>
-    <e:snd><e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred></e:snd>
+    <e:fcell>
+      <code>head</code>
+      <e:var n="v"/>, <e:var n="tail"/>
+    </e:fcell>
+    <e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred>
   </e:sep> ∧<br />
   <e:lt>
-    <e:fst><e:var n="v"/></e:fst>
-    <e:snd><code>value</code></e:snd>
+    <e:var n="v"/>
+    <code>value</code>
   </e:lt> ∧<br />
   <e:doubleimpl>
-    <e:fst><e:in>
-      <e:fst><code>value</code></e:fst>
-      <e:snd><e:st n="T"/></e:snd>
-    </e:in></e:fst>
-    <e:snd><e:in>
-      <e:fst><code>value</code></e:fst>
-      <e:snd><e:st n="S"/></e:snd>
-    </e:in></e:snd>
+    <e:in>
+      <code>value</code>
+      <e:st n="T"/>
+    </e:in>
+    <e:in>
+      <code>value</code>
+      <e:st n="S"/>
+    </e:in>
   </e:doubleimpl>
 </e:indent></div></div>
 <e:displaycode>
         o = search(head.tail, value);&#160;</e:displaycode>
 <div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Inductive use of specification.
-Note <e:lt><e:fst><e:size><e:st n="T"/></e:size></e:fst><e:snd><e:size><e:st n="S"/></e:size></e:snd></e:lt>.</div>∃<e:var n="v"/>, <e:var n="tail"/>, <e:st n="T"/>.<br />
+Note <e:lt><e:size><e:st n="T"/></e:size><e:size><e:st n="S"/></e:size></e:lt>.</div>∃<e:var n="v"/>, <e:var n="tail"/>, <e:st n="T"/>.<br />
 <e:indent>
   <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
   <e:sep>
-    <e:fst><e:fcell>
-      <e:fst><code>head</code></e:fst>
-      <e:snd><e:var n="v"/>, <e:var n="tail"/></e:snd>
-    </e:fcell></e:fst>
-    <e:snd><e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred></e:snd>
+    <e:fcell>
+      <code>head</code>
+      <e:var n="v"/>, <e:var n="tail"/>
+    </e:fcell>
+    <e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred>
   </e:sep> ∧<br />
   <e:lt>
-    <e:fst><e:var n="v"/></e:fst>
-    <e:snd><code>value</code></e:snd>
+    <e:var n="v"/>
+    <code>value</code>
   </e:lt> ∧<br />
   <e:doubleimpl>
-    <e:fst><e:in>
-      <e:fst><code>value</code></e:fst>
-      <e:snd><e:st n="T"/></e:snd>
-    </e:in></e:fst>
-    <e:snd><e:in>
-      <e:fst><code>value</code></e:fst>
-      <e:snd><e:st n="S"/></e:snd>
-    </e:in></e:snd>
+    <e:in>
+      <code>value</code>
+      <e:st n="T"/>
+    </e:in>
+    <e:in>
+      <code>value</code>
+      <e:st n="S"/>
+    </e:in>
   </e:doubleimpl> ∧<br />
   <e:doubleimpl>
-    <e:fst><code>o</code></e:fst>
-    <e:snd><e:in>
-      <e:fst><code>value</code></e:fst>
-      <e:snd><e:st n="T"/></e:snd>
-    </e:in></e:snd>
+    <code>o</code>
+    <e:in>
+      <code>value</code>
+      <e:st n="T"/>
+    </e:in>
   </e:doubleimpl>
 </e:indent></div></div>
 
@@ -307,203 +307,203 @@ Note <e:lt><e:fst><e:size><e:st n="T"/></e:size></e:fst><e:snd><e:size><e:st n="
 <e:indent>
   <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
   <e:sep>
-    <e:fst><e:fcell>
-      <e:fst><code>head</code></e:fst>
-      <e:snd><e:var n="v"/>, <e:var n="tail"/></e:snd>
-    </e:fcell></e:fst>
-    <e:snd><e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred></e:snd>
+    <e:fcell>
+      <code>head</code>
+      <e:var n="v"/>, <e:var n="tail"/>
+    </e:fcell>
+    <e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred>
   </e:sep> ∧<br />
   <e:doubleimpl>
-    <e:fst><code>o</code></e:fst>
-    <e:snd><e:in>
-      <e:fst><code>value</code></e:fst>
-      <e:snd><e:st n="S"/></e:snd>
-    </e:in></e:snd>
+    <code>o</code>
+    <e:in>
+      <code>value</code>
+      <e:st n="S"/>
+    </e:in>
   </e:doubleimpl>
 </e:indent></div></div>
 
 <div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Close <e:pred name="NonEmptyList"><code>head</code>, <e:st n="S"/></e:pred>.</div><e:and>
-  <e:fst><e:pred name="NonEmptyList"><code>head</code>, <e:st n="S"/></e:pred></e:fst>
-  <e:snd><e:doubleimpl>
-    <e:fst><code>o</code></e:fst>
-    <e:snd><e:in>
-      <e:fst><code>value</code></e:fst>
-      <e:snd><e:st n="S"/></e:snd>
-    </e:in></e:snd>
-  </e:doubleimpl></e:snd>
+  <e:pred name="NonEmptyList"><code>head</code>, <e:st n="S"/></e:pred>
+  <e:doubleimpl>
+    <code>o</code>
+    <e:in>
+      <code>value</code>
+      <e:st n="S"/>
+    </e:in>
+  </e:doubleimpl>
 </e:and></div></div>
 
 <div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Weakening: <e:logimpl>
-  <e:fst><e:pred name="NonEmptyList"><code>head</code>, <e:st n="S"/></e:pred></e:fst>
-  <e:snd><e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred></e:snd>
+  <e:pred name="NonEmptyList"><code>head</code>, <e:st n="S"/></e:pred>
+  <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
 </e:logimpl>.</div><e:and>
-  <e:fst><e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred></e:fst>
-  <e:snd><e:doubleimpl>
-    <e:fst><code>o</code></e:fst>
-    <e:snd><e:in>
-      <e:fst><code>value</code></e:fst>
-      <e:snd><e:st n="S"/></e:snd>
-    </e:in></e:snd>
-  </e:doubleimpl></e:snd>
+  <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
+  <e:doubleimpl>
+    <code>o</code>
+    <e:in>
+      <code>value</code>
+      <e:st n="S"/>
+    </e:in>
+  </e:doubleimpl>
 </e:and></div></div>
 <e:displaycode>      }
       else {&#160;</e:displaycode>
 <div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Deny if-condition.
 Use <e:logimpl>
-  <e:fst>¬(<e:lt>
-    <e:fst><e:var n="v"/></e:fst>
-    <e:snd><code>value</code></e:snd>
-  </e:lt>)</e:fst>
-  <e:snd><e:leq>
-    <e:fst><code>value</code></e:fst>
-    <e:snd><e:var n="v"/></e:snd>
-  </e:leq></e:snd>
+  ¬(<e:lt>
+    <e:var n="v"/>
+    <code>value</code>
+  </e:lt>)
+  <e:leq>
+    <code>value</code>
+    <e:var n="v"/>
+  </e:leq>
 </e:logimpl>.</div>∃<e:var n="v"/>, <e:var n="tail"/>, <e:st n="T"/>.<br />
 <e:indent>
   <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
   <e:sep>
-    <e:fst><e:fcell>
-      <e:fst><code>head</code></e:fst>
-      <e:snd><e:var n="v"/>, <e:var n="tail"/></e:snd>
-    </e:fcell></e:fst>
-    <e:snd><e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred></e:snd>
+    <e:fcell>
+      <code>head</code>
+      <e:var n="v"/>, <e:var n="tail"/>
+    </e:fcell>
+    <e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred>
   </e:sep> ∧<br />
   <e:and>
-    <e:fst><e:noteq>
-      <e:fst><code>value</code></e:fst>
-      <e:snd><e:var n="v"/></e:snd>
-    </e:noteq></e:fst>
-    <e:snd><e:leq>
-      <e:fst><code>value</code></e:fst>
-      <e:snd><e:var n="v"/></e:snd>
-    </e:leq></e:snd>
+    <e:noteq>
+      <code>value</code>
+      <e:var n="v"/>
+    </e:noteq>
+    <e:leq>
+      <code>value</code>
+      <e:var n="v"/>
+    </e:leq>
   </e:and>
 </e:indent></div></div>
 
 <div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'><e:logimpl>
-  <e:fst>(<e:and>
-    <e:fst><e:noteq>
-      <e:fst><e:var n="a"/></e:fst>
-      <e:snd><e:var n="b"/></e:snd>
-    </e:noteq></e:fst>
-    <e:snd><e:leq>
-      <e:fst><e:var n="a"/></e:fst>
-      <e:snd><e:var n="b"/></e:snd>
-    </e:leq></e:snd>
-  </e:and>)</e:fst>
-  <e:snd><e:lt>
-    <e:fst><e:var n="b"/></e:fst>
-    <e:snd><e:var n="a"/></e:snd>
-  </e:lt></e:snd>
+  (<e:and>
+    <e:noteq>
+      <e:var n="a"/>
+      <e:var n="b"/>
+    </e:noteq>
+    <e:leq>
+      <e:var n="a"/>
+      <e:var n="b"/>
+    </e:leq>
+  </e:and>)
+  <e:lt>
+    <e:var n="b"/>
+    <e:var n="a"/>
+  </e:lt>
  </e:logimpl>.</div>∃<e:var n="v"/>, <e:var n="tail"/>, <e:st n="T"/>.<br />
 <e:indent>
   <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
   <e:sep>
-    <e:fst><e:fcell>
-      <e:fst><code>head</code></e:fst>
-      <e:snd><e:var n="v"/>, <e:var n="tail"/></e:snd>
-    </e:fcell></e:fst>
-    <e:snd><e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred></e:snd>
+    <e:fcell>
+      <code>head</code>
+      <e:var n="v"/>, <e:var n="tail"/>
+    </e:fcell>
+    <e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred>
   </e:sep> ∧<br />
   <e:lt>
-    <e:fst><code>value</code></e:fst>
-    <e:snd><e:var n="v"/></e:snd>
+    <code>value</code>
+    <e:var n="v"/>
   </e:lt>
 </e:indent></div></div>
 
 <div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Lemma: <e:logimpl>
-  <e:fst>(<e:and>
-    <e:fst><e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred></e:fst>
-    <e:snd><e:lt>
-      <e:fst><code>value</code></e:fst>
-      <e:snd><e:var n="v"/></e:snd>
-    </e:lt></e:snd>
-  </e:and>)</e:fst>
-  <e:snd><e:notin>
-    <e:fst><code>value</code></e:fst>
-    <e:snd><e:st n="S"/></e:snd>
-  </e:notin></e:snd>
+  (<e:and>
+    <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred>
+    <e:lt>
+      <code>value</code>
+      <e:var n="v"/>
+    </e:lt>
+  </e:and>)
+  <e:notin>
+    <code>value</code>
+    <e:st n="S"/>
+  </e:notin>
 </e:logimpl>.</div>∃<e:var n="v"/>, <e:var n="tail"/>, <e:st n="T"/>.<br />
 <e:indent>
   <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
   <e:sep>
-    <e:fst><e:fcell>
-      <e:fst><code>head</code></e:fst>
-      <e:snd><e:var n="v"/>, <e:var n="tail"/></e:snd>
-    </e:fcell></e:fst>
-    <e:snd><e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred></e:snd>
+    <e:fcell>
+      <code>head</code>
+      <e:var n="v"/>, <e:var n="tail"/>
+    </e:fcell>
+    <e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred>
   </e:sep> ∧<br />
   <e:notin>
-    <e:fst><code>value</code></e:fst>
-    <e:snd><e:st n="S"/></e:snd>
+    <code>value</code>
+    <e:st n="S"/>
   </e:notin>
 </e:indent></div></div>
 
 <div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Close <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>.</div><e:and>
-  <e:fst><e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred></e:fst>
-  <e:snd><e:notin>
-    <e:fst><code>value</code></e:fst>
-    <e:snd><e:st n="S"/></e:snd>
-  </e:notin></e:snd>
+  <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
+  <e:notin>
+    <code>value</code>
+    <e:st n="S"/>
+  </e:notin>
 </e:and></div></div>
 <e:displaycode>
         o = false;&#160;</e:displaycode>
 <div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Assignment.</div><e:and>
-  <e:fst><e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred></e:fst>
-  <e:snd><e:and>
-    <e:fst><e:notin>
-      <e:fst><code>value</code></e:fst>
-      <e:snd><e:st n="S"/></e:snd>
-    </e:notin></e:fst>
-    <e:snd><e:eq>
-      <e:fst><code>o</code></e:fst>
-      <e:snd><code>false</code></e:snd>
-    </e:eq></e:snd>
-  </e:and></e:snd>
+  <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
+  <e:and>
+    <e:notin>
+      <code>value</code>
+      <e:st n="S"/>
+    </e:notin>
+    <e:eq>
+      <code>o</code>
+      <code>false</code>
+    </e:eq>
+  </e:and>
 </e:and></div></div>
 
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'><e:doubleimpl><e:fst>false</e:fst><e:snd>false</e:snd></e:doubleimpl>.</div><e:and>
-  <e:fst><e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred></e:fst>
-  <e:snd><e:doubleimpl>
-    <e:fst><code>o</code></e:fst>
-    <e:snd><e:in>
-      <e:fst><code>value</code></e:fst>
-      <e:snd><e:st n="S"/></e:snd>
-    </e:in></e:snd>
-  </e:doubleimpl></e:snd>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'><e:doubleimpl>falsefalse</e:doubleimpl>.</div><e:and>
+  <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
+  <e:doubleimpl>
+    <code>o</code>
+    <e:in>
+      <code>value</code>
+      <e:st n="S"/>
+    </e:in>
+  </e:doubleimpl>
 </e:and></div></div>
 <e:displaycode>      }&#160;</e:displaycode>
 <div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>If-rule.</div><e:and>
-  <e:fst><e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred></e:fst>
-  <e:snd><e:doubleimpl>
-    <e:fst><code>o</code></e:fst>
-    <e:snd><e:in>
-      <e:fst><code>value</code></e:fst>
-      <e:snd><e:st n="S"/></e:snd>
-    </e:in></e:snd>
-  </e:doubleimpl></e:snd>
+  <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
+  <e:doubleimpl>
+    <code>o</code>
+    <e:in>
+      <code>value</code>
+      <e:st n="S"/>
+    </e:in>
+  </e:doubleimpl>
 </e:and></div></div>
 <e:displaycode>    }&#160;</e:displaycode>
 <div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>If-rule.</div><e:and>
-  <e:fst><e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred></e:fst>
-  <e:snd><e:doubleimpl>
-    <e:fst><code>o</code></e:fst>
-    <e:snd><e:in>
-      <e:fst><code>value</code></e:fst>
-      <e:snd><e:st n="S"/></e:snd>
-    </e:in></e:snd>
-  </e:doubleimpl></e:snd>
+  <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
+  <e:doubleimpl>
+    <code>o</code>
+    <e:in>
+      <code>value</code>
+      <e:st n="S"/>
+    </e:in>
+  </e:doubleimpl>
 </e:and></div></div>
 <e:displaycode>  }&#160;</e:displaycode>
 <div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>If-rule.</div><e:and>
-  <e:fst><e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred></e:fst>
-  <e:snd><e:doubleimpl>
-    <e:fst><code>o</code></e:fst>
-    <e:snd><e:in>
-      <e:fst><code>value</code></e:fst>
-      <e:snd><e:st n="S"/></e:snd>
-    </e:in></e:snd>
-  </e:doubleimpl></e:snd>
+  <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
+  <e:doubleimpl>
+    <code>o</code>
+    <e:in>
+      <code>value</code>
+      <e:st n="S"/>
+    </e:in>
+  </e:doubleimpl>
 </e:and></div></div>
 <e:displaycode>
   return o;

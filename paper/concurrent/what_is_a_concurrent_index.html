@@ -52,15 +52,15 @@
 	  <td>
 	    <e:cond>
 	      <e:and>
-		<e:fst>
+		
 		  <e:pred name="In"><code>i</code>, <code>k</code>, <e:var n="v"/></e:pred>
-		</e:fst>
-		<e:snd>
+		
+		
 		<e:eq>
-		  <e:fst><code>r</code></e:fst>
-		  <e:snd><e:var n="v"/></e:snd>
+		  <code>r</code>
+		  <e:var n="v"/>
 		</e:eq>
-		</e:snd>
+		
 	      </e:and>
 	    </e:cond>
 	  </td>
@@ -72,15 +72,15 @@
 	  <td>
 	    <e:cond>
 	      <e:and>
-		<e:fst>
+		
 		  <e:pred name="Out"><code>i</code>, <code>k</code></e:pred>
-		</e:fst>
-		<e:snd>
+		
+		
 		  <e:eq>
-		    <e:fst><code>r</code></e:fst>
-		    <e:snd><code>null</code></e:snd>
+		    <code>r</code>
+		    <code>null</code>
 		  </e:eq>
-		</e:snd>
+		
 	      </e:and>
 	    </e:cond>
 	  </td>

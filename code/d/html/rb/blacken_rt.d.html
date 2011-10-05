@@ -6,185 +6,185 @@ Node* blacken(Node* root) {&#160;</e:displaycode>
 <div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Function precondition.</div><e:pred name="RT"><code>root</code>, <e:st n="S"/>, <e:var n="h"/></e:pred></div></div>
 
 <div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Open <e:pred name="RT"><code>root</code>, <e:st n="S"/>, <e:var n="h"/></e:pred>.</div><e:exists>
-  <e:fst><e:var n="v"/>, <e:var n="l"/>, <e:var n="r"/>, <e:st n="L"/>, <e:st n="R"/></e:fst>
-  <e:snd><e:indent><e:and>
-    <e:fst><e:sep>
-      <e:fst><e:fcell>
-        <e:fst><code>root</code></e:fst>
-        <e:snd><e:var n="v"/>,<m:red/>,<e:var n="l"/>,<e:var n="r"/></e:snd>
-      </e:fcell></e:fst>
-      <e:snd><e:sep>
-        <e:fst><e:pred name="BT"><e:var n="l"/>,<e:st n="L"/>,<e:var n="h"/></e:pred></e:fst>
-        <e:snd><e:pred name="BT"><e:var n="r"/>,<e:st n="R"/>,<e:var n="h"/></e:pred></e:snd>
-      </e:sep></e:snd>
-    </e:sep></e:fst>
-    <e:snd><br /><e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred></e:snd>
-  </e:and></e:indent></e:snd>
+  <e:var n="v"/>, <e:var n="l"/>, <e:var n="r"/>, <e:st n="L"/>, <e:st n="R"/>
+  <e:indent><e:and>
+    <e:sep>
+      <e:fcell>
+        <code>root</code>
+        <e:var n="v"/>,<m:red/>,<e:var n="l"/>,<e:var n="r"/>
+      </e:fcell>
+      <e:sep>
+        <e:pred name="BT"><e:var n="l"/>,<e:st n="L"/>,<e:var n="h"/></e:pred>
+        <e:pred name="BT"><e:var n="r"/>,<e:st n="R"/>,<e:var n="h"/></e:pred>
+      </e:sep>
+    </e:sep>
+    <br /><e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
+  </e:and></e:indent>
 </e:exists></div></div>
 
 <div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'><e:logimpl>
-  <e:fst><e:fcell><e:fst><e:var n="a"/></e:fst><e:snd>_</e:snd></e:fcell></e:fst>
-  <e:snd><e:noteq><e:fst><e:var n="a"/></e:fst><e:snd><code>null</code></e:snd></e:noteq></e:snd>
+  <e:fcell><e:var n="a"/>_</e:fcell>
+  <e:noteq><e:var n="a"/><code>null</code></e:noteq>
 </e:logimpl></div><e:exists>
-  <e:fst><e:var n="v"/>, <e:var n="l"/>, <e:var n="r"/>, <e:st n="L"/>, <e:st n="R"/></e:fst>
-  <e:snd><e:indent><e:and>
-    <e:fst><e:sep>
-      <e:fst><e:fcell>
-        <e:fst><code>root</code></e:fst>
-        <e:snd><e:var n="v"/>,<m:red/>,<e:var n="l"/>,<e:var n="r"/></e:snd>
-      </e:fcell></e:fst>
-      <e:snd><e:sep>
-        <e:fst><e:pred name="BT"><e:var n="l"/>,<e:st n="L"/>,<e:var n="h"/></e:pred></e:fst>
-        <e:snd><e:pred name="BT"><e:var n="r"/>,<e:st n="R"/>,<e:var n="h"/></e:pred></e:snd>
-      </e:sep></e:snd>
-    </e:sep></e:fst>
-    <e:snd><br/><e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred></e:snd> ∧
-    <e:noteq><e:fst><code>root</code></e:fst><e:snd><code>null</code></e:snd></e:noteq>
-  </e:and></e:indent></e:snd>
+  <e:var n="v"/>, <e:var n="l"/>, <e:var n="r"/>, <e:st n="L"/>, <e:st n="R"/>
+  <e:indent><e:and>
+    <e:sep>
+      <e:fcell>
+        <code>root</code>
+        <e:var n="v"/>,<m:red/>,<e:var n="l"/>,<e:var n="r"/>
+      </e:fcell>
+      <e:sep>
+        <e:pred name="BT"><e:var n="l"/>,<e:st n="L"/>,<e:var n="h"/></e:pred>
+        <e:pred name="BT"><e:var n="r"/>,<e:st n="R"/>,<e:var n="h"/></e:pred>
+      </e:sep>
+    </e:sep>
+    <br/><e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred> ∧
+    <e:noteq><code>root</code><code>null</code></e:noteq>
+  </e:and></e:indent>
 </e:exists></div></div>
 <e:displaycode>
   if (root == null) {&#160;</e:displaycode>
 <div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Assert if-condition.</div><e:exists>
-  <e:fst><e:var n="v"/>, <e:var n="l"/>, <e:var n="r"/>, <e:st n="L"/>, <e:st n="R"/></e:fst>
-  <e:snd><e:indent><e:and>
-    <e:fst><e:sep>
-      <e:fst><e:fcell>
-        <e:fst><code>root</code></e:fst>
-        <e:snd><e:var n="v"/>,<m:red/>,<e:var n="l"/>,<e:var n="r"/></e:snd>
-      </e:fcell></e:fst>
-      <e:snd><e:sep>
-        <e:fst><e:pred name="BT"><e:var n="l"/>,<e:st n="L"/>,<e:var n="h"/></e:pred></e:fst>
-        <e:snd><e:pred name="BT"><e:var n="r"/>,<e:st n="R"/>,<e:var n="h"/></e:pred></e:snd>
-      </e:sep></e:snd>
-    </e:sep></e:fst>
-    <e:snd><br/><e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred></e:snd> ∧
-    <e:noteq><e:fst><code>root</code></e:fst><e:snd><code>null</code></e:snd></e:noteq> ∧
-    <e:eq><e:fst><code>root</code></e:fst><e:snd><code>null</code></e:snd></e:eq>
-  </e:and></e:indent></e:snd>
+  <e:var n="v"/>, <e:var n="l"/>, <e:var n="r"/>, <e:st n="L"/>, <e:st n="R"/>
+  <e:indent><e:and>
+    <e:sep>
+      <e:fcell>
+        <code>root</code>
+        <e:var n="v"/>,<m:red/>,<e:var n="l"/>,<e:var n="r"/>
+      </e:fcell>
+      <e:sep>
+        <e:pred name="BT"><e:var n="l"/>,<e:st n="L"/>,<e:var n="h"/></e:pred>
+        <e:pred name="BT"><e:var n="r"/>,<e:st n="R"/>,<e:var n="h"/></e:pred>
+      </e:sep>
+    </e:sep>
+    <br/><e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred> ∧
+    <e:noteq><code>root</code><code>null</code></e:noteq> ∧
+    <e:eq><code>root</code><code>null</code></e:eq>
+  </e:and></e:indent>
 </e:exists></div></div>
 
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Contradiction: this branch does not execute.</div><e:noteq><e:fst><code>root</code></e:fst><e:snd><code>null</code></e:snd></e:noteq> ∧
-<e:eq><e:fst><code>root</code></e:fst><e:snd><code>null</code></e:snd></e:eq></div></div>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Contradiction: this branch does not execute.</div><e:noteq><code>root</code><code>null</code></e:noteq> ∧
+<e:eq><code>root</code><code>null</code></e:eq></div></div>
 <e:displaycode>  }
   else {&#160;</e:displaycode>
 <div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Deny if-condition.</div><e:exists>
-  <e:fst><e:var n="v"/>, <e:var n="l"/>, <e:var n="r"/>, <e:st n="L"/>, <e:st n="R"/></e:fst>
-  <e:snd><e:indent><e:and>
-    <e:fst><e:sep>
-      <e:fst><e:fcell>
-        <e:fst><code>root</code></e:fst>
-        <e:snd><e:var n="v"/>,<m:red/>,<e:var n="l"/>,<e:var n="r"/></e:snd>
-      </e:fcell></e:fst>
-      <e:snd><e:sep>
-        <e:fst><e:pred name="BT"><e:var n="l"/>,<e:st n="L"/>,<e:var n="h"/></e:pred></e:fst>
-        <e:snd><e:pred name="BT"><e:var n="r"/>,<e:st n="R"/>,<e:var n="h"/></e:pred></e:snd>
-      </e:sep></e:snd>
-    </e:sep></e:fst>
-    <e:snd><br/><e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred></e:snd> ∧
-    <e:noteq><e:fst><code>root</code></e:fst><e:snd><code>null</code></e:snd></e:noteq> ∧
-    <e:noteq><e:fst><code>root</code></e:fst><e:snd><code>null</code></e:snd></e:noteq>
-  </e:and></e:indent></e:snd>
+  <e:var n="v"/>, <e:var n="l"/>, <e:var n="r"/>, <e:st n="L"/>, <e:st n="R"/>
+  <e:indent><e:and>
+    <e:sep>
+      <e:fcell>
+        <code>root</code>
+        <e:var n="v"/>,<m:red/>,<e:var n="l"/>,<e:var n="r"/>
+      </e:fcell>
+      <e:sep>
+        <e:pred name="BT"><e:var n="l"/>,<e:st n="L"/>,<e:var n="h"/></e:pred>
+        <e:pred name="BT"><e:var n="r"/>,<e:st n="R"/>,<e:var n="h"/></e:pred>
+      </e:sep>
+    </e:sep>
+    <br/><e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred> ∧
+    <e:noteq><code>root</code><code>null</code></e:noteq> ∧
+    <e:noteq><code>root</code><code>null</code></e:noteq>
+  </e:and></e:indent>
 </e:exists></div></div>
 
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Discard <e:noteq><e:fst><code>root</code></e:fst><e:snd><code>null</code></e:snd></e:noteq> (twice).</div><e:exists>
-  <e:fst><e:var n="v"/>, <e:var n="l"/>, <e:var n="r"/>, <e:st n="L"/>, <e:st n="R"/></e:fst>
-  <e:snd><e:indent><e:and>
-    <e:fst><e:sep>
-      <e:fst><e:fcell>
-        <e:fst><code>root</code></e:fst>
-        <e:snd><e:var n="v"/>,<m:red/>,<e:var n="l"/>,<e:var n="r"/></e:snd>
-      </e:fcell></e:fst>
-      <e:snd><e:sep>
-        <e:fst><e:pred name="BT"><e:var n="l"/>,<e:st n="L"/>,<e:var n="h"/></e:pred></e:fst>
-        <e:snd><e:pred name="BT"><e:var n="r"/>,<e:st n="R"/>,<e:var n="h"/></e:pred></e:snd>
-      </e:sep></e:snd>
-    </e:sep></e:fst>
-    <e:snd><br/><e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred></e:snd>
-  </e:and></e:indent></e:snd>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Discard <e:noteq><code>root</code><code>null</code></e:noteq> (twice).</div><e:exists>
+  <e:var n="v"/>, <e:var n="l"/>, <e:var n="r"/>, <e:st n="L"/>, <e:st n="R"/>
+  <e:indent><e:and>
+    <e:sep>
+      <e:fcell>
+        <code>root</code>
+        <e:var n="v"/>,<m:red/>,<e:var n="l"/>,<e:var n="r"/>
+      </e:fcell>
+      <e:sep>
+        <e:pred name="BT"><e:var n="l"/>,<e:st n="L"/>,<e:var n="h"/></e:pred>
+        <e:pred name="BT"><e:var n="r"/>,<e:st n="R"/>,<e:var n="h"/></e:pred>
+      </e:sep>
+    </e:sep>
+    <br/><e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
+  </e:and></e:indent>
 </e:exists></div></div>
 
 <div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'><m:existsIntro/></div><e:exists>
-  <e:fst><e:var n="v"/>, <e:var n="l"/>, <e:var n="r"/>, <e:st n="L"/>, <e:st n="R"/>, <e:var n="c"/></e:fst>
-  <e:snd><e:indent><e:and>
-    <e:fst><e:sep>
-      <e:fst><e:fcell>
-        <e:fst><code>root</code></e:fst>
-        <e:snd><e:var n="v"/>,<e:var n="c"/>,<e:var n="l"/>,<e:var n="r"/></e:snd>
-      </e:fcell></e:fst>
-      <e:snd><e:sep>
-        <e:fst><e:pred name="BT"><e:var n="l"/>,<e:st n="L"/>,<e:var n="h"/></e:pred></e:fst>
-        <e:snd><e:pred name="BT"><e:var n="r"/>,<e:st n="R"/>,<e:var n="h"/></e:pred></e:snd>
-      </e:sep></e:snd>
-    </e:sep></e:fst>
-    <e:snd><br/><e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred></e:snd> ∧
-    <e:eq><e:fst><e:var n="c"/></e:fst><e:snd><m:red/></e:snd></e:eq>
-  </e:and></e:indent></e:snd>
+  <e:var n="v"/>, <e:var n="l"/>, <e:var n="r"/>, <e:st n="L"/>, <e:st n="R"/>, <e:var n="c"/>
+  <e:indent><e:and>
+    <e:sep>
+      <e:fcell>
+        <code>root</code>
+        <e:var n="v"/>,<e:var n="c"/>,<e:var n="l"/>,<e:var n="r"/>
+      </e:fcell>
+      <e:sep>
+        <e:pred name="BT"><e:var n="l"/>,<e:st n="L"/>,<e:var n="h"/></e:pred>
+        <e:pred name="BT"><e:var n="r"/>,<e:st n="R"/>,<e:var n="h"/></e:pred>
+      </e:sep>
+    </e:sep>
+    <br/><e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred> ∧
+    <e:eq><e:var n="c"/><m:red/></e:eq>
+  </e:and></e:indent>
 </e:exists></div></div>
 <e:displaycode>
     if (root.black) {&#160;</e:displaycode>
 <div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Assert if-condition.</div><e:exists>
-  <e:fst><e:var n="v"/>, <e:var n="l"/>, <e:var n="r"/>, <e:st n="L"/>, <e:st n="R"/>, <e:var n="c"/></e:fst>
-  <e:snd><e:indent><e:and>
-    <e:fst><e:sep>
-      <e:fst><e:fcell>
-        <e:fst><code>root</code></e:fst>
-        <e:snd><e:var n="v"/>,<e:var n="c"/>,<e:var n="l"/>,<e:var n="r"/></e:snd>
-      </e:fcell></e:fst>
-      <e:snd><e:sep>
-        <e:fst><e:pred name="BT"><e:var n="l"/>,<e:st n="L"/>,<e:var n="h"/></e:pred></e:fst>
-        <e:snd><e:pred name="BT"><e:var n="r"/>,<e:st n="R"/>,<e:var n="h"/></e:pred></e:snd>
-      </e:sep></e:snd>
-    </e:sep></e:fst>
-    <e:snd><br/><e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred></e:snd> ∧
-    <e:eq><e:fst><e:var n="c"/></e:fst><e:snd><m:red/></e:snd></e:eq> ∧
-    <e:eq><e:fst><e:var n="c"/></e:fst><e:snd><m:black/></e:snd></e:eq>
-  </e:and></e:indent></e:snd>
+  <e:var n="v"/>, <e:var n="l"/>, <e:var n="r"/>, <e:st n="L"/>, <e:st n="R"/>, <e:var n="c"/>
+  <e:indent><e:and>
+    <e:sep>
+      <e:fcell>
+        <code>root</code>
+        <e:var n="v"/>,<e:var n="c"/>,<e:var n="l"/>,<e:var n="r"/>
+      </e:fcell>
+      <e:sep>
+        <e:pred name="BT"><e:var n="l"/>,<e:st n="L"/>,<e:var n="h"/></e:pred>
+        <e:pred name="BT"><e:var n="r"/>,<e:st n="R"/>,<e:var n="h"/></e:pred>
+      </e:sep>
+    </e:sep>
+    <br/><e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred> ∧
+    <e:eq><e:var n="c"/><m:red/></e:eq> ∧
+    <e:eq><e:var n="c"/><m:black/></e:eq>
+  </e:and></e:indent>
 </e:exists></div></div>
 
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Contradiction: this branch does not execute.</div><e:eq><e:fst><e:var n="c"/></e:fst><e:snd><m:red/></e:snd></e:eq> ∧
-<e:eq><e:fst><e:var n="c"/></e:fst><e:snd><m:black/></e:snd></e:eq></div></div>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Contradiction: this branch does not execute.</div><e:eq><e:var n="c"/><m:red/></e:eq> ∧
+<e:eq><e:var n="c"/><m:black/></e:eq></div></div>
 <e:displaycode>    }
     else {&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Deny if-condition.  Substitution.  Discard <e:eq><e:fst><e:var n="c"/></e:fst><e:snd><m:red/></e:snd></e:eq> (twice).</div><e:exists>
-  <e:fst><e:var n="v"/>, <e:var n="l"/>, <e:var n="r"/>, <e:st n="L"/>, <e:st n="R"/></e:fst>
-  <e:snd><e:indent><e:and>
-    <e:fst><e:sep>
-      <e:fst><e:fcell>
-        <e:fst><code>root</code></e:fst>
-        <e:snd><e:var n="v"/>,<m:red/>,<e:var n="l"/>,<e:var n="r"/></e:snd>
-      </e:fcell></e:fst>
-      <e:snd><e:sep>
-        <e:fst><e:pred name="BT"><e:var n="l"/>,<e:st n="L"/>,<e:var n="h"/></e:pred></e:fst>
-        <e:snd><e:pred name="BT"><e:var n="r"/>,<e:st n="R"/>,<e:var n="h"/></e:pred></e:snd>
-      </e:sep></e:snd>
-    </e:sep></e:fst>
-    <e:snd><br/><e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred></e:snd>
-  </e:and></e:indent></e:snd>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Deny if-condition.  Substitution.  Discard <e:eq><e:var n="c"/><m:red/></e:eq> (twice).</div><e:exists>
+  <e:var n="v"/>, <e:var n="l"/>, <e:var n="r"/>, <e:st n="L"/>, <e:st n="R"/>
+  <e:indent><e:and>
+    <e:sep>
+      <e:fcell>
+        <code>root</code>
+        <e:var n="v"/>,<m:red/>,<e:var n="l"/>,<e:var n="r"/>
+      </e:fcell>
+      <e:sep>
+        <e:pred name="BT"><e:var n="l"/>,<e:st n="L"/>,<e:var n="h"/></e:pred>
+        <e:pred name="BT"><e:var n="r"/>,<e:st n="R"/>,<e:var n="h"/></e:pred>
+      </e:sep>
+    </e:sep>
+    <br/><e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
+  </e:and></e:indent>
 </e:exists></div></div>
 <e:displaycode>
       root.black = true;&#160;</e:displaycode>
 <div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><e:exists>
-  <e:fst><e:var n="v"/>, <e:var n="l"/>, <e:var n="r"/>, <e:st n="L"/>, <e:st n="R"/></e:fst>
-  <e:snd><e:indent><e:and>
-    <e:fst><e:sep>
-      <e:fst><e:fcell>
-        <e:fst><code>root</code></e:fst>
-        <e:snd><e:var n="v"/>,<m:black/>,<e:var n="l"/>,<e:var n="r"/></e:snd>
-      </e:fcell></e:fst>
-      <e:snd><e:sep>
-        <e:fst><e:pred name="BT"><e:var n="l"/>,<e:st n="L"/>,<e:var n="h"/></e:pred></e:fst>
-        <e:snd><e:pred name="BT"><e:var n="r"/>,<e:st n="R"/>,<e:var n="h"/></e:pred></e:snd>
-      </e:sep></e:snd>
-    </e:sep></e:fst>
-    <e:snd><br/><e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred></e:snd>
-  </e:and></e:indent></e:snd>
+  <e:var n="v"/>, <e:var n="l"/>, <e:var n="r"/>, <e:st n="L"/>, <e:st n="R"/>
+  <e:indent><e:and>
+    <e:sep>
+      <e:fcell>
+        <code>root</code>
+        <e:var n="v"/>,<m:black/>,<e:var n="l"/>,<e:var n="r"/>
+      </e:fcell>
+      <e:sep>
+        <e:pred name="BT"><e:var n="l"/>,<e:st n="L"/>,<e:var n="h"/></e:pred>
+        <e:pred name="BT"><e:var n="r"/>,<e:st n="R"/>,<e:var n="h"/></e:pred>
+      </e:sep>
+    </e:sep>
+    <br/><e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
+  </e:and></e:indent>
 </e:exists></div></div>
 
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Close <e:pred name="BT"><code>root</code>, <e:st n="S"/>, <e:plus><e:fst><e:var n="h"/></e:fst><e:snd><e:const n="1"/></e:snd></e:plus></e:pred>.</div><e:pred name="BT"><code>root</code>, <e:st n="S"/>, <e:plus><e:fst><e:var n="h"/></e:fst><e:snd><e:const n="1"/></e:snd></e:plus></e:pred></div></div>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Close <e:pred name="BT"><code>root</code>, <e:st n="S"/>, <e:plus><e:var n="h"/><e:const n="1"/></e:plus></e:pred>.</div><e:pred name="BT"><code>root</code>, <e:st n="S"/>, <e:plus><e:var n="h"/><e:const n="1"/></e:plus></e:pred></div></div>
 <e:displaycode>    }&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Postcondition of executing branch.</div><e:pred name="BT"><code>root</code>, <e:st n="S"/>, <e:plus><e:fst><e:var n="h"/></e:fst><e:snd><e:const n="1"/></e:snd></e:plus></e:pred></div></div>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Postcondition of executing branch.</div><e:pred name="BT"><code>root</code>, <e:st n="S"/>, <e:plus><e:var n="h"/><e:const n="1"/></e:plus></e:pred></div></div>
 <e:displaycode>  }&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Postcondition of executing branch.</div><e:pred name="BT"><code>root</code>, <e:st n="S"/>, <e:plus><e:fst><e:var n="h"/></e:fst><e:snd><e:const n="1"/></e:snd></e:plus></e:pred></div></div>
+<div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Postcondition of executing branch.</div><e:pred name="BT"><code>root</code>, <e:st n="S"/>, <e:plus><e:var n="h"/><e:const n="1"/></e:plus></e:pred></div></div>
 <e:displaycode>
   return root;
 }&#160;</e:displaycode></section>

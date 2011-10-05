@@ -5,25 +5,25 @@
 	 xmlns:m="http://eegg.github.com/macro">
 
   <e:caption><e:logimpl>
-      <e:fst><e:and>
-          <e:fst><e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred></e:fst>
-          <e:snd><e:noteq>
-              <e:fst><e:var n="v"/></e:fst>
-              <e:snd><e:var n="w"/></e:snd>
-          </e:noteq></e:snd>
-      </e:and></e:fst>
-      <e:snd><e:pred name="ListCompose"><e:var n="v"/>, <e:setminus><e:fst><e:st n="T"/></e:fst><e:snd><e:set><e:var n="w"/></e:set></e:snd></e:setminus>, <e:setminus><e:fst><e:st n="S" /></e:fst><e:snd><e:set><e:var n="w"/></e:set></e:snd></e:setminus></e:pred></e:snd>
+      <e:and>
+          <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred>
+          <e:noteq>
+              <e:var n="v"/>
+              <e:var n="w"/>
+          </e:noteq>
+      </e:and>
+      <e:pred name="ListCompose"><e:var n="v"/>, <e:setminus><e:st n="T"/><e:set><e:var n="w"/></e:set></e:setminus>, <e:setminus><e:st n="S" /><e:set><e:var n="w"/></e:set></e:setminus></e:pred>
   </e:logimpl></e:caption>
 
   <e:contents>
     <e:derivation>
       <e:step name="given">
 	<e:derive><e:and>
-            <e:fst><e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred></e:fst>
-            <e:snd><e:noteq>
-		<e:fst><e:var n="v"/></e:fst>
-		<e:snd><e:var n="w"/></e:snd>
-            </e:noteq></e:snd>
+            <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred>
+            <e:noteq>
+		<e:var n="v"/>
+		<e:var n="w"/>
+            </e:noteq>
 	</e:and></e:derive>
 	<e:by>given</e:by>
       </e:step>
@@ -35,8 +35,8 @@
 
       <e:step name="vNotw">
 	<e:derive><e:noteq>
-            <e:fst><e:var n="v"/></e:fst>
-            <e:snd><e:var n="w"/></e:snd>
+            <e:var n="v"/>
+            <e:var n="w"/>
 	</e:noteq></e:derive>
 	<e:by><e:from name="given"/>, <m:andElim/></e:by>
       </e:step>
@@ -44,27 +44,27 @@
       <e:step name="openCompose">
 	<e:derive>
 	  <e:eq>
-	    <e:fst>
+	    
 	      <e:union>
-		<e:fst><e:set><e:var n="v"/></e:set></e:fst>
-		<e:snd><e:st n="T"/></e:snd>
+		<e:set><e:var n="v"/></e:set>
+		<e:st n="T"/>
 	      </e:union>
-	    </e:fst>
-	    <e:snd><e:st n="S"/></e:snd>
+	    
+	    <e:st n="S"/>
 	  </e:eq> ∧
 	  <e:forall>
-	    <e:fst>
+	    <e:vars>
 	      <e:in>
-		<e:fst><e:var n="t"/></e:fst>
-		<e:snd><e:st n="T"/></e:snd>
+		<e:var n="t"/>
+		<e:st n="T"/>
 	      </e:in>
-	    </e:fst>
-	    <e:snd>
+	    </e:vars>
+	    <e:expr>
 	      <e:lt>
-		<e:fst><e:var n="v"/></e:fst>
-		<e:snd><e:var n="t"/></e:snd>
+		<e:var n="v"/>
+		<e:var n="t"/>
 	      </e:lt>
-	    </e:snd>
+	    </e:expr>
 	  </e:forall>
 	</e:derive>
 	<e:by><e:from name="givenCompose"/>, open predicate</e:by>
@@ -72,31 +72,31 @@
 
       <e:step name="vUTIsS">
 	<e:derive><e:eq>
-	    <e:fst>
+	    
 	      <e:union>
-		<e:fst><e:set><e:var n="v"/></e:set></e:fst>
-		<e:snd><e:st n="T"/></e:snd>
+		<e:set><e:var n="v"/></e:set>
+		<e:st n="T"/>
 	      </e:union>
-	    </e:fst>
-	    <e:snd><e:st n="S"/></e:snd>
+	    
+	    <e:st n="S"/>
 	</e:eq></e:derive>
 	<e:by><e:from name="openCompose"/>, <m:andElim/></e:by>
       </e:step>
 
       <e:step name="allInTGreaterThanv">
 	<e:derive><e:forall>
-	    <e:fst>
+	    <e:vars>
 	      <e:in>
-		<e:fst><e:var n="t"/></e:fst>
-		<e:snd><e:st n="T"/></e:snd>
+		<e:var n="t"/>
+		<e:st n="T"/>
 	      </e:in>
-	    </e:fst>
-	    <e:snd>
+	    </e:vars>
+	    <e:expr>
 	      <e:lt>
-		<e:fst><e:var n="v"/></e:fst>
-		<e:snd><e:var n="t"/></e:snd>
+		<e:var n="v"/>
+		<e:var n="t"/>
 	      </e:lt>
-	    </e:snd>
+	    </e:expr>
 	  </e:forall>
 	</e:derive>
 	<e:by><e:from name="openCompose"/>, <m:andElim/></e:by>
@@ -104,77 +104,77 @@
 
       <e:step name="(vUT)minuswIsSminusw">
 	<e:derive><e:eq>
-	    <e:fst>
+	    
 	      <e:setminus>
-		<e:fst>(<e:union>
-		    <e:fst><e:set><e:var n="v"/></e:set></e:fst>
-		    <e:snd><e:st n="T"/></e:snd>
-		  </e:union>)</e:fst>
-		<e:snd><e:set><e:var n="w"/></e:set></e:snd>
+		(<e:union>
+		    <e:set><e:var n="v"/></e:set>
+		    <e:st n="T"/>
+		  </e:union>)
+		<e:set><e:var n="w"/></e:set>
 	      </e:setminus>
-	    </e:fst>
-	    <e:snd><e:setminus><e:fst><e:st n="S" /></e:fst><e:snd><e:set><e:var n="w"/></e:set></e:snd></e:setminus></e:snd>
+	    
+	    <e:setminus><e:st n="S" /><e:set><e:var n="w"/></e:set></e:setminus>
 	</e:eq></e:derive>
 	<e:by><e:from name="vUTIsS"/>, equal operations</e:by>
       </e:step>
 
       <e:step name="vminuswUTminuswIsSminusw">
 	<e:derive><e:eq>
-	    <e:fst>
+	    
 	      <e:union>
-		<e:fst>(<e:setminus>
-		    <e:fst><e:set><e:var n="v"/></e:set></e:fst>
-		    <e:snd><e:set><e:var n="w"/></e:set></e:snd>
-		  </e:setminus>)</e:fst>
-		<e:snd>(<e:setminus>
-		    <e:fst><e:st n="T"/></e:fst>
-		    <e:snd><e:set><e:var n="w"/></e:set></e:snd>
-		  </e:setminus>)</e:snd>
+		(<e:setminus>
+		    <e:set><e:var n="v"/></e:set>
+		    <e:set><e:var n="w"/></e:set>
+		  </e:setminus>)
+		(<e:setminus>
+		    <e:st n="T"/>
+		    <e:set><e:var n="w"/></e:set>
+		  </e:setminus>)
 	      </e:union>
-	    </e:fst>
-	    <e:snd><e:setminus><e:fst><e:st n="S" /></e:fst><e:snd><e:set><e:var n="w"/></e:set></e:snd></e:setminus></e:snd>
+	    
+	    <e:setminus><e:st n="S" /><e:set><e:var n="w"/></e:set></e:setminus>
 	</e:eq></e:derive>
 	<e:by><e:from name="(vUT)minuswIsSminusw"/>, distributivity of set minus over set union</e:by>
       </e:step>
 
       <e:step name="vminuswIsv">
 	<e:derive><e:eq>
-	    <e:fst><e:setminus>
-		<e:fst><e:set><e:var n="v"/></e:set></e:fst>
-		<e:snd><e:set><e:var n="w"/></e:set></e:snd>
-	    </e:setminus></e:fst>
-	    <e:snd><e:set><e:var n="v"/></e:set></e:snd>
+	    <e:setminus>
+		<e:set><e:var n="v"/></e:set>
+		<e:set><e:var n="w"/></e:set>
+	    </e:setminus>
+	    <e:set><e:var n="v"/></e:set>
 	</e:eq></e:derive>
 	<e:by><e:from name="vNotw"/>, ??</e:by>
       </e:step>
 
       <e:step name="vUTminuswIsSminusw">
 	<e:derive><e:eq>
-	    <e:fst>
+	    
 	      <e:union>
-		<e:fst><e:set><e:var n="v"/></e:set></e:fst>
-		<e:snd>(<e:setminus><e:fst><e:st n="T"/></e:fst><e:snd><e:set><e:var n="w"/></e:set></e:snd></e:setminus>)</e:snd>
+		<e:set><e:var n="v"/></e:set>
+		(<e:setminus><e:st n="T"/><e:set><e:var n="w"/></e:set></e:setminus>)
 	      </e:union>
-	    </e:fst>
-	    <e:snd>(<e:setminus><e:fst><e:st n="S" /></e:fst><e:snd><e:set><e:var n="w"/></e:set></e:snd></e:setminus>)</e:snd>
+	    
+	    (<e:setminus><e:st n="S" /><e:set><e:var n="w"/></e:set></e:setminus>)
 	</e:eq></e:derive>
 	<e:by><e:from name="vminuswUTminuswIsSminusw"/>, <e:from name="vminuswIsv"/>, substitution</e:by>
       </e:step>
 
       <e:step name="AllInTminuswGreaterThanv">
 	<e:derive><e:forall>
-	    <e:fst>
+	    <e:vars>
 	      <e:in>
-		<e:fst><e:var n="t"/></e:fst>
-		<e:snd>(<e:setminus><e:fst><e:st n="T"/></e:fst><e:snd><e:set><e:var n="w"/></e:set></e:snd></e:setminus>)</e:snd>
+		<e:var n="t"/>
+		(<e:setminus><e:st n="T"/><e:set><e:var n="w"/></e:set></e:setminus>)
 	      </e:in>
-	    </e:fst>
-	    <e:snd>
+	    </e:vars>
+	    <e:expr>
 	      <e:lt>
-		<e:fst><e:var n="v"/></e:fst>
-		<e:snd><e:var n="t"/></e:snd>
+		<e:var n="v"/>
+		<e:var n="t"/>
 	      </e:lt>
-	    </e:snd>
+	    </e:expr>
 	</e:forall></e:derive>
 	<e:by><e:from name="allInTGreaterThanv"/>, for all in set then for all in subset</e:by>
       </e:step>
@@ -182,34 +182,34 @@
       <e:step name="composeParts">
 	<e:derive>
 	  <e:eq>
-	    <e:fst>
+	    
 	      <e:union>
-		<e:fst><e:set><e:var n="v"/></e:set></e:fst>
-		<e:snd>(<e:setminus><e:fst><e:st n="T"/></e:fst><e:snd><e:set><e:var n="w"/></e:set></e:snd></e:setminus>)</e:snd>
+		<e:set><e:var n="v"/></e:set>
+		(<e:setminus><e:st n="T"/><e:set><e:var n="w"/></e:set></e:setminus>)
 	      </e:union>
-	    </e:fst>
-	    <e:snd>(<e:setminus><e:fst><e:st n="S" /></e:fst><e:snd><e:set><e:var n="w"/></e:set></e:snd></e:setminus>)</e:snd>
+	    
+	    (<e:setminus><e:st n="S" /><e:set><e:var n="w"/></e:set></e:setminus>)
 	  </e:eq> ∧
 	  <e:forall>
-	    <e:fst>
+	    <e:vars>
 	      <e:in>
-		<e:fst><e:var n="t"/></e:fst>
-		<e:snd>(<e:setminus><e:fst><e:st n="T"/></e:fst><e:snd><e:set><e:var n="w"/></e:set></e:snd></e:setminus>)</e:snd>
+		<e:var n="t"/>
+		(<e:setminus><e:st n="T"/><e:set><e:var n="w"/></e:set></e:setminus>)
 	      </e:in>
-	    </e:fst>
-	    <e:snd>
+	    </e:vars>
+	    <e:expr>
 	      <e:lt>
-		<e:fst><e:var n="v"/></e:fst>
-		<e:snd><e:var n="t"/></e:snd>
+		<e:var n="v"/>
+		<e:var n="t"/>
 	      </e:lt>
-	    </e:snd>
+	    </e:expr>
 	  </e:forall>
 	</e:derive>
 	<e:by><e:from name="vUTminuswIsSminusw"/>, <e:from name="AllInTminuswGreaterThanv"/>, <m:andIntro/></e:by>
       </e:step>
 
       <e:step name="qed">
-	<e:derive><e:pred name="ListCompose"><e:var n="v"/>, <e:setminus><e:fst><e:st n="T"/></e:fst><e:snd><e:set><e:var n="w"/></e:set></e:snd></e:setminus>, <e:setminus><e:fst><e:st n="S" /></e:fst><e:snd><e:set><e:var n="w"/></e:set></e:snd></e:setminus></e:pred></e:derive>
+	<e:derive><e:pred name="ListCompose"><e:var n="v"/>, <e:setminus><e:st n="T"/><e:set><e:var n="w"/></e:set></e:setminus>, <e:setminus><e:st n="S" /><e:set><e:var n="w"/></e:set></e:setminus></e:pred></e:derive>
 	<e:by><e:from name="composeParts"/>, close predicate</e:by>
       </e:step>
     </e:derivation>

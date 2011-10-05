@@ -534,7 +534,7 @@ struct Node {
     That is, <span class="pred_name">List</span>(<code>head</code>, <span class="st">S</span>)
     describes a set of memory locations forming a linked list that represents set <span class="st">S</span>,
     with <code>head</code> being the address of the first <code>Node</code> in the list
-    (or <code>null</code> if <span class="st">S</span> = ∅).
+    (or <code>null</code> if <span class="st">S</span>).
 
     <figure class="diagram"><figcaption><span class="figure_number">Diagram 5.</span><br/><e:caption>Our basic <abbr title="Linked List" class="smallcaps">LL</abbr> predicates.</e:caption></figcaption><e:contents><!-- Created with Inkscape (http://www.inkscape.org/) --><svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="407.48032" height="177.16536" id="svg2" version="1.1" inkscape:version="0.48.1 r9760" sodipodi:docname="predicates.svg">
   <defs id="defs4">
@@ -646,7 +646,7 @@ struct Node {
 	  <tr>
 	    <td/>
 	    <td>
-	      <span class="st">S</span> = ∅ ∧
+	      <span class="st">S</span> ∧
 	    </td>
 	    <td><span class="st">S</span> is the empty set and</td>
 	  </tr>
@@ -672,7 +672,11 @@ struct Node {
     it is the smallest element.
     Another way to say this is that all the elements in <span class="st">T</span> are all greater than <span class="var">v</span>;
     we write
-    ∀<span class="var">t</span> ∈ <span class="st">T</span>. <span class="var">value</span> &lt; <span class="var">t</span>.
+    ∀<e:vars>
+	<span class="var">t</span> ∈ <span class="st">T</span>
+      </e:vars>. <e:expr>
+	<span class="var">value</span> &lt; <span class="var">t</span>
+      </e:expr>.
 
     We can express this relationship with a helper predicate, <span class="pred_name">ListCompose</span>,
     to be used by <span class="pred_name">NonEmptyList</span>.
@@ -689,7 +693,11 @@ struct Node {
 	  <tr>
 	    <td/>
 	    <td>
-	      ∀<span class="var">t</span> ∈ <span class="st">T</span>. <span class="var">value</span> &lt; <span class="var">t</span>.
+	      ∀<e:vars>
+		  <span class="var">t</span> ∈ <span class="st">T</span>
+		</e:vars>. <e:expr>
+		  <span class="var">value</span> &lt; <span class="var">t</span>
+		</e:expr>.
 	    </td>
 	  </tr>
 	</tbody>
@@ -707,7 +715,7 @@ struct Node {
     as we will shortly be concerned with this value when describing the first <code>Node</code> in the list.
     Now we can use our <span class="pred_name">ListCompose</span> predicate
     to describe <span class="var">value</span> and <span class="st">T</span> in relation to <span class="st">S</span>; we write
-    ∃<span class="var">value</span>, <span class="st">T</span>. <span class="pred_name">ListCompose</span>(<span class="var">value</span>, <span class="st">T</span>, <span class="st">S</span>).
+    ∃<e:vars><span class="var">value</span>, <span class="st">T</span></e:vars>. <e:expr><span class="pred_name">ListCompose</span>(<span class="var">value</span>, <span class="st">T</span>, <span class="st">S</span>)</e:expr>.
   </p>
 
   <p>
@@ -728,7 +736,7 @@ struct Node {
     and consists of two fields, the first containing <span class="var">value</span>,
     and the second containing some (unknown) address <span class="var">tail</span>.
     We write this as 
-    <code>head</code> ↦ <span class="var">value</span>, <span class="var">tail</span>.
+    <code>head</code> ↦ <e:list><span class="var">value</span>, <span class="var">tail</span></e:list>.
     Notice that the lengths of the fields is left unspecified and is in fact unimportant.
   </p>
 
@@ -751,7 +759,7 @@ struct Node {
 	</tr>
 	<tr>
 	  <td/>
-	  <td><code>head</code> ↦ <span class="var">value</span>, <span class="var">tail</span> ∗ <span class="pred_name">List</span>(<span class="var">tail</span>, <span class="st">T</span>).</td>
+	  <td><code>head</code> ↦ <e:list><span class="var">value</span>, <span class="var">tail</span></e:list> ∗ <span class="pred_name">List</span>(<span class="var">tail</span>, <span class="st">T</span>).</td>
 	</tr>
       </table>
     </div></figure>
@@ -834,9 +842,12 @@ struct Node {
 
       <tr><td><span class="step">5</span>.</td><td class="indent1"><span class="pred_name">NonEmptyList</span>(<code>head</code>, <span class="st">S</span>)</td><td>assume</td></tr>
 
-      <tr><td><span class="step">6</span>.</td><td class="indent1">∃<span class="var">v</span>, <span class="var">t</span>, <span class="st">T</span>. <span class="pred_name">ListCompose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>) ∧<br/><code>head</code> ↦ <span class="var">v</span>, <span class="var">t</span> ∗ <span class="pred_name">List</span>(<span class="var">t</span>, <span class="st">T</span>)</td><td><span class="step">5</span>, open predicate</td></tr>
+      <tr><td><span class="step">6</span>.</td><td class="indent1">∃<e:vars><span class="var">v</span>, <span class="var">t</span>, <span class="st">T</span></e:vars>. <e:expr>
+	      <span class="pred_name">ListCompose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>) ∧<br/>
+	      <code>head</code> ↦ <e:list><span class="var">v</span>, <span class="var">t</span></e:list> ∗ <span class="pred_name">List</span>(<span class="var">t</span>, <span class="st">T</span>)
+	    </e:expr></td><td><span class="step">5</span>, open predicate</td></tr>
 
-      <tr><td><span class="step">7</span>.</td><td class="indent1">∃<span class="var">v</span>, <span class="var">t</span>. <code>head</code> ↦ <span class="var">v</span>, <span class="var">t</span></td><td><span class="step">6</span>, ∧E, frame off <span class="pred_name">List</span>(<span class="var">t</span>, <span class="st">T</span>)</td></tr>
+      <tr><td><span class="step">7</span>.</td><td class="indent1">∃<e:vars><span class="var">v</span>, <span class="var">t</span></e:vars>. <e:expr><code>head</code> ↦ <e:list><span class="var">v</span>, <span class="var">t</span></e:list></e:expr></td><td><span class="step">6</span>, ∧E, frame off <span class="pred_name">List</span>(<span class="var">t</span>, <span class="st">T</span>)</td></tr>
 
       <tr><td><span class="step">8</span>.</td><td class="indent1"><code>head</code> ≠ <code>null</code></td><td><span class="step">7</span>, pointer non-null</td></tr>
 
@@ -858,13 +869,13 @@ struct Node {
 
       <tr><td><span class="step">2</span>.</td><td class="">
 	  <code>head</code> = <code>null</code> ∧
-	  <span class="st">S</span> = ∅ ∧
+	  <span class="st">S</span> ∧
 	  <b>emp</b>
 	</td><td><span class="step">1</span>, open predicate</td></tr>
 
-      <tr><td><span class="step">3</span>.</td><td class=""><span class="st">S</span> = ∅</td><td><span class="step">2</span>, ∧E</td></tr>
+      <tr><td><span class="step">3</span>.</td><td class=""><span class="st">S</span></td><td><span class="step">2</span>, ∧E</td></tr>
 
-      <tr><td><span class="step">4</span>.</td><td class=""><code>value</code> ∉ ∅</td><td>Nothing in empty set</td></tr>
+      <tr><td><span class="step">4</span>.</td><td class=""><code>value</code></td><td>Nothing in empty set</td></tr>
 
       <tr><td><span class="step">5</span>.</td><td class=""><code>value</code> ∉ <span class="st">S</span></td><td><span class="step">3</span>, <span class="step">4</span>, equality</td></tr>
     </table>
@@ -930,11 +941,19 @@ struct Node {
 
       <tr><td><span class="step">7</span>.</td><td class="">
 	  {<span class="var">v</span>} ∪ <span class="st">T</span> = <span class="st">S</span> ∧
-	  ∀<span class="var">t</span> ∈ <span class="st">T</span>. <span class="var">v</span> &lt; <span class="var">t</span>
+	  ∀<e:vars>
+	      <span class="var">t</span> ∈ <span class="st">T</span>
+	    </e:vars>. <e:expr>
+	      <span class="var">v</span> &lt; <span class="var">t</span>
+	    </e:expr>
 	</td><td><span class="step">5</span>, open predicate</td></tr>
 
       <tr><td><span class="step">8</span>.</td><td class="">
-	  ∀<span class="var">t</span> ∈ <span class="st">T</span>. <span class="var">v</span> &lt; <span class="var">t</span>
+	  ∀<e:vars>
+	      <span class="var">t</span> ∈ <span class="st">T</span>
+	    </e:vars>. <e:expr>
+	      <span class="var">v</span> &lt; <span class="var">t</span>
+	    </e:expr>
 	</td><td><span class="step">7</span>, ∧E</td></tr>
 
       <tr><td><span class="step">9</span>.</td><td class="indent1"><code>value</code> ∈ <span class="st">S</span></td><td>assume</td></tr>
@@ -961,7 +980,11 @@ struct Node {
 
       <tr><td><span class="step">4</span>.</td><td class="">
 	  {<code>value</code>} ∪ <span class="st">T</span> = <span class="st">S</span> ∧
-	  ∀<span class="var">t</span> ∈ <span class="st">T</span>. <code>value</code> &lt; <span class="var">t</span>
+	  ∀<e:vars>
+	      <span class="var">t</span> ∈ <span class="st">T</span>
+	    </e:vars>. <e:expr>
+	      <code>value</code> &lt; <span class="var">t</span>
+	    </e:expr>
 	</td><td><span class="step">2</span>, open predicate</td></tr>
 
       <tr><td><span class="step">5</span>.</td><td class="">
@@ -969,7 +992,11 @@ struct Node {
 	</td><td><span class="step">4</span>, ∧E</td></tr>
 
       <tr><td><span class="step">6</span>.</td><td class="">
-	  ∀<span class="var">t</span> ∈ <span class="st">T</span>. <code>value</code> &lt; <span class="var">t</span>
+	  ∀<e:vars>
+	      <span class="var">t</span> ∈ <span class="st">T</span>
+	    </e:vars>. <e:expr>
+	      <code>value</code> &lt; <span class="var">t</span>
+	    </e:expr>
 	</td><td><span class="step">4</span>, ∧E</td></tr>
 
       <tr><td><span class="step">7</span>.</td><td class=""><span class="st">T</span> ⊆ <span class="st">S</span></td><td><span class="step">5</span></td></tr>
@@ -1258,7 +1285,7 @@ bool search(Node* head, int value) { </pre>
     o = false; </pre>
 <div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl">Assignment.</div><span class="pred_name">List</span>(<code>head</code>, <span class="st">S</span>) ∧ <code>value</code> ∉ <span class="st">S</span> ∧ <code>o</code> = <code>false</code></div></div>
 
-<div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl">false ↔ false.</div><span class="pred_name">List</span>(<code>head</code>, <span class="st">S</span>) ∧ <code>o</code> ↔ <code>value</code> ∈ <span class="st">S</span></div></div>
+<div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl">.</div><span class="pred_name">List</span>(<code>head</code>, <span class="st">S</span>) ∧ <code>o</code> ↔ <code>value</code> ∈ <span class="st">S</span></div></div>
 <pre class="prettyprint">  }
   else { </pre>
 <div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl">Deny if-condition.</div><span class="pred_name">List</span>(<code>head</code>, <span class="st">S</span>) ∧ <code>head</code> ≠ <code>null</code></div></div>
@@ -1268,20 +1295,20 @@ bool search(Node* head, int value) { </pre>
 <div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl">Open <span class="pred_name">NonEmptyList</span>(<code>head</code>, <span class="st">S</span>).</div>∃<span class="var">v</span>, <span class="var">tail</span>, <span class="st">T</span>.<br/>
 <div class="indent">
   <span class="pred_name">ListCompose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>) ∧<br/>
-  <code>head</code> ↦ <span class="var">v</span>, <span class="var">tail</span> ∗ <span class="pred_name">List</span>(<span class="var">tail</span>, <span class="st">T</span>)
+  <code>head</code> ↦ <span class="var">v</span> ↦ <span class="var">tail</span> ∗ <span class="pred_name">List</span>(<span class="var">tail</span>, <span class="st">T</span>)
 </div></div></div>
 <pre class="prettyprint">
     if (head.value == value) { </pre>
 <div class="section"><pre class="indent">      </pre><div class="AssertionParagraph"><div class="expl">Assert if-condition: substitute <code>value</code> for <span class="var">v</span>.</div>∃<span class="var">tail</span>, <span class="st">T</span>.<br/>
 <div class="indent">
   <span class="pred_name">ListCompose</span>(<code>value</code>, <span class="st">T</span>, <span class="st">S</span>) ∧<br/>
-  <code>head</code> ↦ <code>value</code>, <span class="var">tail</span> ∗ <span class="pred_name">List</span>(<span class="var">tail</span>, <span class="st">T</span>)
+  <code>head</code> ↦ <code>value</code> ↦ <span class="var">tail</span> ∗ <span class="pred_name">List</span>(<span class="var">tail</span>, <span class="st">T</span>)
 </div></div></div>
 
 <div class="section"><pre class="indent">      </pre><div class="AssertionParagraph"><div class="expl"><span class="pred_name">ListCompose</span>(<code>value</code>, <span class="st">T</span>, <span class="st">S</span>) ⇒ <code>value</code> ∈ <span class="st">S</span>.</div>∃<span class="var">tail</span>, <span class="st">T</span>.<br/>
 <div class="indent">
   <span class="pred_name">ListCompose</span>(<code>value</code>, <span class="st">T</span>, <span class="st">S</span>) ∧<br/>
-  <code>head</code> ↦ <code>value</code>, <span class="var">tail</span> ∗ <span class="pred_name">List</span>(<span class="var">tail</span>, <span class="st">T</span>) ∧<br/>
+  <code>head</code> ↦ <code>value</code> ↦ <span class="var">tail</span> ∗ <span class="pred_name">List</span>(<span class="var">tail</span>, <span class="st">T</span>) ∧<br/>
   <code>value</code> ∈ <span class="st">S</span>
 </div></div></div>
 
@@ -1292,13 +1319,13 @@ bool search(Node* head, int value) { </pre>
       o = true; </pre>
 <div class="section"><pre class="indent">      </pre><div class="AssertionParagraph"><div class="expl">Assignment.</div><span class="pred_name">List</span>(<code>head</code>, <span class="st">S</span>) ∧ <code>value</code> ∈ <span class="st">S</span> ∧ <code>o</code> = <code>true</code></div></div>
 
-<div class="section"><pre class="indent">      </pre><div class="AssertionParagraph"><div class="expl">true ↔ true.</div><span class="pred_name">List</span>(<code>head</code>, <span class="st">S</span>) ∧ <code>o</code> ↔ <code>value</code> ∈ <span class="st">S</span></div></div>
+<div class="section"><pre class="indent">      </pre><div class="AssertionParagraph"><div class="expl">.</div><span class="pred_name">List</span>(<code>head</code>, <span class="st">S</span>) ∧ <code>o</code> ↔ <code>value</code> ∈ <span class="st">S</span></div></div>
 <pre class="prettyprint">    }
     else { </pre>
 <div class="section"><pre class="indent">      </pre><div class="AssertionParagraph"><div class="expl">Deny if-condition.</div>∃<span class="var">v</span>, <span class="var">tail</span>, <span class="st">T</span>.<br/>
 <div class="indent">
   <span class="pred_name">ListCompose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>) ∧<br/>
-  <code>head</code> ↦ <span class="var">v</span>, <span class="var">tail</span> ∗ <span class="pred_name">List</span>(<span class="var">tail</span>, <span class="st">T</span>) ∧<br/>
+  <code>head</code> ↦ <span class="var">v</span> ↦ <span class="var">tail</span> ∗ <span class="pred_name">List</span>(<span class="var">tail</span>, <span class="st">T</span>) ∧<br/>
   <span class="var">v</span> ≠ <code>value</code>
 </div></div></div>
 <pre class="prettyprint">
@@ -1306,7 +1333,7 @@ bool search(Node* head, int value) { </pre>
 <div class="section"><pre class="indent">        </pre><div class="AssertionParagraph"><div class="expl">Assert if-condition.</div>∃<span class="var">v</span>, <span class="var">tail</span>, <span class="st">T</span>.<br/>
 <div class="indent">
   <span class="pred_name">ListCompose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>) ∧<br/>
-  <code>head</code> ↦ <span class="var">v</span>, <span class="var">tail</span> ∗ <span class="pred_name">List</span>(<span class="var">tail</span>, <span class="st">T</span>) ∧<br/>
+  <code>head</code> ↦ <span class="var">v</span> ↦ <span class="var">tail</span> ∗ <span class="pred_name">List</span>(<span class="var">tail</span>, <span class="st">T</span>) ∧<br/>
   <span class="var">v</span> &lt; <code>value</code>
 </div></div></div>
 
@@ -1314,7 +1341,7 @@ bool search(Node* head, int value) { </pre>
 <span class="pred_name">ListCompose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>) ∧ <span class="var">v</span> &lt; <code>value</code> ⇒ <code>value</code> ∈ <span class="st">T</span> ↔ <code>value</code> ∈ <span class="st">S</span>.</div>∃<span class="var">v</span>, <span class="var">tail</span>, <span class="st">T</span>.<br/>
 <div class="indent">
   <span class="pred_name">ListCompose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>) ∧<br/>
-  <code>head</code> ↦ <span class="var">v</span>, <span class="var">tail</span> ∗ <span class="pred_name">List</span>(<span class="var">tail</span>, <span class="st">T</span>) ∧<br/>
+  <code>head</code> ↦ <span class="var">v</span> ↦ <span class="var">tail</span> ∗ <span class="pred_name">List</span>(<span class="var">tail</span>, <span class="st">T</span>) ∧<br/>
   <span class="var">v</span> &lt; <code>value</code> ∧<br/>
   <code>value</code> ∈ <span class="st">T</span> ↔ <code>value</code> ∈ <span class="st">S</span>
 </div></div></div>
@@ -1324,7 +1351,7 @@ bool search(Node* head, int value) { </pre>
 Note |<span class="st">T</span>| &lt; |<span class="st">S</span>|.</div>∃<span class="var">v</span>, <span class="var">tail</span>, <span class="st">T</span>.<br/>
 <div class="indent">
   <span class="pred_name">ListCompose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>) ∧<br/>
-  <code>head</code> ↦ <span class="var">v</span>, <span class="var">tail</span> ∗ <span class="pred_name">List</span>(<span class="var">tail</span>, <span class="st">T</span>) ∧<br/>
+  <code>head</code> ↦ <span class="var">v</span> ↦ <span class="var">tail</span> ∗ <span class="pred_name">List</span>(<span class="var">tail</span>, <span class="st">T</span>) ∧<br/>
   <span class="var">v</span> &lt; <code>value</code> ∧<br/>
   <code>value</code> ∈ <span class="st">T</span> ↔ <code>value</code> ∈ <span class="st">S</span> ∧<br/>
   <code>o</code> ↔ <code>value</code> ∈ <span class="st">T</span>
@@ -1333,7 +1360,7 @@ Note |<span class="st">T</span>| &lt; |<span class="st">S</span>|.</div>∃<sp
 <div class="section"><pre class="indent">        </pre><div class="AssertionParagraph"><div class="expl">Transitivity of double implication.  Discard unrequired assertions.</div>∃<span class="var">v</span>, <span class="var">tail</span>, <span class="st">T</span>.<br/>
 <div class="indent">
   <span class="pred_name">ListCompose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>) ∧<br/>
-  <code>head</code> ↦ <span class="var">v</span>, <span class="var">tail</span> ∗ <span class="pred_name">List</span>(<span class="var">tail</span>, <span class="st">T</span>) ∧<br/>
+  <code>head</code> ↦ <span class="var">v</span> ↦ <span class="var">tail</span> ∗ <span class="pred_name">List</span>(<span class="var">tail</span>, <span class="st">T</span>) ∧<br/>
   <code>o</code> ↔ <code>value</code> ∈ <span class="st">S</span>
 </div></div></div>
 
@@ -1343,24 +1370,24 @@ Note |<span class="st">T</span>| &lt; |<span class="st">S</span>|.</div>∃<sp
 <pre class="prettyprint">      }
       else { </pre>
 <div class="section"><pre class="indent">        </pre><div class="AssertionParagraph"><div class="expl">Deny if-condition.
-Use ¬(<span class="var">v</span> &lt; <code>value</code>) ⇒ <code>value</code> ≤ <span class="var">v</span>.</div>∃<span class="var">v</span>, <span class="var">tail</span>, <span class="st">T</span>.<br/>
+Use <span class="var">v</span> &lt; <code>value</code> ⇒ <code>value</code> ≤ <span class="var">v</span>.</div>∃<span class="var">v</span>, <span class="var">tail</span>, <span class="st">T</span>.<br/>
 <div class="indent">
   <span class="pred_name">ListCompose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>) ∧<br/>
-  <code>head</code> ↦ <span class="var">v</span>, <span class="var">tail</span> ∗ <span class="pred_name">List</span>(<span class="var">tail</span>, <span class="st">T</span>) ∧<br/>
+  <code>head</code> ↦ <span class="var">v</span> ↦ <span class="var">tail</span> ∗ <span class="pred_name">List</span>(<span class="var">tail</span>, <span class="st">T</span>) ∧<br/>
   <code>value</code> ≠ <span class="var">v</span> ∧ <code>value</code> ≤ <span class="var">v</span>
 </div></div></div>
 
-<div class="section"><pre class="indent">        </pre><div class="AssertionParagraph"><div class="expl">(<span class="var">a</span> ≠ <span class="var">b</span> ∧ <span class="var">a</span> ≤ <span class="var">b</span>) ⇒ <span class="var">b</span> &lt; <span class="var">a</span>.</div>∃<span class="var">v</span>, <span class="var">tail</span>, <span class="st">T</span>.<br/>
+<div class="section"><pre class="indent">        </pre><div class="AssertionParagraph"><div class="expl"><span class="var">a</span> ≠ <span class="var">b</span> ∧ <span class="var">a</span> ≤ <span class="var">b</span> ⇒ <span class="var">b</span> &lt; <span class="var">a</span>.</div>∃<span class="var">v</span>, <span class="var">tail</span>, <span class="st">T</span>.<br/>
 <div class="indent">
   <span class="pred_name">ListCompose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>) ∧<br/>
-  <code>head</code> ↦ <span class="var">v</span>, <span class="var">tail</span> ∗ <span class="pred_name">List</span>(<span class="var">tail</span>, <span class="st">T</span>) ∧<br/>
+  <code>head</code> ↦ <span class="var">v</span> ↦ <span class="var">tail</span> ∗ <span class="pred_name">List</span>(<span class="var">tail</span>, <span class="st">T</span>) ∧<br/>
   <code>value</code> &lt; <span class="var">v</span>
 </div></div></div>
 
-<div class="section"><pre class="indent">        </pre><div class="AssertionParagraph"><div class="expl">Lemma: (<span class="pred_name">ListCompose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>) ∧ <code>value</code> &lt; <span class="var">v</span>) ⇒ <code>value</code> ∉ <span class="st">S</span>.</div>∃<span class="var">v</span>, <span class="var">tail</span>, <span class="st">T</span>.<br/>
+<div class="section"><pre class="indent">        </pre><div class="AssertionParagraph"><div class="expl">Lemma: <span class="pred_name">ListCompose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>) ∧ <code>value</code> &lt; <span class="var">v</span> ⇒ <code>value</code> ∉ <span class="st">S</span>.</div>∃<span class="var">v</span>, <span class="var">tail</span>, <span class="st">T</span>.<br/>
 <div class="indent">
   <span class="pred_name">ListCompose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>) ∧<br/>
-  <code>head</code> ↦ <span class="var">v</span>, <span class="var">tail</span> ∗ <span class="pred_name">List</span>(<span class="var">tail</span>, <span class="st">T</span>) ∧<br/>
+  <code>head</code> ↦ <span class="var">v</span> ↦ <span class="var">tail</span> ∗ <span class="pred_name">List</span>(<span class="var">tail</span>, <span class="st">T</span>) ∧<br/>
   <code>value</code> ∉ <span class="st">S</span>
 </div></div></div>
 
@@ -1369,7 +1396,7 @@ Use ¬(<span class="var">v</span> &lt; <code>value</code>) ⇒ <code>value</
         o = false; </pre>
 <div class="section"><pre class="indent">        </pre><div class="AssertionParagraph"><div class="expl">Assignment.</div><span class="pred_name">List</span>(<code>head</code>, <span class="st">S</span>) ∧ <code>value</code> ∉ <span class="st">S</span> ∧ <code>o</code> = <code>false</code></div></div>
 
-<div class="section"><pre class="indent">        </pre><div class="AssertionParagraph"><div class="expl">false ↔ false.</div><span class="pred_name">List</span>(<code>head</code>, <span class="st">S</span>) ∧ <code>o</code> ↔ <code>value</code> ∈ <span class="st">S</span></div></div>
+<div class="section"><pre class="indent">        </pre><div class="AssertionParagraph"><div class="expl">.</div><span class="pred_name">List</span>(<code>head</code>, <span class="st">S</span>) ∧ <code>o</code> ↔ <code>value</code> ∈ <span class="st">S</span></div></div>
 <pre class="prettyprint">      } </pre>
 <div class="section"><pre class="indent">      </pre><div class="AssertionParagraph"><div class="expl">If-rule.</div><span class="pred_name">List</span>(<code>head</code>, <span class="st">S</span>) ∧ <code>o</code> ↔ <code>value</code> ∈ <span class="st">S</span></div></div>
 <pre class="prettyprint">    } </pre>
@@ -1436,29 +1463,53 @@ Use ¬(<span class="var">v</span> &lt; <code>value</code>) ⇒ <code>value</
 
       <tr><td><span class="step">4</span>.</td><td class="">
 	  {<span class="var">v</span>} ∪ <span class="st">T</span> = <span class="st">S</span> ∧
-	  ∀<span class="var">t</span> ∈ <span class="st">T</span>. <span class="var">v</span> &lt; <span class="var">t</span>
+	  ∀<e:vars>
+	      <span class="var">t</span> ∈ <span class="st">T</span>
+	    </e:vars>. <e:expr>
+	      <span class="var">v</span> &lt; <span class="var">t</span>
+	    </e:expr>
 	</td><td><span class="step">2</span>, open predicate</td></tr>
 
       <tr><td><span class="step">5</span>.</td><td class="">{<span class="var">v</span>} ∪ <span class="st">T</span> = <span class="st">S</span></td><td><span class="step">4</span>, ∧E</td></tr>
 
-      <tr><td><span class="step">6</span>.</td><td class="">∀<span class="var">t</span> ∈ <span class="st">T</span>. <span class="var">v</span> &lt; <span class="var">t</span></td><td><span class="step">4</span>, ∧E</td></tr>
+      <tr><td><span class="step">6</span>.</td><td class="">∀<e:vars>
+	      <span class="var">t</span> ∈ <span class="st">T</span>
+	    </e:vars>. <e:expr>
+	      <span class="var">v</span> &lt; <span class="var">t</span>
+	    </e:expr></td><td><span class="step">4</span>, ∧E</td></tr>
 
-      <tr><td><span class="step">7</span>.</td><td class="">∀<span class="var">t</span> ∈ <span class="st">T</span>. <span class="var">w</span> &lt; <span class="var">t</span></td><td><span class="step">6</span>, <span class="step">3</span>, transitivity of &lt; relation</td></tr>
+      <tr><td><span class="step">7</span>.</td><td class="">∀<e:vars>
+	      <span class="var">t</span> ∈ <span class="st">T</span>
+	    </e:vars>. <e:expr>
+	      <span class="var">w</span> &lt; <span class="var">t</span>
+	    </e:expr></td><td><span class="step">6</span>, <span class="step">3</span>, transitivity of &lt; relation</td></tr>
 
       <tr><td><span class="step">8</span>.</td><td class="">
 	  {<span class="var">w</span>} ∪ <span class="st">S</span> = <span class="st">S</span> ∪ {<span class="var">w</span>}
 	</td><td>Commutativity of set union</td></tr>
 
       <tr><td><span class="step">9</span>.</td><td class="">
-	  ∀<span class="var">t</span> ∈ {<span class="var">v</span>}. <span class="var">w</span> &lt; <span class="var">t</span>
+	  ∀<e:vars>
+	      <span class="var">t</span> ∈ {<span class="var">v</span>}
+	    </e:vars>. <e:expr>
+	      <span class="var">w</span> &lt; <span class="var">t</span>
+	    </e:expr>
 	</td><td><span class="step">3</span>, ??</td></tr>
 
       <tr><td><span class="step">10</span>.</td><td class="">
-	  ∀<span class="var">t</span> ∈ ({<span class="var">v</span>} ∪ <span class="st">T</span>). <span class="var">w</span> &lt; <span class="var">t</span>
+	  ∀<e:vars>
+	      <span class="var">t</span> ∈ {<span class="var">v</span>} ∪ <span class="st">T</span>
+	    </e:vars>. <e:expr>
+	      <span class="var">w</span> &lt; <span class="var">t</span>
+	    </e:expr>
 	</td><td><span class="step">7</span>, <span class="step">9</span>, ?? </td></tr>
 
       <tr><td><span class="step">11</span>.</td><td class="">
-	  ∀<span class="var">t</span> ∈ <span class="st">S</span>. <span class="var">w</span> &lt; <span class="var">t</span>
+	  ∀<e:vars>
+	      <span class="var">t</span> ∈ <span class="st">S</span>
+	    </e:vars>. <e:expr>
+	      <span class="var">w</span> &lt; <span class="var">t</span>
+	    </e:expr>
 	</td><td><span class="step">10</span>, <span class="step">5</span>, substitution</td></tr>
 
       <tr><td><span class="step">12</span>.</td><td class=""><span class="pred_name">ListCompose</span>(<span class="var">w</span>, <span class="st">S</span>, <span class="st">S</span> ∪ {<span class="var">w</span>})</td><td><span class="step">8</span>, <span class="step">11</span>, close predicate</td></tr>
@@ -1487,23 +1538,39 @@ Use ¬(<span class="var">v</span> &lt; <code>value</code>) ⇒ <code>value</
 
       <tr><td><span class="step">4</span>.</td><td class="">
 	  {<span class="var">v</span>} ∪ <span class="st">T</span> = <span class="st">S</span> ∧
-	  ∀<span class="var">t</span> ∈ <span class="st">T</span>. <span class="var">v</span> &lt; <span class="var">t</span>
+	  ∀<e:vars>
+	      <span class="var">t</span> ∈ <span class="st">T</span>
+	    </e:vars>. <e:expr>
+	      <span class="var">v</span> &lt; <span class="var">t</span>
+	    </e:expr>
 	</td><td><span class="step">2</span>, open predicate</td></tr>
 
       <tr><td><span class="step">5</span>.</td><td class="">{<span class="var">v</span>} ∪ <span class="st">T</span> = <span class="st">S</span></td><td><span class="step">4</span>, ∧E</td></tr>
 
-      <tr><td><span class="step">6</span>.</td><td class="">∀<span class="var">t</span> ∈ <span class="st">T</span>. <span class="var">v</span> &lt; <span class="var">t</span></td><td><span class="step">4</span>, ∧E</td></tr>
+      <tr><td><span class="step">6</span>.</td><td class="">∀<e:vars>
+	      <span class="var">t</span> ∈ <span class="st">T</span>
+	    </e:vars>. <e:expr>
+	      <span class="var">v</span> &lt; <span class="var">t</span>
+	    </e:expr></td><td><span class="step">4</span>, ∧E</td></tr>
 
       <tr><td><span class="step">7</span>.</td><td class="">
 	  {<span class="var">v</span>} ∪ <span class="st">T</span> ∪ {<code>value</code>} = <span class="st">S</span> ∪ {<code>value</code>}
-	</td><td><span class="step">5</span>, <span class="var">a</span> = <span class="var">b</span> ⇒ f(<span class="var">a</span>) = f(<span class="var">b</span>)</td></tr>
+	</td><td><span class="step">5</span>, <span class="var">a</span> = <span class="var">b</span> ⇒ <span class="var">a</span> = <span class="var">b</span></td></tr>
 
       <tr><td><span class="step">8</span>.</td><td class="">
-	  ∀<span class="var">t</span> ∈ {<code>value</code>}. <span class="var">v</span> &lt; <span class="var">t</span>
+	  ∀<e:vars>
+	      <span class="var">t</span> ∈ {<code>value</code>}
+	    </e:vars>. <e:expr>
+	      <span class="var">v</span> &lt; <span class="var">t</span>
+	    </e:expr>
 	</td><td><span class="step">3</span>, ??</td></tr>
 
       <tr><td><span class="step">9</span>.</td><td class="">
-	  ∀<span class="var">t</span> ∈ <span class="st">T</span> ∪ {<code>value</code>}. <span class="var">v</span> &lt; <span class="var">t</span>
+	  ∀<e:vars>
+	      <span class="var">t</span> ∈ <span class="st">T</span> ∪ {<code>value</code>}
+	    </e:vars>. <e:expr>
+	      <span class="var">v</span> &lt; <span class="var">t</span>
+	    </e:expr>
 	</td><td><span class="step">6</span>, <span class="step">8</span>, ??</td></tr>
 
       <tr><td><span class="step">10</span>.</td><td class=""><span class="pred_name">ListCompose</span>(<span class="var">v</span>,
@@ -1888,20 +1955,20 @@ Node* insert(Node* head, int value) {
 <div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl">Lemma: <span class="pred_name">List</span>(<code>head</code>, <span class="st">S</span>) ∧ <code>head</code> = <code>null</code> ⇒ <span class="pred_name">EmptyList</span>(<code>head</code>, <span class="st">S</span>)</div><span class="pred_name">EmptyList</span>(<code>head</code>, <span class="st">S</span>)</div></div>
 
 <div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl">Open <span class="pred_name">EmptyList</span>(<code>head</code>, <span class="st">S</span>).  Discard
-<code>head</code> = <code>null</code>.</div><span class="st">S</span> = ∅ ∧
+<code>head</code> = <code>null</code>.</div><span class="st">S</span> ∧
 <b>emp</b></div></div>
 <pre class="prettyprint">
     o = new Node(value); </pre>
-<div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl">Specification for <code>new Node(value)</code>.</div><span class="st">S</span> = ∅ ∧
+<div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl">Specification for <code>new Node(value)</code>.</div><span class="st">S</span> ∧
 <b>emp</b> ∗ <span class="pred_name">NonEmptyList</span>(<code>o</code>, {<code>value</code>})</div></div>
 
-<div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl"><b>emp</b> ∗ <span class="pred_name">X</span> = <span class="pred_name">X</span>.</div><span class="st">S</span> = ∅ ∧ <span class="pred_name">NonEmptyList</span>(<code>o</code>, {<code>value</code>})</div></div>
+<div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl"><b>emp</b> ∗ <span class="pred_name">X</span> = <span class="pred_name">X</span>.</div><span class="st">S</span> ∧ <span class="pred_name">NonEmptyList</span>(<code>o</code>, {<code>value</code>})</div></div>
 
-<div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl"><span class="st">X</span> = ∅ ∪ <span class="st">X</span>.</div><span class="st">S</span> = ∅ ∧ 
+<div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl"><span class="st">X</span> = <span class="st">X</span>.</div><span class="st">S</span> ∧ 
 <span class="pred_name">NonEmptyList</span>(<code>o</code>,
-∅ ∪ {<code>value</code>})</div></div>
+{<code>value</code>})</div></div>
 
-<div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl">Substitution.  Discard <span class="st">S</span> = ∅.</div><span class="pred_name">NonEmptyList</span>(<code>o</code>,
+<div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl">Substitution.  Discard <span class="st">S</span>.</div><span class="pred_name">NonEmptyList</span>(<code>o</code>,
 <span class="st">S</span> ∪ {<code>value</code>})</div></div>
 <pre class="prettyprint">  }
   else { </pre>
@@ -1912,20 +1979,20 @@ Node* insert(Node* head, int value) {
 <div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl">Open <span class="pred_name">NonEmptyList</span>(<code>head</code>, <span class="st">S</span>).</div>∃<span class="var">v</span>, <span class="var">tail</span>, <span class="st">T</span>.<br/>
 <div class="indent">
   <span class="pred_name">ListCompose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>) ∧<br/>
-  <code>head</code> ↦ <span class="var">v</span>, <span class="var">tail</span> ∗ <span class="pred_name">List</span>(<span class="var">tail</span>, <span class="st">T</span>)
+  <code>head</code> ↦ <span class="var">v</span> ↦ <span class="var">tail</span> ∗ <span class="pred_name">List</span>(<span class="var">tail</span>, <span class="st">T</span>)
 </div></div></div>
 <pre class="prettyprint">
     if (head.value == value) { </pre>
 <div class="section"><pre class="indent">      </pre><div class="AssertionParagraph"><div class="expl">Assert if-condition: substitute <code>value</code> for <span class="var">v</span>.</div>∃<span class="var">tail</span>, <span class="st">T</span>.<br/>
 <div class="indent">
   <span class="pred_name">ListCompose</span>(<code>value</code>, <span class="st">T</span>, <span class="st">S</span>) ∧<br/>
-  <code>head</code> ↦ <code>value</code>, <span class="var">tail</span> ∗ <span class="pred_name">List</span>(<span class="var">tail</span>, <span class="st">T</span>)
+  <code>head</code> ↦ <code>value</code> ↦ <span class="var">tail</span> ∗ <span class="pred_name">List</span>(<span class="var">tail</span>, <span class="st">T</span>)
 </div></div></div>
 
 <div class="section"><pre class="indent">      </pre><div class="AssertionParagraph"><div class="expl"><span class="pred_name">ListCompose</span>(<code>value</code>, <span class="st">T</span>, <span class="st">S</span>) ⇒ <code>value</code> ∈ <span class="st">S</span>.</div>∃<span class="var">tail</span>, <span class="st">T</span>.<br/>
 <div class="indent">
   <span class="pred_name">ListCompose</span>(<code>value</code>, <span class="st">T</span>, <span class="st">S</span>) ∧<br/>
-  <code>head</code> ↦ <code>value</code>, <span class="var">tail</span> ∗ <span class="pred_name">List</span>(<span class="var">tail</span>, <span class="st">T</span>) ∧<br/>
+  <code>head</code> ↦ <code>value</code> ↦ <span class="var">tail</span> ∗ <span class="pred_name">List</span>(<span class="var">tail</span>, <span class="st">T</span>) ∧<br/>
   <code>value</code> ∈ <span class="st">S</span>
 </div></div></div>
 
@@ -1947,7 +2014,7 @@ Node* insert(Node* head, int value) {
 <div class="section"><pre class="indent">      </pre><div class="AssertionParagraph"><div class="expl">Deny if-condition.</div>∃<span class="var">v</span>, <span class="var">tail</span>, <span class="st">T</span>.<br/>
 <div class="indent">
   <span class="pred_name">ListCompose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>) ∧<br/>
-  <code>head</code> ↦ <span class="var">v</span>, <span class="var">tail</span> ∗ <span class="pred_name">List</span>(<span class="var">tail</span>, <span class="st">T</span>) ∧<br/>
+  <code>head</code> ↦ <span class="var">v</span> ↦ <span class="var">tail</span> ∗ <span class="pred_name">List</span>(<span class="var">tail</span>, <span class="st">T</span>) ∧<br/>
   <span class="var">v</span> ≠ <code>value</code>
 </div></div></div>
 <pre class="prettyprint">
@@ -1955,7 +2022,7 @@ Node* insert(Node* head, int value) {
 <div class="section"><pre class="indent">        </pre><div class="AssertionParagraph"><div class="expl">Assert if-condition.</div>∃<span class="var">v</span>, <span class="var">tail</span>, <span class="st">T</span>.<br/>
 <div class="indent">
   <span class="pred_name">ListCompose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>) ∧<br/>
-  <code>head</code> ↦ <span class="var">v</span>, <span class="var">tail</span> ∗ <span class="pred_name">List</span>(<span class="var">tail</span>, <span class="st">T</span>) ∧<br/>
+  <code>head</code> ↦ <span class="var">v</span> ↦ <span class="var">tail</span> ∗ <span class="pred_name">List</span>(<span class="var">tail</span>, <span class="st">T</span>) ∧<br/>
   <span class="var">v</span> &lt; <code>value</code>
 </div></div></div>
 <pre class="prettyprint">
@@ -1963,7 +2030,7 @@ Node* insert(Node* head, int value) {
 <div class="section"><pre class="indent">        </pre><div class="AssertionParagraph"><div class="expl">Use specification for <code>insert</code>.</div>∃<span class="var">v</span>, <span class="var">tail</span>, <span class="st">T</span>.<br/>
 <div class="indent">
   <span class="pred_name">ListCompose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>) ∧<br/>
-  <code>head</code> ↦ <span class="var">v</span>, <span class="var">tail</span> ∗ <span class="pred_name">List</span>(<code>ntail</code>, <span class="st">T</span> ∪ {<code>value</code>}) ∧<br/>
+  <code>head</code> ↦ <span class="var">v</span> ↦ <span class="var">tail</span> ∗ <span class="pred_name">List</span>(<code>ntail</code>, <span class="st">T</span> ∪ {<code>value</code>}) ∧<br/>
   <span class="var">v</span> &lt; <code>value</code>
 </div></div></div>
 <pre class="prettyprint">
@@ -1971,7 +2038,7 @@ Node* insert(Node* head, int value) {
 <div class="section"><pre class="indent">        </pre><div class="AssertionParagraph"><div class="expl">Assignment.  Reintroduce existential quantification.</div>∃<span class="var">v</span>, <span class="var">tail</span>, <span class="st">T</span>.<br/>
 <div class="indent">
   <span class="pred_name">ListCompose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>) ∧<br/>
-  <code>head</code> ↦ <span class="var">v</span>, <span class="var">tail</span> ∗ <span class="pred_name">List</span>(<span class="var">tail</span>, <span class="st">T</span> ∪ {<code>value</code>}) ∧<br/>
+  <code>head</code> ↦ <span class="var">v</span> ↦ <span class="var">tail</span> ∗ <span class="pred_name">List</span>(<span class="var">tail</span>, <span class="st">T</span> ∪ {<code>value</code>}) ∧<br/>
   <span class="var">v</span> &lt; <code>value</code>
 </div></div></div>
 
@@ -1980,13 +2047,13 @@ Node* insert(Node* head, int value) {
     <span class="st">S</span> ∪ {<code>value</code>})</div>∃<span class="var">v</span>, <span class="var">tail</span>, <span class="st">T</span>.<br/>
 <div class="indent">
   <span class="pred_name">ListCompose</span>(<span class="var">v</span>, <span class="st">T</span> ∪ {<code>value</code>}, <span class="st">S</span> ∪ {<code>value</code>}) ∧<br/>
-  <code>head</code> ↦ <span class="var">v</span>, <span class="var">tail</span> ∗ <span class="pred_name">List</span>(<span class="var">tail</span>, <span class="st">T</span> ∪ {<code>value</code>})
+  <code>head</code> ↦ <span class="var">v</span> ↦ <span class="var">tail</span> ∗ <span class="pred_name">List</span>(<span class="var">tail</span>, <span class="st">T</span> ∪ {<code>value</code>})
 </div></div></div>
 
 <div class="section"><pre class="indent">        </pre><div class="AssertionParagraph"><div class="expl">Introduce existential quantification on <span class="st">T</span> ∪ {<code>value</code>}.</div>∃<span class="var">v</span>, <span class="var">tail</span>, <span class="st">T</span>.<br/>
 <div class="indent">
   <span class="pred_name">ListCompose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span> ∪ {<code>value</code>}) ∧<br/>
-  <code>head</code> ↦ <span class="var">v</span>, <span class="var">tail</span> ∗ <span class="pred_name">List</span>(<span class="var">tail</span>, <span class="st">T</span>)
+  <code>head</code> ↦ <span class="var">v</span> ↦ <span class="var">tail</span> ∗ <span class="pred_name">List</span>(<span class="var">tail</span>, <span class="st">T</span>)
 </div></div></div>
 
 <div class="section"><pre class="indent">        </pre><div class="AssertionParagraph"><div class="expl">Close <span class="pred_name">NonEmptyList</span>(<code>head</code>,
@@ -1999,17 +2066,17 @@ Node* insert(Node* head, int value) {
 <pre class="prettyprint">      }
       else { </pre>
 <div class="section"><pre class="indent">        </pre><div class="AssertionParagraph"><div class="expl">Deny if-condition.
-Use ¬(<span class="var">v</span> &lt; <code>value</code>) ⇒ <code>value</code> ≤ <span class="var">v</span>.</div>∃<span class="var">v</span>, <span class="var">tail</span>, <span class="st">T</span>.<br/>
+Use <span class="var">v</span> &lt; <code>value</code> ⇒ <code>value</code> ≤ <span class="var">v</span>.</div>∃<span class="var">v</span>, <span class="var">tail</span>, <span class="st">T</span>.<br/>
 <div class="indent">
   <span class="pred_name">ListCompose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>) ∧<br/>
-  <code>head</code> ↦ <span class="var">v</span>, <span class="var">tail</span> ∗ <span class="pred_name">List</span>(<span class="var">tail</span>, <span class="st">T</span>) ∧<br/>
+  <code>head</code> ↦ <span class="var">v</span> ↦ <span class="var">tail</span> ∗ <span class="pred_name">List</span>(<span class="var">tail</span>, <span class="st">T</span>) ∧<br/>
   <code>value</code> ≠ <span class="var">v</span> ∧ <code>value</code> ≤ <span class="var">v</span>
 </div></div></div>
 
-<div class="section"><pre class="indent">        </pre><div class="AssertionParagraph"><div class="expl">(<span class="var">a</span> ≠ <span class="var">b</span> ∧ <span class="var">a</span> ≤ <span class="var">b</span>) ⇒ <span class="var">b</span> &lt; <span class="var">a</span>.</div>∃<span class="var">v</span>, <span class="var">tail</span>, <span class="st">T</span>.<br/>
+<div class="section"><pre class="indent">        </pre><div class="AssertionParagraph"><div class="expl"><span class="var">a</span> ≠ <span class="var">b</span> ∧ <span class="var">a</span> ≤ <span class="var">b</span> ⇒ <span class="var">b</span> &lt; <span class="var">a</span>.</div>∃<span class="var">v</span>, <span class="var">tail</span>, <span class="st">T</span>.<br/>
 <div class="indent">
   <span class="pred_name">ListCompose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>) ∧<br/>
-  <code>head</code> ↦ <span class="var">v</span>, <span class="var">tail</span> ∗ <span class="pred_name">List</span>(<span class="var">tail</span>, <span class="st">T</span>) ∧<br/>
+  <code>head</code> ↦ <span class="var">v</span> ↦ <span class="var">tail</span> ∗ <span class="pred_name">List</span>(<span class="var">tail</span>, <span class="st">T</span>) ∧<br/>
   <code>value</code> &lt; <span class="var">v</span>
 </div></div></div>
 <pre class="prettyprint">
@@ -2017,23 +2084,23 @@ Use ¬(<span class="var">v</span> &lt; <code>value</code>) ⇒ <code>value</
 <div class="section"><pre class="indent">        </pre><div class="AssertionParagraph"><div class="expl">Specification for <code>new Node(value, head)</code>.</div>∃<span class="var">v</span>, <span class="var">tail</span>, <span class="st">T</span>.<br/>
 <div class="indent">
   <span class="pred_name">ListCompose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>) ∧<br/>
-  <code>nhead</code> ↦ <code>value</code>, <code>head</code> ∗ <code>head</code> ↦ <span class="var">v</span>, <span class="var">tail</span> ∗ <span class="pred_name">List</span>(<span class="var">tail</span>, <span class="st">T</span>) ∧<br/>
+  <code>nhead</code> ↦ <code>value</code> ↦ <code>head</code> ∗ <code>head</code> ↦ <span class="var">v</span> ↦ <span class="var">tail</span> ∗ <span class="pred_name">List</span>(<span class="var">tail</span>, <span class="st">T</span>) ∧<br/>
   <code>value</code> &lt; <span class="var">v</span>
 </div></div></div>
 
 <div class="section"><pre class="indent">        </pre><div class="AssertionParagraph"><div class="expl">Close <span class="pred_name">NonEmptyList</span>(<code>head</code>, <span class="st">S</span>).</div><span class="pred_name">ListCompose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>) ∧ <code>value</code> &lt; <span class="var">v</span> ∧<br/>
-<code>nhead</code> ↦ <code>value</code>, <code>head</code> ∗ <span class="pred_name">NonEmptyList</span>(<code>head</code>, <span class="st">S</span>)</div></div>
+<code>nhead</code> ↦ <code>value</code> ↦ <code>head</code> ∗ <span class="pred_name">NonEmptyList</span>(<code>head</code>, <span class="st">S</span>)</div></div>
 
 <div class="section"><pre class="indent">        </pre><div class="AssertionParagraph"><div class="expl">Lemma: <span class="pred_name">ListCompose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>) ∧ <code>value</code> &lt; <span class="var">v</span> ⇒ <span class="pred_name">ListCompose</span>(<code>value</code>, <span class="st">S</span>, <span class="st">S</span> ∪ {<code>value</code>})</div><span class="pred_name">ListCompose</span>(<code>value</code>, <span class="st">S</span>, <span class="st">S</span> ∪ {<code>value</code>}) ∧<br/>
-<code>nhead</code> ↦ <code>value</code>, <code>head</code> ∗ <span class="pred_name">NonEmptyList</span>(<code>head</code>, <span class="st">S</span>)</div></div>
+<code>nhead</code> ↦ <code>value</code> ↦ <code>head</code> ∗ <span class="pred_name">NonEmptyList</span>(<code>head</code>, <span class="st">S</span>)</div></div>
 
 <div class="section"><pre class="indent">        </pre><div class="AssertionParagraph"><div class="expl">Weakening lemma: <span class="pred_name">NonEmptyList</span>(<code>head</code>, <span class="st">S</span>) ⇒ <span class="pred_name">List</span>(<code>head</code>, <span class="st">S</span>).</div><span class="pred_name">ListCompose</span>(<code>value</code>, <span class="st">S</span>, <span class="st">S</span> ∪ {<code>value</code>}) ∧<br/>
-<code>nhead</code> ↦ <code>value</code>, <code>head</code> ∗ <span class="pred_name">List</span>(<code>head</code>, <span class="st">S</span>)</div></div>
+<code>nhead</code> ↦ <code>value</code> ↦ <code>head</code> ∗ <span class="pred_name">List</span>(<code>head</code>, <span class="st">S</span>)</div></div>
 
 <div class="section"><pre class="indent">        </pre><div class="AssertionParagraph"><div class="expl">∃I on <span class="st">S</span> as <span class="st">T</span>, <code>head</code> as <span class="var">tail</span>, and <code>value</code> as <span class="var">v</span>.</div>∃<span class="var">v</span>, <span class="var">tail</span>, <span class="st">T</span>.<br/>
 <div class="indent">
   <span class="pred_name">ListCompose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span> ∪ {<code>value</code>}) ∧<br/>
-  <code>nhead</code> ↦ <span class="var">v</span>, <span class="var">tail</span> ∗ <span class="pred_name">List</span>(<span class="var">tail</span>, <span class="st">T</span>)
+  <code>nhead</code> ↦ <span class="var">v</span> ↦ <span class="var">tail</span> ∗ <span class="pred_name">List</span>(<span class="var">tail</span>, <span class="st">T</span>)
 </div></div></div>
 
 <div class="section"><pre class="indent">        </pre><div class="AssertionParagraph"><div class="expl">Close <span class="pred_name">NonEmptyList</span>(<code>nhead</code>,
@@ -2093,12 +2160,20 @@ Use ¬(<span class="var">v</span> &lt; <code>value</code>) ⇒ <code>value</
 
       <tr><td><span class="step">2</span>.</td><td class="">
 	  {<span class="var">v</span>} ∪ <span class="st">T</span> = <span class="st">S</span> ∧
-	  ∀<span class="var">t</span> ∈ <span class="st">T</span>. <span class="var">v</span> &lt; <span class="var">t</span>
+	  ∀<e:vars>
+	      <span class="var">t</span> ∈ <span class="st">T</span>
+	    </e:vars>. <e:expr>
+	      <span class="var">v</span> &lt; <span class="var">t</span>
+	    </e:expr>
 	</td><td><span class="step">1</span>, open predicate</td></tr>
 
       <tr><td><span class="step">3</span>.</td><td class="">{<span class="var">v</span>} ∪ <span class="st">T</span> = <span class="st">S</span></td><td><span class="step">2</span>, ∧E</td></tr>
 
-      <tr><td><span class="step">4</span>.</td><td class="">∀<span class="var">t</span> ∈ <span class="st">T</span>. <span class="var">v</span> &lt; <span class="var">t</span></td><td><span class="step">2</span>, ∧E</td></tr>
+      <tr><td><span class="step">4</span>.</td><td class="">∀<e:vars>
+	      <span class="var">t</span> ∈ <span class="st">T</span>
+	    </e:vars>. <e:expr>
+	      <span class="var">v</span> &lt; <span class="var">t</span>
+	    </e:expr></td><td><span class="step">2</span>, ∧E</td></tr>
 
       <tr><td><span class="step">5</span>.</td><td class="indent1"><span class="var">v</span> ∈ <span class="st">T</span></td><td>assume</td></tr>
 
@@ -2106,7 +2181,7 @@ Use ¬(<span class="var">v</span> &lt; <code>value</code>) ⇒ <code>value</
 
       <tr><td><span class="step">7</span>.</td><td class=""><span class="var">v</span> ∉ <span class="st">T</span></td><td><span class="step">5</span>, <span class="step">6</span>, RAA</td></tr>
 
-      <tr><td><span class="step">8</span>.</td><td class="">{<span class="var">v</span>} ∩ <span class="st">T</span> = ∅</td><td><span class="step">7</span></td></tr>
+      <tr><td><span class="step">8</span>.</td><td class="">{<span class="var">v</span>} ∩ <span class="st">T</span></td><td><span class="step">7</span></td></tr>
 
       <tr><td><span class="step">9</span>.</td><td class=""><span class="st">T</span> = <span class="st">S</span>∖{<span class="var">v</span>}</td><td><span class="step">3</span>, <span class="step">8</span></td></tr>
     </table>
@@ -2128,27 +2203,43 @@ Use ¬(<span class="var">v</span> &lt; <code>value</code>) ⇒ <code>value</
 
       <tr><td><span class="step">4</span>.</td><td class="">
 	  {<span class="var">v</span>} ∪ <span class="st">T</span> = <span class="st">S</span> ∧
-	  ∀<span class="var">t</span> ∈ <span class="st">T</span>. <span class="var">v</span> &lt; <span class="var">t</span>
+	  ∀<e:vars>
+	      <span class="var">t</span> ∈ <span class="st">T</span>
+	    </e:vars>. <e:expr>
+	      <span class="var">v</span> &lt; <span class="var">t</span>
+	    </e:expr>
 	</td><td><span class="step">2</span>, open predicate</td></tr>
 
       <tr><td><span class="step">5</span>.</td><td class="">{<span class="var">v</span>} ∪ <span class="st">T</span> = <span class="st">S</span></td><td><span class="step">4</span>, ∧E</td></tr>
 
-      <tr><td><span class="step">6</span>.</td><td class="">∀<span class="var">t</span> ∈ <span class="st">T</span>. <span class="var">v</span> &lt; <span class="var">t</span>
+      <tr><td><span class="step">6</span>.</td><td class="">∀<e:vars>
+	      <span class="var">t</span> ∈ <span class="st">T</span>
+	    </e:vars>. <e:expr>
+	      <span class="var">v</span> &lt; <span class="var">t</span>
+	    </e:expr>
 	</td><td><span class="step">4</span>, ∧E</td></tr>
 
-      <tr><td><span class="step">7</span>.</td><td class="">({<span class="var">v</span>} ∪ <span class="st">T</span>)∖{<span class="var">w</span>} = <span class="st">S</span>∖{<span class="var">w</span>}</td><td><span class="step">5</span>, equal operations</td></tr>
+      <tr><td><span class="step">7</span>.</td><td class="">{<span class="var">v</span>} ∪ <span class="st">T</span>∖{<span class="var">w</span>} = <span class="st">S</span>∖{<span class="var">w</span>}</td><td><span class="step">5</span>, equal operations</td></tr>
 
-      <tr><td><span class="step">8</span>.</td><td class="">({<span class="var">v</span>}∖{<span class="var">w</span>}) ∪ (<span class="st">T</span>∖{<span class="var">w</span>}) = <span class="st">S</span>∖{<span class="var">w</span>}</td><td><span class="step">7</span>, distributivity of set minus over set union</td></tr>
+      <tr><td><span class="step">8</span>.</td><td class="">{<span class="var">v</span>}∖{<span class="var">w</span>} ∪ <span class="st">T</span>∖{<span class="var">w</span>} = <span class="st">S</span>∖{<span class="var">w</span>}</td><td><span class="step">7</span>, distributivity of set minus over set union</td></tr>
 
       <tr><td><span class="step">9</span>.</td><td class="">{<span class="var">v</span>}∖{<span class="var">w</span>} = {<span class="var">v</span>}</td><td><span class="step">3</span>, ??</td></tr>
 
-      <tr><td><span class="step">10</span>.</td><td class="">{<span class="var">v</span>} ∪ (<span class="st">T</span>∖{<span class="var">w</span>}) = (<span class="st">S</span>∖{<span class="var">w</span>})</td><td><span class="step">8</span>, <span class="step">9</span>, substitution</td></tr>
+      <tr><td><span class="step">10</span>.</td><td class="">{<span class="var">v</span>} ∪ <span class="st">T</span>∖{<span class="var">w</span>} = <span class="st">S</span>∖{<span class="var">w</span>}</td><td><span class="step">8</span>, <span class="step">9</span>, substitution</td></tr>
 
-      <tr><td><span class="step">11</span>.</td><td class="">∀<span class="var">t</span> ∈ (<span class="st">T</span>∖{<span class="var">w</span>}). <span class="var">v</span> &lt; <span class="var">t</span></td><td><span class="step">6</span>, for all in set then for all in subset</td></tr>
+      <tr><td><span class="step">11</span>.</td><td class="">∀<e:vars>
+	      <span class="var">t</span> ∈ <span class="st">T</span>∖{<span class="var">w</span>}
+	    </e:vars>. <e:expr>
+	      <span class="var">v</span> &lt; <span class="var">t</span>
+	    </e:expr></td><td><span class="step">6</span>, for all in set then for all in subset</td></tr>
 
       <tr><td><span class="step">12</span>.</td><td class="">
-	  {<span class="var">v</span>} ∪ (<span class="st">T</span>∖{<span class="var">w</span>}) = (<span class="st">S</span>∖{<span class="var">w</span>}) ∧
-	  ∀<span class="var">t</span> ∈ (<span class="st">T</span>∖{<span class="var">w</span>}). <span class="var">v</span> &lt; <span class="var">t</span>
+	  {<span class="var">v</span>} ∪ <span class="st">T</span>∖{<span class="var">w</span>} = <span class="st">S</span>∖{<span class="var">w</span>} ∧
+	  ∀<e:vars>
+	      <span class="var">t</span> ∈ <span class="st">T</span>∖{<span class="var">w</span>}
+	    </e:vars>. <e:expr>
+	      <span class="var">v</span> &lt; <span class="var">t</span>
+	    </e:expr>
 	</td><td><span class="step">10</span>, <span class="step">11</span>, ∧I</td></tr>
 
       <tr><td><span class="step">13</span>.</td><td class=""><span class="pred_name">ListCompose</span>(<span class="var">v</span>, <span class="st">T</span>∖{<span class="var">w</span>}, <span class="st">S</span>∖{<span class="var">w</span>})</td><td><span class="step">12</span>, close predicate</td></tr>
@@ -2484,10 +2575,10 @@ Node* remove(Node* head, int value) {
 
 <div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl">Lemma: <span class="pred_name">List</span>(<code>head</code>, <span class="st">S</span>) ∧ <code>head</code> = <code>null</code> ⇒ <span class="pred_name">EmptyList</span>(<code>head</code>, <span class="st">S</span>)</div><span class="pred_name">EmptyList</span>(<code>head</code>, <span class="st">S</span>)</div></div>
 
-<div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl"><span class="pred_name">EmptyList</span>(<code>head</code>, <span class="st">S</span>) ⇒ <span class="st">S</span> = ∅</div><span class="pred_name">EmptyList</span>(<code>head</code>, <span class="st">S</span>) ∧ <span class="st">S</span> = ∅</div></div>
+<div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl"><span class="pred_name">EmptyList</span>(<code>head</code>, <span class="st">S</span>) ⇒ <span class="st">S</span></div><span class="pred_name">EmptyList</span>(<code>head</code>, <span class="st">S</span>) ∧ <span class="st">S</span></div></div>
 
-<div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl">∅∖<span class="st">X</span> = ∅,
-<span class="st">S</span> = ∅,
+<div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl"><span class="st">X</span>,
+<span class="st">S</span>,
 substitution.</div><span class="pred_name">EmptyList</span>(<code>head</code>,
     <span class="st">S</span>∖{<code>value</code>})</div></div>
 
@@ -2506,29 +2597,29 @@ substitution.</div><span class="pred_name">EmptyList</span>(<code>head</code>,
 <div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl">Open <span class="pred_name">NonEmptyList</span>(<code>head</code>, <span class="st">S</span>).</div>∃<span class="var">v</span>, <span class="var">tail</span>, <span class="st">T</span>.<br/>
 <div class="indent">
   <span class="pred_name">ListCompose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>) ∧<br/>
-  <code>head</code> ↦ <span class="var">v</span>, <span class="var">tail</span> ∗ <span class="pred_name">List</span>(<span class="var">tail</span>, <span class="st">T</span>)
+  <code>head</code> ↦ <span class="var">v</span> ↦ <span class="var">tail</span> ∗ <span class="pred_name">List</span>(<span class="var">tail</span>, <span class="st">T</span>)
 </div></div></div>
 <pre class="prettyprint">
     if (head.value == value) { </pre>
 <div class="section"><pre class="indent">      </pre><div class="AssertionParagraph"><div class="expl">Assert if-condition: substitute <code>value</code> for <span class="var">v</span>.</div>∃<span class="var">tail</span>, <span class="st">T</span>.<br/>
 <div class="indent">
   <span class="pred_name">ListCompose</span>(<code>value</code>, <span class="st">T</span>, <span class="st">S</span>) ∧<br/>
-  <code>head</code> ↦ <code>value</code>, <span class="var">tail</span> ∗ <span class="pred_name">List</span>(<span class="var">tail</span>, <span class="st">T</span>)
+  <code>head</code> ↦ <code>value</code> ↦ <span class="var">tail</span> ∗ <span class="pred_name">List</span>(<span class="var">tail</span>, <span class="st">T</span>)
 </div></div></div>
 
 <div class="section"><pre class="indent">      </pre><div class="AssertionParagraph"><div class="expl">Lemma: <span class="pred_name">ListCompose</span>(<code>value</code>, <span class="st">T</span>, <span class="st">S</span>) ⇒ <span class="st">T</span> = <span class="st">S</span>∖{<code>value</code>}.  Discard <span class="pred_name">ListCompose</span>(<code>value</code>, <span class="st">T</span>, <span class="st">S</span>).</div>∃<span class="var">tail</span>, <span class="st">T</span>.<br/>
 <div class="indent">
-  <code>head</code> ↦ <code>value</code>, <span class="var">tail</span> ∗ <span class="pred_name">List</span>(<span class="var">tail</span>, <span class="st">T</span>) ∧<br/>
+  <code>head</code> ↦ <code>value</code> ↦ <span class="var">tail</span> ∗ <span class="pred_name">List</span>(<span class="var">tail</span>, <span class="st">T</span>) ∧<br/>
   <span class="st">T</span> = <span class="st">S</span>∖{<code>value</code>}
 </div></div></div>
 
 <div class="section"><pre class="indent">      </pre><div class="AssertionParagraph"><div class="expl">Substitution.  Discard <span class="st">T</span> = <span class="st">S</span>∖{<code>value</code>}.</div>∃<span class="var">tail</span>.<br/>
 <div class="indent">
-  <code>head</code> ↦ <code>value</code>, <span class="var">tail</span> ∗ <span class="pred_name">List</span>(<span class="var">tail</span>, <span class="st">S</span>∖{<code>value</code>})
+  <code>head</code> ↦ <code>value</code> ↦ <span class="var">tail</span> ∗ <span class="pred_name">List</span>(<span class="var">tail</span>, <span class="st">S</span>∖{<code>value</code>})
 </div></div></div>
 <pre class="prettyprint">
       o = head.tail; </pre>
-<div class="section"><pre class="indent">      </pre><div class="AssertionParagraph"><div class="expl">Assignment.</div><code>head</code> ↦ <code>value</code>, <code>o</code> ∗ <span class="pred_name">List</span>(<code>o</code>, <span class="st">S</span>∖{<code>value</code>})</div></div>
+<div class="section"><pre class="indent">      </pre><div class="AssertionParagraph"><div class="expl">Assignment.</div><code>head</code> ↦ <code>value</code> ↦ <code>o</code> ∗ <span class="pred_name">List</span>(<code>o</code>, <span class="st">S</span>∖{<code>value</code>})</div></div>
 <pre class="prettyprint">
       delete head; </pre>
 <div class="section"><pre class="indent">      </pre><div class="AssertionParagraph"><div class="expl">Release heap chunk.</div><span class="pred_name">List</span>(<code>o</code>,
@@ -2538,7 +2629,7 @@ substitution.</div><span class="pred_name">EmptyList</span>(<code>head</code>,
 <div class="section"><pre class="indent">      </pre><div class="AssertionParagraph"><div class="expl">Deny if-condition.</div>∃<span class="var">v</span>, <span class="var">tail</span>, <span class="st">T</span>.<br/>
 <div class="indent">
   <span class="pred_name">ListCompose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>) ∧<br/>
-  <code>head</code> ↦ <span class="var">v</span>, <span class="var">tail</span> ∗ <span class="pred_name">List</span>(<span class="var">tail</span>, <span class="st">T</span>) ∧<br/>
+  <code>head</code> ↦ <span class="var">v</span> ↦ <span class="var">tail</span> ∗ <span class="pred_name">List</span>(<span class="var">tail</span>, <span class="st">T</span>) ∧<br/>
   <span class="var">v</span> ≠ <code>value</code>
 </div></div></div>
 <pre class="prettyprint">
@@ -2546,7 +2637,7 @@ substitution.</div><span class="pred_name">EmptyList</span>(<code>head</code>,
 <div class="section"><pre class="indent">        </pre><div class="AssertionParagraph"><div class="expl">Assert if-condition.</div>∃<span class="var">v</span>, <span class="var">tail</span>, <span class="st">T</span>.<br/>
 <div class="indent">
   <span class="pred_name">ListCompose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>) ∧<br/>
-  <code>head</code> ↦ <span class="var">v</span>, <span class="var">tail</span> ∗ <span class="pred_name">List</span>(<span class="var">tail</span>, <span class="st">T</span>) ∧<br/>
+  <code>head</code> ↦ <span class="var">v</span> ↦ <span class="var">tail</span> ∗ <span class="pred_name">List</span>(<span class="var">tail</span>, <span class="st">T</span>) ∧<br/>
   <span class="var">v</span> &lt; <code>value</code>
 </div></div></div>
 <pre class="prettyprint">
@@ -2554,7 +2645,7 @@ substitution.</div><span class="pred_name">EmptyList</span>(<code>head</code>,
 <div class="section"><pre class="indent">        </pre><div class="AssertionParagraph"><div class="expl">Use specification for <code>remove</code>.</div>∃<span class="var">v</span>, <span class="var">tail</span>, <span class="st">T</span>.<br/>
 <div class="indent">
   <span class="pred_name">ListCompose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>) ∧<br/>
-  <code>head</code> ↦ <span class="var">v</span>, <span class="var">tail</span> ∗ <span class="pred_name">List</span>(<code>ntail</code>, <span class="st">T</span>∖{<code>value</code>}) ∧<br/>
+  <code>head</code> ↦ <span class="var">v</span> ↦ <span class="var">tail</span> ∗ <span class="pred_name">List</span>(<code>ntail</code>, <span class="st">T</span>∖{<code>value</code>}) ∧<br/>
   <span class="var">v</span> &lt; <code>value</code>
 </div></div></div>
 <pre class="prettyprint">
@@ -2562,27 +2653,27 @@ substitution.</div><span class="pred_name">EmptyList</span>(<code>head</code>,
 <div class="section"><pre class="indent">        </pre><div class="AssertionParagraph"><div class="expl">Assignment.</div>∃<span class="var">v</span>, <span class="st">T</span>.<br/>
 <div class="indent">
   <span class="pred_name">ListCompose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>) ∧<br/>
-  <code>head</code> ↦ <span class="var">v</span>, <code>ntail</code> ∗ <span class="pred_name">List</span>(<code>ntail</code>, <span class="st">T</span>∖{<code>value</code>}) ∧<br/>
+  <code>head</code> ↦ <span class="var">v</span> ↦ <code>ntail</code> ∗ <span class="pred_name">List</span>(<code>ntail</code>, <span class="st">T</span>∖{<code>value</code>}) ∧<br/>
   <span class="var">v</span> &lt; <code>value</code>
 </div></div></div>
 
 <div class="section"><pre class="indent">        </pre><div class="AssertionParagraph"><div class="expl">∃I on <code>ntail</code> as <span class="var">tail</span>.</div>∃<span class="var">v</span>, <span class="var">tail</span>, <span class="st">T</span>.<br/>
 <div class="indent">
   <span class="pred_name">ListCompose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>) ∧<br/>
-  <code>head</code> ↦ <span class="var">v</span>, <span class="var">tail</span> ∗ <span class="pred_name">List</span>(<span class="var">tail</span>, <span class="st">T</span>∖{<code>value</code>}) ∧<br/>
+  <code>head</code> ↦ <span class="var">v</span> ↦ <span class="var">tail</span> ∗ <span class="pred_name">List</span>(<span class="var">tail</span>, <span class="st">T</span>∖{<code>value</code>}) ∧<br/>
   <span class="var">v</span> &lt; <code>value</code>
 </div></div></div>
 
 <div class="section"><pre class="indent">        </pre><div class="AssertionParagraph"><div class="expl">Lemma: <span class="pred_name">ListCompose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>) ∧ <span class="var">v</span> ≠ <code>value</code> ⇒ <span class="pred_name">ListCompose</span>(<span class="var">v</span>, <span class="st">T</span>∖{<code>value</code>}, <span class="st">S</span>∖{<code>value</code>}).  Discard <span class="var">v</span> &lt; <code>value</code>.</div>∃<span class="var">v</span>, <span class="var">tail</span>, <span class="st">T</span>.<br/>
 <div class="indent">
   <span class="pred_name">ListCompose</span>(<span class="var">v</span>, <span class="st">T</span>∖{<code>value</code>}, <span class="st">S</span>∖{<code>value</code>}) ∧<br/>
-  <code>head</code> ↦ <span class="var">v</span>, <span class="var">tail</span> ∗ <span class="pred_name">List</span>(<span class="var">tail</span>, <span class="st">T</span>∖{<code>value</code>})
+  <code>head</code> ↦ <span class="var">v</span> ↦ <span class="var">tail</span> ∗ <span class="pred_name">List</span>(<span class="var">tail</span>, <span class="st">T</span>∖{<code>value</code>})
 </div></div></div>
 
 <div class="section"><pre class="indent">        </pre><div class="AssertionParagraph"><div class="expl">∃I on <span class="st">T</span>∖{<code>value</code>} as <span class="st">T</span>.</div>∃<span class="var">v</span>, <span class="var">tail</span>, <span class="st">T</span>.<br/>
 <div class="indent">
   <span class="pred_name">ListCompose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>∖{<code>value</code>}) ∧<br/>
-  <code>head</code> ↦ <span class="var">v</span>, <span class="var">tail</span> ∗ <span class="pred_name">List</span>(<span class="var">tail</span>, <span class="st">T</span>)
+  <code>head</code> ↦ <span class="var">v</span> ↦ <span class="var">tail</span> ∗ <span class="pred_name">List</span>(<span class="var">tail</span>, <span class="st">T</span>)
 </div></div></div>
 
 <div class="section"><pre class="indent">        </pre><div class="AssertionParagraph"><div class="expl">Close <span class="pred_name">NonEmptyList</span>(<code>head</code>,
@@ -2598,24 +2689,24 @@ substitution.</div><span class="pred_name">EmptyList</span>(<code>head</code>,
 <pre class="prettyprint">      }
       else { </pre>
 <div class="section"><pre class="indent">        </pre><div class="AssertionParagraph"><div class="expl">Deny if-condition.
-Use ¬(<span class="var">v</span> &lt; <code>value</code>) ⇒ <code>value</code> ≤ <span class="var">v</span>.</div>∃<span class="var">v</span>, <span class="var">tail</span>, <span class="st">T</span>.<br/>
+Use <span class="var">v</span> &lt; <code>value</code> ⇒ <code>value</code> ≤ <span class="var">v</span>.</div>∃<span class="var">v</span>, <span class="var">tail</span>, <span class="st">T</span>.<br/>
 <div class="indent">
   <span class="pred_name">ListCompose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>) ∧<br/>
-  <code>head</code> ↦ <span class="var">v</span>, <span class="var">tail</span> ∗ <span class="pred_name">List</span>(<span class="var">tail</span>, <span class="st">T</span>) ∧<br/>
+  <code>head</code> ↦ <span class="var">v</span> ↦ <span class="var">tail</span> ∗ <span class="pred_name">List</span>(<span class="var">tail</span>, <span class="st">T</span>) ∧<br/>
   <code>value</code> ≠ <span class="var">v</span> ∧ <code>value</code> ≤ <span class="var">v</span>
 </div></div></div>
 
-<div class="section"><pre class="indent">        </pre><div class="AssertionParagraph"><div class="expl">(<span class="var">a</span> ≠ <span class="var">b</span> ∧ <span class="var">a</span> ≤ <span class="var">b</span>) ⇒ <span class="var">b</span> &lt; <span class="var">a</span>.</div>∃<span class="var">v</span>, <span class="var">tail</span>, <span class="st">T</span>.<br/>
+<div class="section"><pre class="indent">        </pre><div class="AssertionParagraph"><div class="expl"><span class="var">a</span> ≠ <span class="var">b</span> ∧ <span class="var">a</span> ≤ <span class="var">b</span> ⇒ <span class="var">b</span> &lt; <span class="var">a</span>.</div>∃<span class="var">v</span>, <span class="var">tail</span>, <span class="st">T</span>.<br/>
 <div class="indent">
   <span class="pred_name">ListCompose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>) ∧<br/>
-  <code>head</code> ↦ <span class="var">v</span>, <span class="var">tail</span> ∗ <span class="pred_name">List</span>(<span class="var">tail</span>, <span class="st">T</span>) ∧<br/>
+  <code>head</code> ↦ <span class="var">v</span> ↦ <span class="var">tail</span> ∗ <span class="pred_name">List</span>(<span class="var">tail</span>, <span class="st">T</span>) ∧<br/>
   <code>value</code> &lt; <span class="var">v</span>
 </div></div></div>
 
 <div class="section"><pre class="indent">        </pre><div class="AssertionParagraph"><div class="expl">Lemma: <span class="pred_name">ListCompose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>) ∧ <code>value</code> &lt; <span class="var">v</span> ⇒ <code>value</code> ∉ <span class="st">S</span>.  Discard <code>value</code> &lt; <span class="var">v</span>.</div>∃<span class="var">v</span>, <span class="var">tail</span>, <span class="st">T</span>.<br/>
 <div class="indent">
   <span class="pred_name">ListCompose</span>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>) ∧<br/>
-  <code>head</code> ↦ <span class="var">v</span>, <span class="var">tail</span> ∗ <span class="pred_name">List</span>(<span class="var">tail</span>, <span class="st">T</span>) ∧<br/>
+  <code>head</code> ↦ <span class="var">v</span> ↦ <span class="var">tail</span> ∗ <span class="pred_name">List</span>(<span class="var">tail</span>, <span class="st">T</span>) ∧<br/>
   <code>value</code> ∉ <span class="st">S</span>
 </div></div></div>
 

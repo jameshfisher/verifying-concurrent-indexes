@@ -42,29 +42,29 @@
       <e:logimpl>
 	<e:fst><e:and>
 	    <e:fst><e:forall>
-		<e:fst><e:in>
+		<e:vars><e:in>
 		    <e:fst><e:var n="x"/></e:fst>
 		    <e:snd><e:st n="A"/></e:snd>
-		</e:in></e:fst>
-		<e:snd><e:pred name="P"><e:var n="x"/></e:pred></e:snd>
+		</e:in></e:vars>
+		<e:expr><e:pred name="P"><e:var n="x"/></e:pred></e:expr>
 	    </e:forall></e:fst>
 	    <e:snd><e:forall>
-		<e:fst><e:in>
+		<e:vars><e:in>
 		    <e:fst><e:var n="x"/></e:fst>
 		    <e:snd><e:st n="B"/></e:snd>
-		</e:in></e:fst>
-		<e:snd><e:pred name="P"><e:var n="x"/></e:pred></e:snd>
+		</e:in></e:vars>
+		<e:expr><e:pred name="P"><e:var n="x"/></e:pred></e:expr>
 	    </e:forall></e:snd>
 	</e:and></e:fst>
 	<e:snd><e:forall>
-	    <e:fst><e:in>
+	    <e:vars><e:in>
 		<e:fst><e:var n="x"/></e:fst>
 		<e:snd>(<e:union>
 		    <e:fst><e:st n="A"/></e:fst>
 		    <e:snd><e:st n="B"/></e:snd>
 		  </e:union>)</e:snd>
-	    </e:in></e:fst>
-	    <e:snd><e:pred name="P"><e:var n="x"/></e:pred></e:snd>
+	    </e:in></e:vars>
+	    <e:expr><e:pred name="P"><e:var n="x"/></e:pred></e:expr>
 	</e:forall></e:snd>
       </e:logimpl>
   </xsl:template>
@@ -73,14 +73,14 @@
     <e:logimpl>
       <e:and>
 	<e:forall>
-	  <e:fst><e:in><e:var n="x"/><e:st n="A"/></e:in></e:fst>
-	  <e:snd><e:pred name="P"><e:var n="x"/></e:pred></e:snd>
+	  <e:vars><e:in><e:var n="x"/><e:st n="A"/></e:in></e:vars>
+	  <e:expr><e:pred name="P"><e:var n="x"/></e:pred></e:expr>
 	</e:forall>
 	<e:subset><e:st n="B"/><e:st n="A"/></e:subset>
       </e:and>
       <e:forall>
-	<e:fst><e:in><e:var n="x"/><e:st n="B"/></e:in></e:fst>
-	<e:snd><e:pred name="P"><e:var n="x"/></e:pred></e:snd>
+	<e:vars><e:in><e:var n="x"/><e:st n="B"/></e:in></e:vars>
+	<e:expr><e:pred name="P"><e:var n="x"/></e:pred></e:expr>
       </e:forall>      
     </e:logimpl>
   </xsl:template>

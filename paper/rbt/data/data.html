@@ -83,10 +83,10 @@
     Since all paths to the leaves contain the same number of black nodes, just consider a single path to a single leaf.
     This path runs through one of the child nodes of the root.
     Since the root node is one of the <e:var n="h"/> black nodes,
-    the other <e:minus><e:fst><e:var n="h"/></e:fst><e:snd><e:const n="1"/></e:snd></e:minus> black nodes
+    the other <e:minus><e:var n="h"/><e:const n="1"/></e:minus> black nodes
     must be in the section of the path descending from the child node to the leaf.
     As this was for an arbitrary path through an arbitrary child node,
-    both subtrees are at black-height <e:minus><e:fst><e:var n="h"/></e:fst><e:snd><e:const n="1"/></e:snd></e:minus>.
+    both subtrees are at black-height <e:minus><e:var n="h"/><e:const n="1"/></e:minus>.
     Now consider a red-rooted tree at black-height <e:var n="h"/>—what is the black-height of its subtrees?
     Since the root is red, it never contributes to the <e:var n="h"/> black nodes on any path,
     and so all <e:var n="h"/> black nodes are in the black-height of the subtree;
@@ -144,8 +144,8 @@
 	<td></td>
 	<td>
 	  <e:fcell>
-	    <e:fst><code>root</code></e:fst>
-	    <e:snd><e:var n="v"/>, <e:var n="l"/>, <e:var n="r"/>, <e:const n="false"/></e:snd>
+	    <code>root</code>
+	    <e:list><e:var n="v"/>, <e:var n="l"/>, <e:var n="r"/>, <e:const n="false"/></e:list>
 	  </e:fcell> ∗
 	</td>
 	<td><code>root</code> points to a red node containing <e:var n="v"/> and child pointers</td>
@@ -192,12 +192,12 @@
       <tbody>
 	<tr>
 	  <td><e:pred name="EBT"><code>root</code>, <e:st n="S"/>, <e:var n="h"/></e:pred> =</td>
-	  <td><e:eq><e:fst><code>root</code></e:fst><e:snd><code>null</code></e:snd></e:eq> ∧</td>
+	  <td><e:eq><code>root</code><code>null</code></e:eq> ∧</td>
 	  <td><code>root</code> is <code>null</code>,</td>
 	</tr>
 	<tr>
 	  <td></td>
-	  <td><e:eq><e:st n="S"/><e:snd><m:scemp/></e:snd></e:eq> ∧</td>
+	  <td><e:eq><e:st n="S"/><m:scemp/></e:eq> ∧</td>
           <td>the tree represents the empty set,</td>
 	</tr>
 	<tr>
@@ -244,8 +244,8 @@
 	<td></td>
 	<td>
 	  <e:fcell>
-	    <e:fst><code>root</code></e:fst>
-	    <e:snd><e:var n="v"/>, <e:var n="l"/>, <e:var n="r"/>, <e:const n="false"/></e:snd>
+	    <code>root</code>
+	    <e:list><e:var n="v"/>, <e:var n="l"/>, <e:var n="r"/>, <e:const n="false"/></e:list>
 	  </e:fcell> ∗
 	</td>
 	<td><code>root</code> points to a red node containing <e:var n="v"/> and child pointers</td>
@@ -289,17 +289,17 @@
 	</tr>
 	<tr>
 	  <td></td>
-	  <td><e:fcell><e:fst><code>n</code></e:fst><e:snd><e:var n="v"/>, <e:var n="c[0]"/>, <e:var n="c[1]"/>, <e:const n="true"/></e:snd></e:fcell> ∗</td>
+	  <td><e:fcell><code>n</code><e:list><e:var n="v"/>, <e:var n="c[0]"/>, <e:var n="c[1]"/>, <e:const n="true"/></e:list></e:fcell> ∗</td>
 	  <td><code>n</code> points to a black node containing <e:var n="v"/> and pointers</td>
 	</tr>
 	<tr>
 	  <td></td>
-	  <td><e:pred name="BT"><e:var n="c[0]"/>, <e:st n="L"/>, <e:minus><e:fst><e:var n="bh"/></e:fst><e:snd>1</e:snd></e:minus></e:pred> ∗</td>
+	  <td><e:pred name="BT"><e:var n="c[0]"/>, <e:st n="L"/>, <e:minus><e:var n="bh"/>1</e:minus></e:pred> ∗</td>
 	  <td>to black trees representing <e:st n="L"/> and <e:st n="R"/>,</td>
 	</tr>
 	<tr>
 	  <td></td>
-	  <td><e:pred name="BT"><e:var n="c[1]"/>, <e:st n="R"/>, <e:minus><e:fst><e:var n="bh"/></e:fst><e:snd>1</e:snd></e:minus></e:pred></td>
+	  <td><e:pred name="BT"><e:var n="c[1]"/>, <e:st n="R"/>, <e:minus><e:var n="bh"/>1</e:minus></e:pred></td>
           <td>which have one less black height.</td>
 	</tr>
       </tbody>
@@ -312,8 +312,8 @@
     <div class="displaymath">
       <e:pred name="2T"><code>n</code>, <e:st n="S"/>, <e:var n="bh"/></e:pred> =
       <e:or>
-	<e:fst><e:pred name="ET"><code>n</code>, <e:st n="S"/>, <e:var n="bh"/></e:pred></e:fst>
-	<e:snd><e:pred name="N2T"><code>n</code>, <e:st n="S"/>, <e:var n="bh"/></e:pred></e:snd>
+	<e:pred name="ET"><code>n</code>, <e:st n="S"/>, <e:var n="bh"/></e:pred>
+	<e:pred name="N2T"><code>n</code>, <e:st n="S"/>, <e:var n="bh"/></e:pred>
       </e:or>
     </div>
   </p>

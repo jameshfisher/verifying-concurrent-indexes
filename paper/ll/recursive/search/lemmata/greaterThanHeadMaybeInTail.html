@@ -5,34 +5,34 @@
 	 xmlns:m="http://eegg.github.com/macro">
 
   <e:caption><e:logimpl>
-      <e:fst><e:and>
-          <e:fst><e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred></e:fst>
-          <e:snd><e:noteq>
-	      <e:fst><e:var n="v"/></e:fst>
-	      <e:snd><code>value</code></e:snd>
-          </e:noteq></e:snd>
-      </e:and></e:fst>
-      <e:snd><e:doubleimpl>
-          <e:fst><e:in>
-	      <e:fst><code>value</code></e:fst>
-	      <e:snd><e:st n="T"/></e:snd>
-          </e:in></e:fst>
-          <e:snd><e:in>
-	      <e:fst><code>value</code></e:fst>
-	      <e:snd><e:st n="S"/></e:snd>
-          </e:in></e:snd>
-      </e:doubleimpl></e:snd>
+      <e:and>
+          <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred>
+          <e:noteq>
+	      <e:var n="v"/>
+	      <code>value</code>
+          </e:noteq>
+      </e:and>
+      <e:doubleimpl>
+          <e:in>
+	      <code>value</code>
+	      <e:st n="T"/>
+          </e:in>
+          <e:in>
+	      <code>value</code>
+	      <e:st n="S"/>
+          </e:in>
+      </e:doubleimpl>
   </e:logimpl></e:caption>
 
   <e:contents>
     <e:derivation>
       <e:step name="given">
 	<e:derive><e:and>
-            <e:fst><e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred></e:fst>
-            <e:snd><e:noteq>
-		<e:fst><e:var n="v"/></e:fst>
-		<e:snd><code>value</code></e:snd>
-            </e:noteq></e:snd>
+            <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred>
+            <e:noteq>
+		<e:var n="v"/>
+		<code>value</code>
+            </e:noteq>
 	</e:and></e:derive>
 	<e:by>given</e:by>
       </e:step>
@@ -44,8 +44,8 @@
 
       <e:step name="noteq">
 	<e:derive><e:noteq>
-	    <e:fst><e:var n="v"/></e:fst>
-	    <e:snd><code>value</code></e:snd>
+	    <e:var n="v"/>
+	    <code>value</code>
 	</e:noteq></e:derive>
 	<e:by><e:from name="given"/>, ∧E</e:by>
       </e:step>
@@ -53,27 +53,27 @@
       <e:step name="openCompose">
 	<e:derive>
 	  <e:eq>
-	    <e:fst>
+	    
 	      <e:union>
-		<e:fst><e:set><code>value</code></e:set></e:fst>
-		<e:snd><e:st n="T"/></e:snd>
+		<e:set><code>value</code></e:set>
+		<e:st n="T"/>
 	      </e:union>
-	    </e:fst>
-	    <e:snd><e:st n="S"/></e:snd>
+	    
+	    <e:st n="S"/>
 	  </e:eq> ∧
 	  <e:forall>
-	    <e:fst>
+	    <e:vars>
 	      <e:in>
-		<e:fst><e:var n="t"/></e:fst>
-		<e:snd><e:st n="T"/></e:snd>
+		<e:var n="t"/>
+		<e:st n="T"/>
 	      </e:in>
-	    </e:fst>
-	    <e:snd>
+	    </e:vars>
+	    <e:expr>
 	      <e:lt>
-		<e:fst><code>value</code></e:fst>
-		<e:snd><e:var n="t"/></e:snd>
+		<code>value</code>
+		<e:var n="t"/>
 	      </e:lt>
-	    </e:snd>
+	    </e:expr>
 	  </e:forall>
 	</e:derive>
 	<e:by><e:from name="ListCompose"/>, open predicate</e:by>
@@ -82,13 +82,13 @@
       <e:step name="valueUTIsS">
 	<e:derive>
 	  <e:eq>
-	    <e:fst>
+	    
 	      <e:union>
-		<e:fst><e:set><code>value</code></e:set></e:fst>
-		<e:snd><e:st n="T"/></e:snd>
+		<e:set><code>value</code></e:set>
+		<e:st n="T"/>
 	      </e:union>
-	    </e:fst>
-	    <e:snd><e:st n="S"/></e:snd>
+	    
+	    <e:st n="S"/>
 	  </e:eq>
 	</e:derive>
 	<e:by><e:from name="openCompose"/>, ∧E</e:by>
@@ -97,18 +97,18 @@
       <e:step name="allInTBiggerThanValue">
 	<e:derive>
 	  <e:forall>
-	    <e:fst>
+	    <e:vars>
 	      <e:in>
-		<e:fst><e:var n="t"/></e:fst>
-		<e:snd><e:st n="T"/></e:snd>
+		<e:var n="t"/>
+		<e:st n="T"/>
 	      </e:in>
-	    </e:fst>
-	    <e:snd>
+	    </e:vars>
+	    <e:expr>
 	      <e:lt>
-		<e:fst><code>value</code></e:fst>
-		<e:snd><e:var n="t"/></e:snd>
+		<code>value</code>
+		<e:var n="t"/>
 	      </e:lt>
-	    </e:snd>
+	    </e:expr>
 	  </e:forall>
 	</e:derive>
 	<e:by><e:from name="openCompose"/>, ∧E</e:by>
@@ -116,24 +116,24 @@
 
       <e:step name="TsubsetS">
 	<e:derive><e:subset>
-	    <e:fst><e:st n="T"/></e:fst>
-	    <e:snd><e:st n="S"/></e:snd>
+	    <e:st n="T"/>
+	    <e:st n="S"/>
 	</e:subset></e:derive>
 	<e:by><e:from name="valueUTIsS"/></e:by>
       </e:step>
 
       <e:step name="assumeValueInT" indent="indent1">
 	<e:derive><e:in>
-	    <e:fst><code>value</code></e:fst>
-	    <e:snd><e:st n="T"/></e:snd>
+	    <code>value</code>
+	    <e:st n="T"/>
 	</e:in></e:derive>
 	<e:by>assume</e:by>
       </e:step>
 
       <e:step name="thenValueInS" indent="indent1">
 	<e:derive><e:in>
-	    <e:fst><code>value</code></e:fst>
-	    <e:snd><e:st n="S"/></e:snd>
+	    <code>value</code>
+	    <e:st n="S"/>
 	</e:in></e:derive>
 	<e:by><e:from name="TsubsetS"/>, <e:from name="assumeValueInT"/>, member of subset is member of set</e:by>
       </e:step>
@@ -141,14 +141,14 @@
       <e:step name="impliesForwards">
 	<e:derive>
 	  <e:impl>
-            <e:fst><e:in>
-		<e:fst><code>value</code></e:fst>
-		<e:snd><e:st n="T"/></e:snd>
-            </e:in></e:fst>
-            <e:snd><e:in>
-		<e:fst><code>value</code></e:fst>
-		<e:snd><e:st n="S"/></e:snd>
-            </e:in></e:snd>
+            <e:in>
+		<code>value</code>
+		<e:st n="T"/>
+            </e:in>
+            <e:in>
+		<code>value</code>
+		<e:st n="S"/>
+            </e:in>
 	  </e:impl>
 	</e:derive>
 	<e:by><e:from name="assumeValueInT"/>, <e:from name="themValueInS"/>, →I</e:by>
@@ -156,38 +156,38 @@
 
       <e:step name="valueNotInv">
 	<e:derive><e:notin>
-	    <e:fst><code>value</code></e:fst>
-	    <e:snd><e:set><e:var n="v"/></e:set></e:snd>
+	    <code>value</code>
+	    <e:set><e:var n="v"/></e:set>
 	</e:notin></e:derive>
 	<e:by><e:from name="noteq"/></e:by>
       </e:step>
 
       <e:step name="assumeValueInS" indent="indent1">
 	<e:derive><e:in>
-	    <e:fst><code>value</code></e:fst>
-	    <e:snd><e:st n="S"/></e:snd>
+	    <code>value</code>
+	    <e:st n="S"/>
 	</e:in></e:derive>
 	<e:by>assume</e:by>
       </e:step>
 
       <e:step name="inSetOfValueOrT" indent="indent1">
 	<e:derive><e:or>
-	    <e:fst><e:in>
-		<e:fst><code>value</code></e:fst>
-		<e:snd><e:set><e:var n="v"/></e:set></e:snd>
-	    </e:in></e:fst>
-	    <e:snd><e:in>
-		<e:fst><code>value</code></e:fst>
-		<e:snd><e:st n="T"/></e:snd>
-	    </e:in></e:snd>
+	    <e:in>
+		<code>value</code>
+		<e:set><e:var n="v"/></e:set>
+	    </e:in>
+	    <e:in>
+		<code>value</code>
+		<e:st n="T"/>
+	    </e:in>
 	</e:or></e:derive>
 	<e:by><e:from name="assumeValueInS"/>, <e:from name="valueUTIsS"/>, ??</e:by>
       </e:step>
 
       <e:step name="valueInT" indent="indent1">
 	<e:derive><e:in>
-	    <e:fst><code>value</code></e:fst>
-	    <e:snd><e:st n="T"/></e:snd>
+	    <code>value</code>
+	    <e:st n="T"/>
 	</e:in></e:derive>
 	<e:by><e:from name="inSetOfValueOrT"/>, <e:from name="valueNotInv"/>, <m:orelim/></e:by>
       </e:step>
@@ -195,14 +195,14 @@
       <e:step name="impliesBackwards">
 	<e:derive>
 	  <e:impl>
-            <e:fst><e:in>
-		<e:fst><code>value</code></e:fst>
-		<e:snd><e:st n="S"/></e:snd>
-            </e:in></e:fst>
-            <e:snd><e:in>
-		<e:fst><code>value</code></e:fst>
-		<e:snd><e:st n="T"/></e:snd>
-            </e:in></e:snd>
+            <e:in>
+		<code>value</code>
+		<e:st n="S"/>
+            </e:in>
+            <e:in>
+		<code>value</code>
+		<e:st n="T"/>
+            </e:in>
 	  </e:impl>
 	</e:derive>
 	<e:by><e:from name="assumeValueInS"/>, <e:from name="valueInT"/>, <m:impliesIntro/></e:by>
@@ -211,14 +211,14 @@
       <e:step name="qed">
 	<e:derive>
 	  <e:doubleimpl>
-            <e:fst><e:in>
-		<e:fst><code>value</code></e:fst>
-		<e:snd><e:st n="T"/></e:snd>
-            </e:in></e:fst>
-            <e:snd><e:in>
-		<e:fst><code>value</code></e:fst>
-		<e:snd><e:st n="S"/></e:snd>
-            </e:in></e:snd>
+            <e:in>
+		<code>value</code>
+		<e:st n="T"/>
+            </e:in>
+            <e:in>
+		<code>value</code>
+		<e:st n="S"/>
+            </e:in>
 	  </e:doubleimpl>
 	</e:derive>
 	<e:by><e:from name="impliesForwards"/>, <e:from name="impliesBackwards"/>, ↔I</e:by>

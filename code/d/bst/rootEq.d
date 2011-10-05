@@ -4,67 +4,67 @@ bool rootEq(Node* root, int value) {
   
   // Open <e:pred name="NonEmptyTree"><code>root</code>, <e:st n="S"/></e:pred>.
   /// <e:exists>
-  ///   <e:fst><e:var n="v"/></e:fst>
-  ///   <e:snd><e:pred name="TopOfTree"><code>root</code>, <e:var n="v"/>, <e:st n="S"/></e:pred></e:snd>
+  ///   <e:vars><e:var n="v"/></e:vars>
+  ///   <e:expr><e:pred name="TopOfTree"><code>root</code>, <e:var n="v"/>, <e:st n="S"/></e:pred><e:expr>
   /// </e:exists>
 
   // Open <e:pred name="TopOfTree"><code>root</code>, <e:var n="v"/>, <e:st n="S"/></e:pred>.
   /// <e:exists>
-  ///   <e:fst><e:var n="v"/>, <e:var n="l"/>,<e:var n="r"/>,<e:st n="L"/>,<e:st n="R"/></e:fst>
-  ///   <e:snd><e:indent>
+  ///   <e:vars><e:var n="v"/>, <e:var n="l"/>,<e:var n="r"/>,<e:st n="L"/>,<e:st n="R"/></e:vars>
+  ///   <e:expr><e:indent>
   ///     <e:sep>
-  ///       <e:fst><e:fcell>
-  ///	      <e:fst><code>root</code></e:fst>
-  ///	      <e:snd><e:var n="v"/>,<e:var n="l"/>,<e:var n="r"/></e:snd>
-  ///	    </e:fcell></e:fst>
-  ///       <e:snd><e:sep>
-  ///	      <e:fst><e:pred name="Tree"><e:var n="l"/>, <e:st n="L"/></e:pred></e:fst>
-  ///	      <e:snd><e:pred name="Tree"><e:var n="r"/>, <e:st n="R"/></e:pred></e:snd>
-  ///       </e:sep></e:snd>
+  ///       <e:fcell>
+  ///	      <code>root</code>
+  ///	      <e:list><e:var n="v"/>,<e:var n="l"/>,<e:var n="r"/></e:list>
+  ///	    </e:fcell>
+  ///       <e:sep>
+  ///	      <e:pred name="Tree"><e:var n="l"/>, <e:st n="L"/></e:pred>
+  ///	      <e:pred name="Tree"><e:var n="r"/>, <e:st n="R"/></e:pred>
+  ///       </e:sep>
   ///     </e:sep> ∧<br />
   ///     <e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
-  ///   </e:indent></e:snd>
+  ///   </e:indent></e:expr>
   /// </e:exists>
 
   bool o = root.value == value;
   // Assignment.
   /// <e:exists>
-  ///   <e:fst><e:var n="v"/>, <e:var n="l"/>,<e:var n="r"/>,<e:st n="L"/>,<e:st n="R"/></e:fst>
-  ///   <e:snd><e:indent>
+  ///   <e:vars><e:var n="v"/>, <e:var n="l"/>,<e:var n="r"/>,<e:st n="L"/>,<e:st n="R"/></e:vars>
+  ///   <e:expr><e:indent>
   ///     <e:sep>
-  ///       <e:fst><e:fcell>
-  ///	      <e:fst><code>root</code></e:fst>
-  ///	      <e:snd><e:var n="v"/>,<e:var n="l"/>,<e:var n="r"/></e:snd>
-  ///	    </e:fcell></e:fst>
-  ///       <e:snd><e:sep>
-  ///	      <e:fst><e:pred name="Tree"><e:var n="l"/>, <e:st n="L"/></e:pred></e:fst>
-  ///	      <e:snd><e:pred name="Tree"><e:var n="r"/>, <e:st n="R"/></e:pred></e:snd>
-  ///       </e:sep></e:snd>
+  ///       <e:fcell>
+  ///	      <code>root</code>
+  ///	      <e:list><e:var n="v"/>,<e:var n="l"/>,<e:var n="r"/></e:list>
+  ///	    </e:fcell>
+  ///       <e:sep>
+  ///	      <e:pred name="Tree"><e:var n="l"/>, <e:st n="L"/></e:pred>
+  ///	      <e:pred name="Tree"><e:var n="r"/>, <e:st n="R"/></e:pred>
+  ///       </e:sep>
   ///     </e:sep> ∧<br />
   ///     <e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred> ∧<br />
   ///     <e:doubleimpl>
-  ///       <e:fst><code>o</code></e:fst>
-  ///       <e:snd><e:eq>
-  ///         <e:fst><e:var n="v"/></e:fst>
-  ///         <e:snd><code>value</code></e:snd>
-  ///       </e:eq></e:snd>
+  ///       <code>o</code>
+  ///       <e:eq>
+  ///         <e:var n="v"/>
+  ///         <code>value</code>
+  ///       </e:eq>
   ///     </e:doubleimpl>
-  ///   </e:indent></e:snd>
+  ///   </e:indent></e:expr>
   /// </e:exists>
 
   // Close <e:pred name="TopOfTree"><code>root</code>, <e:var n="v"/>, <e:st n="S"/></e:pred>. Postcondition.
   /// <e:exists>
-  ///   <e:fst><e:var n="v"/></e:fst>
-  ///   <e:snd><e:and>
-  ///     <e:fst><e:pred name="TopOfTree"><code>root</code>, <e:var n="v"/>, <e:st n="S"/></e:pred></e:fst>
-  ///     <e:snd><e:doubleimpl>
-  ///       <e:fst><code>o</code></e:fst>
-  ///       <e:snd><e:eq>
-  ///         <e:fst><e:var n="v"/></e:fst>
-  ///         <e:snd><code>value</code></e:snd>
-  ///       </e:eq></e:snd>
-  ///     </e:doubleimpl></e:snd>
-  ///   </e:and></e:snd>
+  ///   <e:vars><e:var n="v"/></e:vars>
+  ///   <e:expr><e:and>
+  ///     <e:pred name="TopOfTree"><code>root</code>, <e:var n="v"/>, <e:st n="S"/></e:pred>
+  ///     <e:doubleimpl>
+  ///       <code>o</code>
+  ///       <e:eq>
+  ///         <e:var n="v"/>
+  ///         <code>value</code>
+  ///       </e:eq>
+  ///     </e:doubleimpl>
+  ///   </e:and></e:expr>
   /// </e:exists>
   return o;
 }

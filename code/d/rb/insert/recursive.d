@@ -10,24 +10,24 @@ Node* insert(Node* root, int value) {
   Node* i = insert_aux(root, value);
   // Specification for <code>insert_aux</code>.
   /// <e:or>
-  ///   <e:fst><e:pred name="RBT"><code>i</code>, <e:union><e:fst><e:st n="S"/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:union>, <e:var n="h"/></e:pred></e:fst>
-  ///   <e:snd><e:pred name="RVT"><code>i</code>, <e:union><e:fst><e:st n="S"/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:union>, <e:var n="h"/></e:pred></e:snd>
+  ///   <e:pred name="RBT"><code>i</code>, <e:union><e:st n="S"/><e:set><code>value</code></e:set></e:union>, <e:var n="h"/></e:pred>
+  ///   <e:pred name="RVT"><code>i</code>, <e:union><e:st n="S"/><e:set><code>value</code></e:set></e:union>, <e:var n="h"/></e:pred>
   /// </e:or>
 
   Node* o = blacken(i);
   // Specification for <code>blacken</code>.
   /// <e:exists>
-  ///   <e:fst><e:var n="nh"/></e:fst>
-  ///   <e:snd><e:and>
-  ///     <e:fst><e:pred name="BT"><code>o</code>, <e:union><e:fst><e:st n="S"/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:union>, <e:var n="nh"/></e:pred></e:fst>
-  ///     <e:snd><e:in>
-  ///       <e:fst><e:var n="nh"/></e:fst>
-  ///       <e:snd><e:set>
+  ///   <e:vars><e:var n="nh"/></e:vars>
+  ///   <e:expr><e:and>
+  ///     <e:pred name="BT"><code>o</code>, <e:union><e:st n="S"/><e:set><code>value</code></e:set></e:union>, <e:var n="nh"/></e:pred>
+  ///     <e:in>
+  ///       <e:var n="nh"/>
+  ///       <e:set>
   ///         <e:var n="h"/>,
-  ///         <e:plus><e:fst><e:var n="h"/></e:fst><e:snd><e:const n="1"/></e:snd></e:plus>
-  ///       </e:set></e:snd>
-  ///     </e:in></e:snd>
-  ///   </e:and></e:snd>
+  ///         <e:plus><e:var n="h"/><e:const n="1"/></e:plus>
+  ///       </e:set>
+  ///     </e:in>
+  ///   </e:and></e:expr>
   /// </e:exists>
 
   return o;

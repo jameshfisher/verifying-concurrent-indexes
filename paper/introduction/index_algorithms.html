@@ -50,9 +50,9 @@
     it will become quickly evident that
     most <em>index</em> data structures are simply <em>set</em> structures
     with values <q>plugged in</q> next to the key.
-    An index <e:const n="I"/> : <e:fpfun><e:fst>K</e:fst><e:snd>V</e:snd></e:fpfun> can be represented by
+    An index <e:const n="I"/> : <e:fpfun>KV</e:fpfun> can be represented by
     a set of tuples <e:math><e:tuple>k, v</e:tuple></e:math>
-    (where <e:in><e:fst><e:var n="k"/></e:fst><e:snd><e:const n="K"/></e:snd></e:in> and <e:in><e:fst><e:var n="v"/></e:fst><e:snd><e:const n="V" /></e:snd></e:in>),
+    (where <e:in><e:var n="k"/><e:const n="K"/></e:in> and <e:in><e:var n="v"/><e:const n="V" /></e:in>),
     with the restriction that no two elements have the same <e:var n="k"/> value.
     Where the algorithms take this approach,
     for simplicity I instead describe them as implementing a set.
@@ -93,7 +93,7 @@
       An array is sensible where
       there is a small allowed key range
       and most or all keys are expected to have a value,
-      <m:eg /> a map <e:fpfun><e:fst><code>char</code></e:fst><e:snd><code>char</code></e:snd></e:fpfun> for use in a function <code>string toUpper(string)</code>.
+      <m:eg /> a map <e:fpfun><code>char</code><code>char</code></e:fpfun> for use in a function <code>string toUpper(string)</code>.
       Otherwise, an algorithm with a memory complexity of <e:bigo><e:var n="n"/></e:bigo> is better.
     </p>
   </section>

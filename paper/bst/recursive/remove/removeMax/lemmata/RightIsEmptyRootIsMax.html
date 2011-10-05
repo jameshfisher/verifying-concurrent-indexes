@@ -4,8 +4,8 @@
 	 xmlns:m="http://eegg.github.com/macro">
 
   <e:h><e:logimpl>
-      <e:fst><e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <m:scemp/>, <e:st n="S"/></e:pred></e:fst>
-      <e:snd><e:pred name="Max"><e:var n="v"/>, <e:st n="S"/></e:pred></e:snd>
+      <e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <m:scemp/>, <e:st n="S"/></e:pred>
+      <e:pred name="Max"><e:var n="v"/>, <e:st n="S"/></e:pred>
   </e:logimpl></e:h>
 
   <p>
@@ -24,40 +24,40 @@
     <e:step name="openCompose">
       <e:derive>
 	<e:eq>
-	  <e:fst>
+	  
 	    <e:union>
-	      <e:fst><e:st n="L"/></e:fst>
-	      <e:snd>
+	      <e:st n="L"/>
+	      
 		<e:union>
-		  <e:fst><e:set><e:var n="v"/></e:set></e:fst>
-		  <e:snd><m:scemp/></e:snd>
+		  <e:set><e:var n="v"/></e:set>
+		  <m:scemp/>
 		</e:union>
-	      </e:snd>
+	      
 	    </e:union>
-	  </e:fst>
-	  <e:snd><e:st n="S"/></e:snd>
+	  
+	  <e:st n="S"/>
 	</e:eq> ∧
 	<e:forall>
-	  <e:fst>
-	    <e:in><e:fst><e:var n="l"/></e:fst><e:snd><e:st n="L"/></e:snd></e:in>
-	  </e:fst>
-	  <e:snd>
-	    <e:lt><e:fst><e:var n="l"/></e:fst><e:snd><e:var n="v"/></e:snd></e:lt>
-	  </e:snd>
+	  <e:vars>
+	    <e:in><e:var n="l"/><e:st n="L"/></e:in>
+	  </e:vars>
+	  <e:expr>
+	    <e:lt><e:var n="l"/><e:var n="v"/></e:lt>
+	  </e:expr>
 	</e:forall> ∧
 	<e:forall>
-	  <e:fst>
+	  <e:vars>
 	    <e:in>
-	      <e:fst><e:var n="r"/></e:fst>
-	      <e:snd><m:scemp/></e:snd>
+	      <e:var n="r"/>
+	      <m:scemp/>
 	    </e:in>
-	  </e:fst>
-	  <e:snd>
+	  </e:vars>
+	  <e:expr>
 	    <e:lt>
-	      <e:fst><e:var n="v"/></e:fst>
-	      <e:snd><e:var n="r"/></e:snd>
+	      <e:var n="v"/>
+	      <e:var n="r"/>
 	    </e:lt>
-	  </e:snd>
+	  </e:expr>
 	</e:forall>
       </e:derive>
       <e:by><e:from name="given"/>, open predicate</e:by>
@@ -65,160 +65,160 @@
 
     <e:step name="LUvURIsS">
       <e:derive><e:eq>
-	  <e:fst>
+	  
 	    <e:union>
-	      <e:fst><e:st n="L"/></e:fst>
-	      <e:snd>
+	      <e:st n="L"/>
+	      
 		<e:union>
-		  <e:fst><e:set><e:var n="v"/></e:set></e:fst>
-		  <e:snd><m:scemp/></e:snd>
+		  <e:set><e:var n="v"/></e:set>
+		  <m:scemp/>
 		</e:union>
-	      </e:snd>
+	      
 	    </e:union>
-	  </e:fst>
-	  <e:snd><e:st n="S"/></e:snd>
+	  
+	  <e:st n="S"/>
       </e:eq></e:derive>
       <e:by><e:from name="openCompose"/>, <m:andElim/></e:by>
     </e:step>
 
     <e:step name="AllInLltv">
       <e:derive><e:forall>
-	  <e:fst>
-	    <e:in><e:fst><e:var n="l"/></e:fst><e:snd><e:st n="L"/></e:snd></e:in>
-	  </e:fst>
-	  <e:snd>
-	    <e:lt><e:fst><e:var n="l"/></e:fst><e:snd><e:var n="v"/></e:snd></e:lt>
-	  </e:snd>
+	  <e:vars>
+	    <e:in><e:var n="l"/><e:st n="L"/></e:in>
+	  </e:vars>
+	  <e:expr>
+	    <e:lt><e:var n="l"/><e:var n="v"/></e:lt>
+	  </e:expr>
       </e:forall></e:derive>
       <e:by><e:from name="openCompose"/>, <m:andElim/></e:by>
     </e:step>
 
     <e:step name="vSubsetS">
       <e:derive><e:subset>
-	  <e:fst><e:set><e:var n="v"/></e:set></e:fst>
-	  <e:snd><e:st n="S"/></e:snd>
+	  <e:set><e:var n="v"/></e:set>
+	  <e:st n="S"/>
       </e:subset></e:derive>
       <e:by><e:from name="LUvURIsS"/></e:by>
     </e:step>
 
     <e:step name="vInSetOfv">
       <e:derive><e:in>
-	  <e:fst><e:var n="v"/></e:fst>
-	  <e:snd><e:set><e:var n="v"/></e:set></e:snd>
+	  <e:var n="v"/>
+	  <e:set><e:var n="v"/></e:set>
       </e:in></e:derive>
       <e:by></e:by>
     </e:step>
 
     <e:step name="vInS">
       <e:derive><e:in>
-	  <e:fst><e:var n="v"/></e:fst>
-	  <e:snd><e:st n="S"/></e:snd>
+	  <e:var n="v"/>
+	  <e:st n="S"/>
       </e:in></e:derive>
       <e:by><e:from name="vInSetOfv"/>, <e:from name="vSubsetS"/>, member of subset member of set</e:by>
     </e:step>
 
     <e:step name="vEqv">
       <e:derive><e:eq>
-	  <e:fst><e:var n="v"/></e:fst>
-	  <e:snd><e:var n="v"/></e:snd>
+	  <e:var n="v"/>
+	  <e:var n="v"/>
       </e:eq></e:derive>
       <e:by></e:by>
     </e:step>
 
     <e:step name="vLeqv">
       <e:derive><e:leq>
-	  <e:fst><e:var n="v"/></e:fst>
-	  <e:snd><e:var n="v"/></e:snd>
+	  <e:var n="v"/>
+	  <e:var n="v"/>
       </e:leq></e:derive>
       <e:by><e:from name="vEqv"/>, weakening</e:by>
     </e:step>
 
     <e:step name="AllInvLeqv">
       <e:derive><e:forall>
-	  <e:fst><e:in>
-	      <e:fst><e:var n="s"/></e:fst>
-	      <e:snd><e:set><e:var n="v"/></e:set></e:snd>
-	  </e:in></e:fst>
-	  <e:snd><e:leq>
-	      <e:fst><e:var n="s"/></e:fst>
-	      <e:snd><e:var n="v"/></e:snd>
-	  </e:leq></e:snd>
+	  <e:vars><e:in>
+	      <e:var n="s"/>
+	      <e:set><e:var n="v"/></e:set>
+	  </e:in></e:vars>
+	  <e:expr><e:leq>
+	      <e:var n="s"/>
+	      <e:var n="v"/>
+	  </e:leq></e:expr>
       </e:forall></e:derive>
       <e:by><e:from name="vLeqv"/>, ??</e:by>
     </e:step>
 
     <e:step name="AllInLleqv">
       <e:derive><e:forall>
-	  <e:fst>
-	    <e:in><e:fst><e:var n="s"/></e:fst><e:snd><e:st n="L"/></e:snd></e:in>
-	  </e:fst>
-	  <e:snd>
-	    <e:leq><e:fst><e:var n="s"/></e:fst><e:snd><e:var n="v"/></e:snd></e:leq>
-	  </e:snd>
+	  <e:vars>
+	    <e:in><e:var n="s"/><e:st n="L"/></e:in>
+	  </e:vars>
+	  <e:expr>
+	    <e:leq><e:var n="s"/><e:var n="v"/></e:leq>
+	  </e:expr>
       </e:forall></e:derive>
       <e:by><e:from name="AllInLltv"/>, weakening</e:by>
     </e:step>
 
     <e:step name="AllinLUvleqv">
       <e:derive><e:forall>
-	  <e:fst><e:in>
-	      <e:fst><e:var n="s"/></e:fst>
-	      <e:snd>(<e:union>
-		  <e:fst><e:st n="L"/></e:fst>
-		  <e:snd><e:set><e:var n="v"/></e:set></e:snd>
-	      </e:union>)</e:snd>
-	  </e:in></e:fst>
-	  <e:snd><e:leq>
-	      <e:fst><e:var n="s"/></e:fst>
-	      <e:snd><e:var n="v"/></e:snd>
-	  </e:leq></e:snd>
+	  <e:vars><e:in>
+	      <e:var n="s"/>
+	      (<e:union>
+		  <e:st n="L"/>
+		  <e:set><e:var n="v"/></e:set>
+	      </e:union>)
+	  </e:in></e:vars>
+	  <e:expr><e:leq>
+	      <e:var n="s"/>
+	      <e:var n="v"/>
+	  </e:leq></e:expr>
       </e:forall></e:derive>
       <e:by><e:from name="AllInvLeqv"/>, <e:from name="AllInLleqv"/>, <m:trueOfSubsetMembersTrueOfSetMembers/></e:by>
     </e:step>
 
     <e:step name="LUvIsS">
       <e:derive><e:eq>
-	  <e:fst>
+	  
 	    <e:union>
-	      <e:fst><e:st n="L"/></e:fst>
-	      <e:snd><e:set><e:var n="v"/></e:set></e:snd>
+	      <e:st n="L"/>
+	      <e:set><e:var n="v"/></e:set>
 	    </e:union>
-	  </e:fst>
-	  <e:snd><e:st n="S"/></e:snd>
+	  
+	  <e:st n="S"/>
       </e:eq></e:derive>
       <e:by><e:from name="LUvURIsS"/>, <m:unionWithEmptyIsSet/></e:by>
     </e:step>
 
     <e:step name="AllInSLeqv">
       <e:derive><e:forall>
-	  <e:fst><e:in>
-	      <e:fst><e:var n="s"/></e:fst>
-	      <e:snd><e:st n="S"/></e:snd>
-	  </e:in></e:fst>
-	  <e:snd><e:leq>
-	      <e:fst><e:var n="s"/></e:fst>
-	      <e:snd><e:var n="v"/></e:snd>
-	  </e:leq></e:snd>
+	  <e:vars><e:in>
+	      <e:var n="s"/>
+	      <e:st n="S"/>
+	  </e:in></e:vars>
+	  <e:expr><e:leq>
+	      <e:var n="s"/>
+	      <e:var n="v"/>
+	  </e:leq></e:expr>
       </e:forall></e:derive>
       <e:by><e:from name="AllinLUvleqv"/>, <e:from name="LUvIsS"/>, substitution</e:by>
     </e:step>
 
     <e:step name="maxParts">
       <e:derive><e:and>
-	  <e:fst><e:in>
-	      <e:fst><e:var n="v"/></e:fst>
-	      <e:snd><e:st n="S"/></e:snd>
-	  </e:in></e:fst>
-	  <e:snd><e:forall>
-	      <e:fst><e:in>
-		  <e:fst><e:var n="s"/></e:fst>
-		  <e:snd><e:st n="S"/></e:snd>
-	      </e:in></e:fst>
-	      <e:snd><e:leq>
-		  <e:fst><e:var n="s"/></e:fst>
-		  <e:snd><e:var n="v"/></e:snd>
-	      </e:leq></e:snd>
-	  </e:forall></e:snd>
+	  <e:in>
+	      <e:var n="v"/>
+	      <e:st n="S"/>
+	  </e:in>
+	  <e:forall>
+	      <e:vars><e:in>
+		  <e:var n="s"/>
+		  <e:st n="S"/>
+	      </e:in></e:vars>
+	      <e:expr><e:leq>
+		  <e:var n="s"/>
+		  <e:var n="v"/>
+	      </e:leq></e:expr>
+	  </e:forall>
       </e:and></e:derive>
       <e:by><e:from name="vInS"/>, <e:from name="AllInSLeqv"/>, <m:andIntro/></e:by>
     </e:step>

@@ -6,291 +6,291 @@ import bst.node;
 Node* descend(Node* root, in int value) {
   // Function precondition.
   /// <e:exists>
-  ///   <e:fst><e:var n="v"/></e:fst>
-  ///   <e:snd><e:and>
-  ///     <e:fst><e:pred name="TopOfTree"><code>root</code>, <e:var n="v"/>, <e:st n="S"/></e:pred></e:fst>
-  ///     <e:snd><e:noteq>
-  ///         <e:fst><e:var n="v"/></e:fst>
-  ///         <e:snd><code>value</code></e:snd>
-  ///       </e:noteq></e:snd>
-  ///   </e:and></e:snd>
+  ///   <e:vars><e:var n="v"/></e:vars>
+  ///   <e:expr><e:and>
+  ///     <e:pred name="TopOfTree"><code>root</code>, <e:var n="v"/>, <e:st n="S"/></e:pred>
+  ///     <e:noteq>
+  ///         <e:var n="v"/>
+  ///         <code>value</code>
+  ///       </e:noteq>
+  ///   </e:and></e:expr>
   /// </e:exists>
 
   // <e:logimpl>
-  //   <e:fst><e:noteq>
-  //     <e:fst><e:var n="a"/></e:fst>
-  //     <e:snd><e:var n="b"/></e:snd>
-  //   </e:noteq></e:fst>
-  //   <e:snd><e:or>
-  //     <e:fst><e:lt>
-  //       <e:fst><e:var n="a"/></e:fst>
-  //       <e:snd><e:var n="b"/></e:snd>
-  //     </e:lt></e:fst>
-  //     <e:snd><e:lt>
-  //       <e:fst><e:var n="b"/></e:fst>
-  //       <e:snd><e:var n="a"/></e:snd>
-  //     </e:lt></e:snd>
-  //   </e:or></e:snd>
+  //   <e:noteq>
+  //     <e:var n="a"/>
+  //     <e:var n="b"/>
+  //   </e:noteq>
+  //   <e:or>
+  //     <e:lt>
+  //       <e:var n="a"/>
+  //       <e:var n="b"/>
+  //     </e:lt>
+  //     <e:lt>
+  //       <e:var n="b"/>
+  //       <e:var n="a"/>
+  //     </e:lt>
+  //   </e:or>
   // </e:logimpl>
   /// <e:exists>
-  ///   <e:fst><e:var n="v"/></e:fst>
-  ///   <e:snd><e:and>
-  ///     <e:fst><e:pred name="TopOfTree"><code>root</code>, <e:var n="v"/>, <e:st n="S"/></e:pred></e:fst>
-  ///     <e:snd><e:or>
-  ///       <e:fst>(<e:lt>
-  ///         <e:fst><e:var n="v"/></e:fst>
-  ///         <e:snd><code>value</code></e:snd>
-  ///       </e:lt>)</e:fst>
-  ///       <e:snd>(<e:lt>
-  ///         <e:fst><code>value</code></e:fst>
-  ///         <e:snd><e:var n="v"/></e:snd>
-  ///       </e:lt>)</e:snd>
-  ///     </e:or></e:snd>
-  ///   </e:and></e:snd>
+  ///   <e:vars><e:var n="v"/></e:vars>
+  ///   <e:expr><e:and>
+  ///     <e:pred name="TopOfTree"><code>root</code>, <e:var n="v"/>, <e:st n="S"/></e:pred>
+  ///     <e:or>
+  ///       (<e:lt>
+  ///         <e:var n="v"/>
+  ///         <code>value</code>
+  ///       </e:lt>)
+  ///       (<e:lt>
+  ///         <code>value</code>
+  ///         <e:var n="v"/>
+  ///       </e:lt>)
+  ///     </e:or>
+  ///   </e:and></e:expr>
   /// </e:exists>
 
   int dir = value > root.value;
 
   // C semantics render this as an integer.
   /// <e:exists>
-  ///   <e:fst><e:var n="v"/></e:fst>
-  ///   <e:snd><e:and>
-  ///     <e:fst><e:pred name="TopOfTree"><code>root</code>, <e:var n="v"/>, <e:st n="S"/></e:pred></e:fst>
-  ///     <e:snd><br /><e:indent><e:or>
-  ///       <e:fst>(<e:and>
-  ///         <e:fst><e:lt>
-  ///           <e:fst><e:var n="v"/></e:fst>
-  ///           <e:snd><code>value</code></e:snd>
-  ///         </e:lt></e:fst>
-  ///         <e:snd><e:eq>
-  ///           <e:fst><code>dir</code></e:fst>
-  ///           <e:snd><e:const n="0"/></e:snd>
-  ///         </e:eq></e:snd>
-  ///       </e:and>)</e:fst>
-  ///       <e:snd><br />(<e:and>
-  ///         <e:fst><e:lt>
-  ///           <e:fst><code>value</code></e:fst>
-  ///           <e:snd><e:var n="v"/></e:snd>
-  ///         </e:lt></e:fst>
-  ///         <e:snd><e:eq>
-  ///           <e:fst><code>dir</code></e:fst>
-  ///           <e:snd><e:const n="1"/></e:snd>
-  ///         </e:eq></e:snd>
-  ///       </e:and>)</e:snd>
-  ///     </e:or></e:indent></e:snd>
-  ///   </e:and></e:snd>
+  ///   <e:vars><e:var n="v"/></e:vars>
+  ///   <e:expr><e:and>
+  ///     <e:pred name="TopOfTree"><code>root</code>, <e:var n="v"/>, <e:st n="S"/></e:pred>
+  ///     <br /><e:indent><e:or>
+  ///       (<e:and>
+  ///         <e:lt>
+  ///           <e:var n="v"/>
+  ///           <code>value</code>
+  ///         </e:lt>
+  ///         <e:eq>
+  ///           <code>dir</code>
+  ///           <e:const n="0"/>
+  ///         </e:eq>
+  ///       </e:and>)
+  ///       <br />(<e:and>
+  ///         <e:lt>
+  ///           <code>value</code>
+  ///           <e:var n="v"/>
+  ///         </e:lt>
+  ///         <e:eq>
+  ///           <code>dir</code>
+  ///           <e:const n="1"/>
+  ///         </e:eq>
+  ///       </e:and>)
+  ///     </e:or></e:indent>
+  ///   </e:and></e:expr>
   /// </e:exists>
 
   // Open <e:pred name="TopOfTree"><code>root</code>, <e:var n="v"/>, <e:st n="S"/></e:pred>.
   /// <e:exists>
-  ///   <e:fst><e:var n="v"/>, <e:var n="l"/>,<e:var n="r"/>,<e:st n="L"/>,<e:st n="R"/></e:fst>
-  ///   <e:snd><e:indent><e:and>
-  ///     <e:fst>
+  ///   <e:vars><e:var n="v"/>, <e:var n="l"/>,<e:var n="r"/>,<e:st n="L"/>,<e:st n="R"/></e:vars>
+  ///   <e:expr><e:indent><e:and>
+  ///     
   ///       <e:sep>
-  ///         <e:fst><e:fcell>
-  ///	        <e:fst><code>root</code></e:fst>
-  ///	        <e:snd><e:var n="v"/>,<e:var n="l"/>,<e:var n="r"/></e:snd>
-  ///	      </e:fcell></e:fst>
-  ///         <e:snd><e:sep>
-  ///	        <e:fst><e:pred name="Tree"><e:var n="l"/>, <e:st n="L"/></e:pred></e:fst>
-  ///	        <e:snd><e:pred name="Tree"><e:var n="r"/>, <e:st n="R"/></e:pred></e:snd>
-  ///         </e:sep></e:snd>
+  ///         <e:fcell>
+  ///	        <code>root</code>
+  ///	        <e:list><e:var n="v"/>,<e:var n="l"/>,<e:var n="r"/></e:list>
+  ///	      </e:fcell>
+  ///         <e:sep>
+  ///	        <e:pred name="Tree"><e:var n="l"/>, <e:st n="L"/></e:pred>
+  ///	        <e:pred name="Tree"><e:var n="r"/>, <e:st n="R"/></e:pred>
+  ///         </e:sep>
   ///       </e:sep> ∧<br />
   ///       <e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
-  ///     </e:fst>
-  ///     <e:snd><br /><e:indent><e:or>
-  ///       <e:fst>(<e:and>
-  ///         <e:fst><e:lt>
-  ///           <e:fst><e:var n="v"/></e:fst>
-  ///           <e:snd><code>value</code></e:snd>
-  ///         </e:lt></e:fst>
-  ///         <e:snd><e:eq>
-  ///           <e:fst><code>dir</code></e:fst>
-  ///           <e:snd><e:const n="0"/></e:snd>
-  ///         </e:eq></e:snd>
-  ///       </e:and>)</e:fst>
-  ///       <e:snd><br />(<e:and>
-  ///         <e:fst><e:lt>
-  ///           <e:fst><code>value</code></e:fst>
-  ///           <e:snd><e:var n="v"/></e:snd>
-  ///         </e:lt></e:fst>
-  ///         <e:snd><e:eq>
-  ///           <e:fst><code>dir</code></e:fst>
-  ///           <e:snd><e:const n="1"/></e:snd>
-  ///         </e:eq></e:snd>
-  ///       </e:and>)</e:snd>
-  ///     </e:or></e:indent></e:snd>
-  ///   </e:and></e:indent></e:snd>
+  ///     
+  ///     <br /><e:indent><e:or>
+  ///       (<e:and>
+  ///         <e:lt>
+  ///           <e:var n="v"/>
+  ///           <code>value</code>
+  ///         </e:lt>
+  ///         <e:eq>
+  ///           <code>dir</code>
+  ///           <e:const n="0"/>
+  ///         </e:eq>
+  ///       </e:and>)
+  ///       <br />(<e:and>
+  ///         <e:lt>
+  ///           <code>value</code>
+  ///           <e:var n="v"/>
+  ///         </e:lt>
+  ///         <e:eq>
+  ///           <code>dir</code>
+  ///           <e:const n="1"/>
+  ///         </e:eq>
+  ///       </e:and>)
+  ///     </e:or></e:indent>
+  ///   </e:and></e:indent></e:expr>
   /// </e:exists>
 
   Node* o = root.c[dir];
   // Both cases of <code>dir</code>.
   /// <e:exists>
-  ///   <e:fst><e:var n="v"/>, <e:var n="l"/>,<e:var n="r"/>,<e:st n="L"/>,<e:st n="R"/></e:fst>
-  ///   <e:snd><e:indent><e:and>
-  ///     <e:fst>
+  ///   <e:vars><e:var n="v"/>, <e:var n="l"/>,<e:var n="r"/>,<e:st n="L"/>,<e:st n="R"/></e:vars>
+  ///   <e:expr><e:indent><e:and>
+  ///     
   ///       <e:sep>
-  ///         <e:fst><e:fcell>
-  ///	        <e:fst><code>root</code></e:fst>
-  ///	        <e:snd><e:var n="v"/>,<e:var n="l"/>,<e:var n="r"/></e:snd>
-  ///	      </e:fcell></e:fst>
-  ///         <e:snd><e:sep>
-  ///	        <e:fst><e:pred name="Tree"><e:var n="l"/>, <e:st n="L"/></e:pred></e:fst>
-  ///	        <e:snd><e:pred name="Tree"><e:var n="r"/>, <e:st n="R"/></e:pred></e:snd>
-  ///         </e:sep></e:snd>
+  ///         <e:fcell>
+  ///	        <code>root</code>
+  ///	        <e:list><e:var n="v"/>,<e:var n="l"/>,<e:var n="r"/></e:list>
+  ///	      </e:fcell>
+  ///         <e:sep>
+  ///	        <e:pred name="Tree"><e:var n="l"/>, <e:st n="L"/></e:pred>
+  ///	        <e:pred name="Tree"><e:var n="r"/>, <e:st n="R"/></e:pred>
+  ///         </e:sep>
   ///       </e:sep> ∧<br />
   ///       <e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
-  ///     </e:fst>
-  ///     <e:snd><br /><e:indent><e:or>
-  ///       <e:fst>(<e:and>
-  ///         <e:fst><e:lt>
-  ///           <e:fst><e:var n="v"/></e:fst>
-  ///           <e:snd><code>value</code></e:snd>
-  ///         </e:lt></e:fst>
-  ///         <e:snd><e:eq>
-  ///           <e:fst><code>o</code></e:fst>
-  ///           <e:snd><e:var n="l"/></e:snd>
-  ///         </e:eq></e:snd>
-  ///       </e:and>)</e:fst>
-  ///       <e:snd><br />(<e:and>
-  ///         <e:fst><e:lt>
-  ///           <e:fst><code>value</code></e:fst>
-  ///           <e:snd><e:var n="v"/></e:snd>
-  ///         </e:lt></e:fst>
-  ///         <e:snd><e:eq>
-  ///           <e:fst><code>o</code></e:fst>
-  ///           <e:snd><e:var n="r"/></e:snd>
-  ///         </e:eq></e:snd>
-  ///       </e:and>)</e:snd>
-  ///     </e:or></e:indent></e:snd>
-  ///   </e:and></e:indent></e:snd>
+  ///     
+  ///     <br /><e:indent><e:or>
+  ///       (<e:and>
+  ///         <e:lt>
+  ///           <e:var n="v"/>
+  ///           <code>value</code>
+  ///         </e:lt>
+  ///         <e:eq>
+  ///           <code>o</code>
+  ///           <e:var n="l"/>
+  ///         </e:eq>
+  ///       </e:and>)
+  ///       <br />(<e:and>
+  ///         <e:lt>
+  ///           <code>value</code>
+  ///           <e:var n="v"/>
+  ///         </e:lt>
+  ///         <e:eq>
+  ///           <code>o</code>
+  ///           <e:var n="r"/>
+  ///         </e:eq>
+  ///       </e:and>)
+  ///     </e:or></e:indent>
+  ///   </e:and></e:indent></e:expr>
   /// </e:exists>
 
   // Substitution.
   /// <e:exists>
-  ///   <e:fst><e:var n="v"/>, <e:var n="l"/>,<e:var n="r"/>,<e:st n="L"/>,<e:st n="R"/></e:fst>
-  ///   <e:snd><e:indent><e:and>
-  ///     <e:fst>
+  ///   <e:vars><e:var n="v"/>, <e:var n="l"/>,<e:var n="r"/>,<e:st n="L"/>,<e:st n="R"/></e:vars>
+  ///   <e:expr><e:indent><e:and>
+  ///     
   ///       <e:sep>
-  ///         <e:fst><e:fcell>
-  ///	        <e:fst><code>root</code></e:fst>
-  ///	        <e:snd><e:var n="v"/>,<e:var n="l"/>,<e:var n="r"/></e:snd>
-  ///	      </e:fcell></e:fst>
-  ///         <e:snd><e:sep>
-  ///	        <e:fst><e:pred name="Tree"><e:var n="l"/>, <e:st n="L"/></e:pred></e:fst>
-  ///	        <e:snd><e:pred name="Tree"><e:var n="r"/>, <e:st n="R"/></e:pred></e:snd>
-  ///         </e:sep></e:snd>
+  ///         <e:fcell>
+  ///	        <code>root</code>
+  ///	        <e:list><e:var n="v"/>,<e:var n="l"/>,<e:var n="r"/></e:list>
+  ///	      </e:fcell>
+  ///         <e:sep>
+  ///	        <e:pred name="Tree"><e:var n="l"/>, <e:st n="L"/></e:pred>
+  ///	        <e:pred name="Tree"><e:var n="r"/>, <e:st n="R"/></e:pred>
+  ///         </e:sep>
   ///       </e:sep> ∧<br />
   ///       <e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
-  ///     </e:fst>
-  ///     <e:snd><br /><e:indent><e:or>
-  ///       <e:fst>(<e:and>
-  ///         <e:fst><e:lt>
-  ///           <e:fst><e:var n="v"/></e:fst>
-  ///           <e:snd><code>value</code></e:snd>
-  ///         </e:lt></e:fst>
-  ///         <e:snd><e:pred name="Tree"><code>o</code>, <e:st n="L"/></e:pred></e:snd>
-  ///       </e:and>)</e:fst>
-  ///       <e:snd><br />(<e:and>
-  ///         <e:fst><e:lt>
-  ///           <e:fst><code>value</code></e:fst>
-  ///           <e:snd><e:var n="v"/></e:snd>
-  ///         </e:lt></e:fst>
-  ///         <e:snd><e:pred name="Tree"><code>o</code>, <e:st n="R"/></e:pred></e:snd>
-  ///       </e:and>)</e:snd>
-  ///     </e:or></e:indent></e:snd>
-  ///   </e:and></e:indent></e:snd>
+  ///     
+  ///     <br /><e:indent><e:or>
+  ///       (<e:and>
+  ///         <e:lt>
+  ///           <e:var n="v"/>
+  ///           <code>value</code>
+  ///         </e:lt>
+  ///         <e:pred name="Tree"><code>o</code>, <e:st n="L"/></e:pred>
+  ///       </e:and>)
+  ///       <br />(<e:and>
+  ///         <e:lt>
+  ///           <code>value</code>
+  ///           <e:var n="v"/>
+  ///         </e:lt>
+  ///         <e:pred name="Tree"><code>o</code>, <e:st n="R"/></e:pred>
+  ///       </e:and>)
+  ///     </e:or></e:indent>
+  ///   </e:and></e:indent></e:expr>
   /// </e:exists>
 
   // Lemma: <e:logimpl>
-  //   <e:fst><e:and>
-  //     <e:fst><e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred></e:fst>
-  //     <e:snd><e:lt><e:fst><e:var n="v"/></e:fst><e:snd><code>value</code></e:snd></e:lt></e:snd>
-  //   </e:and></e:fst>
-  //   <e:snd><e:doubleimpl>
-  //     <e:fst><e:in><e:fst><code>value</code></e:fst><e:snd><e:st n="R"/></e:snd></e:in></e:fst>
-  //     <e:snd><e:in><e:fst><code>value</code></e:fst><e:snd><e:st n="S"/></e:snd></e:in></e:snd>
-  //   </e:doubleimpl></e:snd>
+  //   <e:and>
+  //     <e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
+  //     <e:lt><e:var n="v"/><code>value</code></e:lt>
+  //   </e:and>
+  //   <e:doubleimpl>
+  //     <e:in><code>value</code><e:st n="R"/></e:in>
+  //     <e:in><code>value</code><e:st n="S"/></e:in>
+  //   </e:doubleimpl>
   // </e:logimpl>.<br />
   // Lemma: <e:logimpl>
-  //   <e:fst><e:and>
-  //     <e:fst><e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred></e:fst>
-  //     <e:snd><e:lt><e:fst><code>value</code></e:fst><e:snd><e:var n="v"/></e:snd></e:lt></e:snd>
-  //   </e:and></e:fst>
-  //   <e:snd><e:doubleimpl>
-  //     <e:fst><e:in><e:fst><code>value</code></e:fst><e:snd><e:st n="L"/></e:snd></e:in></e:fst>
-  //     <e:snd><e:in><e:fst><code>value</code></e:fst><e:snd><e:st n="S"/></e:snd></e:in></e:snd>
-  //   </e:doubleimpl></e:snd>
+  //   <e:and>
+  //     <e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
+  //     <e:lt><code>value</code><e:var n="v"/></e:lt>
+  //   </e:and>
+  //   <e:doubleimpl>
+  //     <e:in><code>value</code><e:st n="L"/></e:in>
+  //     <e:in><code>value</code><e:st n="S"/></e:in>
+  //   </e:doubleimpl>
   // </e:logimpl>.
   /// <e:exists>
-  ///   <e:fst><e:var n="v"/>, <e:var n="l"/>,<e:var n="r"/>,<e:st n="L"/>,<e:st n="R"/></e:fst>
-  ///   <e:snd><e:indent><e:and>
-  ///     <e:fst>
+  ///   <e:vars><e:var n="v"/>, <e:var n="l"/>,<e:var n="r"/>,<e:st n="L"/>,<e:st n="R"/></e:vars>
+  ///   <e:expr><e:indent><e:and>
+  ///     
   ///       <e:sep>
-  ///         <e:fst><e:fcell>
-  ///	        <e:fst><code>root</code></e:fst>
-  ///	        <e:snd><e:var n="v"/>,<e:var n="l"/>,<e:var n="r"/></e:snd>
-  ///	      </e:fcell></e:fst>
-  ///         <e:snd><e:sep>
-  ///	        <e:fst><e:pred name="Tree"><e:var n="l"/>, <e:st n="L"/></e:pred></e:fst>
-  ///	        <e:snd><e:pred name="Tree"><e:var n="r"/>, <e:st n="R"/></e:pred></e:snd>
-  ///         </e:sep></e:snd>
+  ///         <e:fcell>
+  ///	        <code>root</code>
+  ///	        <e:list><e:var n="v"/>,<e:var n="l"/>,<e:var n="r"/></e:list>
+  ///	      </e:fcell>
+  ///         <e:sep>
+  ///	        <e:pred name="Tree"><e:var n="l"/>, <e:st n="L"/></e:pred>
+  ///	        <e:pred name="Tree"><e:var n="r"/>, <e:st n="R"/></e:pred>
+  ///         </e:sep>
   ///       </e:sep> ∧<br />
   ///       <e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
-  ///     </e:fst>
-  ///     <e:snd><br /><e:indent><e:or>
-  ///       <e:fst>(<e:and>
-  ///         <e:fst><e:pred name="Tree"><code>o</code>, <e:st n="L"/></e:pred></e:fst>
-  ///         <e:snd>(<e:doubleimpl>
-  ///           <e:fst><e:in><e:fst><code>value</code></e:fst><e:snd><e:st n="L"/></e:snd></e:in></e:fst>
-  ///           <e:snd><e:in><e:fst><code>value</code></e:fst><e:snd><e:st n="S"/></e:snd></e:in></e:snd>
-  ///         </e:doubleimpl>)</e:snd>
-  ///       </e:and>)</e:fst>
-  ///       <e:snd><br />(<e:and>
-  ///         <e:fst><e:pred name="Tree"><code>o</code>, <e:st n="R"/></e:pred></e:fst>
-  ///         <e:snd>(<e:doubleimpl>
-  ///           <e:fst><e:in><e:fst><code>value</code></e:fst><e:snd><e:st n="R"/></e:snd></e:in></e:fst>
-  ///           <e:snd><e:in><e:fst><code>value</code></e:fst><e:snd><e:st n="S"/></e:snd></e:in></e:snd>
-  ///         </e:doubleimpl>)</e:snd>
-  ///       </e:and>)</e:snd>
-  ///     </e:or></e:indent></e:snd>
-  ///   </e:and></e:indent></e:snd>
+  ///     
+  ///     <br /><e:indent><e:or>
+  ///       (<e:and>
+  ///         <e:pred name="Tree"><code>o</code>, <e:st n="L"/></e:pred>
+  ///         (<e:doubleimpl>
+  ///           <e:in><code>value</code><e:st n="L"/></e:in>
+  ///           <e:in><code>value</code><e:st n="S"/></e:in>
+  ///         </e:doubleimpl>)
+  ///       </e:and>)
+  ///       <br />(<e:and>
+  ///         <e:pred name="Tree"><code>o</code>, <e:st n="R"/></e:pred>
+  ///         (<e:doubleimpl>
+  ///           <e:in><code>value</code><e:st n="R"/></e:in>
+  ///           <e:in><code>value</code><e:st n="S"/></e:in>
+  ///         </e:doubleimpl>)
+  ///       </e:and>)
+  ///     </e:or></e:indent>
+  ///   </e:and></e:indent></e:expr>
   /// </e:exists>
 
   // <m:existsIntro/> on <e:st n="L"/> as <e:st n="Q"/>, <e:st n="R"/> as <e:st n="Q"/>.
   /// <e:exists>
-  ///   <e:fst><e:var n="v"/>, <e:var n="l"/>,<e:var n="r"/>,<e:st n="L"/>,<e:st n="R"/></e:fst>
-  ///   <e:snd><e:indent><e:and>
-  ///     <e:fst>
+  ///   <e:vars><e:var n="v"/>, <e:var n="l"/>,<e:var n="r"/>,<e:st n="L"/>,<e:st n="R"/></e:vars>
+  ///   <e:expr><e:indent><e:and>
+  ///     
   ///       <e:sep>
-  ///         <e:fst><e:fcell>
-  ///	        <e:fst><code>root</code></e:fst>
-  ///	        <e:snd><e:var n="v"/>,<e:var n="l"/>,<e:var n="r"/></e:snd>
-  ///	      </e:fcell></e:fst>
-  ///         <e:snd><e:sep>
-  ///	        <e:fst><e:pred name="Tree"><e:var n="l"/>, <e:st n="L"/></e:pred></e:fst>
-  ///	        <e:snd><e:pred name="Tree"><e:var n="r"/>, <e:st n="R"/></e:pred></e:snd>
-  ///         </e:sep></e:snd>
+  ///         <e:fcell>
+  ///	        <code>root</code>
+  ///	        <e:list><e:var n="v"/>,<e:var n="l"/>,<e:var n="r"/></e:list>
+  ///	      </e:fcell>
+  ///         <e:sep>
+  ///	        <e:pred name="Tree"><e:var n="l"/>, <e:st n="L"/></e:pred>
+  ///	        <e:pred name="Tree"><e:var n="r"/>, <e:st n="R"/></e:pred>
+  ///         </e:sep>
   ///       </e:sep> ∧<br />
   ///       <e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
-  ///     </e:fst>
-  ///     <e:snd><br /><e:indent><e:or>
-  ///       <e:fst><e:exists><e:fst><e:st n="Q"/></e:fst><e:snd>(<e:and>
-  ///         <e:fst><e:pred name="Tree"><code>o</code>, <e:st n="Q"/></e:pred></e:fst>
-  ///         <e:snd>(<e:doubleimpl>
-  ///           <e:fst><e:in><e:fst><code>value</code></e:fst><e:snd><e:st n="Q"/></e:snd></e:in></e:fst>
-  ///           <e:snd><e:in><e:fst><code>value</code></e:fst><e:snd><e:st n="S"/></e:snd></e:in></e:snd>
-  ///         </e:doubleimpl>)</e:snd>
-  ///       </e:and>)</e:snd></e:exists></e:fst>
-  ///       <e:snd><br /><e:exists><e:fst><e:st n="Q"/></e:fst><e:snd>(<e:and>
-  ///         <e:fst><e:pred name="Tree"><code>o</code>, <e:st n="Q"/></e:pred></e:fst>
-  ///         <e:snd>(<e:doubleimpl>
-  ///           <e:fst><e:in><e:fst><code>value</code></e:fst><e:snd><e:st n="Q"/></e:snd></e:in></e:fst>
-  ///           <e:snd><e:in><e:fst><code>value</code></e:fst><e:snd><e:st n="S"/></e:snd></e:in></e:snd>
-  ///         </e:doubleimpl>)</e:snd>
-  ///       </e:and>)</e:snd></e:exists></e:snd>
-  ///     </e:or></e:indent></e:snd>
-  ///   </e:and></e:indent></e:snd>
+  ///     
+  ///     <br /><e:indent><e:or>
+  ///       <e:exists><e:st n="Q"/>(<e:and>
+  ///         <e:pred name="Tree"><code>o</code>, <e:st n="Q"/></e:pred>
+  ///         (<e:doubleimpl>
+  ///           <e:in><code>value</code><e:st n="Q"/></e:in>
+  ///           <e:in><code>value</code><e:st n="S"/></e:in>
+  ///         </e:doubleimpl>)
+  ///       </e:and>)</e:exists>
+  ///       <br /><e:exists><e:st n="Q"/>(<e:and>
+  ///         <e:pred name="Tree"><code>o</code>, <e:st n="Q"/></e:pred>
+  ///         (<e:doubleimpl>
+  ///           <e:in><code>value</code><e:st n="Q"/></e:in>
+  ///           <e:in><code>value</code><e:st n="S"/></e:in>
+  ///         </e:doubleimpl>)
+  ///       </e:and>)</e:exists>
+  ///     </e:or></e:indent>
+  ///   </e:and></e:indent></e:expr>
   /// </e:exists>
 
   // Introduce quantification.

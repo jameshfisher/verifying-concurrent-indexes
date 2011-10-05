@@ -8,100 +8,96 @@ bool search(Node* head, int value) {
   if (head == null) {
     // Assert if-condition.
     /// <e:and>
-    ///   <e:fst><e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred></e:fst>
-    ///   <e:snd><e:eq>
-    ///     <e:fst><code>head</code></e:fst>
-    ///     <e:snd><code>null</code></e:snd>
-    ///   </e:eq></e:snd>
+    ///   <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
+    ///   <e:eq>
+    ///     <code>head</code>
+    ///     <code>null</code>
+    ///   </e:eq>
     /// </e:and>
 
     // Lemma: <e:logimpl>
-    //   <e:fst><e:and>
-    //     <e:fst><e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred></e:fst>
-    //     <e:snd><e:eq><e:fst><code>head</code></e:fst><e:snd><code>null</code></e:snd></e:eq></e:snd>
-    //   </e:and></e:fst>
-    //   <e:snd><e:pred name="EmptyList"><code>head</code>, <e:st n="S"/></e:pred></e:snd>
+    //   <e:and>
+    //     <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
+    //     <e:eq><code>head</code><code>null</code></e:eq>
+    //   </e:and>
+    //   <e:pred name="EmptyList"><code>head</code>, <e:st n="S"/></e:pred>
     // </e:logimpl>.
     /// <e:pred name="EmptyList"><code>head</code>, <e:st n="S"/></e:pred>
 
     // Lemma: <e:logimpl>
-    //   <e:fst><e:pred name="EmptyList"><code>head</code>, <e:st n="S"/></e:pred></e:fst>
-    //   <e:snd><e:notin>
-    //     <e:fst><code>value</code></e:fst>
-    //     <e:snd><e:st n="S"/></e:snd>
-    //   </e:notin></e:snd>
+    //   <e:pred name="EmptyList"><code>head</code>, <e:st n="S"/></e:pred>
+    //   <e:notin>
+    //     <code>value</code>
+    //     <e:st n="S"/>
+    //   </e:notin>
     // </e:logimpl>.
     /// <e:and>
-    ///   <e:fst><e:pred name="EmptyList"><code>head</code>, <e:st n="S"/></e:pred></e:fst>
-    ///   <e:snd><e:notin>
-    ///     <e:fst><code>value</code></e:fst>
-    ///     <e:snd><e:st n="S"/></e:snd>
-    ///   </e:notin></e:snd>
+    ///   <e:pred name="EmptyList"><code>head</code>, <e:st n="S"/></e:pred>
+    ///   <e:notin>
+    ///     <code>value</code>
+    ///     <e:st n="S"/>
+    ///   </e:notin>
     /// </e:and>
 
     // Weakening lemma: <e:logimpl>
-    //   <e:fst><e:pred name="EmptyList"><code>head</code>, <e:st n="S"/></e:pred></e:fst>
-    //   <e:snd><e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred></e:snd>
+    //   <e:pred name="EmptyList"><code>head</code>, <e:st n="S"/></e:pred>
+    //   <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
     // </e:logimpl>.
     /// <e:and>
-    ///   <e:fst><e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred></e:fst>
-    ///   <e:snd><e:notin>
-    ///     <e:fst><code>value</code></e:fst>
-    ///     <e:snd><e:st n="S"/></e:snd>
-    ///   </e:notin></e:snd>
+    ///   <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
+    ///   <e:notin>
+    ///     <code>value</code>
+    ///     <e:st n="S"/>
+    ///   </e:notin>
     /// </e:and>
 
     o = false;
     // Assignment.
     /// <e:and>
-    ///   <e:fst><e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred></e:fst>
-    ///   <e:snd><e:and>
-    ///     <e:fst>
+    ///   <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
+    ///   <e:and>
     ///       <e:notin>
-    ///         <e:fst><code>value</code></e:fst>
-    ///         <e:snd><e:st n="S"/></e:snd>
+    ///         <code>value</code>
+    ///         <e:st n="S"/>
     ///       </e:notin>
-    ///     </e:fst>
-    ///     <e:snd>
     ///       <e:eq>
-    ///         <e:fst><code>o</code></e:fst>
-    ///         <e:snd><code>false</code></e:snd>
+    ///         <code>o</code>
+    ///         <code>false</code>
     ///       </e:eq>
-    ///     </e:snd>
-    ///   </e:and></e:snd>
+    ///   </e:and>
     /// </e:and>
 
-    // <e:doubleimpl><e:fst>false</e:fst><e:snd>false</e:snd></e:doubleimpl>.
+    // <e:doubleimpl>falsefalse</e:doubleimpl>.
     /// <e:and>
-    ///   <e:fst><e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred></e:fst>
-    ///   <e:snd><e:doubleimpl>
-    ///     <e:fst><code>o</code></e:fst>
-    ///     <e:snd><e:in>
-    ///       <e:fst><code>value</code></e:fst>
-    ///       <e:snd><e:st n="S"/></e:snd>
-    ///     </e:in></e:snd>
-    ///   </e:doubleimpl></e:snd>
+    ///   <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
+    ///   <e:doubleimpl>
+    ///     <code>o</code>
+    ///     <e:in>
+    ///       <code>value</code>
+    ///       <e:st n="S"/>
+    ///     </e:in>
+    ///   </e:doubleimpl>
     /// </e:and>
   }
   else {
     // Deny if-condition.
     /// <e:and>
-    ///   <e:fst><e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred></e:fst>
-    ///   <e:snd><e:noteq>
-    ///     <e:fst><code>head</code></e:fst>
-    ///     <e:snd><code>null</code></e:snd>
-    ///   </e:noteq></e:snd>
+    ///   <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
+    ///   <e:noteq>
+    ///     <code>head</code>
+    ///     <code>null</code>
+    ///   </e:noteq>
     /// </e:and>
 
     // Lemma: <e:logimpl>
-    //   <e:fst><e:and>
-    //     <e:fst><e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred></e:fst>
-    //     <e:snd><e:noteq>
-    //       <e:fst><code>head</code></e:fst>
-    //       <e:snd><code>null</code></e:snd>
-    //     </e:noteq></e:snd>
-    //   </e:and></e:fst>
-    //   <e:snd><e:pred name="NonEmptyList"><code>head</code>, <e:st n="S"/></e:pred></e:snd>
+    //   <e:and>
+    //     <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
+    //     <e:noteq>
+    //       <code>head</code>
+    //       <code>null</code>
+    //     </e:noteq>
+    //   </e:and>
+    //   <e:pred name="NonEmptyList"><code>head</code>, <e:st n="S"/></e:pred>
     // </e:logimpl>.
     /// <e:pred name="NonEmptyList"><code>head</code>, <e:st n="S"/></e:pred>
 
@@ -110,11 +106,11 @@ bool search(Node* head, int value) {
     /// <e:indent>
     ///   <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
     ///   <e:sep>
-    ///     <e:fst><e:fcell>
-    ///       <e:fst><code>head</code></e:fst>
-    ///       <e:snd><e:var n="v"/>, <e:var n="tail"/></e:snd>
-    ///     </e:fcell></e:fst>
-    ///     <e:snd><e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred></e:snd>
+    ///     <e:fcell>
+    ///       <code>head</code>
+    ///       <e:list><e:var n="v"/>, <e:var n="tail"/></e:list>
+    ///     </e:fcell>
+    ///     <e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred>
     ///   </e:sep>
     /// </e:indent>
 
@@ -124,84 +120,84 @@ bool search(Node* head, int value) {
       /// <e:indent>
       ///   <e:pred name="ListCompose"><code>value</code>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
       ///   <e:sep>
-      ///     <e:fst><e:fcell>
-      ///       <e:fst><code>head</code></e:fst>
-      ///       <e:snd><code>value</code>, <e:var n="tail"/></e:snd>
-      ///     </e:fcell></e:fst>
-      ///     <e:snd><e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred></e:snd>
+      ///     <e:fcell>
+      ///       <code>head</code>
+      ///       <e:list><code>value</code>, <e:var n="tail"/></e:list>
+      ///     </e:fcell>
+      ///     <e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred>
       ///   </e:sep>
       /// </e:indent>
 
       // <e:logimpl>
-      //   <e:fst><e:pred name="ListCompose"><code>value</code>, <e:st n="T"/>, <e:st n="S"/></e:pred></e:fst>
-      //   <e:snd><e:in>
-      //     <e:fst><code>value</code></e:fst>
-      //     <e:snd><e:st n="S"/></e:snd>
-      //   </e:in></e:snd>
+      //   <e:pred name="ListCompose"><code>value</code>, <e:st n="T"/>, <e:st n="S"/></e:pred>
+      //   <e:in>
+      //     <code>value</code>
+      //     <e:st n="S"/>
+      //   </e:in>
       // </e:logimpl>.
       /// ∃<e:var n="tail"/>, <e:st n="T"/>.<br />
       /// <e:indent>
       ///   <e:pred name="ListCompose"><code>value</code>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
       ///   <e:sep>
-      ///     <e:fst><e:fcell>
-      ///       <e:fst><code>head</code></e:fst>
-      ///       <e:snd><code>value</code>, <e:var n="tail"/></e:snd>
-      ///     </e:fcell></e:fst>
-      ///     <e:snd><e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred></e:snd>
+      ///     <e:fcell>
+      ///       <code>head</code>
+      ///       <e:list><code>value</code>, <e:var n="tail"/></e:list>
+      ///     </e:fcell>
+      ///     <e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred>
       ///   </e:sep> ∧<br />
       ///   <e:in>
-      ///     <e:fst><code>value</code></e:fst>
-      ///     <e:snd><e:st n="S"/></e:snd>
+      ///     <code>value</code>
+      ///     <e:st n="S"/>
       ///   </e:in>
       /// </e:indent>
 
       // Close <e:pred name="NonEmptyList"><code>head</code>, <e:st n="S"/></e:pred>.
       /// <e:and>
-      ///   <e:fst><e:pred name="NonEmptyList"><code>head</code>, <e:st n="S"/></e:pred></e:fst>
-      ///   <e:snd><e:in>
-      ///     <e:fst><code>value</code></e:fst>
-      ///     <e:snd><e:st n="S"/></e:snd>
-      ///   </e:in></e:snd>
+      ///   <e:pred name="NonEmptyList"><code>head</code>, <e:st n="S"/></e:pred>
+      ///   <e:in>
+      ///     <code>value</code>
+      ///     <e:st n="S"/>
+      ///   </e:in>
       /// </e:and>
 
       // Weakening lemma: <e:logimpl>
-      //   <e:fst><e:pred name="NonEmptyList"><code>head</code>, <e:st n="S"/></e:pred></e:fst>
-      //   <e:snd><e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred></e:snd>
+      //   <e:pred name="NonEmptyList"><code>head</code>, <e:st n="S"/></e:pred>
+      //   <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
       // </e:logimpl>.
       /// <e:and>
-      ///   <e:fst><e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred></e:fst>
-      ///   <e:snd><e:in>
-      ///     <e:fst><code>value</code></e:fst>
-      ///     <e:snd><e:st n="S"/></e:snd>
-      ///   </e:in></e:snd>
+      ///   <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
+      ///   <e:in>
+      ///     <code>value</code>
+      ///     <e:st n="S"/>
+      ///   </e:in>
       /// </e:and>
 
       o = true;
       // Assignment.
       /// <e:and>
-      ///   <e:fst><e:and>
-      ///     <e:fst><e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred></e:fst>
-      ///     <e:snd><e:in>
-      ///       <e:fst><code>value</code></e:fst>
-      ///       <e:snd><e:st n="S"/></e:snd>
-      ///     </e:in></e:snd>
-      ///   </e:and></e:fst>
-      ///   <e:snd><e:eq>
-      ///     <e:fst><code>o</code></e:fst>
-      ///     <e:snd><code>true</code></e:snd>
-      ///   </e:eq></e:snd>
+      ///   <e:and>
+      ///     <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
+      ///     <e:in>
+      ///       <code>value</code>
+      ///       <e:st n="S"/>
+      ///     </e:in>
+      ///   </e:and>
+      ///   <e:eq>
+      ///     <code>o</code>
+      ///     <code>true</code>
+      ///   </e:eq>
       /// </e:and>
 
-      // <e:doubleimpl><e:fst>true</e:fst><e:snd>true</e:snd></e:doubleimpl>.
+      // <e:doubleimpl>truetrue</e:doubleimpl>.
       /// <e:and>
-      ///   <e:fst><e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred></e:fst>
-      ///   <e:snd><e:doubleimpl>
-      ///     <e:fst><code>o</code></e:fst>
-      ///     <e:snd><e:in>
-      ///       <e:fst><code>value</code></e:fst>
-      ///       <e:snd><e:st n="S"/></e:snd>
-      ///     </e:in></e:snd>
-      ///   </e:doubleimpl></e:snd>
+      ///   <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
+      ///   <e:doubleimpl>
+      ///     <code>o</code>
+      ///     <e:in>
+      ///       <code>value</code>
+      ///       <e:st n="S"/>
+      ///     </e:in>
+      ///   </e:doubleimpl>
       /// </e:and>
     }
     else {
@@ -210,15 +206,15 @@ bool search(Node* head, int value) {
       /// <e:indent>
       ///   <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
       ///   <e:sep>
-      ///     <e:fst><e:fcell>
-      ///       <e:fst><code>head</code></e:fst>
-      ///       <e:snd><e:var n="v"/>, <e:var n="tail"/></e:snd>
-      ///     </e:fcell></e:fst>
-      ///     <e:snd><e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred></e:snd>
+      ///     <e:fcell>
+      ///       <code>head</code>
+      ///       <e:list><e:var n="v"/>, <e:var n="tail"/></e:list>
+      ///     </e:fcell>
+      ///     <e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred>
       ///   </e:sep> ∧<br />
       ///   <e:noteq>
-      ///     <e:fst><e:var n="v"/></e:fst>
-      ///     <e:snd><code>value</code></e:snd>
+      ///     <e:var n="v"/>
+      ///     <code>value</code>
       ///   </e:noteq>
       /// </e:indent>
 
@@ -228,97 +224,97 @@ bool search(Node* head, int value) {
         /// <e:indent>
         ///   <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
         ///   <e:sep>
-        ///     <e:fst><e:fcell>
-        ///       <e:fst><code>head</code></e:fst>
-        ///       <e:snd><e:var n="v"/>, <e:var n="tail"/></e:snd>
-        ///     </e:fcell></e:fst>
-        ///     <e:snd><e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred></e:snd>
+        ///     <e:fcell>
+        ///       <code>head</code>
+        ///       <e:list><e:var n="v"/>, <e:var n="tail"/></e:list>
+        ///     </e:fcell>
+        ///     <e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred>
         ///   </e:sep> ∧<br />
         ///   <e:lt>
-        ///     <e:fst><e:var n="v"/></e:fst>
-        ///     <e:snd><code>value</code></e:snd>
+        ///     <e:var n="v"/>
+        ///     <code>value</code>
         ///   </e:lt>
         /// </e:indent>
 
         // Lemma:
         // <e:logimpl>
-        //   <e:fst><e:and>
-        //     <e:fst><e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred></e:fst>
-        //     <e:snd><e:lt>
-        //       <e:fst><e:var n="v"/></e:fst>
-        //       <e:snd><code>value</code></e:snd>
-        //     </e:lt></e:snd>
-        //   </e:and></e:fst>
-        //   <e:snd><e:doubleimpl>
-        //     <e:fst><e:in>
-        //       <e:fst><code>value</code></e:fst>
-        //       <e:snd><e:st n="T"/></e:snd>
-        //     </e:in></e:fst>
-        //     <e:snd><e:in>
-        //       <e:fst><code>value</code></e:fst>
-        //       <e:snd><e:st n="S"/></e:snd>
-        //     </e:in></e:snd>
-        //   </e:doubleimpl></e:snd>
+        //   <e:and>
+        //     <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred>
+        //     <e:lt>
+        //       <e:var n="v"/>
+        //       <code>value</code>
+        //     </e:lt>
+        //   </e:and>
+        //   <e:doubleimpl>
+        //     <e:in>
+        //       <code>value</code>
+        //       <e:st n="T"/>
+        //     </e:in>
+        //     <e:in>
+        //       <code>value</code>
+        //       <e:st n="S"/>
+        //     </e:in>
+        //   </e:doubleimpl>
         // </e:logimpl>.
         /// ∃<e:var n="v"/>, <e:var n="tail"/>, <e:st n="T"/>.<br />
         /// <e:indent>
         ///   <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
         ///   <e:sep>
-        ///     <e:fst><e:fcell>
-        ///       <e:fst><code>head</code></e:fst>
-        ///       <e:snd><e:var n="v"/>, <e:var n="tail"/></e:snd>
-        ///     </e:fcell></e:fst>
-        ///     <e:snd><e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred></e:snd>
+        ///     <e:fcell>
+        ///       <code>head</code>
+        ///       <e:list><e:var n="v"/>, <e:var n="tail"/></e:list>
+        ///     </e:fcell>
+        ///     <e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred>
         ///   </e:sep> ∧<br />
         ///   <e:lt>
-        ///     <e:fst><e:var n="v"/></e:fst>
-        ///     <e:snd><code>value</code></e:snd>
+        ///     <e:var n="v"/>
+        ///     <code>value</code>
         ///   </e:lt> ∧<br />
         ///   <e:doubleimpl>
-        ///     <e:fst><e:in>
-        ///       <e:fst><code>value</code></e:fst>
-        ///       <e:snd><e:st n="T"/></e:snd>
-        ///     </e:in></e:fst>
-        ///     <e:snd><e:in>
-        ///       <e:fst><code>value</code></e:fst>
-        ///       <e:snd><e:st n="S"/></e:snd>
-        ///     </e:in></e:snd>
+        ///     <e:in>
+        ///       <code>value</code>
+        ///       <e:st n="T"/>
+        ///     </e:in>
+        ///     <e:in>
+        ///       <code>value</code>
+        ///       <e:st n="S"/>
+        ///     </e:in>
         ///   </e:doubleimpl>
         /// </e:indent>
 
         o = search(head.tail, value);
         // Inductive use of specification.
-        // Note <e:lt><e:fst><e:size><e:st n="T"/></e:size></e:fst><e:snd><e:size><e:st n="S"/></e:size></e:snd></e:lt>.
+        // Note <e:lt><e:size><e:st n="T"/></e:size><e:size><e:st n="S"/></e:size></e:lt>.
         /// ∃<e:var n="v"/>, <e:var n="tail"/>, <e:st n="T"/>.<br />
         /// <e:indent>
         ///   <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
         ///   <e:sep>
-        ///     <e:fst><e:fcell>
-        ///       <e:fst><code>head</code></e:fst>
-        ///       <e:snd><e:var n="v"/>, <e:var n="tail"/></e:snd>
-        ///     </e:fcell></e:fst>
-        ///     <e:snd><e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred></e:snd>
+        ///     <e:fcell>
+        ///       <code>head</code>
+        ///       <e:list><e:var n="v"/>, <e:var n="tail"/></e:list>
+        ///     </e:fcell>
+        ///     <e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred>
         ///   </e:sep> ∧<br />
         ///   <e:lt>
-        ///     <e:fst><e:var n="v"/></e:fst>
-        ///     <e:snd><code>value</code></e:snd>
+        ///     <e:var n="v"/>
+        ///     <code>value</code>
         ///   </e:lt> ∧<br />
         ///   <e:doubleimpl>
-        ///     <e:fst><e:in>
-        ///       <e:fst><code>value</code></e:fst>
-        ///       <e:snd><e:st n="T"/></e:snd>
-        ///     </e:in></e:fst>
-        ///     <e:snd><e:in>
-        ///       <e:fst><code>value</code></e:fst>
-        ///       <e:snd><e:st n="S"/></e:snd>
-        ///     </e:in></e:snd>
+        ///     <e:in>
+        ///       <code>value</code>
+        ///       <e:st n="T"/>
+        ///     </e:in>
+        ///     <e:in>
+        ///       <code>value</code>
+        ///       <e:st n="S"/>
+        ///     </e:in>
         ///   </e:doubleimpl> ∧<br />
         ///   <e:doubleimpl>
-        ///     <e:fst><code>o</code></e:fst>
-        ///     <e:snd><e:in>
-        ///       <e:fst><code>value</code></e:fst>
-        ///       <e:snd><e:st n="T"/></e:snd>
-        ///     </e:in></e:snd>
+        ///     <code>o</code>
+        ///     <e:in>
+        ///       <code>value</code>
+        ///       <e:st n="T"/>
+        ///     </e:in>
         ///   </e:doubleimpl>
         /// </e:indent>
 
@@ -327,214 +323,214 @@ bool search(Node* head, int value) {
         /// <e:indent>
         ///   <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
         ///   <e:sep>
-        ///     <e:fst><e:fcell>
-        ///       <e:fst><code>head</code></e:fst>
-        ///       <e:snd><e:var n="v"/>, <e:var n="tail"/></e:snd>
-        ///     </e:fcell></e:fst>
-        ///     <e:snd><e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred></e:snd>
+        ///     <e:fcell>
+        ///       <code>head</code>
+        ///       <e:list><e:var n="v"/>, <e:var n="tail"/></e:list>
+        ///     </e:fcell>
+        ///     <e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred>
         ///   </e:sep> ∧<br />
         ///   <e:doubleimpl>
-        ///     <e:fst><code>o</code></e:fst>
-        ///     <e:snd><e:in>
-        ///       <e:fst><code>value</code></e:fst>
-        ///       <e:snd><e:st n="S"/></e:snd>
-        ///     </e:in></e:snd>
+        ///     <code>o</code>
+        ///     <e:in>
+        ///       <code>value</code>
+        ///       <e:st n="S"/>
+        ///     </e:in>
         ///   </e:doubleimpl>
         /// </e:indent>
 
         // Close <e:pred name="NonEmptyList"><code>head</code>, <e:st n="S"/></e:pred>.
         /// <e:and>
-        ///   <e:fst><e:pred name="NonEmptyList"><code>head</code>, <e:st n="S"/></e:pred></e:fst>
-        ///   <e:snd><e:doubleimpl>
-        ///     <e:fst><code>o</code></e:fst>
-        ///     <e:snd><e:in>
-        ///       <e:fst><code>value</code></e:fst>
-        ///       <e:snd><e:st n="S"/></e:snd>
-        ///     </e:in></e:snd>
-        ///   </e:doubleimpl></e:snd>
+        ///   <e:pred name="NonEmptyList"><code>head</code>, <e:st n="S"/></e:pred>
+        ///   <e:doubleimpl>
+        ///     <code>o</code>
+        ///     <e:in>
+        ///       <code>value</code>
+        ///       <e:st n="S"/>
+        ///     </e:in>
+        ///   </e:doubleimpl>
         /// </e:and>
 
         // Weakening: <e:logimpl>
-        //   <e:fst><e:pred name="NonEmptyList"><code>head</code>, <e:st n="S"/></e:pred></e:fst>
-        //   <e:snd><e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred></e:snd>
+        //   <e:pred name="NonEmptyList"><code>head</code>, <e:st n="S"/></e:pred>
+        //   <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
         // </e:logimpl>.
         /// <e:and>
-        ///   <e:fst><e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred></e:fst>
-        ///   <e:snd><e:doubleimpl>
-        ///     <e:fst><code>o</code></e:fst>
-        ///     <e:snd><e:in>
-        ///       <e:fst><code>value</code></e:fst>
-        ///       <e:snd><e:st n="S"/></e:snd>
-        ///     </e:in></e:snd>
-        ///   </e:doubleimpl></e:snd>
+        ///   <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
+        ///   <e:doubleimpl>
+        ///     <code>o</code>
+        ///     <e:in>
+        ///       <code>value</code>
+        ///       <e:st n="S"/>
+        ///     </e:in>
+        ///   </e:doubleimpl>
         /// </e:and>
       }
       else {
         // Deny if-condition.
         // Use <e:logimpl>
-        //   <e:fst>¬(<e:lt>
-        //     <e:fst><e:var n="v"/></e:fst>
-        //     <e:snd><code>value</code></e:snd>
-        //   </e:lt>)</e:fst>
-        //   <e:snd><e:leq>
-        //     <e:fst><code>value</code></e:fst>
-        //     <e:snd><e:var n="v"/></e:snd>
-        //   </e:leq></e:snd>
+        //   ¬(<e:lt>
+        //     <e:var n="v"/>
+        //     <code>value</code>
+        //   </e:lt>)
+        //   <e:leq>
+        //     <code>value</code>
+        //     <e:var n="v"/>
+        //   </e:leq>
         // </e:logimpl>.
         /// ∃<e:var n="v"/>, <e:var n="tail"/>, <e:st n="T"/>.<br />
         /// <e:indent>
         ///   <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
         ///   <e:sep>
-        ///     <e:fst><e:fcell>
-        ///       <e:fst><code>head</code></e:fst>
-        ///       <e:snd><e:var n="v"/>, <e:var n="tail"/></e:snd>
-        ///     </e:fcell></e:fst>
-        ///     <e:snd><e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred></e:snd>
+        ///     <e:fcell>
+        ///       <code>head</code>
+        ///       <e:list><e:var n="v"/>, <e:var n="tail"/></e:list>
+        ///     </e:fcell>
+        ///     <e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred>
         ///   </e:sep> ∧<br />
         ///   <e:and>
-        ///     <e:fst><e:noteq>
-        ///       <e:fst><code>value</code></e:fst>
-        ///       <e:snd><e:var n="v"/></e:snd>
-        ///     </e:noteq></e:fst>
-        ///     <e:snd><e:leq>
-        ///       <e:fst><code>value</code></e:fst>
-        ///       <e:snd><e:var n="v"/></e:snd>
-        ///     </e:leq></e:snd>
+        ///     <e:noteq>
+        ///       <code>value</code>
+        ///       <e:var n="v"/>
+        ///     </e:noteq>
+        ///     <e:leq>
+        ///       <code>value</code>
+        ///       <e:var n="v"/>
+        ///     </e:leq>
         ///   </e:and>
         /// </e:indent>
 
         // <e:logimpl>
-        //   <e:fst>(<e:and>
-        //     <e:fst><e:noteq>
-        //       <e:fst><e:var n="a"/></e:fst>
-        //       <e:snd><e:var n="b"/></e:snd>
-        //     </e:noteq></e:fst>
-        //     <e:snd><e:leq>
-        //       <e:fst><e:var n="a"/></e:fst>
-        //       <e:snd><e:var n="b"/></e:snd>
-        //     </e:leq></e:snd>
-        //   </e:and>)</e:fst>
-        //   <e:snd><e:lt>
-        //     <e:fst><e:var n="b"/></e:fst>
-        //     <e:snd><e:var n="a"/></e:snd>
-        //   </e:lt></e:snd>
+        //   (<e:and>
+        //     <e:noteq>
+        //       <e:var n="a"/>
+        //       <e:var n="b"/>
+        //     </e:noteq>
+        //     <e:leq>
+        //       <e:var n="a"/>
+        //       <e:var n="b"/>
+        //     </e:leq>
+        //   </e:and>)
+        //   <e:lt>
+        //     <e:var n="b"/>
+        //     <e:var n="a"/>
+        //   </e:lt>
         //  </e:logimpl>.
         /// ∃<e:var n="v"/>, <e:var n="tail"/>, <e:st n="T"/>.<br />
         /// <e:indent>
         ///   <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
         ///   <e:sep>
-        ///     <e:fst><e:fcell>
-        ///       <e:fst><code>head</code></e:fst>
-        ///       <e:snd><e:var n="v"/>, <e:var n="tail"/></e:snd>
-        ///     </e:fcell></e:fst>
-        ///     <e:snd><e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred></e:snd>
+        ///     <e:fcell>
+        ///       <code>head</code>
+        ///       <e:list><e:var n="v"/>, <e:var n="tail"/></e:list>
+        ///     </e:fcell>
+        ///     <e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred>
         ///   </e:sep> ∧<br />
         ///   <e:lt>
-        ///     <e:fst><code>value</code></e:fst>
-        ///     <e:snd><e:var n="v"/></e:snd>
+        ///     <code>value</code>
+        ///     <e:var n="v"/>
         ///   </e:lt>
         /// </e:indent>
 
         // Lemma: <e:logimpl>
-        //   <e:fst>(<e:and>
-        //     <e:fst><e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred></e:fst>
-        //     <e:snd><e:lt>
-        //       <e:fst><code>value</code></e:fst>
-        //       <e:snd><e:var n="v"/></e:snd>
-        //     </e:lt></e:snd>
-        //   </e:and>)</e:fst>
-        //   <e:snd><e:notin>
-        //     <e:fst><code>value</code></e:fst>
-        //     <e:snd><e:st n="S"/></e:snd>
-        //   </e:notin></e:snd>
+        //   (<e:and>
+        //     <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred>
+        //     <e:lt>
+        //       <code>value</code>
+        //       <e:var n="v"/>
+        //     </e:lt>
+        //   </e:and>)
+        //   <e:notin>
+        //     <code>value</code>
+        //     <e:st n="S"/>
+        //   </e:notin>
         // </e:logimpl>.
         /// ∃<e:var n="v"/>, <e:var n="tail"/>, <e:st n="T"/>.<br />
         /// <e:indent>
         ///   <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
         ///   <e:sep>
-        ///     <e:fst><e:fcell>
-        ///       <e:fst><code>head</code></e:fst>
-        ///       <e:snd><e:var n="v"/>, <e:var n="tail"/></e:snd>
-        ///     </e:fcell></e:fst>
-        ///     <e:snd><e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred></e:snd>
+        ///     <e:fcell>
+        ///       <code>head</code>
+        ///       <e:list><e:var n="v"/>, <e:var n="tail"/></e:list>
+        ///     </e:fcell>
+        ///     <e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred>
         ///   </e:sep> ∧<br />
         ///   <e:notin>
-        ///     <e:fst><code>value</code></e:fst>
-        ///     <e:snd><e:st n="S"/></e:snd>
+        ///     <code>value</code>
+        ///     <e:st n="S"/>
         ///   </e:notin>
         /// </e:indent>
 
         // Close <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>.
         /// <e:and>
-        ///   <e:fst><e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred></e:fst>
-        ///   <e:snd><e:notin>
-        ///     <e:fst><code>value</code></e:fst>
-        ///     <e:snd><e:st n="S"/></e:snd>
-        ///   </e:notin></e:snd>
+        ///   <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
+        ///   <e:notin>
+        ///     <code>value</code>
+        ///     <e:st n="S"/>
+        ///   </e:notin>
         /// </e:and>
 
         o = false;
         // Assignment.
         /// <e:and>
-        ///   <e:fst><e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred></e:fst>
-        ///   <e:snd><e:and>
-        ///     <e:fst><e:notin>
-        ///       <e:fst><code>value</code></e:fst>
-        ///       <e:snd><e:st n="S"/></e:snd>
-        ///     </e:notin></e:fst>
-        ///     <e:snd><e:eq>
-        ///       <e:fst><code>o</code></e:fst>
-        ///       <e:snd><code>false</code></e:snd>
-        ///     </e:eq></e:snd>
-        ///   </e:and></e:snd>
+        ///   <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
+        ///   <e:and>
+        ///     <e:notin>
+        ///       <code>value</code>
+        ///       <e:st n="S"/>
+        ///     </e:notin>
+        ///     <e:eq>
+        ///       <code>o</code>
+        ///       <code>false</code>
+        ///     </e:eq>
+        ///   </e:and>
         /// </e:and>
 
-        // <e:doubleimpl><e:fst>false</e:fst><e:snd>false</e:snd></e:doubleimpl>.
+        // <e:doubleimpl>falsefalse</e:doubleimpl>.
         /// <e:and>
-        ///   <e:fst><e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred></e:fst>
-        ///   <e:snd><e:doubleimpl>
-        ///     <e:fst><code>o</code></e:fst>
-        ///     <e:snd><e:in>
-        ///       <e:fst><code>value</code></e:fst>
-        ///       <e:snd><e:st n="S"/></e:snd>
-        ///     </e:in></e:snd>
-        ///   </e:doubleimpl></e:snd>
+        ///   <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
+        ///   <e:doubleimpl>
+        ///     <code>o</code>
+        ///     <e:in>
+        ///       <code>value</code>
+        ///       <e:st n="S"/>
+        ///     </e:in>
+        ///   </e:doubleimpl>
         /// </e:and>
       }
       // If-rule.
       /// <e:and>
-      ///   <e:fst><e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred></e:fst>
-      ///   <e:snd><e:doubleimpl>
-      ///     <e:fst><code>o</code></e:fst>
-      ///     <e:snd><e:in>
-      ///       <e:fst><code>value</code></e:fst>
-      ///       <e:snd><e:st n="S"/></e:snd>
-      ///     </e:in></e:snd>
-      ///   </e:doubleimpl></e:snd>
+      ///   <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
+      ///   <e:doubleimpl>
+      ///     <code>o</code>
+      ///     <e:in>
+      ///       <code>value</code>
+      ///       <e:st n="S"/>
+      ///     </e:in>
+      ///   </e:doubleimpl>
       /// </e:and>
     }
     // If-rule.
     /// <e:and>
-    ///   <e:fst><e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred></e:fst>
-    ///   <e:snd><e:doubleimpl>
-    ///     <e:fst><code>o</code></e:fst>
-    ///     <e:snd><e:in>
-    ///       <e:fst><code>value</code></e:fst>
-    ///       <e:snd><e:st n="S"/></e:snd>
-    ///     </e:in></e:snd>
-    ///   </e:doubleimpl></e:snd>
+    ///   <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
+    ///   <e:doubleimpl>
+    ///     <code>o</code>
+    ///     <e:in>
+    ///       <code>value</code>
+    ///       <e:st n="S"/>
+    ///     </e:in>
+    ///   </e:doubleimpl>
     /// </e:and>
   }
   // If-rule.
   /// <e:and>
-  ///   <e:fst><e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred></e:fst>
-  ///   <e:snd><e:doubleimpl>
-  ///     <e:fst><code>o</code></e:fst>
-  ///     <e:snd><e:in>
-  ///       <e:fst><code>value</code></e:fst>
-  ///       <e:snd><e:st n="S"/></e:snd>
-  ///     </e:in></e:snd>
-  ///   </e:doubleimpl></e:snd>
+  ///   <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
+  ///   <e:doubleimpl>
+  ///     <code>o</code>
+  ///     <e:in>
+  ///       <code>value</code>
+  ///       <e:st n="S"/>
+  ///     </e:in>
+  ///   </e:doubleimpl>
   /// </e:and>
 
   return o;

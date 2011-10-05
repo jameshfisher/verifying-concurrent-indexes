@@ -5,14 +5,14 @@
 	 xmlns:m="http://eegg.github.com/macro">
 
   <e:caption><e:logimpl>
-      <e:fst><e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred></e:fst>
-      <e:snd><e:eq>
-          <e:fst><e:st n="T"/></e:fst>
-          <e:snd><e:setminus>
-              <e:fst><e:st n="S"/></e:fst>
-              <e:snd><e:set><e:var n="v"/></e:set></e:snd>
-          </e:setminus></e:snd>
-      </e:eq></e:snd>
+      <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred>
+      <e:eq>
+          <e:st n="T"/>
+          <e:setminus>
+              <e:st n="S"/>
+              <e:set><e:var n="v"/></e:set>
+          </e:setminus>
+      </e:eq>
   </e:logimpl></e:caption>
 
   <e:contents>
@@ -25,27 +25,27 @@
       <e:step name="openCompose">
 	<e:derive>
 	  <e:eq>
-	    <e:fst>
+	    
 	      <e:union>
-		<e:fst><e:set><e:var n="v"/></e:set></e:fst>
-		<e:snd><e:st n="T"/></e:snd>
+		<e:set><e:var n="v"/></e:set>
+		<e:st n="T"/>
 	      </e:union>
-	    </e:fst>
-	    <e:snd><e:st n="S"/></e:snd>
+	    
+	    <e:st n="S"/>
 	  </e:eq> ∧
 	  <e:forall>
-	    <e:fst>
+	    <e:vars>
 	      <e:in>
-		<e:fst><e:var n="t"/></e:fst>
-		<e:snd><e:st n="T"/></e:snd>
+		<e:var n="t"/>
+		<e:st n="T"/>
 	      </e:in>
-	    </e:fst>
-	    <e:snd>
+	    </e:vars>
+	    <e:expr>
 	      <e:lt>
-		<e:fst><e:var n="v"/></e:fst>
-		<e:snd><e:var n="t"/></e:snd>
+		<e:var n="v"/>
+		<e:var n="t"/>
 	      </e:lt>
-	    </e:snd>
+	    </e:expr>
 	  </e:forall>
 	</e:derive>
 	<e:by><e:from name="given"/>, open predicate</e:by>
@@ -53,77 +53,77 @@
 
       <e:step name="vUTIsS">
 	<e:derive><e:eq>
-	    <e:fst>
+	    
 	      <e:union>
-		<e:fst><e:set><e:var n="v"/></e:set></e:fst>
-		<e:snd><e:st n="T"/></e:snd>
+		<e:set><e:var n="v"/></e:set>
+		<e:st n="T"/>
 	      </e:union>
-	    </e:fst>
-	    <e:snd><e:st n="S"/></e:snd>
+	    
+	    <e:st n="S"/>
 	</e:eq></e:derive>
 	<e:by><e:from name="openCompose"/>, <m:andElim/></e:by>
       </e:step>
 
       <e:step name="allInTGreaterThanv">
 	<e:derive><e:forall>
-	    <e:fst>
+	    <e:vars>
 	      <e:in>
-		<e:fst><e:var n="t"/></e:fst>
-		<e:snd><e:st n="T"/></e:snd>
+		<e:var n="t"/>
+		<e:st n="T"/>
 	      </e:in>
-	    </e:fst>
-	    <e:snd>
+	    </e:vars>
+	    <e:expr>
 	      <e:lt>
-		<e:fst><e:var n="v"/></e:fst>
-		<e:snd><e:var n="t"/></e:snd>
+		<e:var n="v"/>
+		<e:var n="t"/>
 	      </e:lt>
-	    </e:snd>
+	    </e:expr>
 	</e:forall></e:derive>
 	<e:by><e:from name="openCompose"/>, <m:andElim/></e:by>
       </e:step>
 
       <e:step name="assumevInT" indent="indent1">
 	<e:derive><e:in>
-	    <e:fst><e:var n="v"/></e:fst>
-	    <e:snd><e:st n="T"/></e:snd>
+	    <e:var n="v"/>
+	    <e:st n="T"/>
 	</e:in></e:derive>
 	<e:by>assume</e:by>
       </e:step>
 
       <e:step name="vltv" indent="indent1">
 	<e:derive><e:lt>
-	    <e:fst><e:var n="v"/></e:fst>
-	    <e:snd><e:var n="v"/></e:snd>
+	    <e:var n="v"/>
+	    <e:var n="v"/>
 	</e:lt></e:derive>
 	<e:by><e:from name="allInTGreaterThanv"/>, <e:from name="assumevInT"/></e:by>
       </e:step>
 
       <e:step name="vNotInT">
 	<e:derive><e:notin>
-	    <e:fst><e:var n="v"/></e:fst>
-	    <e:snd><e:st n="T"/></e:snd>
+	    <e:var n="v"/>
+	    <e:st n="T"/>
 	</e:notin></e:derive>
 	<e:by><e:from name="assumevInT"/>, <e:from name="vltv"/>, RAA</e:by>
       </e:step>
 
       <e:step name="vAndTDisjoint">
 	<e:derive><e:eq>
-	    <e:fst><e:intersection>
-		<e:fst><e:set><e:var n="v"/></e:set></e:fst>
-		<e:snd><e:st n="T"/></e:snd>
-	    </e:intersection></e:fst>
-	    <e:snd><m:scemp/></e:snd>
+	    <e:intersection>
+		<e:set><e:var n="v"/></e:set>
+		<e:st n="T"/>
+	    </e:intersection>
+	    <m:scemp/>
 	</e:eq></e:derive>
 	<e:by><e:from name="vNotInT"/></e:by>
       </e:step>
 
       <e:step name="qed">
 	<e:derive><e:eq>
-            <e:fst><e:st n="T"/></e:fst>
-            <e:snd><e:setminus>
-		<e:fst><e:st n="S"/></e:fst>
-		<e:snd><e:set><e:var n="v"/></e:set></e:snd>
-            </e:setminus></e:snd>
+            <e:st n="T"/>
+            <e:setminus>
+		<e:st n="S"/>
+		<e:set><e:var n="v"/></e:set>
+            </e:setminus>
 	</e:eq></e:derive>
 	<e:by><e:from name="vUTIsS"/>, <e:from name="vAndTDisjoint"/></e:by>
       </e:step>

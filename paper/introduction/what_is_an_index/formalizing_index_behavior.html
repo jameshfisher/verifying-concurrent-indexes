@@ -13,7 +13,7 @@
     to a universe of values.
     In other words it is a <e:jargon>finite partial function</e:jargon>,
     written as
-    <e:math><e:const n="I"/> : <e:fpfun><e:fst><e:const n="Keys"/></e:fst><e:snd><e:const n="Values"/></e:snd></e:fpfun></e:math>.
+    <e:math><e:const n="I"/> : <e:fpfun><e:const n="Keys"/><e:const n="Values"/></e:fpfun></e:math>.
   </p>
 
   <p>
@@ -33,9 +33,9 @@
     With just a couple more shorthand notations,
     we can then express the desired behavior of the index.
     First, the <e:jargon>function update</e:jargon> notation,
-    <e:fupd><e:fst>I</e:fst><e:snd>k</e:snd><e:thd>v</e:thd></e:fupd>,
+    <e:fupd>Ik<e:thd>v</e:thd></e:fupd>,
     denotes the finite partial function <e:fun>I</e:fun> with the modification that <e:math>I(k) = v</e:math>.
-    Second, the <e:jargon>set difference</e:jargon> notation <e:setminus><e:fst><e:const n="I" /></e:fst><e:snd><e:set><e:var n="k"/></e:set></e:snd></e:setminus>
+    Second, the <e:jargon>set difference</e:jargon> notation <e:setminus><e:const n="I" /><e:set><e:var n="k"/></e:set></e:setminus>
     is a shorthand for <e:const n="I"/> with the removal of the key <e:var n="k"/> from KeysOf(I).
   </p>
 
@@ -57,8 +57,8 @@
 	  <e:cond>
 	    <e:pred name="Index"><code>i</code>, <e:const n="I"/></e:pred>
 	    ∧ <e:notin>
-	      <e:fst><code>k</code></e:fst>
-	      <e:snd><e:keysof><e:const n="I"/></e:keysof></e:snd>
+	      <code>k</code>
+	      <e:keysof><e:const n="I"/></e:keysof>
 	    </e:notin>
 	  </e:cond>
 	</td>
@@ -67,8 +67,8 @@
 	  <e:cond>
 	    <e:pred name="Index"><code>i</code>, <e:const n="I"/></e:pred> ∧
 	    <e:notin>
-	      <e:fst><code>k</code></e:fst>
-	      <e:snd><e:keysof><e:const n="I"/></e:keysof></e:snd>
+	      <code>k</code>
+	      <e:keysof><e:const n="I"/></e:keysof>
 	    </e:notin> ∧
 	    <code>v</code> = <code>null</code>
 	  </e:cond>
@@ -82,15 +82,15 @@
       </tr>
       <tr>
 	<!-- insert where key is not in the index -->
-	<td><e:cond><e:pred name="Index"><code>i</code>, <e:const n="I"/></e:pred> ∧ <e:notin><e:fst><code>k</code></e:fst><e:snd><e:keysof><e:const n="I"/></e:keysof></e:snd></e:notin></e:cond></td>
+	<td><e:cond><e:pred name="Index"><code>i</code>, <e:const n="I"/></e:pred> ∧ <e:notin><code>k</code><e:keysof><e:const n="I"/></e:keysof></e:notin></e:cond></td>
 	<td><code>i->insert(k, v);</code></td>
-	<td><e:cond><e:pred name="Index"><code>i</code>, <e:const n="J"/></e:pred> ∧ <e:fupd><e:fst><e:const n="I"/></e:fst><e:snd><code>k</code></e:snd><e:thd><code>v</code></e:thd></e:fupd></e:cond></td>
+	<td><e:cond><e:pred name="Index"><code>i</code>, <e:const n="J"/></e:pred> ∧ <e:fupd><e:const n="I"/><code>k</code><e:thd><code>v</code></e:thd></e:fupd></e:cond></td>
       </tr>
       <tr>
 	<!-- remove -->
 	<td><e:cond><e:pred name="Index"><code>i</code>, <e:const n="I"/></e:pred></e:cond></td>
 	<td><code>\IC{i->remove(k);</code></td>
-	<td><e:cond><e:pred name="Index"><code>i</code>, <e:setminus><e:fst><e:const n="I"/></e:fst><e:snd><e:set><code>k</code></e:set></e:snd></e:setminus></e:pred></e:cond></td>
+	<td><e:cond><e:pred name="Index"><code>i</code>, <e:setminus><e:const n="I"/><e:set><code>k</code></e:set></e:setminus></e:pred></e:cond></td>
       </tr>
     </tbody>
   </table>

@@ -10,54 +10,54 @@ Node* remove(Node* head, int value) {
   if (head == null) {
     // Assert if-condition.
     /// <e:and>
-    ///   <e:fst><e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred></e:fst>
-    ///   <e:snd><e:eq>
-    ///     <e:fst><code>head</code></e:fst>
-    ///     <e:snd><code>null</code></e:snd>
-    ///   </e:eq></e:snd>
+    ///   <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
+    ///   <e:eq>
+    ///     <code>head</code>
+    ///     <code>null</code>
+    ///   </e:eq>
     /// </e:and>
 
     // Lemma: <e:logimpl>
-    //   <e:fst><e:and>
-    //     <e:fst><e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred></e:fst>
-    //     <e:snd><e:eq>
-    //       <e:fst><code>head</code></e:fst>
-    //       <e:snd><code>null</code></e:snd>
-    //     </e:eq></e:snd>
-    //   </e:and></e:fst>
-    //   <e:snd><e:pred name="EmptyList"><code>head</code>, <e:st n="S"/></e:pred></e:snd>
+    //   <e:and>
+    //     <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
+    //     <e:eq>
+    //       <code>head</code>
+    //       <code>null</code>
+    //     </e:eq>
+    //   </e:and>
+    //   <e:pred name="EmptyList"><code>head</code>, <e:st n="S"/></e:pred>
     // </e:logimpl>
     /// <e:pred name="EmptyList"><code>head</code>, <e:st n="S"/></e:pred>
 
     // <e:logimpl>
-    //   <e:fst><e:pred name="EmptyList"><code>head</code>, <e:st n="S"/></e:pred></e:fst>
-    //   <e:snd><e:eq><e:fst><e:st n="S"/></e:fst><e:snd><m:scemp/></e:snd></e:eq></e:snd>
+    //   <e:pred name="EmptyList"><code>head</code>, <e:st n="S"/></e:pred>
+    //   <e:eq><e:st n="S"/><m:scemp/></e:eq>
     // </e:logimpl>
     /// <e:and>
-    ///   <e:fst><e:pred name="EmptyList"><code>head</code>, <e:st n="S" /></e:pred></e:fst>
-    ///   <e:snd><e:eq><e:fst><e:st n="S"/></e:fst><e:snd><m:scemp/></e:snd></e:eq></e:snd>
+    ///   <e:pred name="EmptyList"><code>head</code>, <e:st n="S" /></e:pred>
+    ///   <e:eq><e:st n="S"/><m:scemp/></e:eq>
     /// </e:and>
 
-    // <e:eq><e:fst><e:setminus><e:fst><m:scemp/></e:fst><e:snd><e:st n="X"/></e:snd></e:setminus></e:fst><e:snd><m:scemp/></e:snd></e:eq>,
-    // <e:eq><e:fst><e:st n="S"/></e:fst><e:snd><m:scemp/></e:snd></e:eq>,
+    // <e:eq><e:setminus><m:scemp/><e:st n="X"/></e:setminus><m:scemp/></e:eq>,
+    // <e:eq><e:st n="S"/><m:scemp/></e:eq>,
     // substitution.
     /// <e:pred name="EmptyList">
     ///   <code>head</code>,
     ///     <e:setminus>
-    ///       <e:fst><e:st n="S" /></e:fst>
-    ///       <e:snd><e:set><code>value</code></e:set></e:snd>
+    ///       <e:st n="S" />
+    ///       <e:set><code>value</code></e:set>
     ///     </e:setminus>
     /// </e:pred>
 
     // Weakening lemma: <e:logimpl>
-    //   <e:fst><e:pred name="EmptyList"><code>head</code>, <e:st n="S"/></e:pred></e:fst>
-    //   <e:snd><e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred></e:snd>
+    //   <e:pred name="EmptyList"><code>head</code>, <e:st n="S"/></e:pred>
+    //   <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
     // </e:logimpl>.
     /// <e:pred name="List">
     ///   <code>head</code>,
     ///     <e:setminus>
-    ///       <e:fst><e:st n="S" /></e:fst>
-    ///       <e:snd><e:set><code>value</code></e:set></e:snd>
+    ///       <e:st n="S" />
+    ///       <e:set><code>value</code></e:set>
     ///     </e:setminus>
     /// </e:pred>
 
@@ -66,30 +66,30 @@ Node* remove(Node* head, int value) {
     /// <e:pred name="List">
     ///   <code>o</code>,
     ///     <e:setminus>
-    ///       <e:fst><e:st n="S" /></e:fst>
-    ///       <e:snd><e:set><code>value</code></e:set></e:snd>
+    ///       <e:st n="S" />
+    ///       <e:set><code>value</code></e:set>
     ///     </e:setminus>
     /// </e:pred>
   }
   else {
     // Deny if-condition.
     /// <e:and>
-    ///   <e:fst><e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred></e:fst>
-    ///   <e:snd><e:noteq>
-    ///     <e:fst><code>head</code></e:fst>
-    ///     <e:snd><code>null</code></e:snd>
-    ///   </e:noteq></e:snd>
+    ///   <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
+    ///   <e:noteq>
+    ///     <code>head</code>
+    ///     <code>null</code>
+    ///   </e:noteq>
     /// </e:and>
 
     // Lemma: <e:logimpl>
-    //   <e:fst><e:and>
-    //     <e:fst><e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred></e:fst>
-    //     <e:snd><e:noteq>
-    //       <e:fst><code>head</code></e:fst>
-    //       <e:snd><code>null</code></e:snd>
-    //     </e:noteq></e:snd>
-    //   </e:and></e:fst>
-    //   <e:snd><e:pred name="NonEmptyList"><code>head</code>, <e:st n="S"/></e:pred></e:snd>
+    //   <e:and>
+    //     <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
+    //     <e:noteq>
+    //       <code>head</code>
+    //       <code>null</code>
+    //     </e:noteq>
+    //   </e:and>
+    //   <e:pred name="NonEmptyList"><code>head</code>, <e:st n="S"/></e:pred>
     // </e:logimpl>.
     /// <e:pred name="NonEmptyList"><code>head</code>, <e:st n="S"/></e:pred>
     
@@ -98,11 +98,11 @@ Node* remove(Node* head, int value) {
     /// <e:indent>
     ///   <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
     ///   <e:sep>
-    ///     <e:fst><e:fcell>
-    ///       <e:fst><code>head</code></e:fst>
-    ///       <e:snd><e:var n="v"/>, <e:var n="tail"/></e:snd>
-    ///     </e:fcell></e:fst>
-    ///     <e:snd><e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred></e:snd>
+    ///     <e:fcell>
+    ///       <code>head</code>
+    ///       <e:list><e:var n="v"/>, <e:var n="tail"/></e:list>
+    ///     </e:fcell>
+    ///     <e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred>
     ///   </e:sep>
     /// </e:indent>
 
@@ -112,68 +112,68 @@ Node* remove(Node* head, int value) {
       /// <e:indent>
       ///   <e:pred name="ListCompose"><code>value</code>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
       ///   <e:sep>
-      ///     <e:fst><e:fcell>
-      ///       <e:fst><code>head</code></e:fst>
-      ///       <e:snd><code>value</code>, <e:var n="tail"/></e:snd>
-      ///     </e:fcell></e:fst>
-      ///     <e:snd><e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred></e:snd>
+      ///     <e:fcell>
+      ///       <code>head</code>
+      ///       <e:list><code>value</code>, <e:var n="tail"/></e:list>
+      ///     </e:fcell>
+      ///     <e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred>
       ///   </e:sep>
       /// </e:indent>
 
       // Lemma: <e:logimpl>
-      //   <e:fst><e:pred name="ListCompose"><code>value</code>, <e:st n="T"/>, <e:st n="S"/></e:pred></e:fst>
-      //   <e:snd><e:eq>
-      //     <e:fst><e:st n="T"/></e:fst>
-      //     <e:snd><e:setminus>
-      //       <e:fst><e:st n="S"/></e:fst>
-      //       <e:snd><e:set><code>value</code></e:set></e:snd>
-      //     </e:setminus></e:snd>
-      //   </e:eq></e:snd>
+      //   <e:pred name="ListCompose"><code>value</code>, <e:st n="T"/>, <e:st n="S"/></e:pred>
+      //   <e:eq>
+      //     <e:st n="T"/>
+      //     <e:setminus>
+      //       <e:st n="S"/>
+      //       <e:set><code>value</code></e:set>
+      //     </e:setminus>
+      //   </e:eq>
       // </e:logimpl>.  Discard <e:pred name="ListCompose"><code>value</code>, <e:st n="T"/>, <e:st n="S"/></e:pred>.
       /// ∃<e:var n="tail"/>, <e:st n="T"/>.<br />
       /// <e:indent>
       ///   <e:sep>
-      ///     <e:fst><e:fcell>
-      ///       <e:fst><code>head</code></e:fst>
-      ///       <e:snd><code>value</code>, <e:var n="tail"/></e:snd>
-      ///     </e:fcell></e:fst>
-      ///     <e:snd><e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred></e:snd>
+      ///     <e:fcell>
+      ///       <code>head</code>
+      ///       <e:list><code>value</code>, <e:var n="tail"/></e:list>
+      ///     </e:fcell>
+      ///     <e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred>
       ///   </e:sep> ∧<br />
       ///   <e:eq>
-      ///     <e:fst><e:st n="T"/></e:fst>
-      ///     <e:snd><e:setminus>
-      ///       <e:fst><e:st n="S"/></e:fst>
-      ///       <e:snd><e:set><code>value</code></e:set></e:snd>
-      ///     </e:setminus></e:snd>
+      ///     <e:st n="T"/>
+      ///     <e:setminus>
+      ///       <e:st n="S"/>
+      ///       <e:set><code>value</code></e:set>
+      ///     </e:setminus>
       ///   </e:eq>
       /// </e:indent>
 
       // Substitution.  Discard <e:eq>
-      //     <e:fst><e:st n="T"/></e:fst>
-      //     <e:snd><e:setminus>
-      //       <e:fst><e:st n="S"/></e:fst>
-      //       <e:snd><e:set><code>value</code></e:set></e:snd>
-      //     </e:setminus></e:snd>
+      //     <e:st n="T"/>
+      //     <e:setminus>
+      //       <e:st n="S"/>
+      //       <e:set><code>value</code></e:set>
+      //     </e:setminus>
       //   </e:eq>.
       /// ∃<e:var n="tail"/>.<br />
       /// <e:indent>
       ///   <e:sep>
-      ///     <e:fst><e:fcell>
-      ///       <e:fst><code>head</code></e:fst>
-      ///       <e:snd><code>value</code>, <e:var n="tail"/></e:snd>
-      ///     </e:fcell></e:fst>
-      ///     <e:snd><e:pred name="List"><e:var n="tail"/>, <e:setminus><e:fst><e:st n="S"/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:setminus></e:pred></e:snd>
+      ///     <e:fcell>
+      ///       <code>head</code>
+      ///       <e:list><code>value</code>, <e:var n="tail"/></e:list>
+      ///     </e:fcell>
+      ///     <e:pred name="List"><e:var n="tail"/>, <e:setminus><e:st n="S"/><e:set><code>value</code></e:set></e:setminus></e:pred>
       ///   </e:sep>
       /// </e:indent>
 
       o = head.tail;
       // Assignment.
       /// <e:sep>
-      ///   <e:fst><e:fcell>
-      ///     <e:fst><code>head</code></e:fst>
-      ///     <e:snd><code>value</code>, <code>o</code></e:snd>
-      ///   </e:fcell></e:fst>
-      ///   <e:snd><e:pred name="List"><code>o</code>, <e:setminus><e:fst><e:st n="S"/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:setminus></e:pred></e:snd>
+      ///   <e:fcell>
+      ///     <code>head</code>
+      ///     <e:list><code>value</code>, <code>o</code></e:list>
+      ///   </e:fcell>
+      ///   <e:pred name="List"><code>o</code>, <e:setminus><e:st n="S"/><e:set><code>value</code></e:set></e:setminus></e:pred>
       /// </e:sep>
 
       delete head;
@@ -181,8 +181,8 @@ Node* remove(Node* head, int value) {
       /// <e:pred name="List">
       ///   <code>o</code>,
       ///     <e:setminus>
-      ///       <e:fst><e:st n="S" /></e:fst>
-      ///       <e:snd><e:set><code>value</code></e:set></e:snd>
+      ///       <e:st n="S" />
+      ///       <e:set><code>value</code></e:set>
       ///     </e:setminus>
       /// </e:pred>
     }
@@ -192,15 +192,15 @@ Node* remove(Node* head, int value) {
       /// <e:indent>
       ///   <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
       ///   <e:sep>
-      ///     <e:fst><e:fcell>
-      ///       <e:fst><code>head</code></e:fst>
-      ///       <e:snd><e:var n="v"/>, <e:var n="tail"/></e:snd>
-      ///     </e:fcell></e:fst>
-      ///     <e:snd><e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred></e:snd>
+      ///     <e:fcell>
+      ///       <code>head</code>
+      ///       <e:list><e:var n="v"/>, <e:var n="tail"/></e:list>
+      ///     </e:fcell>
+      ///     <e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred>
       ///   </e:sep> ∧<br />
       ///   <e:noteq>
-      ///     <e:fst><e:var n="v"/></e:fst>
-      ///     <e:snd><code>value</code></e:snd>
+      ///     <e:var n="v"/>
+      ///     <code>value</code>
       ///   </e:noteq>
       /// </e:indent>
 
@@ -210,15 +210,15 @@ Node* remove(Node* head, int value) {
         /// <e:indent>
         ///   <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
         ///   <e:sep>
-        ///     <e:fst><e:fcell>
-        ///       <e:fst><code>head</code></e:fst>
-        ///       <e:snd><e:var n="v"/>, <e:var n="tail"/></e:snd>
-        ///     </e:fcell></e:fst>
-        ///     <e:snd><e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred></e:snd>
+        ///     <e:fcell>
+        ///       <code>head</code>
+        ///       <e:list><e:var n="v"/>, <e:var n="tail"/></e:list>
+        ///     </e:fcell>
+        ///     <e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred>
         ///   </e:sep> ∧<br />
         ///   <e:lt>
-        ///     <e:fst><e:var n="v"/></e:fst>
-        ///     <e:snd><code>value</code></e:snd>
+        ///     <e:var n="v"/>
+        ///     <code>value</code>
         ///   </e:lt>
         /// </e:indent>
         
@@ -228,15 +228,15 @@ Node* remove(Node* head, int value) {
         /// <e:indent>
         ///   <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
         ///   <e:sep>
-        ///     <e:fst><e:fcell>
-        ///       <e:fst><code>head</code></e:fst>
-        ///       <e:snd><e:var n="v"/>, <e:var n="tail"/></e:snd>
-        ///     </e:fcell></e:fst>
-        ///     <e:snd><e:pred name="List"><code>ntail</code>, <e:setminus><e:fst><e:st n="T"/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:setminus></e:pred></e:snd>
+        ///     <e:fcell>
+        ///       <code>head</code>
+        ///       <e:list><e:var n="v"/>, <e:var n="tail"/></e:list>
+        ///     </e:fcell>
+        ///     <e:pred name="List"><code>ntail</code>, <e:setminus><e:st n="T"/><e:set><code>value</code></e:set></e:setminus></e:pred>
         ///   </e:sep> ∧<br />
         ///   <e:lt>
-        ///     <e:fst><e:var n="v"/></e:fst>
-        ///     <e:snd><code>value</code></e:snd>
+        ///     <e:var n="v"/>
+        ///     <code>value</code>
         ///   </e:lt>
         /// </e:indent>
 
@@ -246,15 +246,15 @@ Node* remove(Node* head, int value) {
         /// <e:indent>
         ///   <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
         ///   <e:sep>
-        ///     <e:fst><e:fcell>
-        ///       <e:fst><code>head</code></e:fst>
-        ///       <e:snd><e:var n="v"/>, <code>ntail</code></e:snd>
-        ///     </e:fcell></e:fst>
-        ///     <e:snd><e:pred name="List"><code>ntail</code>, <e:setminus><e:fst><e:st n="T"/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:setminus></e:pred></e:snd>
+        ///     <e:fcell>
+        ///       <code>head</code>
+        ///       <e:list><e:var n="v"/>, <code>ntail</code></e:list>
+        ///     </e:fcell>
+        ///     <e:pred name="List"><code>ntail</code>, <e:setminus><e:st n="T"/><e:set><code>value</code></e:set></e:setminus></e:pred>
         ///   </e:sep> ∧<br />
         ///   <e:lt>
-        ///     <e:fst><e:var n="v"/></e:fst>
-        ///     <e:snd><code>value</code></e:snd>
+        ///     <e:var n="v"/>
+        ///     <code>value</code>
         ///   </e:lt>
         /// </e:indent>
 
@@ -263,77 +263,77 @@ Node* remove(Node* head, int value) {
         /// <e:indent>
         ///   <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
         ///   <e:sep>
-        ///     <e:fst><e:fcell>
-        ///       <e:fst><code>head</code></e:fst>
-        ///       <e:snd><e:var n="v"/>, <e:var n="tail"/></e:snd>
-        ///     </e:fcell></e:fst>
-        ///     <e:snd><e:pred name="List"><e:var n="tail"/>, <e:setminus><e:fst><e:st n="T"/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:setminus></e:pred></e:snd>
+        ///     <e:fcell>
+        ///       <code>head</code>
+        ///       <e:list><e:var n="v"/>, <e:var n="tail"/></e:list>
+        ///     </e:fcell>
+        ///     <e:pred name="List"><e:var n="tail"/>, <e:setminus><e:st n="T"/><e:set><code>value</code></e:set></e:setminus></e:pred>
         ///   </e:sep> ∧<br />
         ///   <e:lt>
-        ///     <e:fst><e:var n="v"/></e:fst>
-        ///     <e:snd><code>value</code></e:snd>
+        ///     <e:var n="v"/>
+        ///     <code>value</code>
         ///   </e:lt>
         /// </e:indent>
 
         // Lemma: <e:logimpl>
-        //   <e:fst><e:and>
-        //     <e:fst><e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred></e:fst>
-        //     <e:snd><e:noteq>
-        //       <e:fst><e:var n="v"/></e:fst>
-        //       <e:snd><code>value</code></e:snd>
-        //     </e:noteq></e:snd>
-        //   </e:and></e:fst>
-        //   <e:snd><e:pred name="ListCompose"><e:var n="v"/>, <e:setminus><e:fst><e:st n="T"/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:setminus>, <e:setminus><e:fst><e:st n="S" /></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:setminus></e:pred></e:snd>
-        // </e:logimpl>.  Discard <e:lt><e:fst><e:var n="v"/></e:fst><e:snd><code>value</code></e:snd></e:lt>.
+        //   <e:and>
+        //     <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred>
+        //     <e:noteq>
+        //       <e:var n="v"/>
+        //       <code>value</code>
+        //     </e:noteq>
+        //   </e:and>
+        //   <e:pred name="ListCompose"><e:var n="v"/>, <e:setminus><e:st n="T"/><e:set><code>value</code></e:set></e:setminus>, <e:setminus><e:st n="S" /><e:set><code>value</code></e:set></e:setminus></e:pred>
+        // </e:logimpl>.  Discard <e:lt><e:var n="v"/><code>value</code></e:lt>.
         /// ∃<e:var n="v"/>, <e:var n="tail"/>, <e:st n="T"/>.<br />
         /// <e:indent>
-        ///   <e:pred name="ListCompose"><e:var n="v"/>, <e:setminus><e:fst><e:st n="T"/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:setminus>, <e:setminus><e:fst><e:st n="S" /></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:setminus></e:pred> ∧<br />
+        ///   <e:pred name="ListCompose"><e:var n="v"/>, <e:setminus><e:st n="T"/><e:set><code>value</code></e:set></e:setminus>, <e:setminus><e:st n="S" /><e:set><code>value</code></e:set></e:setminus></e:pred> ∧<br />
         ///   <e:sep>
-        ///     <e:fst><e:fcell>
-        ///       <e:fst><code>head</code></e:fst>
-        ///       <e:snd><e:var n="v"/>, <e:var n="tail"/></e:snd>
-        ///     </e:fcell></e:fst>
-        ///     <e:snd><e:pred name="List"><e:var n="tail"/>, <e:setminus><e:fst><e:st n="T"/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:setminus></e:pred></e:snd>
+        ///     <e:fcell>
+        ///       <code>head</code>
+        ///       <e:list><e:var n="v"/>, <e:var n="tail"/></e:list>
+        ///     </e:fcell>
+        ///     <e:pred name="List"><e:var n="tail"/>, <e:setminus><e:st n="T"/><e:set><code>value</code></e:set></e:setminus></e:pred>
         ///   </e:sep>
         /// </e:indent>
 
-        // <m:existsIntro/> on <e:setminus><e:fst><e:st n="T"/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:setminus> as <e:st n="T"/>.
+        // <m:existsIntro/> on <e:setminus><e:st n="T"/><e:set><code>value</code></e:set></e:setminus> as <e:st n="T"/>.
         /// ∃<e:var n="v"/>, <e:var n="tail"/>, <e:st n="T"/>.<br />
         /// <e:indent>
-        ///   <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:setminus><e:fst><e:st n="S" /></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:setminus></e:pred> ∧<br />
+        ///   <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:setminus><e:st n="S" /><e:set><code>value</code></e:set></e:setminus></e:pred> ∧<br />
         ///   <e:sep>
-        ///     <e:fst><e:fcell>
-        ///       <e:fst><code>head</code></e:fst>
-        ///       <e:snd><e:var n="v"/>, <e:var n="tail"/></e:snd>
-        ///     </e:fcell></e:fst>
-        ///     <e:snd><e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred></e:snd>
+        ///     <e:fcell>
+        ///       <code>head</code>
+        ///       <e:list><e:var n="v"/>, <e:var n="tail"/></e:list>
+        ///     </e:fcell>
+        ///     <e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred>
         ///   </e:sep>
         /// </e:indent>
 
         // Close <e:pred name="NonEmptyList">
         //   <code>head</code>,
         //     <e:setminus>
-        //       <e:fst><e:st n="S" /></e:fst>
-        //       <e:snd><e:set><code>value</code></e:set></e:snd>
+        //       <e:st n="S" />
+        //       <e:set><code>value</code></e:set>
         //     </e:setminus>
         // </e:pred>.
         /// <e:pred name="NonEmptyList">
         ///   <code>head</code>,
         ///     <e:setminus>
-        ///       <e:fst><e:st n="S" /></e:fst>
-        ///       <e:snd><e:set><code>value</code></e:set></e:snd>
+        ///       <e:st n="S" />
+        ///       <e:set><code>value</code></e:set>
         ///     </e:setminus>
         /// </e:pred>
 
         // Weakening lemma: <e:logimpl>
-        //   <e:fst><e:pred name="NonEmptyList"><code>head</code>, <e:st n="S"/></e:pred></e:fst>
-        //   <e:snd><e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred></e:snd>
+        //   <e:pred name="NonEmptyList"><code>head</code>, <e:st n="S"/></e:pred>
+        //   <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
         // </e:logimpl>.
         /// <e:pred name="List">
         ///   <code>head</code>,
         ///     <e:setminus>
-        ///       <e:fst><e:st n="S" /></e:fst>
-        ///       <e:snd><e:set><code>value</code></e:set></e:snd>
+        ///       <e:st n="S" />
+        ///       <e:set><code>value</code></e:set>
         ///     </e:setminus>
         /// </e:pred>
 
@@ -342,145 +342,145 @@ Node* remove(Node* head, int value) {
         /// <e:pred name="List">
         ///   <code>o</code>,
         ///     <e:setminus>
-        ///       <e:fst><e:st n="S" /></e:fst>
-        ///       <e:snd><e:set><code>value</code></e:set></e:snd>
+        ///       <e:st n="S" />
+        ///       <e:set><code>value</code></e:set>
         ///     </e:setminus>
         /// </e:pred>
       }
       else {
         // Deny if-condition.
         // Use <e:logimpl>
-        //   <e:fst>¬(<e:lt>
-        //     <e:fst><e:var n="v"/></e:fst>
-        //     <e:snd><code>value</code></e:snd>
-        //   </e:lt>)</e:fst>
-        //   <e:snd><e:leq>
-        //     <e:fst><code>value</code></e:fst>
-        //     <e:snd><e:var n="v"/></e:snd>
-        //   </e:leq></e:snd>
+        //   ¬(<e:lt>
+        //     <e:var n="v"/>
+        //     <code>value</code>
+        //   </e:lt>)
+        //   <e:leq>
+        //     <code>value</code>
+        //     <e:var n="v"/>
+        //   </e:leq>
         // </e:logimpl>.
         /// ∃<e:var n="v"/>, <e:var n="tail"/>, <e:st n="T"/>.<br />
         /// <e:indent>
         ///   <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
         ///   <e:sep>
-        ///     <e:fst><e:fcell>
-        ///       <e:fst><code>head</code></e:fst>
-        ///       <e:snd><e:var n="v"/>, <e:var n="tail"/></e:snd>
-        ///     </e:fcell></e:fst>
-        ///     <e:snd><e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred></e:snd>
+        ///     <e:fcell>
+        ///       <code>head</code>
+        ///       <e:list><e:var n="v"/>, <e:var n="tail"/></e:list>
+        ///     </e:fcell>
+        ///     <e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred>
         ///   </e:sep> ∧<br />
         ///   <e:and>
-        ///     <e:fst><e:noteq>
-        ///       <e:fst><code>value</code></e:fst>
-        ///       <e:snd><e:var n="v"/></e:snd>
-        ///     </e:noteq></e:fst>
-        ///     <e:snd><e:leq>
-        ///       <e:fst><code>value</code></e:fst>
-        ///       <e:snd><e:var n="v"/></e:snd>
-        ///     </e:leq></e:snd>
+        ///     <e:noteq>
+        ///       <code>value</code>
+        ///       <e:var n="v"/>
+        ///     </e:noteq>
+        ///     <e:leq>
+        ///       <code>value</code>
+        ///       <e:var n="v"/>
+        ///     </e:leq>
         ///   </e:and>
         /// </e:indent>
 
         // <e:logimpl>
-        //   <e:fst>(<e:and>
-        //     <e:fst><e:noteq>
-        //       <e:fst><e:var n="a"/></e:fst>
-        //       <e:snd><e:var n="b"/></e:snd>
-        //     </e:noteq></e:fst>
-        //     <e:snd><e:leq>
-        //       <e:fst><e:var n="a"/></e:fst>
-        //       <e:snd><e:var n="b"/></e:snd>
-        //     </e:leq></e:snd>
-        //   </e:and>)</e:fst>
-        //   <e:snd><e:lt>
-        //     <e:fst><e:var n="b"/></e:fst>
-        //     <e:snd><e:var n="a"/></e:snd>
-        //   </e:lt></e:snd>
+        //   (<e:and>
+        //     <e:noteq>
+        //       <e:var n="a"/>
+        //       <e:var n="b"/>
+        //     </e:noteq>
+        //     <e:leq>
+        //       <e:var n="a"/>
+        //       <e:var n="b"/>
+        //     </e:leq>
+        //   </e:and>)
+        //   <e:lt>
+        //     <e:var n="b"/>
+        //     <e:var n="a"/>
+        //   </e:lt>
         //  </e:logimpl>.
         /// ∃<e:var n="v"/>, <e:var n="tail"/>, <e:st n="T"/>.<br />
         /// <e:indent>
         ///   <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
         ///   <e:sep>
-        ///     <e:fst><e:fcell>
-        ///       <e:fst><code>head</code></e:fst>
-        ///       <e:snd><e:var n="v"/>, <e:var n="tail"/></e:snd>
-        ///     </e:fcell></e:fst>
-        ///     <e:snd><e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred></e:snd>
+        ///     <e:fcell>
+        ///       <code>head</code>
+        ///       <e:list><e:var n="v"/>, <e:var n="tail"/></e:list>
+        ///     </e:fcell>
+        ///     <e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred>
         ///   </e:sep> ∧<br />
         ///   <e:lt>
-        ///     <e:fst><code>value</code></e:fst>
-        ///     <e:snd><e:var n="v"/></e:snd>
+        ///     <code>value</code>
+        ///     <e:var n="v"/>
         ///   </e:lt>
         /// </e:indent>
 
         // Lemma: <e:logimpl>
-        //   <e:fst><e:and>
-        //     <e:fst><e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred></e:fst>
-        //     <e:snd><e:lt><e:fst><code>value</code></e:fst><e:snd><e:var n="v"/></e:snd></e:lt></e:snd>
-        //   </e:and></e:fst>
-        //   <e:snd><e:notin><e:fst><code>value</code></e:fst><e:snd><e:st n="S"/></e:snd></e:notin></e:snd>
-        // </e:logimpl>.  Discard <e:lt><e:fst><code>value</code></e:fst><e:snd><e:var n="v"/></e:snd></e:lt>.
+        //   <e:and>
+        //     <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred>
+        //     <e:lt><code>value</code><e:var n="v"/></e:lt>
+        //   </e:and>
+        //   <e:notin><code>value</code><e:st n="S"/></e:notin>
+        // </e:logimpl>.  Discard <e:lt><code>value</code><e:var n="v"/></e:lt>.
         /// ∃<e:var n="v"/>, <e:var n="tail"/>, <e:st n="T"/>.<br />
         /// <e:indent>
         ///   <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
         ///   <e:sep>
-        ///     <e:fst><e:fcell>
-        ///       <e:fst><code>head</code></e:fst>
-        ///       <e:snd><e:var n="v"/>, <e:var n="tail"/></e:snd>
-        ///     </e:fcell></e:fst>
-        ///     <e:snd><e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred></e:snd>
+        ///     <e:fcell>
+        ///       <code>head</code>
+        ///       <e:list><e:var n="v"/>, <e:var n="tail"/></e:list>
+        ///     </e:fcell>
+        ///     <e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred>
         ///   </e:sep> ∧<br />
         ///   <e:notin>
-        ///     <e:fst><code>value</code></e:fst>
-        ///     <e:snd><e:st n="S"/></e:snd>
+        ///     <code>value</code>
+        ///     <e:st n="S"/>
         ///   </e:notin>
         /// </e:indent>
 
         // Close <e:pred name="NonEmptyList"><code>head</code>, <e:st n="S"/></e:pred>.
         /// <e:and>
-        ///   <e:fst><e:pred name="NonEmptyList"><code>head</code>, <e:st n="S"/></e:pred></e:fst>
-        ///   <e:snd><e:notin>
-        ///     <e:fst><code>value</code></e:fst>
-        ///     <e:snd><e:st n="S"/></e:snd>
-        ///   </e:notin></e:snd>
+        ///   <e:pred name="NonEmptyList"><code>head</code>, <e:st n="S"/></e:pred>
+        ///   <e:notin>
+        ///     <code>value</code>
+        ///     <e:st n="S"/>
+        ///   </e:notin>
         /// </e:and>
 
         // <e:logimpl>
-        //   <e:fst><e:notin><e:fst><e:var n="a"/></e:fst><e:snd><e:st n="X"/></e:snd></e:notin></e:fst>
-        //   <e:snd><e:eq>
-        //     <e:fst><e:setminus><e:fst><e:st n="X"/></e:fst><e:snd><e:set><e:var n="a"/></e:set></e:snd></e:setminus></e:fst>
-        //     <e:snd><e:st n="X"/></e:snd>
-        //   </e:eq></e:snd>
-        // </e:logimpl>.  Discard <e:notin><e:fst><code>value</code></e:fst><e:snd><e:st n="S"/></e:snd></e:notin>.
+        //   <e:notin><e:var n="a"/><e:st n="X"/></e:notin>
+        //   <e:eq>
+        //     <e:setminus><e:st n="X"/><e:set><e:var n="a"/></e:set></e:setminus>
+        //     <e:st n="X"/>
+        //   </e:eq>
+        // </e:logimpl>.  Discard <e:notin><code>value</code><e:st n="S"/></e:notin>.
         /// <e:and>
-        ///   <e:fst><e:pred name="NonEmptyList"><code>head</code>, <e:st n="S"/></e:pred></e:fst>
-        ///   <e:snd><e:eq>
-        ///     <e:fst><e:setminus><e:fst><e:st n="S"/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:setminus></e:fst>
-        ///     <e:snd><e:st n="S"/></e:snd>
-        ///   </e:eq></e:snd>
+        ///   <e:pred name="NonEmptyList"><code>head</code>, <e:st n="S"/></e:pred>
+        ///   <e:eq>
+        ///     <e:setminus><e:st n="S"/><e:set><code>value</code></e:set></e:setminus>
+        ///     <e:st n="S"/>
+        ///   </e:eq>
         /// </e:and>
 
         // Substitution.  Discard <e:eq>
-        //   <e:fst><e:setminus><e:fst><e:st n="S"/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:setminus></e:fst>
-        //   <e:snd><e:st n="S"/></e:snd>
+        //   <e:setminus><e:st n="S"/><e:set><code>value</code></e:set></e:setminus>
+        //   <e:st n="S"/>
         // </e:eq>.
         /// <e:pred name="NonEmptyList">
         ///   <code>head</code>,
         ///     <e:setminus>
-        ///       <e:fst><e:st n="S" /></e:fst>
-        ///       <e:snd><e:set><code>value</code></e:set></e:snd>
+        ///       <e:st n="S" />
+        ///       <e:set><code>value</code></e:set>
         ///     </e:setminus>
         /// </e:pred>
 
         // Weakening lemma: <e:logimpl>
-        //   <e:fst><e:pred name="NonEmptyList"><code>head</code>, <e:st n="S"/></e:pred></e:fst>
-        //   <e:snd><e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred></e:snd>
+        //   <e:pred name="NonEmptyList"><code>head</code>, <e:st n="S"/></e:pred>
+        //   <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
         // </e:logimpl>.
         /// <e:pred name="List">
         ///   <code>head</code>,
         ///     <e:setminus>
-        ///       <e:fst><e:st n="S" /></e:fst>
-        ///       <e:snd><e:set><code>value</code></e:set></e:snd>
+        ///       <e:st n="S" />
+        ///       <e:set><code>value</code></e:set>
         ///     </e:setminus>
         /// </e:pred>
 
@@ -489,8 +489,8 @@ Node* remove(Node* head, int value) {
         /// <e:pred name="List">
         ///   <code>o</code>,
         ///     <e:setminus>
-        ///       <e:fst><e:st n="S" /></e:fst>
-        ///       <e:snd><e:set><code>value</code></e:set></e:snd>
+        ///       <e:st n="S" />
+        ///       <e:set><code>value</code></e:set>
         ///     </e:setminus>
         /// </e:pred>
       }
@@ -498,8 +498,8 @@ Node* remove(Node* head, int value) {
       /// <e:pred name="List">
       ///   <code>o</code>,
       ///     <e:setminus>
-      ///       <e:fst><e:st n="S" /></e:fst>
-      ///       <e:snd><e:set><code>value</code></e:set></e:snd>
+      ///       <e:st n="S" />
+      ///       <e:set><code>value</code></e:set>
       ///     </e:setminus>
       /// </e:pred>
     }
@@ -507,8 +507,8 @@ Node* remove(Node* head, int value) {
     /// <e:pred name="List">
     ///   <code>o</code>,
     ///     <e:setminus>
-    ///       <e:fst><e:st n="S" /></e:fst>
-    ///       <e:snd><e:set><code>value</code></e:set></e:snd>
+    ///       <e:st n="S" />
+    ///       <e:set><code>value</code></e:set>
     ///     </e:setminus>
     /// </e:pred>
   }
@@ -516,8 +516,8 @@ Node* remove(Node* head, int value) {
   /// <e:pred name="List">
   ///   <code>o</code>,
   ///     <e:setminus>
-  ///       <e:fst><e:st n="S" /></e:fst>
-  ///       <e:snd><e:set><code>value</code></e:set></e:snd>
+  ///       <e:st n="S" />
+  ///       <e:set><code>value</code></e:set>
   ///     </e:setminus>
   /// </e:pred>
 

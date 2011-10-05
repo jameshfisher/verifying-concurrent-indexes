@@ -5,11 +5,11 @@
 	 xmlns:m="http://eegg.github.com/macro">
 
   <e:caption><e:logimpl>
-      <e:fst><e:pred name="EmptyList">_, <e:st n="S"/></e:pred></e:fst>
-      <e:snd><e:notin>
-          <e:fst><code>value</code></e:fst>
-          <e:snd><e:st n="S"/></e:snd>
-      </e:notin></e:snd>
+      <e:pred name="EmptyList">_, <e:st n="S"/></e:pred>
+      <e:notin>
+          <code>value</code>
+          <e:st n="S"/>
+      </e:notin>
   </e:logimpl></e:caption>
 
   <e:contents>
@@ -23,12 +23,12 @@
       <e:step name="openEmptyList">
 	<e:derive>
 	  <e:eq>
-	    <e:fst><code>head</code></e:fst>
-	    <e:snd><code>null</code></e:snd>
+	    <code>head</code>
+	    <code>null</code>
 	  </e:eq> ∧
 	  <e:eq>
-	    <e:fst><e:st n="S"/></e:fst>
-	    <e:snd><m:scemp/></e:snd>
+	    <e:st n="S"/>
+	    <m:scemp/>
 	  </e:eq> ∧
 	  <m:hemp/>
 	</e:derive>
@@ -37,24 +37,24 @@
 
       <e:step name="SIsEmpty">
 	<e:derive><e:eq>
-	    <e:fst><e:st n="S"/></e:fst>
-	    <e:snd><m:scemp/></e:snd>
+	    <e:st n="S"/>
+	    <m:scemp/>
 	</e:eq></e:derive>
 	<e:by><e:from name="openEmptyList"/>, ∧E</e:by>
       </e:step>
 
       <e:step name="valueNotInEmptySet">
 	<e:derive><e:notin>
-            <e:fst><code>value</code></e:fst>
-            <e:snd><m:scemp/></e:snd>
+            <code>value</code>
+            <m:scemp/>
 	</e:notin></e:derive>
 	<e:by>Nothing in empty set</e:by>
       </e:step>
 
       <e:step name="qed">
 	<e:derive><e:notin>
-            <e:fst><code>value</code></e:fst>
-            <e:snd><e:st n="S"/></e:snd>
+            <code>value</code>
+            <e:st n="S"/>
 	</e:notin></e:derive>
 	<e:by><e:from name="SIsEmpty"/>, <e:from name="valueNotInEmptySet"/>, equality</e:by>
       </e:step>

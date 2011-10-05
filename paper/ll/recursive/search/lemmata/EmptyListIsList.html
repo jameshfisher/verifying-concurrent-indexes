@@ -5,8 +5,8 @@
 	 xmlns:m="http://eegg.github.com/macro">
 
   <e:caption><e:logimpl>
-      <e:fst><e:pred name="EmptyList"><code>head</code>, <e:st n="S"/></e:pred></e:fst>
-      <e:snd><e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred></e:snd>
+      <e:pred name="EmptyList"><code>head</code>, <e:st n="S"/></e:pred>
+      <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
   </e:logimpl></e:caption>
 
   <e:contents>
@@ -18,8 +18,8 @@
 
       <e:step name="orNonEmpty">
 	<e:derive><e:or>
-	    <e:fst><e:pred name="EmptyList"><code>head</code>, <e:st n="S"/></e:pred></e:fst>
-	    <e:snd><e:pred name="NonEmptyList"><code>head</code>, <e:st n="S"/></e:pred></e:snd>
+	    <e:pred name="EmptyList"><code>head</code>, <e:st n="S"/></e:pred>
+	    <e:pred name="NonEmptyList"><code>head</code>, <e:st n="S"/></e:pred>
 	</e:or></e:derive>
 	<e:by><e:from name="given"/>, ∨I</e:by>
       </e:step>

@@ -47,20 +47,20 @@
 	    <e:st n="S"/>
 	  </e:eq>
 	<e:forall>
-	  <e:fst>
+	  <e:vars>
 	    <e:in><e:var n="l"/><e:st n="L"/></e:in>
-	  </e:fst>
-	  <e:snd>
+	  </e:vars>
+	  <e:expr>
 	    <e:lt><e:var n="l"/><e:var n="v"/></e:lt>
-	  </e:snd>
+	  </e:expr>
 	</e:forall>
 	<e:forall>
-	  <e:fst>
+	  <e:vars>
 	    <e:in><e:var n="r"/><e:st n="R"/></e:in>
-	  </e:fst>
-	  <e:snd>
+	  </e:vars>
+	  <e:expr>
 	    <e:lt><e:var n="v"/><e:var n="r"/></e:lt>
-	  </e:snd>
+	  </e:expr>
 	</e:forall>
       </e:and></e:derive>
       <e:by><e:from name="givenCompose"/>, open predicate</e:by>
@@ -80,24 +80,24 @@
 
     <e:step name="AllInLLessThanv">
       <e:derive><e:forall>
-	  <e:fst>
+	  <e:vars>
 	    <e:in><e:var n="l"/><e:st n="L"/></e:in>
-	  </e:fst>
-	  <e:snd>
+	  </e:vars>
+	  <e:expr>
 	    <e:lt><e:var n="l"/><e:var n="v"/></e:lt>
-	  </e:snd>
+	  </e:expr>
       </e:forall></e:derive>
       <e:by><e:from name="openCompose"/>, <m:andElim/></e:by>
     </e:step>
 
     <e:step name="AllInRGreaterThanv">
       <e:derive><e:forall>
-	  <e:fst>
+	  <e:vars>
 	    <e:in><e:var n="r"/><e:st n="R"/></e:in>
-	  </e:fst>
-	  <e:snd>
+	  </e:vars>
+	  <e:expr>
 	    <e:lt><e:var n="v"/><e:var n="r"/></e:lt>
-	  </e:snd>
+	  </e:expr>
       </e:forall></e:derive>
       <e:by><e:from name="openCompose"/>, <m:andElim/></e:by>
     </e:step>
@@ -159,12 +159,12 @@
 
     <e:step name="AllInLminuswLessThanv">
       <e:derive><e:forall>
-	  <e:fst>
+	  <e:vars>
 	    <e:in><e:var n="l"/><e:setminus parens="yes"><e:st n="L"/><e:set><e:var n="w"/></e:set></e:setminus></e:in>
-	  </e:fst>
-	  <e:snd>
+	  </e:vars>
+	  <e:expr>
 	    <e:lt><e:var n="l"/><e:var n="v"/></e:lt>
-	  </e:snd>
+	  </e:expr>
       </e:forall></e:derive>
       <e:by><e:from name="AllInLLessThanv"/>, <m:AllMembersThenAllMembersOfSubset/></e:by>
     </e:step>
@@ -180,20 +180,20 @@
 	    <e:setminus><e:st n="S"/><e:set><e:var n="w"/></e:set></e:setminus>
 	  </e:eq>
 	<e:forall>
-	  <e:fst>
+	  <e:vars>
 	    <e:in><e:var n="l"/><e:setminus><e:st n="L"/><e:set><e:var n="w"/></e:set></e:setminus></e:in>
-	  </e:fst>
-	  <e:snd>
+	  </e:vars>
+	  <e:expr>
 	    <e:lt><e:var n="l"/><e:var n="v"/></e:lt>
-	  </e:snd>
+	  </e:expr>
 	</e:forall>
 	<e:forall>
-	  <e:fst>
+	  <e:vars>
 	    <e:in><e:var n="r"/><e:st n="R"/></e:in>
-	  </e:fst>
-	  <e:snd>
+	  </e:vars>
+	  <e:expr>
 	    <e:lt><e:var n="v"/><e:var n="r"/></e:lt>
-	  </e:snd>
+	  </e:expr>
 	</e:forall>
       </e:and></e:derive>
       <e:by><e:from name="LminuswUvURIsSminusw"/>, <e:from name="AllInLminuswLessThanv"/>, <e:from name="AllInRGreaterThanv"/>, <m:andIntro/></e:by>

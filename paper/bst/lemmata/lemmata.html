@@ -10,91 +10,91 @@
   <ul>
     <li>
       <e:logimpl>
-	<e:fst><e:and>
-            <e:fst><e:pred name="Tree"><code>root</code>, <e:st n="S"/></e:pred></e:fst>
-            <e:snd><e:eq><e:fst><code>root</code></e:fst><e:snd><code>null</code></e:snd></e:eq></e:snd>
-	</e:and></e:fst>
-	<e:snd><e:pred name="EmptyTree"><code>root</code>, <e:st n="S"/></e:pred></e:snd>
+	<e:and>
+            <e:pred name="Tree"><code>root</code>, <e:st n="S"/></e:pred>
+            <e:eq><code>root</code><code>null</code></e:eq>
+	</e:and>
+	<e:pred name="EmptyTree"><code>root</code>, <e:st n="S"/></e:pred>
       </e:logimpl>
     </li>
 
     <li>
       <e:logimpl>
-	<e:fst><e:pred name="EmptyTree"><code>root</code>, <e:st n="S"/></e:pred></e:fst>
-	<e:snd><e:eq><e:fst><e:st n="S"/></e:fst><e:snd><m:scemp/></e:snd></e:eq></e:snd>
+	<e:pred name="EmptyTree"><code>root</code>, <e:st n="S"/></e:pred>
+	<e:eq><e:st n="S"/><m:scemp/></e:eq>
       </e:logimpl>
     </li>
 
     <li>
       <e:logimpl>
-	<e:fst><e:pred name="EmptyTree"><code>root</code>, <e:st n="S"/></e:pred></e:fst>
-	<e:snd><e:pred name="Tree"><code>root</code>, <e:st n="S"/></e:pred></e:snd>
+	<e:pred name="EmptyTree"><code>root</code>, <e:st n="S"/></e:pred>
+	<e:pred name="Tree"><code>root</code>, <e:st n="S"/></e:pred>
       </e:logimpl>
     </li>
 
     <li>
       <e:logimpl>
-	<e:fst><e:and>
-            <e:fst><e:pred name="Tree"><code>root</code>, <e:st n="S"/></e:pred></e:fst>
-            <e:snd><e:noteq><e:fst><code>root</code></e:fst><e:snd><code>null</code></e:snd></e:noteq></e:snd>
-	</e:and></e:fst>
-	<e:snd><e:pred name="NonEmptyTree"><code>root</code>, <e:st n="S"/></e:pred></e:snd>
+	<e:and>
+            <e:pred name="Tree"><code>root</code>, <e:st n="S"/></e:pred>
+            <e:noteq><code>root</code><code>null</code></e:noteq>
+	</e:and>
+	<e:pred name="NonEmptyTree"><code>root</code>, <e:st n="S"/></e:pred>
       </e:logimpl>
     </li>
 
     <li>
       <e:logimpl>
-	<e:fst><e:pred name="TopOfTree"><code>root</code>, <code>value</code>, <e:st n="S"/></e:pred></e:fst>
-	<e:snd><e:in><e:fst><code>value</code></e:fst><e:snd><e:st n="S"/></e:snd></e:in></e:snd>
+	<e:pred name="TopOfTree"><code>root</code>, <code>value</code>, <e:st n="S"/></e:pred>
+	<e:in><code>value</code><e:st n="S"/></e:in>
       </e:logimpl>
     </li>
 
     <li>
       <e:logimpl>
-	<e:fst><e:and>
-            <e:fst><e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred></e:fst>
-            <e:snd><e:lt><e:fst><code>value</code></e:fst><e:snd><e:var n="v"/></e:snd></e:lt></e:snd>
-	</e:and></e:fst>
-	<e:snd><e:doubleimpl>
-            <e:fst><e:in><e:fst><code>value</code></e:fst><e:snd><e:st n="L"/></e:snd></e:in></e:fst>
-            <e:snd><e:in><e:fst><code>value</code></e:fst><e:snd><e:st n="S"/></e:snd></e:in></e:snd>
-	</e:doubleimpl></e:snd>
+	<e:and>
+            <e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
+            <e:lt><code>value</code><e:var n="v"/></e:lt>
+	</e:and>
+	<e:doubleimpl>
+            <e:in><code>value</code><e:st n="L"/></e:in>
+            <e:in><code>value</code><e:st n="S"/></e:in>
+	</e:doubleimpl>
       </e:logimpl>
     </li>
 
     <li>
       <e:logimpl>
-	<e:fst><e:and>
-            <e:fst><e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred></e:fst>
-            <e:snd><e:lt><e:fst><code>value</code></e:fst><e:snd><e:var n="v"/></e:snd></e:lt></e:snd>
-	</e:and></e:fst>
-	<e:snd><e:pred name="TreeCompose">
-            <e:union><e:fst><e:st n="L" /></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:union>,
+	<e:and>
+            <e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
+            <e:lt><code>value</code><e:var n="v"/></e:lt>
+	</e:and>
+	<e:pred name="TreeCompose">
+            <e:union><e:st n="L" /><e:set><code>value</code></e:set></e:union>,
             <e:var n="v"/>, <e:st n="R"/>,
-            <e:union><e:fst><e:st n="S" /></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:union>
-	</e:pred></e:snd>
+            <e:union><e:st n="S" /><e:set><code>value</code></e:set></e:union>
+	</e:pred>
       </e:logimpl>
     </li>
 
     <li>
       Symmetrical:
       <e:logimpl>
-	<e:fst><e:and>
-            <e:fst><e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred></e:fst>
-            <e:snd><e:lt><e:fst><e:var n="v"/></e:fst><e:snd><code>value</code></e:snd></e:lt></e:snd>
-	</e:and></e:fst>
-	<e:snd><e:pred name="TreeCompose">
+	<e:and>
+            <e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
+            <e:lt><e:var n="v"/><code>value</code></e:lt>
+	</e:and>
+	<e:pred name="TreeCompose">
             <e:st n="L"/>, <e:var n="v"/>, 
-            <e:union><e:fst><e:st n="R" /></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:union>,
-            <e:union><e:fst><e:st n="S" /></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:union>
-	</e:pred></e:snd>
+            <e:union><e:st n="R" /><e:set><code>value</code></e:set></e:union>,
+            <e:union><e:st n="S" /><e:set><code>value</code></e:set></e:union>
+	</e:pred>
       </e:logimpl>
     </li>
 
     <li>
       <e:logimpl>
-	<e:fst><e:pred name="TreeCompose"><m:scemp/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred></e:fst>
-	<e:snd><e:eq><e:fst><e:st n="R"/></e:fst><e:snd><e:setminus><e:fst><e:st n="S"/></e:fst><e:snd><e:set><e:var n="v"/></e:set></e:snd></e:setminus></e:snd></e:eq></e:snd>
+	<e:pred name="TreeCompose"><m:scemp/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
+	<e:eq><e:st n="R"/><e:setminus><e:st n="S"/><e:set><e:var n="v"/></e:set></e:setminus></e:eq>
       </e:logimpl>
     </li>
   </ul>
@@ -104,8 +104,8 @@
    <p>
      From a <e:predicate>Compose</e:predicate> assertion and some value <e:var n="w"/>,
      we know which subset <e:var n="w"/> is in, if any.
-     For instance, if <e:eq><e:fst><e:var n="w"/></e:fst><e:snd><e:var n="v"/></e:snd></e:eq>,
-     then <e:in><e:fst><e:var n="w"/></e:fst><e:snd><e:st n="S"/></e:snd></e:in>:
+     For instance, if <e:eq><e:var n="w"/><e:var n="v"/></e:eq>,
+     then <e:in><e:var n="w"/><e:st n="S"/></e:in>:
 
      <e:derivation>
 
@@ -115,15 +115,15 @@
        </e:step>
 
        <e:step name="givenLessThan">
-	 <e:derive><e:eq><e:fst><e:var n="w"/></e:fst><e:snd><e:var n="v"/></e:snd></e:eq></e:derive>
+	 <e:derive><e:eq><e:var n="w"/><e:var n="v"/></e:eq></e:derive>
 	 <e:by>given</e:by>
        </e:step>
 
        <e:step name="wInSetOfw">
 	 <e:derive>
 	   <e:in>
-	     <e:fst><e:var n="w"/></e:fst>
-	     <e:snd><e:set><e:var n="w"/></e:set></e:snd>
+	     <e:var n="w"/>
+	     <e:set><e:var n="w"/></e:set>
 	   </e:in>
 	 </e:derive>
 	 <e:by>some axiom presumably</e:by>
@@ -132,8 +132,8 @@
        <e:step name="wInSetOfv">
 	 <e:derive>
 	   <e:in>
-	     <e:fst><e:var n="w"/></e:fst>
-	     <e:snd><e:set><e:var n="v"/></e:set></e:snd>
+	     <e:var n="w"/>
+	     <e:set><e:var n="v"/></e:set>
 	   </e:in>
 	 </e:derive>
 	 <e:by>
@@ -144,42 +144,42 @@
        <e:step name="openCompose">
 	 <e:derive>
 	   <e:eq>
-	     <e:fst>
+	     
 	       <e:union>
-		 <e:fst><e:st n="L"/></e:fst>
-		 <e:snd>
+		 <e:st n="L"/>
+		 
 		   <e:union>
-		     <e:fst><e:set><e:var n="v"/></e:set></e:fst>
-		     <e:snd><e:st n="R"/></e:snd>
+		     <e:set><e:var n="v"/></e:set>
+		     <e:st n="R"/>
 		   </e:union>
-		 </e:snd>
+		 
 	       </e:union>
-	     </e:fst>
-	     <e:snd><e:st n="S"/></e:snd>
+	     
+	     <e:st n="S"/>
 	   </e:eq> ∧<br />
 
 	   <e:forall>
-	     <e:fst>
-	       <e:in><e:fst><e:var n="l"/></e:fst><e:snd><e:st n="L"/></e:snd></e:in>
-	     </e:fst>
-	     <e:snd>
-	       <e:lt><e:fst><e:var n="l"/></e:fst><e:snd><e:var n="v"/></e:snd></e:lt>
-	     </e:snd>
+	     <e:vars>
+	       <e:in><e:var n="l"/><e:st n="L"/></e:in>
+	     </e:vars>
+	     <e:expr>
+	       <e:lt><e:var n="l"/><e:var n="v"/></e:lt>
+	     </e:expr>
 	   </e:forall> ∧<br />
 
 	   <e:forall>
-	     <e:fst>
+	     <e:vars>
 	       <e:in>
-		 <e:fst><e:var n="r"/></e:fst>
-		 <e:snd><e:st n="R"/></e:snd>
+		 <e:var n="r"/>
+		 <e:st n="R"/>
 	       </e:in>
-	     </e:fst>
-	     <e:snd>
+	     </e:vars>
+	     <e:expr>
 	       <e:lt>
-		 <e:fst><e:var n="v"/></e:fst>
-		 <e:snd><e:var n="r"/></e:snd>
+		 <e:var n="v"/>
+		 <e:var n="r"/>
 	       </e:lt>
-	     </e:snd>
+	     </e:expr>
 	   </e:forall>
 	 </e:derive>
 	 <e:by>
@@ -190,18 +190,18 @@
        <e:step name="LuvuR">
 	 <e:derive>
 	   <e:eq>
-	     <e:fst>
+	     
 	       <e:union>
-		 <e:fst><e:st n="L"/></e:fst>
-		 <e:snd>
+		 <e:st n="L"/>
+		 
 		   <e:union>
-		     <e:fst><e:set><e:var n="v"/></e:set></e:fst>
-		     <e:snd><e:st n="R"/></e:snd>
+		     <e:set><e:var n="v"/></e:set>
+		     <e:st n="R"/>
 		   </e:union>
-		 </e:snd>
+		 
 	       </e:union>
-	     </e:fst>
-	     <e:snd><e:st n="S"/></e:snd>
+	     
+	     <e:st n="S"/>
 	   </e:eq>
 	 </e:derive>
 
@@ -213,15 +213,15 @@
        <e:step name="SetOfVInS">
 	 <e:derive>
 	   <e:subset>
-	     <e:fst><e:set><e:var n="v"/></e:set></e:fst>
-	     <e:snd><e:st n="S"/></e:snd>
+	     <e:set><e:var n="v"/></e:set>
+	     <e:st n="S"/>
 	   </e:subset>
 	 </e:derive>
 	 <e:by><e:from name="LuvuR"/>, subset</e:by>
        </e:step>
 
        <e:step name="qed">
-	 <e:derive><e:in><e:fst><e:var n="w"/></e:fst><e:snd><e:st n="S"/></e:snd></e:in></e:derive>
+	 <e:derive><e:in><e:var n="w"/><e:st n="S"/></e:in></e:derive>
 	 <e:by><e:from name="wInSetOfv"/>, <e:from name="SetOfVInS"/>, ?</e:by>
        </e:step>
      </e:derivation>
@@ -229,21 +229,21 @@
    </p>
 
 <p>
-  If <e:lt><e:fst><e:var n="w"/></e:fst><e:snd><e:var n="v"/></e:snd></e:lt>,
+  If <e:lt><e:var n="w"/><e:var n="v"/></e:lt>,
   then if <e:var n="w"/> is in <e:st n="S"/> then it must be in <e:st n="L"/>,
   and <i>vice versa</i>:
-  <e:note>The case for <e:lt><e:fst><e:var n="v"/></e:fst><e:snd><e:var n="w"/></e:snd></e:lt> is obviously symmetrical.</e:note>
+  <e:note>The case for <e:lt><e:var n="v"/><e:var n="w"/></e:lt> is obviously symmetrical.</e:note>
 
   <e:derivation>
     <e:step name="given">
       <e:derive>
 	<e:and>
-	  <e:fst>
+	  
 	    <e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
-	  </e:fst>
-	  <e:snd>
-	    <e:lt><e:fst><e:var n="w"/></e:fst><e:snd><e:var n="v"/></e:snd></e:lt>
-	  </e:snd>
+	  
+	  
+	    <e:lt><e:var n="w"/><e:var n="v"/></e:lt>
+	  
 	</e:and>
       </e:derive>
       <e:by>given</e:by>
@@ -255,49 +255,49 @@
     </e:step>
 
     <e:step name="lt">
-      <e:derive><e:lt><e:fst><e:var n="w"/></e:fst><e:snd><e:var n="v"/></e:snd></e:lt></e:derive>
+      <e:derive><e:lt><e:var n="w"/><e:var n="v"/></e:lt></e:derive>
       <e:by><e:from name="given"/>, ∧E</e:by>
     </e:step>
 
     <e:step name="open">
       <e:derive>
 	<e:eq>
-	  <e:fst>
+	  
 	    <e:union>
-	      <e:fst><e:st n="L"/></e:fst>
-	      <e:snd>
+	      <e:st n="L"/>
+	      
 		<e:union>
-		  <e:fst><e:set><e:var n="v"/></e:set></e:fst>
-		  <e:snd><e:st n="R"/></e:snd>
+		  <e:set><e:var n="v"/></e:set>
+		  <e:st n="R"/>
 		</e:union>
-	      </e:snd>
+	      
 	    </e:union>
-	  </e:fst>
-	  <e:snd><e:st n="S"/></e:snd>
+	  
+	  <e:st n="S"/>
 	</e:eq> ∧<br />
 
 	<e:forall>
-	  <e:fst>
-	    <e:in><e:fst><e:var n="l"/></e:fst><e:snd><e:st n="L"/></e:snd></e:in>
-	  </e:fst>
-	  <e:snd>
-	    <e:lt><e:fst><e:var n="l"/></e:fst><e:snd><e:var n="v"/></e:snd></e:lt>
-	  </e:snd>
+	  <e:vars>
+	    <e:in><e:var n="l"/><e:st n="L"/></e:in>
+	  </e:vars>
+	  <e:expr>
+	    <e:lt><e:var n="l"/><e:var n="v"/></e:lt>
+	  </e:expr>
 	</e:forall> ∧<br />
 
 	<e:forall>
-	  <e:fst>
+	  <e:vars>
 	    <e:in>
-	      <e:fst><e:var n="r"/></e:fst>
-	      <e:snd><e:st n="R"/></e:snd>
+	      <e:var n="r"/>
+	      <e:st n="R"/>
 	    </e:in>
-	  </e:fst>
-	  <e:snd>
+	  </e:vars>
+	  <e:expr>
 	    <e:lt>
-	      <e:fst><e:var n="v"/></e:fst>
-	      <e:snd><e:var n="r"/></e:snd>
+	      <e:var n="v"/>
+	      <e:var n="r"/>
 	    </e:lt>
-	  </e:snd>
+	  </e:expr>
 	</e:forall>
       </e:derive>
       <e:by><e:from name="compose"/>, open predicate</e:by>
@@ -306,18 +306,18 @@
     <e:step name="LuvuR">
       <e:derive>
 	<e:eq>
-	  <e:fst>
+	  
 	    <e:union>
-	      <e:fst><e:st n="L"/></e:fst>
-	      <e:snd>
+	      <e:st n="L"/>
+	      
 		<e:union>
-		  <e:fst><e:set><e:var n="v"/></e:set></e:fst>
-		  <e:snd><e:st n="R"/></e:snd>
+		  <e:set><e:var n="v"/></e:set>
+		  <e:st n="R"/>
 		</e:union>
-	      </e:snd>
+	      
 	    </e:union>
-	  </e:fst>
-	  <e:snd><e:st n="S"/></e:snd>
+	  
+	  <e:st n="S"/>
 	</e:eq>
       </e:derive>
       <e:by><e:from name="open"/>, ∧E</e:by>
@@ -326,8 +326,8 @@
     <e:step name="LsubsetS">
       <e:derive>
 	<e:subset>
-	  <e:fst><e:st n="L"/></e:fst>
-	  <e:snd><e:st n="S"/></e:snd>
+	  <e:st n="L"/>
+	  <e:st n="S"/>
 	</e:subset>
       </e:derive>
       <e:by><e:from name="LuvuR"/>, subset</e:by>
@@ -336,8 +336,8 @@
     <e:step name="assumewInL" indent="indent1">
       <e:derive>
 	<e:in>
-	  <e:fst><e:var n="w"/></e:fst>
-	  <e:snd><e:st n="L"/></e:snd>
+	  <e:var n="w"/>
+	  <e:st n="L"/>
 	</e:in>
       </e:derive>
       <e:by>assume</e:by>
@@ -346,8 +346,8 @@
     <e:step name="thenwInS" indent="indent1">
       <e:derive>
 	<e:in>
-	  <e:fst><e:var n="w"/></e:fst>
-	  <e:snd><e:st n="S"/></e:snd>
+	  <e:var n="w"/>
+	  <e:st n="S"/>
 	</e:in>
       </e:derive>
       <e:by><e:from name="LsubsetS"/>, <e:from name="assumewInL"/>, member of subset in set</e:by>
@@ -356,8 +356,8 @@
     <e:step name="wInLImplieswInS">
       <e:derive>
 	<e:impl>
-	  <e:fst><e:in><e:fst><e:var n="w"/></e:fst><e:snd><e:st n="L"/></e:snd></e:in></e:fst>
-	  <e:snd><e:in><e:fst><e:var n="w"/></e:fst><e:snd><e:st n="S"/></e:snd></e:in></e:snd>
+	  <e:in><e:var n="w"/><e:st n="L"/></e:in>
+	  <e:in><e:var n="w"/><e:st n="S"/></e:in>
 	</e:impl>
       </e:derive>
       <e:by><e:from name="assumewInL"/>, <e:from name="thenwInS"/>, →I</e:by>
@@ -366,8 +366,8 @@
     <e:step name="noteq">
       <e:derive>
 	<e:noteq>
-	  <e:fst><e:var n="w"/></e:fst>
-	  <e:snd><e:var n="v"/></e:snd>
+	  <e:var n="w"/>
+	  <e:var n="v"/>
 	</e:noteq>
       </e:derive>
       <e:by><e:from name="lt" />, weakening</e:by>
@@ -376,8 +376,8 @@
     <e:step name="wNotInSetOfV">
       <e:derive>
 	<e:notin>
-	  <e:fst><e:var n="w"/></e:fst>
-	  <e:snd><e:set><e:var n="v"/></e:set></e:snd>
+	  <e:var n="w"/>
+	  <e:set><e:var n="v"/></e:set>
 	</e:notin>
       </e:derive>
       <e:by><e:from name="noteq"/>, ?</e:by>
@@ -386,18 +386,18 @@
     <e:step name="allInRGreaterThanv">
       <e:derive>
 	<e:forall>
-	  <e:fst>
+	  <e:vars>
 	    <e:in>
-	      <e:fst><e:var n="r"/></e:fst>
-	      <e:snd><e:st n="R"/></e:snd>
+	      <e:var n="r"/>
+	      <e:st n="R"/>
 	    </e:in>
-	  </e:fst>
-	  <e:snd>
+	  </e:vars>
+	  <e:expr>
 	    <e:lt>
-	      <e:fst><e:var n="v"/></e:fst>
-	      <e:snd><e:var n="r"/></e:snd>
+	      <e:var n="v"/>
+	      <e:var n="r"/>
 	    </e:lt>
-	  </e:snd>
+	  </e:expr>
 	</e:forall>
       </e:derive>
       <e:by><e:from name="open"/>, ∧E</e:by>
@@ -406,8 +406,8 @@
     <e:step name="wNotInR">
       <e:derive>
 	<e:notin>
-	  <e:fst><e:var n="w"/></e:fst>
-	  <e:snd><e:st n="R"/></e:snd>
+	  <e:var n="w"/>
+	  <e:st n="R"/>
 	</e:notin>
       </e:derive>
       <e:by><e:from name="lt"/>, <e:from name="allInRGreaterThanv"/>, <e:var n="w"/> cannot satisfy membership criterion</e:by>
@@ -416,8 +416,8 @@
     <e:step name="wNotInvOrR">
       <e:derive>
 	<e:notin>
-	  <e:fst><e:var n="w"/></e:fst>
-	  <e:snd>(<e:union><e:fst><e:set><e:var n="v"/></e:set></e:fst><e:snd><e:st n="R"/></e:snd></e:union>)</e:snd>
+	  <e:var n="w"/>
+	  (<e:union><e:set><e:var n="v"/></e:set><e:st n="R"/></e:union>)
 	</e:notin>
       </e:derive>
       <e:by><e:from name="wNotInSetOfv"/>, <e:from name="wNotInR" />, not in union</e:by>
@@ -426,8 +426,8 @@
     <e:step name="assumewInS" indent="indent1">
       <e:derive>
 	<e:in>
-	  <e:fst><e:var n="w"/></e:fst>
-	  <e:snd><e:st n="S"/></e:snd>
+	  <e:var n="w"/>
+	  <e:st n="S"/>
 	</e:in>
       </e:derive>
       <e:by>assume</e:by>
@@ -436,8 +436,8 @@
     <e:step name="thenwInL" indent="indent1">
       <e:derive>
 	<e:in>
-	  <e:fst><e:var n="w"/></e:fst>
-	  <e:snd><e:st n="L"/></e:snd>
+	  <e:var n="w"/>
+	  <e:st n="L"/>
 	</e:in>
       </e:derive>
       <e:by><e:from name="LuvuR"/>, <e:from name="wNotInvOrR" />, <e:from name="assumewInS"/>, ??</e:by>
@@ -446,18 +446,18 @@
     <e:step name="wInSImplieswInL">
       <e:derive>
 	<e:impl>
-	  <e:fst>
+	  
 	    <e:in>
-	      <e:fst><e:var n="w"/></e:fst>
-	      <e:snd><e:st n="S"/></e:snd>
+	      <e:var n="w"/>
+	      <e:st n="S"/>
 	    </e:in>
-	  </e:fst>
-	  <e:snd>
+	  
+	  
 	    <e:in>
-	      <e:fst><e:var n="w"/></e:fst>
-	      <e:snd><e:st n="L"/></e:snd>
+	      <e:var n="w"/>
+	      <e:st n="L"/>
 	    </e:in>
-	  </e:snd>
+	  
 	</e:impl>
       </e:derive>
       <e:by><e:from name="assumewInS"/>, <e:from name="thenwInL"/>, →I</e:by>
@@ -466,18 +466,18 @@
     <e:step name="qed">
       <e:derive>
 	<e:doubleimpl>
-	  <e:fst>
+	  
 	    <e:in>
-	      <e:fst><e:var n="w"/></e:fst>
-	      <e:snd><e:st n="L"/></e:snd>
+	      <e:var n="w"/>
+	      <e:st n="L"/>
 	    </e:in>
-	  </e:fst>
-	  <e:snd>
+	  
+	  
 	    <e:in>
-	      <e:fst><e:var n="w"/></e:fst>
-	      <e:snd><e:st n="S"/></e:snd>
+	      <e:var n="w"/>
+	      <e:st n="S"/>
 	    </e:in>
-	  </e:snd>
+	  
 	</e:doubleimpl>
       </e:derive>
       <e:by><e:from name="wInLImplieswInS" />, <e:from name="wInSImplieswInL" />, ↔I</e:by>
@@ -499,10 +499,10 @@
     <e:step name="qed">
       <e:derive>
 	<e:and>
-	  <e:fst>
-	    <e:in><e:fst><e:var n="v"/></e:fst><e:snd><e:st n="S"/></e:snd></e:in>
-	  </e:fst>
-	  <e:snd>∀x∈L. x &lt; v ∧ L = S - {v}</e:snd>
+	  
+	    <e:in><e:var n="v"/><e:st n="S"/></e:in>
+	  
+	  ∀x∈L. x &lt; v ∧ L = S - {v}
 	</e:and>
       </e:derive>
       <e:by></e:by>
@@ -519,27 +519,27 @@
   by testing whether the pointer is <code>null</code>.
   That is,
   <e:impl>
-    <e:fst>
+    
       <e:and>
-	<e:fst><e:pred name="Tree"><code>n</code>, <e:st n="S"/></e:pred></e:fst>
-	<e:snd><e:eq><e:fst><code>n</code></e:fst><e:snd><code>null</code></e:snd></e:eq></e:snd>
+	<e:pred name="Tree"><code>n</code>, <e:st n="S"/></e:pred>
+	<e:eq><code>n</code><code>null</code></e:eq>
       </e:and>
-    </e:fst>
-    <e:snd><e:pred name="EmptyTree"><code>n</code>, <e:st n="S"/></e:pred></e:snd>
+    
+    <e:pred name="EmptyTree"><code>n</code>, <e:st n="S"/></e:pred>
   </e:impl>, and
   <e:impl>
-    <e:fst>
+    
       <e:and>
-	<e:fst><e:pred name="Tree"><code>n</code>, <e:st n="S"/></e:pred></e:fst>
-	<e:snd><e:noteq><e:fst><code>n</code></e:fst><e:snd><code>null</code></e:snd></e:noteq></e:snd>
+	<e:pred name="Tree"><code>n</code>, <e:st n="S"/></e:pred>
+	<e:noteq><code>n</code><code>null</code></e:noteq>
       </e:and>
-    </e:fst>
-    <e:snd><e:pred name="NonEmptyTree"><code>n</code>, <e:st n="S"/></e:pred></e:snd>
+    
+    <e:pred name="NonEmptyTree"><code>n</code>, <e:st n="S"/></e:pred>
   </e:impl>.
   This follows from <code>null</code> not being in the domain of the heap; <m:ie/>,
   <e:impl>
-    <e:fst><e:fcell><e:fst><code>n</code></e:fst><e:snd>…</e:snd></e:fcell></e:fst>
-    <e:snd><e:noteq><e:fst><code>n</code></e:fst><e:snd><code>null</code></e:snd></e:noteq></e:snd>
+    <e:fcell><code>n</code>…</e:fcell>
+    <e:noteq><code>n</code><code>null</code></e:noteq>
   </e:impl>.
 </p>
 -->

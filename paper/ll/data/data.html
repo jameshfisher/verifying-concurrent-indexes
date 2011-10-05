@@ -34,8 +34,8 @@
     <e:eq>
       <e:var n="l"/>
       <e:plus>
-	<e:fst><e:var n="v"/></e:fst>
-	<e:snd><e:var n="t"/></e:snd>
+	<e:var n="v"/>
+	<e:var n="t"/>
       </e:plus>
     </e:eq>.
     Therefore any node beginning at some address <e:var n="a"/> spans the contiguous addresses
@@ -70,15 +70,15 @@
     from address <e:const n="0"/> on the left-hand-side to <e:const n="address_max"/> on the right.
     Here is an example <m:ll/> representing the set
     <e:eq>
-      <e:fst><e:st n="S"/></e:fst>
-      <e:snd><e:set>
+      <e:st n="S"/>
+      <e:set>
 	  <e:const n="2"/>,
 	  <e:const n="29"/>,
 	  <e:const n="30"/>,
 	  <e:const n="77"/>
-      </e:set></e:snd>
+      </e:set>
     </e:eq> from the domain of natural numbers &lt; 256.
-    There are <e:pow><e:fst>2</e:fst><e:snd>16</e:snd></e:pow> memory locations,
+    There are <e:pow>216</e:pow> memory locations,
     spanning addresses <e:const n="0"/> to <e:const n="65,535"/>,
     so a memory address is two bytes long.
     Memory locations are one byte long.
@@ -169,7 +169,7 @@
     That is, <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
     describes a set of memory locations forming a linked list that represents set <e:st n="S"/>,
     with <code>head</code> being the address of the first <code>Node</code> in the list
-    (or <code>null</code> if <e:eq><e:fst><e:st n="S"/></e:fst><e:snd><m:scemp/></e:snd></e:eq>).
+    (or <code>null</code> if <e:eq><e:st n="S"/><m:scemp/></e:eq>).
 
     <e:diagram>
       <e:caption>Our basic <m:ll/> predicates.</e:caption>
@@ -189,8 +189,8 @@
     <e:definition name="List">
       <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred> ≝
       <e:or>
-	<e:fst><e:pred name="EmptyList"><code>head</code>, <e:st n="S"/></e:pred></e:fst>
-	<e:snd><e:pred name="NonEmptyList"><code>head</code>, <e:st n="S"/></e:pred></e:snd>
+	<e:pred name="EmptyList"><code>head</code>, <e:st n="S"/></e:pred>
+	<e:pred name="NonEmptyList"><code>head</code>, <e:st n="S"/></e:pred>
       </e:or>.
     </e:definition>
   </p>
@@ -208,8 +208,8 @@
 	    </td>
 	    <td>
 	      <e:eq>
-		<e:fst><code>head</code></e:fst>
-		<e:snd><code>null</code></e:snd>
+		<code>head</code>
+		<code>null</code>
 	      </e:eq> ∧
 	    </td>
 	    <td></td>
@@ -218,8 +218,8 @@
 	    <td></td>
 	    <td>
 	      <e:eq>
-		<e:fst><e:st n="S"/></e:fst>
-		<e:snd><m:scemp/></e:snd>
+		<e:st n="S"/>
+		<m:scemp/>
 	      </e:eq> ∧
 	    </td>
 	    <td><e:st n="S"/> is the empty set and</td>
@@ -253,18 +253,18 @@
     Another way to say this is that all the elements in <e:st n="T"/> are all greater than <e:var n="v"/>;
     we write
     <e:forall>
-      <e:fst>
+      <e:vars>
 	<e:in>
-	  <e:fst><e:var n="t"/></e:fst>
-	  <e:snd><e:st n="T"/></e:snd>
+	  <e:var n="t"/>
+	  <e:st n="T"/>
 	</e:in>
-      </e:fst>
-      <e:snd>
+      </e:vars>
+      <e:expr>
 	<e:lt>
-	  <e:fst><e:var n="value"/></e:fst>
-	  <e:snd><e:var n="t"/></e:snd>
+	  <e:var n="value"/>
+	  <e:var n="t"/>
         </e:lt>
-      </e:snd>
+      </e:expr>
     </e:forall>.
 
     We can express this relationship with a helper predicate, <e:predicate>ListCompose</e:predicate>,
@@ -277,13 +277,13 @@
 	    <td><e:pred name="ListCompose"><e:var n="value"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ≝</td>
 	    <td>
 	      <e:eq>
-		<e:fst>
+		
 		  <e:union>
-		    <e:fst><e:set><e:var n="value" /></e:set></e:fst>
-		    <e:snd><e:st n="T"/></e:snd>
+		    <e:set><e:var n="value" /></e:set>
+		    <e:st n="T"/>
 		  </e:union>
-		</e:fst>
-		<e:snd><e:st n="S"/></e:snd>
+		
+		<e:st n="S"/>
 	      </e:eq> ∧
 	    </td>
 	  </tr>
@@ -291,18 +291,18 @@
 	    <td></td>
 	    <td>
 	      <e:forall>
-		<e:fst>
+		<e:vars>
 		  <e:in>
-		    <e:fst><e:var n="t"/></e:fst>
-		    <e:snd><e:st n="T"/></e:snd>
+		    <e:var n="t"/>
+		    <e:st n="T"/>
 		  </e:in>
-		</e:fst>
-		<e:snd>
+		</e:vars>
+		<e:expr>
 		  <e:lt>
-		    <e:fst><e:var n="value"/></e:fst>
-		    <e:snd><e:var n="t"/></e:snd>
+		    <e:var n="value"/>
+		    <e:var n="t"/>
 		  </e:lt>
-		</e:snd>
+		</e:expr>
 	      </e:forall>.
 	    </td>
 	  </tr>
@@ -322,8 +322,8 @@
     Now we can use our <e:predicate>ListCompose</e:predicate> predicate
     to describe <e:var n="value"/> and <e:st n="T"/> in relation to <e:st n="S"/>; we write
     <e:exists>
-      <e:fst><e:var n="value"/>, <e:st n="T"/></e:fst>
-      <e:snd><e:pred name="ListCompose"><e:var n="value"/>, <e:st n="T"/>, <e:st n="S"/></e:pred></e:snd>
+      <e:vars><e:var n="value"/>, <e:st n="T"/></e:vars>
+      <e:expr><e:pred name="ListCompose"><e:var n="value"/>, <e:st n="T"/>, <e:st n="S"/></e:pred></e:expr>
     </e:exists>.
   </p>
 
@@ -346,8 +346,8 @@
     and the second containing some (unknown) address <e:var n="tail"/>.
     We write this as 
     <e:fcell>
-      <e:fst><code>head</code></e:fst>
-      <e:snd><e:var n="value" />, <e:var n="tail"/></e:snd>
+      <code>head</code>
+      <e:list><e:var n="value" />, <e:var n="tail"/></e:list>
     </e:fcell>.
     Notice that the lengths of the fields is left unspecified and is in fact unimportant.
   </p>
@@ -372,11 +372,11 @@
 	<tr>
 	  <td></td>
 	  <td><e:sep>
-	      <e:fst><e:fcell>
-		  <e:fst><code>head</code></e:fst>
-		  <e:snd><e:var n="value" />, <e:var n="tail"/></e:snd>
-	      </e:fcell></e:fst>
-	      <e:snd><e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred></e:snd>
+	      <e:fcell>
+		  <code>head</code>
+		  <e:list><e:var n="value" />, <e:var n="tail"/></e:list>
+	      </e:fcell>
+	      <e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred>
 	    </e:sep>.</td>
 	</tr>
       </table>

@@ -5,23 +5,23 @@
 	 xmlns:m="http://eegg.github.com/macro">
 
   <e:caption><e:logimpl>
-      <e:fst><e:and>
-	  <e:fst><e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred></e:fst>
-	  <e:snd><e:lt><e:fst><e:var n="v"/></e:fst><e:snd><code>value</code></e:snd></e:lt></e:snd>
-      </e:and></e:fst>
-      <e:snd><e:pred name="ListCompose">
+      <e:and>
+	  <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred>
+	  <e:lt><e:var n="v"/><code>value</code></e:lt>
+      </e:and>
+      <e:pred name="ListCompose">
 	  <e:var n="v"/>,
-	  <e:union><e:fst><e:st n="T"/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:union>,
-	  <e:union><e:fst><e:st n="S"/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:union>
-      </e:pred></e:snd>
+	  <e:union><e:st n="T"/><e:set><code>value</code></e:set></e:union>,
+	  <e:union><e:st n="S"/><e:set><code>value</code></e:set></e:union>
+      </e:pred>
   </e:logimpl></e:caption>
 
   <e:contents>
     <e:derivation>
       <e:step name="given">
 	<e:derive><e:and>
-	    <e:fst><e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred></e:fst>
-	    <e:snd><e:lt><e:fst><e:var n="v"/></e:fst><e:snd><code>value</code></e:snd></e:lt></e:snd>
+	    <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred>
+	    <e:lt><e:var n="v"/><code>value</code></e:lt>
 	</e:and></e:derive>
 	<e:by>given</e:by>
       </e:step>
@@ -32,34 +32,34 @@
       </e:step>
 
       <e:step name="givenlt">
-	<e:derive><e:lt><e:fst><e:var n="v"/></e:fst><e:snd><code>value</code></e:snd></e:lt></e:derive>
+	<e:derive><e:lt><e:var n="v"/><code>value</code></e:lt></e:derive>
 	<e:by><e:from name="given"/>, <m:andElim/></e:by>
       </e:step>
 
       <e:step name="openCompose">
 	<e:derive>
 	  <e:eq>
-	    <e:fst>
+	    
 	      <e:union>
-		<e:fst><e:set><e:var n="v"/></e:set></e:fst>
-		<e:snd><e:st n="T"/></e:snd>
+		<e:set><e:var n="v"/></e:set>
+		<e:st n="T"/>
 	      </e:union>
-	    </e:fst>
-	    <e:snd><e:st n="S"/></e:snd>
+	    
+	    <e:st n="S"/>
 	  </e:eq> ∧
 	  <e:forall>
-	    <e:fst>
+	    <e:vars>
 	      <e:in>
-		<e:fst><e:var n="t"/></e:fst>
-		<e:snd><e:st n="T"/></e:snd>
+		<e:var n="t"/>
+		<e:st n="T"/>
 	      </e:in>
-	    </e:fst>
-	    <e:snd>
+	    </e:vars>
+	    <e:expr>
 	      <e:lt>
-		<e:fst><e:var n="v"/></e:fst>
-		<e:snd><e:var n="t"/></e:snd>
+		<e:var n="v"/>
+		<e:var n="t"/>
 	      </e:lt>
-	    </e:snd>
+	    </e:expr>
 	  </e:forall>
 	</e:derive>
 	<e:by><e:from name="givenCompose"/>, open predicate</e:by>
@@ -67,31 +67,31 @@
 
       <e:step name="vUTIsS">
 	<e:derive><e:eq>
-	    <e:fst>
+	    
 	      <e:union>
-		<e:fst><e:set><e:var n="v"/></e:set></e:fst>
-		<e:snd><e:st n="T"/></e:snd>
+		<e:set><e:var n="v"/></e:set>
+		<e:st n="T"/>
 	      </e:union>
-	    </e:fst>
-	    <e:snd><e:st n="S"/></e:snd>
+	    
+	    <e:st n="S"/>
 	</e:eq></e:derive>
 	<e:by><e:from name="openCompose"/>, <m:andElim/></e:by>
       </e:step>
 
       <e:step name="allInTGreaterThanv">
 	<e:derive><e:forall>
-	    <e:fst>
+	    <e:vars>
 	      <e:in>
-		<e:fst><e:var n="t"/></e:fst>
-		<e:snd><e:st n="T"/></e:snd>
+		<e:var n="t"/>
+		<e:st n="T"/>
 	      </e:in>
-	    </e:fst>
-	    <e:snd>
+	    </e:vars>
+	    <e:expr>
 	      <e:lt>
-		<e:fst><e:var n="v"/></e:fst>
-		<e:snd><e:var n="t"/></e:snd>
+		<e:var n="v"/>
+		<e:var n="t"/>
 	      </e:lt>
-	    </e:snd>
+	    </e:expr>
 	</e:forall></e:derive>
 	<e:by><e:from name="openCompose"/>, <m:andElim/></e:by>
       </e:step>
@@ -99,36 +99,36 @@
       <e:step name="vUTUvalueIsSUvalue">
 	<e:derive>
 	  <e:eq>
-	    <e:fst>
+	    
 	      <e:union>
-		<e:fst><e:set><e:var n="v"/></e:set></e:fst>
-		<e:snd><e:union><e:fst><e:st n="T"/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:union></e:snd>
+		<e:set><e:var n="v"/></e:set>
+		<e:union><e:st n="T"/><e:set><code>value</code></e:set></e:union>
 	      </e:union>
-	    </e:fst>
-	    <e:snd><e:union><e:fst><e:st n="S"/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:union></e:snd>
+	    
+	    <e:union><e:st n="S"/><e:set><code>value</code></e:set></e:union>
 	  </e:eq>
 	</e:derive>
 	<e:by><e:from name="vUTIsS"/>, <e:logimpl>
-	    <e:fst><e:eq><e:fst><e:var n="a"/></e:fst><e:snd><e:var n="b"/></e:snd></e:eq></e:fst>
-	    <e:snd><e:eq><e:fst>f(<e:var n="a"/>)</e:fst><e:snd>f(<e:var n="b"/>)</e:snd></e:eq></e:snd>
+	    <e:eq><e:var n="a"/><e:var n="b"/></e:eq>
+	    <e:eq>f(<e:var n="a"/>)f(<e:var n="b"/>)</e:eq>
 	</e:logimpl></e:by>
       </e:step>
 
       <e:step name="allInvalueGreaterThanv">
 	<e:derive>
 	  <e:forall>
-	    <e:fst>
+	    <e:vars>
 	      <e:in>
-		<e:fst><e:var n="t"/></e:fst>
-		<e:snd><e:set><code>value</code></e:set></e:snd>
+		<e:var n="t"/>
+		<e:set><code>value</code></e:set>
 	      </e:in>
-	    </e:fst>
-	    <e:snd>
+	    </e:vars>
+	    <e:expr>
 	      <e:lt>
-		<e:fst><e:var n="v"/></e:fst>
-		<e:snd><e:var n="t"/></e:snd>
+		<e:var n="v"/>
+		<e:var n="t"/>
 	      </e:lt>
-	    </e:snd>
+	    </e:expr>
 	  </e:forall>
 	</e:derive>
 	<e:by><e:from name="givenlt"/>, ??</e:by>
@@ -137,18 +137,18 @@
       <e:step name="allInTUvalueGreaterThanv">
 	<e:derive>
 	  <e:forall>
-	    <e:fst>
+	    <e:vars>
 	      <e:in>
-		<e:fst><e:var n="t"/></e:fst>
-		<e:snd><e:union><e:fst><e:st n="T"/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:union></e:snd>
+		<e:var n="t"/>
+		<e:union><e:st n="T"/><e:set><code>value</code></e:set></e:union>
 	      </e:in>
-	    </e:fst>
-	    <e:snd>
+	    </e:vars>
+	    <e:expr>
 	      <e:lt>
-		<e:fst><e:var n="v"/></e:fst>
-		<e:snd><e:var n="t"/></e:snd>
+		<e:var n="v"/>
+		<e:var n="t"/>
 	      </e:lt>
-	    </e:snd>
+	    </e:expr>
 	  </e:forall>
 	</e:derive>
 	<e:by><e:from name="allInTGreaterThanv"/>, <e:from name="allInvalueGreaterThanv"/>, ??</e:by>
@@ -157,8 +157,8 @@
       <e:step name="qed">
 	<e:derive><e:pred name="ListCompose">
 	    <e:var n="v"/>,
-	    <e:union><e:fst><e:st n="T"/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:union>,
-	    <e:union><e:fst><e:st n="S"/></e:fst><e:snd><e:set><code>value</code></e:set></e:snd></e:union>
+	    <e:union><e:st n="T"/><e:set><code>value</code></e:set></e:union>,
+	    <e:union><e:st n="S"/><e:set><code>value</code></e:set></e:union>
 	</e:pred></e:derive>
 	<e:by><e:from name="vUTUvalueIsSUvalue"/>, <e:from name="allInTUvalueGreaterThanv"/>, close predicate</e:by>
       </e:step>

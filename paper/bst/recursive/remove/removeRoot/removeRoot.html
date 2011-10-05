@@ -16,7 +16,7 @@
     <e:triple>
       <e:pre><e:pred name="TopOfTree"><code>root</code>, <e:var n="v"/>, <e:st n="S"/></e:pred></e:pre>
       <e:command>o = removeRoot(root);</e:command>
-      <e:post><e:pred name="Tree"><code>o</code>, <e:setminus><e:fst><e:st n="S"/></e:fst><e:snd><e:set><e:var n="v"/></e:set></e:snd></e:setminus></e:pred></e:post>
+      <e:post><e:pred name="Tree"><code>o</code>, <e:setminus><e:st n="S"/><e:set><e:var n="v"/></e:set></e:setminus></e:pred></e:post>
     </e:triple>
   </div>
 
