@@ -1,0 +1,3 @@
+[submodule "paper/style"]
+	path = paper/style
+	url = git@github.com:eegg/style.git
