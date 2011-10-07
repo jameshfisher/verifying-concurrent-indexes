@@ -91,6 +91,7 @@
 
   <xsl:template match="e:forall">∀<xsl:apply-templates select="e:vars" />.&#160;<xsl:apply-templates select="e:expr" /></xsl:template>
   <xsl:template match="e:exists">∃<xsl:apply-templates select="e:vars" />.&#160;<xsl:apply-templates select="e:expr" /></xsl:template>
+  <xsl:template match="e:vars"><xsl:call-template name="opNoSpaces"><xsl:with-param name="sym">, </xsl:with-param></xsl:call-template></xsl:template>
 
   <xsl:template match="e:logimpl"><xsl:call-template name="op"><xsl:with-param name="sym">⇒</xsl:with-param></xsl:call-template></xsl:template>
 
@@ -132,8 +133,8 @@
     <xsl:apply-templates />
   </xsl:template>
 
-  <xsl:template match="e:pred"><span class="pred_name"><xsl:value-of select="@name" /></span>(<xsl:apply-templates />)</xsl:template>
-  <xsl:template match="e:func"><span class="func_name"><xsl:value-of select="@n" /></span>(<xsl:apply-templates />)</xsl:template>
+  <xsl:template match="e:pred"><a class="pred_name"><xsl:attribute name="href">#def_<xsl:value-of select="@name"/></xsl:attribute><xsl:value-of select="@name" /></a>(<xsl:call-template name="opNoSpaces"><xsl:with-param name="sym">, </xsl:with-param></xsl:call-template>)</xsl:template>
+  <xsl:template match="e:func"><span class="func_name"><xsl:value-of select="@n" /></span>(<xsl:call-template name="opNoSpaces"><xsl:with-param name="sym">, </xsl:with-param></xsl:call-template>)</xsl:template>
   <xsl:template match="e:predicate"><span class="pred_name"><xsl:apply-templates /></span></xsl:template>
 
   <!-- This should only emphasize on first use -->
@@ -186,6 +187,7 @@
 
  <xsl:template match="e:definition">
     <figure class="definition">
+      <xsl:attribute name="id">def_<xsl:value-of select="@name"/></xsl:attribute>
       <figcaption><span class="figure_number">Definition <xsl:number count="e:definition" level="any"/>.</span></figcaption>
       <div><xsl:apply-templates /></div>
     </figure>

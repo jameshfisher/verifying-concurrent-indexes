@@ -51,18 +51,14 @@ bool search(Node* head, int value) {&#160;</e:displaycode>
 <div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Assignment.</div><e:and>
   <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
   <e:and>
-    
       <e:notin>
         <code>value</code>
         <e:st n="S"/>
       </e:notin>
-    
-    
       <e:eq>
         <code>o</code>
         <code>false</code>
       </e:eq>
-    
   </e:and>
 </e:and></div></div>
 
@@ -103,7 +99,7 @@ bool search(Node* head, int value) {&#160;</e:displaycode>
   <e:sep>
     <e:fcell>
       <code>head</code>
-      <e:var n="v"/>, <e:var n="tail"/>
+      <e:list><e:var n="v"/>, <e:var n="tail"/></e:list>
     </e:fcell>
     <e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred>
   </e:sep>
@@ -116,7 +112,7 @@ bool search(Node* head, int value) {&#160;</e:displaycode>
   <e:sep>
     <e:fcell>
       <code>head</code>
-      <code>value</code>, <e:var n="tail"/>
+      <e:list><code>value</code>, <e:var n="tail"/></e:list>
     </e:fcell>
     <e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred>
   </e:sep>
@@ -134,7 +130,7 @@ bool search(Node* head, int value) {&#160;</e:displaycode>
   <e:sep>
     <e:fcell>
       <code>head</code>
-      <code>value</code>, <e:var n="tail"/>
+      <e:list><code>value</code>, <e:var n="tail"/></e:list>
     </e:fcell>
     <e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred>
   </e:sep> ∧<br />
@@ -196,7 +192,7 @@ bool search(Node* head, int value) {&#160;</e:displaycode>
   <e:sep>
     <e:fcell>
       <code>head</code>
-      <e:var n="v"/>, <e:var n="tail"/>
+      <e:list><e:var n="v"/>, <e:var n="tail"/></e:list>
     </e:fcell>
     <e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred>
   </e:sep> ∧<br />
@@ -213,7 +209,7 @@ bool search(Node* head, int value) {&#160;</e:displaycode>
   <e:sep>
     <e:fcell>
       <code>head</code>
-      <e:var n="v"/>, <e:var n="tail"/>
+      <e:list><e:var n="v"/>, <e:var n="tail"/></e:list>
     </e:fcell>
     <e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred>
   </e:sep> ∧<br />
@@ -248,7 +244,7 @@ bool search(Node* head, int value) {&#160;</e:displaycode>
   <e:sep>
     <e:fcell>
       <code>head</code>
-      <e:var n="v"/>, <e:var n="tail"/>
+      <e:list><e:var n="v"/>, <e:var n="tail"/></e:list>
     </e:fcell>
     <e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred>
   </e:sep> ∧<br />
@@ -276,7 +272,7 @@ Note <e:lt><e:size><e:st n="T"/></e:size><e:size><e:st n="S"/></e:size></e:lt>.<
   <e:sep>
     <e:fcell>
       <code>head</code>
-      <e:var n="v"/>, <e:var n="tail"/>
+      <e:list><e:var n="v"/>, <e:var n="tail"/></e:list>
     </e:fcell>
     <e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred>
   </e:sep> ∧<br />
@@ -309,7 +305,7 @@ Note <e:lt><e:size><e:st n="T"/></e:size><e:size><e:st n="S"/></e:size></e:lt>.<
   <e:sep>
     <e:fcell>
       <code>head</code>
-      <e:var n="v"/>, <e:var n="tail"/>
+      <e:list><e:var n="v"/>, <e:var n="tail"/></e:list>
     </e:fcell>
     <e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred>
   </e:sep> ∧<br />
@@ -364,7 +360,7 @@ Use <e:logimpl>
   <e:sep>
     <e:fcell>
       <code>head</code>
-      <e:var n="v"/>, <e:var n="tail"/>
+      <e:list><e:var n="v"/>, <e:var n="tail"/></e:list>
     </e:fcell>
     <e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred>
   </e:sep> ∧<br />
@@ -401,7 +397,7 @@ Use <e:logimpl>
   <e:sep>
     <e:fcell>
       <code>head</code>
-      <e:var n="v"/>, <e:var n="tail"/>
+      <e:list><e:var n="v"/>, <e:var n="tail"/></e:list>
     </e:fcell>
     <e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred>
   </e:sep> ∧<br />
@@ -429,7 +425,7 @@ Use <e:logimpl>
   <e:sep>
     <e:fcell>
       <code>head</code>
-      <e:var n="v"/>, <e:var n="tail"/>
+      <e:list><e:var n="v"/>, <e:var n="tail"/></e:list>
     </e:fcell>
     <e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred>
   </e:sep> ∧<br />

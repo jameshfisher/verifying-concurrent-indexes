@@ -61,7 +61,7 @@ h4 {
 .math .constant { font-style: normal; }
 .var { font-style: italic; }
 .st { font-style: normal; font-weight: bold; color: brown; }
-.pred_name, .keysof { font-family: "Arial"; font-size: 0.8em; color: green; }
+a.pred_name, a.keysof { font-family: "Arial"; font-size: 0.8em; color: green; }
 
 .cond:before, .set:before {
     content: "{";

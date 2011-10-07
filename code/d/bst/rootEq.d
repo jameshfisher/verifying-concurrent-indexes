@@ -22,7 +22,7 @@ bool rootEq(Node* root, int value) {
   ///	      <e:pred name="Tree"><e:var n="r"/>, <e:st n="R"/></e:pred>
   ///       </e:sep>
   ///     </e:sep> ∧<br />
-  ///     <e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
+  ///     <e:pred name="TCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
   ///   </e:indent></e:expr>
   /// </e:exists>
 
@@ -41,7 +41,7 @@ bool rootEq(Node* root, int value) {
   ///	      <e:pred name="Tree"><e:var n="r"/>, <e:st n="R"/></e:pred>
   ///       </e:sep>
   ///     </e:sep> ∧<br />
-  ///     <e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred> ∧<br />
+  ///     <e:pred name="TCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred> ∧<br />
   ///     <e:doubleimpl>
   ///       <code>o</code>
   ///       <e:eq>

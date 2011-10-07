@@ -25,8 +25,8 @@ Node* blacken(Node* root) {&#160;</e:displaycode>
 </e:and></div></div>
 
 <div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'><m:existsIntro/> on <e:var n="h"/> as <e:var n="nh"/>.</div><e:exists>
-  <e:var n="nh"/>
-  <e:and>
+  <e:vars><e:var n="nh"/></e:vars>
+  <e:expr><e:and>
     <e:pred name="BT"><code>o</code>, <e:st n="S"/>, <e:var n="nh"/></e:pred>
     <e:in>
       <e:var n="nh"/>
@@ -35,7 +35,7 @@ Node* blacken(Node* root) {&#160;</e:displaycode>
         <e:plus><e:var n="h"/><e:const n="1"/></e:plus>
       </e:set>
     </e:in>
-  </e:and>
+  </e:and></e:expr>
 </e:exists></div></div>
 <e:displaycode>  }
   else {&#160;</e:displaycode>
@@ -64,8 +64,8 @@ Node* blacken(Node* root) {&#160;</e:displaycode>
 </e:and></div></div>
 
 <div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'><m:existsIntro/> on <e:var n="h"/> as <e:var n="nh"/>.</div><e:exists>
-  <e:var n="nh"/>
-  <e:and>
+  <e:vars><e:var n="nh"/></e:vars>
+  <e:expr><e:and>
     <e:pred name="BT"><code>o</code>, <e:st n="S"/>, <e:var n="nh"/></e:pred>
     <e:in>
       <e:var n="nh"/>
@@ -74,7 +74,7 @@ Node* blacken(Node* root) {&#160;</e:displaycode>
         <e:plus><e:var n="h"/><e:const n="1"/></e:plus>
       </e:set>
     </e:in>
-  </e:and>
+  </e:and></e:expr>
 </e:exists></div></div>
 <e:displaycode>    }
     else {&#160;</e:displaycode>
@@ -98,8 +98,8 @@ Node* blacken(Node* root) {&#160;</e:displaycode>
 </e:and></div></div>
 
 <div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'><m:existsIntro/> on <e:var n="h"/> as <e:var n="nh"/>.</div><e:exists>
-  <e:var n="nh"/>
-  <e:and>
+  <e:vars><e:var n="nh"/></e:vars>
+  <e:expr><e:and>
     <e:pred name="BT"><code>o</code>, <e:st n="S"/>, <e:var n="nh"/></e:pred>
     <e:in>
       <e:var n="nh"/>
@@ -108,12 +108,12 @@ Node* blacken(Node* root) {&#160;</e:displaycode>
         <e:plus><e:var n="h"/><e:const n="1"/></e:plus>
       </e:set>
     </e:in>
-  </e:and>
+  </e:and></e:expr>
 </e:exists></div></div>
 <e:displaycode>    }&#160;</e:displaycode>
 <div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>If-rule.</div><e:exists>
-  <e:var n="nh"/>
-  <e:and>
+  <e:vars><e:var n="nh"/></e:vars>
+  <e:expr><e:and>
     <e:pred name="BT"><code>o</code>, <e:st n="S"/>, <e:var n="nh"/></e:pred>
     <e:in>
       <e:var n="nh"/>
@@ -122,13 +122,13 @@ Node* blacken(Node* root) {&#160;</e:displaycode>
         <e:plus><e:var n="h"/><e:const n="1"/></e:plus>
       </e:set>
     </e:in>
-  </e:and>
+  </e:and></e:expr>
 </e:exists></div></div>
 <e:displaycode>  }
 &#160;</e:displaycode>
 <div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>If-rule. Function postcondition.</div><e:exists>
-  <e:var n="nh"/>
-  <e:and>
+  <e:vars><e:var n="nh"/></e:vars>
+  <e:expr><e:and>
     <e:pred name="BT"><code>o</code>, <e:st n="S"/>, <e:var n="nh"/></e:pred>
     <e:in>
       <e:var n="nh"/>
@@ -137,7 +137,7 @@ Node* blacken(Node* root) {&#160;</e:displaycode>
         <e:plus><e:var n="h"/><e:const n="1"/></e:plus>
       </e:set>
     </e:in>
-  </e:and>
+  </e:and></e:expr>
 </e:exists></div></div>
 <e:displaycode>
   return root;

@@ -5,14 +5,14 @@ import bst.node;
 
 Node* descend(Node* root, in int value) {&#160;</e:displaycode>
 <div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Function precondition.</div><e:exists>
-  <e:var n="v"/>
-  <e:and>
+  <e:vars><e:var n="v"/></e:vars>
+  <e:expr><e:and>
     <e:pred name="TopOfTree"><code>root</code>, <e:var n="v"/>, <e:st n="S"/></e:pred>
     <e:noteq>
         <e:var n="v"/>
         <code>value</code>
       </e:noteq>
-  </e:and>
+  </e:and></e:expr>
 </e:exists></div></div>
 
 <div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'><e:logimpl>
@@ -31,8 +31,8 @@ Node* descend(Node* root, in int value) {&#160;</e:displaycode>
     </e:lt>
   </e:or>
 </e:logimpl></div><e:exists>
-  <e:var n="v"/>
-  <e:and>
+  <e:vars><e:var n="v"/></e:vars>
+  <e:expr><e:and>
     <e:pred name="TopOfTree"><code>root</code>, <e:var n="v"/>, <e:st n="S"/></e:pred>
     <e:or>
       (<e:lt>
@@ -44,14 +44,14 @@ Node* descend(Node* root, in int value) {&#160;</e:displaycode>
         <e:var n="v"/>
       </e:lt>)
     </e:or>
-  </e:and>
+  </e:and></e:expr>
 </e:exists></div></div>
 <e:displaycode>
   int dir = value &gt; root.value;
 &#160;</e:displaycode>
 <div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>C semantics render this as an integer.</div><e:exists>
-  <e:var n="v"/>
-  <e:and>
+  <e:vars><e:var n="v"/></e:vars>
+  <e:expr><e:and>
     <e:pred name="TopOfTree"><code>root</code>, <e:var n="v"/>, <e:st n="S"/></e:pred>
     <br /><e:indent><e:or>
       (<e:and>
@@ -75,24 +75,24 @@ Node* descend(Node* root, in int value) {&#160;</e:displaycode>
         </e:eq>
       </e:and>)
     </e:or></e:indent>
-  </e:and>
+  </e:and></e:expr>
 </e:exists></div></div>
 
 <div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Open <e:pred name="TopOfTree"><code>root</code>, <e:var n="v"/>, <e:st n="S"/></e:pred>.</div><e:exists>
-  <e:var n="v"/>, <e:var n="l"/>,<e:var n="r"/>,<e:st n="L"/>,<e:st n="R"/>
-  <e:indent><e:and>
+  <e:vars><e:var n="v"/>, <e:var n="l"/>,<e:var n="r"/>,<e:st n="L"/>,<e:st n="R"/></e:vars>
+  <e:expr><e:indent><e:and>
     
       <e:sep>
         <e:fcell>
         <code>root</code>
-        <e:var n="v"/>,<e:var n="l"/>,<e:var n="r"/>
+        <e:list><e:var n="v"/>,<e:var n="l"/>,<e:var n="r"/></e:list>
       </e:fcell>
         <e:sep>
         <e:pred name="Tree"><e:var n="l"/>, <e:st n="L"/></e:pred>
         <e:pred name="Tree"><e:var n="r"/>, <e:st n="R"/></e:pred>
         </e:sep>
       </e:sep> ∧<br />
-      <e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
+      <e:pred name="TCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
     
     <br /><e:indent><e:or>
       (<e:and>
@@ -116,25 +116,25 @@ Node* descend(Node* root, in int value) {&#160;</e:displaycode>
         </e:eq>
       </e:and>)
     </e:or></e:indent>
-  </e:and></e:indent>
+  </e:and></e:indent></e:expr>
 </e:exists></div></div>
 <e:displaycode>
   Node* o = root.c[dir];&#160;</e:displaycode>
 <div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Both cases of <code>dir</code>.</div><e:exists>
-  <e:var n="v"/>, <e:var n="l"/>,<e:var n="r"/>,<e:st n="L"/>,<e:st n="R"/>
-  <e:indent><e:and>
+  <e:vars><e:var n="v"/>, <e:var n="l"/>,<e:var n="r"/>,<e:st n="L"/>,<e:st n="R"/></e:vars>
+  <e:expr><e:indent><e:and>
     
       <e:sep>
         <e:fcell>
         <code>root</code>
-        <e:var n="v"/>,<e:var n="l"/>,<e:var n="r"/>
+        <e:list><e:var n="v"/>,<e:var n="l"/>,<e:var n="r"/></e:list>
       </e:fcell>
         <e:sep>
         <e:pred name="Tree"><e:var n="l"/>, <e:st n="L"/></e:pred>
         <e:pred name="Tree"><e:var n="r"/>, <e:st n="R"/></e:pred>
         </e:sep>
       </e:sep> ∧<br />
-      <e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
+      <e:pred name="TCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
     
     <br /><e:indent><e:or>
       (<e:and>
@@ -158,24 +158,24 @@ Node* descend(Node* root, in int value) {&#160;</e:displaycode>
         </e:eq>
       </e:and>)
     </e:or></e:indent>
-  </e:and></e:indent>
+  </e:and></e:indent></e:expr>
 </e:exists></div></div>
 
 <div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Substitution.</div><e:exists>
-  <e:var n="v"/>, <e:var n="l"/>,<e:var n="r"/>,<e:st n="L"/>,<e:st n="R"/>
-  <e:indent><e:and>
+  <e:vars><e:var n="v"/>, <e:var n="l"/>,<e:var n="r"/>,<e:st n="L"/>,<e:st n="R"/></e:vars>
+  <e:expr><e:indent><e:and>
     
       <e:sep>
         <e:fcell>
         <code>root</code>
-        <e:var n="v"/>,<e:var n="l"/>,<e:var n="r"/>
+        <e:list><e:var n="v"/>,<e:var n="l"/>,<e:var n="r"/></e:list>
       </e:fcell>
         <e:sep>
         <e:pred name="Tree"><e:var n="l"/>, <e:st n="L"/></e:pred>
         <e:pred name="Tree"><e:var n="r"/>, <e:st n="R"/></e:pred>
         </e:sep>
       </e:sep> ∧<br />
-      <e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
+      <e:pred name="TCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
     
     <br /><e:indent><e:or>
       (<e:and>
@@ -193,12 +193,12 @@ Node* descend(Node* root, in int value) {&#160;</e:displaycode>
         <e:pred name="Tree"><code>o</code>, <e:st n="R"/></e:pred>
       </e:and>)
     </e:or></e:indent>
-  </e:and></e:indent>
+  </e:and></e:indent></e:expr>
 </e:exists></div></div>
 
 <div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Lemma: <e:logimpl>
   <e:and>
-    <e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
+    <e:pred name="TCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
     <e:lt><e:var n="v"/><code>value</code></e:lt>
   </e:and>
   <e:doubleimpl>
@@ -208,7 +208,7 @@ Node* descend(Node* root, in int value) {&#160;</e:displaycode>
 </e:logimpl>.<br />
 Lemma: <e:logimpl>
   <e:and>
-    <e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
+    <e:pred name="TCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
     <e:lt><code>value</code><e:var n="v"/></e:lt>
   </e:and>
   <e:doubleimpl>
@@ -216,20 +216,20 @@ Lemma: <e:logimpl>
     <e:in><code>value</code><e:st n="S"/></e:in>
   </e:doubleimpl>
 </e:logimpl>.</div><e:exists>
-  <e:var n="v"/>, <e:var n="l"/>,<e:var n="r"/>,<e:st n="L"/>,<e:st n="R"/>
-  <e:indent><e:and>
+  <e:vars><e:var n="v"/>, <e:var n="l"/>,<e:var n="r"/>,<e:st n="L"/>,<e:st n="R"/></e:vars>
+  <e:expr><e:indent><e:and>
     
       <e:sep>
         <e:fcell>
         <code>root</code>
-        <e:var n="v"/>,<e:var n="l"/>,<e:var n="r"/>
+        <e:list><e:var n="v"/>,<e:var n="l"/>,<e:var n="r"/></e:list>
       </e:fcell>
         <e:sep>
         <e:pred name="Tree"><e:var n="l"/>, <e:st n="L"/></e:pred>
         <e:pred name="Tree"><e:var n="r"/>, <e:st n="R"/></e:pred>
         </e:sep>
       </e:sep> ∧<br />
-      <e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
+      <e:pred name="TCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
     
     <br /><e:indent><e:or>
       (<e:and>
@@ -247,24 +247,24 @@ Lemma: <e:logimpl>
         </e:doubleimpl>)
       </e:and>)
     </e:or></e:indent>
-  </e:and></e:indent>
+  </e:and></e:indent></e:expr>
 </e:exists></div></div>
 
 <div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'><m:existsIntro/> on <e:st n="L"/> as <e:st n="Q"/>, <e:st n="R"/> as <e:st n="Q"/>.</div><e:exists>
-  <e:var n="v"/>, <e:var n="l"/>,<e:var n="r"/>,<e:st n="L"/>,<e:st n="R"/>
-  <e:indent><e:and>
+  <e:vars><e:var n="v"/>, <e:var n="l"/>,<e:var n="r"/>,<e:st n="L"/>,<e:st n="R"/></e:vars>
+  <e:expr><e:indent><e:and>
     
       <e:sep>
         <e:fcell>
         <code>root</code>
-        <e:var n="v"/>,<e:var n="l"/>,<e:var n="r"/>
+        <e:list><e:var n="v"/>,<e:var n="l"/>,<e:var n="r"/></e:list>
       </e:fcell>
         <e:sep>
         <e:pred name="Tree"><e:var n="l"/>, <e:st n="L"/></e:pred>
         <e:pred name="Tree"><e:var n="r"/>, <e:st n="R"/></e:pred>
         </e:sep>
       </e:sep> ∧<br />
-      <e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
+      <e:pred name="TCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
     
     <br /><e:indent><e:or>
       <e:exists><e:st n="Q"/>(<e:and>
@@ -282,7 +282,7 @@ Lemma: <e:logimpl>
         </e:doubleimpl>)
       </e:and>)</e:exists>
     </e:or></e:indent>
-  </e:and></e:indent>
+  </e:and></e:indent></e:expr>
 </e:exists></div></div>
 
 <div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Introduce quantification.</div>∃v,l,r,L,R.

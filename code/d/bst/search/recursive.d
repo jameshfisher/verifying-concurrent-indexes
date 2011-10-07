@@ -231,7 +231,7 @@ bool search(Node* root, in int value) {
       ///             <e:pred name="Tree"><e:var n="r"/>, <e:st n="R"/></e:pred>
       ///       </e:sep>
       ///     </e:sep> ∧<br />
-      ///     <e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred> ∧<br />
+      ///     <e:pred name="TCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred> ∧<br />
       ///     <e:noteq>
       ///       <e:var n="v"/>
       ///       <code>value</code>
@@ -254,7 +254,7 @@ bool search(Node* root, in int value) {
         ///           <e:pred name="Tree"><e:var n="r"/>, <e:st n="R"/></e:pred>
         ///       </e:sep>
         ///     </e:sep> ∧<br />
-        ///     <e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred> ∧<br />
+        ///     <e:pred name="TCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred> ∧<br />
         ///     <e:lt>
         ///       <code>value</code>
         ///       <e:var n="v"/>
@@ -264,7 +264,7 @@ bool search(Node* root, in int value) {
 
         // Lemma: <e:logimpl>
         //   <e:and>
-        //     <e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
+        //     <e:pred name="TCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
         //     <e:lt><code>value</code><e:var n="v"/></e:lt>
         //   </e:and>
         //   <e:doubleimpl>
@@ -285,7 +285,7 @@ bool search(Node* root, in int value) {
         ///           <e:pred name="Tree"><e:var n="r"/>, <e:st n="R"/></e:pred>
         ///       </e:sep>
         ///     </e:sep> ∧<br />
-        ///     <e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred> ∧<br />
+        ///     <e:pred name="TCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred> ∧<br />
         ///     <e:doubleimpl>
         ///       <e:in><code>value</code><e:st n="L"/></e:in>
         ///       <e:in><code>value</code><e:st n="S"/></e:in>
@@ -308,7 +308,7 @@ bool search(Node* root, in int value) {
         ///           <e:pred name="Tree"><e:var n="r"/>, <e:st n="R"/></e:pred>
         ///       </e:sep>
         ///     </e:sep> ∧<br />
-        ///     <e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred> ∧<br />
+        ///     <e:pred name="TCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred> ∧<br />
         ///     <e:doubleimpl>
         ///       <e:in><code>value</code><e:st n="L"/></e:in>
         ///       <e:in><code>value</code><e:st n="S"/></e:in>
@@ -334,7 +334,7 @@ bool search(Node* root, in int value) {
         ///           <e:pred name="Tree"><e:var n="r"/>, <e:st n="R"/></e:pred>
         ///       </e:sep>
         ///     </e:sep> ∧<br />
-        ///     <e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred> ∧<br />
+        ///     <e:pred name="TCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred> ∧<br />
         ///     <e:doubleimpl>
         ///       <code>o</code>
         ///       (<e:in><code>value</code><e:st n="S"/></e:in>)

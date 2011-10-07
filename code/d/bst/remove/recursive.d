@@ -39,7 +39,7 @@ Node* remove(Node* root, int value) {
     ///             <e:pred name="Tree"><e:var n="r"/>, <e:st n="R"/></e:pred>
     ///       </e:sep>
     ///     </e:sep> ∧<br />
-    ///     <e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
+    ///     <e:pred name="TCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
     ///   </e:indent></e:expr>
     /// </e:exists>
 
@@ -58,7 +58,7 @@ Node* remove(Node* root, int value) {
       ///             <e:pred name="Tree"><e:var n="r"/>, <e:st n="R"/></e:pred>
       ///       </e:sep>
       ///     </e:sep> ∧<br />
-      ///     <e:pred name="TreeCompose"><e:st n="L"/>, <code>value</code>, <e:st n="R"/>, <e:st n="S"/></e:pred>
+      ///     <e:pred name="TCompose"><e:st n="L"/>, <code>value</code>, <e:st n="R"/>, <e:st n="S"/></e:pred>
       ///   </e:indent></e:expr>
       /// </e:exists>
 
@@ -84,7 +84,7 @@ Node* remove(Node* root, int value) {
       ///             <e:pred name="Tree"><e:var n="r"/>, <e:st n="R"/></e:pred>
       ///       </e:sep>
       ///     </e:sep> ∧<br />
-      ///     <e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred> ∧
+      ///     <e:pred name="TCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred> ∧
       ///     <e:noteq><e:var n="v"/><code>value</code></e:noteq>
       ///   </e:indent></e:expr>
       /// </e:exists>
@@ -104,7 +104,7 @@ Node* remove(Node* root, int value) {
         ///             <e:pred name="Tree"><e:var n="r"/>, <e:st n="R"/></e:pred>
         ///       </e:sep>
         ///     </e:sep> ∧<br />
-        ///     <e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred> ∧
+        ///     <e:pred name="TCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred> ∧
         ///     <e:lt><code>value</code><e:var n="v"/></e:lt>
         ///   </e:indent></e:expr>
         /// </e:exists>
@@ -124,19 +124,19 @@ Node* remove(Node* root, int value) {
         ///             <e:pred name="Tree"><e:var n="r"/>, <e:st n="R"/></e:pred>
         ///       </e:sep>
         ///     </e:sep> ∧<br />
-        ///     <e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred> ∧
+        ///     <e:pred name="TCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred> ∧
         ///     <e:lt><code>value</code><e:var n="v"/></e:lt>
         ///   </e:indent></e:expr>
         /// </e:exists>
 
         // Lemma: <e:logimpl>
         //   <e:and>
-        //     <e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
+        //     <e:pred name="TCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
         //     <e:lt><code>value</code><e:var n="v"/></e:lt>
         //   </e:and>
-        //   <e:pred name="TreeCompose"><e:setminus><e:st n="L"/><e:set><code>value</code></e:set></e:setminus>, <e:var n="v"/>, <e:st n="R"/>, <e:setminus><e:st n="S"/><e:set><code>value</code></e:set></e:setminus></e:pred>
+        //   <e:pred name="TCompose"><e:setminus><e:st n="L"/><e:set><code>value</code></e:set></e:setminus>, <e:var n="v"/>, <e:st n="R"/>, <e:setminus><e:st n="S"/><e:set><code>value</code></e:set></e:setminus></e:pred>
         // </e:logimpl>.<br />
-        // Discard <e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
+        // Discard <e:pred name="TCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
         // and <e:lt><code>value</code><e:var n="v"/></e:lt>.
         /// <e:exists>
         ///   <e:vars><e:var n="v"/>, <e:var n="l"/>, <e:var n="r"/>, <e:st n="L"/>, <e:st n="R"/></e:vars>
@@ -151,7 +151,7 @@ Node* remove(Node* root, int value) {
         ///             <e:pred name="Tree"><e:var n="r"/>, <e:st n="R"/></e:pred>
         ///       </e:sep>
         ///     </e:sep> ∧<br />
-        ///     <e:pred name="TreeCompose"><e:setminus><e:st n="L"/><e:set><code>value</code></e:set></e:setminus>, <e:var n="v"/>, <e:st n="R"/>, <e:setminus><e:st n="S"/><e:set><code>value</code></e:set></e:setminus></e:pred>
+        ///     <e:pred name="TCompose"><e:setminus><e:st n="L"/><e:set><code>value</code></e:set></e:setminus>, <e:var n="v"/>, <e:st n="R"/>, <e:setminus><e:st n="S"/><e:set><code>value</code></e:set></e:setminus></e:pred>
         ///   </e:indent></e:expr>
         /// </e:exists>
         
@@ -169,7 +169,7 @@ Node* remove(Node* root, int value) {
         ///             <e:pred name="Tree"><e:var n="r"/>, <e:st n="R"/></e:pred>
         ///       </e:sep>
         ///     </e:sep> ∧<br />
-        ///     <e:pred name="TreeCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:setminus><e:st n="S"/><e:set><code>value</code></e:set></e:setminus></e:pred>
+        ///     <e:pred name="TCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:setminus><e:st n="S"/><e:set><code>value</code></e:set></e:setminus></e:pred>
         ///   </e:indent></e:expr>
         /// </e:exists>
 

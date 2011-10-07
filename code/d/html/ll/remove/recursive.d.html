@@ -90,7 +90,7 @@ substitution.</div><e:pred name="EmptyList">
   <e:sep>
     <e:fcell>
       <code>head</code>
-      <e:var n="v"/>, <e:var n="tail"/>
+      <e:list><e:var n="v"/>, <e:var n="tail"/></e:list>
     </e:fcell>
     <e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred>
   </e:sep>
@@ -103,7 +103,7 @@ substitution.</div><e:pred name="EmptyList">
   <e:sep>
     <e:fcell>
       <code>head</code>
-      <code>value</code>, <e:var n="tail"/>
+      <e:list><code>value</code>, <e:var n="tail"/></e:list>
     </e:fcell>
     <e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred>
   </e:sep>
@@ -123,7 +123,7 @@ substitution.</div><e:pred name="EmptyList">
   <e:sep>
     <e:fcell>
       <code>head</code>
-      <code>value</code>, <e:var n="tail"/>
+      <e:list><code>value</code>, <e:var n="tail"/></e:list>
     </e:fcell>
     <e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred>
   </e:sep> ∧<br />
@@ -147,7 +147,7 @@ substitution.</div><e:pred name="EmptyList">
   <e:sep>
     <e:fcell>
       <code>head</code>
-      <code>value</code>, <e:var n="tail"/>
+      <e:list><code>value</code>, <e:var n="tail"/></e:list>
     </e:fcell>
     <e:pred name="List"><e:var n="tail"/>, <e:setminus><e:st n="S"/><e:set><code>value</code></e:set></e:setminus></e:pred>
   </e:sep>
@@ -157,7 +157,7 @@ substitution.</div><e:pred name="EmptyList">
 <div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Assignment.</div><e:sep>
   <e:fcell>
     <code>head</code>
-    <code>value</code>, <code>o</code>
+    <e:list><code>value</code>, <code>o</code></e:list>
   </e:fcell>
   <e:pred name="List"><code>o</code>, <e:setminus><e:st n="S"/><e:set><code>value</code></e:set></e:setminus></e:pred>
 </e:sep></div></div>
@@ -178,7 +178,7 @@ substitution.</div><e:pred name="EmptyList">
   <e:sep>
     <e:fcell>
       <code>head</code>
-      <e:var n="v"/>, <e:var n="tail"/>
+      <e:list><e:var n="v"/>, <e:var n="tail"/></e:list>
     </e:fcell>
     <e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred>
   </e:sep> ∧<br />
@@ -195,7 +195,7 @@ substitution.</div><e:pred name="EmptyList">
   <e:sep>
     <e:fcell>
       <code>head</code>
-      <e:var n="v"/>, <e:var n="tail"/>
+      <e:list><e:var n="v"/>, <e:var n="tail"/></e:list>
     </e:fcell>
     <e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred>
   </e:sep> ∧<br />
@@ -212,7 +212,7 @@ substitution.</div><e:pred name="EmptyList">
   <e:sep>
     <e:fcell>
       <code>head</code>
-      <e:var n="v"/>, <e:var n="tail"/>
+      <e:list><e:var n="v"/>, <e:var n="tail"/></e:list>
     </e:fcell>
     <e:pred name="List"><code>ntail</code>, <e:setminus><e:st n="T"/><e:set><code>value</code></e:set></e:setminus></e:pred>
   </e:sep> ∧<br />
@@ -229,7 +229,7 @@ substitution.</div><e:pred name="EmptyList">
   <e:sep>
     <e:fcell>
       <code>head</code>
-      <e:var n="v"/>, <code>ntail</code>
+      <e:list><e:var n="v"/>, <code>ntail</code></e:list>
     </e:fcell>
     <e:pred name="List"><code>ntail</code>, <e:setminus><e:st n="T"/><e:set><code>value</code></e:set></e:setminus></e:pred>
   </e:sep> ∧<br />
@@ -245,7 +245,7 @@ substitution.</div><e:pred name="EmptyList">
   <e:sep>
     <e:fcell>
       <code>head</code>
-      <e:var n="v"/>, <e:var n="tail"/>
+      <e:list><e:var n="v"/>, <e:var n="tail"/></e:list>
     </e:fcell>
     <e:pred name="List"><e:var n="tail"/>, <e:setminus><e:st n="T"/><e:set><code>value</code></e:set></e:setminus></e:pred>
   </e:sep> ∧<br />
@@ -270,7 +270,7 @@ substitution.</div><e:pred name="EmptyList">
   <e:sep>
     <e:fcell>
       <code>head</code>
-      <e:var n="v"/>, <e:var n="tail"/>
+      <e:list><e:var n="v"/>, <e:var n="tail"/></e:list>
     </e:fcell>
     <e:pred name="List"><e:var n="tail"/>, <e:setminus><e:st n="T"/><e:set><code>value</code></e:set></e:setminus></e:pred>
   </e:sep>
@@ -282,7 +282,7 @@ substitution.</div><e:pred name="EmptyList">
   <e:sep>
     <e:fcell>
       <code>head</code>
-      <e:var n="v"/>, <e:var n="tail"/>
+      <e:list><e:var n="v"/>, <e:var n="tail"/></e:list>
     </e:fcell>
     <e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred>
   </e:sep>
@@ -339,7 +339,7 @@ Use <e:logimpl>
   <e:sep>
     <e:fcell>
       <code>head</code>
-      <e:var n="v"/>, <e:var n="tail"/>
+      <e:list><e:var n="v"/>, <e:var n="tail"/></e:list>
     </e:fcell>
     <e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred>
   </e:sep> ∧<br />
@@ -376,7 +376,7 @@ Use <e:logimpl>
   <e:sep>
     <e:fcell>
       <code>head</code>
-      <e:var n="v"/>, <e:var n="tail"/>
+      <e:list><e:var n="v"/>, <e:var n="tail"/></e:list>
     </e:fcell>
     <e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred>
   </e:sep> ∧<br />
@@ -398,7 +398,7 @@ Use <e:logimpl>
   <e:sep>
     <e:fcell>
       <code>head</code>
-      <e:var n="v"/>, <e:var n="tail"/>
+      <e:list><e:var n="v"/>, <e:var n="tail"/></e:list>
     </e:fcell>
     <e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred>
   </e:sep> ∧<br />

@@ -46,10 +46,9 @@ span.assertionIndent {
   font-family: "Inconsolata";
 }
 
-a.pred {
+span.pred {
   font-family: "Open Sans";
   font-weight: bold;
-  text-decoration: none;
 }
 
 span.logicalvar {

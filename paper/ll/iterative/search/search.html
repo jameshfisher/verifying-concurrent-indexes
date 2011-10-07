@@ -1,6 +1,26 @@
+<section xmlns="http://www.w3.org/1999/xhtml"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xmlns:e="http://eegg.github.com/htmlx"
+	 xmlns:m="http://eegg.github.com/macro">
 
-<section>
   <e:h>An iterative <m:ll/> <code>search</code> algorithm</e:h>
 
-  <xi:include href="../../code/d/html/ll/search/iterative.d.html"/>
+  <e:definition name="SegCompose">
+    <e:pred name="SegCompose"><e:st n="L"/><e:st n="R"/><e:st n="S"/></e:pred> ≝
+    <e:indent><e:and type="lines">
+	<e:eq>
+	  <e:union><e:st n="L"/><e:st n="R"/></e:union>
+	  <e:st n="S"/>
+	</e:eq>
+	<e:forall>
+	  <e:vars>
+            <e:in><e:var n="l"/><e:st n="L"/></e:in>
+            <e:in><e:var n="r"/><e:st n="R"/></e:in>
+	  </e:vars>
+	  <e:expr><e:lt><e:var n="l"/><e:var n="r"/></e:lt></e:expr>
+	</e:forall>
+    </e:and></e:indent>
+  </e:definition>
+
+  <xi:include href="../../../../code/d/html/ll/search/iterative.d.html"/>
 </section>

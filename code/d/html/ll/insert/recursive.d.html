@@ -99,7 +99,7 @@ Node* insert(Node* head, int value) {
   <e:sep>
     <e:fcell>
       <code>head</code>
-      <e:var n="v"/>, <e:var n="tail"/>
+      <e:list><e:var n="v"/>, <e:var n="tail"/></e:list>
     </e:fcell>
     <e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred>
   </e:sep>
@@ -112,7 +112,7 @@ Node* insert(Node* head, int value) {
   <e:sep>
     <e:fcell>
       <code>head</code>
-      <code>value</code>, <e:var n="tail"/>
+      <e:list><code>value</code>, <e:var n="tail"/></e:list>
     </e:fcell>
     <e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred>
   </e:sep>
@@ -130,7 +130,7 @@ Node* insert(Node* head, int value) {
   <e:sep>
     <e:fcell>
       <code>head</code>
-      <code>value</code>, <e:var n="tail"/>
+      <e:list><code>value</code>, <e:var n="tail"/></e:list>
     </e:fcell>
     <e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred>
   </e:sep> ∧<br />
@@ -219,7 +219,7 @@ Node* insert(Node* head, int value) {
   <e:sep>
     <e:fcell>
       <code>head</code>
-      <e:var n="v"/>, <e:var n="tail"/>
+      <e:list><e:var n="v"/>, <e:var n="tail"/></e:list>
     </e:fcell>
     <e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred>
   </e:sep> ∧<br />
@@ -236,7 +236,7 @@ Node* insert(Node* head, int value) {
   <e:sep>
     <e:fcell>
       <code>head</code>
-      <e:var n="v"/>, <e:var n="tail"/>
+      <e:list><e:var n="v"/>, <e:var n="tail"/></e:list>
     </e:fcell>
     <e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred>
   </e:sep> ∧<br />
@@ -253,7 +253,7 @@ Node* insert(Node* head, int value) {
   <e:sep>
     <e:fcell>
       <code>head</code>
-      <e:var n="v"/>, <e:var n="tail"/>
+      <e:list><e:var n="v"/>, <e:var n="tail"/></e:list>
     </e:fcell>
     <e:pred name="List"><code>ntail</code>, <e:union><e:st n="T"/><e:set><code>value</code></e:set></e:union></e:pred>
   </e:sep> ∧<br />
@@ -270,7 +270,7 @@ Node* insert(Node* head, int value) {
   <e:sep>
     <e:fcell>
       <code>head</code>
-      <e:var n="v"/>, <e:var n="tail"/>
+      <e:list><e:var n="v"/>, <e:var n="tail"/></e:list>
     </e:fcell>
     <e:pred name="List"><e:var n="tail"/>, <e:union><e:st n="T"/><e:set><code>value</code></e:set></e:union></e:pred>
   </e:sep> ∧<br />
@@ -296,7 +296,7 @@ Node* insert(Node* head, int value) {
   <e:sep>
     <e:fcell>
       <code>head</code>
-      <e:var n="v"/>, <e:var n="tail"/>
+      <e:list><e:var n="v"/>, <e:var n="tail"/></e:list>
     </e:fcell>
     <e:pred name="List"><e:var n="tail"/>, <e:union><e:st n="T"/><e:set><code>value</code></e:set></e:union></e:pred>
   </e:sep>
@@ -308,7 +308,7 @@ Node* insert(Node* head, int value) {
   <e:sep>
     <e:fcell>
       <code>head</code>
-      <e:var n="v"/>, <e:var n="tail"/>
+      <e:list><e:var n="v"/>, <e:var n="tail"/></e:list>
     </e:fcell>
     <e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred>
   </e:sep>
@@ -354,7 +354,7 @@ Use <e:logimpl>
   <e:sep>
     <e:fcell>
       <code>head</code>
-      <e:var n="v"/>, <e:var n="tail"/>
+      <e:list><e:var n="v"/>, <e:var n="tail"/></e:list>
     </e:fcell>
     <e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred>
   </e:sep> ∧<br />
@@ -391,7 +391,7 @@ Use <e:logimpl>
   <e:sep>
     <e:fcell>
       <code>head</code>
-      <e:var n="v"/>, <e:var n="tail"/>
+      <e:list><e:var n="v"/>, <e:var n="tail"/></e:list>
     </e:fcell>
     <e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred>
   </e:sep> ∧<br />
@@ -408,12 +408,12 @@ Use <e:logimpl>
   <e:sep>
     <e:fcell>
       <code>nhead</code>
-      <code>value</code>, <code>head</code>
+      <e:list><code>value</code>, <code>head</code></e:list>
     </e:fcell>
     <e:sep>
       <e:fcell>
         <code>head</code>
-        <e:var n="v"/>, <e:var n="tail"/>
+        <e:list><e:var n="v"/>, <e:var n="tail"/></e:list>
       </e:fcell>
       <e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred>
     </e:sep>
@@ -431,7 +431,7 @@ Use <e:logimpl>
 <e:sep>
   <e:fcell>
     <code>nhead</code>
-    <code>value</code>, <code>head</code>
+    <e:list><code>value</code>, <code>head</code></e:list>
   </e:fcell>
   <e:pred name="NonEmptyList"><code>head</code>, <e:st n="S"/></e:pred>
 </e:sep></div></div>
@@ -446,7 +446,7 @@ Use <e:logimpl>
 <e:sep>
   <e:fcell>
     <code>nhead</code>
-    <code>value</code>, <code>head</code>
+    <e:list><code>value</code>, <code>head</code></e:list>
   </e:fcell>
   <e:pred name="NonEmptyList"><code>head</code>, <e:st n="S"/></e:pred>
 </e:sep></div></div>
@@ -458,7 +458,7 @@ Use <e:logimpl>
 <e:sep>
   <e:fcell>
     <code>nhead</code>
-    <code>value</code>, <code>head</code>
+    <e:list><code>value</code>, <code>head</code></e:list>
   </e:fcell>
   <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
 </e:sep></div></div>
@@ -469,7 +469,7 @@ Use <e:logimpl>
   <e:sep>
     <e:fcell>
       <code>nhead</code>
-      <e:var n="v"/>, <e:var n="tail"/>
+      <e:list><e:var n="v"/>, <e:var n="tail"/></e:list>
     </e:fcell>
     <e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred>
   </e:sep>

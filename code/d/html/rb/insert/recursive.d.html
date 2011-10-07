@@ -14,8 +14,8 @@ Node* insert(Node* root, int value) {&#160;</e:displaycode>
 <e:displaycode>
   Node* o = blacken(i);&#160;</e:displaycode>
 <div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Specification for <code>blacken</code>.</div><e:exists>
-  <e:var n="nh"/>
-  <e:and>
+  <e:vars><e:var n="nh"/></e:vars>
+  <e:expr><e:and>
     <e:pred name="BT"><code>o</code>, <e:union><e:st n="S"/><e:set><code>value</code></e:set></e:union>, <e:var n="nh"/></e:pred>
     <e:in>
       <e:var n="nh"/>
@@ -24,7 +24,7 @@ Node* insert(Node* root, int value) {&#160;</e:displaycode>
         <e:plus><e:var n="h"/><e:const n="1"/></e:plus>
       </e:set>
     </e:in>
-  </e:and>
+  </e:and></e:expr>
 </e:exists></div></div>
 <e:displaycode>
   return o;

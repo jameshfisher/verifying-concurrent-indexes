@@ -2,20 +2,150 @@
 
 import ll.node;
 
-bool search(Node* list, int value) {
+bool search(Node* head, int value) {&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'><e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred></div></div>
+<e:displaycode>
+  Node* i = head;
 
-  while (list &amp;&amp; list.value &lt; value) {
-    list = list.tail;
-  }&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;</pre><div class='CommentParagraph'>(!list || list.value >= value)</div></div>
+  while (i != null &amp;&amp; i.value &lt; value) {&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><e:exists>
+  <e:vars><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:var n="tail"/></e:vars>
+  <e:expr><e:indent><e:and>
+    <e:sep>
+      <e:pred name="ListSegment"><code>head</code>, <code>i</code>, <e:st n="L"/></e:pred>
+      <e:fcell><code>i</code>
+        <e:list><e:var n="v"/>, <e:var n="tail"/></e:list>
+      </e:fcell>
+      <e:pred name="List"><e:var n="tail"/>, <e:st n="R"/></e:pred>
+    </e:sep>
+    <e:pred name="TCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
+  </e:and></e:indent></e:expr>
+</e:exists></div></div>
+<e:displaycode>
+    i = i.tail;&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><e:exists>
+  <e:vars><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:var n="tail"/></e:vars>
+  <e:expr><e:indent><e:and type="lines">
+    <e:sep type="lines">
+      <e:pred name="ListSegment"><code>head</code>, <e:var n="tail"/>, <e:st n="L"/></e:pred>
+      <e:fcell><code>i</code>
+        <e:list><e:var n="v"/>, <e:var n="tail"/></e:list>
+      </e:fcell>
+      <e:pred name="List"><e:var n="tail"/>, <e:st n="R"/></e:pred>
+    </e:sep>
+    <e:pred name="Cmp"><e:st n="L"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
+  </e:and></e:indent></e:expr>
+</e:exists></div></div>
+<e:displaycode>  }&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'><e:exists>
+  <e:vars><e:st n="L"/><e:st n="R"/></e:vars>
+  <e:expr><e:indent><e:and type="lines">
+    <e:sep>
+      <e:pred name="ListSegment"><code>head</code>, <code>i</code>, <e:st n="L"/></e:pred>
+      <e:pred name="List"><code>i</code>, <e:st n="R"/></e:pred>
+    </e:sep>
+    <e:pred name="SegCompose"><e:st n="L"/>,<e:st n="R"/>,e:st n="S"/></e:pred>
+    <e:or parens="yes">
+      <e:eq><code>i</code><code>null</code></e:eq>
+      <e:leq><code>value</code><code>i.value</code></e:leq>
+    </e:or>
+  </e:and></e:indent></e:expr>
+</e:exists></div></div>
 <e:displaycode>
   bool o;
-  if (!list) {
-    o = false;
-  }
-  else {
-    o = list.value == value;
-  }
+  if (i == null) {&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Assert if-condition.</div><e:eq>
+  <code>i</code>
+  <code>null</code>
+</e:eq></div></div>
 
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><e:and>
+  <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
+  <e:notin>
+    <code>value</code>
+    <e:st n="S"/>
+  </e:notin>
+</e:and></div></div>
+<e:displaycode>
+    o = false;&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>If-rule.</div><e:and>
+  <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
+  <e:doubleimpl>
+    <code>o</code>
+    <e:in>
+      <code>value</code>
+      <e:st n="S"/>
+    </e:in>
+  </e:doubleimpl>
+</e:and></div></div>
+<e:displaycode>  }
+  else {&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Deny if-condition.</div><e:noteq>
+  <code>i</code>
+  <code>null</code>
+</e:noteq></div></div>
+<e:displaycode>
+    if (i.value == value) {&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><e:and>
+  <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
+  <e:in>
+    <code>value</code>
+    <e:st n="S"/>
+  </e:in>
+</e:and></div></div>
+<e:displaycode>      o = true;&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><e:and>
+  <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
+  <e:doubleimpl>
+    <code>o</code>
+    <e:in>
+      <code>value</code>
+      <e:st n="S"/>
+    </e:in>
+  </e:doubleimpl>
+</e:and></div></div>
+<e:displaycode>    }
+    else {&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><e:and>
+  <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
+  <e:notin>
+    <code>value</code>
+    <e:st n="S"/>
+  </e:notin>
+</e:and></div></div>
+<e:displaycode>      o = false;&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Assignment. ??</div><e:and>
+  <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
+  <e:doubleimpl>
+    <code>o</code>
+    <e:in>
+      <code>value</code>
+      <e:st n="S"/>
+    </e:in>
+  </e:doubleimpl>
+</e:and></div></div>
+<e:displaycode>    }&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>If-rule.</div><e:and>
+  <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
+  <e:doubleimpl>
+    <code>o</code>
+    <e:in>
+      <code>value</code>
+      <e:st n="S"/>
+    </e:in>
+  </e:doubleimpl>
+</e:and></div></div>
+<e:displaycode>  }&#160;</e:displaycode>
+<div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>If-rule.</div><e:and>
+  <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
+  <e:doubleimpl>
+    <code>o</code>
+    <e:in>
+      <code>value</code>
+      <e:st n="S"/>
+    </e:in>
+  </e:doubleimpl>
+</e:and></div></div>
+<e:displaycode>
   return o;
 }&#160;</e:displaycode></section>
