@@ -28,7 +28,7 @@
 	  </e:eq> ∧
 	  <e:eq>
 	    <e:st n="S"/>
-	    <m:scemp/>
+	    <m:empty/>
 	  </e:eq> ∧
 	  <m:hemp/>
 	</e:derive>
@@ -38,7 +38,7 @@
       <e:step name="SIsEmpty">
 	<e:derive><e:eq>
 	    <e:st n="S"/>
-	    <m:scemp/>
+	    <m:empty/>
 	</e:eq></e:derive>
 	<e:by><e:from name="openEmptyList"/>, ∧E</e:by>
       </e:step>
@@ -46,7 +46,7 @@
       <e:step name="valueNotInEmptySet">
 	<e:derive><e:notin>
             <code>value</code>
-            <m:scemp/>
+            <m:empty/>
 	</e:notin></e:derive>
 	<e:by>Nothing in empty set</e:by>
       </e:step>

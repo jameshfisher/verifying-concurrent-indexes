@@ -105,12 +105,7 @@ struct Node {
     We can visualize the address space of memory as a line of cells,
     from address <span class="constant">0</span> on the left-hand-side to <span class="constant">address_max</span> on the right.
     Here is an example <abbr title="Linked List" class="smallcaps">LL</abbr> representing the set
-    <span class="st">S</span> = {
-	  <span class="constant">2</span>,
-	  <span class="constant">29</span>,
-	  <span class="constant">30</span>,
-	  <span class="constant">77</span>
-      } from the domain of natural numbers &lt; 256.
+    <span class="st">S</span> = {<span class="constant">2</span>, <span class="constant">29</span>, <span class="constant">30</span>, <span class="constant">77</span>} from the domain of natural numbers &lt; 256.
     There are <e:pow>216</e:pow> memory locations,
     spanning addresses <span class="constant">0</span> to <span class="constant">65,535</span>,
     so a memory address is two bytes long.
@@ -122,12 +117,7 @@ struct Node {
     In the following diagram, arrows are used to highlight fields that reference other memory locations.
 
     <figure class="diagram"><figcaption><span class="figure_number">Diagram 1.</span><br/><e:caption>An example <abbr title="Linked List" class="smallcaps">LL</abbr> representing the set
-	<span class="st">S</span> = {
-	    <span class="constant">2</span>,
-	    <span class="constant">29</span>,
-	    <span class="constant">30</span>,
-	    <span class="constant">77</span>
-	  }.</e:caption></figcaption><e:contents><!-- Created with Inkscape (http://www.inkscape.org/) --><svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="788.3858" height="106.29922" id="svg2" version="1.1" inkscape:version="0.48.1 r9760" sodipodi:docname="example.svg">
+	<span class="st">S</span> = {<span class="constant">2</span>, <span class="constant">29</span>, <span class="constant">30</span>, <span class="constant">77</span>}.</e:caption></figcaption><e:contents><!-- Created with Inkscape (http://www.inkscape.org/) --><svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="788.3858" height="106.29922" id="svg2" version="1.1" inkscape:version="0.48.1 r9760" sodipodi:docname="example.svg">
   <defs id="defs4">
     <marker inkscape:stockid="SquareM" orient="auto" refY="0.0" refX="0.0" id="SquareM" style="overflow:visible">
       <path id="path5430" d="M -5.0,-5.0 L -5.0,5.0 L 5.0,5.0 L 5.0,-5.0 L -5.0,-5.0 z " style="fill-rule:evenodd;stroke:#000000;stroke-width:1.0pt;marker-start:none" transform="scale(0.4)"/>
@@ -514,7 +504,7 @@ struct Node {
     Notice in our example that though |<span class="st">S</span>| = <span class="constant">4</span>,
     there are actually <em>five</em> linked lists:
     the final <code>null</code> pointer conceptually points to
-    a linked list representing ∅, which uses no memory locations.
+    a linked list representing <span>∅</span>, which uses no memory locations.
     This does not fit in the scheme of the above diagram,
     which really only applies to non-empty sets.
     The linked list, then, actually uses two distinct representations of sets:
@@ -534,7 +524,7 @@ struct Node {
     That is, <a class="pred_name" href="#def_List">List</a>(<code>head</code>, <span class="st">S</span>)
     describes a set of memory locations forming a linked list that represents set <span class="st">S</span>,
     with <code>head</code> being the address of the first <code>Node</code> in the list
-    (or <code>null</code> if <span class="st">S</span>).
+    (or <code>null</code> if <span class="st">S</span> = <span>∅</span>).
 
     <figure class="diagram"><figcaption><span class="figure_number">Diagram 5.</span><br/><e:caption>Our basic <abbr title="Linked List" class="smallcaps">LL</abbr> predicates.</e:caption></figcaption><e:contents><!-- Created with Inkscape (http://www.inkscape.org/) --><svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="407.48032" height="177.16536" id="svg2" version="1.1" inkscape:version="0.48.1 r9760" sodipodi:docname="predicates.svg">
   <defs id="defs4">
@@ -646,7 +636,7 @@ struct Node {
 	  <tr>
 	    <td/>
 	    <td>
-	      <span class="st">S</span> ∧
+	      <span class="st">S</span> = <span>∅</span> ∧
 	    </td>
 	    <td><span class="st">S</span> is the empty set and</td>
 	  </tr>
@@ -865,13 +855,13 @@ struct Node {
 
       <tr><td><span class="step">2</span>.</td><td class="">
 	  <code>head</code> = <code>null</code> ∧
-	  <span class="st">S</span> ∧
+	  <span class="st">S</span> = <span>∅</span> ∧
 	  <b>emp</b>
 	</td><td><span class="step">1</span>, open predicate</td></tr>
 
-      <tr><td><span class="step">3</span>.</td><td class=""><span class="st">S</span></td><td><span class="step">2</span>, ∧E</td></tr>
+      <tr><td><span class="step">3</span>.</td><td class=""><span class="st">S</span> = <span>∅</span></td><td><span class="step">2</span>, ∧E</td></tr>
 
-      <tr><td><span class="step">4</span>.</td><td class=""><code>value</code></td><td>Nothing in empty set</td></tr>
+      <tr><td><span class="step">4</span>.</td><td class=""><code>value</code> ∉ <span>∅</span></td><td>Nothing in empty set</td></tr>
 
       <tr><td><span class="step">5</span>.</td><td class=""><code>value</code> ∉ <span class="st">S</span></td><td><span class="step">3</span>, <span class="step">4</span>, equality</td></tr>
     </table>
@@ -1416,8 +1406,8 @@ Use <span class="var">v</span> &lt; <code>value</code> ⇒ <code>value</code
     <p>
       The recursive <code>insert</code> algorithm works as follows.
       As before, we first determine whether the list is empty by testing for <code>value</code> = <code>null</code>.
-      If the list is empty, it represents ∅, and we wish to mutate the state to represent
-      {<code>value</code>},
+      If the list is empty, it represents <span>∅</span>, and we wish to mutate the state to represent
+      <span>∅</span> ∪ {<code>value</code>},
       which is simply {<code>value</code>}.
       The representation of this is a one-node list with its <span class="var">tail</span> field set to <code>null</code>;
       we create this and return it.
@@ -1918,19 +1908,19 @@ Node* insert(Node* head, int value) {
 <div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl">Lemma: <a class="pred_name" href="#def_List">List</a>(<code>head</code>, <span class="st">S</span>) ∧ <code>head</code> = <code>null</code> ⇒ <a class="pred_name" href="#def_EmptyList">EmptyList</a>(<code>head</code>, <span class="st">S</span>)</div><a class="pred_name" href="#def_EmptyList">EmptyList</a>(<code>head</code>, <span class="st">S</span>)</div></div>
 
 <div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl">Open <a class="pred_name" href="#def_EmptyList">EmptyList</a>(<code>head</code>, <span class="st">S</span>).  Discard
-<code>head</code> = <code>null</code>.</div><span class="st">S</span> ∧
+<code>head</code> = <code>null</code>.</div><span class="st">S</span> = <span>∅</span> ∧
 <b>emp</b></div></div>
 <pre class="prettyprint">
     o = new Node(value); </pre>
-<div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl">Specification for <code>new Node(value)</code>.</div><span class="st">S</span> ∧
+<div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl">Specification for <code>new Node(value)</code>.</div><span class="st">S</span> = <span>∅</span> ∧
 <b>emp</b> ∗ <a class="pred_name" href="#def_NonEmptyList">NonEmptyList</a>(<code>o</code>, {<code>value</code>})</div></div>
 
-<div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl"><b>emp</b> ∗ <span class="pred_name">X</span> = <span class="pred_name">X</span>.</div><span class="st">S</span> ∧ <a class="pred_name" href="#def_NonEmptyList">NonEmptyList</a>(<code>o</code>, {<code>value</code>})</div></div>
+<div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl"><b>emp</b> ∗ <span class="pred_name">X</span> = <span class="pred_name">X</span>.</div><span class="st">S</span> = <span>∅</span> ∧ <a class="pred_name" href="#def_NonEmptyList">NonEmptyList</a>(<code>o</code>, {<code>value</code>})</div></div>
 
-<div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl"><span class="st">X</span> = <span class="st">X</span>.</div><span class="st">S</span> ∧ 
-<a class="pred_name" href="#def_NonEmptyList">NonEmptyList</a>(<code>o</code>, {<code>value</code>})</div></div>
+<div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl"><span class="st">X</span> = <span>∅</span> ∪ <span class="st">X</span>.</div><span class="st">S</span> = <span>∅</span> ∧ 
+<a class="pred_name" href="#def_NonEmptyList">NonEmptyList</a>(<code>o</code>, <span>∅</span> ∪ {<code>value</code>})</div></div>
 
-<div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl">Substitution.  Discard <span class="st">S</span>.</div><a class="pred_name" href="#def_NonEmptyList">NonEmptyList</a>(<code>o</code>, <span class="st">S</span> ∪ {<code>value</code>})</div></div>
+<div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl">Substitution.  Discard <span class="st">S</span> = <span>∅</span>.</div><a class="pred_name" href="#def_NonEmptyList">NonEmptyList</a>(<code>o</code>, <span class="st">S</span> ∪ {<code>value</code>})</div></div>
 <pre class="prettyprint">  }
   else { </pre>
 <div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl">Deny if-condition.</div><a class="pred_name" href="#def_List">List</a>(<code>head</code>, <span class="st">S</span>) ∧ <code>head</code> ≠ <code>null</code></div></div>
@@ -2091,9 +2081,9 @@ Use <span class="var">v</span> &lt; <code>value</code> ⇒ <code>value</code
     The recursive <code>remove</code> algorithm follows a similar pattern to
     the <code>search</code> and <code>insert</code> algorithms we have seen.
     We have two cases: the list is empty or it is not.
-    If it is empty, it represents ∅;
-    we must then return a list representing {<code>value</code>},
-    which is ∅; we can therefore simply return <code>head</code>.
+    If it is empty, it represents <span>∅</span>;
+    we must then return a list representing <span>∅</span>∖{<code>value</code>},
+    which is <span>∅</span>; we can therefore simply return <code>head</code>.
   </p>
 
   <p>
@@ -2124,7 +2114,7 @@ Use <span class="var">v</span> &lt; <code>value</code> ⇒ <code>value</code
 
       <tr><td><span class="step">7</span>.</td><td class=""><span class="var">v</span> ∉ <span class="st">T</span></td><td><span class="step">5</span>, <span class="step">6</span>, RAA</td></tr>
 
-      <tr><td><span class="step">8</span>.</td><td class="">{<span class="var">v</span>} ∩ <span class="st">T</span></td><td><span class="step">7</span></td></tr>
+      <tr><td><span class="step">8</span>.</td><td class="">{<span class="var">v</span>} ∩ <span class="st">T</span> = <span>∅</span></td><td><span class="step">7</span></td></tr>
 
       <tr><td><span class="step">9</span>.</td><td class=""><span class="st">T</span> = <span class="st">S</span>∖{<span class="var">v</span>}</td><td><span class="step">3</span>, <span class="step">8</span></td></tr>
     </table>
@@ -2510,10 +2500,10 @@ Node* remove(Node* head, int value) {
 
 <div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl">Lemma: <a class="pred_name" href="#def_List">List</a>(<code>head</code>, <span class="st">S</span>) ∧ <code>head</code> = <code>null</code> ⇒ <a class="pred_name" href="#def_EmptyList">EmptyList</a>(<code>head</code>, <span class="st">S</span>)</div><a class="pred_name" href="#def_EmptyList">EmptyList</a>(<code>head</code>, <span class="st">S</span>)</div></div>
 
-<div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl"><a class="pred_name" href="#def_EmptyList">EmptyList</a>(<code>head</code>, <span class="st">S</span>) ⇒ <span class="st">S</span></div><a class="pred_name" href="#def_EmptyList">EmptyList</a>(<code>head</code>, <span class="st">S</span>) ∧ <span class="st">S</span></div></div>
+<div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl"><a class="pred_name" href="#def_EmptyList">EmptyList</a>(<code>head</code>, <span class="st">S</span>) ⇒ <span class="st">S</span> = <span>∅</span></div><a class="pred_name" href="#def_EmptyList">EmptyList</a>(<code>head</code>, <span class="st">S</span>) ∧ <span class="st">S</span> = <span>∅</span></div></div>
 
-<div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl"><span class="st">X</span>,
-<span class="st">S</span>,
+<div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl"><span>∅</span>∖<span class="st">X</span> = <span>∅</span>,
+<span class="st">S</span> = <span>∅</span>,
 substitution.</div><a class="pred_name" href="#def_EmptyList">EmptyList</a>(<code>head</code>, <span class="st">S</span>∖{<code>value</code>})</div></div>
 
 <div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl">Weakening lemma: <a class="pred_name" href="#def_EmptyList">EmptyList</a>(<code>head</code>, <span class="st">S</span>) ⇒ <a class="pred_name" href="#def_List">List</a>(<code>head</code>, <span class="st">S</span>).</div><a class="pred_name" href="#def_List">List</a>(<code>head</code>, <span class="st">S</span>∖{<code>value</code>})</div></div>
@@ -2667,7 +2657,166 @@ Use <span class="var">v</span> &lt; <code>value</code> ⇒ <code>value</code
 
   <h4>An iterative <abbr title="Linked List" class="smallcaps">LL</abbr> <code>search</code> algorithm</h4>
 
-  <figure class="definition" id="def_SegCompose"><figcaption><span class="figure_number">Definition 5.</span></figcaption><div>
+  <p>
+    The iterative <abbr title="Linked List" class="smallcaps">LL</abbr> algorithms 
+    transform recursion into <code>while</code> loops.
+    In the previous algorithms,
+    each recursive call is made on a <abbr title="Linked List" class="smallcaps">LL</abbr> of smaller size,
+    and in this way the algorithm proceeds down the list.
+    In the iterative case,
+    each iteration of the while loop ensures that
+    the iterating pointer points into a smaller <abbr title="Linked List" class="smallcaps">LL</abbr>.
+  </p>
+
+  <p>
+    The recursive algorithms recurse on the tail of the list when
+    the list is non-empty and the value at the head is smaller than the value searched for.
+    The same condition applies to the while loop.
+    The iterative equivalent of recursing on the tail
+    is to replace the current head pointer with the tail pointer.
+    (For clarity, we create another variable, <code>i</code>,
+    to hold the pointer that iterates down the list.)
+  </p>
+
+  <p>
+    The recursive call was verified by <q>framing off</q> the part of the heap:
+    the segment of the list leading to the head pointer is not part of the function precondition,
+    as it can be <q>framed on</q> when the call returns.
+    The iterative algorithm does not have this luxury:
+    we must maintain our knowledge of the segment of
+    the list leading from <code>head</code> to <code>i</code>,
+    in order to satisfy the postcondition, which speaks of <code>head</code>, not <code>i</code>.
+    Here is the algorithm part-way through traversal of a list:
+
+    <figure class="diagram"><figcaption><span class="figure_number">Diagram 9.</span><br/><e:caption>
+	An example <abbr title="Linked List" class="smallcaps">LL</abbr> being traversed by an iterative algorithm.
+      </e:caption></figcaption><e:contents><!-- Created with Inkscape (http://www.inkscape.org/) --><svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="602.36218" height="186.02362" id="svg2" version="1.1" inkscape:version="0.48.1 r9760" sodipodi:docname="list_segments.svg" xml:base="../list_segments.svg">
+  <defs id="defs4">
+    <marker inkscape:stockid="SquareM" orient="auto" refY="0" refX="0" id="SquareM" style="overflow:visible">
+      <path id="path5430" d="M -5,-5 -5,5 5,5 5,-5 -5,-5 z" style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none" transform="scale(0.4,0.4)" inkscape:connector-curvature="0"/>
+    </marker>
+    <marker inkscape:stockid="Arrow1Mend" orient="auto" refY="0" refX="0" id="Arrow1Mend" style="overflow:visible">
+      <path id="path4781" d="M 0,0 5,-5 -12.5,0 5,5 0,0 z" style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none" transform="matrix(-0.4,0,0,-0.4,-4,0)" inkscape:connector-curvature="0"/>
+    </marker>
+    <marker inkscape:stockid="Arrow2Mstart" orient="auto" refY="0" refX="0" id="Arrow2Mstart" style="overflow:visible">
+      <path id="path4796" style="font-size:12px;fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round" d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z" transform="scale(0.6,0.6)" inkscape:connector-curvature="0"/>
+    </marker>
+    <marker inkscape:stockid="Arrow2Mend" orient="auto" refY="0" refX="0" id="Arrow2Mend" style="overflow:visible">
+      <path id="path4799" style="font-size:12px;fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round" d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z" transform="scale(-0.6,-0.6)" inkscape:connector-curvature="0"/>
+    </marker>
+    <marker inkscape:stockid="Arrow2Lend" orient="auto" refY="0" refX="0" id="Arrow2Lend" style="overflow:visible">
+      <path id="path4793" style="font-size:12px;fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round" d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z" transform="matrix(-1.1,0,0,-1.1,-1.1,0)" inkscape:connector-curvature="0"/>
+    </marker>
+    <marker inkscape:stockid="Arrow2Mend" orient="auto" refY="0" refX="0" id="Arrow2Mend-7" style="overflow:visible">
+      <path inkscape:connector-curvature="0" id="path4799-3" style="font-size:12px;fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round" d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z" transform="scale(-0.6,-0.6)"/>
+    </marker>
+    <marker inkscape:stockid="Arrow2Mend" orient="auto" refY="0" refX="0" id="Arrow2Mend-7-6" style="overflow:visible">
+      <path inkscape:connector-curvature="0" id="path4799-3-9" style="font-size:12px;fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round" d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z" transform="scale(-0.6,-0.6)"/>
+    </marker>
+    <marker inkscape:stockid="Arrow2Mend" orient="auto" refY="0" refX="0" id="Arrow2Mend-9" style="overflow:visible">
+      <path inkscape:connector-curvature="0" id="path4799-2" style="font-size:12px;fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round" d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z" transform="scale(-0.6,-0.6)"/>
+    </marker>
+  </defs>
+  <sodipodi:namedview id="base" pagecolor="#ffffff" bordercolor="#666666" borderopacity="1.0" inkscape:pageopacity="0.0" inkscape:pageshadow="2" inkscape:zoom="2" inkscape:cx="285.31601" inkscape:cy="134.5535" inkscape:document-units="mm" inkscape:current-layer="layer1" showgrid="true" inkscape:window-width="1920" inkscape:window-height="1032" inkscape:window-x="0" inkscape:window-y="0" inkscape:window-maximized="1" units="mm" inkscape:snap-global="true" showguides="true" inkscape:guide-bbox="true" fit-margin-top="0" fit-margin-left="0" fit-margin-right="0" fit-margin-bottom="0">
+    <inkscape:grid type="xygrid" id="grid3012" empspacing="5" visible="true" enabled="true" snapvisiblegridlinesonly="true" units="mm" spacingx="2.5mm" spacingy="2.5mm"/>
+  </sodipodi:namedview>
+  <metadata id="metadata7">
+    <rdf:RDF>
+      <cc:Work rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+        <dc:title/>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g inkscape:label="Layer 1" inkscape:groupmode="layer" id="layer1" transform="translate(487.20474,-387.99211)">
+    <rect style="fill:#cccccc;fill-opacity:1;stroke:none" id="rect3057" width="549.21259" height="70.866142" x="-487.20474" y="414.56693"/>
+    <g id="g3038" transform="translate(-442.9134,2.5581578e-5)" style="fill:#ffffff;fill-opacity:1">
+      <g transform="translate(-35.43307,88.582679)" style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-opacity:1" id="g3924">
+        <path inkscape:connector-curvature="0" id="path3103" d="m 79.724406,343.70076 0,35.43307" style="opacity:0.3;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.77165353;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:1.77165354, 1.77165354;stroke-dashoffset:0"/>
+        <rect style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.77165353;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" id="rect3913" width="70.866142" height="35.433071" x="8.858264" y="343.70074"/>
+        <path style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.77165353;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" d="m 44.291339,35.433069 0,35.433071" id="path3915" inkscape:connector-curvature="0" transform="translate(-4e-6,308.26769)"/>
+      </g>
+      <text sodipodi:linespacing="125%" id="text3004" y="453.99997" x="-8.8582716" style="font-size:40px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans" xml:space="preserve"><tspan style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;font-family:Minion Pro;-inkscape-font-specification:Minion Pro" y="453.99997" x="-8.8582716" id="tspan3006" sodipodi:role="line">2</tspan></text>
+    </g>
+    <g transform="translate(-336.61419,2.5581578e-5)" id="g3915" style="fill:#ffffff;fill-opacity:1">
+      <g id="g3921" style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-opacity:1" transform="translate(-35.43307,88.582679)">
+        <path style="opacity:0.3;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.77165353;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:1.77165354, 1.77165354;stroke-dashoffset:0" d="m 79.724406,343.70076 0,35.43307" id="path3923" inkscape:connector-curvature="0"/>
+        <rect y="343.70074" x="8.858264" height="35.433071" width="70.866135" id="rect3925" style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.77165341;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"/>
+        <path transform="translate(-4e-6,308.26769)" inkscape:connector-curvature="0" id="path3927" d="m 44.291339,35.433069 0,35.433071" style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.77165353;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"/>
+      </g>
+      <text xml:space="preserve" style="font-size:40px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans" x="-8.8582716" y="453.99997" id="text3917" sodipodi:linespacing="125%"><tspan sodipodi:role="line" id="tspan3919" x="-8.8582716" y="453.99997" style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">29</tspan></text>
+    </g>
+    <g id="g3945" transform="translate(-230.31498,2.5581578e-5)">
+      <g transform="translate(-35.43307,88.582679)" style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-opacity:1" id="g3951">
+        <path inkscape:connector-curvature="0" id="path3953" d="m 79.724406,343.70076 0,35.43307" style="opacity:0.3;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.77165353;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:1.77165354, 1.77165354;stroke-dashoffset:0"/>
+        <rect style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.77165365;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" id="rect3955" width="70.866142" height="35.433071" x="8.858264" y="343.70074"/>
+        <path style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.77165353;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" d="m 44.291339,35.433069 0,35.433071" id="path3957" inkscape:connector-curvature="0" transform="translate(-4e-6,308.26769)"/>
+      </g>
+      <text sodipodi:linespacing="125%" id="text3947" y="453.99997" x="-8.8582716" style="font-size:40px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans" xml:space="preserve"><tspan style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro" y="453.99997" x="-8.8582716" id="tspan3949" sodipodi:role="line">30</tspan></text>
+    </g>
+    <g transform="translate(-124.01576,2.5581578e-5)" id="g3975">
+      <g id="g3981" style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-opacity:1" transform="translate(-35.43307,88.582679)">
+        <path style="opacity:0.3;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.77165353;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:1.77165354, 1.77165354;stroke-dashoffset:0" d="m 79.724406,343.70076 0,35.43307" id="path3983" inkscape:connector-curvature="0"/>
+        <rect y="343.70074" x="8.858264" height="35.433071" width="70.866142" id="rect3985" style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.77165353;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"/>
+        <path transform="translate(-4e-6,308.26769)" inkscape:connector-curvature="0" id="path3987" d="m 44.291339,35.433069 0,35.433071" style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.77165353;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"/>
+      </g>
+      <text xml:space="preserve" style="font-size:40px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans" x="-8.8582716" y="453.99997" id="text3977" sodipodi:linespacing="125%"><tspan sodipodi:role="line" id="tspan3979" x="-8.8582716" y="453.99997" style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">31</tspan></text>
+    </g>
+    <rect style="fill:none;stroke:none" id="rect5268" width="788.3858" height="106.29922" x="-354.33072" y="379.13382"/>
+    <text xml:space="preserve" style="font-size:40px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans" x="-451.77167" y="396.85037" id="text3917-0" sodipodi:linespacing="125%"><tspan sodipodi:role="line" id="tspan3919-0" x="-451.77167" y="396.85037" style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">head</tspan></text>
+    <path style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#SquareM)" d="m 8.8582521,449.99999 35.4330709,0" id="path5351" inkscape:connector-curvature="0" sodipodi:nodetypes="cc"/>
+    <path sodipodi:nodetypes="cc" inkscape:connector-curvature="0" d="m -416.3386,449.99999 53.14961,0" style="fill:none;stroke:#000000;stroke-width:0.99921262;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow2Mend-9)" id="path5834"/>
+    <path id="path5840" style="fill:none;stroke:#000000;stroke-width:0.99921262;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow2Mend-9)" d="m -451.77167,405.70865 -1e-5,26.57479" inkscape:connector-curvature="0" sodipodi:nodetypes="cc"/>
+    <g id="g3037" transform="translate(-17.716543,3.9368198e-5)">
+      <g transform="translate(-35.43307,88.582679)" style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-opacity:1" id="g3039">
+        <path inkscape:connector-curvature="0" id="path3041" d="m 79.724406,343.70076 0,35.43307" style="opacity:0.3;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.77165353;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:1.77165354, 1.77165354;stroke-dashoffset:0"/>
+        <rect style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.77165353;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" id="rect3043" width="70.866142" height="35.433071" x="8.858264" y="343.70074"/>
+        <path style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.77165353;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" d="m 44.291339,35.433069 0,35.433071" id="path3045" inkscape:connector-curvature="0" transform="translate(-4e-6,308.26769)"/>
+      </g>
+      <text sodipodi:linespacing="125%" id="text3047" y="453.99997" x="-8.8582716" style="font-size:40px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans" xml:space="preserve"><tspan style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro" y="453.99997" x="-8.8582716" id="tspan3049" sodipodi:role="line">77</tspan></text>
+      <text xml:space="preserve" style="font-size:40px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans" x="26.5748" y="453.99997" id="text3051" sodipodi:linespacing="125%"><tspan sodipodi:role="line" id="tspan3053" x="26.5748" y="453.99997" style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">NULL</tspan></text>
+    </g>
+    <path id="path3879" style="fill:none;stroke:#000000;stroke-width:0.99921262;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow2Mend-9)" d="m -310.03939,449.99999 53.14961,0" inkscape:connector-curvature="0" sodipodi:nodetypes="cc"/>
+    <path sodipodi:nodetypes="cc" inkscape:connector-curvature="0" d="m -194.88191,449.99999 44.29135,0" style="fill:none;stroke:#000000;stroke-width:0.99921262;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow2Mend-9)" id="path3881"/>
+    <path id="path3883" style="fill:none;stroke:#000000;stroke-width:0.99921262;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow2Mend-9)" d="m -97.44096,449.99999 53.14961,0" inkscape:connector-curvature="0" sodipodi:nodetypes="cc"/>
+    <text sodipodi:linespacing="125%" id="text3885" y="396.85037" x="-132.87404" style="font-size:40px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans" xml:space="preserve"><tspan style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro" y="396.85037" x="-132.87404" id="tspan3887" sodipodi:role="line">i</tspan></text>
+    <path sodipodi:nodetypes="cc" inkscape:connector-curvature="0" d="m -132.87403,405.70866 -1e-5,26.57479" style="fill:none;stroke:#000000;stroke-width:0.99921262;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow2Mend-9)" id="path3889"/>
+    <path style="font-size:438.40066528px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans" d="m -159.44883,503.14959 c 0,3.29679 -0.75752,6.05553 -7.08086,6.05553 -3.51297,-0.054 -135.93858,-0.48927 -139.45155,-0.48927 -1.8916,0 -4.32567,2.16348 -4.64994,6.97354 l -1.83764,0 c -0.32427,-4.81006 -2.7546,-6.97354 -4.59215,-6.97354 -3.35083,0.054 -141.56284,0.48927 -145.50818,0.48927 -6.2693,0 -6.91905,-2.75874 -6.91905,-6.05553 l 1.7837,0 c 0.54045,4.05342 2.59532,4.54207 5.08142,4.54207 3.29678,0 141.02405,-0.75895 144.69915,-0.75895 2.97252,0 5.56539,1.29945 6.26799,4.48814 l 0.21574,0 c 0.75664,-3.18869 3.29546,-4.48814 6.26797,-4.48814 3.51298,0 135.61521,0.75895 139.02008,0.75895 2.37801,0 4.37916,-0.48865 4.91962,-4.54207 z" id="path5257" inkscape:connector-curvature="0" sodipodi:nodetypes="ccscccsccssccsscc"/>
+    <text sodipodi:linespacing="125%" id="text5259" y="529.72443" x="-312.0394" style="font-size:40px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans" xml:space="preserve"><tspan style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro" y="529.72443" x="-312.0394" id="tspan5261" sodipodi:role="line"><tspan style="font-weight:bold" id="tspan5882">ListSegment</tspan>(head, i, {2, 29, 30})</tspan></text>
+    <path sodipodi:nodetypes="ccscccsccssccsscc" inkscape:connector-curvature="0" id="path5880" d="m 44.291323,503.14959 c 0,3.29679 -0.75752,6.05553 -7.08086,6.05553 -3.51297,-0.054 -80.781097,-0.48927 -84.294067,-0.48927 -1.8916,0 -4.32567,2.16348 -4.64994,6.97354 l -1.83764,0 c -0.32427,-4.81006 -2.7546,-6.97354 -4.59215,-6.97354 -3.35083,0.054 -81.562846,0.48927 -85.508186,0.48927 -6.2693,0 -6.91905,-2.75874 -6.91905,-6.05553 l 1.7837,0 c 0.54045,4.05342 2.59532,4.54207 5.08142,4.54207 3.29678,0 81.024056,-0.75895 84.699156,-0.75895 2.97252,0 5.56539,1.29945 6.26799,4.48814 l 0.21574,0 c 0.75664,-3.18869 3.29546,-4.48814 6.26797,-4.48814 3.51298,0 80.457727,0.75895 83.862597,0.75895 2.37801,0 4.37916,-0.48865 4.91962,-4.54207 z" style="font-size:438.40066528px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"/>
+    <text xml:space="preserve" style="font-size:40px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans" x="-53.14962" y="529.72443" id="text5884" sodipodi:linespacing="125%"><tspan sodipodi:role="line" id="tspan5886" x="-53.14962" y="529.72443" style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro"><tspan style="font-weight:bold" id="tspan5890">List</tspan>(i, {31, 77})</tspan></text>
+    <path sodipodi:nodetypes="ccscccsccssccsscc" inkscape:connector-curvature="0" id="path5892" d="m 44.291323,538.58266 c 0,3.29679 -0.75752,6.05553 -7.08086,6.05553 -3.51297,-0.054 -241.678733,-0.48927 -245.191703,-0.48927 -1.8916,0 -4.32567,2.16348 -4.64994,6.97354 l -1.83764,0 c -0.32427,-4.81006 -2.7546,-6.97354 -4.59215,-6.97354 -3.35083,0.054 -239.56284,0.48927 -243.50818,0.48927 -6.2693,0 -6.91905,-2.75874 -6.91905,-6.05553 l 1.7837,0 c 0.54045,4.05342 2.59532,4.54207 5.08142,4.54207 3.29678,0 239.02405,-0.75895 242.69915,-0.75895 2.97252,0 5.56539,1.29945 6.26799,4.48814 l 0.21574,0 c 0.75664,-3.18869 3.29546,-4.48814 6.26797,-4.48814 3.51298,0 241.355363,0.75895 244.760233,0.75895 2.37801,0 4.37916,-0.48865 4.91962,-4.54207 z" style="font-size:438.40066528px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"/>
+    <text xml:space="preserve" style="font-size:40px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans" x="-203.74017" y="454" id="text5894" sodipodi:linespacing="125%"><tspan sodipodi:role="line" id="tspan5896" x="-203.74017" y="454" style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro">i</tspan></text>
+    <text sodipodi:linespacing="125%" id="text5898" y="565.15747" x="-212.59843" style="font-size:40px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans" xml:space="preserve"><tspan style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro" y="565.15747" x="-212.59843" id="tspan5900" sodipodi:role="line"><tspan id="tspan5902" style="font-weight:bold">List</tspan>(head, {2, 29, 30}∪{31, 77})</tspan></text>
+  </g>
+</svg></e:contents></figure>
+  </p>
+
+  <p>
+    <span class="pred_name">ListSegment</span> is not <em>quite</em> a <span class="pred_name">List</span>.
+    It is terminated by the pointer <span class="var">i</span> rather than <code>null</code>;
+    and the predicate is parameterized by <span class="var">i</span>.
+    Otherwise, the definition is identical.
+
+
+    <figure class="definition" id="def_ListSegment"><figcaption><span class="figure_number">Definition 5.</span></figcaption><div>
+      <a class="pred_name" href="#def_List">List</a>(<code>head</code>, <code>i</code>, <span class="st">S</span>) ≝
+      <a class="pred_name" href="#def_EmptyListSegment">EmptyListSegment</a>(<code>head</code>, <code>i</code>, <span class="st">S</span>) ∨ <a class="pred_name" href="#def_NonEmptyListSegment">NonEmptyListSegment</a>(<code>head</code>, <code>i</code>, <span class="st">S</span>).
+    </div></figure>
+
+    <figure class="definition" id="def_EmptyListSegment"><figcaption><span class="figure_number">Definition 6.</span></figcaption><div>
+      <a class="pred_name" href="#def_EmptyListSegment">EmptyListSegment</a>(<code>head</code>, <code>i</code>, <span class="st">S</span>) ≝
+      <code>head</code> = <code>i</code> ∧ <span class="st">S</span> = <span>∅</span> ∧ <b>emp</b>
+    </div></figure>
+
+    <figure class="definition" id="def_NonEmptyListSegment"><figcaption><span class="figure_number">Definition 7.</span></figcaption><div>
+      <a class="pred_name" href="#def_NonEmptyListSegment">NonEmptyListSegment</a>(<code>head</code>, <code>i</code>, <span class="st">S</span>) ≝
+      <div class="indent">∃<span class="var">value</span>, <span class="var">tail</span>, <span class="st">T</span>. <e:expr><div class="indent"><a class="pred_name" href="#def_ListCompose">ListCompose</a>(<span class="var">value</span>, <span class="st">T</span>, <span class="st">S</span>) ∧ <br/><code>head</code> ↦ <e:list><span class="var">value</span>, <span class="var">tail</span></e:list> ∗ <a class="pred_name" href="#def_ListSegment">ListSegment</a>(<span class="var">tail</span>, <code>i</code>, <span class="st">T</span>)</div></e:expr></div>
+    </div></figure>
+  </p>
+
+  <figure class="definition" id="def_SegCompose"><figcaption><span class="figure_number">Definition 8.</span></figcaption><div>
     <a class="pred_name" href="#def_SegCompose">SegCompose</a>(<span class="st">L</span>, <span class="st">R</span>, <span class="st">S</span>) ≝
     <div class="indent"><span class="st">L</span> ∪ <span class="st">R</span> = <span class="st">S</span> ∧ <br/>∀<span class="var">l</span> ∈ <span class="st">L</span>, <span class="var">r</span> ∈ <span class="st">R</span>. <e:expr><span class="var">l</span> &lt; <span class="var">r</span></e:expr></div>
   </div></figure>

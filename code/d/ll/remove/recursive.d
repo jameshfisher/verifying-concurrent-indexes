@@ -31,15 +31,15 @@ Node* remove(Node* head, int value) {
 
     // <e:logimpl>
     //   <e:pred name="EmptyList"><code>head</code>, <e:st n="S"/></e:pred>
-    //   <e:eq><e:st n="S"/><m:scemp/></e:eq>
+    //   <e:eq><e:st n="S"/><m:empty/></e:eq>
     // </e:logimpl>
     /// <e:and>
     ///   <e:pred name="EmptyList"><code>head</code>, <e:st n="S" /></e:pred>
-    ///   <e:eq><e:st n="S"/><m:scemp/></e:eq>
+    ///   <e:eq><e:st n="S"/><m:empty/></e:eq>
     /// </e:and>
 
-    // <e:eq><e:setminus><m:scemp/><e:st n="X"/></e:setminus><m:scemp/></e:eq>,
-    // <e:eq><e:st n="S"/><m:scemp/></e:eq>,
+    // <e:eq><e:setminus><m:empty/><e:st n="X"/></e:setminus><m:empty/></e:eq>,
+    // <e:eq><e:st n="S"/><m:empty/></e:eq>,
     // substitution.
     /// <e:pred name="EmptyList">
     ///   <code>head</code>,

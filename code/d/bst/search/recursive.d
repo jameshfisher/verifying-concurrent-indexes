@@ -27,15 +27,15 @@ bool search(Node* root, in int value) {
 
     // <e:logimpl>
     //   <e:pred name="EmptyTree"><code>root</code>, <e:st n="S"/></e:pred>
-    //   <e:eq><e:st n="S"/><m:scemp/></e:eq>
+    //   <e:eq><e:st n="S"/><m:empty/></e:eq>
     // </e:logimpl>
     /// <e:and>
     ///   <e:pred name="EmptyTree"><code>root</code>, <e:st n="S"/></e:pred>
-    ///   <e:eq><e:st n="S"/><m:scemp/></e:eq>
+    ///   <e:eq><e:st n="S"/><m:empty/></e:eq>
     /// </e:and>
 
     // <e:logimpl>
-    //   <e:eq><e:st n="S"/><m:scemp/></e:eq>
+    //   <e:eq><e:st n="S"/><m:empty/></e:eq>
     //   <e:notin><code>value</code><e:st n="S"/></e:notin>
     // </e:logimpl>
     /// <e:and>

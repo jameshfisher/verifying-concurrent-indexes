@@ -36,7 +36,7 @@ Node* insert(Node* head, int value) {
     // </e:eq>.
     /// <e:eq>
     ///   <e:st n="S"/>
-    ///   <m:scemp/>
+    ///   <m:empty/>
     /// </e:eq> ∧
     /// <m:hemp/>
 
@@ -44,7 +44,7 @@ Node* insert(Node* head, int value) {
     // Specification for <code>new Node(value)</code>.
     /// <e:eq>
     ///   <e:st n="S"/>
-    ///   <m:scemp/>
+    ///   <m:empty/>
     /// </e:eq> ∧
     /// <e:sep>
     ///   <m:hemp/>
@@ -60,21 +60,21 @@ Node* insert(Node* head, int value) {
     // </e:eq>.
     /// <e:eq>
     ///   <e:st n="S"/>
-    ///   <m:scemp/>
+    ///   <m:empty/>
     /// </e:eq> ∧ <e:pred name="NonEmptyList"><code>o</code>, <e:set><code>value</code></e:set></e:pred>
 
-    // <e:eq><e:st n="X"/><e:union><m:scemp/><e:st n="X"/></e:union></e:eq>.
+    // <e:eq><e:st n="X"/><e:union><m:empty/><e:st n="X"/></e:union></e:eq>.
     /// <e:eq>
     ///   <e:st n="S"/>
-    ///   <m:scemp/>
+    ///   <m:empty/>
     /// </e:eq> ∧ 
     /// <e:pred name="NonEmptyList"><code>o</code>,
     /// <e:union>
-    ///   <m:scemp/>
+    ///   <m:empty/>
     ///   <e:set><code>value</code></e:set>
     /// </e:union></e:pred>
 
-    // Substitution.  Discard <e:eq><e:st n="S"/><m:scemp/></e:eq>.
+    // Substitution.  Discard <e:eq><e:st n="S"/><m:empty/></e:eq>.
     /// <e:pred name="NonEmptyList"><code>o</code>,
     /// <e:union>
     ///   <e:st n="S"/>

@@ -78,7 +78,7 @@ Node* removeRoot(Node* root) {
       </e:sep>
     </e:sep> ∧<br />
     <e:pred name="TCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred> ∧
-    <e:eq><e:st n="L"/><m:scemp/></e:eq>
+    <e:eq><e:st n="L"/><m:empty/></e:eq>
   </e:indent></e:expr>
 </e:exists></div></div>
 
@@ -93,7 +93,7 @@ Node* removeRoot(Node* root) {
       <e:pred name="Tree"><e:var n="r"/>, <e:st n="R"/></e:pred>
     </e:sep> ∧<br />
     <e:pred name="TCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred> ∧
-    <e:eq><e:st n="L"/><m:scemp/></e:eq>
+    <e:eq><e:st n="L"/><m:empty/></e:eq>
   </e:indent></e:expr>
 </e:exists></div></div>
 
@@ -107,7 +107,7 @@ Node* removeRoot(Node* root) {
       </e:fcell>
       <e:pred name="Tree"><e:var n="r"/>, <e:st n="R"/></e:pred>
     </e:sep> ∧<br />
-    <e:pred name="TCompose"><m:scemp/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
+    <e:pred name="TCompose"><m:empty/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
   </e:indent></e:expr>
 </e:exists></div></div>
 <e:displaycode>
@@ -122,7 +122,7 @@ Node* removeRoot(Node* root) {
           </e:fcell>
       <e:pred name="Tree"><code>o</code>, <e:st n="R"/></e:pred>
     </e:sep> ∧<br />
-    <e:pred name="TCompose"><m:scemp/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
+    <e:pred name="TCompose"><m:empty/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
   </e:indent></e:expr>
 </e:exists></div></div>
 <e:displaycode>
@@ -131,23 +131,23 @@ Node* removeRoot(Node* root) {
   <e:vars><e:st n="R"/></e:vars>
   <e:expr>
     <e:pred name="Tree"><code>o</code>, <e:st n="R"/></e:pred> ∧
-    <e:pred name="TCompose"><m:scemp/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
+    <e:pred name="TCompose"><m:empty/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
   </e:expr>
 </e:exists></div></div>
 
 <div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Lemma: <e:logimpl>
-  <e:pred name="TCompose"><m:scemp/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
+  <e:pred name="TCompose"><m:empty/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
   <e:eq><e:st n="R"/><e:setminus><e:st n="S"/><e:set><e:var n="v"/></e:set></e:setminus></e:eq>
 </e:logimpl></div><e:exists>
   <e:vars><e:st n="R"/></e:vars>
   <e:expr>
     <e:pred name="Tree"><code>o</code>, <e:st n="R"/></e:pred> ∧
-    <e:pred name="TCompose"><m:scemp/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred> ∧
+    <e:pred name="TCompose"><m:empty/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred> ∧
     <e:eq><e:st n="R"/><e:setminus><e:st n="S"/><e:set><e:var n="v"/></e:set></e:setminus></e:eq>
   </e:expr>
 </e:exists></div></div>
 
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Substitution.  Discard <e:pred name="TCompose"><m:scemp/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Substitution.  Discard <e:pred name="TCompose"><m:empty/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
 and <e:eq><e:st n="R"/><e:setminus><e:st n="S"/><e:set><e:var n="v"/></e:set></e:setminus></e:eq>.</div><e:pred name="Tree"><code>o</code>, <e:setminus><e:st n="S"/><e:set><e:var n="v"/></e:set></e:setminus></e:pred></div></div>
 <e:displaycode>  }
   else {&#160;</e:displaycode>

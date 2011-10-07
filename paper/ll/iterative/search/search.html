@@ -5,6 +5,87 @@
 
   <e:h>An iterative <m:ll/> <code>search</code> algorithm</e:h>
 
+  <p>
+    The iterative <m:ll/> algorithms 
+    transform recursion into <code>while</code> loops.
+    In the previous algorithms,
+    each recursive call is made on a <m:ll/> of smaller size,
+    and in this way the algorithm proceeds down the list.
+    In the iterative case,
+    each iteration of the while loop ensures that
+    the iterating pointer points into a smaller <m:ll/>.
+  </p>
+
+  <p>
+    The recursive algorithms recurse on the tail of the list when
+    the list is non-empty and the value at the head is smaller than the value searched for.
+    The same condition applies to the while loop.
+    The iterative equivalent of recursing on the tail
+    is to replace the current head pointer with the tail pointer.
+    (For clarity, we create another variable, <code>i</code>,
+    to hold the pointer that iterates down the list.)
+  </p>
+
+  <p>
+    The recursive call was verified by <q>framing off</q> the part of the heap:
+    the segment of the list leading to the head pointer is not part of the function precondition,
+    as it can be <q>framed on</q> when the call returns.
+    The iterative algorithm does not have this luxury:
+    we must maintain our knowledge of the segment of
+    the list leading from <code>head</code> to <code>i</code>,
+    in order to satisfy the postcondition, which speaks of <code>head</code>, not <code>i</code>.
+    Here is the algorithm part-way through traversal of a list:
+
+    <e:diagram>
+      <e:caption>
+	An example <m:ll/> being traversed by an iterative algorithm.
+      </e:caption>
+      <e:contents><xi:include href="../list_segments.svg" /></e:contents>
+    </e:diagram>
+  </p>
+
+  <p>
+    <e:predicate>ListSegment</e:predicate> is not <em>quite</em> a <e:predicate>List</e:predicate>.
+    It is terminated by the pointer <e:var n="i"/> rather than <code>null</code>;
+    and the predicate is parameterized by <e:var n="i"/>.
+    Otherwise, the definition is identical.
+
+
+    <e:definition name="ListSegment">
+      <e:pred name="List"><code>head</code>, <code>i</code>, <e:st n="S"/></e:pred> ≝
+      <e:or>
+	<e:pred name="EmptyListSegment"><code>head</code>, <code>i</code>, <e:st n="S"/></e:pred>
+	<e:pred name="NonEmptyListSegment"><code>head</code>, <code>i</code>, <e:st n="S"/></e:pred>
+      </e:or>.
+    </e:definition>
+
+    <e:definition name="EmptyListSegment">
+      <e:pred name="EmptyListSegment"><code>head</code><code>i</code><e:st n="S"/></e:pred> ≝
+      <e:and>
+	<e:eq><code>head</code><code>i</code></e:eq>
+	<e:eq><e:st n="S"/><m:empty/></e:eq>
+	<m:hemp/>
+      </e:and>
+    </e:definition>
+
+    <e:definition name="NonEmptyListSegment">
+      <e:pred name="NonEmptyListSegment"><code>head</code><code>i</code><e:st n="S"/></e:pred> ≝
+      <e:indent><e:exists>
+	  <e:vars><e:var n="value"/><e:var n="tail"/><e:st n="T"/></e:vars>
+	  <e:expr><e:indent><e:and type="lines">
+		<e:pred name="ListCompose"><e:var n="value"/>, <e:st n="T"/>, <e:st n="S"/></e:pred>
+		<e:sep>
+		  <e:fcell>
+		    <code>head</code>
+		    <e:list><e:var n="value" />, <e:var n="tail"/></e:list>
+		  </e:fcell>
+		  <e:pred name="ListSegment"><e:var n="tail"/>, <code>i</code>, <e:st n="T"/></e:pred>
+		</e:sep>
+	  </e:and></e:indent></e:expr>
+      </e:exists></e:indent>
+    </e:definition>
+  </p>
+
   <e:definition name="SegCompose">
     <e:pred name="SegCompose"><e:st n="L"/><e:st n="R"/><e:st n="S"/></e:pred> ≝
     <e:indent><e:and type="lines">

@@ -17,7 +17,7 @@
   <xsl:template match="m:ie"><i>i.e.</i></xsl:template>
   <xsl:template match="m:vs"><i>vs.</i></xsl:template>
 
-  <xsl:template match="m:empty">∅</xsl:template>
+  <xsl:template match="m:empty"><span>∅</span></xsl:template>
 
   <xsl:template match="m:orElim">∨E</xsl:template>
   <xsl:template match="m:orIntro">∨I</xsl:template>
@@ -33,7 +33,6 @@
   <xsl:template match="m:lacuna">&#160;[…]&#160;</xsl:template>
 
   <xsl:template match="m:hemp"><b>emp</b></xsl:template>
-  <xsl:template match="m:scemp">∅</xsl:template>
 
   <xsl:template match="m:red"><span class="red">●</span></xsl:template>
   <xsl:template match="m:black"><span class="black">●</span></xsl:template>

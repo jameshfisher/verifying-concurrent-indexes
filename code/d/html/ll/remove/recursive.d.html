@@ -28,14 +28,14 @@ Node* remove(Node* head, int value) {
 
 <div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'><e:logimpl>
   <e:pred name="EmptyList"><code>head</code>, <e:st n="S"/></e:pred>
-  <e:eq><e:st n="S"/><m:scemp/></e:eq>
+  <e:eq><e:st n="S"/><m:empty/></e:eq>
 </e:logimpl></div><e:and>
   <e:pred name="EmptyList"><code>head</code>, <e:st n="S" /></e:pred>
-  <e:eq><e:st n="S"/><m:scemp/></e:eq>
+  <e:eq><e:st n="S"/><m:empty/></e:eq>
 </e:and></div></div>
 
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'><e:eq><e:setminus><m:scemp/><e:st n="X"/></e:setminus><m:scemp/></e:eq>,
-<e:eq><e:st n="S"/><m:scemp/></e:eq>,
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'><e:eq><e:setminus><m:empty/><e:st n="X"/></e:setminus><m:empty/></e:eq>,
+<e:eq><e:st n="S"/><m:empty/></e:eq>,
 substitution.</div><e:pred name="EmptyList">
   <code>head</code>,
     <e:setminus>

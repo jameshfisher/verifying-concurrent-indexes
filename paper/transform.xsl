@@ -114,7 +114,7 @@
   </xsl:template>
 
   <xsl:template match="e:pre|e:post|e:cond"><div class="cond"><xsl:apply-templates /></div></xsl:template>
-  <xsl:template match="e:set">{<xsl:apply-templates select="@*|node()" />}</xsl:template>
+  <xsl:template match="e:set">{<xsl:call-template name="opNoSpaces"><xsl:with-param name="sym">, </xsl:with-param></xsl:call-template>}</xsl:template>
   <xsl:template match="e:setb"><span class="set math"><xsl:apply-templates select="e:fst" />&#160;:&#160;<xsl:apply-templates select="e:snd" /></span></xsl:template>
   <xsl:template match="e:command"><pre class="prettyprint"><xsl:apply-templates /></pre></xsl:template>
 

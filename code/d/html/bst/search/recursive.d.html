@@ -24,14 +24,14 @@ bool search(Node* root, in int value) {
 
 <div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'><e:logimpl>
   <e:pred name="EmptyTree"><code>root</code>, <e:st n="S"/></e:pred>
-  <e:eq><e:st n="S"/><m:scemp/></e:eq>
+  <e:eq><e:st n="S"/><m:empty/></e:eq>
 </e:logimpl></div><e:and>
   <e:pred name="EmptyTree"><code>root</code>, <e:st n="S"/></e:pred>
-  <e:eq><e:st n="S"/><m:scemp/></e:eq>
+  <e:eq><e:st n="S"/><m:empty/></e:eq>
 </e:and></div></div>
 
 <div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'><e:logimpl>
-  <e:eq><e:st n="S"/><m:scemp/></e:eq>
+  <e:eq><e:st n="S"/><m:empty/></e:eq>
   <e:notin><code>value</code><e:st n="S"/></e:notin>
 </e:logimpl></div><e:and>
   <e:pred name="EmptyTree"><code>root</code>, <e:st n="S"/></e:pred>

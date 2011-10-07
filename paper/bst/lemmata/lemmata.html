@@ -21,7 +21,7 @@
     <li>
       <e:logimpl>
 	<e:pred name="EmptyTree"><code>root</code>, <e:st n="S"/></e:pred>
-	<e:eq><e:st n="S"/><m:scemp/></e:eq>
+	<e:eq><e:st n="S"/><m:empty/></e:eq>
       </e:logimpl>
     </li>
 
@@ -93,7 +93,7 @@
 
     <li>
       <e:logimpl>
-	<e:pred name="TCompose"><m:scemp/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
+	<e:pred name="TCompose"><m:empty/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
 	<e:eq><e:st n="R"/><e:setminus><e:st n="S"/><e:set><e:var n="v"/></e:set></e:setminus></e:eq>
       </e:logimpl>
     </li>

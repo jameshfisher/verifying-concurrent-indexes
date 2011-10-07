@@ -149,7 +149,7 @@
     Notice in our example that though <e:eq><e:size><e:st n="S"/></e:size><e:const n="4"/></e:eq>,
     there are actually <em>five</em> linked lists:
     the final <code>null</code> pointer conceptually points to
-    a linked list representing <m:scemp/>, which uses no memory locations.
+    a linked list representing <m:empty/>, which uses no memory locations.
     This does not fit in the scheme of the above diagram,
     which really only applies to non-empty sets.
     The linked list, then, actually uses two distinct representations of sets:
@@ -169,7 +169,7 @@
     That is, <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
     describes a set of memory locations forming a linked list that represents set <e:st n="S"/>,
     with <code>head</code> being the address of the first <code>Node</code> in the list
-    (or <code>null</code> if <e:eq><e:st n="S"/><m:scemp/></e:eq>).
+    (or <code>null</code> if <e:eq><e:st n="S"/><m:empty/></e:eq>).
 
     <e:diagram>
       <e:caption>Our basic <m:ll/> predicates.</e:caption>
@@ -219,7 +219,7 @@
 	    <td>
 	      <e:eq>
 		<e:st n="S"/>
-		<m:scemp/>
+		<m:empty/>
 	      </e:eq> ∧
 	    </td>
 	    <td><e:st n="S"/> is the empty set and</td>

@@ -4,7 +4,7 @@
 	 xmlns:m="http://eegg.github.com/macro">
 
   <e:h><e:logimpl>
-      <e:pred name="TCompose"><e:st n="L"/>, <e:var n="v"/>, <m:scemp/>, <e:st n="S"/></e:pred>
+      <e:pred name="TCompose"><e:st n="L"/>, <e:var n="v"/>, <m:empty/>, <e:st n="S"/></e:pred>
       <e:pred name="Max"><e:var n="v"/>, <e:st n="S"/></e:pred>
   </e:logimpl></e:h>
 
@@ -17,7 +17,7 @@
 
   <e:derivation>
     <e:step name="given">
-      <e:derive><e:pred name="TCompose"><e:st n="L"/>, <e:var n="v"/>, <m:scemp/>, <e:st n="S"/></e:pred></e:derive>
+      <e:derive><e:pred name="TCompose"><e:st n="L"/>, <e:var n="v"/>, <m:empty/>, <e:st n="S"/></e:pred></e:derive>
       <e:by>given</e:by>
     </e:step>
 
@@ -30,7 +30,7 @@
 	      
 		<e:union>
 		  <e:set><e:var n="v"/></e:set>
-		  <m:scemp/>
+		  <m:empty/>
 		</e:union>
 	      
 	    </e:union>
@@ -49,7 +49,7 @@
 	  <e:vars>
 	    <e:in>
 	      <e:var n="r"/>
-	      <m:scemp/>
+	      <m:empty/>
 	    </e:in>
 	  </e:vars>
 	  <e:expr>
@@ -71,7 +71,7 @@
 	      
 		<e:union>
 		  <e:set><e:var n="v"/></e:set>
-		  <m:scemp/>
+		  <m:empty/>
 		</e:union>
 	      
 	    </e:union>
