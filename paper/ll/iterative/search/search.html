@@ -45,12 +45,24 @@
   </p>
 
   <p>
-    <e:predicate>ListSegment</e:predicate> is not <em>quite</em> a <e:predicate>List</e:predicate>.
-    It is terminated by the pointer <e:var n="i"/> rather than <code>null</code>;
-    and the predicate is parameterized by <e:var n="i"/>.
-    Otherwise, the definition is identical.
+    Notice that the <e:predicate>ListSegment</e:predicate> has the same basic structure as a <e:predicate>List</e:predicate>.
+    The basic difference is that it is terminated by the pointer <e:var n="i"/> rather than <code>null</code>;
+    and thus the predicate is parameterized by <e:var n="i"/>.
+    We can show this structure in the example:
 
+    <e:diagram>
+      <e:caption>
+	The previous linked list with its recursive structure marked.
+      </e:caption>
+      <e:contents><xi:include href="../list_segments_nested.svg" /></e:contents>
+    </e:diagram>
+  </p>
 
+  <p>
+    The definition of <e:predicate>ListSegment</e:predicate> is very similar to <e:predicate>List</e:predicate>
+    (indeed, we could have defined <e:pred name="List"><code>head</code><e:st n="S"/></e:pred>
+    as <e:pred name="ListSegment"><code>head</code><code>null</code><e:st n="S"/></e:pred>.)
+    
     <e:definition name="ListSegment">
       <e:pred name="List"><code>head</code>, <code>i</code>, <e:st n="S"/></e:pred> ≝
       <e:or>
@@ -65,7 +77,7 @@
 	<e:eq><code>head</code><code>i</code></e:eq>
 	<e:eq><e:st n="S"/><m:empty/></e:eq>
 	<m:hemp/>
-      </e:and>
+      </e:and>.
     </e:definition>
 
     <e:definition name="NonEmptyListSegment">
@@ -81,9 +93,13 @@
 		  </e:fcell>
 		  <e:pred name="ListSegment"><e:var n="tail"/>, <code>i</code>, <e:st n="T"/></e:pred>
 		</e:sep>
-	  </e:and></e:indent></e:expr>
+	  </e:and>.</e:indent></e:expr>
       </e:exists></e:indent>
     </e:definition>
+  </p>
+
+  <p>
+
   </p>
 
   <e:definition name="SegCompose">
