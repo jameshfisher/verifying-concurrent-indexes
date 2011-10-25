@@ -89,9 +89,13 @@
   <xsl:template match="e:impl"><xsl:call-template name="op"><xsl:with-param name="sym">→</xsl:with-param></xsl:call-template></xsl:template>
   <xsl:template match="e:doubleimpl"><xsl:call-template name="op"><xsl:with-param name="sym">↔</xsl:with-param></xsl:call-template></xsl:template>
 
+  <xsl:template match="e:setlt"><xsl:call-template name="op"><xsl:with-param name="sym">≪</xsl:with-param></xsl:call-template></xsl:template>
+
   <xsl:template match="e:forall">∀<xsl:apply-templates select="e:vars" />.&#160;<xsl:apply-templates select="e:expr" /></xsl:template>
   <xsl:template match="e:exists">∃<xsl:apply-templates select="e:vars" />.&#160;<xsl:apply-templates select="e:expr" /></xsl:template>
   <xsl:template match="e:vars"><xsl:call-template name="opNoSpaces"><xsl:with-param name="sym">, </xsl:with-param></xsl:call-template></xsl:template>
+
+  <xsl:template match="e:list"><xsl:call-template name="opNoSpaces"><xsl:with-param name="sym">, </xsl:with-param></xsl:call-template></xsl:template>
 
   <xsl:template match="e:logimpl"><xsl:call-template name="op"><xsl:with-param name="sym">⇒</xsl:with-param></xsl:call-template></xsl:template>
 
