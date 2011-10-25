@@ -91,7 +91,7 @@ struct Node {
     if there are elements in <span class="st">S</span> larger than <span class="var">s</span>,
     the <code>tail</code> field of <code>r</code> is set to
     the address of the <code>Node</code> representing the next-largest element;
-    otherwise, the <code>tail</code> field is set to <m:null/>.
+    otherwise, the <code>tail</code> field is set to <span>␀</span>.
   </p>
 
   <p>
@@ -503,13 +503,13 @@ struct Node {
   <p>
     Notice in our example that though |<span class="st">S</span>| = <span class="constant">4</span>,
     there are actually <em>five</em> linked lists:
-    the final <m:null/> pointer conceptually points to
+    the final <span>␀</span> pointer conceptually points to
     a linked list representing <span>∅</span>, which uses no memory locations.
     This does not fit in the scheme of the above diagram,
     which really only applies to non-empty sets.
     The linked list, then, actually uses two distinct representations of sets:
     one for non-empty sets as above,
-    and another for the empty set, signaled by the use of a <m:null/> pointer.
+    and another for the empty set, signaled by the use of a <span>␀</span> pointer.
   </p>
 
   <p>
@@ -524,7 +524,7 @@ struct Node {
     That is, <a class="pred_name" href="#def_List">List</a>(<code>head</code>, <span class="st">S</span>)
     describes a set of memory locations forming a linked list that represents set <span class="st">S</span>,
     with <code>head</code> being the address of the first <code>Node</code> in the list
-    (or <m:null/> if <span class="st">S</span> = <span>∅</span>).
+    (or <span>␀</span> if <span class="st">S</span> = <span>∅</span>).
 
     <figure class="diagram"><figcaption><span class="figure_number">Diagram 5.</span><br/><e:caption>Our basic <abbr title="Linked List" class="smallcaps">LL</abbr> predicates.</e:caption></figcaption><e:contents><!-- Created with Inkscape (http://www.inkscape.org/) --><svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="407.48032" height="177.16536" id="svg2" version="1.1" inkscape:version="0.48.1 r9760" sodipodi:docname="predicates.svg">
   <defs id="defs4">
@@ -618,7 +618,7 @@ struct Node {
   </p>
 
   <p>
-    The empty set is represented by a <m:null/> pointer and no allocated heap memory.
+    The empty set is represented by a <span>␀</span> pointer and no allocated heap memory.
     Translating this to separation logic is also straightforward:
 
     <figure class="definition" id="def_EmptyList"><figcaption><span class="figure_number">Definition 2.</span></figcaption><div>
@@ -629,7 +629,7 @@ struct Node {
 	      <a class="pred_name" href="#def_EmptyList">EmptyList</a>(<code>head</code>, <span class="st">S</span>) ≝
 	    </td>
 	    <td>
-	      <code>head</code> = <m:null/> ∧
+	      <code>head</code> = <span>␀</span> ∧
 	    </td>
 	    <td/>
 	  </tr>
@@ -812,17 +812,17 @@ struct Node {
   <p>
     The recursive method to search a list closely follows the recursive data structure that we have defined.
     Given a <a class="pred_name" href="#def_List">List</a>(<code>head</code>, <span class="st">S</span>), either it is empty or it is not.
-    Which is the case is indicated by whether <code>head</code> = <m:null/>.
-    If we find that <code>head</code> = <m:null/>, then we have <a class="pred_name" href="#def_EmptyList">EmptyList</a>(<code>head</code>, <span class="st">S</span>):
+    Which is the case is indicated by whether <code>head</code> = <span>␀</span>.
+    If we find that <code>head</code> = <span>␀</span>, then we have <a class="pred_name" href="#def_EmptyList">EmptyList</a>(<code>head</code>, <span class="st">S</span>):
 
-    <figure class="lemma"><figcaption><span class="figure_number">Lemma 1.</span><br/><e:caption><a class="pred_name" href="#def_List">List</a>(<code>head</code>, <span class="st">S</span>) ∧ <code>head</code> = <m:null/> ⇒ <a class="pred_name" href="#def_EmptyList">EmptyList</a>(<code>head</code>, <span class="st">S</span>)</e:caption></figcaption><e:contents>
+    <figure class="lemma"><figcaption><span class="figure_number">Lemma 1.</span><br/><e:caption><a class="pred_name" href="#def_List">List</a>(<code>head</code>, <span class="st">S</span>) ∧ <code>head</code> = <span>␀</span> ⇒ <a class="pred_name" href="#def_EmptyList">EmptyList</a>(<code>head</code>, <span class="st">S</span>)</e:caption></figcaption><e:contents>
     <table class="derivation displaymath">
 
-      <tr><td><span class="step">1</span>.</td><td class=""><a class="pred_name" href="#def_List">List</a>(<code>head</code>, <span class="st">S</span>) ∧ <code>head</code> = <m:null/></td><td>given</td></tr>
+      <tr><td><span class="step">1</span>.</td><td class=""><a class="pred_name" href="#def_List">List</a>(<code>head</code>, <span class="st">S</span>) ∧ <code>head</code> = <span>␀</span></td><td>given</td></tr>
 
       <tr><td><span class="step">2</span>.</td><td class=""><a class="pred_name" href="#def_List">List</a>(<code>head</code>, <span class="st">S</span>)</td><td><span class="step">1</span>, ∧E</td></tr>
 
-      <tr><td><span class="step">3</span>.</td><td class=""><code>head</code> = <m:null/></td><td><span class="step">1</span>, ∧E</td></tr>
+      <tr><td><span class="step">3</span>.</td><td class=""><code>head</code> = <span>␀</span></td><td><span class="step">1</span>, ∧E</td></tr>
 
       <tr><td><span class="step">4</span>.</td><td class=""><a class="pred_name" href="#def_EmptyList">EmptyList</a>(<code>head</code>, <span class="st">S</span>) ∨ <a class="pred_name" href="#def_NonEmptyList">NonEmptyList</a>(<code>head</code>, <span class="st">S</span>)</td><td><span class="step">2</span>, open predicate</td></tr>
 
@@ -835,7 +835,7 @@ struct Node {
 
       <tr><td><span class="step">7</span>.</td><td class="indent1">∃<span class="var">v</span>, <span class="var">t</span>. <e:expr><code>head</code> ↦ <span class="var">v</span>, <span class="var">t</span></e:expr></td><td><span class="step">6</span>, ∧E, frame off <a class="pred_name" href="#def_List">List</a>(<span class="var">t</span>, <span class="st">T</span>)</td></tr>
 
-      <tr><td><span class="step">8</span>.</td><td class="indent1"><code>head</code> ≠ <m:null/></td><td><span class="step">7</span>, pointer non-null</td></tr>
+      <tr><td><span class="step">8</span>.</td><td class="indent1"><code>head</code> ≠ <span>␀</span></td><td><span class="step">7</span>, pointer non-null</td></tr>
 
       <tr><td><span class="step">9</span>.</td><td class="">¬<a class="pred_name" href="#def_NonEmptyList">NonEmptyList</a>(<code>head</code>, <span class="st">S</span>)</td><td><span class="step">5</span>, <span class="step"/>, <span class="step">8</span>, RAA</td></tr>
 
@@ -854,7 +854,7 @@ struct Node {
       <tr><td><span class="step">1</span>.</td><td class=""><a class="pred_name" href="#def_EmptyList">EmptyList</a>(<code>head</code>, <span class="st">S</span>)</td><td>given</td></tr>
 
       <tr><td><span class="step">2</span>.</td><td class="">
-	  <code>head</code> = <m:null/> ∧
+	  <code>head</code> = <span>␀</span> ∧
 	  <span class="st">S</span> = <span>∅</span> ∧
 	  <b>emp</b>
 	</td><td><span class="step">1</span>, open predicate</td></tr>
@@ -884,7 +884,7 @@ struct Node {
   </p>
 
   <p>
-    Otherwise, we found that <code>head</code> ≠ <m:null/>.
+    Otherwise, we found that <code>head</code> ≠ <span>␀</span>.
     Symmetrically, we can then infer the list must is non-empty.
     Because the list is non-empty,
     we can look at the first value in the list, <code>head.value</code>, which contains <span class="var">v</span>,
@@ -1252,9 +1252,9 @@ bool search(Node* head, int value) { </pre>
 <div class="section"><pre class="indent">  </pre><div class="AssertionParagraph"><a class="pred_name" href="#def_List">List</a>(<code>head</code>, <span class="st">S</span>)</div></div>
 <pre class="prettyprint">  bool o;
   if (head == null) { </pre>
-<div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl">Assert if-condition.</div><a class="pred_name" href="#def_List">List</a>(<code>head</code>, <span class="st">S</span>) ∧ <code>head</code> = <m:null/></div></div>
+<div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl">Assert if-condition.</div><a class="pred_name" href="#def_List">List</a>(<code>head</code>, <span class="st">S</span>) ∧ <code>head</code> = <span>␀</span></div></div>
 
-<div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl">Lemma: <a class="pred_name" href="#def_List">List</a>(<code>head</code>, <span class="st">S</span>) ∧ <code>head</code> = <m:null/> ⇒ <a class="pred_name" href="#def_EmptyList">EmptyList</a>(<code>head</code>, <span class="st">S</span>).</div><a class="pred_name" href="#def_EmptyList">EmptyList</a>(<code>head</code>, <span class="st">S</span>)</div></div>
+<div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl">Lemma: <a class="pred_name" href="#def_List">List</a>(<code>head</code>, <span class="st">S</span>) ∧ <code>head</code> = <span>␀</span> ⇒ <a class="pred_name" href="#def_EmptyList">EmptyList</a>(<code>head</code>, <span class="st">S</span>).</div><a class="pred_name" href="#def_EmptyList">EmptyList</a>(<code>head</code>, <span class="st">S</span>)</div></div>
 
 <div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl">Lemma: <a class="pred_name" href="#def_EmptyList">EmptyList</a>(<code>head</code>, <span class="st">S</span>) ⇒ <code>value</code> ∉ <span class="st">S</span>.</div><a class="pred_name" href="#def_EmptyList">EmptyList</a>(<code>head</code>, <span class="st">S</span>) ∧ <code>value</code> ∉ <span class="st">S</span></div></div>
 
@@ -1266,9 +1266,9 @@ bool search(Node* head, int value) { </pre>
 <div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl">.</div><a class="pred_name" href="#def_List">List</a>(<code>head</code>, <span class="st">S</span>) ∧ <code>o</code> ↔ <code>value</code> ∈ <span class="st">S</span></div></div>
 <pre class="prettyprint">  }
   else { </pre>
-<div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl">Deny if-condition.</div><a class="pred_name" href="#def_List">List</a>(<code>head</code>, <span class="st">S</span>) ∧ <code>head</code> ≠ <m:null/></div></div>
+<div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl">Deny if-condition.</div><a class="pred_name" href="#def_List">List</a>(<code>head</code>, <span class="st">S</span>) ∧ <code>head</code> ≠ <span>␀</span></div></div>
 
-<div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl">Lemma: <a class="pred_name" href="#def_List">List</a>(<code>head</code>, <span class="st">S</span>) ∧ <code>head</code> ≠ <m:null/> ⇒ <a class="pred_name" href="#def_NonEmptyList">NonEmptyList</a>(<code>head</code>, <span class="st">S</span>).</div><a class="pred_name" href="#def_NonEmptyList">NonEmptyList</a>(<code>head</code>, <span class="st">S</span>)</div></div>
+<div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl">Lemma: <a class="pred_name" href="#def_List">List</a>(<code>head</code>, <span class="st">S</span>) ∧ <code>head</code> ≠ <span>␀</span> ⇒ <a class="pred_name" href="#def_NonEmptyList">NonEmptyList</a>(<code>head</code>, <span class="st">S</span>).</div><a class="pred_name" href="#def_NonEmptyList">NonEmptyList</a>(<code>head</code>, <span class="st">S</span>)</div></div>
 
 <div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl">Open <a class="pred_name" href="#def_NonEmptyList">NonEmptyList</a>(<code>head</code>, <span class="st">S</span>).</div>∃<span class="var">v</span>, <span class="var">tail</span>, <span class="st">T</span>.<br/>
 <div class="indent">
@@ -1405,11 +1405,11 @@ Use <span class="var">v</span> &lt; <code>value</code> ⇒ <code>value</code
 
     <p>
       The recursive <code>insert</code> algorithm works as follows.
-      As before, we first determine whether the list is empty by testing for <code>value</code> = <m:null/>.
+      As before, we first determine whether the list is empty by testing for <code>value</code> = <span>␀</span>.
       If the list is empty, it represents <span>∅</span>, and we wish to mutate the state to represent
       <span>∅</span> ∪ {<code>value</code>},
       which is simply {<code>value</code>}.
-      The representation of this is a one-node list with its <span class="var">tail</span> field set to <m:null/>;
+      The representation of this is a one-node list with its <span class="var">tail</span> field set to <span>␀</span>;
       we create this and return it.
     </p>
 
@@ -1903,12 +1903,12 @@ Node* insert(Node* head, int value) {
 <div class="section"><pre class="indent">  </pre><div class="AssertionParagraph"><div class="expl">Precondition.</div><a class="pred_name" href="#def_List">List</a>(<code>head</code>, <span class="st">S</span>)</div></div>
 <pre class="prettyprint">
   if (head == null) { </pre>
-<div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl">Assert if-condition.</div><a class="pred_name" href="#def_List">List</a>(<code>head</code>, <span class="st">S</span>) ∧ <code>head</code> = <m:null/></div></div>
+<div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl">Assert if-condition.</div><a class="pred_name" href="#def_List">List</a>(<code>head</code>, <span class="st">S</span>) ∧ <code>head</code> = <span>␀</span></div></div>
 
-<div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl">Lemma: <a class="pred_name" href="#def_List">List</a>(<code>head</code>, <span class="st">S</span>) ∧ <code>head</code> = <m:null/> ⇒ <a class="pred_name" href="#def_EmptyList">EmptyList</a>(<code>head</code>, <span class="st">S</span>)</div><a class="pred_name" href="#def_EmptyList">EmptyList</a>(<code>head</code>, <span class="st">S</span>)</div></div>
+<div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl">Lemma: <a class="pred_name" href="#def_List">List</a>(<code>head</code>, <span class="st">S</span>) ∧ <code>head</code> = <span>␀</span> ⇒ <a class="pred_name" href="#def_EmptyList">EmptyList</a>(<code>head</code>, <span class="st">S</span>)</div><a class="pred_name" href="#def_EmptyList">EmptyList</a>(<code>head</code>, <span class="st">S</span>)</div></div>
 
 <div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl">Open <a class="pred_name" href="#def_EmptyList">EmptyList</a>(<code>head</code>, <span class="st">S</span>).  Discard
-<code>head</code> = <m:null/>.</div><span class="st">S</span> = <span>∅</span> ∧
+<code>head</code> = <span>␀</span>.</div><span class="st">S</span> = <span>∅</span> ∧
 <b>emp</b></div></div>
 <pre class="prettyprint">
     o = new Node(value); </pre>
@@ -1923,9 +1923,9 @@ Node* insert(Node* head, int value) {
 <div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl">Substitution.  Discard <span class="st">S</span> = <span>∅</span>.</div><a class="pred_name" href="#def_NonEmptyList">NonEmptyList</a>(<code>o</code>, <span class="st">S</span> ∪ {<code>value</code>})</div></div>
 <pre class="prettyprint">  }
   else { </pre>
-<div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl">Deny if-condition.</div><a class="pred_name" href="#def_List">List</a>(<code>head</code>, <span class="st">S</span>) ∧ <code>head</code> ≠ <m:null/></div></div>
+<div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl">Deny if-condition.</div><a class="pred_name" href="#def_List">List</a>(<code>head</code>, <span class="st">S</span>) ∧ <code>head</code> ≠ <span>␀</span></div></div>
 
-<div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl">Lemma: <a class="pred_name" href="#def_List">List</a>(<code>head</code>, <span class="st">S</span>) ∧ <code>head</code> ≠ <m:null/> ⇒ <a class="pred_name" href="#def_NonEmptyList">NonEmptyList</a>(<code>head</code>, <span class="st">S</span>).</div><a class="pred_name" href="#def_NonEmptyList">NonEmptyList</a>(<code>head</code>, <span class="st">S</span>)</div></div>
+<div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl">Lemma: <a class="pred_name" href="#def_List">List</a>(<code>head</code>, <span class="st">S</span>) ∧ <code>head</code> ≠ <span>␀</span> ⇒ <a class="pred_name" href="#def_NonEmptyList">NonEmptyList</a>(<code>head</code>, <span class="st">S</span>).</div><a class="pred_name" href="#def_NonEmptyList">NonEmptyList</a>(<code>head</code>, <span class="st">S</span>)</div></div>
 
 <div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl">Open <a class="pred_name" href="#def_NonEmptyList">NonEmptyList</a>(<code>head</code>, <span class="st">S</span>).</div>∃<span class="var">v</span>, <span class="var">tail</span>, <span class="st">T</span>.<br/>
 <div class="indent">
@@ -2496,9 +2496,9 @@ Node* remove(Node* head, int value) {
 <div class="section"><pre class="indent">  </pre><div class="AssertionParagraph"><div class="expl">Precondition.</div><a class="pred_name" href="#def_List">List</a>(<code>head</code>, <span class="st">S</span>)</div></div>
 <pre class="prettyprint">
   if (head == null) { </pre>
-<div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl">Assert if-condition.</div><a class="pred_name" href="#def_List">List</a>(<code>head</code>, <span class="st">S</span>) ∧ <code>head</code> = <m:null/></div></div>
+<div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl">Assert if-condition.</div><a class="pred_name" href="#def_List">List</a>(<code>head</code>, <span class="st">S</span>) ∧ <code>head</code> = <span>␀</span></div></div>
 
-<div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl">Lemma: <a class="pred_name" href="#def_List">List</a>(<code>head</code>, <span class="st">S</span>) ∧ <code>head</code> = <m:null/> ⇒ <a class="pred_name" href="#def_EmptyList">EmptyList</a>(<code>head</code>, <span class="st">S</span>)</div><a class="pred_name" href="#def_EmptyList">EmptyList</a>(<code>head</code>, <span class="st">S</span>)</div></div>
+<div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl">Lemma: <a class="pred_name" href="#def_List">List</a>(<code>head</code>, <span class="st">S</span>) ∧ <code>head</code> = <span>␀</span> ⇒ <a class="pred_name" href="#def_EmptyList">EmptyList</a>(<code>head</code>, <span class="st">S</span>)</div><a class="pred_name" href="#def_EmptyList">EmptyList</a>(<code>head</code>, <span class="st">S</span>)</div></div>
 
 <div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl"><a class="pred_name" href="#def_EmptyList">EmptyList</a>(<code>head</code>, <span class="st">S</span>) ⇒ <span class="st">S</span> = <span>∅</span></div><a class="pred_name" href="#def_EmptyList">EmptyList</a>(<code>head</code>, <span class="st">S</span>) ∧ <span class="st">S</span> = <span>∅</span></div></div>
 
@@ -2512,9 +2512,9 @@ substitution.</div><a class="pred_name" href="#def_EmptyList">EmptyList</a>(<cod
 <div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl">Assignment.</div><a class="pred_name" href="#def_List">List</a>(<code>o</code>, <span class="st">S</span>∖{<code>value</code>})</div></div>
 <pre class="prettyprint">  }
   else { </pre>
-<div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl">Deny if-condition.</div><a class="pred_name" href="#def_List">List</a>(<code>head</code>, <span class="st">S</span>) ∧ <code>head</code> ≠ <m:null/></div></div>
+<div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl">Deny if-condition.</div><a class="pred_name" href="#def_List">List</a>(<code>head</code>, <span class="st">S</span>) ∧ <code>head</code> ≠ <span>␀</span></div></div>
 
-<div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl">Lemma: <a class="pred_name" href="#def_List">List</a>(<code>head</code>, <span class="st">S</span>) ∧ <code>head</code> ≠ <m:null/> ⇒ <a class="pred_name" href="#def_NonEmptyList">NonEmptyList</a>(<code>head</code>, <span class="st">S</span>).</div><a class="pred_name" href="#def_NonEmptyList">NonEmptyList</a>(<code>head</code>, <span class="st">S</span>)</div></div>
+<div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl">Lemma: <a class="pred_name" href="#def_List">List</a>(<code>head</code>, <span class="st">S</span>) ∧ <code>head</code> ≠ <span>␀</span> ⇒ <a class="pred_name" href="#def_NonEmptyList">NonEmptyList</a>(<code>head</code>, <span class="st">S</span>).</div><a class="pred_name" href="#def_NonEmptyList">NonEmptyList</a>(<code>head</code>, <span class="st">S</span>)</div></div>
 
 <div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl">Open <a class="pred_name" href="#def_NonEmptyList">NonEmptyList</a>(<code>head</code>, <span class="st">S</span>).</div>∃<span class="var">v</span>, <span class="var">tail</span>, <span class="st">T</span>.<br/>
 <div class="indent">
@@ -2795,7 +2795,7 @@ Use <span class="var">v</span> &lt; <code>value</code> ⇒ <code>value</code
 
   <p>
     Notice that the <span class="pred_name">ListSegment</span> has the same basic structure as a <span class="pred_name">List</span>.
-    The basic difference is that it is terminated by the pointer <span class="var">i</span> rather than <m:null/>;
+    The basic difference is that it is terminated by the pointer <span class="var">i</span> rather than <span>␀</span>;
     and thus the predicate is parameterized by <span class="var">i</span>.
     We can show this structure in the example:
 
@@ -2957,7 +2957,7 @@ Use <span class="var">v</span> &lt; <code>value</code> ⇒ <code>value</code
   <p>
     The definition of <span class="pred_name">ListSegment</span> is very similar to <span class="pred_name">List</span>
     (indeed, we could have defined <a class="pred_name" href="#def_List">List</a>(<code>head</code>, <span class="st">S</span>)
-    as <a class="pred_name" href="#def_ListSegment">ListSegment</a>(<code>head</code>, <m:null/>, <span class="st">S</span>).)
+    as <a class="pred_name" href="#def_ListSegment">ListSegment</a>(<code>head</code>, <span>␀</span>, <span class="st">S</span>).)
     
     <figure class="definition" id="def_ListSegment"><figcaption><span class="figure_number">Definition 5.</span></figcaption><div>
       <a class="pred_name" href="#def_ListSegment">ListSegment</a>(<code>head</code>, <code>i</code>, <span class="st">S</span>) ≝
@@ -3003,7 +3003,7 @@ bool search(Node* head, int value) { </pre>
 <div class="section"><pre class="indent">  </pre><div class="AssertionParagraph"><div class="expl">Loop invariant.</div>∃<span class="st">L</span>, <span class="st">R</span>. <e:expr><div class="indent"><a class="pred_name" href="#def_ListSegment">ListSegment</a>(<code>head</code>, <code>i</code>, <span class="st">L</span>) ∗ <a class="pred_name" href="#def_List">List</a>(<code>i</code>, <span class="st">R</span>) ∧ <br/><a class="pred_name" href="#def_SegmentCompose">SegmentCompose</a>(<span class="st">L</span>, <span class="st">R</span>, <span class="st">S</span>) ∧ <br/><a class="pred_name" href="#def_SetLT">SetLT</a>(<span class="st">L</span>, <code>value</code>)</div></e:expr></div></div>
 <pre class="prettyprint">
   while (i != null &amp;&amp; i.value &lt; value) { </pre>
-<div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl"><code>i</code> ≠ <m:null/> ⇒ <a class="pred_name" href="#def_NonEmptyList">NonEmptyList</a>(<code>i</code>, <span class="st">R</span>).
+<div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl"><code>i</code> ≠ <span>␀</span> ⇒ <a class="pred_name" href="#def_NonEmptyList">NonEmptyList</a>(<code>i</code>, <span class="st">R</span>).
 Open <a class="pred_name" href="#def_NonEmptyList">NonEmptyList</a>(<code>i</code>, <span class="st">R</span>).
 Loop condition.</div>∃<span class="st">L</span>, <span class="st">R</span>, <span class="var">v</span>, <span class="var">tail</span>, <span class="st">T</span>. <e:expr><div class="indent"><a class="pred_name" href="#def_ListSegment">ListSegment</a>(<code>head</code>, <code>i</code>, <span class="st">L</span>) ∗ <code>i</code> ↦ <span class="var">v</span>, <span class="var">tail</span> ∗ <a class="pred_name" href="#def_List">List</a>(<span class="var">tail</span>, <span class="st">T</span>) ∧ <br/><a class="pred_name" href="#def_ListCompose">ListCompose</a>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">R</span>) ∧ <br/><a class="pred_name" href="#def_SegmentCompose">SegmentCompose</a>(<span class="st">L</span>, <span class="st">R</span>, <span class="st">S</span>) ∧ <br/><a class="pred_name" href="#def_SetLT">SetLT</a>(<span class="st">L</span>, <code>value</code>) ∧ <br/><span class="var">v</span> &lt; <code>value</code></div></e:expr></div></div>
 <pre class="prettyprint">
@@ -3020,35 +3020,53 @@ Quantify <span class="st">L</span> ∪ {<span class="var">v</span>} as <span c
 Rename <span class="st">T</span> as <span class="st">R</span>.
 Re-establishes loop invariant.</div>∃<span class="st">L</span>, <span class="st">R</span>. <e:expr><div class="indent"><a class="pred_name" href="#def_ListSegment">ListSegment</a>(<code>head</code>, <code>i</code>, <span class="st">L</span>) ∗ <a class="pred_name" href="#def_List">List</a>(<code>i</code>, <span class="st">R</span>) ∧ <br/><a class="pred_name" href="#def_SegmentCompose">SegmentCompose</a>(<span class="st">L</span>, <span class="st">R</span>, <span class="st">S</span>) ∧ <br/><a class="pred_name" href="#def_SetLT">SetLT</a>(<span class="st">L</span>, <code>value</code>)</div></e:expr></div></div>
 <pre class="prettyprint">  } </pre>
-<div class="section"><pre class="indent">  </pre><div class="AssertionParagraph"><div class="expl">Loop invariant and negated loop condition.</div>∃<span class="st">L</span>, <span class="st">R</span>. <e:expr><div class="indent"><a class="pred_name" href="#def_ListSegment">ListSegment</a>(<code>head</code>, <code>i</code>, <span class="st">L</span>) ∗ <div class="indent">(<a class="pred_name" href="#def_EmptyList">EmptyList</a>(<code>i</code>, <span class="st">R</span>) ∨ <br/>∃<span class="var">v</span>, <span class="var">tail</span>, <span class="st">T</span>. <e:expr><code>i</code> ↦ <span class="var">v</span>, <span class="var">tail</span> ∗ <a class="pred_name" href="#def_List">List</a>(<span class="var">tail</span>, <span class="st">T</span>) ∧ <a class="pred_name" href="#def_ListCompose">ListCompose</a>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">R</span>)</e:expr>)</div> ∧ <br/><a class="pred_name" href="#def_SegmentCompose">SegmentCompose</a>(<span class="st">L</span>, <span class="st">R</span>, <span class="st">S</span>) ∧ <br/><a class="pred_name" href="#def_SetLT">SetLT</a>(<span class="st">L</span>, <code>value</code>)</div></e:expr></div></div>
+<div class="section"><pre class="indent">  </pre><div class="AssertionParagraph"><div class="expl">Loop invariant and negated loop condition.</div>∃<span class="st">L</span>, <span class="st">R</span>. <e:expr><div class="indent"><a class="pred_name" href="#def_ListSegment">ListSegment</a>(<code>head</code>, <code>i</code>, <span class="st">L</span>) ∗ <div class="indent">(<a class="pred_name" href="#def_EmptyList">EmptyList</a>(<code>i</code>, <span class="st">R</span>) ∨ <br/>∃<span class="var">v</span>, <span class="var">tail</span>, <span class="st">T</span>. <e:expr><code>i</code> ↦ <span class="var">v</span>, <span class="var">tail</span> ∗ <a class="pred_name" href="#def_List">List</a>(<span class="var">tail</span>, <span class="st">T</span>) ∧ <a class="pred_name" href="#def_ListCompose">ListCompose</a>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">R</span>) ∧ <code>value</code> ≤ <span class="var">v</span></e:expr>)</div> ∧ <br/><a class="pred_name" href="#def_SegmentCompose">SegmentCompose</a>(<span class="st">L</span>, <span class="st">R</span>, <span class="st">S</span>) ∧ <br/><a class="pred_name" href="#def_SetLT">SetLT</a>(<span class="st">L</span>, <code>value</code>)</div></e:expr></div></div>
 <pre class="prettyprint">
   bool o;
   if (i == null) { </pre>
-<div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl">Assert if-condition.  Eliminate non-<m:null/> side of disjunction.<br/></div>∃<span class="st">L</span>, <span class="st">R</span>. <e:expr><div class="indent"><a class="pred_name" href="#def_ListSegment">ListSegment</a>(<code>head</code>, <m:null/>, <span class="st">L</span>) ∗ <a class="pred_name" href="#def_EmptyList">EmptyList</a>(<m:null/>, <span class="st">R</span>) ∧ <br/><a class="pred_name" href="#def_SegmentCompose">SegmentCompose</a>(<span class="st">L</span>, <span class="st">R</span>, <span class="st">S</span>) ∧ <br/><a class="pred_name" href="#def_SetLT">SetLT</a>(<span class="st">L</span>, <code>value</code>)</div></e:expr></div></div>
+<div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl">Assert if-condition.  Eliminate non-<span>␀</span> side of disjunction.<br/></div>∃<span class="st">L</span>, <span class="st">R</span>. <e:expr><div class="indent"><a class="pred_name" href="#def_ListSegment">ListSegment</a>(<code>head</code>, <span>␀</span>, <span class="st">L</span>) ∗ <a class="pred_name" href="#def_EmptyList">EmptyList</a>(<span>␀</span>, <span class="st">R</span>) ∧ <br/><a class="pred_name" href="#def_SegmentCompose">SegmentCompose</a>(<span class="st">L</span>, <span class="st">R</span>, <span class="st">S</span>) ∧ <br/><a class="pred_name" href="#def_SetLT">SetLT</a>(<span class="st">L</span>, <code>value</code>)</div></e:expr></div></div>
 
-<div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl"><a class="pred_name" href="#def_EmptyList">EmptyList</a>(<code>i</code>, <span class="st">R</span>) ⇒ <span class="st">R</span> = <span>∅</span>.</div>∃<span class="st">L</span>. <e:expr><div class="indent"><a class="pred_name" href="#def_ListSegment">ListSegment</a>(<code>head</code>, <m:null/>, <span class="st">L</span>) ∗ <a class="pred_name" href="#def_EmptyList">EmptyList</a>(<m:null/>, <span>∅</span>) ∧ <br/><a class="pred_name" href="#def_SegmentCompose">SegmentCompose</a>(<span class="st">L</span>, <span>∅</span>, <span class="st">S</span>) ∧ <br/><a class="pred_name" href="#def_SetLT">SetLT</a>(<span class="st">L</span>, <code>value</code>)</div></e:expr></div></div>
+<div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl"><a class="pred_name" href="#def_EmptyList">EmptyList</a>(<span>␀</span>, <span class="st">R</span>) ⇒ <span class="st">R</span> = <span>∅</span>.</div>∃<span class="st">L</span>. <e:expr><div class="indent"><a class="pred_name" href="#def_ListSegment">ListSegment</a>(<code>head</code>, <span>␀</span>, <span class="st">L</span>) ∗ <a class="pred_name" href="#def_EmptyList">EmptyList</a>(<span>␀</span>, <span>∅</span>) ∧ <br/><a class="pred_name" href="#def_SegmentCompose">SegmentCompose</a>(<span class="st">L</span>, <span>∅</span>, <span class="st">S</span>) ∧ <br/><a class="pred_name" href="#def_SetLT">SetLT</a>(<span class="st">L</span>, <code>value</code>)</div></e:expr></div></div>
 
-<div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl"><a class="pred_name" href="#def_SegmentCompose">SegmentCompose</a>(<span class="st">L</span>, <span>∅</span>, <span class="st">S</span>) ⇒ <span class="st">L</span> ∪ <span>∅</span> = <span class="st">S</span> ⇒ <span class="st">L</span> = <span class="st">S</span>.</div><a class="pred_name" href="#def_ListSegment">ListSegment</a>(<code>head</code>, <m:null/>, <span class="st">S</span>) ∗ <a class="pred_name" href="#def_EmptyList">EmptyList</a>(<m:null/>, <span>∅</span>) ∧ <br/><a class="pred_name" href="#def_SegmentCompose">SegmentCompose</a>(<span class="st">S</span>, <span>∅</span>, <span class="st">S</span>) ∧ <br/><a class="pred_name" href="#def_SetLT">SetLT</a>(<span class="st">S</span>, <code>value</code>)</div></div>
+<div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl"><a class="pred_name" href="#def_SegmentCompose">SegmentCompose</a>(<span class="st">L</span>, <span>∅</span>, <span class="st">S</span>) ⇒ <span class="st">L</span> ∪ <span>∅</span> = <span class="st">S</span> ⇒ <span class="st">L</span> = <span class="st">S</span>.</div><a class="pred_name" href="#def_ListSegment">ListSegment</a>(<code>head</code>, <span>␀</span>, <span class="st">S</span>) ∗ <a class="pred_name" href="#def_EmptyList">EmptyList</a>(<span>␀</span>, <span>∅</span>) ∧ <br/><a class="pred_name" href="#def_SegmentCompose">SegmentCompose</a>(<span class="st">S</span>, <span>∅</span>, <span class="st">S</span>) ∧ <br/><a class="pred_name" href="#def_SetLT">SetLT</a>(<span class="st">S</span>, <code>value</code>)</div></div>
 
 <div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl">Discard <a class="pred_name" href="#def_SegmentCompose">SegmentCompose</a>(<span class="st">S</span>, <span>∅</span>, <span class="st">S</span>).
-Discard <a class="pred_name" href="#def_EmptyList">EmptyList</a>(<m:null/>, <span>∅</span>).</div><a class="pred_name" href="#def_ListSegment">ListSegment</a>(<code>head</code>, <m:null/>, <span class="st">S</span>) ∧ <a class="pred_name" href="#def_SetLT">SetLT</a>(<span class="st">S</span>, <code>value</code>)</div></div>
+Discard <a class="pred_name" href="#def_EmptyList">EmptyList</a>(<span>␀</span>, <span>∅</span>).</div><a class="pred_name" href="#def_ListSegment">ListSegment</a>(<code>head</code>, <span>␀</span>, <span class="st">S</span>) ∧ <a class="pred_name" href="#def_SetLT">SetLT</a>(<span class="st">S</span>, <code>value</code>)</div></div>
 
-<div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl"><a class="pred_name" href="#def_ListSegment">ListSegment</a>(<code>head</code>, <m:null/>, <span class="st">S</span>) ⇒ <a class="pred_name" href="#def_List">List</a>(<code>head</code>, <span class="st">S</span>).<br/>
+<div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl"><a class="pred_name" href="#def_ListSegment">ListSegment</a>(<code>head</code>, <span>␀</span>, <span class="st">S</span>) ⇒ <a class="pred_name" href="#def_List">List</a>(<code>head</code>, <span class="st">S</span>).<br/>
 <a class="pred_name" href="#def_SetLT">SetLT</a>(<span class="st">L</span>, <code>value</code>) ⇒ <code>value</code> ∉ <span class="st">L</span>.</div><a class="pred_name" href="#def_List">List</a>(<code>head</code>, <span class="st">S</span>) ∧ <code>value</code> ∉ <span class="st">S</span></div></div>
 <pre class="prettyprint">
     o = false; </pre>
 <div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><a class="pred_name" href="#def_List">List</a>(<code>head</code>, <span class="st">S</span>) ∧ <code>o</code> ↔ <code>value</code> ∈ <span class="st">S</span></div></div>
 <pre class="prettyprint">  }
   else { </pre>
-<div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl">Deny if-condition.  Eliminate <m:null/> side of disjunction.</div>∃<span class="st">L</span>, <span class="st">R</span>, <span class="var">v</span>, <span class="var">tail</span>, <span class="st">T</span>. <e:expr><div class="indent"><a class="pred_name" href="#def_ListSegment">ListSegment</a>(<code>head</code>, <code>i</code>, <span class="st">L</span>) ∗ <code>i</code> ↦ <span class="var">v</span>, <span class="var">tail</span> ∗ <a class="pred_name" href="#def_List">List</a>(<span class="var">tail</span>, <span class="st">T</span>) ∧ <br/><a class="pred_name" href="#def_ListCompose">ListCompose</a>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">R</span>) ∧ <br/><a class="pred_name" href="#def_SegmentCompose">SegmentCompose</a>(<span class="st">L</span>, <span class="st">R</span>, <span class="st">S</span>) ∧ <br/><a class="pred_name" href="#def_SetLT">SetLT</a>(<span class="st">L</span>, <code>value</code>)</div></e:expr></div></div>
+<div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl">Deny if-condition.  Eliminate <span>␀</span> side of disjunction.</div>∃<span class="st">L</span>, <span class="st">R</span>, <span class="var">v</span>, <span class="var">tail</span>, <span class="st">T</span>. <e:expr><div class="indent"><a class="pred_name" href="#def_ListSegment">ListSegment</a>(<code>head</code>, <code>i</code>, <span class="st">L</span>) ∗ <code>i</code> ↦ <span class="var">v</span>, <span class="var">tail</span> ∗ <a class="pred_name" href="#def_List">List</a>(<span class="var">tail</span>, <span class="st">T</span>) ∧ <br/><a class="pred_name" href="#def_ListCompose">ListCompose</a>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">R</span>) ∧ <br/><code>value</code> ≤ <span class="var">v</span> ∧ <br/><a class="pred_name" href="#def_SegmentCompose">SegmentCompose</a>(<span class="st">L</span>, <span class="st">R</span>, <span class="st">S</span>) ∧ <br/><a class="pred_name" href="#def_SetLT">SetLT</a>(<span class="st">L</span>, <code>value</code>)</div></e:expr></div></div>
 <pre class="prettyprint">
     if (i.value == value) { </pre>
-<div class="section"><pre class="indent">      </pre><div class="AssertionParagraph"><a class="pred_name" href="#def_List">List</a>(<code>head</code>, <span class="st">S</span>) ∧ <code>value</code> ∈ <span class="st">S</span></div></div>
-<pre class="prettyprint">      o = true; </pre>
+<div class="section"><pre class="indent">      </pre><div class="AssertionParagraph"><div class="expl">Assert if-condition.
+Discard <code>value</code> ≤ <span class="var">v</span>.</div>∃<span class="st">L</span>, <span class="st">R</span>, <span class="var">tail</span>, <span class="st">T</span>. <e:expr><div class="indent"><a class="pred_name" href="#def_ListSegment">ListSegment</a>(<code>head</code>, <code>i</code>, <span class="st">L</span>) ∗ <code>i</code> ↦ <code>value</code>, <span class="var">tail</span> ∗ <a class="pred_name" href="#def_List">List</a>(<span class="var">tail</span>, <span class="st">T</span>) ∧ <br/><a class="pred_name" href="#def_ListCompose">ListCompose</a>(<code>value</code>, <span class="st">T</span>, <span class="st">R</span>) ∧ <br/><a class="pred_name" href="#def_SegmentCompose">SegmentCompose</a>(<span class="st">L</span>, <span class="st">R</span>, <span class="st">S</span>) ∧ <br/><a class="pred_name" href="#def_SetLT">SetLT</a>(<span class="st">L</span>, <code>value</code>)</div></e:expr></div></div>
+
+<div class="section"><pre class="indent">      </pre><div class="AssertionParagraph"><div class="expl"><a class="pred_name" href="#def_ListCompose">ListCompose</a>(<code>value</code>, <span class="st">T</span>, <span class="st">R</span>) ⇒ <code>value</code> ∈ <span class="st">R</span> ⇒ <code>value</code> ∈ <span class="st">L</span> ∪ <span class="st">R</span>.<br/>
+<a class="pred_name" href="#def_SegmentCompose">SegmentCompose</a>(<span class="st">L</span>, <span class="st">R</span>, <span class="st">S</span>) ⇒ <span class="st">L</span> ∪ <span class="st">R</span> = <span class="st">S</span>.<br/>
+<code>value</code> ∈ <span class="st">L</span> ∪ <span class="st">R</span> ∧ <span class="st">L</span> ∪ <span class="st">R</span> = <span class="st">S</span> ⇒ <code>value</code> ∈ <span class="st">S</span>.<br/>
+<code>i</code> ↦ <code>value</code>, <span class="var">tail</span> ∗ <a class="pred_name" href="#def_List">List</a>(<span class="var">tail</span>, <span class="st">T</span>) ∧ <a class="pred_name" href="#def_ListCompose">ListCompose</a>(<code>value</code>, <span class="st">T</span>, <span class="st">R</span>) ⇒ <a class="pred_name" href="#def_NonEmptyList">NonEmptyList</a>(<code>i</code>, <span class="st">R</span>).</div>∃<span class="st">L</span>, <span class="st">R</span>. <e:expr><div class="indent"><a class="pred_name" href="#def_ListSegment">ListSegment</a>(<code>head</code>, <code>i</code>, <span class="st">L</span>) ∗ <a class="pred_name" href="#def_NonEmptyList">NonEmptyList</a>(<code>i</code>, <span class="st">R</span>) ∧ <br/><a class="pred_name" href="#def_SegmentCompose">SegmentCompose</a>(<span class="st">L</span>, <span class="st">R</span>, <span class="st">S</span>) ∧ <br/><a class="pred_name" href="#def_SetLT">SetLT</a>(<span class="st">L</span>, <code>value</code>) ∧ <br/><code>value</code> ∈ <span class="st">S</span></div></e:expr></div></div>
+
+<div class="section"><pre class="indent">      </pre><div class="AssertionParagraph"><div class="expl">Weaken <span class="pred_name">NonEmptyList</span>.
+<a class="pred_name" href="#def_ListSegment">ListSegment</a>(<code>head</code>, <code>i</code>, <span class="st">L</span>) ∗ <a class="pred_name" href="#def_List">List</a>(<code>i</code>, <span class="st">R</span>) ⇒ <a class="pred_name" href="#def_List">List</a>(<code>head</code>, <span class="st">S</span>).<br/>
+Discard <a class="pred_name" href="#def_SetLT">SetLT</a>(<span class="st">L</span>, <code>value</code>).</div><a class="pred_name" href="#def_List">List</a>(<code>head</code>, <span class="st">S</span>) ∧ <code>value</code> ∈ <span class="st">S</span></div></div>
+<pre class="prettyprint">
+      o = true; </pre>
 <div class="section"><pre class="indent">      </pre><div class="AssertionParagraph"><a class="pred_name" href="#def_List">List</a>(<code>head</code>, <span class="st">S</span>) ∧ <code>o</code> ↔ <code>value</code> ∈ <span class="st">S</span></div></div>
 <pre class="prettyprint">    }
     else { </pre>
-<div class="section"><pre class="indent">      </pre><div class="AssertionParagraph"><a class="pred_name" href="#def_List">List</a>(<code>head</code>, <span class="st">S</span>) ∧ <code>value</code> ∉ <span class="st">S</span></div></div>
+<div class="section"><pre class="indent">      </pre><div class="AssertionParagraph"><div class="expl"><code>value</code> ≤ <span class="var">v</span> ∧ <code>value</code> ≠ <span class="var">v</span> ⇒ <code>value</code> &lt; <span class="var">v</span>.</div>∃<span class="st">L</span>, <span class="st">R</span>, <span class="var">v</span>, <span class="var">tail</span>, <span class="st">T</span>. <e:expr><div class="indent"><a class="pred_name" href="#def_ListSegment">ListSegment</a>(<code>head</code>, <code>i</code>, <span class="st">L</span>) ∗ <code>i</code> ↦ <span class="var">v</span>, <span class="var">tail</span> ∗ <a class="pred_name" href="#def_List">List</a>(<span class="var">tail</span>, <span class="st">T</span>) ∧ <br/><a class="pred_name" href="#def_ListCompose">ListCompose</a>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">R</span>) ∧ <br/><code>value</code> &lt; <span class="var">v</span> ∧ <br/><a class="pred_name" href="#def_SegmentCompose">SegmentCompose</a>(<span class="st">L</span>, <span class="st">R</span>, <span class="st">S</span>) ∧ <br/><a class="pred_name" href="#def_SetLT">SetLT</a>(<span class="st">L</span>, <code>value</code>)</div></e:expr></div></div>
+
+<div class="section"><pre class="indent">      </pre><div class="AssertionParagraph"><div class="expl"><a class="pred_name" href="#def_ListCompose">ListCompose</a>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">R</span>) ∧ <code>value</code> &lt; <span class="var">v</span> ⇒ <code>value</code> ∉ <span class="st">R</span>.<br/>
+<a class="pred_name" href="#def_SetLT">SetLT</a>(<span class="st">L</span>, <code>value</code>) ⇒ <code>value</code> ∉ <span class="st">L</span>.<br/>
+<code>value</code> ∉ <span class="st">L</span> ∧ <code>value</code> ∉ <span class="st">R</span> ⇒ <code>value</code> ∉ <span class="st">L</span> ∪ <span class="st">R</span>.<br/>
+<a class="pred_name" href="#def_SegmentCompose">SegmentCompose</a>(<span class="st">L</span>, <span class="st">R</span>, <span class="st">S</span>) ⇒ <span class="st">L</span> ∪ <span class="st">R</span> = <span class="st">S</span>.<br/>
+<code>value</code> ∉ <span class="st">L</span> ∪ <span class="st">R</span> ∧ <span class="st">L</span> ∪ <span class="st">R</span> = <span class="st">S</span> ⇒ <code>value</code> ∉ <span class="st">S</span>.<br/>
+Rest transformed as in other branch.</div><a class="pred_name" href="#def_List">List</a>(<code>head</code>, <span class="st">S</span>) ∧ <code>value</code> ∉ <span class="st">S</span></div></div>
 <pre class="prettyprint">      o = false; </pre>
 <div class="section"><pre class="indent">      </pre><div class="AssertionParagraph"><div class="expl">Assignment. ??</div><a class="pred_name" href="#def_List">List</a>(<code>head</code>, <span class="st">S</span>) ∧ <code>o</code> ↔ <code>value</code> ∈ <span class="st">S</span></div></div>
 <pre class="prettyprint">    } </pre>

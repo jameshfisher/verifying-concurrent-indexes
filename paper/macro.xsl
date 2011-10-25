@@ -13,7 +13,7 @@
   <xsl:template match="m:bst"><abbr title="Binary Search Tree" class="smallcaps">BST</abbr></xsl:template>
   <xsl:template match="m:rbt"><abbr title="Red-Black Tree" class="smallcaps">RBT</abbr></xsl:template>
 
-  <xsl:template match="m:null"><span class="smallcaps">NULL</span></xsl:template>
+  <xsl:template match="m:null"><span>␀</span></xsl:template>
 
   <xsl:template match="m:eg"><i>e.g.</i></xsl:template>
   <xsl:template match="m:ie"><i>i.e.</i></xsl:template>
