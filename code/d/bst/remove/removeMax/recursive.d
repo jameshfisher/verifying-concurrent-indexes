@@ -65,11 +65,11 @@ RemoveMaxRet removeMax(Node* root) {
     ///     <e:sep>
     ///       <e:fcell>
     ///         <code>root</code>
-    ///         <e:list><e:var n="v"/>,<e:var n="l"/>,<code>null</code></e:list>
+    ///         <e:list><e:var n="v"/>,<e:var n="l"/>,<m:null/></e:list>
     ///       </e:fcell>
     ///       <e:sep>
     ///             <e:pred name="Tree"><e:var n="l"/>, <e:st n="L"/></e:pred>
-    ///             <e:pred name="Tree"><code>null</code>, <e:st n="R"/></e:pred>
+    ///             <e:pred name="Tree"><m:null/>, <e:st n="R"/></e:pred>
     ///       </e:sep>
     ///     </e:sep> ∧<br />
     ///     <e:pred name="TCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
@@ -77,8 +77,8 @@ RemoveMaxRet removeMax(Node* root) {
     /// </e:exists>
 
     // Lemma: <e:logimpl>
-    //   <e:pred name="Tree"><code>null</code>, <e:st n="R"/></e:pred>
-    //   <e:pred name="EmptyTree"><code>null</code>, <e:st n="R"/></e:pred>
+    //   <e:pred name="Tree"><m:null/>, <e:st n="R"/></e:pred>
+    //   <e:pred name="EmptyTree"><m:null/>, <e:st n="R"/></e:pred>
     // </e:logimpl>
     /// <e:exists>
     ///   <e:vars><e:var n="v"/>, <e:var n="l"/>, <e:st n="L"/>, <e:st n="R"/></e:vars>
@@ -86,11 +86,11 @@ RemoveMaxRet removeMax(Node* root) {
     ///     <e:sep>
     ///       <e:fcell>
     ///         <code>root</code>
-    ///         <e:list><e:var n="v"/>,<e:var n="l"/>,<code>null</code></e:list>
+    ///         <e:list><e:var n="v"/>,<e:var n="l"/>,<m:null/></e:list>
     ///       </e:fcell>
     ///       <e:sep>
     ///             <e:pred name="Tree"><e:var n="l"/>, <e:st n="L"/></e:pred>
-    ///             <e:pred name="EmptyTree"><code>null</code>, <e:st n="R"/></e:pred>
+    ///             <e:pred name="EmptyTree"><m:null/>, <e:st n="R"/></e:pred>
     ///       </e:sep>
     ///     </e:sep> ∧<br />
     ///     <e:pred name="TCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
@@ -107,18 +107,18 @@ RemoveMaxRet removeMax(Node* root) {
     ///     <e:sep>
     ///       <e:fcell>
     ///         <code>root</code>
-    ///         <e:list><e:var n="v"/>,<e:var n="l"/>,<code>null</code></e:list>
+    ///         <e:list><e:var n="v"/>,<e:var n="l"/>,<m:null/></e:list>
     ///       </e:fcell>
     ///       <e:sep>
     ///             <e:pred name="Tree"><e:var n="l"/>, <e:st n="L"/></e:pred>
-    ///             <e:pred name="EmptyTree"><code>null</code>, <m:empty/></e:pred>
+    ///             <e:pred name="EmptyTree"><m:null/>, <m:empty/></e:pred>
     ///       </e:sep>
     ///     </e:sep> ∧<br />
     ///     <e:pred name="TCompose"><e:st n="L"/>, <e:var n="v"/>, <m:empty/>, <e:st n="S"/></e:pred>
     ///   </e:indent></e:expr>
     /// </e:exists>
 
-    // Open <e:pred name="EmptyTree"><code>null</code>, <m:empty/></e:pred>.  Discard <e:eq><code>null</code><code>null</code></e:eq>
+    // Open <e:pred name="EmptyTree"><m:null/>, <m:empty/></e:pred>.  Discard <e:eq><m:null/><m:null/></e:eq>
     // and <e:eq><m:empty/><m:empty/></e:eq>.
     /// <e:exists>
     ///   <e:vars><e:var n="v"/>, <e:var n="l"/>, <e:st n="L"/></e:vars>
@@ -126,7 +126,7 @@ RemoveMaxRet removeMax(Node* root) {
     ///     <e:sep>
     ///       <e:fcell>
     ///         <code>root</code>
-    ///         <e:list><e:var n="v"/>,<e:var n="l"/>,<code>null</code></e:list>
+    ///         <e:list><e:var n="v"/>,<e:var n="l"/>,<m:null/></e:list>
     ///       </e:fcell>
     ///       <e:sep>
     ///             <e:pred name="Tree"><e:var n="l"/>, <e:st n="L"/></e:pred>
@@ -144,7 +144,7 @@ RemoveMaxRet removeMax(Node* root) {
     ///     <e:sep>
     ///       <e:fcell>
     ///         <code>root</code>
-    ///         <e:list><e:var n="v"/>,<e:var n="l"/>,<code>null</code></e:list>
+    ///         <e:list><e:var n="v"/>,<e:var n="l"/>,<m:null/></e:list>
     ///       </e:fcell>
     ///       <e:pred name="Tree"><e:var n="l"/>, <e:st n="L"/></e:pred>
     ///     </e:sep> ∧<br />
@@ -172,7 +172,7 @@ RemoveMaxRet removeMax(Node* root) {
     ///     <e:sep>
     ///       <e:fcell>
     ///         <code>root</code>
-    ///         <e:list><e:var n="v"/>,<e:var n="l"/>,<code>null</code></e:list>
+    ///         <e:list><e:var n="v"/>,<e:var n="l"/>,<m:null/></e:list>
     ///       </e:fcell>
     ///       <e:pred name="Tree"><e:var n="l"/>, <e:st n="L"/></e:pred>
     ///     </e:sep> ∧<br />
@@ -200,7 +200,7 @@ RemoveMaxRet removeMax(Node* root) {
     ///     <e:sep>
     ///       <e:fcell>
     ///         <code>root</code>
-    ///         <e:list><e:var n="v"/>,<e:var n="l"/>,<code>null</code></e:list>
+    ///         <e:list><e:var n="v"/>,<e:var n="l"/>,<m:null/></e:list>
     ///       </e:fcell>
     ///       <e:pred name="Tree"><e:var n="l"/>, <e:setminus><e:st n="S"/><e:set><e:var n="v"/></e:set></e:setminus></e:pred>
     ///     </e:sep> ∧
@@ -214,7 +214,7 @@ RemoveMaxRet removeMax(Node* root) {
     /// <e:sep>
     ///   <e:fcell>
     ///     <code>root</code>
-    ///     <e:list><code>max</code>,<code>newRoot</code>,<code>null</code></e:list>
+    ///     <e:list><code>max</code>,<code>newRoot</code>,<m:null/></e:list>
     ///   </e:fcell>
     ///   <e:pred name="Tree"><code>newRoot</code>, <e:setminus><e:st n="S"/><e:set><code>max</code></e:set></e:setminus></e:pred>
     /// </e:sep> ∧
@@ -241,18 +241,18 @@ RemoveMaxRet removeMax(Node* root) {
     ///       </e:sep>
     ///     </e:sep> ∧<br />
     ///     <e:pred name="TCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred> ∧<br />
-    ///     <e:noteq><code>r</code><code>null</code></e:noteq>
+    ///     <e:noteq><code>r</code><m:null/></e:noteq>
     ///   </e:indent></e:expr>
     /// </e:exists>
 
     // Lemma: <e:logimpl>
     //   <e:and>
     //     <e:pred name="Tree"><code>r</code>, <e:st n="R"/></e:pred>
-    //     <e:noteq><code>r</code><code>null</code></e:noteq>
+    //     <e:noteq><code>r</code><m:null/></e:noteq>
     //   </e:and>
     //   <e:pred name="NonEmptyTree"><code>r</code>, <e:st n="R"/></e:pred>
     // </e:logimpl>.
-    // Discard <e:noteq><e:var n="r"/><code>null</code></e:noteq>.
+    // Discard <e:noteq><e:var n="r"/><m:null/></e:noteq>.
     /// <e:exists>
     ///   <e:vars><e:var n="v"/>, <e:var n="l"/>, <e:st n="L"/>, <e:st n="R"/></e:vars>
     ///   <e:expr><e:indent>

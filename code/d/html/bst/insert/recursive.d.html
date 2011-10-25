@@ -8,13 +8,13 @@ Node* insert(Node* root, int value) {
 <e:displaycode>  if (root == null) {&#160;</e:displaycode>
 <div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Assert if-condition.</div><e:and>
   <e:pred name="Tree"><code>root</code>, <e:st n="S"/></e:pred>
-  <e:eq><code>root</code><code>null</code></e:eq>
+  <e:eq><code>root</code><m:null/></e:eq>
 </e:and></div></div>
 
 <div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Lemma: <e:logimpl>
   <e:and>
     <e:pred name="Tree"><code>root</code>, <e:st n="S"/></e:pred>
-    <e:eq><code>root</code><code>null</code></e:eq>
+    <e:eq><code>root</code><m:null/></e:eq>
   </e:and>
   <e:pred name="EmptyTree"><code>root</code>, <e:st n="S"/></e:pred>
 </e:logimpl></div><e:pred name="EmptyTree"><code>root</code>, <e:st n="S"/></e:pred></div></div>
@@ -33,13 +33,13 @@ Node* insert(Node* root, int value) {
   else {&#160;</e:displaycode>
 <div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Deny if-condition.</div><e:and>
   <e:pred name="Tree"><code>root</code>, <e:st n="S"/></e:pred>
-  <e:noteq><code>root</code><code>null</code></e:noteq>
+  <e:noteq><code>root</code><m:null/></e:noteq>
 </e:and></div></div>
 
 <div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Lemma: <e:logimpl>
   <e:and>
     <e:pred name="Tree"><code>root</code>, <e:st n="S"/></e:pred>
-    <e:noteq><code>root</code><code>null</code></e:noteq>
+    <e:noteq><code>root</code><m:null/></e:noteq>
   </e:and>
   <e:pred name="NonEmptyTree"><code>root</code>, <e:st n="S"/></e:pred>
 </e:logimpl></div><e:pred name="NonEmptyTree"><code>root</code>, <e:st n="S"/></e:pred></div></div>

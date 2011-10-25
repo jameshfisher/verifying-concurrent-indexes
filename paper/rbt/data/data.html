@@ -95,7 +95,7 @@
 
   <p>
     Finally, the <m:rbt/> has a separate representation of <m:empty/>,
-    and once again, it is a pointer to <code>null</code> with no allocated memory.
+    and once again, it is a pointer to <m:null/> with no allocated memory.
     Despite having no root <code>Node</code> with a <code>color</code> field,
     the empty tree is interpreted as being <q>black-rooted</q>,
     with a black-height of 1.
@@ -185,15 +185,15 @@
 
   <p>
     Empty black-rooted trees are again easy to describe:
-    a <code>null</code> pointer and empty heap.
+    a <m:null/> pointer and empty heap.
     We just add that the empty tree has a black-height of 1:
 
     <table class="displaymath">
       <tbody>
 	<tr>
 	  <td><e:pred name="EBT"><code>root</code>, <e:st n="S"/>, <e:var n="h"/></e:pred> =</td>
-	  <td><e:eq><code>root</code><code>null</code></e:eq> ∧</td>
-	  <td><code>root</code> is <code>null</code>,</td>
+	  <td><e:eq><code>root</code><m:null/></e:eq> ∧</td>
+	  <td><code>root</code> is <m:null/>,</td>
 	</tr>
 	<tr>
 	  <td></td>

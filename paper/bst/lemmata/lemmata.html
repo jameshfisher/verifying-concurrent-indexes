@@ -12,7 +12,7 @@
       <e:logimpl>
 	<e:and>
             <e:pred name="Tree"><code>root</code>, <e:st n="S"/></e:pred>
-            <e:eq><code>root</code><code>null</code></e:eq>
+            <e:eq><code>root</code><m:null/></e:eq>
 	</e:and>
 	<e:pred name="EmptyTree"><code>root</code>, <e:st n="S"/></e:pred>
       </e:logimpl>
@@ -36,7 +36,7 @@
       <e:logimpl>
 	<e:and>
             <e:pred name="Tree"><code>root</code>, <e:st n="S"/></e:pred>
-            <e:noteq><code>root</code><code>null</code></e:noteq>
+            <e:noteq><code>root</code><m:null/></e:noteq>
 	</e:and>
 	<e:pred name="NonEmptyTree"><code>root</code>, <e:st n="S"/></e:pred>
       </e:logimpl>
@@ -516,13 +516,13 @@
 <p>
   Given a <e:predicate>Tree</e:predicate> pointer,
   we can find out whether it is an <e:predicate>EmptyTree</e:predicate> or an <e:predicate>NonEmptyTree</e:predicate>
-  by testing whether the pointer is <code>null</code>.
+  by testing whether the pointer is <m:null/>.
   That is,
   <e:impl>
     
       <e:and>
 	<e:pred name="Tree"><code>n</code>, <e:st n="S"/></e:pred>
-	<e:eq><code>n</code><code>null</code></e:eq>
+	<e:eq><code>n</code><m:null/></e:eq>
       </e:and>
     
     <e:pred name="EmptyTree"><code>n</code>, <e:st n="S"/></e:pred>
@@ -531,15 +531,15 @@
     
       <e:and>
 	<e:pred name="Tree"><code>n</code>, <e:st n="S"/></e:pred>
-	<e:noteq><code>n</code><code>null</code></e:noteq>
+	<e:noteq><code>n</code><m:null/></e:noteq>
       </e:and>
     
     <e:pred name="NonEmptyTree"><code>n</code>, <e:st n="S"/></e:pred>
   </e:impl>.
-  This follows from <code>null</code> not being in the domain of the heap; <m:ie/>,
+  This follows from <m:null/> not being in the domain of the heap; <m:ie/>,
   <e:impl>
     <e:fcell><code>n</code>…</e:fcell>
-    <e:noteq><code>n</code><code>null</code></e:noteq>
+    <e:noteq><code>n</code><m:null/></e:noteq>
   </e:impl>.
 </p>
 -->

@@ -46,7 +46,7 @@
 
   <p>
     Notice that the <e:predicate>ListSegment</e:predicate> has the same basic structure as a <e:predicate>List</e:predicate>.
-    The basic difference is that it is terminated by the pointer <e:var n="i"/> rather than <code>null</code>;
+    The basic difference is that it is terminated by the pointer <e:var n="i"/> rather than <m:null/>;
     and thus the predicate is parameterized by <e:var n="i"/>.
     We can show this structure in the example:
 
@@ -61,7 +61,7 @@
   <p>
     The definition of <e:predicate>ListSegment</e:predicate> is very similar to <e:predicate>List</e:predicate>
     (indeed, we could have defined <e:pred name="List"><code>head</code><e:st n="S"/></e:pred>
-    as <e:pred name="ListSegment"><code>head</code><code>null</code><e:st n="S"/></e:pred>.)
+    as <e:pred name="ListSegment"><code>head</code><m:null/><e:st n="S"/></e:pred>.)
     
     <e:definition name="ListSegment">
       <e:pred name="ListSegment"><code>head</code>, <code>i</code>, <e:st n="S"/></e:pred> ≝

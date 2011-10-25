@@ -80,8 +80,8 @@
   <p>
     The recursive method to search a list closely follows the recursive data structure that we have defined.
     Given a <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>, either it is empty or it is not.
-    Which is the case is indicated by whether <e:eq><code>head</code><code>null</code></e:eq>.
-    If we find that <e:eq><code>head</code><code>null</code></e:eq>, then we have <e:pred name="EmptyList"><code>head</code>, <e:st n="S"/></e:pred>:
+    Which is the case is indicated by whether <e:eq><code>head</code><m:null/></e:eq>.
+    If we find that <e:eq><code>head</code><m:null/></e:eq>, then we have <e:pred name="EmptyList"><code>head</code>, <e:st n="S"/></e:pred>:
 
     <xi:include href="./lemmata/headIsNullIsEmptyList.html"/>
   </p>
@@ -100,7 +100,7 @@
   </p>
 
   <p>
-    Otherwise, we found that <e:noteq><code>head</code><code>null</code></e:noteq>.
+    Otherwise, we found that <e:noteq><code>head</code><m:null/></e:noteq>.
     Symmetrically, we can then infer the list must is non-empty.
     Because the list is non-empty,
     we can look at the first value in the list, <code>head.value</code>, which contains <e:var n="v"/>,

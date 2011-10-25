@@ -10,13 +10,13 @@ Node* insert(Node* root, int value) {
     // Assert if-condition.
     /// <e:and>
     ///   <e:pred name="Tree"><code>root</code>, <e:st n="S"/></e:pred>
-    ///   <e:eq><code>root</code><code>null</code></e:eq>
+    ///   <e:eq><code>root</code><m:null/></e:eq>
     /// </e:and>
 
     // Lemma: <e:logimpl>
     //   <e:and>
     //     <e:pred name="Tree"><code>root</code>, <e:st n="S"/></e:pred>
-    //     <e:eq><code>root</code><code>null</code></e:eq>
+    //     <e:eq><code>root</code><m:null/></e:eq>
     //   </e:and>
     //   <e:pred name="EmptyTree"><code>root</code>, <e:st n="S"/></e:pred>
     // </e:logimpl>
@@ -38,13 +38,13 @@ Node* insert(Node* root, int value) {
     // Deny if-condition.
     /// <e:and>
     ///   <e:pred name="Tree"><code>root</code>, <e:st n="S"/></e:pred>
-    ///   <e:noteq><code>root</code><code>null</code></e:noteq>
+    ///   <e:noteq><code>root</code><m:null/></e:noteq>
     /// </e:and>
 
     // Lemma: <e:logimpl>
     //   <e:and>
     //     <e:pred name="Tree"><code>root</code>, <e:st n="S"/></e:pred>
-    //     <e:noteq><code>root</code><code>null</code></e:noteq>
+    //     <e:noteq><code>root</code><m:null/></e:noteq>
     //   </e:and>
     //   <e:pred name="NonEmptyTree"><code>root</code>, <e:st n="S"/></e:pred>
     // </e:logimpl>

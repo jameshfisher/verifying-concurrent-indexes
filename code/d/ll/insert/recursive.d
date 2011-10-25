@@ -13,7 +13,7 @@ Node* insert(Node* head, int value) {
     ///   <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
     ///   <e:eq>
     ///     <code>head</code>
-    ///     <code>null</code>
+    ///     <m:null/>
     ///   </e:eq>
     /// </e:and>
 
@@ -22,7 +22,7 @@ Node* insert(Node* head, int value) {
     //     <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
     //     <e:eq>
     //       <code>head</code>
-    //       <code>null</code>
+    //       <m:null/>
     //     </e:eq>
     //   </e:and>
     //   <e:pred name="EmptyList"><code>head</code>, <e:st n="S"/></e:pred>
@@ -32,7 +32,7 @@ Node* insert(Node* head, int value) {
     // Open <e:pred name="EmptyList"><code>head</code>, <e:st n="S"/></e:pred>.  Discard
     // <e:eq>
     //   <code>head</code>
-    //   <code>null</code>
+    //   <m:null/>
     // </e:eq>.
     /// <e:eq>
     ///   <e:st n="S"/>
@@ -87,7 +87,7 @@ Node* insert(Node* head, int value) {
     ///   <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
     ///   <e:noteq>
     ///     <code>head</code>
-    ///     <code>null</code>
+    ///     <m:null/>
     ///   </e:noteq>
     /// </e:and>
 
@@ -96,7 +96,7 @@ Node* insert(Node* head, int value) {
     //     <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
     //     <e:noteq>
     //       <code>head</code>
-    //       <code>null</code>
+    //       <m:null/>
     //     </e:noteq>
     //   </e:and>
     //   <e:pred name="NonEmptyList"><code>head</code>, <e:st n="S"/></e:pred>

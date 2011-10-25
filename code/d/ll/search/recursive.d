@@ -11,14 +11,14 @@ bool search(Node* head, int value) {
     ///   <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
     ///   <e:eq>
     ///     <code>head</code>
-    ///     <code>null</code>
+    ///     <m:null/>
     ///   </e:eq>
     /// </e:and>
 
     // Lemma: <e:logimpl>
     //   <e:and>
     //     <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
-    //     <e:eq><code>head</code><code>null</code></e:eq>
+    //     <e:eq><code>head</code><m:null/></e:eq>
     //   </e:and>
     //   <e:pred name="EmptyList"><code>head</code>, <e:st n="S"/></e:pred>
     // </e:logimpl>.
@@ -85,7 +85,7 @@ bool search(Node* head, int value) {
     ///   <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
     ///   <e:noteq>
     ///     <code>head</code>
-    ///     <code>null</code>
+    ///     <m:null/>
     ///   </e:noteq>
     /// </e:and>
 
@@ -94,7 +94,7 @@ bool search(Node* head, int value) {
     //     <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
     //     <e:noteq>
     //       <code>head</code>
-    //       <code>null</code>
+    //       <m:null/>
     //     </e:noteq>
     //   </e:and>
     //   <e:pred name="NonEmptyList"><code>head</code>, <e:st n="S"/></e:pred>

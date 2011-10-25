@@ -24,7 +24,7 @@ Node* blacken(Node* root) {&#160;</e:displaycode>
 
 <div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'><e:logimpl>
   <e:fcell><e:var n="a"/>_</e:fcell>
-  <e:noteq><e:var n="a"/><code>null</code></e:noteq>
+  <e:noteq><e:var n="a"/><m:null/></e:noteq>
 </e:logimpl></div><e:exists>
   <e:var n="v"/>, <e:var n="l"/>, <e:var n="r"/>, <e:st n="L"/>, <e:st n="R"/>
   <e:indent><e:and>
@@ -39,7 +39,7 @@ Node* blacken(Node* root) {&#160;</e:displaycode>
       </e:sep>
     </e:sep>
     <br/><e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred> ∧
-    <e:noteq><code>root</code><code>null</code></e:noteq>
+    <e:noteq><code>root</code><m:null/></e:noteq>
   </e:and></e:indent>
 </e:exists></div></div>
 <e:displaycode>
@@ -58,13 +58,13 @@ Node* blacken(Node* root) {&#160;</e:displaycode>
       </e:sep>
     </e:sep>
     <br/><e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred> ∧
-    <e:noteq><code>root</code><code>null</code></e:noteq> ∧
-    <e:eq><code>root</code><code>null</code></e:eq>
+    <e:noteq><code>root</code><m:null/></e:noteq> ∧
+    <e:eq><code>root</code><m:null/></e:eq>
   </e:and></e:indent>
 </e:exists></div></div>
 
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Contradiction: this branch does not execute.</div><e:noteq><code>root</code><code>null</code></e:noteq> ∧
-<e:eq><code>root</code><code>null</code></e:eq></div></div>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Contradiction: this branch does not execute.</div><e:noteq><code>root</code><m:null/></e:noteq> ∧
+<e:eq><code>root</code><m:null/></e:eq></div></div>
 <e:displaycode>  }
   else {&#160;</e:displaycode>
 <div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Deny if-condition.</div><e:exists>
@@ -81,12 +81,12 @@ Node* blacken(Node* root) {&#160;</e:displaycode>
       </e:sep>
     </e:sep>
     <br/><e:pred name="Compose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred> ∧
-    <e:noteq><code>root</code><code>null</code></e:noteq> ∧
-    <e:noteq><code>root</code><code>null</code></e:noteq>
+    <e:noteq><code>root</code><m:null/></e:noteq> ∧
+    <e:noteq><code>root</code><m:null/></e:noteq>
   </e:and></e:indent>
 </e:exists></div></div>
 
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Discard <e:noteq><code>root</code><code>null</code></e:noteq> (twice).</div><e:exists>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Discard <e:noteq><code>root</code><m:null/></e:noteq> (twice).</div><e:exists>
   <e:var n="v"/>, <e:var n="l"/>, <e:var n="r"/>, <e:st n="L"/>, <e:st n="R"/>
   <e:indent><e:and>
     <e:sep>

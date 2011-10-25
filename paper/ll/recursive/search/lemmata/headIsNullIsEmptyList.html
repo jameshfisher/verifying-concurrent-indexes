@@ -7,7 +7,7 @@
   <e:caption><e:logimpl>
       <e:and>
           <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
-          <e:eq><code>head</code><code>null</code></e:eq>
+          <e:eq><code>head</code><m:null/></e:eq>
       </e:and>
       <e:pred name="EmptyList"><code>head</code>, <e:st n="S"/></e:pred>
   </e:logimpl></e:caption>
@@ -18,7 +18,7 @@
       <e:step name="given">
 	<e:derive><e:and>
             <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
-            <e:eq><code>head</code><code>null</code></e:eq>
+            <e:eq><code>head</code><m:null/></e:eq>
 	</e:and></e:derive>
 	<e:by>given</e:by>
       </e:step>
@@ -29,7 +29,7 @@
       </e:step>
 
       <e:step name="headnull">
-	<e:derive><e:eq><code>head</code><code>null</code></e:eq></e:derive>
+	<e:derive><e:eq><code>head</code><m:null/></e:eq></e:derive>
 	<e:by><e:from name="given"/>, ∧E</e:by>
       </e:step>
 
@@ -77,7 +77,7 @@
       <e:step name="headNotNull" indent="indent1">
 	<e:derive><e:noteq>
 	    <code>head</code>
-	    <code>null</code>
+	    <m:null/>
 	</e:noteq></e:derive>
 	<e:by><e:from name="headPointsTo"/>, pointer non-null</e:by>
       </e:step>

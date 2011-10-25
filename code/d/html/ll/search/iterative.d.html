@@ -21,7 +21,7 @@ bool search(Node* head, int value) {&#160;</e:displaycode>
 <e:displaycode>
   while (i != null &amp;&amp; i.value &lt; value) {&#160;</e:displaycode>
 <div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'><e:logimpl>
-  <e:noteq><code>i</code><code>null</code></e:noteq>
+  <e:noteq><code>i</code><m:null/></e:noteq>
   <e:pred name="NonEmptyList"><code>i</code><e:st n="R"/></e:pred>
 </e:logimpl>.
 Open <e:pred name="NonEmptyList"><code>i</code><e:st n="R"/></e:pred>.
@@ -151,12 +151,12 @@ Re-establishes loop invariant.</div><e:exists>
 <e:displaycode>
   bool o;
   if (i == null) {&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Assert if-condition.  Eliminate non-<code>null</code> side of disjunction.<br /></div><e:exists>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Assert if-condition.  Eliminate non-<m:null/> side of disjunction.<br /></div><e:exists>
   <e:vars><e:st n="L"/><e:st n="R"/></e:vars>
   <e:expr><e:indent><e:and type="lines">
     <e:sep>
-      <e:pred name="ListSegment"><code>head</code><code>null</code><e:st n="L"/></e:pred>
-      <e:pred name="EmptyList"><code>null</code><e:st n="R"/></e:pred>
+      <e:pred name="ListSegment"><code>head</code><m:null/><e:st n="L"/></e:pred>
+      <e:pred name="EmptyList"><m:null/><e:st n="R"/></e:pred>
     </e:sep>
     <e:pred name="SegmentCompose"><e:st n="L"/><e:st n="R"/><e:st n="S"/></e:pred>
     <e:pred name="SetLT"><e:st n="L"/><code>value</code></e:pred>
@@ -167,8 +167,8 @@ Re-establishes loop invariant.</div><e:exists>
   <e:vars><e:st n="L"/></e:vars>
   <e:expr><e:indent><e:and type="lines">
     <e:sep>
-      <e:pred name="ListSegment"><code>head</code><code>null</code><e:st n="L"/></e:pred>
-      <e:pred name="EmptyList"><code>null</code><m:empty/></e:pred>
+      <e:pred name="ListSegment"><code>head</code><m:null/><e:st n="L"/></e:pred>
+      <e:pred name="EmptyList"><m:null/><m:empty/></e:pred>
     </e:sep>
     <e:pred name="SegmentCompose"><e:st n="L"/><m:empty/><e:st n="S"/></e:pred>
     <e:pred name="SetLT"><e:st n="L"/><code>value</code></e:pred>
@@ -181,20 +181,20 @@ Re-establishes loop invariant.</div><e:exists>
   <e:eq><e:st n="L"/><e:st n="S"/></e:eq>
 </e:logimpl>.</div><e:and type="lines">
   <e:sep>
-    <e:pred name="ListSegment"><code>head</code><code>null</code><e:st n="S"/></e:pred>
-    <e:pred name="EmptyList"><code>null</code><m:empty/></e:pred>
+    <e:pred name="ListSegment"><code>head</code><m:null/><e:st n="S"/></e:pred>
+    <e:pred name="EmptyList"><m:null/><m:empty/></e:pred>
   </e:sep>
   <e:pred name="SegmentCompose"><e:st n="S"/><m:empty/><e:st n="S"/></e:pred>
   <e:pred name="SetLT"><e:st n="S"/><code>value</code></e:pred>
 </e:and></div></div>
 
 <div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Discard <e:pred name="SegmentCompose"><e:st n="S"/><m:empty/><e:st n="S"/></e:pred>.
-Discard <e:pred name="EmptyList"><code>null</code><m:empty/></e:pred>.</div><e:and>
-  <e:pred name="ListSegment"><code>head</code><code>null</code><e:st n="S"/></e:pred>
+Discard <e:pred name="EmptyList"><m:null/><m:empty/></e:pred>.</div><e:and>
+  <e:pred name="ListSegment"><code>head</code><m:null/><e:st n="S"/></e:pred>
   <e:pred name="SetLT"><e:st n="S"/><code>value</code></e:pred>
 </e:and></div></div>
 
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'><e:logimpl><e:pred name="ListSegment"><code>head</code><code>null</code><e:st n="S"/></e:pred><e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred></e:logimpl>.<br />
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'><e:logimpl><e:pred name="ListSegment"><code>head</code><m:null/><e:st n="S"/></e:pred><e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred></e:logimpl>.<br />
 <e:logimpl><e:pred name="SetLT"><e:st n="L"/><code>value</code></e:pred><e:notin><code>value</code><e:st n="L"/></e:notin></e:logimpl>.</div><e:and>
   <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
   <e:notin>
@@ -216,7 +216,7 @@ Discard <e:pred name="EmptyList"><code>null</code><m:empty/></e:pred>.</div><e:a
 </e:and></div></div>
 <e:displaycode>  }
   else {&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Deny if-condition.  Eliminate <code>null</code> side of disjunction.</div><e:exists>
+<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Deny if-condition.  Eliminate <m:null/> side of disjunction.</div><e:exists>
   <e:vars><e:st n="L"/><e:st n="R"/><e:var n="v"/><e:var n="tail"/><e:st n="T"/></e:vars>
   <e:expr><e:indent><e:and type="lines">
     <e:sep>

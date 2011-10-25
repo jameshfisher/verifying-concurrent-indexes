@@ -13,7 +13,7 @@ Node* remove(Node* head, int value) {
     ///   <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
     ///   <e:eq>
     ///     <code>head</code>
-    ///     <code>null</code>
+    ///     <m:null/>
     ///   </e:eq>
     /// </e:and>
 
@@ -22,7 +22,7 @@ Node* remove(Node* head, int value) {
     //     <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
     //     <e:eq>
     //       <code>head</code>
-    //       <code>null</code>
+    //       <m:null/>
     //     </e:eq>
     //   </e:and>
     //   <e:pred name="EmptyList"><code>head</code>, <e:st n="S"/></e:pred>
@@ -77,7 +77,7 @@ Node* remove(Node* head, int value) {
     ///   <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
     ///   <e:noteq>
     ///     <code>head</code>
-    ///     <code>null</code>
+    ///     <m:null/>
     ///   </e:noteq>
     /// </e:and>
 
@@ -86,7 +86,7 @@ Node* remove(Node* head, int value) {
     //     <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
     //     <e:noteq>
     //       <code>head</code>
-    //       <code>null</code>
+    //       <m:null/>
     //     </e:noteq>
     //   </e:and>
     //   <e:pred name="NonEmptyList"><code>head</code>, <e:st n="S"/></e:pred>

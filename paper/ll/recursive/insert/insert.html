@@ -32,14 +32,14 @@
 
     <p>
       The recursive <code>insert</code> algorithm works as follows.
-      As before, we first determine whether the list is empty by testing for <e:eq><code>value</code><code>null</code></e:eq>.
+      As before, we first determine whether the list is empty by testing for <e:eq><code>value</code><m:null/></e:eq>.
       If the list is empty, it represents <m:empty/>, and we wish to mutate the state to represent
       <e:union>
 	<m:empty/>
 	<e:set><code>value</code></e:set>
       </e:union>,
       which is simply <e:set><code>value</code></e:set>.
-      The representation of this is a one-node list with its <e:var n="tail"/> field set to <code>null</code>;
+      The representation of this is a one-node list with its <e:var n="tail"/> field set to <m:null/>;
       we create this and return it.
     </p>
 

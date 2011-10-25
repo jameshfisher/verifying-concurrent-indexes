@@ -37,10 +37,10 @@ Node* removeRoot(Node* root) {
     ///     <e:sep>
     ///       <e:fcell>
     ///             <code>root</code>
-    ///             <e:list><e:var n="v"/>,<code>null</code>,<e:var n="r"/></e:list>
+    ///             <e:list><e:var n="v"/>,<m:null/>,<e:var n="r"/></e:list>
     ///           </e:fcell>
     ///       <e:sep>
-    ///             <e:pred name="Tree"><code>null</code>, <e:st n="L"/></e:pred>
+    ///             <e:pred name="Tree"><m:null/>, <e:st n="L"/></e:pred>
     ///             <e:pred name="Tree"><e:var n="r"/>, <e:st n="R"/></e:pred>
     ///       </e:sep>
     ///     </e:sep> ∧<br />
@@ -49,8 +49,8 @@ Node* removeRoot(Node* root) {
     /// </e:exists>
 
     // Lemma: <e:logimpl>
-    //   <e:pred name="Tree"><code>null</code>, <e:st n="S"/></e:pred>
-    //   <e:pred name="EmptyTree"><code>null</code>, <e:st n="S"/></e:pred>
+    //   <e:pred name="Tree"><m:null/>, <e:st n="S"/></e:pred>
+    //   <e:pred name="EmptyTree"><m:null/>, <e:st n="S"/></e:pred>
     // </e:logimpl>.
     /// <e:exists>
     ///   <e:vars><e:var n="v"/>, <e:var n="r"/>, <e:st n="L"/>, <e:st n="R"/></e:vars>
@@ -58,10 +58,10 @@ Node* removeRoot(Node* root) {
     ///     <e:sep>
     ///       <e:fcell>
     ///             <code>root</code>
-    ///             <e:list><e:var n="v"/>,<code>null</code>,<e:var n="r"/></e:list>
+    ///             <e:list><e:var n="v"/>,<m:null/>,<e:var n="r"/></e:list>
     ///           </e:fcell>
     ///       <e:sep>
-    ///             <e:pred name="EmptyTree"><code>null</code>, <e:st n="L"/></e:pred>
+    ///             <e:pred name="EmptyTree"><m:null/>, <e:st n="L"/></e:pred>
     ///             <e:pred name="Tree"><e:var n="r"/>, <e:st n="R"/></e:pred>
     ///       </e:sep>
     ///     </e:sep> ∧<br />
@@ -69,14 +69,14 @@ Node* removeRoot(Node* root) {
     ///   </e:indent></e:expr>
     /// </e:exists>
 
-    // Open <e:pred name="EmptyTree"><code>null</code>, <e:st n="L"/></e:pred>.
+    // Open <e:pred name="EmptyTree"><m:null/>, <e:st n="L"/></e:pred>.
     /// <e:exists>
     ///   <e:vars><e:var n="v"/>, <e:var n="l"/>, <e:var n="r"/>, <e:st n="L"/>, <e:st n="R"/></e:vars>
     ///   <e:expr><e:indent>
     ///     <e:sep>
     ///       <e:fcell>
     ///             <code>root</code>
-    ///             <e:list><e:var n="v"/>,<code>null</code>,<e:var n="r"/></e:list>
+    ///             <e:list><e:var n="v"/>,<m:null/>,<e:var n="r"/></e:list>
     ///           </e:fcell>
     ///       <e:sep>
     ///             <m:hemp/>
@@ -95,7 +95,7 @@ Node* removeRoot(Node* root) {
     ///     <e:sep>
     ///       <e:fcell>
     ///         <code>root</code>
-    ///         <e:list><e:var n="v"/>,<code>null</code>,<e:var n="r"/></e:list>
+    ///         <e:list><e:var n="v"/>,<m:null/>,<e:var n="r"/></e:list>
     ///       </e:fcell>
     ///       <e:pred name="Tree"><e:var n="r"/>, <e:st n="R"/></e:pred>
     ///     </e:sep> ∧<br />
@@ -111,7 +111,7 @@ Node* removeRoot(Node* root) {
     ///     <e:sep>
     ///       <e:fcell>
     ///         <code>root</code>
-    ///         <e:list><e:var n="v"/>,<code>null</code>,<e:var n="r"/></e:list>
+    ///         <e:list><e:var n="v"/>,<m:null/>,<e:var n="r"/></e:list>
     ///       </e:fcell>
     ///       <e:pred name="Tree"><e:var n="r"/>, <e:st n="R"/></e:pred>
     ///     </e:sep> ∧<br />
@@ -127,7 +127,7 @@ Node* removeRoot(Node* root) {
     ///     <e:sep>
     ///       <e:fcell>
     ///             <code>root</code>
-    ///             <e:list><e:var n="v"/>,<code>null</code>,<code>o</code></e:list>
+    ///             <e:list><e:var n="v"/>,<m:null/>,<code>o</code></e:list>
     ///           </e:fcell>
     ///       <e:pred name="Tree"><code>o</code>, <e:st n="R"/></e:pred>
     ///     </e:sep> ∧<br />
@@ -178,7 +178,7 @@ Node* removeRoot(Node* root) {
     ///       </e:sep>
     ///     </e:sep> ∧<br />
     ///     <e:pred name="TCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred> ∧
-    ///     <e:noteq><e:var n="l"/><code>null</code></e:noteq>
+    ///     <e:noteq><e:var n="l"/><m:null/></e:noteq>
     ///   </e:indent></e:expr>
     /// </e:exists>
 

@@ -22,7 +22,7 @@ bool search(Node* head, int value) {
 
   while (i != null && i.value < value) {
     // <e:logimpl>
-    //   <e:noteq><code>i</code><code>null</code></e:noteq>
+    //   <e:noteq><code>i</code><m:null/></e:noteq>
     //   <e:pred name="NonEmptyList"><code>i</code><e:st n="R"/></e:pred>
     // </e:logimpl>.
     // Open <e:pred name="NonEmptyList"><code>i</code><e:st n="R"/></e:pred>.
@@ -157,26 +157,26 @@ bool search(Node* head, int value) {
 
   bool o;
   if (i == null) {
-    // Assert if-condition.  Eliminate non-<code>null</code> side of disjunction.<br />
+    // Assert if-condition.  Eliminate non-<m:null/> side of disjunction.<br />
     /// <e:exists>
     ///   <e:vars><e:st n="L"/><e:st n="R"/></e:vars>
     ///   <e:expr><e:indent><e:and type="lines">
     ///     <e:sep>
-    ///       <e:pred name="ListSegment"><code>head</code><code>null</code><e:st n="L"/></e:pred>
-    ///       <e:pred name="EmptyList"><code>null</code><e:st n="R"/></e:pred>
+    ///       <e:pred name="ListSegment"><code>head</code><m:null/><e:st n="L"/></e:pred>
+    ///       <e:pred name="EmptyList"><m:null/><e:st n="R"/></e:pred>
     ///     </e:sep>
     ///     <e:pred name="SegmentCompose"><e:st n="L"/><e:st n="R"/><e:st n="S"/></e:pred>
     ///     <e:pred name="SetLT"><e:st n="L"/><code>value</code></e:pred>
     ///   </e:and></e:indent></e:expr>
     /// </e:exists>
 
-    // <e:logimpl><e:pred name="EmptyList"><code>null</code><e:st n="R"/></e:pred><e:eq><e:st n="R"/><m:empty/></e:eq></e:logimpl>.
+    // <e:logimpl><e:pred name="EmptyList"><m:null/><e:st n="R"/></e:pred><e:eq><e:st n="R"/><m:empty/></e:eq></e:logimpl>.
     /// <e:exists>
     ///   <e:vars><e:st n="L"/></e:vars>
     ///   <e:expr><e:indent><e:and type="lines">
     ///     <e:sep>
-    ///       <e:pred name="ListSegment"><code>head</code><code>null</code><e:st n="L"/></e:pred>
-    ///       <e:pred name="EmptyList"><code>null</code><m:empty/></e:pred>
+    ///       <e:pred name="ListSegment"><code>head</code><m:null/><e:st n="L"/></e:pred>
+    ///       <e:pred name="EmptyList"><m:null/><m:empty/></e:pred>
     ///     </e:sep>
     ///     <e:pred name="SegmentCompose"><e:st n="L"/><m:empty/><e:st n="S"/></e:pred>
     ///     <e:pred name="SetLT"><e:st n="L"/><code>value</code></e:pred>
@@ -190,21 +190,21 @@ bool search(Node* head, int value) {
     // </e:logimpl>.
     /// <e:and type="lines">
     ///   <e:sep>
-    ///     <e:pred name="ListSegment"><code>head</code><code>null</code><e:st n="S"/></e:pred>
-    ///     <e:pred name="EmptyList"><code>null</code><m:empty/></e:pred>
+    ///     <e:pred name="ListSegment"><code>head</code><m:null/><e:st n="S"/></e:pred>
+    ///     <e:pred name="EmptyList"><m:null/><m:empty/></e:pred>
     ///   </e:sep>
     ///   <e:pred name="SegmentCompose"><e:st n="S"/><m:empty/><e:st n="S"/></e:pred>
     ///   <e:pred name="SetLT"><e:st n="S"/><code>value</code></e:pred>
     /// </e:and>
 
     // Discard <e:pred name="SegmentCompose"><e:st n="S"/><m:empty/><e:st n="S"/></e:pred>.
-    // Discard <e:pred name="EmptyList"><code>null</code><m:empty/></e:pred>.
+    // Discard <e:pred name="EmptyList"><m:null/><m:empty/></e:pred>.
     /// <e:and>
-    ///   <e:pred name="ListSegment"><code>head</code><code>null</code><e:st n="S"/></e:pred>
+    ///   <e:pred name="ListSegment"><code>head</code><m:null/><e:st n="S"/></e:pred>
     ///   <e:pred name="SetLT"><e:st n="S"/><code>value</code></e:pred>
     /// </e:and>
 
-    // <e:logimpl><e:pred name="ListSegment"><code>head</code><code>null</code><e:st n="S"/></e:pred><e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred></e:logimpl>.<br />
+    // <e:logimpl><e:pred name="ListSegment"><code>head</code><m:null/><e:st n="S"/></e:pred><e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred></e:logimpl>.<br />
     // <e:logimpl><e:pred name="SetLT"><e:st n="L"/><code>value</code></e:pred><e:notin><code>value</code><e:st n="L"/></e:notin></e:logimpl>.
     /// <e:and>
     ///   <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
@@ -227,7 +227,7 @@ bool search(Node* head, int value) {
     /// </e:and>
   }
   else {
-    // Deny if-condition.  Eliminate <code>null</code> side of disjunction.
+    // Deny if-condition.  Eliminate <m:null/> side of disjunction.
     /// <e:exists>
     ///   <e:vars><e:st n="L"/><e:st n="R"/><e:var n="v"/><e:var n="tail"/><e:st n="T"/></e:vars>
     ///   <e:expr><e:indent><e:and type="lines">
