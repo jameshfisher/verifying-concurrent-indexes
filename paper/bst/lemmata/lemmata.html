@@ -206,7 +206,7 @@
 	 </e:derive>
 
 	 <e:by>
-	   <e:from name="openCompose"/>, ∧E
+	   <e:from name="openCompose"/>, <m:andElim/>
 	 </e:by>
        </e:step>
 
@@ -251,12 +251,12 @@
 
     <e:step name="compose">
       <e:derive><e:pred name="TCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred></e:derive>
-      <e:by><e:from name="given"/>, ∧E</e:by>
+      <e:by><e:from name="given"/>, <m:andElim/></e:by>
     </e:step>
 
     <e:step name="lt">
       <e:derive><e:lt><e:var n="w"/><e:var n="v"/></e:lt></e:derive>
-      <e:by><e:from name="given"/>, ∧E</e:by>
+      <e:by><e:from name="given"/>, <m:andElim/></e:by>
     </e:step>
 
     <e:step name="open">
@@ -320,7 +320,7 @@
 	  <e:st n="S"/>
 	</e:eq>
       </e:derive>
-      <e:by><e:from name="open"/>, ∧E</e:by>
+      <e:by><e:from name="open"/>, <m:andElim/></e:by>
     </e:step>
 
     <e:step name="LsubsetS">
@@ -400,7 +400,7 @@
 	  </e:expr>
 	</e:forall>
       </e:derive>
-      <e:by><e:from name="open"/>, ∧E</e:by>
+      <e:by><e:from name="open"/>, <m:andElim/></e:by>
     </e:step>
 
     <e:step name="wNotInR">

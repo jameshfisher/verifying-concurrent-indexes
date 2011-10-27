@@ -820,9 +820,9 @@ struct Node {
 
       <tr><td><span class="step">1</span>.</td><td class=""><a class="pred_name" href="#def_List">List</a>(<code>head</code>, <span class="st">S</span>) ∧ <code>head</code> = <span>␀</span></td><td>given</td></tr>
 
-      <tr><td><span class="step">2</span>.</td><td class=""><a class="pred_name" href="#def_List">List</a>(<code>head</code>, <span class="st">S</span>)</td><td><span class="step">1</span>, ∧E</td></tr>
+      <tr><td><span class="step">2</span>.</td><td class=""><a class="pred_name" href="#def_List">List</a>(<code>head</code>, <span class="st">S</span>)</td><td><span class="step">1</span>, <m:andElim/></td></tr>
 
-      <tr><td><span class="step">3</span>.</td><td class=""><code>head</code> = <span>␀</span></td><td><span class="step">1</span>, ∧E</td></tr>
+      <tr><td><span class="step">3</span>.</td><td class=""><code>head</code> = <span>␀</span></td><td><span class="step">1</span>, <m:andElim/></td></tr>
 
       <tr><td><span class="step">4</span>.</td><td class=""><a class="pred_name" href="#def_EmptyList">EmptyList</a>(<code>head</code>, <span class="st">S</span>) ∨ <a class="pred_name" href="#def_NonEmptyList">NonEmptyList</a>(<code>head</code>, <span class="st">S</span>)</td><td><span class="step">2</span>, open predicate</td></tr>
 
@@ -833,7 +833,7 @@ struct Node {
 	      <code>head</code> ↦ <span class="var">v</span>, <span class="var">t</span> ∗ <a class="pred_name" href="#def_List">List</a>(<span class="var">t</span>, <span class="st">T</span>)
 	    </e:expr></td><td><span class="step">5</span>, open predicate</td></tr>
 
-      <tr><td><span class="step">7</span>.</td><td class="indent1">∃<span class="var">v</span>, <span class="var">t</span>. <e:expr><code>head</code> ↦ <span class="var">v</span>, <span class="var">t</span></e:expr></td><td><span class="step">6</span>, ∧E, frame off <a class="pred_name" href="#def_List">List</a>(<span class="var">t</span>, <span class="st">T</span>)</td></tr>
+      <tr><td><span class="step">7</span>.</td><td class="indent1">∃<span class="var">v</span>, <span class="var">t</span>. <e:expr><code>head</code> ↦ <span class="var">v</span>, <span class="var">t</span></e:expr></td><td><span class="step">6</span>, <m:andElim/>, frame off <a class="pred_name" href="#def_List">List</a>(<span class="var">t</span>, <span class="st">T</span>)</td></tr>
 
       <tr><td><span class="step">8</span>.</td><td class="indent1"><code>head</code> ≠ <span>␀</span></td><td><span class="step">7</span>, pointer non-null</td></tr>
 
@@ -859,7 +859,7 @@ struct Node {
 	  <b>emp</b>
 	</td><td><span class="step">1</span>, open predicate</td></tr>
 
-      <tr><td><span class="step">3</span>.</td><td class=""><span class="st">S</span> = <span>∅</span></td><td><span class="step">2</span>, ∧E</td></tr>
+      <tr><td><span class="step">3</span>.</td><td class=""><span class="st">S</span> = <span>∅</span></td><td><span class="step">2</span>, <m:andElim/></td></tr>
 
       <tr><td><span class="step">4</span>.</td><td class=""><code>value</code> ∉ <span>∅</span></td><td>Nothing in empty set</td></tr>
 
@@ -919,11 +919,11 @@ struct Node {
 
       <tr><td><span class="step">4</span>.</td><td class=""><code>value</code> ∈ <span class="st">T</span> → <code>value</code> ∈ <span class="st">S</span></td><td><span class="step">3</span>, ↔E</td></tr>
 
-      <tr><td><span class="step">5</span>.</td><td class=""><a class="pred_name" href="#def_ListCompose">ListCompose</a>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>)</td><td><span class="step">1</span>, ∧E</td></tr>
+      <tr><td><span class="step">5</span>.</td><td class=""><a class="pred_name" href="#def_ListCompose">ListCompose</a>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>)</td><td><span class="step">1</span>, <m:andElim/></td></tr>
 
       <tr><td><span class="step">6</span>.</td><td class="">
 	  <code>value</code> &lt; <span class="var">v</span>
-	</td><td><span class="step">1</span>, ∧E</td></tr>
+	</td><td><span class="step">1</span>, <m:andElim/></td></tr>
 
       <tr><td><span class="step">7</span>.</td><td class="">
 	  {<span class="var">v</span>} ∪ <span class="st">T</span> = <span class="st">S</span> ∧
@@ -936,7 +936,7 @@ struct Node {
 	  ∀<span class="var">t</span> ∈ <span class="st">T</span>. <e:expr>
 	      <span class="var">v</span> &lt; <span class="var">t</span>
 	    </e:expr>
-	</td><td><span class="step">7</span>, ∧E</td></tr>
+	</td><td><span class="step">7</span>, <m:andElim/></td></tr>
 
       <tr><td><span class="step">9</span>.</td><td class="indent1"><code>value</code> ∈ <span class="st">S</span></td><td>assume</td></tr>
 
@@ -956,9 +956,9 @@ struct Node {
     <table class="derivation displaymath">
       <tr><td><span class="step">1</span>.</td><td class=""><a class="pred_name" href="#def_ListCompose">ListCompose</a>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>) ∧ <span class="var">v</span> ≠ <code>value</code></td><td>given</td></tr>
 
-      <tr><td><span class="step">2</span>.</td><td class=""><a class="pred_name" href="#def_ListCompose">ListCompose</a>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>)</td><td><span class="step">1</span>, ∧E</td></tr>
+      <tr><td><span class="step">2</span>.</td><td class=""><a class="pred_name" href="#def_ListCompose">ListCompose</a>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>)</td><td><span class="step">1</span>, <m:andElim/></td></tr>
 
-      <tr><td><span class="step">3</span>.</td><td class=""><span class="var">v</span> ≠ <code>value</code></td><td><span class="step">1</span>, ∧E</td></tr>
+      <tr><td><span class="step">3</span>.</td><td class=""><span class="var">v</span> ≠ <code>value</code></td><td><span class="step">1</span>, <m:andElim/></td></tr>
 
       <tr><td><span class="step">4</span>.</td><td class="">
 	  {<code>value</code>} ∪ <span class="st">T</span> = <span class="st">S</span> ∧
@@ -969,13 +969,13 @@ struct Node {
 
       <tr><td><span class="step">5</span>.</td><td class="">
 	  {<code>value</code>} ∪ <span class="st">T</span> = <span class="st">S</span>
-	</td><td><span class="step">4</span>, ∧E</td></tr>
+	</td><td><span class="step">4</span>, <m:andElim/></td></tr>
 
       <tr><td><span class="step">6</span>.</td><td class="">
 	  ∀<span class="var">t</span> ∈ <span class="st">T</span>. <e:expr>
 	      <code>value</code> &lt; <span class="var">t</span>
 	    </e:expr>
-	</td><td><span class="step">4</span>, ∧E</td></tr>
+	</td><td><span class="step">4</span>, <m:andElim/></td></tr>
 
       <tr><td><span class="step">7</span>.</td><td class=""><span class="st">T</span> ⊆ <span class="st">S</span></td><td><span class="step">5</span></td></tr>
 
@@ -1434,9 +1434,9 @@ Use <span class="var">v</span> &lt; <code>value</code> ⇒ <code>value</code
     <table class="derivation displaymath">
       <tr><td><span class="step">1</span>.</td><td class=""><a class="pred_name" href="#def_ListCompose">ListCompose</a>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>) ∧ <span class="var">w</span> &lt; <span class="var">v</span></td><td>given</td></tr>
 
-      <tr><td><span class="step">2</span>.</td><td class=""><a class="pred_name" href="#def_ListCompose">ListCompose</a>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>)</td><td><span class="step">1</span>, ∧E</td></tr>
+      <tr><td><span class="step">2</span>.</td><td class=""><a class="pred_name" href="#def_ListCompose">ListCompose</a>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>)</td><td><span class="step">1</span>, <m:andElim/></td></tr>
 
-      <tr><td><span class="step">3</span>.</td><td class=""><span class="var">w</span> &lt; <span class="var">v</span></td><td><span class="step">1</span>, ∧E</td></tr>
+      <tr><td><span class="step">3</span>.</td><td class=""><span class="var">w</span> &lt; <span class="var">v</span></td><td><span class="step">1</span>, <m:andElim/></td></tr>
 
       <tr><td><span class="step">4</span>.</td><td class="">
 	  {<span class="var">v</span>} ∪ <span class="st">T</span> = <span class="st">S</span> ∧
@@ -1445,11 +1445,11 @@ Use <span class="var">v</span> &lt; <code>value</code> ⇒ <code>value</code
 	    </e:expr>
 	</td><td><span class="step">2</span>, open predicate</td></tr>
 
-      <tr><td><span class="step">5</span>.</td><td class="">{<span class="var">v</span>} ∪ <span class="st">T</span> = <span class="st">S</span></td><td><span class="step">4</span>, ∧E</td></tr>
+      <tr><td><span class="step">5</span>.</td><td class="">{<span class="var">v</span>} ∪ <span class="st">T</span> = <span class="st">S</span></td><td><span class="step">4</span>, <m:andElim/></td></tr>
 
       <tr><td><span class="step">6</span>.</td><td class="">∀<span class="var">t</span> ∈ <span class="st">T</span>. <e:expr>
 	      <span class="var">v</span> &lt; <span class="var">t</span>
-	    </e:expr></td><td><span class="step">4</span>, ∧E</td></tr>
+	    </e:expr></td><td><span class="step">4</span>, <m:andElim/></td></tr>
 
       <tr><td><span class="step">7</span>.</td><td class="">∀<span class="var">t</span> ∈ <span class="st">T</span>. <e:expr>
 	      <span class="var">w</span> &lt; <span class="var">t</span>
@@ -1495,9 +1495,9 @@ Use <span class="var">v</span> &lt; <code>value</code> ⇒ <code>value</code
     <table class="derivation displaymath">
       <tr><td><span class="step">1</span>.</td><td class=""><a class="pred_name" href="#def_ListCompose">ListCompose</a>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>) ∧ <span class="var">v</span> &lt; <code>value</code></td><td>given</td></tr>
 
-      <tr><td><span class="step">2</span>.</td><td class=""><a class="pred_name" href="#def_ListCompose">ListCompose</a>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>)</td><td><span class="step">1</span>, ∧E</td></tr>
+      <tr><td><span class="step">2</span>.</td><td class=""><a class="pred_name" href="#def_ListCompose">ListCompose</a>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>)</td><td><span class="step">1</span>, <m:andElim/></td></tr>
 
-      <tr><td><span class="step">3</span>.</td><td class=""><span class="var">v</span> &lt; <code>value</code></td><td><span class="step">1</span>, ∧E</td></tr>
+      <tr><td><span class="step">3</span>.</td><td class=""><span class="var">v</span> &lt; <code>value</code></td><td><span class="step">1</span>, <m:andElim/></td></tr>
 
       <tr><td><span class="step">4</span>.</td><td class="">
 	  {<span class="var">v</span>} ∪ <span class="st">T</span> = <span class="st">S</span> ∧
@@ -1506,11 +1506,11 @@ Use <span class="var">v</span> &lt; <code>value</code> ⇒ <code>value</code
 	    </e:expr>
 	</td><td><span class="step">2</span>, open predicate</td></tr>
 
-      <tr><td><span class="step">5</span>.</td><td class="">{<span class="var">v</span>} ∪ <span class="st">T</span> = <span class="st">S</span></td><td><span class="step">4</span>, ∧E</td></tr>
+      <tr><td><span class="step">5</span>.</td><td class="">{<span class="var">v</span>} ∪ <span class="st">T</span> = <span class="st">S</span></td><td><span class="step">4</span>, <m:andElim/></td></tr>
 
       <tr><td><span class="step">6</span>.</td><td class="">∀<span class="var">t</span> ∈ <span class="st">T</span>. <e:expr>
 	      <span class="var">v</span> &lt; <span class="var">t</span>
-	    </e:expr></td><td><span class="step">4</span>, ∧E</td></tr>
+	    </e:expr></td><td><span class="step">4</span>, <m:andElim/></td></tr>
 
       <tr><td><span class="step">7</span>.</td><td class="">
 	  {<span class="var">v</span>} ∪ <span class="st">T</span> ∪ {<code>value</code>} = <span class="st">S</span> ∪ {<code>value</code>}
@@ -2102,11 +2102,11 @@ Use <span class="var">v</span> &lt; <code>value</code> ⇒ <code>value</code
 	    </e:expr>
 	</td><td><span class="step">1</span>, open predicate</td></tr>
 
-      <tr><td><span class="step">3</span>.</td><td class="">{<span class="var">v</span>} ∪ <span class="st">T</span> = <span class="st">S</span></td><td><span class="step">2</span>, ∧E</td></tr>
+      <tr><td><span class="step">3</span>.</td><td class="">{<span class="var">v</span>} ∪ <span class="st">T</span> = <span class="st">S</span></td><td><span class="step">2</span>, <m:andElim/></td></tr>
 
       <tr><td><span class="step">4</span>.</td><td class="">∀<span class="var">t</span> ∈ <span class="st">T</span>. <e:expr>
 	      <span class="var">v</span> &lt; <span class="var">t</span>
-	    </e:expr></td><td><span class="step">2</span>, ∧E</td></tr>
+	    </e:expr></td><td><span class="step">2</span>, <m:andElim/></td></tr>
 
       <tr><td><span class="step">5</span>.</td><td class="indent1"><span class="var">v</span> ∈ <span class="st">T</span></td><td>assume</td></tr>
 
@@ -2130,9 +2130,9 @@ Use <span class="var">v</span> &lt; <code>value</code> ⇒ <code>value</code
     <table class="derivation displaymath">
       <tr><td><span class="step">1</span>.</td><td class=""><a class="pred_name" href="#def_ListCompose">ListCompose</a>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>) ∧ <span class="var">v</span> ≠ <span class="var">w</span></td><td>given</td></tr>
 
-      <tr><td><span class="step">2</span>.</td><td class=""><a class="pred_name" href="#def_ListCompose">ListCompose</a>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>)</td><td><span class="step">1</span>, ∧E</td></tr>
+      <tr><td><span class="step">2</span>.</td><td class=""><a class="pred_name" href="#def_ListCompose">ListCompose</a>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>)</td><td><span class="step">1</span>, <m:andElim/></td></tr>
 
-      <tr><td><span class="step">3</span>.</td><td class=""><span class="var">v</span> ≠ <span class="var">w</span></td><td><span class="step">1</span>, ∧E</td></tr>
+      <tr><td><span class="step">3</span>.</td><td class=""><span class="var">v</span> ≠ <span class="var">w</span></td><td><span class="step">1</span>, <m:andElim/></td></tr>
 
       <tr><td><span class="step">4</span>.</td><td class="">
 	  {<span class="var">v</span>} ∪ <span class="st">T</span> = <span class="st">S</span> ∧
@@ -2141,12 +2141,12 @@ Use <span class="var">v</span> &lt; <code>value</code> ⇒ <code>value</code
 	    </e:expr>
 	</td><td><span class="step">2</span>, open predicate</td></tr>
 
-      <tr><td><span class="step">5</span>.</td><td class="">{<span class="var">v</span>} ∪ <span class="st">T</span> = <span class="st">S</span></td><td><span class="step">4</span>, ∧E</td></tr>
+      <tr><td><span class="step">5</span>.</td><td class="">{<span class="var">v</span>} ∪ <span class="st">T</span> = <span class="st">S</span></td><td><span class="step">4</span>, <m:andElim/></td></tr>
 
       <tr><td><span class="step">6</span>.</td><td class="">∀<span class="var">t</span> ∈ <span class="st">T</span>. <e:expr>
 	      <span class="var">v</span> &lt; <span class="var">t</span>
 	    </e:expr>
-	</td><td><span class="step">4</span>, ∧E</td></tr>
+	</td><td><span class="step">4</span>, <m:andElim/></td></tr>
 
       <tr><td><span class="step">7</span>.</td><td class="">{<span class="var">v</span>} ∪ <span class="st">T</span>∖{<span class="var">w</span>} = <span class="st">S</span>∖{<span class="var">w</span>}</td><td><span class="step">5</span>, equal operations</td></tr>
 
@@ -2683,7 +2683,7 @@ Use <span class="var">v</span> &lt; <code>value</code> ⇒ <code>value</code
 
       <tr><td><span class="step">1</span>.</td><td class=""><a class="pred_name" href="#def_ListCompose">ListCompose</a>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">R</span>) ∧ <a class="pred_name" href="#def_SegmentCompose">SegmentCompose</a>(<span class="st">L</span>, <span class="st">R</span>, <span class="st">S</span>)</td><td>given</td></tr>
 
-      <tr><td><span class="step">2</span>.</td><td class=""><a class="pred_name" href="#def_ListCompose">ListCompose</a>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">R</span>)</td><td><span class="step">1</span>, ∧E</td></tr>
+      <tr><td><span class="step">2</span>.</td><td class=""><a class="pred_name" href="#def_ListCompose">ListCompose</a>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">R</span>)</td><td><span class="step">1</span>, <m:andElim/></td></tr>
 
       <tr><td><span class="step">3</span>.</td><td class=""><a class="pred_name" href="#def_SetLT">SetLT</a>(<span class="st">L</span>, <span class="var">v</span>)</td><td>??</td></tr>
 
