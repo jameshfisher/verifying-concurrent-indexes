@@ -1,0 +1,38 @@
+<e:lemma name="leastOfRightGreaterThanLeft"
+	 xmlns="http://www.w3.org/1999/xhtml"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xmlns:e="http://eegg.github.com/htmlx"
+	 xmlns:m="http://eegg.github.com/macro">
+
+  <e:caption><e:logimpl>
+      <e:and>
+	<e:pred name="ListCompose"><e:var n="v"/><e:st n="T"/><e:st n="R"/></e:pred>
+	<e:pred name="SegmentCompose"><e:st n="L"/><e:st n="R"/><e:st n="S"/></e:pred>
+      </e:and>
+      <e:pred name="SetLT"><e:st n="L"/><e:var n="v"/></e:pred>
+  </e:logimpl></e:caption>
+
+  <e:contents>
+    <e:derivation>
+
+      <e:step name="given">
+	<e:derive><e:and>
+	    <e:pred name="ListCompose"><e:var n="v"/><e:st n="T"/><e:st n="R"/></e:pred>
+	    <e:pred name="SegmentCompose"><e:st n="L"/><e:st n="R"/><e:st n="S"/></e:pred>
+	</e:and></e:derive>
+	<e:by>given</e:by>
+      </e:step>
+
+      <e:step name="givenListCompose">
+	<e:derive><e:pred name="ListCompose"><e:var n="v"/><e:st n="T"/><e:st n="R"/></e:pred></e:derive>
+	<e:by><e:from name="given"/>, ∧E</e:by>
+      </e:step>
+
+      <e:step name="qed">
+	<e:derive><e:pred name="SetLT"><e:st n="L"/><e:var n="v"/></e:pred></e:derive>
+	<e:by>??</e:by>
+      </e:step>
+
+    </e:derivation>
+  </e:contents>
+</e:lemma>

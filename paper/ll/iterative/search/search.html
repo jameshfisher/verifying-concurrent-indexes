@@ -26,6 +26,38 @@
     to hold the pointer that iterates down the list.)
   </p>
 
+  <xi:include href="./lemmata/leastOfRightGreaterThanLeft.html"/>
+
+  <e:logimpl>
+    <e:and>
+      <e:sep>
+        <e:pred name="ListSegment"><code>head</code><e:var n="j"/><e:st n="L"/></e:pred>
+        <e:fcell>
+          <e:var n="j"/>
+          <e:list><e:var n="v"/><code>i</code></e:list>
+        </e:fcell>
+      </e:sep>
+      <e:pred name="SetLT"><e:st n="L"/><e:var n="v"/></e:pred>
+    </e:and>
+    <e:pred name="NonEmptyListSegment"><code>head</code><code>i</code><e:union><e:st n="L"/><e:set><e:var n="v"/></e:set></e:union></e:pred>
+  </e:logimpl>
+
+  <e:logimpl>
+    <e:and>
+      <e:pred name="SetLT"><e:st n="L"/><code>value</code></e:pred>
+      <e:lt><e:var n="v"/><code>value</code></e:lt>
+    </e:and>
+    <e:pred name="SetLT"><e:union><e:st n="L"/><e:set><e:var n="v"/></e:set></e:union><code>value</code></e:pred>
+  </e:logimpl>
+
+  <e:logimpl>
+    <e:and>
+      <e:pred name="ListCompose"><e:var n="v"/><e:st n="T"/><e:st n="R"/></e:pred>
+      <e:pred name="SegmentCompose"><e:st n="L"/><e:st n="R"/><e:st n="S"/></e:pred>
+    </e:and>
+    <e:pred name="SegmentCompose"><e:union><e:st n="L"/><e:set><e:var n="v"/></e:set></e:union><e:st n="T"/><e:st n="S"/></e:pred>
+  </e:logimpl>
+
   <p>
     The recursive call was verified by <q>framing off</q> the part of the heap:
     the segment of the list leading to the head pointer is not part of the function precondition,
@@ -98,23 +130,6 @@
     </e:definition>
   </p>
 
-  <p>
-
-  </p>
-
-  <e:definition name="setlt">
-    <e:setlt><e:st n="A"/><e:st n="B"/></e:setlt> ≝
-    <e:indent>
-	<e:forall>
-	  <e:vars>
-            <e:in><e:var n="a"/><e:st n="A"/></e:in>
-            <e:in><e:var n="b"/><e:st n="B"/></e:in>
-	  </e:vars>
-	  <e:expr><e:lt><e:var n="a"/><e:var n="b"/></e:lt></e:expr>
-	</e:forall>
-    </e:indent>
-  </e:definition>
-
   <e:definition name="SegmentCompose">
     <e:pred name="SegmentCompose"><e:st n="L"/><e:st n="R"/><e:st n="S"/></e:pred> ≝
     <e:indent><e:and type="lines">
@@ -122,9 +137,25 @@
 	  <e:union><e:st n="L"/><e:st n="R"/></e:union>
 	  <e:st n="S"/>
 	</e:eq>
-	<e:setlt><e:st n="L"/><e:st n="R"/></e:setlt>
+	<e:forall>
+	  <e:vars>
+            <e:in><e:var n="l"/><e:st n="L"/></e:in>
+            <e:in><e:var n="r"/><e:st n="R"/></e:in>
+	  </e:vars>
+	  <e:expr><e:lt><e:var n="l"/><e:var n="r"/></e:lt></e:expr>
+	</e:forall>
     </e:and></e:indent>
   </e:definition>
 
-  <xi:include href="../../../../code/d/html/ll/search/iterative.d.html"/>
+
+  <e:diagram>
+    <e:caption>The iterative <code>search</code> procedure as a flow diagram.</e:caption>
+    <e:contents><xi:include href="./search.svg" /></e:contents>
+  </e:diagram>
+
+  <e:annotation>
+    <e:caption>Iterative <code>search</code>.</e:caption>
+    <e:contents><xi:include href="../../../../code/d/html/ll/search/iterative.d.html"/></e:contents>
+  </e:annotation>
+
 </section>
