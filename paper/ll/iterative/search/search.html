@@ -53,9 +53,9 @@
   <e:logimpl>
     <e:and>
       <e:pred name="ListCompose"><e:var n="v"/><e:st n="T"/><e:st n="R"/></e:pred>
-      <e:pred name="SegmentCompose"><e:st n="L"/><e:st n="R"/><e:st n="S"/></e:pred>
+      <e:pred name="Slice"><e:st n="L"/><e:st n="R"/><e:st n="S"/></e:pred>
     </e:and>
-    <e:pred name="SegmentCompose"><e:union><e:st n="L"/><e:set><e:var n="v"/></e:set></e:union><e:st n="T"/><e:st n="S"/></e:pred>
+    <e:pred name="Slice"><e:union><e:st n="L"/><e:set><e:var n="v"/></e:set></e:union><e:st n="T"/><e:st n="S"/></e:pred>
   </e:logimpl>
 
   <p>
@@ -130,8 +130,8 @@
     </e:definition>
   </p>
 
-  <e:definition name="SegmentCompose">
-    <e:pred name="SegmentCompose"><e:st n="L"/><e:st n="R"/><e:st n="S"/></e:pred> ≝
+  <e:definition name="Slice">
+    <e:pred name="Slice"><e:st n="L"/><e:st n="R"/><e:st n="S"/></e:pred> ≝
     <e:indent><e:and type="lines">
 	<e:eq>
 	  <e:union><e:st n="L"/><e:st n="R"/></e:union>

@@ -15,7 +15,7 @@ bool search(Node* head, int value) {
   ///       <e:pred name="ListSegment"><code>head</code><code>i</code><e:st n="L"/></e:pred>
   ///       <e:pred name="List"><code>i</code><e:st n="R"/></e:pred>
   ///     </e:sep>
-  ///     <e:pred name="SegmentCompose"><e:st n="L"/><e:st n="R"/><e:st n="S"/></e:pred>
+  ///     <e:pred name="Slice"><e:st n="L"/><e:st n="R"/><e:st n="S"/></e:pred>
   ///     <e:pred name="SetLT"><e:st n="L"/><code>value</code></e:pred>
   ///   </e:and></e:indent></e:expr>
   /// </e:exists>
@@ -39,7 +39,7 @@ bool search(Node* head, int value) {
     ///       <e:pred name="List"><e:var n="tail"/><e:st n="T"/></e:pred>
     ///     </e:sep>
     ///     <e:pred name="ListCompose"><e:var n="v"/><e:st n="T"/><e:st n="R"/></e:pred>
-    ///     <e:pred name="SegmentCompose"><e:st n="L"/><e:st n="R"/><e:st n="S"/></e:pred>
+    ///     <e:pred name="Slice"><e:st n="L"/><e:st n="R"/><e:st n="S"/></e:pred>
     ///     <e:pred name="SetLT"><e:st n="L"/><code>value</code></e:pred>
     ///     <e:lt><e:var n="v"/><code>value</code></e:lt>
     ///   </e:and></e:indent></e:expr>
@@ -59,7 +59,7 @@ bool search(Node* head, int value) {
     ///       <e:pred name="List"><code>i</code><e:st n="T"/></e:pred>
     ///     </e:sep>
     ///     <e:pred name="ListCompose"><e:var n="v"/><e:st n="T"/><e:st n="R"/></e:pred>
-    ///     <e:pred name="SegmentCompose"><e:st n="L"/><e:st n="R"/><e:st n="S"/></e:pred>
+    ///     <e:pred name="Slice"><e:st n="L"/><e:st n="R"/><e:st n="S"/></e:pred>
     ///     <e:pred name="SetLT"><e:st n="L"/><code>value</code></e:pred>
     ///     <e:lt><e:var n="v"/><code>value</code></e:lt>
     ///   </e:and></e:indent></e:expr>
@@ -68,7 +68,7 @@ bool search(Node* head, int value) {
     // <e:logimpl>
     //   <e:and>
     //     <e:pred name="ListCompose"><e:var n="v"/><e:st n="T"/><e:st n="R"/></e:pred>
-    //     <e:pred name="SegmentCompose"><e:st n="L"/><e:st n="R"/><e:st n="S"/></e:pred>
+    //     <e:pred name="Slice"><e:st n="L"/><e:st n="R"/><e:st n="S"/></e:pred>
     //   </e:and>
     //   <e:pred name="SetLT"><e:st n="L"/><e:var n="v"/></e:pred>
     // </e:logimpl>.<br />
@@ -95,9 +95,9 @@ bool search(Node* head, int value) {
     // <e:logimpl>
     //   <e:and>
     //     <e:pred name="ListCompose"><e:var n="v"/><e:st n="T"/><e:st n="R"/></e:pred>
-    //     <e:pred name="SegmentCompose"><e:st n="L"/><e:st n="R"/><e:st n="S"/></e:pred>
+    //     <e:pred name="Slice"><e:st n="L"/><e:st n="R"/><e:st n="S"/></e:pred>
     //   </e:and>
-    //   <e:pred name="SegmentCompose"><e:union><e:st n="L"/><e:set><e:var n="v"/></e:set></e:union><e:st n="T"/><e:st n="S"/></e:pred>
+    //   <e:pred name="Slice"><e:union><e:st n="L"/><e:set><e:var n="v"/></e:set></e:union><e:st n="T"/><e:st n="S"/></e:pred>
     // </e:logimpl>.
     /// <e:exists>
     ///   <e:vars><e:st n="L"/><e:var n="v"/><e:st n="T"/></e:vars>
@@ -106,7 +106,7 @@ bool search(Node* head, int value) {
     ///       <e:pred name="NonEmptyListSegment"><code>head</code><code>i</code><e:union><e:st n="L"/><e:set><e:var n="v"/></e:set></e:union></e:pred>
     ///       <e:pred name="List"><code>i</code><e:st n="T"/></e:pred>
     ///     </e:sep>
-    ///     <e:pred name="SegmentCompose"><e:union><e:st n="L"/><e:set><e:var n="v"/></e:set></e:union><e:st n="T"/><e:st n="S"/></e:pred>
+    ///     <e:pred name="Slice"><e:union><e:st n="L"/><e:set><e:var n="v"/></e:set></e:union><e:st n="T"/><e:st n="S"/></e:pred>
     ///     <e:pred name="SetLT"><e:union><e:st n="L"/><e:set><e:var n="v"/></e:set></e:union><code>value</code></e:pred>
     ///   </e:and></e:indent></e:expr>
     /// </e:exists>
@@ -122,7 +122,7 @@ bool search(Node* head, int value) {
     ///       <e:pred name="ListSegment"><code>head</code><code>i</code><e:st n="L"/></e:pred>
     ///       <e:pred name="List"><code>i</code><e:st n="R"/></e:pred>
     ///     </e:sep>
-    ///     <e:pred name="SegmentCompose"><e:st n="L"/><e:st n="R"/><e:st n="S"/></e:pred>
+    ///     <e:pred name="Slice"><e:st n="L"/><e:st n="R"/><e:st n="S"/></e:pred>
     ///     <e:pred name="SetLT"><e:st n="L"/><code>value</code></e:pred>
     ///   </e:and></e:indent></e:expr>
     /// </e:exists>
@@ -151,7 +151,7 @@ bool search(Node* head, int value) {
   ///         </e:exists>
   ///       </e:or></e:indent>
   ///     </e:sep>
-  ///     <e:pred name="SegmentCompose"><e:st n="L"/><e:st n="R"/><e:st n="S"/></e:pred>
+  ///     <e:pred name="Slice"><e:st n="L"/><e:st n="R"/><e:st n="S"/></e:pred>
   ///     <e:pred name="SetLT"><e:st n="L"/><code>value</code></e:pred>
   ///   </e:and></e:indent></e:expr>
   /// </e:exists>
@@ -166,7 +166,7 @@ bool search(Node* head, int value) {
     ///       <e:pred name="ListSegment"><code>head</code><m:null/><e:st n="L"/></e:pred>
     ///       <e:pred name="EmptyList"><m:null/><e:st n="R"/></e:pred>
     ///     </e:sep>
-    ///     <e:pred name="SegmentCompose"><e:st n="L"/><e:st n="R"/><e:st n="S"/></e:pred>
+    ///     <e:pred name="Slice"><e:st n="L"/><e:st n="R"/><e:st n="S"/></e:pred>
     ///     <e:pred name="SetLT"><e:st n="L"/><code>value</code></e:pred>
     ///   </e:and></e:indent></e:expr>
     /// </e:exists>
@@ -179,13 +179,13 @@ bool search(Node* head, int value) {
     ///       <e:pred name="ListSegment"><code>head</code><m:null/><e:st n="L"/></e:pred>
     ///       <e:pred name="EmptyList"><m:null/><m:empty/></e:pred>
     ///     </e:sep>
-    ///     <e:pred name="SegmentCompose"><e:st n="L"/><m:empty/><e:st n="S"/></e:pred>
+    ///     <e:pred name="Slice"><e:st n="L"/><m:empty/><e:st n="S"/></e:pred>
     ///     <e:pred name="SetLT"><e:st n="L"/><code>value</code></e:pred>
     ///   </e:and></e:indent></e:expr>
     /// </e:exists>
 
     // <e:logimpl>
-    //   <e:pred name="SegmentCompose"><e:st n="L"/><m:empty/><e:st n="S"/></e:pred>
+    //   <e:pred name="Slice"><e:st n="L"/><m:empty/><e:st n="S"/></e:pred>
     //   <e:eq><e:union><e:st n="L"/><m:empty/></e:union><e:st n="S"/></e:eq>
     //   <e:eq><e:st n="L"/><e:st n="S"/></e:eq>
     // </e:logimpl>.
@@ -194,11 +194,11 @@ bool search(Node* head, int value) {
     ///     <e:pred name="ListSegment"><code>head</code><m:null/><e:st n="S"/></e:pred>
     ///     <e:pred name="EmptyList"><m:null/><m:empty/></e:pred>
     ///   </e:sep>
-    ///   <e:pred name="SegmentCompose"><e:st n="S"/><m:empty/><e:st n="S"/></e:pred>
+    ///   <e:pred name="Slice"><e:st n="S"/><m:empty/><e:st n="S"/></e:pred>
     ///   <e:pred name="SetLT"><e:st n="S"/><code>value</code></e:pred>
     /// </e:and>
 
-    // Discard <e:pred name="SegmentCompose"><e:st n="S"/><m:empty/><e:st n="S"/></e:pred>.
+    // Discard <e:pred name="Slice"><e:st n="S"/><m:empty/><e:st n="S"/></e:pred>.
     // Discard <e:pred name="EmptyList"><m:null/><m:empty/></e:pred>.
     /// <e:and>
     ///   <e:pred name="ListSegment"><code>head</code><m:null/><e:st n="S"/></e:pred>
@@ -242,7 +242,7 @@ bool search(Node* head, int value) {
     ///     </e:sep>
     ///     <e:pred name="ListCompose"><e:var n="v"/><e:st n="T"/><e:st n="R"/></e:pred>
     ///     <e:leq><code>value</code><e:var n="v"/></e:leq>
-    ///     <e:pred name="SegmentCompose"><e:st n="L"/><e:st n="R"/><e:st n="S"/></e:pred>
+    ///     <e:pred name="Slice"><e:st n="L"/><e:st n="R"/><e:st n="S"/></e:pred>
     ///     <e:pred name="SetLT"><e:st n="L"/><code>value</code></e:pred>
     ///   </e:and></e:indent></e:expr>
     /// </e:exists>
@@ -262,7 +262,7 @@ bool search(Node* head, int value) {
       ///       <e:pred name="List"><e:var n="tail"/><e:st n="T"/></e:pred>
       ///     </e:sep>
       ///     <e:pred name="ListCompose"><code>value</code><e:st n="T"/><e:st n="R"/></e:pred>
-      ///     <e:pred name="SegmentCompose"><e:st n="L"/><e:st n="R"/><e:st n="S"/></e:pred>
+      ///     <e:pred name="Slice"><e:st n="L"/><e:st n="R"/><e:st n="S"/></e:pred>
       ///     <e:pred name="SetLT"><e:st n="L"/><code>value</code></e:pred>
       ///   </e:and></e:indent></e:expr>
       /// </e:exists>
@@ -273,7 +273,7 @@ bool search(Node* head, int value) {
       //   <e:in><code>value</code><e:union><e:st n="L"/><e:st n="R"/></e:union></e:in>
       // </e:logimpl>.<br />
       // <e:logimpl>
-      //   <e:pred name="SegmentCompose"><e:st n="L"/><e:st n="R"/><e:st n="S"/></e:pred>
+      //   <e:pred name="Slice"><e:st n="L"/><e:st n="R"/><e:st n="S"/></e:pred>
       //   <e:eq><e:union><e:st n="L"/><e:st n="R"/></e:union><e:st n="S"/></e:eq>
       // </e:logimpl>.<br />
       // <e:logimpl>
@@ -303,7 +303,7 @@ bool search(Node* head, int value) {
       ///       <e:pred name="ListSegment"><code>head</code><code>i</code><e:st n="L"/></e:pred>
       ///       <e:pred name="NonEmptyList"><code>i</code><e:st n="R"/></e:pred>
       ///     </e:sep>
-      ///     <e:pred name="SegmentCompose"><e:st n="L"/><e:st n="R"/><e:st n="S"/></e:pred>
+      ///     <e:pred name="Slice"><e:st n="L"/><e:st n="R"/><e:st n="S"/></e:pred>
       ///     <e:pred name="SetLT"><e:st n="L"/><code>value</code></e:pred>
       ///     <e:in><code>value</code><e:st n="S"/></e:in>
       ///   </e:and></e:indent></e:expr>
@@ -358,7 +358,7 @@ bool search(Node* head, int value) {
       ///     </e:sep>
       ///     <e:pred name="ListCompose"><e:var n="v"/><e:st n="T"/><e:st n="R"/></e:pred>
       ///     <e:lt><code>value</code><e:var n="v"/></e:lt>
-      ///     <e:pred name="SegmentCompose"><e:st n="L"/><e:st n="R"/><e:st n="S"/></e:pred>
+      ///     <e:pred name="Slice"><e:st n="L"/><e:st n="R"/><e:st n="S"/></e:pred>
       ///     <e:pred name="SetLT"><e:st n="L"/><code>value</code></e:pred>
       ///   </e:and></e:indent></e:expr>
       /// </e:exists>
@@ -382,7 +382,7 @@ bool search(Node* head, int value) {
       //   <e:notin><code>value</code><e:union><e:st n="L"/><e:st n="R"/></e:union></e:notin>
       // </e:logimpl>.<br />
       // <e:logimpl>
-      //   <e:pred name="SegmentCompose"><e:st n="L"/><e:st n="R"/><e:st n="S"/></e:pred>
+      //   <e:pred name="Slice"><e:st n="L"/><e:st n="R"/><e:st n="S"/></e:pred>
       //   <e:eq><e:union><e:st n="L"/><e:st n="R"/></e:union><e:st n="S"/></e:eq>
       // </e:logimpl>.<br />
       // <e:logimpl>

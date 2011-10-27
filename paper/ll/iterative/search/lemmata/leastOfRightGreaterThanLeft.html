@@ -7,7 +7,7 @@
   <e:caption><e:logimpl>
       <e:and>
 	<e:pred name="ListCompose"><e:var n="v"/><e:st n="T"/><e:st n="R"/></e:pred>
-	<e:pred name="SegmentCompose"><e:st n="L"/><e:st n="R"/><e:st n="S"/></e:pred>
+	<e:pred name="Slice"><e:st n="L"/><e:st n="R"/><e:st n="S"/></e:pred>
       </e:and>
       <e:pred name="SetLT"><e:st n="L"/><e:var n="v"/></e:pred>
   </e:logimpl></e:caption>
@@ -18,7 +18,7 @@
       <e:step name="given">
 	<e:derive><e:and>
 	    <e:pred name="ListCompose"><e:var n="v"/><e:st n="T"/><e:st n="R"/></e:pred>
-	    <e:pred name="SegmentCompose"><e:st n="L"/><e:st n="R"/><e:st n="S"/></e:pred>
+	    <e:pred name="Slice"><e:st n="L"/><e:st n="R"/><e:st n="S"/></e:pred>
 	</e:and></e:derive>
 	<e:by>given</e:by>
       </e:step>
@@ -27,6 +27,40 @@
 	<e:derive><e:pred name="ListCompose"><e:var n="v"/><e:st n="T"/><e:st n="R"/></e:pred></e:derive>
 	<e:by><e:from name="given"/>, <m:andElim/></e:by>
       </e:step>
+
+      <e:step name="givenSlice">
+	<e:derive><e:pred name="Slice"><e:st n="L"/><e:st n="R"/><e:st n="S"/></e:pred></e:derive>
+	<e:by><e:from name="given"/>, <m:andElim/></e:by>
+      </e:step>
+
+      <e:step name="openListCompose">
+	<e:derive><e:and>
+	    <e:eq>
+	      <e:union>
+		<e:set><e:var n="v" /></e:set>
+		<e:st n="T"/>
+	      </e:union>
+	      <e:st n="R"/>
+	    </e:eq>
+	    <e:forall>
+	      <e:vars>
+		<e:in>
+		  <e:var n="t"/>
+		  <e:st n="T"/>
+		</e:in>
+	      </e:vars>
+	      <e:expr>
+		<e:lt>
+		  <e:var n="v"/>
+		  <e:var n="t"/>
+		</e:lt>
+	      </e:expr>
+	    </e:forall>
+	</e:and></e:derive>
+	<e:by><e:from name="givenListCompose"/>, open predicate</e:by>
+      </e:step>
+
+
 
       <e:step name="qed">
 	<e:derive><e:pred name="SetLT"><e:st n="L"/><e:var n="v"/></e:pred></e:derive>
