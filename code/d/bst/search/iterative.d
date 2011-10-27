@@ -25,7 +25,7 @@ bool search(Node* root, in int value) {
   /// Tree(root, S) ∧ ¬found ∧
   /// Tree(i, S) ∧ (value ∈ S) ↔ (value ∈ S)
 
-  // ∃I
+  // <m:existsIntro/>
   /// Tree(root, S) ∧ ¬found ∧
   /// ∃Q. Tree(i, Q) ∧ (value ∈ Q) ↔ (value ∈ S)
 

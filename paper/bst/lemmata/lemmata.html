@@ -360,7 +360,7 @@
 	  <e:in><e:var n="w"/><e:st n="S"/></e:in>
 	</e:impl>
       </e:derive>
-      <e:by><e:from name="assumewInL"/>, <e:from name="thenwInS"/>, →I</e:by>
+      <e:by><e:from name="assumewInL"/>, <e:from name="thenwInS"/>, <m:impliesIntro/></e:by>
     </e:step>
 
     <e:step name="noteq">
@@ -460,7 +460,7 @@
 	  
 	</e:impl>
       </e:derive>
-      <e:by><e:from name="assumewInS"/>, <e:from name="thenwInL"/>, →I</e:by>
+      <e:by><e:from name="assumewInS"/>, <e:from name="thenwInL"/>, <m:impliesIntro/></e:by>
     </e:step>
 
     <e:step name="qed">
@@ -480,7 +480,7 @@
 	  
 	</e:doubleimpl>
       </e:derive>
-      <e:by><e:from name="wInLImplieswInS" />, <e:from name="wInSImplieswInL" />, ↔I</e:by>
+      <e:by><e:from name="wInLImplieswInS" />, <e:from name="wInSImplieswInL" />, <m:doubleImplIntro/></e:by>
     </e:step>
   </e:derivation>
 </p>

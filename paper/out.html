@@ -839,7 +839,7 @@ struct Node {
 
       <tr><td><span class="step">9</span>.</td><td class="">¬<a class="pred_name" href="#def_NonEmptyList">NonEmptyList</a>(<code>head</code>, <span class="st">S</span>)</td><td><span class="step">5</span>, <span class="step"/>, <span class="step">8</span>, RAA</td></tr>
 
-      <tr><td><span class="step">10</span>.</td><td class=""><a class="pred_name" href="#def_EmptyList">EmptyList</a>(<code>head</code>, <span class="st">S</span>)</td><td><span class="step">4</span>, <span class="step">9</span>, ∨E</td></tr>
+      <tr><td><span class="step">10</span>.</td><td class=""><a class="pred_name" href="#def_EmptyList">EmptyList</a>(<code>head</code>, <span class="st">S</span>)</td><td><span class="step">4</span>, <span class="step">9</span>, <m:orElim/></td></tr>
 
     </table>
   </e:contents></figure>
@@ -876,7 +876,7 @@ struct Node {
     <table class="derivation displaymath">
       <tr><td><span class="step">1</span>.</td><td class=""><a class="pred_name" href="#def_EmptyList">EmptyList</a>(<code>head</code>, <span class="st">S</span>)</td><td>given</td></tr>
 
-      <tr><td><span class="step">2</span>.</td><td class=""><a class="pred_name" href="#def_EmptyList">EmptyList</a>(<code>head</code>, <span class="st">S</span>) ∨ <a class="pred_name" href="#def_NonEmptyList">NonEmptyList</a>(<code>head</code>, <span class="st">S</span>)</td><td><span class="step">1</span>, ∨I</td></tr>
+      <tr><td><span class="step">2</span>.</td><td class=""><a class="pred_name" href="#def_EmptyList">EmptyList</a>(<code>head</code>, <span class="st">S</span>) ∨ <a class="pred_name" href="#def_NonEmptyList">NonEmptyList</a>(<code>head</code>, <span class="st">S</span>)</td><td><span class="step">1</span>, <m:orIntro/></td></tr>
 
       <tr><td><span class="step">3</span>.</td><td class=""><a class="pred_name" href="#def_List">List</a>(<code>head</code>, <span class="st">S</span>)</td><td><span class="step">2</span>, close predicate</td></tr>
     </table>
@@ -917,7 +917,7 @@ struct Node {
 
       <tr><td><span class="step">3</span>.</td><td class=""><code>value</code> ∈ <span class="st">T</span> ↔ <code>value</code> ∈ <span class="st">S</span></td><td><span class="step">2</span>, application of previous lemma</td></tr>
 
-      <tr><td><span class="step">4</span>.</td><td class=""><code>value</code> ∈ <span class="st">T</span> → <code>value</code> ∈ <span class="st">S</span></td><td><span class="step">3</span>, ↔E</td></tr>
+      <tr><td><span class="step">4</span>.</td><td class=""><code>value</code> ∈ <span class="st">T</span> → <code>value</code> ∈ <span class="st">S</span></td><td><span class="step">3</span>, <m:doubleImplElim/></td></tr>
 
       <tr><td><span class="step">5</span>.</td><td class=""><a class="pred_name" href="#def_ListCompose">ListCompose</a>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>)</td><td><span class="step">1</span>, <m:andElim/></td></tr>
 
@@ -985,7 +985,7 @@ struct Node {
 
       <tr><td><span class="step">10</span>.</td><td class="">
 	  <code>value</code> ∈ <span class="st">T</span> → <code>value</code> ∈ <span class="st">S</span>
-	</td><td><span class="step">8</span>, <span class="step"/>, →I</td></tr>
+	</td><td><span class="step">8</span>, <span class="step"/>, <m:impliesIntro/></td></tr>
 
       <tr><td><span class="step">11</span>.</td><td class=""><code>value</code> ∉ {<span class="var">v</span>}</td><td><span class="step">3</span></td></tr>
 
@@ -997,11 +997,11 @@ struct Node {
 
       <tr><td><span class="step">15</span>.</td><td class="">
 	  <code>value</code> ∈ <span class="st">S</span> → <code>value</code> ∈ <span class="st">T</span>
-	</td><td><span class="step">12</span>, <span class="step">14</span>, →I</td></tr>
+	</td><td><span class="step">12</span>, <span class="step">14</span>, <m:impliesIntro/></td></tr>
 
       <tr><td><span class="step">16</span>.</td><td class="">
 	  <code>value</code> ∈ <span class="st">T</span> ↔ <code>value</code> ∈ <span class="st">S</span>
-	</td><td><span class="step">10</span>, <span class="step">15</span>, ↔I</td></tr>
+	</td><td><span class="step">10</span>, <span class="step">15</span>, <m:doubleImplIntro/></td></tr>
     </table>
   </e:contents></figure>
   </p>
@@ -2041,7 +2041,7 @@ Use <span class="var">v</span> &lt; <code>value</code> ⇒ <code>value</code
 <div class="section"><pre class="indent">        </pre><div class="AssertionParagraph"><div class="expl">Weakening lemma: <a class="pred_name" href="#def_NonEmptyList">NonEmptyList</a>(<code>head</code>, <span class="st">S</span>) ⇒ <a class="pred_name" href="#def_List">List</a>(<code>head</code>, <span class="st">S</span>).</div><a class="pred_name" href="#def_ListCompose">ListCompose</a>(<code>value</code>, <span class="st">S</span>, <span class="st">S</span> ∪ {<code>value</code>}) ∧<br/>
 <code>nhead</code> ↦ <code>value</code>, <code>head</code> ∗ <a class="pred_name" href="#def_List">List</a>(<code>head</code>, <span class="st">S</span>)</div></div>
 
-<div class="section"><pre class="indent">        </pre><div class="AssertionParagraph"><div class="expl">∃I on <span class="st">S</span> as <span class="st">T</span>, <code>head</code> as <span class="var">tail</span>, and <code>value</code> as <span class="var">v</span>.</div>∃<span class="var">v</span>, <span class="var">tail</span>, <span class="st">T</span>.<br/>
+<div class="section"><pre class="indent">        </pre><div class="AssertionParagraph"><div class="expl"><m:existsIntro/> on <span class="st">S</span> as <span class="st">T</span>, <code>head</code> as <span class="var">tail</span>, and <code>value</code> as <span class="var">v</span>.</div>∃<span class="var">v</span>, <span class="var">tail</span>, <span class="st">T</span>.<br/>
 <div class="indent">
   <a class="pred_name" href="#def_ListCompose">ListCompose</a>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span> ∪ {<code>value</code>}) ∧<br/>
   <code>nhead</code> ↦ <span class="var">v</span>, <span class="var">tail</span> ∗ <a class="pred_name" href="#def_List">List</a>(<span class="var">tail</span>, <span class="st">T</span>)
@@ -2165,7 +2165,7 @@ Use <span class="var">v</span> &lt; <code>value</code> ⇒ <code>value</code
 	  ∀<span class="var">t</span> ∈ <span class="st">T</span>∖{<span class="var">w</span>}. <e:expr>
 	      <span class="var">v</span> &lt; <span class="var">t</span>
 	    </e:expr>
-	</td><td><span class="step">10</span>, <span class="step">11</span>, ∧I</td></tr>
+	</td><td><span class="step">10</span>, <span class="step">11</span>, <m:andIntro/></td></tr>
 
       <tr><td><span class="step">13</span>.</td><td class=""><a class="pred_name" href="#def_ListCompose">ListCompose</a>(<span class="var">v</span>, <span class="st">T</span>∖{<span class="var">w</span>}, <span class="st">S</span>∖{<span class="var">w</span>})</td><td><span class="step">12</span>, close predicate</td></tr>
     </table>
@@ -2578,7 +2578,7 @@ substitution.</div><a class="pred_name" href="#def_EmptyList">EmptyList</a>(<cod
   <span class="var">v</span> &lt; <code>value</code>
 </div></div></div>
 
-<div class="section"><pre class="indent">        </pre><div class="AssertionParagraph"><div class="expl">∃I on <code>ntail</code> as <span class="var">tail</span>.</div>∃<span class="var">v</span>, <span class="var">tail</span>, <span class="st">T</span>.<br/>
+<div class="section"><pre class="indent">        </pre><div class="AssertionParagraph"><div class="expl"><m:existsIntro/> on <code>ntail</code> as <span class="var">tail</span>.</div>∃<span class="var">v</span>, <span class="var">tail</span>, <span class="st">T</span>.<br/>
 <div class="indent">
   <a class="pred_name" href="#def_ListCompose">ListCompose</a>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>) ∧<br/>
   <code>head</code> ↦ <span class="var">v</span>, <span class="var">tail</span> ∗ <a class="pred_name" href="#def_List">List</a>(<span class="var">tail</span>, <span class="st">T</span>∖{<code>value</code>}) ∧<br/>
@@ -2591,7 +2591,7 @@ substitution.</div><a class="pred_name" href="#def_EmptyList">EmptyList</a>(<cod
   <code>head</code> ↦ <span class="var">v</span>, <span class="var">tail</span> ∗ <a class="pred_name" href="#def_List">List</a>(<span class="var">tail</span>, <span class="st">T</span>∖{<code>value</code>})
 </div></div></div>
 
-<div class="section"><pre class="indent">        </pre><div class="AssertionParagraph"><div class="expl">∃I on <span class="st">T</span>∖{<code>value</code>} as <span class="st">T</span>.</div>∃<span class="var">v</span>, <span class="var">tail</span>, <span class="st">T</span>.<br/>
+<div class="section"><pre class="indent">        </pre><div class="AssertionParagraph"><div class="expl"><m:existsIntro/> on <span class="st">T</span>∖{<code>value</code>} as <span class="st">T</span>.</div>∃<span class="var">v</span>, <span class="var">tail</span>, <span class="st">T</span>.<br/>
 <div class="indent">
   <a class="pred_name" href="#def_ListCompose">ListCompose</a>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">S</span>∖{<code>value</code>}) ∧<br/>
   <code>head</code> ↦ <span class="var">v</span>, <span class="var">tail</span> ∗ <a class="pred_name" href="#def_List">List</a>(<span class="var">tail</span>, <span class="st">T</span>)
