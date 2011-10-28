@@ -60,11 +60,84 @@
 	<e:by><e:from name="givenListCompose"/>, open predicate</e:by>
       </e:step>
 
+      <e:step name="openSlice">
+	<e:derive><e:and>
+	    <e:eq>
+	      <e:union><e:st n="L"/><e:st n="R"/></e:union>
+	      <e:st n="S"/>
+	    </e:eq>
+	    <e:forall>
+	      <e:vars>
+		<e:in><e:var n="l"/><e:st n="L"/></e:in>
+		<e:in><e:var n="r"/><e:st n="R"/></e:in>
+	      </e:vars>
+	      <e:expr><e:lt><e:var n="l"/><e:var n="r"/></e:lt></e:expr>
+	    </e:forall>
+	</e:and></e:derive>
+	<e:by><e:from name="givenSlice"/>, open predicate</e:by>
+      </e:step>
 
+      <e:step name="vTR">
+	<e:derive><e:eq>
+	    <e:union>
+	      <e:set><e:var n="v" /></e:set>
+	      <e:st n="T"/>
+	    </e:union>
+	    <e:st n="R"/>
+	</e:eq></e:derive>
+	<e:by><e:from name="openListCompose"/>, <m:andElim/></e:by>
+      </e:step>
+
+      <e:step name="vltT">
+	<e:derive><e:forall>
+	      <e:vars>
+		<e:in>
+		  <e:var n="t"/>
+		  <e:st n="T"/>
+		</e:in>
+	      </e:vars>
+	      <e:expr>
+		<e:lt>
+		  <e:var n="v"/>
+		  <e:var n="t"/>
+		</e:lt>
+	      </e:expr>
+	</e:forall></e:derive>
+	<e:by><e:from name="openListCompose"/>, <m:andElim/></e:by>
+      </e:step>
+
+      <e:step name="LRS">
+	<e:derive><e:eq>
+	    <e:union><e:st n="L"/><e:st n="R"/></e:union>
+	    <e:st n="S"/>
+	</e:eq></e:derive>
+	<e:by><e:from name="openSlice"/>, <m:andElim/></e:by>
+      </e:step>
+
+      <e:step name="LltR">
+	<e:derive><e:forall>
+	    <e:vars>
+	      <e:in><e:var n="l"/><e:st n="L"/></e:in>
+	      <e:in><e:var n="r"/><e:st n="R"/></e:in>
+	    </e:vars>
+	    <e:expr><e:lt><e:var n="l"/><e:var n="r"/></e:lt></e:expr>
+	</e:forall></e:derive>
+	<e:by><e:from name="openSlice"/>, <m:andElim/></e:by>
+      </e:step>
+
+      <e:step name="SetLTParts">
+	<e:derive>
+	  <e:forall>
+	    <e:vars><e:in><e:var n="l"/><e:st n="L"/></e:in></e:vars>
+	    <e:expr><e:lt><e:var n="l"/><e:var n="v"/></e:lt></e:expr>
+	  </e:forall>
+	</e:derive>
+	<e:by>??</e:by>
+      </e:step>
 
       <e:step name="qed">
 	<e:derive><e:pred name="SetLT"><e:st n="L"/><e:var n="v"/></e:pred></e:derive>
-	<e:by>??</e:by>
+	<e:by><e:from name="SetLTParts"/>, close predicate</e:by>
       </e:step>
 
     </e:derivation>

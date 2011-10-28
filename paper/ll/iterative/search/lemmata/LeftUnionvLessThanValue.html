@@ -1,0 +1,33 @@
+<e:lemma name="leastOfRightGreaterThanLeft"
+	 xmlns="http://www.w3.org/1999/xhtml"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xmlns:e="http://eegg.github.com/htmlx"
+	 xmlns:m="http://eegg.github.com/macro">
+
+  <e:caption><e:logimpl>
+      <e:and>
+	<e:pred name="SetLT"><e:st n="L"/><code>value</code></e:pred>
+	<e:lt><e:var n="v"/><code>value</code></e:lt>
+      </e:and>
+      <e:pred name="SetLT"><e:union><e:st n="L"/><e:set><e:var n="v"/></e:set></e:union><code>value</code></e:pred>
+  </e:logimpl></e:caption>
+
+  <e:contents>
+    <e:derivation>
+
+      <e:step name="given">
+	<e:derive><e:and>
+	    <e:pred name="SetLT"><e:st n="L"/><code>value</code></e:pred>
+	    <e:lt><e:var n="v"/><code>value</code></e:lt>
+	</e:and></e:derive>
+	<e:by>given</e:by>
+      </e:step>
+
+      <e:step name="qed">
+	<e:derive><e:pred name="SetLT"><e:union><e:st n="L"/><e:set><e:var n="v"/></e:set></e:union><code>value</code></e:pred></e:derive>
+	<e:by>??</e:by>
+      </e:step>
+
+    </e:derivation>
+  </e:contents>
+</e:lemma>

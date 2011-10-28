@@ -1,0 +1,45 @@
+<e:lemma name="leastOfRightGreaterThanLeft"
+	 xmlns="http://www.w3.org/1999/xhtml"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xmlns:e="http://eegg.github.com/htmlx"
+	 xmlns:m="http://eegg.github.com/macro">
+
+  <e:caption><e:logimpl>
+      <e:and>
+	<e:sep>
+          <e:pred name="ListSegment"><code>head</code><e:var n="j"/><e:st n="L"/></e:pred>
+          <e:fcell>
+            <e:var n="j"/>
+            <e:list><e:var n="v"/><code>i</code></e:list>
+          </e:fcell>
+	</e:sep>
+	<e:pred name="SetLT"><e:st n="L"/><e:var n="v"/></e:pred>
+      </e:and>
+      <e:pred name="NonEmptyListSegment"><code>head</code><code>i</code><e:union><e:st n="L"/><e:set><e:var n="v"/></e:set></e:union></e:pred>
+  </e:logimpl></e:caption>
+
+  <e:contents>
+    <e:derivation>
+
+      <e:step name="given">
+	<e:derive><e:and>
+	    <e:sep>
+              <e:pred name="ListSegment"><code>head</code><e:var n="j"/><e:st n="L"/></e:pred>
+              <e:fcell>
+		<e:var n="j"/>
+		<e:list><e:var n="v"/><code>i</code></e:list>
+              </e:fcell>
+	    </e:sep>
+	    <e:pred name="SetLT"><e:st n="L"/><e:var n="v"/></e:pred>
+	</e:and></e:derive>
+	<e:by>given</e:by>
+      </e:step>
+
+      <e:step name="qed">
+	<e:derive><e:pred name="NonEmptyListSegment"><code>head</code><code>i</code><e:union><e:st n="L"/><e:set><e:var n="v"/></e:set></e:union></e:pred></e:derive>
+	<e:by>??</e:by>
+      </e:step>
+
+    </e:derivation>
+  </e:contents>
+</e:lemma>

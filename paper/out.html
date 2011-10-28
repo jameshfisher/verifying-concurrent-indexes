@@ -2678,35 +2678,9 @@ Use <span class="var">v</span> &lt; <code>value</code> ⇒ <code>value</code
     to hold the pointer that iterates down the list.)
   </p>
 
-  <figure class="lemma"><figcaption><span class="figure_number">Lemma 10.</span><br/><e:caption><a class="pred_name" href="#def_ListCompose">ListCompose</a>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">R</span>) ∧ <a class="pred_name" href="#def_Slice">Slice</a>(<span class="st">L</span>, <span class="st">R</span>, <span class="st">S</span>) ⇒ <a class="pred_name" href="#def_SetLT">SetLT</a>(<span class="st">L</span>, <span class="var">v</span>)</e:caption></figcaption><e:contents>
-    <table class="derivation displaymath">
-
-      <tr><td><span class="step">1</span>.</td><td class=""><a class="pred_name" href="#def_ListCompose">ListCompose</a>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">R</span>) ∧ <a class="pred_name" href="#def_Slice">Slice</a>(<span class="st">L</span>, <span class="st">R</span>, <span class="st">S</span>)</td><td>given</td></tr>
-
-      <tr><td><span class="step">2</span>.</td><td class=""><a class="pred_name" href="#def_ListCompose">ListCompose</a>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">R</span>)</td><td><span class="step">1</span>, ∧E</td></tr>
-
-      <tr><td><span class="step">3</span>.</td><td class=""><a class="pred_name" href="#def_Slice">Slice</a>(<span class="st">L</span>, <span class="st">R</span>, <span class="st">S</span>)</td><td><span class="step">1</span>, ∧E</td></tr>
-
-      <tr><td><span class="step">4</span>.</td><td class="">{<span class="var">v</span>} ∪ <span class="st">T</span> = <span class="st">R</span> ∧ ∀<span class="var">t</span> ∈ <span class="st">T</span>. <e:expr>
-		<span class="var">v</span> &lt; <span class="var">t</span>
-	      </e:expr></td><td><span class="step">2</span>, open predicate</td></tr>
-
-
-
-      <tr><td><span class="step">5</span>.</td><td class=""><a class="pred_name" href="#def_SetLT">SetLT</a>(<span class="st">L</span>, <span class="var">v</span>)</td><td>??</td></tr>
-
-    </table>
-  </e:contents></figure>
-
-  <a class="pred_name" href="#def_ListSegment">ListSegment</a>(<code>head</code>, <span class="var">j</span>, <span class="st">L</span>) ∗ <span class="var">j</span> ↦ <span class="var">v</span>, <code>i</code> ∧ <a class="pred_name" href="#def_SetLT">SetLT</a>(<span class="st">L</span>, <span class="var">v</span>) ⇒ <a class="pred_name" href="#def_NonEmptyListSegment">NonEmptyListSegment</a>(<code>head</code>, <code>i</code>, <span class="st">L</span> ∪ {<span class="var">v</span>})
-
-  <a class="pred_name" href="#def_SetLT">SetLT</a>(<span class="st">L</span>, <code>value</code>) ∧ <span class="var">v</span> &lt; <code>value</code> ⇒ <a class="pred_name" href="#def_SetLT">SetLT</a>(<span class="st">L</span> ∪ {<span class="var">v</span>}, <code>value</code>)
-
-  <a class="pred_name" href="#def_ListCompose">ListCompose</a>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">R</span>) ∧ <a class="pred_name" href="#def_Slice">Slice</a>(<span class="st">L</span>, <span class="st">R</span>, <span class="st">S</span>) ⇒ <a class="pred_name" href="#def_Slice">Slice</a>(<span class="st">L</span> ∪ {<span class="var">v</span>}, <span class="st">T</span>, <span class="st">S</span>)
-
-  <p>
-    The recursive call was verified by <q>framing off</q> the part of the heap:
-    the segment of the list leading to the head pointer is not part of the function precondition,
+   <p>
+    The recursive call used the technique of <q>framing off</q> part of the heap.
+    The segment of the list leading to the head pointer is not part of the function precondition,
     as it can be <q>framed on</q> when the call returns.
     The iterative algorithm does not have this luxury:
     we must maintain our knowledge of the segment of
@@ -2817,11 +2791,14 @@ Use <span class="var">v</span> &lt; <code>value</code> ⇒ <code>value</code
     <text sodipodi:linespacing="125%" id="text5898" y="565.15747" x="-212.59843" style="font-size:40px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans" xml:space="preserve"><tspan style="font-size:10.5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Minion Pro;-inkscape-font-specification:Minion Pro" y="565.15747" x="-212.59843" id="tspan5900" sodipodi:role="line"><tspan id="tspan5902" style="font-weight:bold">List</tspan>(head, {2, 29, 30}∪{31, 77})</tspan></text>
   </g>
 </svg></e:contents></figure>
-  </p>
+  </p> 
 
   <p>
-    Notice that the <span class="pred_name">ListSegment</span> has the same basic structure as a <span class="pred_name">List</span>.
-    The basic difference is that it is terminated by the pointer <span class="var">i</span> rather than <span>␀</span>;
+    We have a new type of heap chunk here, <span class="pred_name">ListSegment</span>,
+    which we have yet to define.
+    In order to do so,
+    notice that the <span class="pred_name">ListSegment</span> has the same basic structure as a <span class="pred_name">List</span>.
+    The difference is that it is terminated by the pointer <span class="var">i</span> rather than <span>␀</span>;
     and thus the predicate is parameterized by <span class="var">i</span>.
     We can show this structure in the example:
 
@@ -2981,8 +2958,8 @@ Use <span class="var">v</span> &lt; <code>value</code> ⇒ <code>value</code
   </p>
 
   <p>
-    The definition of <span class="pred_name">ListSegment</span> is very similar to <span class="pred_name">List</span>
-    (indeed, we could have defined <a class="pred_name" href="#def_List">List</a>(<code>head</code>, <span class="st">S</span>)
+    Correspondingly, the definition of <span class="pred_name">ListSegment</span> is very similar to <span class="pred_name">List</span>.
+    (Indeed, we could have defined <a class="pred_name" href="#def_List">List</a>(<code>head</code>, <span class="st">S</span>)
     as <a class="pred_name" href="#def_ListSegment">ListSegment</a>(<code>head</code>, <span>␀</span>, <span class="st">S</span>).)
     
     <figure class="definition" id="def_ListSegment"><figcaption><span class="figure_number">Definition 5.</span></figcaption><div>
@@ -3001,11 +2978,92 @@ Use <span class="var">v</span> &lt; <code>value</code> ⇒ <code>value</code
     </div></figure>
   </p>
 
-  <figure class="definition" id="def_Slice"><figcaption><span class="figure_number">Definition 8.</span></figcaption><div>
+  <p>
+    Using a while loop requires us to find a <em>loop invariant</em>.
+    In this case, the invariant is that:
+
+    <ul>
+      <li>
+	we have examined all nodes in a <span class="pred_name">ListSegment</span> from <code>head</code> to <code>i</code>,
+	and determined that all values therein were not equal to <code>value</code>, and
+      </li>
+      <li>
+	a <span class="pred_name">List</span> runs from <code>i</code> that, when appended to the examined segment,
+	yields the <span class="pred_name">List</span> representing the full set <span class="st">S</span>.
+      </li>
+    </ul>
+  </p>
+
+  <figure class="definition" id="def_SetLT"><figcaption><span class="figure_number">Definition 8.</span></figcaption><div>
+    <a class="pred_name" href="#def_SetLT">SetLT</a>(<span class="st">L</span>, <span class="var">v</span>) ≝
+    ∀<span class="var">l</span> ∈ <span class="st">L</span>. <e:expr><span class="var">l</span> &lt; <span class="var">v</span></e:expr>
+  </div></figure>
+
+  <figure class="definition" id="def_Slice"><figcaption><span class="figure_number">Definition 9.</span></figcaption><div>
     <a class="pred_name" href="#def_Slice">Slice</a>(<span class="st">L</span>, <span class="st">R</span>, <span class="st">S</span>) ≝
     <div class="indent"><span class="st">L</span> ∪ <span class="st">R</span> = <span class="st">S</span> ∧ <br/>∀<span class="var">l</span> ∈ <span class="st">L</span>, <span class="var">r</span> ∈ <span class="st">R</span>. <e:expr><span class="var">l</span> &lt; <span class="var">r</span></e:expr></div>
   </div></figure>
 
+  <figure class="lemma"><figcaption><span class="figure_number">Lemma 10.</span><br/><e:caption><a class="pred_name" href="#def_ListCompose">ListCompose</a>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">R</span>) ∧ <a class="pred_name" href="#def_Slice">Slice</a>(<span class="st">L</span>, <span class="st">R</span>, <span class="st">S</span>) ⇒ <a class="pred_name" href="#def_SetLT">SetLT</a>(<span class="st">L</span>, <span class="var">v</span>)</e:caption></figcaption><e:contents>
+    <table class="derivation displaymath">
+
+      <tr><td><span class="step">1</span>.</td><td class=""><a class="pred_name" href="#def_ListCompose">ListCompose</a>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">R</span>) ∧ <a class="pred_name" href="#def_Slice">Slice</a>(<span class="st">L</span>, <span class="st">R</span>, <span class="st">S</span>)</td><td>given</td></tr>
+
+      <tr><td><span class="step">2</span>.</td><td class=""><a class="pred_name" href="#def_ListCompose">ListCompose</a>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">R</span>)</td><td><span class="step">1</span>, ∧E</td></tr>
+
+      <tr><td><span class="step">3</span>.</td><td class=""><a class="pred_name" href="#def_Slice">Slice</a>(<span class="st">L</span>, <span class="st">R</span>, <span class="st">S</span>)</td><td><span class="step">1</span>, ∧E</td></tr>
+
+      <tr><td><span class="step">4</span>.</td><td class="">{<span class="var">v</span>} ∪ <span class="st">T</span> = <span class="st">R</span> ∧ ∀<span class="var">t</span> ∈ <span class="st">T</span>. <e:expr>
+		<span class="var">v</span> &lt; <span class="var">t</span>
+	      </e:expr></td><td><span class="step">2</span>, open predicate</td></tr>
+
+      <tr><td><span class="step">5</span>.</td><td class=""><span class="st">L</span> ∪ <span class="st">R</span> = <span class="st">S</span> ∧ ∀<span class="var">l</span> ∈ <span class="st">L</span>, <span class="var">r</span> ∈ <span class="st">R</span>. <e:expr><span class="var">l</span> &lt; <span class="var">r</span></e:expr></td><td><span class="step">3</span>, open predicate</td></tr>
+
+      <tr><td><span class="step">6</span>.</td><td class="">{<span class="var">v</span>} ∪ <span class="st">T</span> = <span class="st">R</span></td><td><span class="step">4</span>, ∧E</td></tr>
+
+      <tr><td><span class="step">7</span>.</td><td class="">∀<span class="var">t</span> ∈ <span class="st">T</span>. <e:expr>
+		<span class="var">v</span> &lt; <span class="var">t</span>
+	      </e:expr></td><td><span class="step">4</span>, ∧E</td></tr>
+
+      <tr><td><span class="step">8</span>.</td><td class=""><span class="st">L</span> ∪ <span class="st">R</span> = <span class="st">S</span></td><td><span class="step">5</span>, ∧E</td></tr>
+
+      <tr><td><span class="step">9</span>.</td><td class="">∀<span class="var">l</span> ∈ <span class="st">L</span>, <span class="var">r</span> ∈ <span class="st">R</span>. <e:expr><span class="var">l</span> &lt; <span class="var">r</span></e:expr></td><td><span class="step">5</span>, ∧E</td></tr>
+
+      <tr><td><span class="step">10</span>.</td><td class="">
+	  ∀<span class="var">l</span> ∈ <span class="st">L</span>. <e:expr><span class="var">l</span> &lt; <span class="var">v</span></e:expr>
+	</td><td>??</td></tr>
+
+      <tr><td><span class="step">11</span>.</td><td class=""><a class="pred_name" href="#def_SetLT">SetLT</a>(<span class="st">L</span>, <span class="var">v</span>)</td><td><span class="step">10</span>, close predicate</td></tr>
+
+    </table>
+  </e:contents></figure>
+  <figure class="lemma"><figcaption><span class="figure_number">Lemma 11.</span><br/><e:caption><a class="pred_name" href="#def_ListSegment">ListSegment</a>(<code>head</code>, <span class="var">j</span>, <span class="st">L</span>) ∗ <span class="var">j</span> ↦ <span class="var">v</span>, <code>i</code> ∧ <a class="pred_name" href="#def_SetLT">SetLT</a>(<span class="st">L</span>, <span class="var">v</span>) ⇒ <a class="pred_name" href="#def_NonEmptyListSegment">NonEmptyListSegment</a>(<code>head</code>, <code>i</code>, <span class="st">L</span> ∪ {<span class="var">v</span>})</e:caption></figcaption><e:contents>
+    <table class="derivation displaymath">
+
+      <tr><td><span class="step">1</span>.</td><td class=""><a class="pred_name" href="#def_ListSegment">ListSegment</a>(<code>head</code>, <span class="var">j</span>, <span class="st">L</span>) ∗ <span class="var">j</span> ↦ <span class="var">v</span>, <code>i</code> ∧ <a class="pred_name" href="#def_SetLT">SetLT</a>(<span class="st">L</span>, <span class="var">v</span>)</td><td>given</td></tr>
+
+      <tr><td><span class="step">2</span>.</td><td class=""><a class="pred_name" href="#def_NonEmptyListSegment">NonEmptyListSegment</a>(<code>head</code>, <code>i</code>, <span class="st">L</span> ∪ {<span class="var">v</span>})</td><td>??</td></tr>
+
+    </table>
+  </e:contents></figure>
+  <figure class="lemma"><figcaption><span class="figure_number">Lemma 12.</span><br/><e:caption><a class="pred_name" href="#def_SetLT">SetLT</a>(<span class="st">L</span>, <code>value</code>) ∧ <span class="var">v</span> &lt; <code>value</code> ⇒ <a class="pred_name" href="#def_SetLT">SetLT</a>(<span class="st">L</span> ∪ {<span class="var">v</span>}, <code>value</code>)</e:caption></figcaption><e:contents>
+    <table class="derivation displaymath">
+
+      <tr><td><span class="step">1</span>.</td><td class=""><a class="pred_name" href="#def_SetLT">SetLT</a>(<span class="st">L</span>, <code>value</code>) ∧ <span class="var">v</span> &lt; <code>value</code></td><td>given</td></tr>
+
+      <tr><td><span class="step">2</span>.</td><td class=""><a class="pred_name" href="#def_SetLT">SetLT</a>(<span class="st">L</span> ∪ {<span class="var">v</span>}, <code>value</code>)</td><td>??</td></tr>
+
+    </table>
+  </e:contents></figure>
+  <figure class="lemma"><figcaption><span class="figure_number">Lemma 13.</span><br/><e:caption><a class="pred_name" href="#def_ListCompose">ListCompose</a>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">R</span>) ∧ <a class="pred_name" href="#def_Slice">Slice</a>(<span class="st">L</span>, <span class="st">R</span>, <span class="st">S</span>) ⇒ <a class="pred_name" href="#def_Slice">Slice</a>(<span class="st">L</span> ∪ {<span class="var">v</span>}, <span class="st">T</span>, <span class="st">S</span>)</e:caption></figcaption><e:contents>
+    <table class="derivation displaymath">
+
+      <tr><td><span class="step">1</span>.</td><td class=""><a class="pred_name" href="#def_ListCompose">ListCompose</a>(<span class="var">v</span>, <span class="st">T</span>, <span class="st">R</span>) ∧ <a class="pred_name" href="#def_Slice">Slice</a>(<span class="st">L</span>, <span class="st">R</span>, <span class="st">S</span>)</td><td>given</td></tr>
+
+      <tr><td><span class="step">2</span>.</td><td class=""><a class="pred_name" href="#def_Slice">Slice</a>(<span class="st">L</span> ∪ {<span class="var">v</span>}, <span class="st">T</span>, <span class="st">S</span>)</td><td>??</td></tr>
+
+    </table>
+  </e:contents></figure>
 
   <figure class="diagram"><figcaption><span class="figure_number">Diagram 11.</span><br/><e:caption>The iterative <code>search</code> procedure as a flow diagram.</e:caption></figcaption><e:contents><!-- Created with Inkscape (http://www.inkscape.org/) --><svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="832.67719" height="1452.7559" id="svg2" version="1.1" inkscape:version="0.48.2 r9819" sodipodi:docname="search.svg" inkscape:export-filename="/home/james/inst/edu/3-msc/net-storage/terms/3/verifying-concurrent-indexes/paper/rbt/recursive_insert_aux.png" inkscape:export-xdpi="90" inkscape:export-ydpi="90">
   <defs id="defs4">

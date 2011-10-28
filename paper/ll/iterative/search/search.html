@@ -26,41 +26,9 @@
     to hold the pointer that iterates down the list.)
   </p>
 
-  <xi:include href="./lemmata/leastOfRightGreaterThanLeft.html"/>
-
-  <e:logimpl>
-    <e:and>
-      <e:sep>
-        <e:pred name="ListSegment"><code>head</code><e:var n="j"/><e:st n="L"/></e:pred>
-        <e:fcell>
-          <e:var n="j"/>
-          <e:list><e:var n="v"/><code>i</code></e:list>
-        </e:fcell>
-      </e:sep>
-      <e:pred name="SetLT"><e:st n="L"/><e:var n="v"/></e:pred>
-    </e:and>
-    <e:pred name="NonEmptyListSegment"><code>head</code><code>i</code><e:union><e:st n="L"/><e:set><e:var n="v"/></e:set></e:union></e:pred>
-  </e:logimpl>
-
-  <e:logimpl>
-    <e:and>
-      <e:pred name="SetLT"><e:st n="L"/><code>value</code></e:pred>
-      <e:lt><e:var n="v"/><code>value</code></e:lt>
-    </e:and>
-    <e:pred name="SetLT"><e:union><e:st n="L"/><e:set><e:var n="v"/></e:set></e:union><code>value</code></e:pred>
-  </e:logimpl>
-
-  <e:logimpl>
-    <e:and>
-      <e:pred name="ListCompose"><e:var n="v"/><e:st n="T"/><e:st n="R"/></e:pred>
-      <e:pred name="Slice"><e:st n="L"/><e:st n="R"/><e:st n="S"/></e:pred>
-    </e:and>
-    <e:pred name="Slice"><e:union><e:st n="L"/><e:set><e:var n="v"/></e:set></e:union><e:st n="T"/><e:st n="S"/></e:pred>
-  </e:logimpl>
-
-  <p>
-    The recursive call was verified by <q>framing off</q> the part of the heap:
-    the segment of the list leading to the head pointer is not part of the function precondition,
+   <p>
+    The recursive call used the technique of <q>framing off</q> part of the heap.
+    The segment of the list leading to the head pointer is not part of the function precondition,
     as it can be <q>framed on</q> when the call returns.
     The iterative algorithm does not have this luxury:
     we must maintain our knowledge of the segment of
@@ -74,11 +42,14 @@
       </e:caption>
       <e:contents><xi:include href="../list_segments.svg" /></e:contents>
     </e:diagram>
-  </p>
+  </p> 
 
   <p>
-    Notice that the <e:predicate>ListSegment</e:predicate> has the same basic structure as a <e:predicate>List</e:predicate>.
-    The basic difference is that it is terminated by the pointer <e:var n="i"/> rather than <m:null/>;
+    We have a new type of heap chunk here, <e:predicate>ListSegment</e:predicate>,
+    which we have yet to define.
+    In order to do so,
+    notice that the <e:predicate>ListSegment</e:predicate> has the same basic structure as a <e:predicate>List</e:predicate>.
+    The difference is that it is terminated by the pointer <e:var n="i"/> rather than <m:null/>;
     and thus the predicate is parameterized by <e:var n="i"/>.
     We can show this structure in the example:
 
@@ -91,8 +62,8 @@
   </p>
 
   <p>
-    The definition of <e:predicate>ListSegment</e:predicate> is very similar to <e:predicate>List</e:predicate>
-    (indeed, we could have defined <e:pred name="List"><code>head</code><e:st n="S"/></e:pred>
+    Correspondingly, the definition of <e:predicate>ListSegment</e:predicate> is very similar to <e:predicate>List</e:predicate>.
+    (Indeed, we could have defined <e:pred name="List"><code>head</code><e:st n="S"/></e:pred>
     as <e:pred name="ListSegment"><code>head</code><m:null/><e:st n="S"/></e:pred>.)
     
     <e:definition name="ListSegment">
@@ -130,6 +101,30 @@
     </e:definition>
   </p>
 
+  <p>
+    Using a while loop requires us to find a <em>loop invariant</em>.
+    In this case, the invariant is that:
+
+    <ul>
+      <li>
+	we have examined all nodes in a <e:predicate>ListSegment</e:predicate> from <code>head</code> to <code>i</code>,
+	and determined that all values therein were not equal to <code>value</code>, and
+      </li>
+      <li>
+	a <e:predicate>List</e:predicate> runs from <code>i</code> that, when appended to the examined segment,
+	yields the <e:predicate>List</e:predicate> representing the full set <e:st n="S"/>.
+      </li>
+    </ul>
+  </p>
+
+  <e:definition name="SetLT">
+    <e:pred name="SetLT"><e:st n="L"/><e:var n="v"/></e:pred> ≝
+    <e:forall>
+      <e:vars><e:in><e:var n="l"/><e:st n="L"/></e:in></e:vars>
+      <e:expr><e:lt><e:var n="l"/><e:var n="v"/></e:lt></e:expr>
+    </e:forall>
+  </e:definition>
+
   <e:definition name="Slice">
     <e:pred name="Slice"><e:st n="L"/><e:st n="R"/><e:st n="S"/></e:pred> ≝
     <e:indent><e:and type="lines">
@@ -147,6 +142,10 @@
     </e:and></e:indent>
   </e:definition>
 
+  <xi:include href="./lemmata/leastOfRightGreaterThanLeft.html"/>
+  <xi:include href="./lemmata/appendNodeToSegmentYieldsSegment.html"/>
+  <xi:include href="./lemmata/LeftUnionvLessThanValue.html"/>
+  <xi:include href="./lemmata/leastOfRightPutInLeft.html"/>
 
   <e:diagram>
     <e:caption>The iterative <code>search</code> procedure as a flow diagram.</e:caption>
