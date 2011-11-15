@@ -13,6 +13,9 @@
   <xsl:template match="m:bst"><abbr title="Binary Search Tree" class="smallcaps">BST</abbr></xsl:template>
   <xsl:template match="m:rbt"><abbr title="Red-Black Tree" class="smallcaps">RBT</abbr></xsl:template>
 
+  <xsl:template match="m:inf"><span>∞</span></xsl:template>
+  <xsl:template match="m:neginf"><e:negative><span>∞</span></e:negative></xsl:template>
+
   <xsl:template match="m:null"><span>␀</span></xsl:template>
 
   <xsl:template match="m:eg"><i>e.g.</i></xsl:template>

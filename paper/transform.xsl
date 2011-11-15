@@ -30,9 +30,12 @@
 
   <xsl:template match="e:math"><span class="math"><xsl:apply-templates /></span></xsl:template>
 
+  <xsl:template match="e:negative">−<xsl:apply-templates /></xsl:template>
+
   <xsl:template match="e:constant"><span class="constant"><xsl:apply-templates /></span></xsl:template>
   <xsl:template match="e:const"><span class="constant"><xsl:value-of select="@n" /></span></xsl:template>
   <xsl:template match="e:var"><span class="var"><xsl:value-of select="@n" /></span></xsl:template>
+  <xsl:template match="e:ptr"><span class="ptr"><xsl:value-of select="@n" /></span></xsl:template>
   <xsl:template match="e:st"><span class="st"><xsl:value-of select="@n" /></span></xsl:template> <!-- a set -->
 
   <xsl:template name="op">
