@@ -11,7 +11,6 @@ instance Search BT where
   search Nil         _ = False
   search (B2T l v r) x = s l v r x
   search (B3T l v r) x = s l v r x
-  search (B4T l v r) x = s l v r x
 
 instance Search RT where
   search (RT l v r)  x = s l v r x

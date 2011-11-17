@@ -1,42 +1,48 @@
-{-# LANGUAGE GADTs #-}
+{-# LANGUAGE UnicodeSyntax, GADTs, MultiParamTypeClasses #-}
 
 module Insert where
 
+import Nat
 import Nodes
 
-insertB :: BT a h -> a -> Either (BT a h) (RT a h)
-insertB Nil x = Right $ RT Nil x Nil
+-- Violation: red root, red left child. Requires fixing one level up.
+data (Ord a, Nat h)⇒ RV a h = RV (R a h) a (B a h)
 
-insertR :: RT a h -> a -> Either (RT a h) (RVT a h)
-insertR (RT l v r) x = case compare x v of
-  LT -> case (insertB l x) of
-    Left  l' -> RT l' v r
-    Right (RT ll lv lr) -> RVT 
-  EQ -> Left $ l v r
-  GT -> case (insertB r x) of
-    Left  l' -> RT l' v r
-    Right (RT rl rv rr) -> rotate
+blk (R l v r) = B2 l v r -- increases height by one.
+
+insert' dc l v r x leftFix rightFix = case compare x v of
+  EQ → Left $ dc l v r
+  LT → case insert l x of
+    Left  l' → Left $ dc l' v r
+    Right l' → leftFix  l' v r
+  GT → case insert r x of
+    Left  r' → Left $ dc l v r'
+    Right r' → rightFix l v r'
+
+class Insert n m where
+  insert ∷ (Ord a, Nat h)⇒ n a h → a → Either (n a h) (m a h)
+
+instance Insert R RV where
+  insert (R l v r) x = insert' R l v r x leftFix rightFix where
+    leftFix	 l' v r            = Right $ RV l'         v  r   --
+    rightFix l  v (R rl rv rr) = Right $ RV (R l v rl) rv rr  --
+
+instance Insert B R where
+  insert Nil x = Right $ R Nil x Nil
+
+  insert (B2 l v r) x = insert' B2 l v r x leftFix rightFix where
+    leftFix  l' v r             = Left  $ B3 l'          v  r --
+    rightFix r  v (R rl rv rr)  = Left  $ B3 (R l v rl) rv rr --
+
+  insert (B3 l v r) x = insert' B3 l v r x leftFix rightFix where
+    leftFix  (RV ll lv lr) v r  = Right $ R (blk ll) lv (B2 lr v r)
+    rightFix l             v r' = Right $ R (blk l)  v  (blk r') --
+
+  insert (B4 l v r) x = insert' R (blk l) v (blk r) x leftFix rightFix where
+    leftFix l' = 
 
 
-blackenRT :: RT a n -> BT a (S n)
-blackenRT (RT l v r) = B2T l v r
-
---flip :: 
---flip (B4T l v r) = RT (blackenRT l) v (blackenRT r)
-
--- this shouldn't be a data type; never in function return types
--- tree with right-leaning red at root; otherwise valid; trivially fixed
-data RLB3T a h where
-  RLB3T :: Ord a => BT a h_1 -> a -> RT a h_1 -> RLB3T a (S h_1)
-
-rotateLeft :: RLB3T a n -> BT a n
-rotateLeft (RLB3T l v (RT rl rv rr)) = B3T (RT l v rl) rv rr
-
-
--- violation: red root, red left child.
--- requires fixing one level up.
-data RVT a h where
-  RVT :: Ord a => RT a h -> a -> BT a h -> RVT a h
-
-blackenRVT :: RVT a h -> BT a (S h)
-blackenRVT (RVT l v r) = B3T l v r
+insRB ∷ (Ord a) ⇒ RB a → a → RB a
+insRB (RB t) a = case (insert t a) of
+  Left  t' → RB       t'
+  Right t' → RB $ blk t'
