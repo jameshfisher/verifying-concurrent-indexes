@@ -1,54 +1,44 @@
-<section class='generated_listing' xmlns='http://www.w3.org/1999/xhtml' xmlns:xi='http://www.w3.org/2001/XInclude' xmlns:e='http://eegg.github.com/htmlx' xmlns:m='http://eegg.github.com/macro'><e:displaycode>module ll.search.recursive;
+<?xml version="1.0" encoding="UTF-8"?>
+<section class="generated_listing" xmlns="http://www.w3.org/1999/xhtml" ns:xi="http://www.w3.org/2001/XInclude" ns:e="http://eegg.github.com/htmlx" xmlns:ns="xmlns" ns:m="http://eegg.github.com/macro"><e:displaycode xmlns:e="http://eegg.github.com/htmlx">module ll.search.recursive;
 
 import ll.node;
 
-bool search(Node* head, int value) {&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'><e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred></div></div>
-<e:displaycode>  bool o;
-  if (head == null) {&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Assert if-condition.</div><e:and>
+bool search(Node* head, int value) { </e:displaycode><div class="section"><pre class="indent">  </pre><div class="AssertionParagraph"><div><e:pred name="List" xmlns:e="http://eegg.github.com/htmlx"><code>head</code>, <e:st n="S"/></e:pred></div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">  bool o;
+  if (head == null) { </e:displaycode><div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl"><div>Assert if-condition.</div></div><div><e:and xmlns:e="http://eegg.github.com/htmlx">
   <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
   <e:eq>
     <code>head</code>
-    <m:null/>
+    <m:null xmlns:m="http://eegg.github.com/macro"/>
   </e:eq>
-</e:and></div></div>
-
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Lemma: <e:logimpl>
+</e:and></div></div></div><div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl"><div>Lemma: <e:logimpl xmlns:e="http://eegg.github.com/htmlx">
   <e:and>
     <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
-    <e:eq><code>head</code><m:null/></e:eq>
+    <e:eq><code>head</code><m:null xmlns:m="http://eegg.github.com/macro"/></e:eq>
   </e:and>
   <e:pred name="EmptyList"><code>head</code>, <e:st n="S"/></e:pred>
-</e:logimpl>.</div><e:pred name="EmptyList"><code>head</code>, <e:st n="S"/></e:pred></div></div>
-
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Lemma: <e:logimpl>
+</e:logimpl>.</div></div><div><e:pred name="EmptyList" xmlns:e="http://eegg.github.com/htmlx"><code>head</code>, <e:st n="S"/></e:pred></div></div></div><div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl"><div>Lemma: <e:logimpl xmlns:e="http://eegg.github.com/htmlx">
   <e:pred name="EmptyList"><code>head</code>, <e:st n="S"/></e:pred>
   <e:notin>
     <code>value</code>
     <e:st n="S"/>
   </e:notin>
-</e:logimpl>.</div><e:and>
+</e:logimpl>.</div></div><div><e:and xmlns:e="http://eegg.github.com/htmlx">
   <e:pred name="EmptyList"><code>head</code>, <e:st n="S"/></e:pred>
   <e:notin>
     <code>value</code>
     <e:st n="S"/>
   </e:notin>
-</e:and></div></div>
-
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Weakening lemma: <e:logimpl>
+</e:and></div></div></div><div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl"><div>Weakening lemma: <e:logimpl xmlns:e="http://eegg.github.com/htmlx">
   <e:pred name="EmptyList"><code>head</code>, <e:st n="S"/></e:pred>
   <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
-</e:logimpl>.</div><e:and>
+</e:logimpl>.</div></div><div><e:and xmlns:e="http://eegg.github.com/htmlx">
   <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
   <e:notin>
     <code>value</code>
     <e:st n="S"/>
   </e:notin>
-</e:and></div></div>
-<e:displaycode>
-    o = false;&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Assignment.</div><e:and>
+</e:and></div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">
+    o = false; </e:displaycode><div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl"><div>Assignment.</div></div><div><e:and xmlns:e="http://eegg.github.com/htmlx">
   <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
   <e:and>
       <e:notin>
@@ -60,9 +50,7 @@ bool search(Node* head, int value) {&#160;</e:displaycode>
         <code>false</code>
       </e:eq>
   </e:and>
-</e:and></div></div>
-
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'><e:doubleimpl>falsefalse</e:doubleimpl>.</div><e:and>
+</e:and></div></div></div><div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl"><div><e:doubleimpl xmlns:e="http://eegg.github.com/htmlx">falsefalse</e:doubleimpl>.</div></div><div><e:and xmlns:e="http://eegg.github.com/htmlx">
   <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
   <e:doubleimpl>
     <code>o</code>
@@ -71,31 +59,25 @@ bool search(Node* head, int value) {&#160;</e:displaycode>
       <e:st n="S"/>
     </e:in>
   </e:doubleimpl>
-</e:and></div></div>
-<e:displaycode>  }
-  else {&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Deny if-condition.</div><e:and>
+</e:and></div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">  }
+  else { </e:displaycode><div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl"><div>Deny if-condition.</div></div><div><e:and xmlns:e="http://eegg.github.com/htmlx">
   <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
   <e:noteq>
     <code>head</code>
-    <m:null/>
+    <m:null xmlns:m="http://eegg.github.com/macro"/>
   </e:noteq>
-</e:and></div></div>
-
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Lemma: <e:logimpl>
+</e:and></div></div></div><div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl"><div>Lemma: <e:logimpl xmlns:e="http://eegg.github.com/htmlx">
   <e:and>
     <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
     <e:noteq>
       <code>head</code>
-      <m:null/>
+      <m:null xmlns:m="http://eegg.github.com/macro"/>
     </e:noteq>
   </e:and>
   <e:pred name="NonEmptyList"><code>head</code>, <e:st n="S"/></e:pred>
-</e:logimpl>.</div><e:pred name="NonEmptyList"><code>head</code>, <e:st n="S"/></e:pred></div></div>
-
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Open <e:pred name="NonEmptyList"><code>head</code>, <e:st n="S"/></e:pred>.</div>∃<e:var n="v"/>, <e:var n="tail"/>, <e:st n="T"/>.<br />
-<e:indent>
-  <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
+</e:logimpl>.</div></div><div><e:pred name="NonEmptyList" xmlns:e="http://eegg.github.com/htmlx"><code>head</code>, <e:st n="S"/></e:pred></div></div></div><div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl"><div>Open <e:pred name="NonEmptyList" xmlns:e="http://eegg.github.com/htmlx"><code>head</code>, <e:st n="S"/></e:pred>.</div></div><div>∃<e:var n="v" xmlns:e="http://eegg.github.com/htmlx"/>, <e:var n="tail" xmlns:e="http://eegg.github.com/htmlx"/>, <e:st n="T" xmlns:e="http://eegg.github.com/htmlx"/>.<br/>
+<e:indent xmlns:e="http://eegg.github.com/htmlx">
+  <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br/>
   <e:sep>
     <e:fcell>
       <code>head</code>
@@ -103,12 +85,10 @@ bool search(Node* head, int value) {&#160;</e:displaycode>
     </e:fcell>
     <e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred>
   </e:sep>
-</e:indent></div></div>
-<e:displaycode>
-    if (head.value == value) {&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Assert if-condition: substitute <code>value</code> for <e:var n="v"/>.</div>∃<e:var n="tail"/>, <e:st n="T"/>.<br />
-<e:indent>
-  <e:pred name="ListCompose"><code>value</code>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
+</e:indent></div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">
+    if (head.value == value) { </e:displaycode><div class="section"><pre class="indent">      </pre><div class="AssertionParagraph"><div class="expl"><div>Assert if-condition: substitute <code>value</code> for <e:var n="v" xmlns:e="http://eegg.github.com/htmlx"/>.</div></div><div>∃<e:var n="tail" xmlns:e="http://eegg.github.com/htmlx"/>, <e:st n="T" xmlns:e="http://eegg.github.com/htmlx"/>.<br/>
+<e:indent xmlns:e="http://eegg.github.com/htmlx">
+  <e:pred name="ListCompose"><code>value</code>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br/>
   <e:sep>
     <e:fcell>
       <code>head</code>
@@ -116,51 +96,43 @@ bool search(Node* head, int value) {&#160;</e:displaycode>
     </e:fcell>
     <e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred>
   </e:sep>
-</e:indent></div></div>
-
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'><e:logimpl>
+</e:indent></div></div></div><div class="section"><pre class="indent">      </pre><div class="AssertionParagraph"><div class="expl"><div><e:logimpl xmlns:e="http://eegg.github.com/htmlx">
   <e:pred name="ListCompose"><code>value</code>, <e:st n="T"/>, <e:st n="S"/></e:pred>
   <e:in>
     <code>value</code>
     <e:st n="S"/>
   </e:in>
-</e:logimpl>.</div>∃<e:var n="tail"/>, <e:st n="T"/>.<br />
-<e:indent>
-  <e:pred name="ListCompose"><code>value</code>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
+</e:logimpl>.</div></div><div>∃<e:var n="tail" xmlns:e="http://eegg.github.com/htmlx"/>, <e:st n="T" xmlns:e="http://eegg.github.com/htmlx"/>.<br/>
+<e:indent xmlns:e="http://eegg.github.com/htmlx">
+  <e:pred name="ListCompose"><code>value</code>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br/>
   <e:sep>
     <e:fcell>
       <code>head</code>
       <e:list><code>value</code>, <e:var n="tail"/></e:list>
     </e:fcell>
     <e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred>
-  </e:sep> ∧<br />
+  </e:sep> ∧<br/>
   <e:in>
     <code>value</code>
     <e:st n="S"/>
   </e:in>
-</e:indent></div></div>
-
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Close <e:pred name="NonEmptyList"><code>head</code>, <e:st n="S"/></e:pred>.</div><e:and>
+</e:indent></div></div></div><div class="section"><pre class="indent">      </pre><div class="AssertionParagraph"><div class="expl"><div>Close <e:pred name="NonEmptyList" xmlns:e="http://eegg.github.com/htmlx"><code>head</code>, <e:st n="S"/></e:pred>.</div></div><div><e:and xmlns:e="http://eegg.github.com/htmlx">
   <e:pred name="NonEmptyList"><code>head</code>, <e:st n="S"/></e:pred>
   <e:in>
     <code>value</code>
     <e:st n="S"/>
   </e:in>
-</e:and></div></div>
-
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Weakening lemma: <e:logimpl>
+</e:and></div></div></div><div class="section"><pre class="indent">      </pre><div class="AssertionParagraph"><div class="expl"><div>Weakening lemma: <e:logimpl xmlns:e="http://eegg.github.com/htmlx">
   <e:pred name="NonEmptyList"><code>head</code>, <e:st n="S"/></e:pred>
   <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
-</e:logimpl>.</div><e:and>
+</e:logimpl>.</div></div><div><e:and xmlns:e="http://eegg.github.com/htmlx">
   <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
   <e:in>
     <code>value</code>
     <e:st n="S"/>
   </e:in>
-</e:and></div></div>
-<e:displaycode>
-      o = true;&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Assignment.</div><e:and>
+</e:and></div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">
+      o = true; </e:displaycode><div class="section"><pre class="indent">      </pre><div class="AssertionParagraph"><div class="expl"><div>Assignment.</div></div><div><e:and xmlns:e="http://eegg.github.com/htmlx">
   <e:and>
     <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
     <e:in>
@@ -172,9 +144,7 @@ bool search(Node* head, int value) {&#160;</e:displaycode>
     <code>o</code>
     <code>true</code>
   </e:eq>
-</e:and></div></div>
-
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'><e:doubleimpl>truetrue</e:doubleimpl>.</div><e:and>
+</e:and></div></div></div><div class="section"><pre class="indent">      </pre><div class="AssertionParagraph"><div class="expl"><div><e:doubleimpl xmlns:e="http://eegg.github.com/htmlx">truetrue</e:doubleimpl>.</div></div><div><e:and xmlns:e="http://eegg.github.com/htmlx">
   <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
   <e:doubleimpl>
     <code>o</code>
@@ -183,44 +153,38 @@ bool search(Node* head, int value) {&#160;</e:displaycode>
       <e:st n="S"/>
     </e:in>
   </e:doubleimpl>
-</e:and></div></div>
-<e:displaycode>    }
-    else {&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Deny if-condition.</div>∃<e:var n="v"/>, <e:var n="tail"/>, <e:st n="T"/>.<br />
-<e:indent>
-  <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
+</e:and></div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">    }
+    else { </e:displaycode><div class="section"><pre class="indent">      </pre><div class="AssertionParagraph"><div class="expl"><div>Deny if-condition.</div></div><div>∃<e:var n="v" xmlns:e="http://eegg.github.com/htmlx"/>, <e:var n="tail" xmlns:e="http://eegg.github.com/htmlx"/>, <e:st n="T" xmlns:e="http://eegg.github.com/htmlx"/>.<br/>
+<e:indent xmlns:e="http://eegg.github.com/htmlx">
+  <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br/>
   <e:sep>
     <e:fcell>
       <code>head</code>
       <e:list><e:var n="v"/>, <e:var n="tail"/></e:list>
     </e:fcell>
     <e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred>
-  </e:sep> ∧<br />
+  </e:sep> ∧<br/>
   <e:noteq>
     <e:var n="v"/>
     <code>value</code>
   </e:noteq>
-</e:indent></div></div>
-<e:displaycode>
-      if (head.value &lt; value) {&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Assert if-condition.</div>∃<e:var n="v"/>, <e:var n="tail"/>, <e:st n="T"/>.<br />
-<e:indent>
-  <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
+</e:indent></div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">
+      if (head.value &lt; value) { </e:displaycode><div class="section"><pre class="indent">        </pre><div class="AssertionParagraph"><div class="expl"><div>Assert if-condition.</div></div><div>∃<e:var n="v" xmlns:e="http://eegg.github.com/htmlx"/>, <e:var n="tail" xmlns:e="http://eegg.github.com/htmlx"/>, <e:st n="T" xmlns:e="http://eegg.github.com/htmlx"/>.<br/>
+<e:indent xmlns:e="http://eegg.github.com/htmlx">
+  <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br/>
   <e:sep>
     <e:fcell>
       <code>head</code>
       <e:list><e:var n="v"/>, <e:var n="tail"/></e:list>
     </e:fcell>
     <e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred>
-  </e:sep> ∧<br />
+  </e:sep> ∧<br/>
   <e:lt>
     <e:var n="v"/>
     <code>value</code>
   </e:lt>
-</e:indent></div></div>
-
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Lemma:
-<e:logimpl>
+</e:indent></div></div></div><div class="section"><pre class="indent">        </pre><div class="AssertionParagraph"><div class="expl"><div>Lemma:
+<e:logimpl xmlns:e="http://eegg.github.com/htmlx">
   <e:and>
     <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred>
     <e:lt>
@@ -238,20 +202,20 @@ bool search(Node* head, int value) {&#160;</e:displaycode>
       <e:st n="S"/>
     </e:in>
   </e:doubleimpl>
-</e:logimpl>.</div>∃<e:var n="v"/>, <e:var n="tail"/>, <e:st n="T"/>.<br />
-<e:indent>
-  <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
+</e:logimpl>.</div></div><div>∃<e:var n="v" xmlns:e="http://eegg.github.com/htmlx"/>, <e:var n="tail" xmlns:e="http://eegg.github.com/htmlx"/>, <e:st n="T" xmlns:e="http://eegg.github.com/htmlx"/>.<br/>
+<e:indent xmlns:e="http://eegg.github.com/htmlx">
+  <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br/>
   <e:sep>
     <e:fcell>
       <code>head</code>
       <e:list><e:var n="v"/>, <e:var n="tail"/></e:list>
     </e:fcell>
     <e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred>
-  </e:sep> ∧<br />
+  </e:sep> ∧<br/>
   <e:lt>
     <e:var n="v"/>
     <code>value</code>
-  </e:lt> ∧<br />
+  </e:lt> ∧<br/>
   <e:doubleimpl>
     <e:in>
       <code>value</code>
@@ -262,24 +226,22 @@ bool search(Node* head, int value) {&#160;</e:displaycode>
       <e:st n="S"/>
     </e:in>
   </e:doubleimpl>
-</e:indent></div></div>
-<e:displaycode>
-        o = search(head.tail, value);&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Inductive use of specification.
-Note <e:lt><e:size><e:st n="T"/></e:size><e:size><e:st n="S"/></e:size></e:lt>.</div>∃<e:var n="v"/>, <e:var n="tail"/>, <e:st n="T"/>.<br />
-<e:indent>
-  <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
+</e:indent></div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">
+        o = search(head.tail, value); </e:displaycode><div class="section"><pre class="indent">        </pre><div class="AssertionParagraph"><div class="expl"><div>Inductive use of specification.
+Note <e:lt xmlns:e="http://eegg.github.com/htmlx"><e:size><e:st n="T"/></e:size><e:size><e:st n="S"/></e:size></e:lt>.</div></div><div>∃<e:var n="v" xmlns:e="http://eegg.github.com/htmlx"/>, <e:var n="tail" xmlns:e="http://eegg.github.com/htmlx"/>, <e:st n="T" xmlns:e="http://eegg.github.com/htmlx"/>.<br/>
+<e:indent xmlns:e="http://eegg.github.com/htmlx">
+  <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br/>
   <e:sep>
     <e:fcell>
       <code>head</code>
       <e:list><e:var n="v"/>, <e:var n="tail"/></e:list>
     </e:fcell>
     <e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred>
-  </e:sep> ∧<br />
+  </e:sep> ∧<br/>
   <e:lt>
     <e:var n="v"/>
     <code>value</code>
-  </e:lt> ∧<br />
+  </e:lt> ∧<br/>
   <e:doubleimpl>
     <e:in>
       <code>value</code>
@@ -289,7 +251,7 @@ Note <e:lt><e:size><e:st n="T"/></e:size><e:size><e:st n="S"/></e:size></e:lt>.<
       <code>value</code>
       <e:st n="S"/>
     </e:in>
-  </e:doubleimpl> ∧<br />
+  </e:doubleimpl> ∧<br/>
   <e:doubleimpl>
     <code>o</code>
     <e:in>
@@ -297,18 +259,16 @@ Note <e:lt><e:size><e:st n="T"/></e:size><e:size><e:st n="S"/></e:size></e:lt>.<
       <e:st n="T"/>
     </e:in>
   </e:doubleimpl>
-</e:indent></div></div>
-
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Transitivity of double implication.  Discard unrequired assertions.</div>∃<e:var n="v"/>, <e:var n="tail"/>, <e:st n="T"/>.<br />
-<e:indent>
-  <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
+</e:indent></div></div></div><div class="section"><pre class="indent">        </pre><div class="AssertionParagraph"><div class="expl"><div>Transitivity of double implication.  Discard unrequired assertions.</div></div><div>∃<e:var n="v" xmlns:e="http://eegg.github.com/htmlx"/>, <e:var n="tail" xmlns:e="http://eegg.github.com/htmlx"/>, <e:st n="T" xmlns:e="http://eegg.github.com/htmlx"/>.<br/>
+<e:indent xmlns:e="http://eegg.github.com/htmlx">
+  <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br/>
   <e:sep>
     <e:fcell>
       <code>head</code>
       <e:list><e:var n="v"/>, <e:var n="tail"/></e:list>
     </e:fcell>
     <e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred>
-  </e:sep> ∧<br />
+  </e:sep> ∧<br/>
   <e:doubleimpl>
     <code>o</code>
     <e:in>
@@ -316,9 +276,7 @@ Note <e:lt><e:size><e:st n="T"/></e:size><e:size><e:st n="S"/></e:size></e:lt>.<
       <e:st n="S"/>
     </e:in>
   </e:doubleimpl>
-</e:indent></div></div>
-
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Close <e:pred name="NonEmptyList"><code>head</code>, <e:st n="S"/></e:pred>.</div><e:and>
+</e:indent></div></div></div><div class="section"><pre class="indent">        </pre><div class="AssertionParagraph"><div class="expl"><div>Close <e:pred name="NonEmptyList" xmlns:e="http://eegg.github.com/htmlx"><code>head</code>, <e:st n="S"/></e:pred>.</div></div><div><e:and xmlns:e="http://eegg.github.com/htmlx">
   <e:pred name="NonEmptyList"><code>head</code>, <e:st n="S"/></e:pred>
   <e:doubleimpl>
     <code>o</code>
@@ -327,12 +285,10 @@ Note <e:lt><e:size><e:st n="T"/></e:size><e:size><e:st n="S"/></e:size></e:lt>.<
       <e:st n="S"/>
     </e:in>
   </e:doubleimpl>
-</e:and></div></div>
-
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Weakening: <e:logimpl>
+</e:and></div></div></div><div class="section"><pre class="indent">        </pre><div class="AssertionParagraph"><div class="expl"><div>Weakening: <e:logimpl xmlns:e="http://eegg.github.com/htmlx">
   <e:pred name="NonEmptyList"><code>head</code>, <e:st n="S"/></e:pred>
   <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
-</e:logimpl>.</div><e:and>
+</e:logimpl>.</div></div><div><e:and xmlns:e="http://eegg.github.com/htmlx">
   <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
   <e:doubleimpl>
     <code>o</code>
@@ -341,11 +297,9 @@ Note <e:lt><e:size><e:st n="T"/></e:size><e:size><e:st n="S"/></e:size></e:lt>.<
       <e:st n="S"/>
     </e:in>
   </e:doubleimpl>
-</e:and></div></div>
-<e:displaycode>      }
-      else {&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Deny if-condition.
-Use <e:logimpl>
+</e:and></div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">      }
+      else { </e:displaycode><div class="section"><pre class="indent">        </pre><div class="AssertionParagraph"><div class="expl"><div>Deny if-condition.
+Use <e:logimpl xmlns:e="http://eegg.github.com/htmlx">
   ¬(<e:lt>
     <e:var n="v"/>
     <code>value</code>
@@ -354,16 +308,16 @@ Use <e:logimpl>
     <code>value</code>
     <e:var n="v"/>
   </e:leq>
-</e:logimpl>.</div>∃<e:var n="v"/>, <e:var n="tail"/>, <e:st n="T"/>.<br />
-<e:indent>
-  <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
+</e:logimpl>.</div></div><div>∃<e:var n="v" xmlns:e="http://eegg.github.com/htmlx"/>, <e:var n="tail" xmlns:e="http://eegg.github.com/htmlx"/>, <e:st n="T" xmlns:e="http://eegg.github.com/htmlx"/>.<br/>
+<e:indent xmlns:e="http://eegg.github.com/htmlx">
+  <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br/>
   <e:sep>
     <e:fcell>
       <code>head</code>
       <e:list><e:var n="v"/>, <e:var n="tail"/></e:list>
     </e:fcell>
     <e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred>
-  </e:sep> ∧<br />
+  </e:sep> ∧<br/>
   <e:and>
     <e:noteq>
       <code>value</code>
@@ -374,9 +328,7 @@ Use <e:logimpl>
       <e:var n="v"/>
     </e:leq>
   </e:and>
-</e:indent></div></div>
-
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'><e:logimpl>
+</e:indent></div></div></div><div class="section"><pre class="indent">        </pre><div class="AssertionParagraph"><div class="expl"><div><e:logimpl xmlns:e="http://eegg.github.com/htmlx">
   (<e:and>
     <e:noteq>
       <e:var n="a"/>
@@ -391,23 +343,21 @@ Use <e:logimpl>
     <e:var n="b"/>
     <e:var n="a"/>
   </e:lt>
- </e:logimpl>.</div>∃<e:var n="v"/>, <e:var n="tail"/>, <e:st n="T"/>.<br />
-<e:indent>
-  <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
+ </e:logimpl>.</div></div><div>∃<e:var n="v" xmlns:e="http://eegg.github.com/htmlx"/>, <e:var n="tail" xmlns:e="http://eegg.github.com/htmlx"/>, <e:st n="T" xmlns:e="http://eegg.github.com/htmlx"/>.<br/>
+<e:indent xmlns:e="http://eegg.github.com/htmlx">
+  <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br/>
   <e:sep>
     <e:fcell>
       <code>head</code>
       <e:list><e:var n="v"/>, <e:var n="tail"/></e:list>
     </e:fcell>
     <e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred>
-  </e:sep> ∧<br />
+  </e:sep> ∧<br/>
   <e:lt>
     <code>value</code>
     <e:var n="v"/>
   </e:lt>
-</e:indent></div></div>
-
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Lemma: <e:logimpl>
+</e:indent></div></div></div><div class="section"><pre class="indent">        </pre><div class="AssertionParagraph"><div class="expl"><div>Lemma: <e:logimpl xmlns:e="http://eegg.github.com/htmlx">
   (<e:and>
     <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred>
     <e:lt>
@@ -419,32 +369,28 @@ Use <e:logimpl>
     <code>value</code>
     <e:st n="S"/>
   </e:notin>
-</e:logimpl>.</div>∃<e:var n="v"/>, <e:var n="tail"/>, <e:st n="T"/>.<br />
-<e:indent>
-  <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br />
+</e:logimpl>.</div></div><div>∃<e:var n="v" xmlns:e="http://eegg.github.com/htmlx"/>, <e:var n="tail" xmlns:e="http://eegg.github.com/htmlx"/>, <e:st n="T" xmlns:e="http://eegg.github.com/htmlx"/>.<br/>
+<e:indent xmlns:e="http://eegg.github.com/htmlx">
+  <e:pred name="ListCompose"><e:var n="v"/>, <e:st n="T"/>, <e:st n="S"/></e:pred> ∧<br/>
   <e:sep>
     <e:fcell>
       <code>head</code>
       <e:list><e:var n="v"/>, <e:var n="tail"/></e:list>
     </e:fcell>
     <e:pred name="List"><e:var n="tail"/>, <e:st n="T"/></e:pred>
-  </e:sep> ∧<br />
+  </e:sep> ∧<br/>
   <e:notin>
     <code>value</code>
     <e:st n="S"/>
   </e:notin>
-</e:indent></div></div>
-
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Close <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>.</div><e:and>
+</e:indent></div></div></div><div class="section"><pre class="indent">        </pre><div class="AssertionParagraph"><div class="expl"><div>Close <e:pred name="List" xmlns:e="http://eegg.github.com/htmlx"><code>head</code>, <e:st n="S"/></e:pred>.</div></div><div><e:and xmlns:e="http://eegg.github.com/htmlx">
   <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
   <e:notin>
     <code>value</code>
     <e:st n="S"/>
   </e:notin>
-</e:and></div></div>
-<e:displaycode>
-        o = false;&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Assignment.</div><e:and>
+</e:and></div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">
+        o = false; </e:displaycode><div class="section"><pre class="indent">        </pre><div class="AssertionParagraph"><div class="expl"><div>Assignment.</div></div><div><e:and xmlns:e="http://eegg.github.com/htmlx">
   <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
   <e:and>
     <e:notin>
@@ -456,9 +402,7 @@ Use <e:logimpl>
       <code>false</code>
     </e:eq>
   </e:and>
-</e:and></div></div>
-
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'><e:doubleimpl>falsefalse</e:doubleimpl>.</div><e:and>
+</e:and></div></div></div><div class="section"><pre class="indent">        </pre><div class="AssertionParagraph"><div class="expl"><div><e:doubleimpl xmlns:e="http://eegg.github.com/htmlx">falsefalse</e:doubleimpl>.</div></div><div><e:and xmlns:e="http://eegg.github.com/htmlx">
   <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
   <e:doubleimpl>
     <code>o</code>
@@ -467,9 +411,7 @@ Use <e:logimpl>
       <e:st n="S"/>
     </e:in>
   </e:doubleimpl>
-</e:and></div></div>
-<e:displaycode>      }&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>If-rule.</div><e:and>
+</e:and></div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">      } </e:displaycode><div class="section"><pre class="indent">      </pre><div class="AssertionParagraph"><div class="expl"><div>If-rule.</div></div><div><e:and xmlns:e="http://eegg.github.com/htmlx">
   <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
   <e:doubleimpl>
     <code>o</code>
@@ -478,9 +420,7 @@ Use <e:logimpl>
       <e:st n="S"/>
     </e:in>
   </e:doubleimpl>
-</e:and></div></div>
-<e:displaycode>    }&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>If-rule.</div><e:and>
+</e:and></div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">    } </e:displaycode><div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl"><div>If-rule.</div></div><div><e:and xmlns:e="http://eegg.github.com/htmlx">
   <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
   <e:doubleimpl>
     <code>o</code>
@@ -489,9 +429,7 @@ Use <e:logimpl>
       <e:st n="S"/>
     </e:in>
   </e:doubleimpl>
-</e:and></div></div>
-<e:displaycode>  }&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>If-rule.</div><e:and>
+</e:and></div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">  } </e:displaycode><div class="section"><pre class="indent">  </pre><div class="AssertionParagraph"><div class="expl"><div>If-rule.</div></div><div><e:and xmlns:e="http://eegg.github.com/htmlx">
   <e:pred name="List"><code>head</code>, <e:st n="S"/></e:pred>
   <e:doubleimpl>
     <code>o</code>
@@ -500,7 +438,6 @@ Use <e:logimpl>
       <e:st n="S"/>
     </e:in>
   </e:doubleimpl>
-</e:and></div></div>
-<e:displaycode>
+</e:and></div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">
   return o;
-}&#160;</e:displaycode></section>
+} </e:displaycode></section>

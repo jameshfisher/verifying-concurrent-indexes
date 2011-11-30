@@ -45,7 +45,7 @@ RemoveMaxRet removeMax(Node* root) {
     /// ∃v,l,L.
     ///   root↦v,l,null
     ///   ∗ Tree(l, L)
-    ///   ∧ v∈S ∧ ∀x∈L. x < v ∧ L = S - {v}.
+    ///   ∧ v∈S ∧ ∀x∈L. x &lt; v ∧ L = S - {v}.
 
     max = root.value;
     newRoot = root.c[0];
@@ -54,14 +54,14 @@ RemoveMaxRet removeMax(Node* root) {
     /// ∃L.
     ///   root↦max,newRoot,null
     ///   ∗ Tree(newRoot, L)
-    ///   ∧ max∈S ∧ ∀x∈L. x < max ∧ L = S - {max}.
+    ///   ∧ max∈S ∧ ∀x∈L. x &lt; max ∧ L = S - {max}.
 
     delete root;
 
     // Deletion.  Rename variable.  This is our postcondition.
     /// ∃T.
     ///   Tree(newRoot, T)
-    ///   ∧ max∈S ∧ ∀x∈T. x < max ∧ T = S - {max}.
+    ///   ∧ max∈S ∧ ∀x∈T. x &lt; max ∧ T = S - {max}.
   }
   else {
     // We maintain a run of two nodes in the tree: current node i and its parent p.
@@ -100,7 +100,7 @@ RemoveMaxRet removeMax(Node* root) {
 
   /// ∃T.
   ///   Tree(newRoot, T)
-  ///   ∧ max∈S ∧ ∀x∈T. x < max ∧ T = S - {max}.
+  ///   ∧ max∈S ∧ ∀x∈T. x &lt; max ∧ T = S - {max}.
 
   RemoveMaxRet o = {max: max, root: newRoot};
   return o;

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section class="generated_listing" xmlns="http://www.w3.org/1999/xhtml" ns:xi="http://www.w3.org/2001/XInclude" ns:e="http://eegg.github.com/htmlx" xmlns:ns="xmlns" ns:m="http://eegg.github.com/macro"><e:displaycode xmlns:e="http://eegg.github.com/htmlx">module bst.remove.removeMax.iterative;
+
+import bst.node;
+import bst.remove.removeMax.RemoveMaxRet;
+
+import std.stdio;
+
+RemoveMaxRet removeMax(Node* root) { </e:displaycode><div class="section"><pre class="indent">  </pre><div class="AssertionParagraph"><div class="expl"><div>We can only remove the maximum from a non-empty tree!</div></div><div>NonEmptyTree(root, S)</div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">
+  assert(root != null);
+ </e:displaycode><div class="section"><pre class="indent">  </pre><div class="CommentParagraph"><div>We're going to put the return values here.</div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">  int max;
+  Node* newRoot;
+ </e:displaycode><div class="section"><pre class="indent">  </pre><div class="AssertionParagraph"><div class="expl"><div>Open NonEmptyTree(root, S).</div></div><div>∃v. TopOfTree(root, v, S).</div></div></div><div class="section"><pre class="indent">  </pre><div class="AssertionParagraph"><div class="expl"><div>Open TopOfTree.</div></div><div>∃v,l,r,L,R.
+  root↦v,l,r
+  ∗ Tree(l, L)
+  ∗ Tree(r, R)
+  ∧ Compose(L, v, R, S).</div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">
+  auto r = root.c[1];
+ </e:displaycode><div class="section"><pre class="indent">  </pre><div class="AssertionParagraph"><div class="expl"><div>Take `r` out of quantification.</div></div><div>∃v,l,L,R.
+  root↦v,l,r
+  ∗ Tree(l, L)
+  ∗ Tree(r, R)
+  ∧ Compose(L, v, R, S).</div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">
+  if(!r) { </e:displaycode><div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl"><div>Assert if-condition.  Discard EmptyTree.  The right child is null, so the maximum is at the root.  The rest of the set is in the LHS.</div></div><div>∃v,l,L.
+  root↦v,l,null
+  ∗ Tree(l, L)
+  ∧ Compose(L, v, ∅, S).</div></div></div><div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl"><div>Found-max (lemma on Compose).  Discard Compose.</div></div><div>∃v,l,L.
+  root↦v,l,null
+  ∗ Tree(l, L)
+  ∧ v∈S ∧ ∀x∈L. x &lt; v ∧ L = S - {v}.</div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">
+    max = root.value;
+    newRoot = root.c[0];
+ </e:displaycode><div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl"><div>Assignment.</div></div><div>∃L.
+  root↦max,newRoot,null
+  ∗ Tree(newRoot, L)
+  ∧ max∈S ∧ ∀x∈L. x &lt; max ∧ L = S - {max}.</div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">
+    delete root;
+ </e:displaycode><div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl"><div>Deletion.  Rename variable.  This is our postcondition.</div></div><div>∃T.
+  Tree(newRoot, T)
+  ∧ max∈S ∧ ∀x∈T. x &lt; max ∧ T = S - {max}.</div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">  }
+  else { </e:displaycode><div class="section"><pre class="indent">    </pre><div class="CommentParagraph"><div>We maintain a run of two nodes in the tree: current node i and its parent p.
+This run moves down the right spine until i.c[1] is null.
+At this point, i is the right-most node, thus containing the maximum element.
+We then remove i using the usual splice-out method (i has at most one child).</div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">
+    Node* p = root;
+    Node* i = r;
+ </e:displaycode><div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div>Tree(root, S).  Descendant(root, p).  Child(p, i).
+Descendant -&gt; subset.
+Child -&gt; subset.
+i contains non-empty set I, which is a subset of S.
+maximum value of S is in I.</div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">
+    while (i.c[1]) {
+      p = i;
+      i = i.c[1];
+    } </e:displaycode><div class="section"><pre class="indent">    </pre><div class="CommentParagraph"><div/></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">
+    assert(!i.c[1]);
+    assert(p);
+    assert(i);
+    assert(p.c[1] == i);
+
+    p.c[1] = i.c[0];
+
+    max = i.value;
+
+    delete i;
+
+    newRoot = root;
+  }
+ </e:displaycode><div class="section"><pre class="indent">  </pre><div class="AssertionParagraph"><div>∃T.
+  Tree(newRoot, T)
+  ∧ max∈S ∧ ∀x∈T. x &lt; max ∧ T = S - {max}.</div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">
+  RemoveMaxRet o = {max: max, root: newRoot};
+  return o;
+} </e:displaycode></section>

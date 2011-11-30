@@ -1,11 +1,11 @@
-<section class='generated_listing' xmlns='http://www.w3.org/1999/xhtml' xmlns:xi='http://www.w3.org/2001/XInclude' xmlns:e='http://eegg.github.com/htmlx' xmlns:m='http://eegg.github.com/macro'><e:displaycode>module rb.insert.insert_aux;
+<?xml version="1.0" encoding="UTF-8"?>
+<section class="generated_listing" xmlns="http://www.w3.org/1999/xhtml" ns:xi="http://www.w3.org/2001/XInclude" ns:e="http://eegg.github.com/htmlx" xmlns:ns="xmlns" ns:m="http://eegg.github.com/macro"><e:displaycode xmlns:e="http://eegg.github.com/htmlx">module rb.insert.insert_aux;
 
 import rb.node;
 import rb.insert.balance;
 
 Node* insert_aux(Node* root, int value) {
-  Node* o;&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'><e:or>
+  Node* o; </e:displaycode><div class="section"><pre class="indent">  </pre><div class="AssertionParagraph"><div><e:or xmlns:e="http://eegg.github.com/htmlx">
   (<e:and>
     <e:pred name="BT"><code>root</code>, <e:st n="S"/>, <e:var n="h"/></e:pred>
     black
@@ -14,20 +14,14 @@ Node* insert_aux(Node* root, int value) {
     <e:pred name="RT"><code>root</code>, <e:st n="S"/>, <e:var n="h"/></e:pred>
     ¬black
   </e:and>)
-</e:or></div></div>
-<e:displaycode>
-  if (root == null) {&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><e:and>
+</e:or></div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">
+  if (root == null) { </e:displaycode><div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div><e:and xmlns:e="http://eegg.github.com/htmlx">
   <e:pred name="EBT"><code>root</code>, <e:st n="S"/>, <e:var n="h"/></e:pred>
   black
-</e:and></div></div>
-<e:displaycode>    o = new Node(value);&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><e:and>
+</e:and></div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">    o = new Node(value); </e:displaycode><div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div><e:and xmlns:e="http://eegg.github.com/htmlx">
   <e:pred name="RT"><code>o</code>, <e:union><e:st n="S"/><e:set><code>value</code></e:set></e:union>, <e:var n="h"/></e:pred>
   black
-</e:and></div></div>
-
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'><m:orIntro/>.</div><e:or>
+</e:and></div></div></div><div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl"><div><m:orIntro xmlns:m="http://eegg.github.com/macro"/>.</div></div><div><e:or xmlns:e="http://eegg.github.com/htmlx">
   (<e:and>
     (<e:or>
       <e:pred name="BT"><code>o</code>, <e:union><e:st n="S"/><e:set><code>value</code></e:set></e:union>, <e:var n="h"/></e:pred>
@@ -42,8 +36,7 @@ Node* insert_aux(Node* root, int value) {
     </e:or>)
     ¬black
   </e:and>)
-</e:or></div></div>
-<e:displaycode>  }
+</e:or></div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">  }
   else {
     if (root.value == value) {
       o = root;
@@ -53,8 +46,7 @@ Node* insert_aux(Node* root, int value) {
       root.c[dir] = insert_aux(root.c[dir], value);
       o =  balance(root, dir);
     }
-  }&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'><e:or>
+  } </e:displaycode><div class="section"><pre class="indent">  </pre><div class="AssertionParagraph"><div><e:or xmlns:e="http://eegg.github.com/htmlx">
   (<e:and>
     (<e:or>
       <e:pred name="BT"><code>o</code>, <e:union><e:st n="S"/><e:set><code>value</code></e:set></e:union>, <e:var n="h"/></e:pred>
@@ -69,7 +61,6 @@ Node* insert_aux(Node* root, int value) {
     </e:or>)
     ¬black
   </e:and>)
-</e:or></div></div>
-<e:displaycode>
+</e:or></div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">
   return o;
-}&#160;</e:displaycode></section>
+} </e:displaycode></section>

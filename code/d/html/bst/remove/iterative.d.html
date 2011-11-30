@@ -1,4 +1,5 @@
-<section class='generated_listing' xmlns='http://www.w3.org/1999/xhtml' xmlns:xi='http://www.w3.org/2001/XInclude' xmlns:e='http://eegg.github.com/htmlx' xmlns:m='http://eegg.github.com/macro'><e:displaycode>module bst.remove.iterative;
+<?xml version="1.0" encoding="UTF-8"?>
+<section class="generated_listing" xmlns="http://www.w3.org/1999/xhtml" ns:xi="http://www.w3.org/2001/XInclude" ns:e="http://eegg.github.com/htmlx" xmlns:ns="xmlns" ns:m="http://eegg.github.com/macro"><e:displaycode xmlns:e="http://eegg.github.com/htmlx">module bst.remove.iterative;
 
 import bst.node;
 import bst.remove.removeRoot;
@@ -18,10 +19,8 @@ Node * remove(Node * root, int value) {
     Node* p = o;
     int dir = value &gt; p.value;
     Node* i = p.c[dir];
-&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='CommentParagraph'>iterate until i is the node to delete
-then set link in p to removeRoot(i).</div></div>
-<e:displaycode>    while (i &amp;&amp; i.value != value) {
+ </e:displaycode><div class="section"><pre class="indent">    </pre><div class="CommentParagraph"><div>iterate until i is the node to delete
+then set link in p to removeRoot(i).</div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">    while (i &amp;&amp; i.value != value) {
       p = i;
       dir = value &gt; p.value;
       i = i.c[dir];
@@ -35,4 +34,4 @@ then set link in p to removeRoot(i).</div></div>
   }
 
   return o;
-}&#160;</e:displaycode></section>
+} </e:displaycode></section>

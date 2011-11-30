@@ -1,19 +1,13 @@
-<section class='generated_listing' xmlns='http://www.w3.org/1999/xhtml' xmlns:xi='http://www.w3.org/2001/XInclude' xmlns:e='http://eegg.github.com/htmlx' xmlns:m='http://eegg.github.com/macro'><e:displaycode>module rb.blacken;
+<?xml version="1.0" encoding="UTF-8"?>
+<section class="generated_listing" xmlns="http://www.w3.org/1999/xhtml" ns:xi="http://www.w3.org/2001/XInclude" ns:e="http://eegg.github.com/htmlx" xmlns:ns="xmlns" ns:m="http://eegg.github.com/macro"><e:displaycode xmlns:e="http://eegg.github.com/htmlx">module rb.blacken;
 
 import rb.node;
 
-Node* blacken(Node* root) {&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Function precondition.</div><e:or>
+Node* blacken(Node* root) { </e:displaycode><div class="section"><pre class="indent">  </pre><div class="AssertionParagraph"><div class="expl"><div>Function precondition.</div></div><div><e:or xmlns:e="http://eegg.github.com/htmlx">
   <e:pred name="RBT"><code>root</code>, <e:st n="S"/>, <e:var n="h"/></e:pred>
   <e:pred name="RVT"><code>root</code>, <e:st n="S"/>, <e:var n="h"/></e:pred>
-</e:or></div></div>
-<e:displaycode>
-  if (root == null) {&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><e:pred name="ET"><code>root</code>, <e:st n="S"/>, <e:var n="h"/></e:pred></div></div>
-
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Weakening</div><e:pred name="BT"><code>root</code>, <e:st n="S"/>, <e:var n="h"/></e:pred></div></div>
-
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Member of set containing itself</div><e:and>
+</e:or></div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">
+  if (root == null) { </e:displaycode><div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div><e:pred name="ET" xmlns:e="http://eegg.github.com/htmlx"><code>root</code>, <e:st n="S"/>, <e:var n="h"/></e:pred></div></div></div><div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl"><div>Weakening</div></div><div><e:pred name="BT" xmlns:e="http://eegg.github.com/htmlx"><code>root</code>, <e:st n="S"/>, <e:var n="h"/></e:pred></div></div></div><div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl"><div>Member of set containing itself</div></div><div><e:and xmlns:e="http://eegg.github.com/htmlx">
   <e:pred name="BT"><code>root</code>, <e:st n="S"/>, <e:var n="h"/></e:pred>
   <e:in>
     <e:var n="h"/>
@@ -22,9 +16,7 @@ Node* blacken(Node* root) {&#160;</e:displaycode>
       <e:plus><e:var n="h"/><e:const n="1"/></e:plus>
     </e:set>
   </e:in>
-</e:and></div></div>
-
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'><m:existsIntro/> on <e:var n="h"/> as <e:var n="nh"/>.</div><e:exists>
+</e:and></div></div></div><div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl"><div><m:existsIntro xmlns:m="http://eegg.github.com/macro"/> on <e:var n="h" xmlns:e="http://eegg.github.com/htmlx"/> as <e:var n="nh" xmlns:e="http://eegg.github.com/htmlx"/>.</div></div><div><e:exists xmlns:e="http://eegg.github.com/htmlx">
   <e:vars><e:var n="nh"/></e:vars>
   <e:expr><e:and>
     <e:pred name="BT"><code>o</code>, <e:st n="S"/>, <e:var n="nh"/></e:pred>
@@ -36,23 +28,15 @@ Node* blacken(Node* root) {&#160;</e:displaycode>
       </e:set>
     </e:in>
   </e:and></e:expr>
-</e:exists></div></div>
-<e:displaycode>  }
-  else {&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><e:or>
+</e:exists></div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">  }
+  else { </e:displaycode><div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div><e:or xmlns:e="http://eegg.github.com/htmlx">
   <e:or>
     <e:pred name="RT"><code>root</code>, <e:st n="S"/>, <e:var n="h"/></e:pred>
     <e:pred name="NBT"><code>root</code>, <e:st n="S"/>, <e:var n="h"/></e:pred>
   </e:or>
   <e:pred name="RVT"><code>root</code>, <e:st n="S"/>, <e:var n="h"/></e:pred>
-</e:or></div></div>
-<e:displaycode>
-    if (root.black) {&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><e:pred name="NBT"><code>root</code>, <e:st n="S"/>, <e:var n="h"/></e:pred></div></div>
-
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Weakening</div><e:pred name="BT"><code>root</code>, <e:st n="S"/>, <e:var n="h"/></e:pred></div></div>
-
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Member of set containing itself</div><e:and>
+</e:or></div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">
+    if (root.black) { </e:displaycode><div class="section"><pre class="indent">      </pre><div class="AssertionParagraph"><div><e:pred name="NBT" xmlns:e="http://eegg.github.com/htmlx"><code>root</code>, <e:st n="S"/>, <e:var n="h"/></e:pred></div></div></div><div class="section"><pre class="indent">      </pre><div class="AssertionParagraph"><div class="expl"><div>Weakening</div></div><div><e:pred name="BT" xmlns:e="http://eegg.github.com/htmlx"><code>root</code>, <e:st n="S"/>, <e:var n="h"/></e:pred></div></div></div><div class="section"><pre class="indent">      </pre><div class="AssertionParagraph"><div class="expl"><div>Member of set containing itself</div></div><div><e:and xmlns:e="http://eegg.github.com/htmlx">
   <e:pred name="BT"><code>root</code>, <e:st n="S"/>, <e:var n="h"/></e:pred>
   <e:in>
     <e:var n="h"/>
@@ -61,9 +45,7 @@ Node* blacken(Node* root) {&#160;</e:displaycode>
       <e:plus><e:var n="h"/><e:const n="1"/></e:plus>
     </e:set>
   </e:in>
-</e:and></div></div>
-
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'><m:existsIntro/> on <e:var n="h"/> as <e:var n="nh"/>.</div><e:exists>
+</e:and></div></div></div><div class="section"><pre class="indent">      </pre><div class="AssertionParagraph"><div class="expl"><div><m:existsIntro xmlns:m="http://eegg.github.com/macro"/> on <e:var n="h" xmlns:e="http://eegg.github.com/htmlx"/> as <e:var n="nh" xmlns:e="http://eegg.github.com/htmlx"/>.</div></div><div><e:exists xmlns:e="http://eegg.github.com/htmlx">
   <e:vars><e:var n="nh"/></e:vars>
   <e:expr><e:and>
     <e:pred name="BT"><code>o</code>, <e:st n="S"/>, <e:var n="nh"/></e:pred>
@@ -75,18 +57,12 @@ Node* blacken(Node* root) {&#160;</e:displaycode>
       </e:set>
     </e:in>
   </e:and></e:expr>
-</e:exists></div></div>
-<e:displaycode>    }
-    else {&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><e:or>
+</e:exists></div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">    }
+    else { </e:displaycode><div class="section"><pre class="indent">      </pre><div class="AssertionParagraph"><div><e:or xmlns:e="http://eegg.github.com/htmlx">
   <e:pred name="RT"><code>root</code>, <e:st n="S"/>, <e:var n="h"/></e:pred>
   <e:pred name="RVT"><code>root</code>, <e:st n="S"/>, <e:var n="h"/></e:pred>
-</e:or></div></div>
-<e:displaycode>
-      root.black = true;&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><e:pred name="BT"><code>root</code>, <e:st n="S"/>, <e:plus><e:var n="h"/><e:const n="1"/></e:plus></e:pred></div></div>
-
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Member of set containing itself</div><e:and>
+</e:or></div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">
+      root.black = true; </e:displaycode><div class="section"><pre class="indent">      </pre><div class="AssertionParagraph"><div><e:pred name="BT" xmlns:e="http://eegg.github.com/htmlx"><code>root</code>, <e:st n="S"/>, <e:plus><e:var n="h"/><e:const n="1"/></e:plus></e:pred></div></div></div><div class="section"><pre class="indent">      </pre><div class="AssertionParagraph"><div class="expl"><div>Member of set containing itself</div></div><div><e:and xmlns:e="http://eegg.github.com/htmlx">
   <e:pred name="BT"><code>root</code>, <e:st n="S"/>, <e:var n="h"/></e:pred>
   <e:in>
     <e:var n="h"/>
@@ -95,9 +71,7 @@ Node* blacken(Node* root) {&#160;</e:displaycode>
       <e:plus><e:var n="h"/><e:const n="1"/></e:plus>
     </e:set>
   </e:in>
-</e:and></div></div>
-
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'><m:existsIntro/> on <e:var n="h"/> as <e:var n="nh"/>.</div><e:exists>
+</e:and></div></div></div><div class="section"><pre class="indent">      </pre><div class="AssertionParagraph"><div class="expl"><div><m:existsIntro xmlns:m="http://eegg.github.com/macro"/> on <e:var n="h" xmlns:e="http://eegg.github.com/htmlx"/> as <e:var n="nh" xmlns:e="http://eegg.github.com/htmlx"/>.</div></div><div><e:exists xmlns:e="http://eegg.github.com/htmlx">
   <e:vars><e:var n="nh"/></e:vars>
   <e:expr><e:and>
     <e:pred name="BT"><code>o</code>, <e:st n="S"/>, <e:var n="nh"/></e:pred>
@@ -109,9 +83,7 @@ Node* blacken(Node* root) {&#160;</e:displaycode>
       </e:set>
     </e:in>
   </e:and></e:expr>
-</e:exists></div></div>
-<e:displaycode>    }&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>If-rule.</div><e:exists>
+</e:exists></div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">    } </e:displaycode><div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl"><div>If-rule.</div></div><div><e:exists xmlns:e="http://eegg.github.com/htmlx">
   <e:vars><e:var n="nh"/></e:vars>
   <e:expr><e:and>
     <e:pred name="BT"><code>o</code>, <e:st n="S"/>, <e:var n="nh"/></e:pred>
@@ -123,10 +95,8 @@ Node* blacken(Node* root) {&#160;</e:displaycode>
       </e:set>
     </e:in>
   </e:and></e:expr>
-</e:exists></div></div>
-<e:displaycode>  }
-&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>If-rule. Function postcondition.</div><e:exists>
+</e:exists></div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">  }
+ </e:displaycode><div class="section"><pre class="indent">  </pre><div class="AssertionParagraph"><div class="expl"><div>If-rule. Function postcondition.</div></div><div><e:exists xmlns:e="http://eegg.github.com/htmlx">
   <e:vars><e:var n="nh"/></e:vars>
   <e:expr><e:and>
     <e:pred name="BT"><code>o</code>, <e:st n="S"/>, <e:var n="nh"/></e:pred>
@@ -138,7 +108,6 @@ Node* blacken(Node* root) {&#160;</e:displaycode>
       </e:set>
     </e:in>
   </e:and></e:expr>
-</e:exists></div></div>
-<e:displaycode>
+</e:exists></div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">
   return root;
-}&#160;</e:displaycode></section>
+} </e:displaycode></section>

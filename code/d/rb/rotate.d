@@ -69,7 +69,7 @@ void single_ptr(Node ** oldRoot, int dir) {
 
 Node * dbl(Node * oldRoot, int dir) {
 
-  // n↦v,c[0],c[1],?  ∗  BT(c[dir], L, h-1)  ∗  RVT(c[!dir], R, h-1, !dir)  && Compose(L, v, R, S)
+  // n↦v,c[0],c[1],?  ∗  BT(c[dir], L, h-1)  ∗  RVT(c[!dir], R, h-1, !dir)  &amp;&amp; Compose(L, v, R, S)
 
   // rotate_double can be used to fix a red violation.
   // An analogy here is rearranging the elements of a four-node:
@@ -78,7 +78,7 @@ Node * dbl(Node * oldRoot, int dir) {
   //      a---b---c     ==>         a---b---c
   //    /   |   |   \             /   |   |   \
 
-  //          <=====dir======
+  //          &lt;=====dir======
   //    
   //             oldRoot, R/B
   //           /           \

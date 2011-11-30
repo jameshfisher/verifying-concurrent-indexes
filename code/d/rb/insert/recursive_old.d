@@ -54,7 +54,7 @@ Node* insert_aux(Node* root, int value) {
         if (red(*far_child)) {
           // into is red, far child is red.  RV.  sibling is black.
 
-          //         root, R/B  <== was previously either BT(N) or RT(N-1)
+          //         root, R/B  &lt;== was previously either BT(N) or RT(N-1)
           //       /           \
           //      /             \
           // sibling, B(N-1)   into, RVT(dir, N-1)
@@ -85,7 +85,7 @@ Node* insert_aux(Node* root, int value) {
 
             // near child is red.
 
-            //         root, R/B  <== was previously either BT(N) or RT(N-1)
+            //         root, R/B  &lt;== was previously either BT(N) or RT(N-1)
             //       /           \
             //      /             \
             // sibling, B(N-1)   into, RVT(!dir, N-1)

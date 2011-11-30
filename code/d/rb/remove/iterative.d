@@ -56,7 +56,7 @@ Node * remove(Node * root, int value) {
     // If found != null, either we just set it, or we set it on the path from the parent.  value is either in node, or node.c[dir] tree.
 
     if (!red(node) && !red(node.c[dir])) {
-      // node.c[dir] != null && !red(node.c[dir]).  So node.c[dir] is a non-null black node.
+      // node.c[dir] != null &amp;&amp; !red(node.c[dir]).  So node.c[dir] is a non-null black node.
       // Same for node: node is a non-null black node.
       
       if (red(node.c[!dir])) {
@@ -64,8 +64,8 @@ Node * remove(Node * root, int value) {
         //
         //           parent                         parent
         //             |                              |
-        //          node, B                        !dir, B   <== new parent
-        //        /         \        ==>          /       \
+        //          node, B                        !dir, B   &lt;== new parent
+        //        /         \        ==&gt;          /       \
         //    !dir, R        \                   /      node, R
         //    /      \        \                 /       /      \
         //  a, B    b, B    dir, B            a, B    b, B    dir, B
@@ -224,7 +224,7 @@ Node * remove(Node * root, int value) {
 
             }
             else {
-              // if (red(sibling.c[!last])) {      <== this test, in JSW, should not be necessary
+              // if (red(sibling.c[!last])) {      &lt;== this test, in JSW, should not be necessary
 
               //            grandparent
               //                  \
@@ -294,7 +294,7 @@ Node * remove(Node * root, int value) {
       }
     }
     else {
-      // (red(node) || red(node.c[dir])).  We also know node != null && node.c[dir] != null.
+      // (red(node) || red(node.c[dir])).  We also know node != null &amp;&amp; node.c[dir] != null.
       // So either node is black, with node.c[dir] red child; or node is red, with node.c[dir] black child.
     }
   }

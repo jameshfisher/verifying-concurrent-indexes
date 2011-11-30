@@ -1,10 +1,10 @@
-<section class='generated_listing' xmlns='http://www.w3.org/1999/xhtml' xmlns:xi='http://www.w3.org/2001/XInclude' xmlns:e='http://eegg.github.com/htmlx' xmlns:m='http://eegg.github.com/macro'><e:displaycode>module bst.descend;
+<?xml version="1.0" encoding="UTF-8"?>
+<section class="generated_listing" xmlns="http://www.w3.org/1999/xhtml" ns:xi="http://www.w3.org/2001/XInclude" ns:e="http://eegg.github.com/htmlx" xmlns:ns="xmlns" ns:m="http://eegg.github.com/macro"><e:displaycode xmlns:e="http://eegg.github.com/htmlx">module bst.descend;
 
 import bst.node;
 
 
-Node* descend(Node* root, in int value) {&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Function precondition.</div><e:exists>
+Node* descend(Node* root, in int value) { </e:displaycode><div class="section"><pre class="indent">  </pre><div class="AssertionParagraph"><div class="expl"><div>Function precondition.</div></div><div><e:exists xmlns:e="http://eegg.github.com/htmlx">
   <e:vars><e:var n="v"/></e:vars>
   <e:expr><e:and>
     <e:pred name="TopOfTree"><code>root</code>, <e:var n="v"/>, <e:st n="S"/></e:pred>
@@ -13,9 +13,7 @@ Node* descend(Node* root, in int value) {&#160;</e:displaycode>
         <code>value</code>
       </e:noteq>
   </e:and></e:expr>
-</e:exists></div></div>
-
-<div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'><e:logimpl>
+</e:exists></div></div></div><div class="section"><pre class="indent">  </pre><div class="AssertionParagraph"><div class="expl"><div><e:logimpl xmlns:e="http://eegg.github.com/htmlx">
   <e:noteq>
     <e:var n="a"/>
     <e:var n="b"/>
@@ -30,7 +28,7 @@ Node* descend(Node* root, in int value) {&#160;</e:displaycode>
       <e:var n="a"/>
     </e:lt>
   </e:or>
-</e:logimpl></div><e:exists>
+</e:logimpl></div></div><div><e:exists xmlns:e="http://eegg.github.com/htmlx">
   <e:vars><e:var n="v"/></e:vars>
   <e:expr><e:and>
     <e:pred name="TopOfTree"><code>root</code>, <e:var n="v"/>, <e:st n="S"/></e:pred>
@@ -45,15 +43,13 @@ Node* descend(Node* root, in int value) {&#160;</e:displaycode>
       </e:lt>)
     </e:or>
   </e:and></e:expr>
-</e:exists></div></div>
-<e:displaycode>
+</e:exists></div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">
   int dir = value &gt; root.value;
-&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>C semantics render this as an integer.</div><e:exists>
+ </e:displaycode><div class="section"><pre class="indent">  </pre><div class="AssertionParagraph"><div class="expl"><div>C semantics render this as an integer.</div></div><div><e:exists xmlns:e="http://eegg.github.com/htmlx">
   <e:vars><e:var n="v"/></e:vars>
   <e:expr><e:and>
     <e:pred name="TopOfTree"><code>root</code>, <e:var n="v"/>, <e:st n="S"/></e:pred>
-    <br /><e:indent><e:or>
+    <br/><e:indent><e:or>
       (<e:and>
         <e:lt>
           <e:var n="v"/>
@@ -64,7 +60,7 @@ Node* descend(Node* root, in int value) {&#160;</e:displaycode>
           <e:const n="0"/>
         </e:eq>
       </e:and>)
-      <br />(<e:and>
+      <br/>(<e:and>
         <e:lt>
           <code>value</code>
           <e:var n="v"/>
@@ -76,25 +72,23 @@ Node* descend(Node* root, in int value) {&#160;</e:displaycode>
       </e:and>)
     </e:or></e:indent>
   </e:and></e:expr>
-</e:exists></div></div>
-
-<div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Open <e:pred name="TopOfTree"><code>root</code>, <e:var n="v"/>, <e:st n="S"/></e:pred>.</div><e:exists>
+</e:exists></div></div></div><div class="section"><pre class="indent">  </pre><div class="AssertionParagraph"><div class="expl"><div>Open <e:pred name="TopOfTree" xmlns:e="http://eegg.github.com/htmlx"><code>root</code>, <e:var n="v"/>, <e:st n="S"/></e:pred>.</div></div><div><e:exists xmlns:e="http://eegg.github.com/htmlx">
   <e:vars><e:var n="v"/>, <e:var n="l"/>,<e:var n="r"/>,<e:st n="L"/>,<e:st n="R"/></e:vars>
   <e:expr><e:indent><e:and>
     
       <e:sep>
         <e:fcell>
-        <code>root</code>
-        <e:list><e:var n="v"/>,<e:var n="l"/>,<e:var n="r"/></e:list>
-      </e:fcell>
+	        <code>root</code>
+	        <e:list><e:var n="v"/>,<e:var n="l"/>,<e:var n="r"/></e:list>
+	      </e:fcell>
         <e:sep>
-        <e:pred name="Tree"><e:var n="l"/>, <e:st n="L"/></e:pred>
-        <e:pred name="Tree"><e:var n="r"/>, <e:st n="R"/></e:pred>
+	        <e:pred name="Tree"><e:var n="l"/>, <e:st n="L"/></e:pred>
+	        <e:pred name="Tree"><e:var n="r"/>, <e:st n="R"/></e:pred>
         </e:sep>
-      </e:sep> ∧<br />
+      </e:sep> ∧<br/>
       <e:pred name="TCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
     
-    <br /><e:indent><e:or>
+    <br/><e:indent><e:or>
       (<e:and>
         <e:lt>
           <e:var n="v"/>
@@ -105,7 +99,7 @@ Node* descend(Node* root, in int value) {&#160;</e:displaycode>
           <e:const n="0"/>
         </e:eq>
       </e:and>)
-      <br />(<e:and>
+      <br/>(<e:and>
         <e:lt>
           <code>value</code>
           <e:var n="v"/>
@@ -117,26 +111,24 @@ Node* descend(Node* root, in int value) {&#160;</e:displaycode>
       </e:and>)
     </e:or></e:indent>
   </e:and></e:indent></e:expr>
-</e:exists></div></div>
-<e:displaycode>
-  Node* o = root.c[dir];&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Both cases of <code>dir</code>.</div><e:exists>
+</e:exists></div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">
+  Node* o = root.c[dir]; </e:displaycode><div class="section"><pre class="indent">  </pre><div class="AssertionParagraph"><div class="expl"><div>Both cases of <code>dir</code>.</div></div><div><e:exists xmlns:e="http://eegg.github.com/htmlx">
   <e:vars><e:var n="v"/>, <e:var n="l"/>,<e:var n="r"/>,<e:st n="L"/>,<e:st n="R"/></e:vars>
   <e:expr><e:indent><e:and>
     
       <e:sep>
         <e:fcell>
-        <code>root</code>
-        <e:list><e:var n="v"/>,<e:var n="l"/>,<e:var n="r"/></e:list>
-      </e:fcell>
+	        <code>root</code>
+	        <e:list><e:var n="v"/>,<e:var n="l"/>,<e:var n="r"/></e:list>
+	      </e:fcell>
         <e:sep>
-        <e:pred name="Tree"><e:var n="l"/>, <e:st n="L"/></e:pred>
-        <e:pred name="Tree"><e:var n="r"/>, <e:st n="R"/></e:pred>
+	        <e:pred name="Tree"><e:var n="l"/>, <e:st n="L"/></e:pred>
+	        <e:pred name="Tree"><e:var n="r"/>, <e:st n="R"/></e:pred>
         </e:sep>
-      </e:sep> ∧<br />
+      </e:sep> ∧<br/>
       <e:pred name="TCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
     
-    <br /><e:indent><e:or>
+    <br/><e:indent><e:or>
       (<e:and>
         <e:lt>
           <e:var n="v"/>
@@ -147,7 +139,7 @@ Node* descend(Node* root, in int value) {&#160;</e:displaycode>
           <e:var n="l"/>
         </e:eq>
       </e:and>)
-      <br />(<e:and>
+      <br/>(<e:and>
         <e:lt>
           <code>value</code>
           <e:var n="v"/>
@@ -159,25 +151,23 @@ Node* descend(Node* root, in int value) {&#160;</e:displaycode>
       </e:and>)
     </e:or></e:indent>
   </e:and></e:indent></e:expr>
-</e:exists></div></div>
-
-<div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Substitution.</div><e:exists>
+</e:exists></div></div></div><div class="section"><pre class="indent">  </pre><div class="AssertionParagraph"><div class="expl"><div>Substitution.</div></div><div><e:exists xmlns:e="http://eegg.github.com/htmlx">
   <e:vars><e:var n="v"/>, <e:var n="l"/>,<e:var n="r"/>,<e:st n="L"/>,<e:st n="R"/></e:vars>
   <e:expr><e:indent><e:and>
     
       <e:sep>
         <e:fcell>
-        <code>root</code>
-        <e:list><e:var n="v"/>,<e:var n="l"/>,<e:var n="r"/></e:list>
-      </e:fcell>
+	        <code>root</code>
+	        <e:list><e:var n="v"/>,<e:var n="l"/>,<e:var n="r"/></e:list>
+	      </e:fcell>
         <e:sep>
-        <e:pred name="Tree"><e:var n="l"/>, <e:st n="L"/></e:pred>
-        <e:pred name="Tree"><e:var n="r"/>, <e:st n="R"/></e:pred>
+	        <e:pred name="Tree"><e:var n="l"/>, <e:st n="L"/></e:pred>
+	        <e:pred name="Tree"><e:var n="r"/>, <e:st n="R"/></e:pred>
         </e:sep>
-      </e:sep> ∧<br />
+      </e:sep> ∧<br/>
       <e:pred name="TCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
     
-    <br /><e:indent><e:or>
+    <br/><e:indent><e:or>
       (<e:and>
         <e:lt>
           <e:var n="v"/>
@@ -185,7 +175,7 @@ Node* descend(Node* root, in int value) {&#160;</e:displaycode>
         </e:lt>
         <e:pred name="Tree"><code>o</code>, <e:st n="L"/></e:pred>
       </e:and>)
-      <br />(<e:and>
+      <br/>(<e:and>
         <e:lt>
           <code>value</code>
           <e:var n="v"/>
@@ -194,9 +184,7 @@ Node* descend(Node* root, in int value) {&#160;</e:displaycode>
       </e:and>)
     </e:or></e:indent>
   </e:and></e:indent></e:expr>
-</e:exists></div></div>
-
-<div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Lemma: <e:logimpl>
+</e:exists></div></div></div><div class="section"><pre class="indent">  </pre><div class="AssertionParagraph"><div class="expl"><div>Lemma: <e:logimpl xmlns:e="http://eegg.github.com/htmlx">
   <e:and>
     <e:pred name="TCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
     <e:lt><e:var n="v"/><code>value</code></e:lt>
@@ -205,8 +193,8 @@ Node* descend(Node* root, in int value) {&#160;</e:displaycode>
     <e:in><code>value</code><e:st n="R"/></e:in>
     <e:in><code>value</code><e:st n="S"/></e:in>
   </e:doubleimpl>
-</e:logimpl>.<br />
-Lemma: <e:logimpl>
+</e:logimpl>.<br/>
+Lemma: <e:logimpl xmlns:e="http://eegg.github.com/htmlx">
   <e:and>
     <e:pred name="TCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
     <e:lt><code>value</code><e:var n="v"/></e:lt>
@@ -215,23 +203,23 @@ Lemma: <e:logimpl>
     <e:in><code>value</code><e:st n="L"/></e:in>
     <e:in><code>value</code><e:st n="S"/></e:in>
   </e:doubleimpl>
-</e:logimpl>.</div><e:exists>
+</e:logimpl>.</div></div><div><e:exists xmlns:e="http://eegg.github.com/htmlx">
   <e:vars><e:var n="v"/>, <e:var n="l"/>,<e:var n="r"/>,<e:st n="L"/>,<e:st n="R"/></e:vars>
   <e:expr><e:indent><e:and>
     
       <e:sep>
         <e:fcell>
-        <code>root</code>
-        <e:list><e:var n="v"/>,<e:var n="l"/>,<e:var n="r"/></e:list>
-      </e:fcell>
+	        <code>root</code>
+	        <e:list><e:var n="v"/>,<e:var n="l"/>,<e:var n="r"/></e:list>
+	      </e:fcell>
         <e:sep>
-        <e:pred name="Tree"><e:var n="l"/>, <e:st n="L"/></e:pred>
-        <e:pred name="Tree"><e:var n="r"/>, <e:st n="R"/></e:pred>
+	        <e:pred name="Tree"><e:var n="l"/>, <e:st n="L"/></e:pred>
+	        <e:pred name="Tree"><e:var n="r"/>, <e:st n="R"/></e:pred>
         </e:sep>
-      </e:sep> ∧<br />
+      </e:sep> ∧<br/>
       <e:pred name="TCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
     
-    <br /><e:indent><e:or>
+    <br/><e:indent><e:or>
       (<e:and>
         <e:pred name="Tree"><code>o</code>, <e:st n="L"/></e:pred>
         (<e:doubleimpl>
@@ -239,7 +227,7 @@ Lemma: <e:logimpl>
           <e:in><code>value</code><e:st n="S"/></e:in>
         </e:doubleimpl>)
       </e:and>)
-      <br />(<e:and>
+      <br/>(<e:and>
         <e:pred name="Tree"><code>o</code>, <e:st n="R"/></e:pred>
         (<e:doubleimpl>
           <e:in><code>value</code><e:st n="R"/></e:in>
@@ -248,25 +236,23 @@ Lemma: <e:logimpl>
       </e:and>)
     </e:or></e:indent>
   </e:and></e:indent></e:expr>
-</e:exists></div></div>
-
-<div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'><m:existsIntro/> on <e:st n="L"/> as <e:st n="Q"/>, <e:st n="R"/> as <e:st n="Q"/>.</div><e:exists>
+</e:exists></div></div></div><div class="section"><pre class="indent">  </pre><div class="AssertionParagraph"><div class="expl"><div><m:existsIntro xmlns:m="http://eegg.github.com/macro"/> on <e:st n="L" xmlns:e="http://eegg.github.com/htmlx"/> as <e:st n="Q" xmlns:e="http://eegg.github.com/htmlx"/>, <e:st n="R" xmlns:e="http://eegg.github.com/htmlx"/> as <e:st n="Q" xmlns:e="http://eegg.github.com/htmlx"/>.</div></div><div><e:exists xmlns:e="http://eegg.github.com/htmlx">
   <e:vars><e:var n="v"/>, <e:var n="l"/>,<e:var n="r"/>,<e:st n="L"/>,<e:st n="R"/></e:vars>
   <e:expr><e:indent><e:and>
     
       <e:sep>
         <e:fcell>
-        <code>root</code>
-        <e:list><e:var n="v"/>,<e:var n="l"/>,<e:var n="r"/></e:list>
-      </e:fcell>
+	        <code>root</code>
+	        <e:list><e:var n="v"/>,<e:var n="l"/>,<e:var n="r"/></e:list>
+	      </e:fcell>
         <e:sep>
-        <e:pred name="Tree"><e:var n="l"/>, <e:st n="L"/></e:pred>
-        <e:pred name="Tree"><e:var n="r"/>, <e:st n="R"/></e:pred>
+	        <e:pred name="Tree"><e:var n="l"/>, <e:st n="L"/></e:pred>
+	        <e:pred name="Tree"><e:var n="r"/>, <e:st n="R"/></e:pred>
         </e:sep>
-      </e:sep> ∧<br />
+      </e:sep> ∧<br/>
       <e:pred name="TCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
     
-    <br /><e:indent><e:or>
+    <br/><e:indent><e:or>
       <e:exists><e:st n="Q"/>(<e:and>
         <e:pred name="Tree"><code>o</code>, <e:st n="Q"/></e:pred>
         (<e:doubleimpl>
@@ -274,7 +260,7 @@ Lemma: <e:logimpl>
           <e:in><code>value</code><e:st n="S"/></e:in>
         </e:doubleimpl>)
       </e:and>)</e:exists>
-      <br /><e:exists><e:st n="Q"/>(<e:and>
+      <br/><e:exists><e:st n="Q"/>(<e:and>
         <e:pred name="Tree"><code>o</code>, <e:st n="Q"/></e:pred>
         (<e:doubleimpl>
           <e:in><code>value</code><e:st n="Q"/></e:in>
@@ -283,23 +269,14 @@ Lemma: <e:logimpl>
       </e:and>)</e:exists>
     </e:or></e:indent>
   </e:and></e:indent></e:expr>
-</e:exists></div></div>
-
-<div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Introduce quantification.</div>∃v,l,r,L,R.
+</e:exists></div></div></div><div class="section"><pre class="indent">  </pre><div class="AssertionParagraph"><div class="expl"><div>Introduce quantification.</div></div><div>∃v,l,r,L,R.
   root↦v,l,r ∗ Tree(l, L) ∗ Tree(r, R)
   ∧ Compose(L, v, R, S)
-  ∧ (∃Q. Tree(o, Q) ∧ (value∈Q ↔ value∈S)) ∨ (∃Q. Tree(o, Q) ∧ (value∈Q ↔ value∈S))</div></div>
-
-<div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>a ∨ a implies a.</div>∃v,l,r,L,R.
+  ∧ (∃Q. Tree(o, Q) ∧ (value∈Q ↔ value∈S)) ∨ (∃Q. Tree(o, Q) ∧ (value∈Q ↔ value∈S))</div></div></div><div class="section"><pre class="indent">  </pre><div class="AssertionParagraph"><div class="expl"><div>a ∨ a implies a.</div></div><div>∃v,l,r,L,R.
   root↦v,l,r ∗ Tree(l, L) ∗ Tree(r, R)
   ∧ Compose(L, v, R, S)
-  ∧ ∃Q. Tree(o, Q) ∧ (value∈Q ↔ value∈S))</div></div>
-
-<div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Function postcondition.  Close TopOfTree.</div>TopOfTree(root, v, S)
-∧ ∃Q. Tree(o, Q) ∧ (value∈Q ↔ value∈S))</div></div>
-
-<div class='section'><pre class='indent'>&#160;&#160;</pre><div class='CommentParagraph'>Note: we want |Q| &lt; |S|
-to show termination of other functions.</div></div>
-<e:displaycode>
+  ∧ ∃Q. Tree(o, Q) ∧ (value∈Q ↔ value∈S))</div></div></div><div class="section"><pre class="indent">  </pre><div class="AssertionParagraph"><div class="expl"><div>Function postcondition.  Close TopOfTree.</div></div><div>TopOfTree(root, v, S)
+∧ ∃Q. Tree(o, Q) ∧ (value∈Q ↔ value∈S))</div></div></div><div class="section"><pre class="indent">  </pre><div class="CommentParagraph"><div>Note: we want |Q| &lt; |S|
+to show termination of other functions.</div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">
   return o;
-}&#160;</e:displaycode></section>
+} </e:displaycode></section>

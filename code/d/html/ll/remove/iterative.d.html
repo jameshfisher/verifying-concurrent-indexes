@@ -1,4 +1,5 @@
-<section class='generated_listing' xmlns='http://www.w3.org/1999/xhtml' xmlns:xi='http://www.w3.org/2001/XInclude' xmlns:e='http://eegg.github.com/htmlx' xmlns:m='http://eegg.github.com/macro'><e:displaycode>module ll.remove.iterative;
+<?xml version="1.0" encoding="UTF-8"?>
+<section class="generated_listing" xmlns="http://www.w3.org/1999/xhtml" ns:xi="http://www.w3.org/2001/XInclude" ns:e="http://eegg.github.com/htmlx" xmlns:ns="xmlns" ns:m="http://eegg.github.com/macro"><e:displaycode xmlns:e="http://eegg.github.com/htmlx">module ll.remove.iterative;
 
 import ll.node;
 
@@ -18,9 +19,7 @@ Node* remove(Node* n, int value) {
       Node* i = n;
       while (i.tail &amp;&amp; i.tail.value &lt; value) {
 	i = i.tail;
-      }&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='CommentParagraph'>!i.tail || value >= i.tail.value</div></div>
-<e:displaycode>
+      } </e:displaycode><div class="section"><pre class="indent">      </pre><div class="CommentParagraph"><div>!i.tail || value &gt;= i.tail.value</div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">
       if (i.tail &amp;&amp; i.tail.value == value) {
 	Node* d = i.tail;
 	i.tail = i.tail.tail;
@@ -32,4 +31,4 @@ Node* remove(Node* n, int value) {
   }
 
   return o;
-}&#160;</e:displaycode></section>
+} </e:displaycode></section>

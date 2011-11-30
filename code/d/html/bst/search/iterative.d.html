@@ -1,98 +1,143 @@
-<section class='generated_listing' xmlns='http://www.w3.org/1999/xhtml' xmlns:xi='http://www.w3.org/2001/XInclude' xmlns:e='http://eegg.github.com/htmlx' xmlns:m='http://eegg.github.com/macro'><e:displaycode>module bst.search.iterative;
+<?xml version="1.0" encoding="UTF-8"?>
+<section class="generated_listing" xmlns="http://www.w3.org/1999/xhtml" ns:xi="http://www.w3.org/2001/XInclude" ns:e="http://eegg.github.com/htmlx" xmlns:ns="xmlns" ns:m="http://eegg.github.com/macro"><e:displaycode xmlns:e="http://eegg.github.com/htmlx">module bst.search.iterative;
 
 import bst.node;
 import bst.descend;
 
 
-bool search(Node* root, in int value) {&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Function precondition.</div>Tree(root, S)</div></div>
-<e:displaycode>
-  bool found = false;
-&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Assignment.
-We're going to return `found`.
-That is, the following loop establishes `found ↔ (value ∈ S)`.</div>Tree(root, S) ∧ ¬found</div></div>
-<e:displaycode>
+bool search(Node* root, in int value) { </e:displaycode><div class="section"><pre class="indent">  </pre><div class="AssertionParagraph"><div class="expl"><div>Function precondition.</div></div><div><e:pred name="UnboundedTree" xmlns:e="http://eegg.github.com/htmlx"><code>root</code>, <e:st n="S"/></e:pred></div></div></div><div class="section"><pre class="indent">  </pre><div class="AssertionParagraph"><div class="expl"><div>Open <e:pred name="UnboundedTree" xmlns:e="http://eegg.github.com/htmlx"><code>root</code>, <e:st n="S"/></e:pred>.</div></div><div><e:pred name="BoundedTree" xmlns:e="http://eegg.github.com/htmlx"><code>root</code><e:st n="S"/><m:neginf xmlns:m="http://eegg.github.com/macro"/><m:inf xmlns:m="http://eegg.github.com/macro"/></e:pred></div></div></div><div class="section"><pre class="indent">  </pre><div class="AssertionParagraph"><div class="expl"><div>Introduce empty context.</div></div><div>  <e:sep xmlns:e="http://eegg.github.com/htmlx">
+    <e:pred name="EmptyContext"><code>root</code><m:empty xmlns:m="http://eegg.github.com/macro"/><m:neginf xmlns:m="http://eegg.github.com/macro"/><m:inf xmlns:m="http://eegg.github.com/macro"/><code>root</code></e:pred>
+    <e:pred name="BoundedTree"><code>root</code><e:st n="S"/><m:neginf xmlns:m="http://eegg.github.com/macro"/><m:inf xmlns:m="http://eegg.github.com/macro"/></e:pred>
+  </e:sep></div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">
   Node* i = root;
-&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Assignment.</div>Tree(root, S) ∧ ¬found ∧
-Tree(i, S)</div></div>
+  bool found = false; </e:displaycode><div class="section"><pre class="indent">  </pre><div class="AssertionParagraph"><div class="expl"><div>Assignment.</div></div><div><e:and type="lines" xmlns:e="http://eegg.github.com/htmlx">
+  <e:sep>
+    <e:pred name="EmptyContext"><code>root</code><m:empty xmlns:m="http://eegg.github.com/macro"/><m:neginf xmlns:m="http://eegg.github.com/macro"/><m:inf xmlns:m="http://eegg.github.com/macro"/><code>i</code></e:pred>
+    <e:pred name="BoundedTree"><code>i</code><e:st n="S"/><m:neginf xmlns:m="http://eegg.github.com/macro"/><m:inf xmlns:m="http://eegg.github.com/macro"/></e:pred>
+  </e:sep>
+  <e:eq><code>found</code><code>false</code></e:eq>
+</e:and></div></div></div><div class="section"><pre class="indent">  </pre><div class="AssertionParagraph"><div class="expl"><div>??</div></div><div><e:and type="lines" xmlns:e="http://eegg.github.com/htmlx">
+  <e:sep>
+    <e:pred name="EmptyContext"><code>root</code><m:empty xmlns:m="http://eegg.github.com/macro"/><m:neginf xmlns:m="http://eegg.github.com/macro"/><m:inf xmlns:m="http://eegg.github.com/macro"/><code>i</code></e:pred>
+    <e:pred name="BoundedTree"><code>i</code><e:st n="S"/><m:neginf xmlns:m="http://eegg.github.com/macro"/><m:inf xmlns:m="http://eegg.github.com/macro"/></e:pred>
+  </e:sep>
+  <e:eq><code>found</code><code>false</code></e:eq>
+  <e:notin><e:var n="v"/><m:empty xmlns:m="http://eegg.github.com/macro"/></e:notin>
+</e:and></div></div></div><div class="section"><pre class="indent">  </pre><div class="AssertionParagraph"><div class="expl"><div>Introduce existential quantification on <m:empty xmlns:m="http://eegg.github.com/macro"/>, <e:st n="S" xmlns:e="http://eegg.github.com/htmlx"/>, <m:neginf xmlns:m="http://eegg.github.com/macro"/>, and <m:inf xmlns:m="http://eegg.github.com/macro"/>.<br/>
+<e:logimpl xmlns:e="http://eegg.github.com/htmlx"><e:predicate>EmptyContext</e:predicate><e:predicate>Context</e:predicate></e:logimpl>.</div></div><div><e:exists xmlns:e="http://eegg.github.com/htmlx">
+  <e:vars><e:st n="C"/><e:st n="T"/><e:var n="lb"/><e:var n="hb"/></e:vars>
+  <e:expr><e:indent>
+    <e:and type="lines">
+      <e:and>
+        <e:eq><e:union><e:st n="C"/><e:st n="T"/></e:union><e:st n="S"/></e:eq>
+        <e:notin><e:var n="v"/><e:st n="C"/></e:notin>
+      </e:and>
+      <e:impl><code>found</code><e:in><e:var n="v"/><e:st n="S"/></e:in></e:impl>
+      <e:sep>
+        <e:pred name="Context"><code>root</code><e:st n="C"/><e:var n="lb"/><e:var n="hb"/><code>i</code></e:pred>
+        <e:pred name="BoundedTree"><code>i</code><e:st n="T"/><e:var n="lb"/><e:var n="hb"/></e:pred>
+      </e:sep>
+    </e:and>
+  </e:indent></e:expr>
+</e:exists></div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">
+  while (i != null &amp;&amp; found == false) { </e:displaycode><div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl"><div>Loop invariant, and assert while-condition.</div></div><div><e:exists xmlns:e="http://eegg.github.com/htmlx">
+  <e:vars><e:st n="C"/><e:st n="T"/><e:var n="lb"/><e:var n="hb"/></e:vars>
+  <e:expr><e:indent>
+    <e:and type="lines">
+      <e:and>
+        <e:eq><e:union><e:st n="C"/><e:st n="T"/></e:union><e:st n="S"/></e:eq>
+        <e:notin><e:var n="v"/><e:st n="C"/></e:notin>
+      </e:and>
+      <e:and>
+        <e:impl><code>found</code><e:in><e:var n="v"/><e:st n="S"/></e:in></e:impl>
+        <e:eq><code>found</code><code>false</code></e:eq>
+      </e:and>
+      <e:sep>
+        <e:pred name="Context"><code>root</code><e:st n="C"/><e:var n="lb"/><e:var n="hb"/><code>i</code></e:pred>
+        <e:pred name="BoundedTree"><code>i</code><e:st n="T"/><e:var n="lb"/><e:var n="hb"/></e:pred>
+      </e:sep>
+      <e:noteq><code>i</code><m:null xmlns:m="http://eegg.github.com/macro"/></e:noteq>
+    </e:and>
+  </e:indent></e:expr>
+</e:exists></div></div></div><div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl"><div><e:logimpl xmlns:e="http://eegg.github.com/htmlx">
+  <e:and>
+    <e:pred name="BoundedTree"><code>i</code><e:st n="T"/><e:var n="lb"/><e:var n="hb"/></e:pred>
+    <e:noteq><code>i</code><m:null xmlns:m="http://eegg.github.com/macro"/></e:noteq>
+  </e:and>
+  <e:pred name="NonEmptyBoundedTree"><code>i</code><e:st n="T"/><e:var n="lb"/><e:var n="hb"/></e:pred>
+</e:logimpl>.</div></div><div><e:exists xmlns:e="http://eegg.github.com/htmlx">
+  <e:vars><e:st n="C"/><e:st n="T"/><e:var n="lb"/><e:var n="hb"/></e:vars>
+  <e:expr><e:indent>
+    <e:and type="lines">
+      <e:and>
+        <e:eq><e:union><e:st n="C"/><e:st n="T"/></e:union><e:st n="S"/></e:eq>
+        <e:notin><e:var n="v"/><e:st n="C"/></e:notin>
+      </e:and>
+      <e:and>
+        <e:impl><code>found</code><e:in><e:var n="v"/><e:st n="S"/></e:in></e:impl>
+        <e:eq><code>found</code><code>false</code></e:eq>
+      </e:and>
+      <e:sep>
+        <e:pred name="Context"><code>root</code><e:st n="C"/><e:var n="lb"/><e:var n="hb"/><code>i</code></e:pred>
+        <e:pred name="NonEmptyBoundedTree"><code>i</code><e:st n="T"/><e:var n="lb"/><e:var n="hb"/></e:pred>
+      </e:sep>
+    </e:and>
+  </e:indent></e:expr>
+</e:exists></div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">
+    bool eq = rootEq(i, value); </e:displaycode><div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl"><div>Spec</div></div><div><e:exists xmlns:e="http://eegg.github.com/htmlx">
+  <e:vars><e:st n="C"/><e:st n="T"/><e:var n="lb"/><e:var n="hb"/><e:var n="t"/></e:vars>
+  <e:expr><e:indent>
+    <e:and type="lines">
+      <e:and>
+        <e:eq><e:union><e:st n="C"/><e:st n="T"/></e:union><e:st n="S"/></e:eq>
+        <e:notin><e:var n="v"/><e:st n="C"/></e:notin>
+      </e:and>
+      <e:and>
+        <e:impl><code>found</code><e:in><e:var n="v"/><e:st n="S"/></e:in></e:impl>
+        <e:eq><code>found</code><code>false</code></e:eq>
+      </e:and>
+      <e:sep>
+        <e:pred name="Context"><code>root</code><e:st n="C"/><e:var n="lb"/><e:var n="hb"/><code>i</code></e:pred>
+        <e:pred name="TopOfBoundedTree"><code>i</code><e:var n="t"/><e:st n="T"/><e:var n="lb"/><e:var n="hb"/></e:pred>
+      </e:sep>
+      <e:doubleimpl>
+        <code>eq</code>
+        <e:eq><code>value</code><e:var n="t"/></e:eq>
+      </e:doubleimpl>
+    </e:and>
+  </e:indent></e:expr>
+</e:exists></div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">
 
-<div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>a ↔ a</div>Tree(root, S) ∧ ¬found ∧
-Tree(i, S) ∧ (value ∈ S) ↔ (value ∈ S)</div></div>
-
-<div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'><m:existsIntro/></div>Tree(root, S) ∧ ¬found ∧
-∃Q. Tree(i, Q) ∧ (value ∈ Q) ↔ (value ∈ S)</div></div>
-
-<div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>false → anything (rule?).
-This is our loop invariant.</div>Tree(root, S) ∧
-∃Q. Tree(i, Q) ∧ (value ∈ Q) ↔ (value ∈ S)
-∧ found → (value ∈ S)</div></div>
-
-<div class='section'><pre class='indent'>&#160;&#160;</pre><div class='CommentParagraph'>The size of Q strictly decreases with each iteration,
-and the size of Q >= 0, as the empty set is the smallest possible set.
-This shows that the loop terminates.</div></div>
-<e:displaycode>
-  while (i &amp;&amp; !found) {&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Loop invariant, and assert while-condition.</div>Tree(root, S) ∧
-∃Q. Tree(i, Q) ∧ (value ∈ Q) ↔ (value ∈ S)
-∧ found → (value ∈ S)
-∧ root ∧ ¬found</div></div>
-
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Non-null pointer is non-empty tree (lemma)</div>Tree(root, S) ∧
-∃Q. NonEmptyTree(i, Q) ∧ (value ∈ Q) ↔ (value ∈ S)
-∧ found → (value ∈ S)
-∧ ¬found</div></div>
-
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Open NonEmptyTree</div>Tree(root, S) ∧
-∃Q, v. TopOfTree(i, v, Q) ∧ (value ∈ Q) ↔ (value ∈ S)
-∧ found → (value ∈ S)
-∧ ¬found</div></div>
-<e:displaycode>
-    if (value == i.value) {&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Assert if-condition.  Equality.</div>Tree(root, S) ∧
+    if (eq) { </e:displaycode><div class="section"><pre class="indent">      </pre><div class="AssertionParagraph"><div class="expl"><div>Assert if-condition.  Equality.</div></div><div>Tree(root, S) ∧
 ∃Q. TopOfTree(i, value, Q) ∧ (value ∈ Q) ↔ (value ∈ S)
 ∧ found → (value ∈ S)
-∧ ¬found</div></div>
-
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Root value in set (lemma).</div>Tree(root, S) ∧
+∧ ¬found</div></div></div><div class="section"><pre class="indent">      </pre><div class="AssertionParagraph"><div class="expl"><div>Root value in set (lemma).</div></div><div>Tree(root, S) ∧
 ∃Q.
   TopOfTree(i, value, Q) ∧
   (value ∈ Q) ↔ (value ∈ S) ∧
   value ∈ Q
 ∧ found → (value ∈ S)
-∧ ¬found</div></div>
-
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>→.  Weaken TopOfTree.</div>Tree(root, S) ∧
+∧ ¬found</div></div></div><div class="section"><pre class="indent">      </pre><div class="AssertionParagraph"><div class="expl"><div>→.  Weaken TopOfTree.</div></div><div>Tree(root, S) ∧
 ∃Q. Tree(i, Q) ∧ (value ∈ Q) ↔ (value ∈ S)
-value ∈ S ∧ ¬found</div></div>
-<e:displaycode>
+value ∈ S ∧ ¬found</div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">
       found = true;
-&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Assignment.</div>Tree(root, S) ∧
+ </e:displaycode><div class="section"><pre class="indent">      </pre><div class="AssertionParagraph"><div class="expl"><div>Assignment.</div></div><div>Tree(root, S) ∧
 ∃Q. Tree(i, Q) ∧ (value ∈ Q) ↔ (value ∈ S)
-value ∈ S ∧ found</div></div>
-
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>→.  Re-establish invariant.</div>Tree(root, S) ∧
+value ∈ S ∧ found</div></div></div><div class="section"><pre class="indent">      </pre><div class="AssertionParagraph"><div class="expl"><div>→.  Re-establish invariant.</div></div><div>Tree(root, S) ∧
 ∃Q. Tree(i, Q) ∧ (value ∈ Q) ↔ (value ∈ S)
-∧ found → (value ∈ S)</div></div>
-<e:displaycode>    }
-    else {&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Assert else-condition.  Equality.</div>Tree(root, S) ∧
+∧ found → (value ∈ S)</div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">    }
+    else { </e:displaycode><div class="section"><pre class="indent">      </pre><div class="AssertionParagraph"><div class="expl"><div>Assert else-condition.  Equality.</div></div><div>Tree(root, S) ∧
 ∃Q, v. TopOfTree(i, v, Q) ∧ (value ∈ Q) ↔ (value ∈ S) ∧ v ≠ value
 ∧ found → (value ∈ S)
-∧ ¬found</div></div>
-<e:displaycode>
+∧ ¬found</div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">
       Node* next = descend(i, value);
-&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Assert else-condition.  Equality.</div>Tree(root, S) ∧
+ </e:displaycode><div class="section"><pre class="indent">      </pre><div class="AssertionParagraph"><div class="expl"><div>Assert else-condition.  Equality.</div></div><div>Tree(root, S) ∧
 ∃Q, v. TopOfTree(i, v, Q) ∧ (value ∈ Q) ↔ (value ∈ S) ∧ v ≠ value
 ∧ found → (value ∈ S)
-∧ ¬found</div></div>
-<e:displaycode>
+∧ ¬found</div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">
       i = next;
     }
   }
   return found;
 }
-&#160;</e:displaycode></section>
+ </e:displaycode></section>

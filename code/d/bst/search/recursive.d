@@ -4,70 +4,133 @@ import bst.node;
 import bst.descend;
 
 
+bool rootEq(Node* root, in int value) {
+  // Function precondition.
+  /// <e:pred name="NonEmptyTree"><code>root</code><e:st n="S"/><e:var n="lower"/><e:var n="higher"/></e:pred>
+
+  // Open <e:pred name="NonEmptyTree"><code>root</code><e:st n="S"/><e:var n="lower"/><e:var n="higher"/></e:pred>.
+  /// <e:exists>
+  ///   <e:vars><e:var n="v"/></e:vars>
+  ///   <e:expr><e:pred name="TopOfTree"><code>root</code><e:var n="v"/><e:st n="S"/><e:var n="lower"/><e:var n="higher"/></e:pred></e:expr>
+  /// </e:exists>
+
+  // Open <e:pred name="TopOfTree"><code>root</code><e:var n="v"/><e:st n="S"/><e:var n="lower"/><e:var n="higher"/></e:pred>.
+  /// <e:exists>
+  ///   <e:vars><e:var n="v"/><e:st n="L"/><e:st n="R"/></e:vars>
+  ///   <e:expr><e:indent>
+  ///     <e:and type="lines">
+  ///       <e:lt>
+  ///         <e:var n="lower"/>
+  ///         <e:var n="v"/>
+  ///         <e:var n="higher"/>
+  ///       </e:lt>
+  ///       <e:eq>
+  ///         <e:union><e:st n="L"/><e:set><e:var n="v"/></e:set><e:st n="R"/></e:union>
+  ///         <e:st n="S"/>
+  ///       </e:eq>
+  ///       <e:exists>
+  ///         <e:vars><e:ptr n="l"/><e:ptr n="r"/></e:vars>
+  ///         <e:expr><e:indent><e:sep type="lines">
+  ///           <e:fcell>
+  ///             <e:ptr n="root"/>
+  ///             <e:vars><e:ptr n="l"/><e:var n="v"/><e:ptr n="r"/></e:vars>
+  ///           </e:fcell>
+  ///           <e:pred name="Tree"><e:ptr n="l"/><e:st n="L"/><e:var n="lower"/><e:var n="v"/></e:pred>
+  ///           <e:pred name="Tree"><e:ptr n="r"/><e:st n="R"/><e:var n="v"/><e:var n="higher"/></e:pred>
+  ///         </e:sep></e:indent></e:expr>
+  ///     </e:exists>
+  ///   </e:and>
+  ///   </e:indent></e:expr>
+  /// </e:exists>
+
+  bool eq = root.value == value;
+  /// <e:exists>
+  ///   <e:vars><e:var n="v"/><e:st n="L"/><e:st n="R"/></e:vars>
+  ///   <e:expr><e:indent>
+  ///     <e:and type="lines">
+  ///       <e:doubleimpl>
+  ///         <code>eq</code>
+  ///         <e:eq><e:var n="v"/><code>value</code></e:eq>
+  ///       </e:doubleimpl>
+  ///       <e:lt>
+  ///         <e:var n="lower"/>
+  ///         <e:var n="v"/>
+  ///         <e:var n="higher"/>
+  ///       </e:lt>
+  ///       <e:eq>
+  ///         <e:union><e:st n="L"/><e:set><e:var n="v"/></e:set><e:st n="R"/></e:union>
+  ///         <e:st n="S"/>
+  ///       </e:eq>
+  ///       <e:exists>
+  ///         <e:vars><e:ptr n="l"/><e:ptr n="r"/></e:vars>
+  ///         <e:expr><e:indent><e:sep type="lines">
+  ///           <e:fcell>
+  ///             <e:ptr n="root"/>
+  ///             <e:vars><e:ptr n="l"/><e:var n="v"/><e:ptr n="r"/></e:vars>
+  ///           </e:fcell>
+  ///           <e:pred name="Tree"><e:ptr n="l"/><e:st n="L"/><e:var n="lower"/><e:var n="v"/></e:pred>
+  ///           <e:pred name="Tree"><e:ptr n="r"/><e:st n="R"/><e:var n="v"/><e:var n="higher"/></e:pred>
+  ///         </e:sep></e:indent></e:expr>
+  ///     </e:exists>
+  ///   </e:and>
+  ///   </e:indent></e:expr>
+  /// </e:exists>
+
+  /// <e:exists>
+  ///   <e:vars><e:var n="v"/></e:vars>
+  ///   <e:expr><e:and>
+  ///     <e:pred name="TopOfTree"><code>root</code><e:var n="v"/><e:st n="S"/><e:var n="lower"/><e:var n="higher"/></e:pred>
+  ///     <e:doubleimpl>
+  ///       <code>eq</code>
+  ///       <e:eq>
+  ///         <e:var n="v"/>
+  ///         <code>value</code>
+  ///       </e:eq>
+  ///     </e:doubleimpl>
+  ///   </e:and></e:expr>
+  /// </e:exists>
+}
+
+
 bool search(Node* root, in int value) {
   bool o;
   // Function precondition.
-  /// <e:pred name="Tree"><code>root</code>, <e:st n="S"/></e:pred>
+  /// <e:pred name="UnboundedTree"><code>root</code>, <e:st n="S"/></e:pred>
+
+  // Open <e:pred name="UnboundedTree"><code>root</code>, <e:st n="S"/></e:pred>.
+  /// <e:pred name="Tree"><code>root</code><e:st n="S"/><m:neginf/><m:inf/></e:pred>
 
   if (root == null) {
     // Assert if-condition.
     /// <e:and>
-    ///   <e:pred name="Tree"><code>root</code>, <e:st n="S"/></e:pred>
+    ///   <e:pred name="Tree"><code>root</code><e:st n="S"/><m:neginf/><m:inf/></e:pred>
     ///   <e:eq><code>root</code><m:null/></e:eq>
-    /// </e:and>
-
-    // Lemma: <e:logimpl>
-    //   <e:and>
-    //     <e:pred name="Tree"><code>root</code>, <e:st n="S"/></e:pred>
-    //     <e:eq><code>root</code><m:null/></e:eq>
-    //   </e:and>
-    //   <e:pred name="EmptyTree"><code>root</code>, <e:st n="S"/></e:pred>
-    // </e:logimpl>
-    /// <e:pred name="EmptyTree"><code>root</code>, <e:st n="S"/></e:pred>
-
-    // <e:logimpl>
-    //   <e:pred name="EmptyTree"><code>root</code>, <e:st n="S"/></e:pred>
-    //   <e:eq><e:st n="S"/><m:empty/></e:eq>
-    // </e:logimpl>
-    /// <e:and>
-    ///   <e:pred name="EmptyTree"><code>root</code>, <e:st n="S"/></e:pred>
-    ///   <e:eq><e:st n="S"/><m:empty/></e:eq>
-    /// </e:and>
-
-    // <e:logimpl>
-    //   <e:eq><e:st n="S"/><m:empty/></e:eq>
-    //   <e:notin><code>value</code><e:st n="S"/></e:notin>
-    // </e:logimpl>
-    /// <e:and>
-    ///   <e:pred name="EmptyTree"><code>root</code>, <e:st n="S"/></e:pred>
-    ///   <e:notin><code>value</code><e:st n="S"/></e:notin>
     /// </e:and>
 
     o = false;
     // Assignment.
     /// <e:and>
-    ///   <e:pred name="EmptyTree"><code>root</code>, <e:st n="S"/></e:pred>
-    ///   <e:and>
-    ///     <e:notin><code>value</code><e:st n="S"/></e:notin>
-    ///     <e:eq><code>o</code><code>false</code></e:eq>
-    ///   </e:and>
+    ///   <e:pred name="Tree"><code>root</code><e:st n="S"/><m:neginf/><m:inf/></e:pred>
+    ///   <e:eq><code>root</code><m:null/></e:eq>
+    ///   <e:eq><code>o</code><code>false</code></e:eq>
     /// </e:and>
 
-    // ?
+    // <e:logimpl>
+    //   <e:and>
+    //     <e:pred name="Tree"><code>root</code><e:st n="S"/><m:neginf/><m:inf/></e:pred>
+    //     <e:eq><code>root</code><m:null/></e:eq>
+    //     <e:eq><code>o</code><code>false</code></e:eq>
+    //   </e:and>
+    //   <e:and>
+    //     <e:pred name="Tree"><code>root</code><e:st n="S"/><m:neginf/><m:inf/></e:pred>
+    //     <e:doubleimpl>
+    //       <code>o</code>
+    //       (<e:in><code>value</code><e:st n="S"/></e:in>)
+    //     </e:doubleimpl>
+    //   </e:and>
+    // </e:logimpl>.
     /// <e:and>
-    ///   <e:pred name="EmptyTree"><code>root</code>, <e:st n="S"/></e:pred>
-    ///   <e:doubleimpl>
-    ///     <code>o</code>
-    ///     (<e:in><code>value</code><e:st n="S"/></e:in>)
-    ///   </e:doubleimpl>
-    /// </e:and>
-
-    // Weakening lemma: <e:logimpl>
-    //   <e:pred name="EmptyTree"><code>root</code>, <e:st n="S"/></e:pred>
-    //   <e:pred name="Tree"><code>root</code>, <e:st n="S"/></e:pred>
-    // </e:logimpl>
-    /// <e:and>
-    ///   <e:pred name="Tree"><code>root</code>, <e:st n="S"/></e:pred>
+    ///   <e:pred name="Tree"><code>root</code><e:st n="S"/><m:neginf/><m:inf/></e:pred>
     ///   <e:doubleimpl>
     ///     <code>o</code>
     ///     (<e:in><code>value</code><e:st n="S"/></e:in>)
@@ -77,25 +140,25 @@ bool search(Node* root, in int value) {
   else {
     // Deny if-condition.
     /// <e:and>
-    ///   <e:pred name="Tree"><code>root</code>, <e:st n="S"/></e:pred>
+    ///   <e:pred name="Tree"><code>root</code><e:st n="S"/><m:neginf/><m:inf/></e:pred>
     ///   <e:noteq><code>root</code><m:null/></e:noteq>
     /// </e:and>
 
     // Lemma: <e:logimpl>
     //   <e:and>
-    //     <e:pred name="Tree"><code>root</code>, <e:st n="S"/></e:pred>
+    //     <e:pred name="Tree"><code>root</code><e:st n="S"/><m:neginf/><m:inf/></e:pred>
     //     <e:noteq><code>root</code><m:null/></e:noteq>
     //   </e:and>
-    //   <e:pred name="NonEmptyTree"><code>root</code>, <e:st n="S"/></e:pred>
+    //   <e:pred name="NonEmptyTree"><code>root</code><e:st n="S"/><m:neginf/><m:inf/></e:pred>
     // </e:logimpl>
-    /// <e:pred name="NonEmptyTree"><code>root</code>, <e:st n="S"/></e:pred>
+    /// <e:pred name="NonEmptyTree"><code>root</code><e:st n="S"/><m:neginf/><m:inf/></e:pred>
 
     bool eq = rootEq(root, value);
     // Specification for <code>rootEq</code>.
     /// <e:exists>
     ///   <e:vars><e:var n="v"/></e:vars>
     ///   <e:expr><e:and>
-    ///     <e:pred name="TopOfTree"><code>root</code>, <e:var n="v"/>, <e:st n="S"/></e:pred>
+    ///     <e:pred name="TopOfTree"><code>root</code><e:var n="v"/><e:st n="S"/><m:neginf/><m:inf/></e:pred>
     ///     <e:doubleimpl>
     ///       <code>eq</code>
     ///       <e:eq>

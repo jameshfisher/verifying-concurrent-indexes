@@ -1,4 +1,5 @@
-<section class='generated_listing' xmlns='http://www.w3.org/1999/xhtml' xmlns:xi='http://www.w3.org/2001/XInclude' xmlns:e='http://eegg.github.com/htmlx' xmlns:m='http://eegg.github.com/macro'><e:displaycode>module bst.remove.removeMax.recursive;
+<?xml version="1.0" encoding="UTF-8"?>
+<section class="generated_listing" xmlns="http://www.w3.org/1999/xhtml" ns:xi="http://www.w3.org/2001/XInclude" ns:e="http://eegg.github.com/htmlx" xmlns:ns="xmlns" ns:m="http://eegg.github.com/macro"><e:displaycode xmlns:e="http://eegg.github.com/htmlx">module bst.remove.removeMax.recursive;
 
 
 import bst.node;
@@ -11,14 +12,9 @@ RemoveMaxRet removeMax(Node* root) {
 
   int max;
   Node* newRoot;
-&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Function precondition.</div><e:pred name="NonEmptyTree"><code>root</code>, <e:st n="S"/></e:pred></div></div>
-
-<div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Open <e:pred name="NonEmptyTree"><code>root</code>, <e:st n="S"/></e:pred>.</div><e:exists><e:var n="v"/>
+ </e:displaycode><div class="section"><pre class="indent">  </pre><div class="AssertionParagraph"><div class="expl"><div>Function precondition.</div></div><div><e:pred name="NonEmptyTree" xmlns:e="http://eegg.github.com/htmlx"><code>root</code>, <e:st n="S"/></e:pred></div></div></div><div class="section"><pre class="indent">  </pre><div class="AssertionParagraph"><div class="expl"><div>Open <e:pred name="NonEmptyTree" xmlns:e="http://eegg.github.com/htmlx"><code>root</code>, <e:st n="S"/></e:pred>.</div></div><div><e:exists xmlns:e="http://eegg.github.com/htmlx"><e:var n="v"/>
   <e:pred name="TopOfTree"><code>root</code>, <e:var n="v"/>, <e:st n="S"/></e:pred>
-</e:exists></div></div>
-
-<div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Open <e:pred name="TopOfTree"><code>root</code>, <e:var n="v"/>, <e:st n="S"/></e:pred>.</div><e:exists>
+</e:exists></div></div></div><div class="section"><pre class="indent">  </pre><div class="AssertionParagraph"><div class="expl"><div>Open <e:pred name="TopOfTree" xmlns:e="http://eegg.github.com/htmlx"><code>root</code>, <e:var n="v"/>, <e:st n="S"/></e:pred>.</div></div><div><e:exists xmlns:e="http://eegg.github.com/htmlx">
   <e:vars><e:var n="v"/>, <e:var n="l"/>, <e:var n="r"/>, <e:st n="L"/>, <e:st n="R"/></e:vars>
   <e:expr><e:indent>
     <e:sep>
@@ -30,13 +26,11 @@ RemoveMaxRet removeMax(Node* root) {
             <e:pred name="Tree"><e:var n="l"/>, <e:st n="L"/></e:pred>
             <e:pred name="Tree"><e:var n="r"/>, <e:st n="R"/></e:pred>
       </e:sep>
-    </e:sep> ∧<br />
+    </e:sep> ∧<br/>
     <e:pred name="TCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
   </e:indent></e:expr>
-</e:exists></div></div>
-<e:displaycode>
-  auto r = root.c[1];&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'><m:existsElim/> on <e:var n="r"/> as <code>r</code>.</div><e:exists>
+</e:exists></div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">
+  auto r = root.c[1]; </e:displaycode><div class="section"><pre class="indent">  </pre><div class="AssertionParagraph"><div class="expl"><div><m:existsElim xmlns:m="http://eegg.github.com/macro"/> on <e:var n="r" xmlns:e="http://eegg.github.com/htmlx"/> as <code>r</code>.</div></div><div><e:exists xmlns:e="http://eegg.github.com/htmlx">
   <e:vars><e:var n="v"/>, <e:var n="l"/>, <e:st n="L"/>, <e:st n="R"/></e:vars>
   <e:expr><e:indent>
     <e:sep>
@@ -48,103 +42,91 @@ RemoveMaxRet removeMax(Node* root) {
             <e:pred name="Tree"><e:var n="l"/>, <e:st n="L"/></e:pred>
             <e:pred name="Tree"><code>r</code>, <e:st n="R"/></e:pred>
       </e:sep>
-    </e:sep> ∧<br />
+    </e:sep> ∧<br/>
     <e:pred name="TCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
   </e:indent></e:expr>
-</e:exists></div></div>
-<e:displaycode>
-  if (r == null) {&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Assert if-condition.  Substitution.</div><e:exists>
+</e:exists></div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">
+  if (r == null) { </e:displaycode><div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl"><div>Assert if-condition.  Substitution.</div></div><div><e:exists xmlns:e="http://eegg.github.com/htmlx">
   <e:vars><e:var n="v"/>, <e:var n="l"/>, <e:st n="L"/>, <e:st n="R"/></e:vars>
   <e:expr><e:indent>
     <e:sep>
       <e:fcell>
         <code>root</code>
-        <e:list><e:var n="v"/>,<e:var n="l"/>,<m:null/></e:list>
+        <e:list><e:var n="v"/>,<e:var n="l"/>,<m:null xmlns:m="http://eegg.github.com/macro"/></e:list>
       </e:fcell>
       <e:sep>
             <e:pred name="Tree"><e:var n="l"/>, <e:st n="L"/></e:pred>
-            <e:pred name="Tree"><m:null/>, <e:st n="R"/></e:pred>
+            <e:pred name="Tree"><m:null xmlns:m="http://eegg.github.com/macro"/>, <e:st n="R"/></e:pred>
       </e:sep>
-    </e:sep> ∧<br />
+    </e:sep> ∧<br/>
     <e:pred name="TCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
   </e:indent></e:expr>
-</e:exists></div></div>
-
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Lemma: <e:logimpl>
-  <e:pred name="Tree"><m:null/>, <e:st n="R"/></e:pred>
-  <e:pred name="EmptyTree"><m:null/>, <e:st n="R"/></e:pred>
-</e:logimpl></div><e:exists>
+</e:exists></div></div></div><div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl"><div>Lemma: <e:logimpl xmlns:e="http://eegg.github.com/htmlx">
+  <e:pred name="Tree"><m:null xmlns:m="http://eegg.github.com/macro"/>, <e:st n="R"/></e:pred>
+  <e:pred name="EmptyTree"><m:null xmlns:m="http://eegg.github.com/macro"/>, <e:st n="R"/></e:pred>
+</e:logimpl></div></div><div><e:exists xmlns:e="http://eegg.github.com/htmlx">
   <e:vars><e:var n="v"/>, <e:var n="l"/>, <e:st n="L"/>, <e:st n="R"/></e:vars>
   <e:expr><e:indent>
     <e:sep>
       <e:fcell>
         <code>root</code>
-        <e:list><e:var n="v"/>,<e:var n="l"/>,<m:null/></e:list>
+        <e:list><e:var n="v"/>,<e:var n="l"/>,<m:null xmlns:m="http://eegg.github.com/macro"/></e:list>
       </e:fcell>
       <e:sep>
             <e:pred name="Tree"><e:var n="l"/>, <e:st n="L"/></e:pred>
-            <e:pred name="EmptyTree"><m:null/>, <e:st n="R"/></e:pred>
+            <e:pred name="EmptyTree"><m:null xmlns:m="http://eegg.github.com/macro"/>, <e:st n="R"/></e:pred>
       </e:sep>
-    </e:sep> ∧<br />
+    </e:sep> ∧<br/>
     <e:pred name="TCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
   </e:indent></e:expr>
-</e:exists></div></div>
-
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Lemma: <e:logimpl>
+</e:exists></div></div></div><div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl"><div>Lemma: <e:logimpl xmlns:e="http://eegg.github.com/htmlx">
   <e:pred name="EmptyTree"><e:var n="r"/>, <e:st n="R"/></e:pred>
-  <e:eq><e:st n="R"/><m:empty/></e:eq>
-</e:logimpl>.  Substitution.  Discard <e:eq><e:st n="R"/><m:empty/></e:eq>.</div><e:exists>
+  <e:eq><e:st n="R"/><m:empty xmlns:m="http://eegg.github.com/macro"/></e:eq>
+</e:logimpl>.  Substitution.  Discard <e:eq xmlns:e="http://eegg.github.com/htmlx"><e:st n="R"/><m:empty xmlns:m="http://eegg.github.com/macro"/></e:eq>.</div></div><div><e:exists xmlns:e="http://eegg.github.com/htmlx">
   <e:vars><e:var n="v"/>, <e:var n="l"/>, <e:st n="L"/></e:vars>
   <e:expr><e:indent>
     <e:sep>
       <e:fcell>
         <code>root</code>
-        <e:list><e:var n="v"/>,<e:var n="l"/>,<m:null/></e:list>
+        <e:list><e:var n="v"/>,<e:var n="l"/>,<m:null xmlns:m="http://eegg.github.com/macro"/></e:list>
       </e:fcell>
       <e:sep>
             <e:pred name="Tree"><e:var n="l"/>, <e:st n="L"/></e:pred>
-            <e:pred name="EmptyTree"><m:null/>, <m:empty/></e:pred>
+            <e:pred name="EmptyTree"><m:null xmlns:m="http://eegg.github.com/macro"/>, <m:empty xmlns:m="http://eegg.github.com/macro"/></e:pred>
       </e:sep>
-    </e:sep> ∧<br />
-    <e:pred name="TCompose"><e:st n="L"/>, <e:var n="v"/>, <m:empty/>, <e:st n="S"/></e:pred>
+    </e:sep> ∧<br/>
+    <e:pred name="TCompose"><e:st n="L"/>, <e:var n="v"/>, <m:empty xmlns:m="http://eegg.github.com/macro"/>, <e:st n="S"/></e:pred>
   </e:indent></e:expr>
-</e:exists></div></div>
-
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Open <e:pred name="EmptyTree"><m:null/>, <m:empty/></e:pred>.  Discard <e:eq><m:null/><m:null/></e:eq>
-and <e:eq><m:empty/><m:empty/></e:eq>.</div><e:exists>
+</e:exists></div></div></div><div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl"><div>Open <e:pred name="EmptyTree" xmlns:e="http://eegg.github.com/htmlx"><m:null xmlns:m="http://eegg.github.com/macro"/>, <m:empty xmlns:m="http://eegg.github.com/macro"/></e:pred>.  Discard <e:eq xmlns:e="http://eegg.github.com/htmlx"><m:null xmlns:m="http://eegg.github.com/macro"/><m:null xmlns:m="http://eegg.github.com/macro"/></e:eq>
+and <e:eq xmlns:e="http://eegg.github.com/htmlx"><m:empty xmlns:m="http://eegg.github.com/macro"/><m:empty xmlns:m="http://eegg.github.com/macro"/></e:eq>.</div></div><div><e:exists xmlns:e="http://eegg.github.com/htmlx">
   <e:vars><e:var n="v"/>, <e:var n="l"/>, <e:st n="L"/></e:vars>
   <e:expr><e:indent>
     <e:sep>
       <e:fcell>
         <code>root</code>
-        <e:list><e:var n="v"/>,<e:var n="l"/>,<m:null/></e:list>
+        <e:list><e:var n="v"/>,<e:var n="l"/>,<m:null xmlns:m="http://eegg.github.com/macro"/></e:list>
       </e:fcell>
       <e:sep>
             <e:pred name="Tree"><e:var n="l"/>, <e:st n="L"/></e:pred>
-            <m:hemp/>
+            <m:hemp xmlns:m="http://eegg.github.com/macro"/>
       </e:sep>
-    </e:sep> ∧<br />
-    <e:pred name="TCompose"><e:st n="L"/>, <e:var n="v"/>, <m:empty/>, <e:st n="S"/></e:pred>
+    </e:sep> ∧<br/>
+    <e:pred name="TCompose"><e:st n="L"/>, <e:var n="v"/>, <m:empty xmlns:m="http://eegg.github.com/macro"/>, <e:st n="S"/></e:pred>
   </e:indent></e:expr>
-</e:exists></div></div>
-
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'><e:sep><e:predicate>X</e:predicate><m:hemp/></e:sep> = <e:predicate>X</e:predicate>.</div><e:exists>
+</e:exists></div></div></div><div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl"><div><e:sep xmlns:e="http://eegg.github.com/htmlx"><e:predicate>X</e:predicate><m:hemp xmlns:m="http://eegg.github.com/macro"/></e:sep> = <e:predicate xmlns:e="http://eegg.github.com/htmlx">X</e:predicate>.</div></div><div><e:exists xmlns:e="http://eegg.github.com/htmlx">
   <e:vars><e:var n="v"/>, <e:var n="l"/>, <e:st n="L"/></e:vars>
   <e:expr><e:indent>
     <e:sep>
       <e:fcell>
         <code>root</code>
-        <e:list><e:var n="v"/>,<e:var n="l"/>,<m:null/></e:list>
+        <e:list><e:var n="v"/>,<e:var n="l"/>,<m:null xmlns:m="http://eegg.github.com/macro"/></e:list>
       </e:fcell>
       <e:pred name="Tree"><e:var n="l"/>, <e:st n="L"/></e:pred>
-    </e:sep> ∧<br />
-    <e:pred name="TCompose"><e:st n="L"/>, <e:var n="v"/>, <m:empty/>, <e:st n="S"/></e:pred>
+    </e:sep> ∧<br/>
+    <e:pred name="TCompose"><e:st n="L"/>, <e:var n="v"/>, <m:empty xmlns:m="http://eegg.github.com/macro"/>, <e:st n="S"/></e:pred>
   </e:indent></e:expr>
-</e:exists></div></div>
-
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Lemma: <e:logimpl>
-  <e:pred name="TCompose"><e:st n="L"/>, <e:var n="v"/>, <m:empty/>, <e:st n="S"/></e:pred>
+</e:exists></div></div></div><div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl"><div>Lemma: <e:logimpl xmlns:e="http://eegg.github.com/htmlx">
+  <e:pred name="TCompose"><e:st n="L"/>, <e:var n="v"/>, <m:empty xmlns:m="http://eegg.github.com/macro"/>, <e:st n="S"/></e:pred>
   <e:and>
     <e:pred name="Max"><e:var n="v"/>, <e:st n="S"/></e:pred>
     <e:eq>
@@ -155,17 +137,17 @@ and <e:eq><m:empty/><m:empty/></e:eq>.</div><e:exists>
       </e:setminus>
     </e:eq>
   </e:and>
-</e:logimpl>.<br />
-Discard <e:pred name="TCompose"><e:st n="L"/>, <e:var n="v"/>, <m:empty/>, <e:st n="S"/></e:pred>.</div><e:exists>
+</e:logimpl>.<br/>
+Discard <e:pred name="TCompose" xmlns:e="http://eegg.github.com/htmlx"><e:st n="L"/>, <e:var n="v"/>, <m:empty xmlns:m="http://eegg.github.com/macro"/>, <e:st n="S"/></e:pred>.</div></div><div><e:exists xmlns:e="http://eegg.github.com/htmlx">
   <e:vars><e:var n="v"/>, <e:var n="l"/></e:vars>
   <e:expr><e:indent>
     <e:sep>
       <e:fcell>
         <code>root</code>
-        <e:list><e:var n="v"/>,<e:var n="l"/>,<m:null/></e:list>
+        <e:list><e:var n="v"/>,<e:var n="l"/>,<m:null xmlns:m="http://eegg.github.com/macro"/></e:list>
       </e:fcell>
       <e:pred name="Tree"><e:var n="l"/>, <e:st n="L"/></e:pred>
-    </e:sep> ∧<br />
+    </e:sep> ∧<br/>
     <e:pred name="Max"><e:var n="v"/>, <e:st n="S"/></e:pred> ∧
     <e:eq>
       <e:st n="L"/>
@@ -175,45 +157,37 @@ Discard <e:pred name="TCompose"><e:st n="L"/>, <e:var n="v"/>, <m:empty/>, <e:st
       </e:setminus>
     </e:eq>
   </e:indent></e:expr>
-</e:exists></div></div>
-
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Substitution.  Discard <e:eq>
+</e:exists></div></div></div><div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl"><div>Substitution.  Discard <e:eq xmlns:e="http://eegg.github.com/htmlx">
       <e:st n="L"/>
       <e:setminus>
         <e:st n="S"/>
         <e:set><e:var n="v"/></e:set>
       </e:setminus>
-    </e:eq>.</div><e:exists>
+    </e:eq>.</div></div><div><e:exists xmlns:e="http://eegg.github.com/htmlx">
   <e:vars><e:var n="v"/>, <e:var n="l"/></e:vars>
   <e:expr><e:indent>
     <e:sep>
       <e:fcell>
         <code>root</code>
-        <e:list><e:var n="v"/>,<e:var n="l"/>,<m:null/></e:list>
+        <e:list><e:var n="v"/>,<e:var n="l"/>,<m:null xmlns:m="http://eegg.github.com/macro"/></e:list>
       </e:fcell>
       <e:pred name="Tree"><e:var n="l"/>, <e:setminus><e:st n="S"/><e:set><e:var n="v"/></e:set></e:setminus></e:pred>
     </e:sep> ∧
     <e:pred name="Max"><e:var n="v"/>, <e:st n="S"/></e:pred>
   </e:indent></e:expr>
-</e:exists></div></div>
-<e:displaycode>
+</e:exists></div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">
     max = root.value;
-    newRoot = root.c[0];&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Assignment (twice).</div><e:sep>
+    newRoot = root.c[0]; </e:displaycode><div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl"><div>Assignment (twice).</div></div><div><e:sep xmlns:e="http://eegg.github.com/htmlx">
   <e:fcell>
     <code>root</code>
-    <e:list><code>max</code>,<code>newRoot</code>,<m:null/></e:list>
+    <e:list><code>max</code>,<code>newRoot</code>,<m:null xmlns:m="http://eegg.github.com/macro"/></e:list>
   </e:fcell>
   <e:pred name="Tree"><code>newRoot</code>, <e:setminus><e:st n="S"/><e:set><code>max</code></e:set></e:setminus></e:pred>
 </e:sep> ∧
-<e:pred name="Max"><code>max</code>, <e:st n="S"/></e:pred></div></div>
-<e:displaycode>
-    delete root;&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Free heap chunk.</div><e:pred name="Tree"><code>newRoot</code>, <e:setminus><e:st n="S"/><e:set><code>max</code></e:set></e:setminus></e:pred> ∧
-<e:pred name="Max"><code>max</code>, <e:st n="S"/></e:pred></div></div>
-<e:displaycode>  }
-  else {&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Deny if-condition.</div><e:exists>
+<e:pred name="Max" xmlns:e="http://eegg.github.com/htmlx"><code>max</code>, <e:st n="S"/></e:pred></div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">
+    delete root; </e:displaycode><div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl"><div>Free heap chunk.</div></div><div><e:pred name="Tree" xmlns:e="http://eegg.github.com/htmlx"><code>newRoot</code>, <e:setminus><e:st n="S"/><e:set><code>max</code></e:set></e:setminus></e:pred> ∧
+<e:pred name="Max" xmlns:e="http://eegg.github.com/htmlx"><code>max</code>, <e:st n="S"/></e:pred></div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">  }
+  else { </e:displaycode><div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl"><div>Deny if-condition.</div></div><div><e:exists xmlns:e="http://eegg.github.com/htmlx">
   <e:vars><e:var n="v"/>, <e:var n="l"/>, <e:st n="L"/>, <e:st n="R"/></e:vars>
   <e:expr><e:indent>
     <e:sep>
@@ -225,20 +199,18 @@ Discard <e:pred name="TCompose"><e:st n="L"/>, <e:var n="v"/>, <m:empty/>, <e:st
             <e:pred name="Tree"><e:var n="l"/>, <e:st n="L"/></e:pred>
             <e:pred name="Tree"><code>r</code>, <e:st n="R"/></e:pred>
       </e:sep>
-    </e:sep> ∧<br />
-    <e:pred name="TCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred> ∧<br />
-    <e:noteq><code>r</code><m:null/></e:noteq>
+    </e:sep> ∧<br/>
+    <e:pred name="TCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred> ∧<br/>
+    <e:noteq><code>r</code><m:null xmlns:m="http://eegg.github.com/macro"/></e:noteq>
   </e:indent></e:expr>
-</e:exists></div></div>
-
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Lemma: <e:logimpl>
+</e:exists></div></div></div><div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl"><div>Lemma: <e:logimpl xmlns:e="http://eegg.github.com/htmlx">
   <e:and>
     <e:pred name="Tree"><code>r</code>, <e:st n="R"/></e:pred>
-    <e:noteq><code>r</code><m:null/></e:noteq>
+    <e:noteq><code>r</code><m:null xmlns:m="http://eegg.github.com/macro"/></e:noteq>
   </e:and>
   <e:pred name="NonEmptyTree"><code>r</code>, <e:st n="R"/></e:pred>
 </e:logimpl>.
-Discard <e:noteq><e:var n="r"/><m:null/></e:noteq>.</div><e:exists>
+Discard <e:noteq xmlns:e="http://eegg.github.com/htmlx"><e:var n="r"/><m:null xmlns:m="http://eegg.github.com/macro"/></e:noteq>.</div></div><div><e:exists xmlns:e="http://eegg.github.com/htmlx">
   <e:vars><e:var n="v"/>, <e:var n="l"/>, <e:st n="L"/>, <e:st n="R"/></e:vars>
   <e:expr><e:indent>
     <e:sep>
@@ -250,13 +222,11 @@ Discard <e:noteq><e:var n="r"/><m:null/></e:noteq>.</div><e:exists>
         <e:pred name="Tree"><e:var n="l"/>, <e:st n="L"/></e:pred>
         <e:pred name="NonEmptyTree"><code>r</code>, <e:st n="R"/></e:pred>
       </e:sep>
-    </e:sep> ∧<br />
+    </e:sep> ∧<br/>
     <e:pred name="TCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
   </e:indent></e:expr>
-</e:exists></div></div>
-<e:displaycode>
-    auto d = removeMax(r); auto rightMax = d.max; auto rightRoot = d.root;&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Specification for <code>removeMax</code>.</div><e:exists>
+</e:exists></div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">
+    auto d = removeMax(r); auto rightMax = d.max; auto rightRoot = d.root; </e:displaycode><div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl"><div>Specification for <code>removeMax</code>.</div></div><div><e:exists xmlns:e="http://eegg.github.com/htmlx">
   <e:vars><e:var n="v"/>, <e:var n="l"/>, <e:st n="L"/>, <e:st n="R"/></e:vars>
   <e:expr><e:indent>
     <e:sep>
@@ -268,14 +238,12 @@ Discard <e:noteq><e:var n="r"/><m:null/></e:noteq>.</div><e:exists>
         <e:pred name="Tree"><e:var n="l"/>, <e:st n="L"/></e:pred>
         <e:pred name="Tree"><code>rightRoot</code>, <e:setminus><e:st n="R"/><e:set><code>rightMax</code></e:set></e:setminus></e:pred>
       </e:sep>
-    </e:sep> ∧<br />
+    </e:sep> ∧<br/>
     <e:pred name="TCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred> ∧
     <e:pred name="Max"><code>rightMax</code>, <e:st n="R"/></e:pred>
   </e:indent></e:expr>
-</e:exists></div></div>
-<e:displaycode>
-    root.c[1] = rightRoot;&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Assignment.</div><e:exists>
+</e:exists></div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">
+    root.c[1] = rightRoot; </e:displaycode><div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl"><div>Assignment.</div></div><div><e:exists xmlns:e="http://eegg.github.com/htmlx">
   <e:vars><e:var n="v"/>, <e:var n="l"/>, <e:st n="L"/>, <e:st n="R"/></e:vars>
   <e:expr><e:indent>
     <e:sep>
@@ -287,13 +255,11 @@ Discard <e:noteq><e:var n="r"/><m:null/></e:noteq>.</div><e:exists>
             <e:pred name="Tree"><e:var n="l"/>, <e:st n="L"/></e:pred>
             <e:pred name="Tree"><code>rightRoot</code>, <e:setminus><e:st n="R"/><e:set><code>rightMax</code></e:set></e:setminus></e:pred>
       </e:sep>
-    </e:sep> ∧<br />
+    </e:sep> ∧<br/>
     <e:pred name="TCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred> ∧
     <e:pred name="Max"><code>rightMax</code>, <e:st n="R"/></e:pred>
   </e:indent></e:expr>
-</e:exists></div></div>
-
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'><m:existsIntro/> on <code>rightRoot</code> as <e:var n="r"/>.</div><e:exists>
+</e:exists></div></div></div><div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl"><div><m:existsIntro xmlns:m="http://eegg.github.com/macro"/> on <code>rightRoot</code> as <e:var n="r" xmlns:e="http://eegg.github.com/htmlx"/>.</div></div><div><e:exists xmlns:e="http://eegg.github.com/htmlx">
   <e:vars><e:var n="v"/>, <e:var n="l"/>, <e:var n="r"/>, <e:st n="L"/>, <e:st n="R"/></e:vars>
   <e:expr><e:indent>
     <e:sep>
@@ -305,13 +271,11 @@ Discard <e:noteq><e:var n="r"/><m:null/></e:noteq>.</div><e:exists>
             <e:pred name="Tree"><e:var n="l"/>, <e:st n="L"/></e:pred>
             <e:pred name="Tree"><e:var n="r"/>, <e:setminus><e:st n="R"/><e:set><code>rightMax</code></e:set></e:setminus></e:pred>
       </e:sep>
-    </e:sep> ∧<br />
+    </e:sep> ∧<br/>
     <e:pred name="TCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred> ∧
     <e:pred name="Max"><code>rightMax</code>, <e:st n="R"/></e:pred>
   </e:indent></e:expr>
-</e:exists></div></div>
-
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Lemma: <e:logimpl>
+</e:exists></div></div></div><div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl"><div>Lemma: <e:logimpl xmlns:e="http://eegg.github.com/htmlx">
   <e:and>
     <e:pred name="TCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred>
     <e:pred name="Max"><e:var n="r"/>, <e:st n="R"/></e:pred>
@@ -320,8 +284,8 @@ Discard <e:noteq><e:var n="r"/><m:null/></e:noteq>.</div><e:exists>
     <e:pred name="TCompose"><e:st n="L"/>, <e:var n="v"/>, <e:setminus><e:st n="R"/><e:set><e:var n="r"/></e:set></e:setminus>, <e:setminus><e:st n="S"/><e:set><e:var n="r"/></e:set></e:setminus></e:pred>
     <e:pred name="Max"><e:var n="r"/>, <e:st n="S"/></e:pred>
   </e:and>
-</e:logimpl>.<br />
-Discard <e:pred name="TCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred> and <e:pred name="Max"><code>rightMax</code>, <e:st n="R"/></e:pred>.</div><e:exists>
+</e:logimpl>.<br/>
+Discard <e:pred name="TCompose" xmlns:e="http://eegg.github.com/htmlx"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:st n="S"/></e:pred> and <e:pred name="Max" xmlns:e="http://eegg.github.com/htmlx"><code>rightMax</code>, <e:st n="R"/></e:pred>.</div></div><div><e:exists xmlns:e="http://eegg.github.com/htmlx">
   <e:vars><e:var n="v"/>, <e:var n="l"/>, <e:var n="r"/>, <e:st n="L"/>, <e:st n="R"/></e:vars>
   <e:expr><e:indent>
     <e:sep>
@@ -333,13 +297,11 @@ Discard <e:pred name="TCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e
             <e:pred name="Tree"><e:var n="l"/>, <e:st n="L"/></e:pred>
             <e:pred name="Tree"><e:var n="r"/>, <e:setminus><e:st n="R"/><e:set><code>rightMax</code></e:set></e:setminus></e:pred>
       </e:sep>
-    </e:sep> ∧<br />
+    </e:sep> ∧<br/>
     <e:pred name="TCompose"><e:st n="L"/>, <e:var n="v"/>, <e:setminus><e:st n="R"/><e:set><code>rightMax</code></e:set></e:setminus>, <e:setminus><e:st n="S"/><e:set><code>rightMax</code></e:set></e:setminus></e:pred> ∧
     <e:pred name="Max"><code>rightMax</code>, <e:st n="S"/></e:pred>
   </e:indent></e:expr>
-</e:exists></div></div>
-
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'><m:existsIntro/> on <e:setminus><e:st n="R"/><e:set><code>rightMax</code></e:set></e:setminus> as <e:st n="R"/>.</div><e:exists>
+</e:exists></div></div></div><div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl"><div><m:existsIntro xmlns:m="http://eegg.github.com/macro"/> on <e:setminus xmlns:e="http://eegg.github.com/htmlx"><e:st n="R"/><e:set><code>rightMax</code></e:set></e:setminus> as <e:st n="R" xmlns:e="http://eegg.github.com/htmlx"/>.</div></div><div><e:exists xmlns:e="http://eegg.github.com/htmlx">
   <e:vars><e:var n="v"/>, <e:var n="l"/>, <e:var n="r"/>, <e:st n="L"/>, <e:st n="R"/></e:vars>
   <e:expr><e:indent>
     <e:sep>
@@ -351,35 +313,24 @@ Discard <e:pred name="TCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e
         <e:pred name="Tree"><e:var n="l"/>, <e:st n="L"/></e:pred>
         <e:pred name="Tree"><e:var n="r"/>, <e:st n="R"/></e:pred>
       </e:sep>
-    </e:sep> ∧<br />
+    </e:sep> ∧<br/>
     <e:pred name="TCompose"><e:st n="L"/>, <e:var n="v"/>, <e:st n="R"/>, <e:setminus><e:st n="S"/><e:set><code>rightMax</code></e:set></e:setminus></e:pred> ∧
     <e:pred name="Max"><code>rightMax</code>, <e:st n="S"/></e:pred>
   </e:indent></e:expr>
-</e:exists></div></div>
-
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Close <e:pred name="TopOfTree"><code>root</code>, <e:var n="v"/>, <e:setminus><e:st n="S"/><e:set><code>rightMax</code></e:set></e:setminus></e:pred>.</div><e:exists>
+</e:exists></div></div></div><div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl"><div>Close <e:pred name="TopOfTree" xmlns:e="http://eegg.github.com/htmlx"><code>root</code>, <e:var n="v"/>, <e:setminus><e:st n="S"/><e:set><code>rightMax</code></e:set></e:setminus></e:pred>.</div></div><div><e:exists xmlns:e="http://eegg.github.com/htmlx">
   <e:vars><e:var n="v"/></e:vars>
   <e:expr>
     <e:pred name="TopOfTree"><code>root</code>, <e:var n="v"/>, <e:setminus><e:st n="S"/><e:set><code>rightMax</code></e:set></e:setminus></e:pred> ∧
     <e:pred name="Max"><code>rightMax</code>, <e:st n="S"/></e:pred>
   </e:expr>
-</e:exists></div></div>
-
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Close <e:pred name="NonEmptyTree"><code>root</code>, <e:setminus><e:st n="S"/><e:set><code>rightMax</code></e:set></e:setminus></e:pred>.</div><e:pred name="NonEmptyTree"><code>root</code>, <e:setminus><e:st n="S"/><e:set><code>rightMax</code></e:set></e:setminus></e:pred> ∧
-<e:pred name="Max"><code>rightMax</code>, <e:st n="S"/></e:pred></div></div>
-
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Weaken</div><e:pred name="Tree"><code>root</code>, <e:setminus><e:st n="S"/><e:set><code>rightMax</code></e:set></e:setminus></e:pred> ∧
-<e:pred name="Max"><code>rightMax</code>, <e:st n="S"/></e:pred></div></div>
-<e:displaycode>
+</e:exists></div></div></div><div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl"><div>Close <e:pred name="NonEmptyTree" xmlns:e="http://eegg.github.com/htmlx"><code>root</code>, <e:setminus><e:st n="S"/><e:set><code>rightMax</code></e:set></e:setminus></e:pred>.</div></div><div><e:pred name="NonEmptyTree" xmlns:e="http://eegg.github.com/htmlx"><code>root</code>, <e:setminus><e:st n="S"/><e:set><code>rightMax</code></e:set></e:setminus></e:pred> ∧
+<e:pred name="Max" xmlns:e="http://eegg.github.com/htmlx"><code>rightMax</code>, <e:st n="S"/></e:pred></div></div></div><div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl"><div>Weaken</div></div><div><e:pred name="Tree" xmlns:e="http://eegg.github.com/htmlx"><code>root</code>, <e:setminus><e:st n="S"/><e:set><code>rightMax</code></e:set></e:setminus></e:pred> ∧
+<e:pred name="Max" xmlns:e="http://eegg.github.com/htmlx"><code>rightMax</code>, <e:st n="S"/></e:pred></div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">
     max = rightMax;
-    newRoot = root;&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Assignment.</div><e:pred name="Tree"><code>newRoot</code>, <e:setminus><e:st n="S"/><e:set><code>max</code></e:set></e:setminus></e:pred> ∧
-<e:pred name="Max"><code>max</code>, <e:st n="S"/></e:pred></div></div>
-<e:displaycode>  }
-&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>If-rule.</div><e:pred name="Tree"><code>newRoot</code>, <e:setminus><e:st n="S"/><e:set><code>max</code></e:set></e:setminus></e:pred> ∧
-<e:pred name="Max"><code>max</code>, <e:st n="S"/></e:pred></div></div>
-<e:displaycode>
+    newRoot = root; </e:displaycode><div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div class="expl"><div>Assignment.</div></div><div><e:pred name="Tree" xmlns:e="http://eegg.github.com/htmlx"><code>newRoot</code>, <e:setminus><e:st n="S"/><e:set><code>max</code></e:set></e:setminus></e:pred> ∧
+<e:pred name="Max" xmlns:e="http://eegg.github.com/htmlx"><code>max</code>, <e:st n="S"/></e:pred></div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">  }
+ </e:displaycode><div class="section"><pre class="indent">  </pre><div class="AssertionParagraph"><div class="expl"><div>If-rule.</div></div><div><e:pred name="Tree" xmlns:e="http://eegg.github.com/htmlx"><code>newRoot</code>, <e:setminus><e:st n="S"/><e:set><code>max</code></e:set></e:setminus></e:pred> ∧
+<e:pred name="Max" xmlns:e="http://eegg.github.com/htmlx"><code>max</code>, <e:st n="S"/></e:pred></div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">
   RemoveMaxRet o = {max: max, root: newRoot};
   return o;
-}&#160;</e:displaycode></section>
+} </e:displaycode></section>

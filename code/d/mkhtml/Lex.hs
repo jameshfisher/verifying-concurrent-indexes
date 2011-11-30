@@ -1,22 +1,24 @@
+{-# LANGUAGE OverloadedStrings #-}
+
+module Lex (Line(..), tokens) where
+
 -- not really a lexer, just splits into ws, code, and comments
 
-module Lex where
+import Prelude hiding (span, lines)
+import Data.Text (Text, span, lines, breakOn)
 
 data Line = Line {
-  indent :: String,
-  code :: String,
-  comment :: String
+  lineIndent  :: !Text,
+  lineCode    :: !Text,
+  lineComment :: !Text
 }
 
-ws c = c == ' '
+splitLine :: Text -> Line
+splitLine t = Line indent code comment
+  where (indent, codeAndComment) = span ws t
+        (code, comment) = breakOn "//" codeAndComment
 
-splitLine s = Line ind code comment
-  where (ind, codeAndComment) = span ws s
-        (code, comment) = splitComment codeAndComment
+        ws c = c == ' '
 
-splitComment "" = ("", "")
-splitComment l@('/':'/':cs) = ("", l)
-splitComment (c:cs) = (c:code, comment)
-  where (code, comment) = splitComment cs
-
+tokens :: Text -> [Line]
 tokens = map splitLine . lines

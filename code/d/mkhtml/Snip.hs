@@ -1,27 +1,37 @@
-module Snip (snip, startsWith, endsWith) where
+{-# LANGUAGE OverloadedStrings #-}
+
+module Snip (snip) where
+
+import Safe (tailSafe)
+import Data.Text (Text, isPrefixOf, isSuffixOf)
 
 import LineTypes
 
-startsWith :: Eq a => [a] -> [a] -> Bool
-startsWith [] _ = True
-startsWith (w:ws) (s:ss) = (w == s) && startsWith ws ss
-startsWith _ _ = False
+prefix :: Text -> TypedLine -> Bool
+prefix pref line = case line of
+  (CommentLine _ cmt) -> isPrefixOf pref cmt
+  _ -> False
 
-endsWith :: Eq a => [a] -> [a] -> Bool
-endsWith w s = startsWith (reverse w) (reverse s)
+snipStart :: TypedLine -> Bool
+snipStart = prefix "[snip:start]"
+snipEnd :: TypedLine -> Bool
+snipEnd = prefix "[snip:end]"
 
-snipBlocks :: [TypedLine] -> [TypedLine]
-snipBlocks ((CommentLine _ "[snip:start]"):ls) = notEnd ls
-     where notEnd ((CommentLine _ "[snip:end]"):ls) = ls
-           notEnd (l:ls) = notEnd ls
-           notEnd [] = []
-snipBlocks (l:ls) = l:(snip ls)
-snipBlocks [] = []
+span' :: (a -> Bool) -> [a] -> ([a], [a])
+span' p xs = let (t, f) = span p xs in (t, tailSafe f)
 
-dropIf f = filter (not . f)
+snipIn :: [TypedLine] -> [TypedLine]
+snipIn [] = []
+snipIn ls = let (keep, rest) = span' (not . snipStart) ls in keep ++ (snipOut rest)
 
-snipLines = dropIf snipLine where
-          snipLine (CodeLine s) = endsWith "// [snip]" s
-          snipLine _ = False
+snipOut :: [TypedLine] -> [TypedLine]
+snipOut [] = []
+snipOut    ls = let (_, rest) = span' (not . snipEnd)   ls in         (snipIn rest)
 
-snip = snipLines . snipBlocks
+snipLines :: [TypedLine] -> [TypedLine]
+snipLines = filter (not . isSnipLine) where
+  isSnipLine (CommentLine _ cmt) =  isSuffixOf "// [snip]" cmt
+  isSnipLine _ = False
+
+snip :: [TypedLine] -> [TypedLine]
+snip = snipLines . snipIn

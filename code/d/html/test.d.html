@@ -1,4 +1,5 @@
-<section class='generated_listing' xmlns='http://www.w3.org/1999/xhtml' xmlns:xi='http://www.w3.org/2001/XInclude' xmlns:e='http://eegg.github.com/htmlx' xmlns:m='http://eegg.github.com/macro'><e:displaycode>module test;
+<?xml version="1.0" encoding="UTF-8"?>
+<section class="generated_listing" xmlns="http://www.w3.org/1999/xhtml" ns:xi="http://www.w3.org/2001/XInclude" ns:e="http://eegg.github.com/htmlx" xmlns:ns="xmlns" ns:m="http://eegg.github.com/macro"><e:displaycode xmlns:e="http://eegg.github.com/htmlx">module test;
 
 import index;
 
@@ -22,10 +23,8 @@ bool testAgainstReference(ImplementationIndex)
 
     if (noisy) writeln("----");
 
-&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='CommentParagraph'>DO AN INSERT OR REMOVE
-----------------------</div></div>
-<e:displaycode>
+ </e:displaycode><div class="section"><pre class="indent">    </pre><div class="CommentParagraph"><div>DO AN INSERT OR REMOVE
+----------------------</div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">
     auto value = std.random.uniform(0, num_values);
 
 
@@ -49,19 +48,15 @@ bool testAgainstReference(ImplementationIndex)
       writeln("Implementation:");   print(implementation);
     }
 
-&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='CommentParagraph'>VALIDATE THE DATA STRUCTURE FOR INTERNAL CONSISTENCY
-----------------------------------------------------</div></div>
-<e:displaycode>
+ </e:displaycode><div class="section"><pre class="indent">    </pre><div class="CommentParagraph"><div>VALIDATE THE DATA STRUCTURE FOR INTERNAL CONSISTENCY
+----------------------------------------------------</div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">
     if (!validate(implementation)) {
       writeln("Implementation failed validation.  Stop.");
       return false;
     }
 
-&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='CommentParagraph'>SEE IF THE CONTENTS ARE THE SAME
---------------------------------</div></div>
-<e:displaycode>
+ </e:displaycode><div class="section"><pre class="indent">    </pre><div class="CommentParagraph"><div>SEE IF THE CONTENTS ARE THE SAME
+--------------------------------</div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">
     if (referenceContents.length != implementationContents.length) {
       writefln("Number of elements differ.  Reference: %s, implementation: %s.  Stop.", referenceContents.length, implementationContents.length);
       return false;
@@ -75,10 +70,8 @@ bool testAgainstReference(ImplementationIndex)
       }
     }
 
-&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='CommentParagraph'>TEST A SEARCH
--------------</div></div>
-<e:displaycode>
+ </e:displaycode><div class="section"><pre class="indent">    </pre><div class="CommentParagraph"><div>TEST A SEARCH
+-------------</div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">
     int test_search = std.random.uniform(0, num_values);
 
     if (noisy) {
@@ -101,4 +94,4 @@ bool testAgainstReference(ImplementationIndex)
 
   writeln("Tests passed.");
   return true;
-}&#160;</e:displaycode></section>
+} </e:displaycode></section>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section class="generated_listing" xmlns="http://www.w3.org/1999/xhtml" ns:xi="http://www.w3.org/2001/XInclude" ns:e="http://eegg.github.com/htmlx" xmlns:ns="xmlns" ns:m="http://eegg.github.com/macro"><e:displaycode xmlns:e="http://eegg.github.com/htmlx">module rb.rotate;
+
+import rb.node;
+
+Node* single_plain(Node* oldRoot, int dir) {
+  Node * newRoot = oldRoot.c[!dir];
+  oldRoot.c[!dir] = newRoot.c[dir];
+  newRoot.c[dir] = oldRoot;
+  return newRoot;
+}
+
+Node * single(Node * oldRoot, int dir) {
+ </e:displaycode><div class="section"><pre class="indent">  </pre><div class="CommentParagraph"><div>3T(n, S, bh, dir)</div></div></div><div class="section"><pre class="indent">  </pre><div class="CommentParagraph"><div>       oldRoot, 3T(H, dir)
+        /           \
+       /             \
+      /         newRoot, RT(dir, H-1)
+     /               /       \
+    /               /         \
+sibling,       gc1,          gc2, 
+BT(H-1)        BT(H-1)       BT(H-1)</div></div></div><div class="section"><pre class="indent">  </pre><div class="CommentParagraph"><div>Open predicates:
+
+         oldRoot, B
+        /           \
+       /             \
+      /             newRoot, R
+     /               /       \
+    /               /         \
+sibling,       gc1,          gc2, 
+BT(H-1)        BT(H-1)       BT(H-1)</div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">  Node* newRoot = single_plain(oldRoot, dir);
+
+  newRoot.black = true;
+  newRoot.c[dir].black = false;
+ </e:displaycode><div class="section"><pre class="indent">  </pre><div class="CommentParagraph"><div>           newRoot, B
+            /          \
+           /            \
+    oldRoot, R           \
+     /      \             \
+    /        \             \
+sibling,       gc1,          gc2, 
+BT(H-1)        BT(H-1)       BT(H-1)</div></div></div><div class="section"><pre class="indent">  </pre><div class="CommentParagraph"><div>Close predicates:
+
+           newRoot, 3T(H, !dir)
+            /          \
+           /            \
+  oldRoot, RT(H-1)       \
+     /      \             \
+    /        \             \
+sibling,       gc1,          gc2, 
+BT(H-1)        BT(H-1)       BT(H-1)</div></div></div><div class="section"><pre class="indent">  </pre><div class="CommentParagraph"><div>3T(n, S, bh, !dir)</div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">
+  return newRoot;
+}
+
+void single_ptr(Node ** oldRoot, int dir) {
+  *oldRoot = single(*oldRoot, dir);
+}
+
+
+Node * dbl(Node * oldRoot, int dir) {
+ </e:displaycode><div class="section"><pre class="indent">  </pre><div class="CommentParagraph"><div>n↦v,c[0],c[1],?  ∗  BT(c[dir], L, h-1)  ∗  RVT(c[!dir], R, h-1, !dir)  &amp;&amp; Compose(L, v, R, S)</div></div></div><div class="section"><pre class="indent">  </pre><div class="CommentParagraph"><div>rotate_double can be used to fix a red violation.
+An analogy here is rearranging the elements of a four-node:
+
+     |                             |
+     a---b---c     ==&gt;         a---b---c
+   /   |   |   \             /   |   |   \</div></div></div><div class="section"><pre class="indent">  </pre><div class="CommentParagraph"><div>         &lt;=====dir======
+   
+            oldRoot, R/B
+          /           \
+         /             \
+        /          child, RVT(!dir, h-1)
+       /               /               \
+      /               /                 \
+     /          newRoot, RT(h-1)         \
+    /           /             \           \
+   /           /               \           \
+ sib,        ggc1,           ggc2,         gc2,
+ B(h-1)      BT(h-1)         BT(h-1)       BT(h-1)</div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">
+  oldRoot.c[!dir] = single(oldRoot.c[!dir], !dir);
+  Node * newRoot = single(oldRoot, dir);
+ </e:displaycode><div class="section"><pre class="indent">  </pre><div class="CommentParagraph"><div>4T(n, S, h)</div></div></div><div class="section"><pre class="indent">  </pre><div class="CommentParagraph"><div>             ---newRoot, 4T(h)---
+            /                    \
+           /                      \
+    oldRoot, RT(h-1)           child, RT(h-1)
+    /         \                 /         \
+   /           \               /           \
+ sib,        ggc1,           ggc2,         gc2,
+ B(h-1)      BT(h-1)         BT(h-1)       BT(h-1)</div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">
+  return newRoot;
+}
+
+void dbl_ptr(Node ** oldRoot, int dir) {
+  *oldRoot = dbl(*oldRoot, dir);
+}
+ </e:displaycode></section>

@@ -1,4 +1,5 @@
-<section class='generated_listing' xmlns='http://www.w3.org/1999/xhtml' xmlns:xi='http://www.w3.org/2001/XInclude' xmlns:e='http://eegg.github.com/htmlx' xmlns:m='http://eegg.github.com/macro'><e:displaycode>module rb.insert.recursive;
+<?xml version="1.0" encoding="UTF-8"?>
+<section class="generated_listing" xmlns="http://www.w3.org/1999/xhtml" ns:xi="http://www.w3.org/2001/XInclude" ns:e="http://eegg.github.com/htmlx" xmlns:ns="xmlns" ns:m="http://eegg.github.com/macro"><e:displaycode xmlns:e="http://eegg.github.com/htmlx">module rb.insert.recursive;
 
 import rb.node;
 import rb.rotate;
@@ -7,20 +8,12 @@ import std.stdio;
 
 Node* insert_aux(Node* root, int value) {
 
-  Node* o;&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;</pre><div class='CommentParagraph'>We are going to return o.</div></div>
-<e:displaycode>
-  if (root == null) {&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='CommentParagraph'>insertion into the empty set is just a red node.</div></div>
-<e:displaycode>    o = new Node(value);
+  Node* o; </e:displaycode><div class="section"><pre class="indent">  </pre><div class="CommentParagraph"><div>We are going to return o.</div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">
+  if (root == null) { </e:displaycode><div class="section"><pre class="indent">    </pre><div class="CommentParagraph"><div>insertion into the empty set is just a red node.</div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">    o = new Node(value);
   }
-  else if (value == root.value) {&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='CommentParagraph'>the tree already contains the value. Already a valid tree. No adjustment required.</div></div>
-<e:displaycode>    o = root;
+  else if (value == root.value) { </e:displaycode><div class="section"><pre class="indent">    </pre><div class="CommentParagraph"><div>the tree already contains the value. Already a valid tree. No adjustment required.</div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">    o = root;
   }
-  else {&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='CommentParagraph'>We have to insert value into a subtree.</div></div>
-<e:displaycode>
+  else { </e:displaycode><div class="section"><pre class="indent">    </pre><div class="CommentParagraph"><div>We have to insert value into a subtree.</div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">
     int dir = root.value &lt; value;  // We need to insert in that subtree.
 
     Node** into = &amp;root.c[dir];
@@ -32,60 +25,39 @@ Node* insert_aux(Node* root, int value) {
     if (red_before &amp;&amp; !red_after) {
       writeln("Red -&gt; Black!");
     }
-&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='CommentParagraph'>Now, insert may have passed up a red node.
-If we have room, make a home for it here; otherwise pass up again.</div></div>
-<e:displaycode>
-    if (red(*into)) {&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='CommentParagraph'>A red node was passed up.  Make room, or pass it up again.</div></div>
-<e:displaycode>
+ </e:displaycode><div class="section"><pre class="indent">    </pre><div class="CommentParagraph"><div>Now, insert may have passed up a red node.
+If we have room, make a home for it here; otherwise pass up again.</div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">
+    if (red(*into)) { </e:displaycode><div class="section"><pre class="indent">      </pre><div class="CommentParagraph"><div>A red node was passed up.  Make room, or pass it up again.</div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">
       Node ** sibling = &amp;root.c[!dir];
 
-      if (red(*sibling)) {&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='CommentParagraph'>The sibling is red at height N-1.  Implies root is black, at height N.</div></div>
-<e:displaycode>
+      if (red(*sibling)) { </e:displaycode><div class="section"><pre class="indent">        </pre><div class="CommentParagraph"><div>The sibling is red at height N-1.  Implies root is black, at height N.</div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">
         (*sibling).black = true;  // Turn sibling into black tree (height N).
         (*into).black = true;     // Set passed-up node black.  If it passed by an RV'd tree, that's fixed by it.  Is now BT(N).
         root.black = false;       // Then turn `root` into red tree at height N.  We've pushed the red up the tree.
       }
-      else {&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='CommentParagraph'>The sibling is black.  root maybe red.</div></div>
-<e:displaycode>        Node** far_child = &amp;(*into).c[dir];
-        if (red(*far_child)) {&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='CommentParagraph'>into is red, far child is red.  RV.  sibling is black.</div></div>
-
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='CommentParagraph'>        root, R/B  <== was previously either BT(N) or RT(N-1)
+      else { </e:displaycode><div class="section"><pre class="indent">        </pre><div class="CommentParagraph"><div>The sibling is black.  root maybe red.</div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">        Node** far_child = &amp;(*into).c[dir];
+        if (red(*far_child)) { </e:displaycode><div class="section"><pre class="indent">          </pre><div class="CommentParagraph"><div>into is red, far child is red.  RV.  sibling is black.</div></div></div><div class="section"><pre class="indent">          </pre><div class="CommentParagraph"><div>        root, R/B  &lt;== was previously either BT(N) or RT(N-1)
       /           \
      /             \
 sibling, B(N-1)   into, RVT(dir, N-1)
                    /       \
                   /         \
-    near child, B(TN-1)    far child, R(N-1)</div></div>
-<e:displaycode>
+    near child, B(TN-1)    far child, R(N-1)</div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">
           assert(!red(root));   // WHY???
 
           rb.rotate.single_ptr(&amp;root, !dir);
-&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='CommentParagraph'>           --into, B(N)--
+ </e:displaycode><div class="section"><pre class="indent">          </pre><div class="CommentParagraph"><div>           --into, B(N)--
           /              \
          /                \
        root, R(N-1)    far child, R(N-1)
       /           \
      /             \
- sibling, B(N-1)   near child, BT(N-1)</div></div>
-
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='CommentParagraph'>Rebalancing stops here.</div></div>
-<e:displaycode>        }
-        else {&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='CommentParagraph'>far child is black.</div></div>
-<e:displaycode>          Node** near_child = &amp;(*into).c[!dir];
+ sibling, B(N-1)   near child, BT(N-1)</div></div></div><div class="section"><pre class="indent">          </pre><div class="CommentParagraph"><div>Rebalancing stops here.</div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">        }
+        else { </e:displaycode><div class="section"><pre class="indent">          </pre><div class="CommentParagraph"><div>far child is black.</div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">          Node** near_child = &amp;(*into).c[!dir];
           if (red(*near_child)) {
 
             assert(!red(root));   // WHY???
-&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='CommentParagraph'>near child is red.</div></div>
-
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='CommentParagraph'>        root, R/B  <== was previously either BT(N) or RT(N-1)
+ </e:displaycode><div class="section"><pre class="indent">            </pre><div class="CommentParagraph"><div>near child is red.</div></div></div><div class="section"><pre class="indent">            </pre><div class="CommentParagraph"><div>        root, R/B  &lt;== was previously either BT(N) or RT(N-1)
       /           \
      /             \
 sibling, B(N-1)   into, RVT(!dir, N-1)
@@ -94,39 +66,26 @@ sibling, B(N-1)   into, RVT(!dir, N-1)
        near_child, RT(N-1)     far child, BT(N-1)
          /             \
         /               \
- near_gc, BT(N-1)  far_gc, BT(N-1)</div></div>
-<e:displaycode>
+ near_gc, BT(N-1)  far_gc, BT(N-1)</div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">
             rb.rotate.dbl_ptr(&amp;root, !dir);
-&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='CommentParagraph'>           near child, BT(N)
+ </e:displaycode><div class="section"><pre class="indent">            </pre><div class="CommentParagraph"><div>           near child, BT(N)
           /                \
          /                  \
     root, RT(N-1)        into, RT(N-1)
    /         \            /       \
 sibling,   near gc,    far gc,     far child,
-BT(N-1)    BT(N-1)     BT(N-1)     BT(N-1)</div></div>
-
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='CommentParagraph'>Rebalancing stops here.</div></div>
-<e:displaycode>          }
-          else {&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='CommentParagraph'>near child is black.</div></div>
-
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='CommentParagraph'>        root, RVT(dir, N-1) or BT(N)
+BT(N-1)    BT(N-1)     BT(N-1)     BT(N-1)</div></div></div><div class="section"><pre class="indent">            </pre><div class="CommentParagraph"><div>Rebalancing stops here.</div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">          }
+          else { </e:displaycode><div class="section"><pre class="indent">            </pre><div class="CommentParagraph"><div>near child is black.</div></div></div><div class="section"><pre class="indent">            </pre><div class="CommentParagraph"><div>        root, RVT(dir, N-1) or BT(N)
       /           \
      /             \
 sibling, B(N-1)   into, RT(N-1)
                    /           \
                   /             \
-       near_child, BT(N-1)     far child, BT(N-1)</div></div>
-
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='CommentParagraph'>Either root is black, and rebalancing stops here, or root is red, and we have an RVT to pass up.</div></div>
-<e:displaycode>          }
+       near_child, BT(N-1)     far child, BT(N-1)</div></div></div><div class="section"><pre class="indent">            </pre><div class="CommentParagraph"><div>Either root is black, and rebalancing stops here, or root is red, and we have an RVT to pass up.</div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">          }
         }
       }
     }
-    else {&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;&#160;&#160;</pre><div class='CommentParagraph'>No red was passed up.  We're OK.</div></div>
-<e:displaycode>    }
+    else { </e:displaycode><div class="section"><pre class="indent">      </pre><div class="CommentParagraph"><div>No red was passed up.  We're OK.</div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">    }
 
     o = root;
   }
@@ -139,4 +98,4 @@ Node* insert(Node* root, int value) {
   Node* r = insert_aux(root, value);
   r.black = true;
   return r;
-}&#160;</e:displaycode></section>
+} </e:displaycode></section>

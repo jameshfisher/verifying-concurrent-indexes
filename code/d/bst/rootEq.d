@@ -5,7 +5,7 @@ bool rootEq(Node* root, int value) {
   // Open <e:pred name="NonEmptyTree"><code>root</code>, <e:st n="S"/></e:pred>.
   /// <e:exists>
   ///   <e:vars><e:var n="v"/></e:vars>
-  ///   <e:expr><e:pred name="TopOfTree"><code>root</code>, <e:var n="v"/>, <e:st n="S"/></e:pred><e:expr>
+  ///   <e:expr><e:pred name="TopOfTree"><code>root</code>, <e:var n="v"/>, <e:st n="S"/></e:pred></e:expr>
   /// </e:exists>
 
   // Open <e:pred name="TopOfTree"><code>root</code>, <e:var n="v"/>, <e:st n="S"/></e:pred>.

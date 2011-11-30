@@ -1,19 +1,15 @@
-<section class='generated_listing' xmlns='http://www.w3.org/1999/xhtml' xmlns:xi='http://www.w3.org/2001/XInclude' xmlns:e='http://eegg.github.com/htmlx' xmlns:m='http://eegg.github.com/macro'><e:displaycode>module rb.insert.recursive;
+<?xml version="1.0" encoding="UTF-8"?>
+<section class="generated_listing" xmlns="http://www.w3.org/1999/xhtml" ns:xi="http://www.w3.org/2001/XInclude" ns:e="http://eegg.github.com/htmlx" xmlns:ns="xmlns" ns:m="http://eegg.github.com/macro"><e:displaycode xmlns:e="http://eegg.github.com/htmlx">module rb.insert.recursive;
 
 import rb.node;
 import rb.blacken;
 
-Node* insert(Node* root, int value) {&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Function precondition.</div><e:pred name="BT"><code>root</code>, <e:st n="S"/>, <e:var n="h"/></e:pred></div></div>
-<e:displaycode>
-  Node* i = insert_aux(root, value);&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Specification for <code>insert_aux</code>.</div><e:or>
+Node* insert(Node* root, int value) { </e:displaycode><div class="section"><pre class="indent">  </pre><div class="AssertionParagraph"><div class="expl"><div>Function precondition.</div></div><div><e:pred name="BT" xmlns:e="http://eegg.github.com/htmlx"><code>root</code>, <e:st n="S"/>, <e:var n="h"/></e:pred></div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">
+  Node* i = insert_aux(root, value); </e:displaycode><div class="section"><pre class="indent">  </pre><div class="AssertionParagraph"><div class="expl"><div>Specification for <code>insert_aux</code>.</div></div><div><e:or xmlns:e="http://eegg.github.com/htmlx">
   <e:pred name="RBT"><code>i</code>, <e:union><e:st n="S"/><e:set><code>value</code></e:set></e:union>, <e:var n="h"/></e:pred>
   <e:pred name="RVT"><code>i</code>, <e:union><e:st n="S"/><e:set><code>value</code></e:set></e:union>, <e:var n="h"/></e:pred>
-</e:or></div></div>
-<e:displaycode>
-  Node* o = blacken(i);&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'><div class='expl'>Specification for <code>blacken</code>.</div><e:exists>
+</e:or></div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">
+  Node* o = blacken(i); </e:displaycode><div class="section"><pre class="indent">  </pre><div class="AssertionParagraph"><div class="expl"><div>Specification for <code>blacken</code>.</div></div><div><e:exists xmlns:e="http://eegg.github.com/htmlx">
   <e:vars><e:var n="nh"/></e:vars>
   <e:expr><e:and>
     <e:pred name="BT"><code>o</code>, <e:union><e:st n="S"/><e:set><code>value</code></e:set></e:union>, <e:var n="nh"/></e:pred>
@@ -25,7 +21,6 @@ Node* insert(Node* root, int value) {&#160;</e:displaycode>
       </e:set>
     </e:in>
   </e:and></e:expr>
-</e:exists></div></div>
-<e:displaycode>
+</e:exists></div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">
   return o;
-}&#160;</e:displaycode></section>
+} </e:displaycode></section>

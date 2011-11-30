@@ -1,4 +1,5 @@
-<section class='generated_listing' xmlns='http://www.w3.org/1999/xhtml' xmlns:xi='http://www.w3.org/2001/XInclude' xmlns:e='http://eegg.github.com/htmlx' xmlns:m='http://eegg.github.com/macro'><e:displaycode>module rb.remove.recursive;
+<?xml version="1.0" encoding="UTF-8"?>
+<section class="generated_listing" xmlns="http://www.w3.org/1999/xhtml" ns:xi="http://www.w3.org/2001/XInclude" ns:e="http://eegg.github.com/htmlx" xmlns:ns="xmlns" ns:m="http://eegg.github.com/macro"><e:displaycode xmlns:e="http://eegg.github.com/htmlx">module rb.remove.recursive;
 
 import rb.node;
 import rb.blacken;
@@ -8,53 +9,29 @@ import rb.print;
 import std.stdio;
 
 
-int findMax(Node* root) {&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'>T(root, S)</div></div>
-<e:displaycode>
+int findMax(Node* root) { </e:displaycode><div class="section"><pre class="indent">  </pre><div class="AssertionParagraph"><div>T(root, S)</div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">
   int max;
 
-  if (root.c[1]) {&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'>R != empty</div></div>
-<e:displaycode>    max = findMax(root.c[1]);&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'>max is max(R)
-max(R) is max(S)</div></div>
-<e:displaycode>  }
-  else {&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'>R is empty</div></div>
-<e:displaycode>    max = root.value;&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'>max is max({value})
-max is max(S)</div></div>
-<e:displaycode>  }&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'>max is max(S)</div></div>
-<e:displaycode>
+  if (root.c[1]) { </e:displaycode><div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div>R != empty</div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">    max = findMax(root.c[1]); </e:displaycode><div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div>max is max(R)
+max(R) is max(S)</div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">  }
+  else { </e:displaycode><div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div>R is empty</div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">    max = root.value; </e:displaycode><div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div>max is max({value})
+max is max(S)</div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">  } </e:displaycode><div class="section"><pre class="indent">  </pre><div class="AssertionParagraph"><div>max is max(S)</div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">
   return max;
 }
 
-Node* clr(bool c, Node* root, bool* fixed) {&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'>root some color * T(root.c[0], L, h) * T(root.c[0], R, i) ∧ !fixed</div></div>
-<e:displaycode>
+Node* clr(bool c, Node* root, bool* fixed) { </e:displaycode><div class="section"><pre class="indent">  </pre><div class="AssertionParagraph"><div>root some color * T(root.c[0], L, h) * T(root.c[0], R, i) ∧ !fixed</div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">
   *fixed = true;
   root.black = c;
   root.c[0].black = root.c[1].black = true;
-&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'>fixed ∧ (c == red ∧ RT(root, S)) || (c == black ∧ EBT(root, S))</div></div>
-<e:displaycode>
+ </e:displaycode><div class="section"><pre class="indent">  </pre><div class="AssertionParagraph"><div>fixed ∧ (c == red ∧ RT(root, S)) || (c == black ∧ EBT(root, S))</div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">
   return root;
 }
 
-Node* balB(Node* root, int dir, bool* fixed) {&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;</pre><div class='AssertionParagraph'>!fixed</div></div>
-<e:displaycode>
+Node* balB(Node* root, int dir, bool* fixed) { </e:displaycode><div class="section"><pre class="indent">  </pre><div class="AssertionParagraph"><div>!fixed</div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">
   Node* o;
 
-  if (red(root.c[!dir].c[!dir])) {&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'>T(fix, h) * root     * T(near, h) * black sibling * RT(far, h)</div></div>
-<e:displaycode>    bool oldColor = root.black;
-    root = rb.rotate.single(root, dir);&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'>T(fix, h) * red root * T(near, h) * black sibling * RT(far, h)</div></div>
-<e:displaycode>    o = clr(oldColor, root, fixed);&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;&#160;&#160;</pre><div class='AssertionParagraph'>fixed ∧ </div></div>
-<e:displaycode>  }
+  if (red(root.c[!dir].c[!dir])) { </e:displaycode><div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div>T(fix, h) * root     * T(near, h) * black sibling * RT(far, h)</div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">    bool oldColor = root.black;
+    root = rb.rotate.single(root, dir); </e:displaycode><div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div>T(fix, h) * red root * T(near, h) * black sibling * RT(far, h)</div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">    o = clr(oldColor, root, fixed); </e:displaycode><div class="section"><pre class="indent">    </pre><div class="AssertionParagraph"><div>fixed ∧ </div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">  }
   else {
     if (red(root.c[!dir].c[dir] )) {
       o = clr(root.black, rb.rotate.dbl(   root, dir), fixed);
@@ -71,9 +48,7 @@ Node* balB(Node* root, int dir, bool* fixed) {&#160;</e:displaycode>
 }
 
 
-Node* balance(Node* root, int dir, bool* fixed) {&#160;</e:displaycode>
-<div class='section'><pre class='indent'>&#160;&#160;</pre><div class='CommentParagraph'>one less BH in `dir`. root.c[!dir] != null.</div></div>
-<e:displaycode>
+Node* balance(Node* root, int dir, bool* fixed) { </e:displaycode><div class="section"><pre class="indent">  </pre><div class="CommentParagraph"><div>one less BH in `dir`. root.c[!dir] != null.</div></div></div><e:displaycode xmlns:e="http://eegg.github.com/htmlx">
   if (red(root.c[!dir])) {  // do case-reducing rotation.
     root = rb.rotate.single(root, dir);
     root.c[dir] = balB(root.c[dir], dir, fixed);
@@ -125,4 +100,4 @@ Node* remove(Node* root, int value) {
   bool* dummy = new bool;
   *dummy = false;
   return blacken(remove_aux(root, value, dummy));
-}&#160;</e:displaycode></section>
+} </e:displaycode></section>
