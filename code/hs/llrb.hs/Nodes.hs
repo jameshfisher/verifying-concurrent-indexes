@@ -1,69 +1,94 @@
 {-# LANGUAGE UnicodeSyntax, GADTs #-}
 
-module Nodes (B (..), R (..), RB (..)) where
+module Nodes (B (..), R (..), RV(..), RB(..), Tree(..)) where
 
-import Nat
+import Nat (Nat, S, O)
+import Print (Str(..), red, sh)
 
+
+-- Data constructors
+--------------------
 
 -- two type constructors: B and R.
--- (B a h) is a black-rooted tree at height h (Peano-encoded), containing elements of type a.
--- (R a h) is a red-rooted tree at height h.
+-- (B δ α) is a black-rooted tree at depth δ (Peano-encoded), containing elements of type a.
+-- (R δ α) is a red-rooted tree at depth δ.
 
 -- the following fully encodes the LLRB constraints
--- (but no specification of the set the tree contains).
+-- (but not the set the tree contains!).
 
-data B a h where  -- a black-rooted tree at height h can have three forms:
-  Nil ∷ (Ord a       )⇒                            B a O      -- an empty tree at height zero.
-  B2  ∷ (Ord a, Nat h)⇒  B a h  →  a  →  B a h  →  B a (S h)  -- two black-rooted children, at height h-1;
-  B3  ∷ (Ord a, Nat h)⇒  R a h  →  a  →  B a h  →  B a (S h)  -- one red left, one black right, both at height h-1.
-  B4  ∷ (Ord a, Nat h)⇒  R a h  →  a  →  R a h  →  B a (S h)
+data B δ α where  -- a black-rooted tree at depth δ can have three forms:
+  Nil ∷ (Ord α       )⇒                            B    O  α   -- an empty tree at height zero.
+  B2  ∷ (Nat δ, Ord α)⇒  B δ α  →  α  →  B δ α  →  B (S δ) α   -- two black-rooted children, at depth δ-1;
+  B3  ∷ (Nat δ, Ord α)⇒  R δ α  →  α  →  B δ α  →  B (S δ) α   -- one red left, one black right, both αt depth δ-1.
 
-data R a h where  -- a red-rooted tree at height h only has one form:
-  R   ∷ (Ord a, Nat h)⇒  B a h  →  a  →  B a h  →  R a h  -- two black-rooted children at the same height.
+-- a red-rooted tree at depth δ only has one form:
+-- two black-rooted children at the same height.
+data (Nat δ, Ord α)⇒ R δ α = R (B δ α) α (B δ α)
 
-data RB a where -- (exists h. B a h)
-  RB  ∷ (Ord a, Nat h  )⇒ B a h → RB a
+-- Either of the valid tree types.
+data (Nat δ, Ord α)⇒ RB δ α = RnotB (R δ α) | BnotR (B δ α)
 
-
-
-
+data (Nat δ, Ord α)⇒ RV δ α = RV (R δ α) α (B δ α)  -- Red Violation: red root, red left child. Requires fixing.
 
 
-class (Show a)⇒ Str a where
-  str ∷ a → Int → String → String
+class Blacken τ where
+  blacken :: (Nat δ, Ord α)⇒ τ δ α → Either (B δ α) (B (S δ) α)
 
-indent = join . indentN where
-  indentN = (flip replicate) "  "
-  join = foldl (++) ""
+instance Blacken B where
+  blacken b = Left b
+
+instance Blacken R where
+  blacken (R l v r) = Right $ B2 l v r
+
+instance Blacken RB where
+  blacken (RnotB t) = blacken t
+  blacken (BnotR t) = blacken t
+
+instance Blacken RV where
+  blacken (RV l v r) = Right $ B3 l v r
 
 
-ansi_wrap c s = (ansi c) ++ s ++ ansi_reset where
-  ansi c = '\27':'[':(c++"m")
-  ansi_reset = ansi "0"
+-- The end-user data type, void of heights.
+data Tree α where
+  Tree ∷ (Nat δ, Ord α)⇒ B δ α → Tree α
 
-red = ansi_wrap "31"
+instance (Show α, Ord α)⇒ Show (Tree α) where
+  show (Tree t) = str t 0 "─→"
 
-sh l r i pre = (str r (i+1) "╭→") ++ (indent i) ++ pre ++ "\n" ++ (str l (i+1) "╰→")
 
-instance (Show a, Ord a, Nat h)⇒ Str (B a h) where
-  str Nil i pre = ""
+class Blacken τ ⇒ ToTree τ where
+  toTree :: (Nat δ, Ord α)⇒ τ δ α → Tree α
+  toTree t = case blacken t of
+    Left t'  → Tree t'
+    Right t' → Tree t'
+
+
+-- Show instances
+-----------------
+
+s ∷ (Show a, Show b, Show c) ⇒ String → a → b → c → String
+
+s n l v r = "(" ++ n ++ " " ++ (show l) ++ " " ++ (show v) ++ " " ++ (show r) ++ ")"
+
+instance (Show α, Nat δ, Ord α)⇒ Str (B δ α) where
+  str Nil _ _ = ""
   str (B2 l v r) i pre = sh l r i (pre ++ show v)
   str (B3 l v r) i pre = sh l r i (pre ++ show v)
 
-instance (Show a, Ord a, Nat h)⇒ Str (R a h) where
+instance (Show α, Nat δ, Ord α)⇒ Str (R δ α) where
   str (R  l v r) i pre = sh l r i (pre ++ (red $ show v))
 
-instance  (Show a, Ord a)⇒ Show (RB a) where
-  show (RB t) = str t 0 "─→"
 
-
-
-s n l v r = n ++ " (" ++ (show l) ++ " " ++ (show v) ++ " " ++ (show r) ++ ")"
-
-instance (Show a, Nat h)⇒ Show (B a h) where
+instance (Show α, Nat δ, Ord α)⇒ Show (B δ α) where
   show Nil = "Nil"
   show (B2 l v r) = s "B2" l v r
   show (B3 l v r) = s "B3" l v r
 
-instance (Show a, Nat h)⇒ Show (R a h) where
+instance (Show α, Nat δ, Ord α)⇒ Show (R δ α) where
   show (R l v r) = s "R" l v r
+
+instance (Show α, Nat δ, Ord α)⇒ Show (RB δ α) where
+  show (RnotB t) = show t
+  show (BnotR t) = show t
+
+-- do the rest

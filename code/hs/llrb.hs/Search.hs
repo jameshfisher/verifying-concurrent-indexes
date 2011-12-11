@@ -1,22 +1,23 @@
-{-# LANGUAGE GADTs #-}
+{-# LANGUAGE UnicodeSyntax, GADTs #-}
 
 module Search where
 
-import Nodes
+import Nat (Nat)
+import Nodes (B(..), R(..))
 
-class Search t where
-  search :: t a h -> a -> Bool
+class Search τ where
+  search :: (Nat δ, Ord α)⇒ τ δ α → α → Bool
 
-instance Search BT where
+instance Search B where
   search Nil         _ = False
-  search (B2T l v r) x = s l v r x
-  search (B3T l v r) x = s l v r x
+  search (B2 l v r) x = s l v r x
+  search (B3 l v r) x = s l v r x
 
-instance Search RT where
-  search (RT l v r)  x = s l v r x
+instance Search R where
+  search (R  l v r)  x = s l v r x
 
-s :: (Search l, Ord a, Search r) => (l a h) -> a -> (r a h) -> a -> Bool
+s :: (Search τ, Search τ', Nat δ, Ord α) ⇒ τ δ α → α → τ' δ α → α → Bool
 s l v r x = case compare x v of
-  LT -> search l x
-  EQ -> True
-  GT -> search r x
+  LT → search l x
+  EQ → True
+  GT → search r x

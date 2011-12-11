@@ -1,38 +1,22 @@
-{-# LANGUAGE GADTs #-}
+{-# LANGUAGE UnicodeSyntax #-}
 
-module Print where
+module Print (Str(..), indent, red, sh) where
 
-import Nodes
+class (Show a)⇒ Str a where
+  str ∷ a → Int → String → String
 
-class (Show a) => Str a where
-  str :: a -> Int -> String -> String
+indent ∷ Int → String
+indent = join . indentN where
+  indentN = (flip replicate) "  "
+  join = foldl (++) ""
 
-join = foldl (++) ""
-indent n = join (replicate n "  ")
+ansi_wrap ∷ String → String → String
+ansi_wrap c s = (ansi c) ++ s ++ ansi_reset where
+  ansi code = '\27':'[':(code++"m")
+  ansi_reset = ansi "0"
 
-ansi c = ['\27'] ++ "[" ++ c ++ "m"
+red ∷ String → String
+red = ansi_wrap "31"
 
+sh ∷ (Str a, Str b) ⇒ a → b → Int → String → String
 sh l r i pre = (str r (i+1) "╭→") ++ (indent i) ++ pre ++ "\n" ++ (str l (i+1) "╰→")
-
-instance (Show a, Ord a, Nat h) => Str (BT a h) where
-  str Nil i pre = ""
-  str (B2T l v r) i pre = sh l r i (pre ++ show v)
-  str (B3T l v r) i pre = sh l r i (pre ++ show v)
-
-instance (Show a, Ord a, Nat h) => Str (RT a h) where
-  str (RT  l v r) i pre = sh l r i (pre ++ (ansi "31") ++ (show v) ++ (ansi "0"))
-
-instance  (Show a, Ord a) => Show (RBT a) where
-  show (RBT t) = str t 0 "─→"
-
-
-
-s n l v r = n ++ " (" ++ (show l) ++ " " ++ (show v) ++ " " ++ (show r) ++ ")"
-
-instance (Show a, Nat h) => Show (BT a h) where
-  show Nil = "Nil"
-  show (B2T l v r) = s "B2T" l v r
-  show (B3T l v r) = s "B3T" l v r
-
-instance (Show a, Nat h) => Show (RT a h) where
-  show (RT l v r) = s "RT" l v r
