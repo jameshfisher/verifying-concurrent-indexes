@@ -31,6 +31,7 @@
   <xsl:template match="e:math"><span class="math"><xsl:apply-templates /></span></xsl:template>
 
   <xsl:template match="e:negative">−<xsl:apply-templates /></xsl:template>
+  <xsl:template match="e:not">¬<xsl:apply-templates /></xsl:template>
 
   <xsl:template match="e:constant"><span class="constant"><xsl:apply-templates /></span></xsl:template>
   <xsl:template match="e:const"><span class="constant"><xsl:value-of select="@n" /></span></xsl:template>

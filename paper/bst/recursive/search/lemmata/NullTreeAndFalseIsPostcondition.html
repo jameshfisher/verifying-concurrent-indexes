@@ -1,0 +1,201 @@
+<e:lemma name="EmptyTreeAndFalseGivesSearchPostcondition"
+	 xmlns="http://www.w3.org/1999/xhtml"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xmlns:e="http://eegg.github.com/htmlx"
+	 xmlns:m="http://eegg.github.com/macro">
+
+  <e:caption><e:logimpl>
+    <e:and>
+      <e:pred name="Tree"><e:ptr n="root"/><e:st n="S"/><e:var n="l"/><e:var n="h"/></e:pred>
+      <e:eq><e:ptr n="root"/><m:null/></e:eq>
+      <e:not><e:var n="o"/></e:not>
+    </e:and>
+    <e:and>
+      <e:pred name="Tree"><e:ptr n="root"/><e:st n="S"/><e:var n="l"/><e:var n="h"/></e:pred>
+      <e:doubleimpl>
+	<e:var n="o"/>
+	(<e:in><e:var n="value"/><e:st n="S"/></e:in>)
+      </e:doubleimpl>
+    </e:and>
+  </e:logimpl></e:caption>
+
+  <e:contents>
+    <e:derivation>
+
+      <e:step name="given">
+	<e:derive><e:and>
+	  <e:pred name="Tree"><e:ptr n="root"/><e:st n="S"/><e:var n="l"/><e:var n="h"/></e:pred>
+	  <e:eq><e:ptr n="root"/><m:null/></e:eq>
+	  <e:not><e:var n="o"/></e:not>
+	</e:and></e:derive>
+	<e:by>given</e:by>
+      </e:step>
+
+      <e:step name="givenNullTree">
+	<e:derive><e:and>
+	  <e:pred name="Tree"><e:ptr n="root"/><e:st n="S"/><e:var n="l"/><e:var n="h"/></e:pred>
+	  <e:eq><e:ptr n="root"/><m:null/></e:eq>
+	</e:and></e:derive>
+	<e:by><e:from name="given"/>, <m:andElim/></e:by>
+      </e:step>
+
+      <e:step name="EmptyTree">
+	<e:derive><e:pred name="EmptyTree"><e:ptr n="root"/><e:st n="S"/><e:var n="l"/><e:var n="h"/></e:pred></e:derive>
+	<e:by><e:from name="givenNullTree"/>, <e:logimpl>
+	<e:and>
+	  <e:pred name="Tree"><e:ptr n="root"/><e:st n="S"/><e:var n="l"/><e:var n="h"/></e:pred>
+	  <e:eq><e:ptr n="root"/><m:null/></e:eq>
+	</e:and>
+	<e:pred name="EmptyTree"><e:ptr n="root"/><e:st n="S"/><e:var n="l"/><e:var n="h"/></e:pred>
+	</e:logimpl></e:by>
+      </e:step>
+
+      <e:step name="givenNot">
+	<e:derive><e:not><e:var n="o"/></e:not></e:derive>
+	<e:by><e:from name="given"/>, <m:andElim/></e:by>
+      </e:step>
+
+      <e:step name="SIsEmpty">
+	<e:derive><e:eq><e:st n="S"/><m:empty/></e:eq></e:derive>
+	<e:by><e:from name="EmptyTree"/>, <e:logimpl>
+	  <e:pred name="EmptyTree"><e:ptr n="root"/><e:st n="S"/><e:var n="l"/><e:var n="h"/></e:pred>
+	  <e:eq><e:st n="S"/><m:empty/></e:eq>
+	</e:logimpl></e:by>
+      </e:step>
+
+      <e:step name="vNotInEmpty">
+	<e:derive><e:notin><e:var n="v"/><m:empty/></e:notin></e:derive>
+	<e:by><e:forall><e:vars><e:var n="v"/></e:vars><e:expr><e:notin><e:var n="v"/><m:empty/></e:notin></e:expr></e:forall></e:by>
+      </e:step>
+
+      <e:step name="vNotInS">
+	<e:derive><e:notin><e:var n="v"/><e:st n="S"/></e:notin></e:derive>
+	<e:by><e:from name="SIsEmpty"/>, <e:from name="vNotInEmpty"/>, equality</e:by>
+      </e:step>
+
+      <e:step name="Tree">
+	<e:derive><e:pred name="Tree"><e:ptr n="root"/><e:st n="S"/><e:var n="l"/><e:var n="h"/></e:pred></e:derive>
+	<e:by><e:from name="EmptyTree"/>, <e:logimpl>
+	  <e:pred name="EmptyTree"><e:ptr n="root"/><e:st n="S"/><e:var n="l"/><e:var n="h"/></e:pred>
+	  <e:pred name="Tree"><e:ptr n="root"/><e:st n="S"/><e:var n="l"/><e:var n="h"/></e:pred>
+	</e:logimpl></e:by>
+      </e:step>
+
+      <e:step name="NotoAndvNotInS">
+	<e:derive><e:and>
+	  <e:not><e:var n="o"/></e:not>
+	  <e:not>(<e:in><e:var n="v"/><e:st n="S"/></e:in>)</e:not>
+	</e:and></e:derive>
+	<e:by><e:from name="givenNot"/>, <e:from name="vNotInS"/>, <m:andIntro/>
+	</e:by>
+      </e:step>
+
+      <e:step name="doubleImplication">
+	<e:derive>
+	  <e:doubleimpl>
+	    <e:var n="o"/>
+	    <e:in><e:var n="v"/><e:st n="S"/></e:in>
+	  </e:doubleimpl>
+	</e:derive>
+	<e:by><e:logimpl>
+	  <e:and><e:not><e:var n="a"/></e:not><e:not><e:var n="b"/></e:not></e:and>
+	  <e:doubleimpl><e:var n="a"/><e:var n="b"/></e:doubleimpl>
+	</e:logimpl></e:by>
+      </e:step>
+
+      <e:step name="qed">
+	<e:derive><e:and>
+	  <e:pred name="Tree"><e:ptr n="root"/><e:st n="S"/><e:var n="l"/><e:var n="h"/></e:pred>
+	  <e:doubleimpl>
+	    <e:var n="o"/>
+	    <e:in><e:var n="v"/><e:st n="S"/></e:in>
+	  </e:doubleimpl>
+	</e:and></e:derive>
+	<e:by><e:from name="Tree"/>, <e:from name="doubleImplication"/>, <m:andIntro/></e:by>
+      </e:step>
+
+    </e:derivation>
+  </e:contents>
+</e:lemma>
+
+
+
+<!--
+      <e:step name="given">
+	<e:derive><e:and>
+	  <e:pred name="EmptyTree"><e:ptr n="root"/><e:st n="S"/><m:neginf/><m:inf/></e:pred>
+	  <e:not><code>o</code></e:not>
+	</e:and></e:derive>
+	<e:by>given</e:by>
+      </e:step>
+
+      <e:step name="givenEmptyTree">
+	<e:derive><e:pred name="EmptyTree"><e:ptr n="root"/><e:st n="S"/><m:neginf/><m:inf/></e:pred></e:derive>
+	<e:by><e:from name="given"/>, <m:andElim/></e:by>
+      </e:step>
+
+      <e:step name="givenFalse">
+	<e:derive><e:not><code>o</code></e:not></e:derive>
+	<e:by><e:from name="given"/>, <m:andElim/></e:by>
+      </e:step>
+
+  <e:logimpl>
+    <e:pred name="EmptyTree"><e:ptr n="root"/><e:st n="S"/><e:var n="l"/><e:var n="h"/></e:pred>
+    <e:eq><e:st n="S"/><m:empty/></e:eq>
+  </e:logimpl>
+  <e:and>
+    <e:pred name="EmptyTree"><e:ptr n="root"/><e:st n="S"/><m:neginf/><m:inf/></e:pred>
+    <e:eq><e:st n="S"/><m:empty/></e:eq>
+  </e:and>
+
+  <e:logimpl>
+    <e:eq><e:st n="S"/><m:empty/></e:eq>
+    <e:notin><code>value</code><e:st n="S"/></e:notin>
+  </e:logimpl>
+  <e:and>
+    <e:pred name="EmptyTree"><e:ptr n="root"/><e:st n="S"/><m:neginf/><m:inf/></e:pred>
+    <e:notin><code>value</code><e:st n="S"/></e:notin>
+  </e:and>
+
+  <e:and>
+    <e:pred name="EmptyTree"><e:ptr n="root"/><e:st n="S"/><m:neginf/><m:inf/></e:pred>
+    <e:and>
+      <e:notin><code>value</code><e:st n="S"/></e:notin>
+      <e:eq><code>o</code><code>false</code></e:eq>
+    </e:and>
+  </e:and>
+
+  <e:and>
+    <e:pred name="EmptyTree"><e:ptr n="root"/><e:st n="S"/><m:neginf/><m:inf/></e:pred>
+    <e:doubleimpl>
+      <code>o</code>
+      (<e:in><code>value</code><e:st n="S"/></e:in>)
+    </e:doubleimpl>
+  </e:and>
+
+  <e:logimpl>
+    <e:pred name="EmptyTree"><e:ptr n="root"/><e:st n="S"/><m:neginf/><m:inf/></e:pred>
+    <e:pred name="Tree"><e:ptr n="root"/><e:st n="S"/><m:neginf/><m:inf/></e:pred>
+  </e:logimpl>
+
+
+      <e:step name="orNonEmpty">
+	<e:derive><e:or>
+	    <e:pred name="EmptyList"><code>head</code>, <e:st n="S"/></e:pred>
+	    <e:pred name="NonEmptyList"><code>head</code>, <e:st n="S"/></e:pred>
+	</e:or></e:derive>
+	<e:by><e:from name="given"/>, <m:orIntro/></e:by>
+      </e:step>
+
+      <e:step name="qed">
+	<e:derive><e:and>
+	  <e:pred name="Tree"><e:ptr n="root"/><e:st n="S"/><m:neginf/><m:inf/></e:pred>
+	  <e:doubleimpl>
+	    <code>o</code>
+	    (<e:in><code>value</code><e:st n="S"/></e:in>)
+	  </e:doubleimpl>
+	</e:and></e:derive>
+	<e:by>???</e:by>
+      </e:step>
+
+-->

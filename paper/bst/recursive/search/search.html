@@ -11,14 +11,17 @@
 
     <div class="display">
       <e:triple>
-	<e:pre><e:pred name="Tree"><code>root</code>, <e:st n="S"/></e:pred></e:pre>
+	<e:pre><e:and>
+	    <e:pred name="Tree"><e:ptr n="root"/><e:st n="S"/><e:var n="lower"/><e:var n="higher"/></e:pred>
+	    <e:lt><e:var n="lower"/><e:var n="value"/><e:var n="higher"/></e:lt>
+	</e:and></e:pre>
 	<e:command><code>o = search(root, value);</code></e:command>
 	<e:post>
 	  <e:and>
-	    <e:pred name="Tree"><code>o</code>, <e:st n="S"/></e:pred>
+	    <e:pred name="Tree"><e:ptr n="root"/><e:st n="S"/><e:var n="lower"/><e:var n="higher"/></e:pred>
 	    <e:doubleimpl>
-		o
-		<e:in><code>value</code><e:st n="S"/></e:in>
+		<e:var n="o"/>
+		<e:in><e:var n="value"/><e:st n="S"/></e:in>
 	    </e:doubleimpl>
 	  </e:and>
 	</e:post>
@@ -26,9 +29,13 @@
     </div>
   </p>
 
-  <div class="display">
-    <xi:include href="./search.svg" />
-  </div>
+
+  <e:diagram>
+    <e:caption>The recursive <m:bst/> <code>search</code> procedure as a flow diagram.</e:caption>
+    <e:contents><xi:include href="./search.svg" /></e:contents>
+  </e:diagram>
+
+  <xi:include href="./lemmata/NullTreeAndFalseIsPostcondition.html" />
 
   <xi:include href="../../../../code/d/html/bst/search/recursive.d.html" />
 </section>
