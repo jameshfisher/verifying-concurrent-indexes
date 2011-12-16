@@ -3,10 +3,8 @@
 module Insert (Insert(..), insertT) where
 
 import Nat
-import Nodes (B (..), R (..), RV(..), Tree(..))
+import Nodes (B (..), R (..), RV(..), Tree(..), blk)
 
-blk :: (Nat δ, Ord α)⇒ R δ α -> B (S δ) α
-blk (R l v r) = B2 l v r -- increases height by one.
 
 insert' ::
   (Insert μ  ε,   -- a μ might turn into a error tree of type ε upon insertion left; the ε must then be fixed.
@@ -22,13 +20,13 @@ insert' ::
    → (μ δ α → α → ε' δ' α → Either τ τ')  -- rightFix.  Both return either the original type τ, or a new tree type τ'.
    → Either τ τ'  -- one of the fixers might be applied or the data constructor, giving either a τ or a τ'.
 insert' dc l v r x leftFix rightFix = case compare x v of
-  EQ → Left $ dc l v r  -- just wrap up the tree again.
+  EQ → Left $ dc l v r     -- just wrap up the tree again.
   LT → case insert l x of  -- insert left;
     Left  l' → Left $ dc l' v r  -- if it came back as the same type of tree, wrap it up again;
-    Right l' → leftFix  l' v r   -- otherwise, apply the leftFix.
+    Right l' → leftFix   l' v r  -- otherwise, apply the leftFix.
   GT → case insert r x of  -- equivalent for inserting right.
     Left  r' → Left $ dc l v r'
-    Right r' → rightFix l v r'
+    Right r' → rightFix  l v r'
 
 class Insert μ ε where
   insert ∷ (Nat δ, Ord α)⇒ μ δ α → α → Either (μ δ α) (ε δ α)

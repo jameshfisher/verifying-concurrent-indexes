@@ -1,0 +1,87 @@
+#include <stdlib.h>
+#include <stdio.h>
+
+#include "./Node.h"
+#include "./analyze.h"
+
+void * match_TreeType(
+  void * passThru,
+  TreeType tt,
+  func_ValidTree* if_ValidTree,
+  func_InvalidTree* if_InvalidTree
+) {
+  switch (tt.type) {
+  case ValidTreeT:   return if_ValidTree(  tt.tree.validTree  , passThru); break;
+  case InvalidTreeT: return if_InvalidTree(tt.tree.invalidTree, passThru); break;
+  }
+}
+
+ValidTree * newValidTree(Height height, Color color) {
+  ValidTree * tree = malloc(sizeof(*tree));
+  tree->height = height;
+  tree->color = color;
+  return tree;
+}
+
+InvalidTree * newInvalidTree() {
+  InvalidTree * tree = malloc(sizeof(*tree));
+  return tree;
+}
+
+
+TreeType mkValidTree(Height height, Color color) {
+  ValidTree * tree = newValidTree(height, color);
+  TreeType ret;
+  ret.type = ValidTreeT;
+  ret.tree = (ValidOrInvalidTree) tree;
+  return ret;
+}
+
+TreeType mkInvalidTree() {
+  InvalidTree * tree = newInvalidTree();
+  TreeType ret;
+  ret.type = InvalidTreeT;
+  ret.tree = (ValidOrInvalidTree) tree;
+  return ret;
+}
+
+printColor(Color c) {
+  switch (c) {
+  case Red:   printf("Red");   break;
+  case Black: printf("Black"); break;
+  default:    printf("Error: unknown color %i", c); exit(1);
+  }
+}
+
+void * printValidTree(void * ignore, ValidTree * tree) {
+  printf("Tree ");
+  printColor(tree->color);
+  printf(" %i", tree->height);
+  return NULL;
+}
+
+void * printInvalidTree(void * ignore, InvalidTree * tree) {
+  printf("Invalid tree");
+  return NULL;
+}
+
+void printTreeType(TreeType type) {
+  match_TreeType(type, NULL, printValidTree, printInvalidTree);
+}
+
+TreeType leftValid(void * node_, ValidTree * left) {
+  return match_TreeType(analyze(node->right), node, rightValid, rightInvalid);
+}
+
+TreeType leftInvalid(void * node_, InvalidTree * left) {
+  return mkInvalidTree();
+}
+
+TreeType analyze(Node * node) {
+  if (node == NULL) {
+    return mkValidTree(0, Black);
+  }
+  else {
+    return match_TreeType(analyze(node->left), (void*) node, leftValid, leftInvalid);
+  }
+}

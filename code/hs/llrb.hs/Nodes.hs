@@ -1,6 +1,6 @@
 {-# LANGUAGE UnicodeSyntax, GADTs #-}
 
-module Nodes (B (..), R (..), RV(..), RB(..), Tree(..)) where
+module Nodes (B (..), R (..), RV(..), RB(..), Tree(..), mkB, blk) where
 
 import Nat (Nat, S, O)
 import Print (Str(..), red, sh)
@@ -92,3 +92,11 @@ instance (Show α, Nat δ, Ord α)⇒ Show (RB δ α) where
   show (BnotR t) = show t
 
 -- do the rest
+
+mkB :: (Nat δ, Ord α)⇒ RB δ α → α → B δ α → B (S δ) α
+mkB l v r = case l of
+  RnotB l' → B3 l' v r
+  BnotR l' → B2 l' v r
+
+blk :: (Nat δ, Ord α)⇒ R δ α -> B (S δ) α
+blk (R l v r) = B2 l v r -- increases height by one.

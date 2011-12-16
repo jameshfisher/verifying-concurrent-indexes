@@ -10,6 +10,7 @@
   <xsl:template match="m:url"><abbr title="Uniform Resource Locator" class="smallcaps">URL</abbr></xsl:template>
   <xsl:template match="m:adt"><abbr title="Abstract Data Type" class="smallcaps">ADT</abbr></xsl:template>
   <xsl:template match="m:ll"><abbr title="Linked List" class="smallcaps">LL</abbr></xsl:template>
+  <xsl:template match="m:llrb"><abbr title="Left-Leaning Red-Black Tree" class="smallcaps">LLRB</abbr></xsl:template>
   <xsl:template match="m:bst"><abbr title="Binary Search Tree" class="smallcaps">BST</abbr></xsl:template>
   <xsl:template match="m:rbt"><abbr title="Red-Black Tree" class="smallcaps">RBT</abbr></xsl:template>
 

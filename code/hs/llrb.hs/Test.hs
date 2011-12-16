@@ -4,9 +4,9 @@ module Test (prop_fromListToListIsSameElements) where
 
 import Data.Set ((\\), singleton)
 import qualified Data.Set (insert, null)
-import Data.List (group, sort)
 import Test.QuickCheck (quickCheck, printTestCase, Arbitrary(..), choose, Gen)
 
+import Help (unique, ordered)
 import Nodes (Tree(..), R(..))
 import LLRB (Tree, empty, insert, remove)
 import Marshal (fromList, toList, toSet)
@@ -25,20 +25,6 @@ instance Arbitrary TestInt where
   arbitrary = do
     i ← choose (0, 1000)
     return $ TestInt i
- 
-
---maybeToBool (Just _) = True
---maybeToBool Nothing  = False
-
--- this should exist
-unique :: Ord α ⇒ [α] → [α]
-unique = (map head) . group . sort
-
--- this should exist
-ordered :: Ord a ⇒ [a] → Bool
-ordered [] = True
-ordered [x] = True
-ordered (x:y:xs) = x < y && ordered (y:xs)
 
 
 prop_fromListToListIsSameElements :: [TestInt] → Bool

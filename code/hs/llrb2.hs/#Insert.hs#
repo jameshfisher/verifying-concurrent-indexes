@@ -1,0 +1,43 @@
+{-# LANGUAGE UnicodeSyntax, GADTs, MultiParamTypeClasses #-}
+
+module Insert (insertT) where
+
+import Nat
+import Nodes (Nil(..), B2(..), B3(..), B(..), R(..), RV(..), Tree(..), nil, b2, blk)
+import Rotate (rleftB3, rleftRV, rrightR, elim4)
+
+class Insert ε μ where insert ∷ (Nat δ, Ord α)⇒ μ δ α → α → Either (ε δ α) (μ δ α)
+
+insert' ::
+  (Insert ε  μ ,   -- a μ might turn into a error tree of type ε upon insertion left; the ε must then be fixed.
+   Insert ε' μ',   -- as above for right insertion.
+   Nat δ, Ord α) ⇒
+     (ε  δ α → α → μ' δ α → τ')  -- leftFix
+   → (μ  δ α → α → ε' δ α → τ')  -- rightFix.  Both return either the original type τ, or a new tree type τ'.
+   → (μ δ α  → α → μ' δ α → τ )  -- the data constructor, of type τ, that wrapped the following three parameters:
+   →  μ δ α  → α → μ' δ α        -- subtrees and root value.
+   → α                           -- value to insert.
+   → Either τ' τ                 -- one of the fixers might be applied or the data constructor, giving either a τ or a τ'.
+insert' lFix rFix dc l v r x = case compare x v of
+  EQ → Right $ dc l v r     -- just wrap up the tree again.
+  LT → case insert l x of  -- insert left;
+    Right l' → Right $ dc l' v r -- if it came back as the same type of tree, wrap it up again;
+    Left  l' → Left  $ lFix l' v r  -- otherwise, apply the leftFix.
+  GT → case insert r x of  -- equivalent for inserting right.
+    Right r' → Right $ dc l v r'
+    Left  r' → Left  $ rFix l v r'
+
+instance Insert B3 B2 where insert (B2 l v r) = insert' B3      rleftB3 B2 l v r
+instance Insert R  B3 where insert (B3 l v r) = insert' rrightR elim4   B3 l v r
+instance Insert RV R  where insert (R  l v r) = insert' RV      rleftRV R  l v r
+
+instance Insert R  B  where
+  insert (Nil' Nil) x = Left $ R nil x nil
+  insert (B2'  t)   x = case insert t x of { Left t' → Right $ B3' t'; Right t' → Right $ B2' t }
+  insert (B3'  t)   x = case insert t x of { Left t' → Left  $     t'; Right t' → Right $ B3' t }
+
+-- the end-user function.
+insertT :: (Ord α)⇒ Tree α → α → Tree α
+insertT (Tree t) v = case insert t v of
+    Right t' → Tree             t'
+    Left  t' → Tree $ B2' $ blk t'⇒
